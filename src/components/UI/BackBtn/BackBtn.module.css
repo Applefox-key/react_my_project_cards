@@ -1,0 +1,10 @@
+.btn{
+   margin: auto;
+    width: 10rem;
+    height: 3rem;
+    color:aliceblue;
+    background-color: rgb(0, 0, 0);
+    /* z-index: 550; */
+    border-radius: 4px;
+    font-size: 1rem;
+}

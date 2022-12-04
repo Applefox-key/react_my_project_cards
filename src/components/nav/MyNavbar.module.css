@@ -1,0 +1,29 @@
+.navbarico{
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    top: 5px;
+    left: 0;
+  }
+  .nav{
+   
+    position:fixed;
+    top:0;
+     right:0;
+     left:0;
+     justify-content:end;
+     z-index: 500;
+ 
+  }
+
+  @media screen and (min-width: 600px) {
+    
+    .nav{
+      font-size: large;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .nav{
+      font-size: small;     padding-right: 0rem;
+    }
+  }
