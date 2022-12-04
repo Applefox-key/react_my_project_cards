@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 const MyDropDownBtn = ({ arr, title, variant, dis, size = "lg" }) => {
   const router = useNavigate();
   return (
-    <DropdownButton disabled={dis} size={size} variant={variant} title={title}>
+    <DropdownButton
+      disabled={dis}
+      size={size}
+      variant={variant}
+      title={title}
+      style={{ fontSize: "3rem" }}>
       {arr.map((item, i) =>
         item.href || item.onClick ? (
           <Dropdown.Item
