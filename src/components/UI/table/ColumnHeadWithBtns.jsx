@@ -3,7 +3,7 @@ import Button from "react-bootstrap/esm/Button";
 
 const ColumnHeadWithBtns = ({ btnsArray }) => {
   return (
-    <th>
+    <th className="d-flex justify-content-end">
       {btnsArray
         .filter((el) => el.nameMain)
         .map((btn, i) => (
