@@ -44,7 +44,7 @@ const PublicCollectionMenu = ({ collection, addToMyCollection }) => {
         <div className="d-flex">
           {" "}
           <div>
-            <h1 className="display-5 ms-4 pe-auto">{collection.name}</h1>
+            <h1 className="display-5 ms-4 pe-auto">{"🌀" + collection.name}</h1>
             <p>{collection.note}</p>
           </div>
           <p>{collection.category}</p>
@@ -56,11 +56,12 @@ const PublicCollectionMenu = ({ collection, addToMyCollection }) => {
         <div>
           <ButtonGroup aria-label="delete and renaming buttons" size="lg">
             <MyDropDownBtn
+              as={ButtonGroup}
               arr={gameMenu}
               title="PLAY GAMES"
-              variant="outline-info"
+              variant="outline-primary"
             />
-            <Button variant="ligth" onClick={addToMyCollection}>
+            <Button variant="outline-primary" onClick={addToMyCollection}>
               Add to my collections
             </Button>
             <BackBtn />

@@ -4,7 +4,8 @@ import { Dropdown } from "react-bootstrap";
 const CategoryLink = ({ onSelectItem, isPublic, isOne }) => {
   return (
     <Dropdown.Item
-      className="text-primary"
+      style={{ fontSize: "1.5rem" }}
+      className="text-primary fst-italic"
       key={"first"}
       eventKey={"first"}
       onClick={() => {
@@ -12,10 +13,10 @@ const CategoryLink = ({ onSelectItem, isPublic, isOne }) => {
         // if (linkParam.act) linkParam.act();
       }}>
       {isOne
-        ? "set no category"
+        ? "...set no category"
         : isPublic
-        ? "show all categories"
-        : "show all categories"}
+        ? "...show all categories"
+        : "...show all categories"}
     </Dropdown.Item>
   );
 };

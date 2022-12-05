@@ -21,6 +21,9 @@ const SharedColectManager = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const bckBtn = () => {
+    return <BackBtn size="lg" />;
+  };
   const rowsActons = {
     async deleteAll() {
       if (!window.confirm("Delete all collections?")) return;
@@ -37,15 +40,21 @@ const SharedColectManager = () => {
 
   return (
     <div>
-      <h1>Your shared collections</h1>
-      <BackBtn size="lg" />
+      <div className="d-flex ms-5">
+        <h1>🌀My shared collections</h1>
+      </div>
+
       <div className="tableContainer">
         {list ? (
           <MyTable
             dataArray={list}
             namesArray={["name", "note"]}
             btnsArray={[
-              { nameMain: "Delete all", callback: rowsActons.deleteAll },
+              {
+                nameMain: "Delete all",
+                callback: rowsActons.deleteAll,
+              },
+              { nameMain: "back", callback: bckBtn, isnotbtn: true },
               { name: "Delete", callback: rowsActons.deleteOne },
             ]}
           />

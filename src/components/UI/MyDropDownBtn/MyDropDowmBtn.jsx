@@ -2,10 +2,11 @@ import React from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const MyDropDownBtn = ({ arr, title, variant, dis, size = "lg" }) => {
+const MyDropDownBtn = ({ arr, title, variant, dis, size = "lg", ...props }) => {
   const router = useNavigate();
   return (
     <DropdownButton
+      {...props}
       disabled={dis}
       size={size}
       variant={variant}

@@ -53,9 +53,11 @@ const CategorySelection = ({
           <CategoryFilter filter={filter} setFilter={setFilter} />
           {!filter && !selected && !isOne && (
             <Button
+              className="text-primary fst-italic"
+              style={{ fontSize: "0.77vw" }}
               variant="link"
               onClick={() => router("/collections/shared")}>
-              my shared collections
+              🌀my shared collections
             </Button>
           )}
           {!isLoadingCat && categories && (

@@ -1,6 +1,5 @@
 import * as fbHelpers from "../utils/serverFireBaseHlp/fbHelpers";
 import axios from "axios";
-import dataBase from "./DataBase";
 
 const BaseAPI = {
   async getAuthHeaders() {
@@ -149,13 +148,6 @@ const BaseAPI = {
     // );
     // if (indbase !== -1) list.splice(indbase, 1);
     // await BaseAPI.toLS("extraList", list);
-  },
-  async deleteExpression(wId) {
-    return await this.serverReq("delete", "/expressions/" + wId, true);
-  },
-  async deleteAllExpressions() {
-    let reqData = { id: "*" };
-    return await this.serverReq("delete", "/expressions", true, reqData);
   },
   async deletePbColection(colId) {
     return await this.serverReq("delete", "/pbcollections/" + colId, true);
@@ -362,7 +354,6 @@ const BaseAPI = {
   createDB() {
     if (!localStorage.getItem("avatars")) {
       const avList = fbHelpers.getAvatarsFromStore();
-      localStorage.setItem("avatars", JSON.stringify(dataBase.avatars));
       avList.then(localStorage.setItem("avatars", JSON.stringify(avList)));
     }
   },

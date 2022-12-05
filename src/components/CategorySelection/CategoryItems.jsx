@@ -7,6 +7,7 @@ const CategoryItems = ({ list, add, selected, onSelect, isPublic }) => {
       {list.length ? (
         list.map((item) => (
           <Dropdown.Item
+            style={{ fontSize: "1.5rem" }}
             active={selected.id === item.id}
             key={item.id}
             eventKey={item.id}

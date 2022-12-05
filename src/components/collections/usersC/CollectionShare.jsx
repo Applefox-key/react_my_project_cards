@@ -67,22 +67,26 @@ const CollectionShare = ({ colObj, setVisible }) => {
           }}
         />
         <Button
+          className="share_button fs-5"
+          variant="outline-primary"
           disabled={!contentList}
           onClick={() => {
             share(note, name, contentList);
           }}>
-          Share public collection
+          🌀Share to the public collection
         </Button>{" "}
         <Button
+          className="share_button fs-5"
+          variant="outline-primary"
           disabled={!contentList}
           onClick={() => {
-            createFile(note, name, contentList);
+            createFile(contentList);
           }}>
-          Create file for download
-        </Button>
+          💾Create file for download
+        </Button>{" "}
         {textFile ? (
-          <a download={name} href={textFile}>
-            Download
+          <a download={name} href={textFile} className="fs-4">
+            🡇 Download
           </a>
         ) : (
           <></>

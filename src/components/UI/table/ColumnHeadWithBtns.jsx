@@ -6,18 +6,22 @@ const ColumnHeadWithBtns = ({ btnsArray }) => {
     <th className="d-flex justify-content-end">
       {btnsArray
         .filter((el) => el.nameMain)
-        .map((btn, i) => (
-          <Button
-            key={i}
-            variant="light"
-            size="lg"
-            onClick={(e) => {
-              e.stopPropagation();
-              btn.callback();
-            }}>
-            {btn.nameMain}
-          </Button>
-        ))}
+        .map((btn, i) =>
+          !btn.isnotbtn ? (
+            <Button
+              key={i}
+              variant="light"
+              size="lg"
+              onClick={(e) => {
+                e.stopPropagation();
+                btn.callback();
+              }}>
+              {btn.nameMain}
+            </Button>
+          ) : (
+            <div key={i}>{btn.callback()}</div>
+          )
+        )}
     </th>
   );
 };
