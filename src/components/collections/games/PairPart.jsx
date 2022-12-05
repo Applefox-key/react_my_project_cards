@@ -18,7 +18,7 @@ const PairPart = ({ items, onClick, num, active }) => {
             ].join(" ")}
             id={el.id + "&" + num}
             onClick={onClick}>
-            {el[num === 1 ? "question" : "answer"]}/{el.id}
+            {el[num === 1 ? "question" : "answer"]}
           </button>
         </CSSTransition>
       ))}

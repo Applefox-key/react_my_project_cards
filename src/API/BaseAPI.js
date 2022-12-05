@@ -349,14 +349,6 @@ const BaseAPI = {
     let reqData = { ...ud };
     return await this.serverReq("patch", "/users", true, reqData);
   },
-  async updateExpression(expressionBefore) {
-    if (!expressionBefore)
-      return { status: false, error: "expression's not selected" };
-    let expression = expressionBefore.setForUpdate;
-
-    return await this.serverReq("patch", "/expressions", true, expression);
-  },
-
   getAvatarUrl(num) {
     const avlist = JSON.parse(localStorage.getItem("avatars"));
     if (num > avlist.length()) return "";
