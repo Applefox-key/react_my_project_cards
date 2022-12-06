@@ -30,7 +30,7 @@ const PublicCollectionsView = () => {
     setPopup.success("the collection has been added to your list");
   };
   const openCard = (item) => {
-    route(`/collections/my/${collection.id}/${collection.name}/${item.id}`);
+    route(`/collections/pub/${collection.id}/${collection.name}/${item.id}`);
   };
   return (
     <>
