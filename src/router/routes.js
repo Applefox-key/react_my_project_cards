@@ -33,7 +33,7 @@ export const adminRoutes = [
   { path: "/*", element: <AdminPage />, nameNav: "" },
 ];
 export const privateRoutes = [
-  { path: "/*", element: <EmptyPage />, nameNav: "" },
+  { path: "/*", element: <Collections />, nameNav: "" },
   { path: "/about", element: <About />, nameNav: "About" },
 
   { path: "/collections", element: <Collections />, nameNav: "Collections" },

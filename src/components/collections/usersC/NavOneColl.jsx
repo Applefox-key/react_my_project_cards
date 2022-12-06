@@ -13,10 +13,6 @@ const NavOneColl = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
   const router = useNavigate();
 
-  const modal = (el) => {
-    setMod(el);
-  };
-
   const removeCollection = async () => {
     if (!window.confirm("Remove this collection?")) return;
     await BaseAPI.deleteColection(colObj.collection.id);
@@ -78,7 +74,7 @@ const NavOneColl = ({ colObj, setContent }) => {
           <Button variant="outline-primary" onClick={removeCollection}>
             Remove
           </Button>{" "}
-          <Button variant="outline-primary" onClick={() => modal("share")}>
+          <Button variant="outline-primary" onClick={() => setMod("share")}>
             🌀Share
           </Button>
           <MyDropDownBtn
@@ -86,9 +82,16 @@ const NavOneColl = ({ colObj, setContent }) => {
             arr={[
               {
                 name: "Add from the file",
-                onClick: () => modal("file"),
+                onClick: () => {
+                  setMod("file");
+                },
               },
-              { name: "Add from the list", onClick: () => modal("list") },
+              {
+                name: "Add from the list",
+                onClick: () => {
+                  setMod("list");
+                },
+              },
             ]}
             title="Import"
             variant="outline-primary"

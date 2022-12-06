@@ -10,7 +10,7 @@ import { usePopup } from "../../../../hooks/usePopup";
 
 const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
   const [dataArray, setDataArray] = useState();
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(false);
   const [dataString, setDataString] = useState("");
 
   const setPopup = usePopup();

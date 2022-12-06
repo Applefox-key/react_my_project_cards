@@ -19,7 +19,7 @@ const MyDropDownBtn = ({ arr, title, variant, dis, size = "lg", ...props }) => {
             key={i}
             // href={item.href ? item.href : ""}
             // onClick={item.onClick}
-            onClick={() => router(item.href)}>
+            onClick={item.onClick ? item.onClick : () => router(item.href)}>
             {item.name}
           </Dropdown.Item>
         ) : (

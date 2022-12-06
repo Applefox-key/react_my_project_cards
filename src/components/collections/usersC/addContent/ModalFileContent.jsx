@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import MyModal from "../../UI/MyModal";
 import { useState } from "react";
-import Popup from "../../UI/popup/Popup";
-import BaseAPI from "../../../API/BaseAPI";
-import { contentFromTxtFile } from "../../../utils/files";
 import ModalFileContentBtns from "./ModalFileContentBtns";
-import { usePopup } from "../../../hooks/usePopup";
 import ContentFromFile from "./ContentFromFile";
+import MyModal from "../../../UI/MyModal";
+import Popup from "../../../UI/popup/Popup";
+import BaseAPI from "../../../../API/BaseAPI";
+import { contentFromTxtFile } from "../../../../utils/files";
+import { usePopup } from "../../../../hooks/usePopup";
 
 const ModalFileContent = ({ setVisible, setContent, colId }) => {
   const [fileContent, setFileContent] = useState();

@@ -1,5 +1,6 @@
 import React from "react";
-import ModalFileContentBtns from "./addContent/ModalFileContentBtns";
+import ModalFileContent from "./addContent/ModalFileContent";
+
 import ModalPasteContent from "./addContent/ModalPasteContent";
 import CollectionShare from "./CollectionShare";
 
@@ -17,7 +18,7 @@ const ModalCommand = ({ mod, setMod, colObj, setContent }) => {
         />
       )}{" "}
       {mod === "file" && (
-        <ModalFileContentBtns
+        <ModalFileContent
           setVisible={setMod}
           setContent={setContent}
           colId={colObj.collection.id}
