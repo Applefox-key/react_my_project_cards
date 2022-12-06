@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
 import MyTable from "../../UI/table/MyTable";
 import MySpinner from "../../UI/MySpinner";
@@ -12,14 +12,14 @@ const PublicCollectionsView = () => {
   const [content, setContent] = useState();
   const [collection, setCollection] = useState(PageParam);
   const setPopup = usePopup();
-  const [getExpression, isLoading] = useQuery(async () => {
+  const [getContent, isLoading] = useQuery(async () => {
     const cont = await BaseAPI.getPublicCollectionsAndContent(PageParam.id);
     setContent(cont[0].content);
     setCollection(cont[0].collection);
   });
-
+  const route = useNavigate();
   useEffect(() => {
-    getExpression();
+    getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PageParam]);
 
@@ -29,7 +29,9 @@ const PublicCollectionsView = () => {
     await BaseAPI.CreateCollectionWithContent(collection, content, true);
     setPopup.success("the collection has been added to your list");
   };
-
+  const openCard = (item) => {
+    route(`/collections/my/${collection.id}/${collection.name}/${item.id}`);
+  };
   return (
     <>
       {!isLoading ? (
@@ -44,6 +46,7 @@ const PublicCollectionsView = () => {
             </div>
           )}
           <MyTable
+            onRowClick={openCard}
             dataArray={content}
             namesArray={["question", "answer", "note"]}
           />

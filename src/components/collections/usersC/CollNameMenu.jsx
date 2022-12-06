@@ -20,15 +20,13 @@ const CollNameMenu = ({ colObj, setContent, setCollect }) => {
       <div className="d-flex align-items-center">
         {" "}
         <div>
-          <h1
-            // className="display-5 ms-4 pe-auto"
-            onClick={() => setRenameMode(true)}>
+          <h1 className="pointer" onClick={() => setRenameMode(true)}>
             {"My collections / " + colObj.collection.name}
           </h1>
           {/* <p>{colObj.collection.note}</p> */}
         </div>
         <p
-          className="badge fst-italic bg-primary ms-1"
+          className="badge fst-italic bg-primary ms-1 pointer"
           style={{ fontSize: "1.1rem" }}>
           {colObj.collection.category}
         </p>

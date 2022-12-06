@@ -39,19 +39,24 @@
 }
 
 .list_btn {
-  border: none;
-  font-size: large;
+  /* font-size: large; */
+  padding: 5px 5px;
+  margin: 15px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  /* position: absolute; */
-  padding: 5px 5px;
+
   min-width:130px;
   min-height: 50px;
-  margin: 15px;
+ 
+  font-size: 1.8rem;
+  color: black;
+  word-wrap:normal;
+
+  border: none;
   border-color: #3498db;
   box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-  color: black;
   -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
 }
