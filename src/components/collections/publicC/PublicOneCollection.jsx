@@ -38,6 +38,11 @@ const PublicCollectionsView = () => {
             collection={collection ? collection : PageParam}
             addToMyCollection={addToMyCollection}
           />
+          {collection && (
+            <div className="string_submenu">
+              {collection.note ? "About collection: " + collection.note : ""}
+            </div>
+          )}
           <MyTable
             dataArray={content}
             namesArray={["question", "answer", "note"]}

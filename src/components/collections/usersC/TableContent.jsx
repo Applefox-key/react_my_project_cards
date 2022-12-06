@@ -86,8 +86,17 @@ const TableContent = ({ content, setContent, pageParam }) => {
             { nameMain: "Add row", callback: rowsActons.addRow },
             { nameMain: "Delete all", callback: rowsActons.deleteAll },
             // { name: "Edit", callback: editOn },
-            { name: "Card", callback: rowsActons.openCard },
-            { name: "Delete", callback: rowsActons.deleteOne },
+            // { name: "Card", callback: rowsActons.openCard },
+            {
+              name: "🔎",
+              callback: rowsActons.openCard,
+              variant: "outline-light",
+            },
+            {
+              name: "🗑",
+              callback: rowsActons.deleteOne,
+              variant: "outline-light",
+            },
           ]}
         />
       )}

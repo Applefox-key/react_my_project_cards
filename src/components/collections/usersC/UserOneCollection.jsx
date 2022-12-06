@@ -48,6 +48,11 @@ const UserOneCollection = () => {
         </div>
       )}
 
+      {collect && (
+        <div className="string_submenu">
+          {collect.note ? "About collection: " + collect.note : ""}
+        </div>
+      )}
       {!isLoading && content ? (
         <TableContent
           setContent={setContent}

@@ -7,7 +7,7 @@ const CollNameMenu = ({ colObj, setContent, setCollect }) => {
   const [renameMode, setRenameMode] = useState(false);
 
   return (
-    <div>
+    <div className="string_menu">
       {renameMode && (
         <CollectionEditModal
           isEdit={renameMode}
@@ -16,22 +16,26 @@ const CollNameMenu = ({ colObj, setContent, setCollect }) => {
           cancel={setRenameMode}
         />
       )}
-      <div className="d-flex  justify-content-between flex-row flex-wrap">
-        <div className="d-flex">
-          {" "}
-          <div>
-            <h1
-              className="display-5 ms-4 pe-auto"
-              onClick={() => setRenameMode(true)}>
-              {colObj.collection.name}
-            </h1>
-            <p>{colObj.collection.note}</p>
-          </div>
-          <p>{colObj.collection.category}</p>
+      {/* <div className="d-flex  justify-content-between flex-row flex-wrap"> */}
+      <div className="d-flex align-items-center">
+        {" "}
+        <div>
+          <h1
+            // className="display-5 ms-4 pe-auto"
+            onClick={() => setRenameMode(true)}>
+            {"My collections / " + colObj.collection.name}
+          </h1>
+          {/* <p>{colObj.collection.note}</p> */}
         </div>
-
-        <NavOneColl setContent={setContent} colObj={colObj} />
+        <p
+          className="badge fst-italic bg-primary ms-1"
+          style={{ fontSize: "1.1rem" }}>
+          {colObj.collection.category}
+        </p>
       </div>
+
+      <NavOneColl setContent={setContent} colObj={colObj} />
+      {/* </div> */}
     </div>
   );
 };

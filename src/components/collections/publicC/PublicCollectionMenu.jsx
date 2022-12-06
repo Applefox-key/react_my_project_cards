@@ -38,36 +38,44 @@ const PublicCollectionMenu = ({ collection, addToMyCollection }) => {
     },
   ];
   return (
-    <div>
+    <div className="string_menu">
       {/* <h1 className="display-4 mss-4">{collectionContent.name}</h1> */}
-      <div className="d-flex  justify-content-between flex-row flex-wrap">
-        <div className="d-flex">
-          {" "}
-          <div>
-            <h1 className="display-5 ms-4 pe-auto">{"🌀" + collection.name}</h1>
-            <p>{collection.note}</p>
-          </div>
-          <p>{collection.category}</p>
-        </div>
-
-        {/* className="d-flex   align-items-end justify-content-end pt-2" */}
-        {/* <div className="d-flex   align-items-start  align-items-end justify-content-end "> */}
-
+      {/* <div className="d-flex  justify-content-between flex-row flex-wrap"> */}
+      <div className="d-flex align-items-center">
+        {" "}
         <div>
-          <ButtonGroup aria-label="delete and renaming buttons" size="lg">
-            <MyDropDownBtn
-              as={ButtonGroup}
-              arr={gameMenu}
-              title="PLAY GAMES"
-              variant="outline-primary"
-            />
-            <Button variant="outline-primary" onClick={addToMyCollection}>
-              Add to my collections
-            </Button>
-            <BackBtn />
-          </ButtonGroup>
+          <h1>{"Public collections / " + collection.name}</h1>
+          {/* <p
+            className="badge fst-italic bg-primary ms-1"
+            style={{ fontSize: "1.1rem" }}>
+            {collection.note}
+          </p> */}
         </div>
+        <p
+          className="badge fst-italic bg-primary ms-1"
+          style={{ fontSize: "1.1rem" }}>
+          {collection.category}
+        </p>
       </div>
+
+      {/* className="d-flex   align-items-end justify-content-end pt-2" */}
+      {/* <div className="d-flex   align-items-start  align-items-end justify-content-end "> */}
+
+      <div>
+        <ButtonGroup aria-label="delete and renaming buttons" size="lg">
+          <MyDropDownBtn
+            as={ButtonGroup}
+            arr={gameMenu}
+            title="PLAY GAMES"
+            variant="primary"
+          />
+          <Button variant="primary" onClick={addToMyCollection}>
+            Add to my collections
+          </Button>
+          <BackBtn />
+        </ButtonGroup>
+      </div>
+      {/* </div> */}
     </div>
   );
 };

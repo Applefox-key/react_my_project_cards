@@ -4,11 +4,10 @@ import MyModal from "../UI/MyModal";
 import CategoriesManager from "../CategorySelection/CategoriesManager";
 
 const CategoriesListHeader = ({ selected, list, getList, isPublic, isOne }) => {
-  // const router = useNavigate();
   const [visible, setVisible] = useState(false);
 
   return (
-    <div>
+    <div className="d-flex">
       {visible && (
         <MyModal
           onHide={(e) => {
@@ -17,7 +16,6 @@ const CategoriesListHeader = ({ selected, list, getList, isPublic, isOne }) => {
           }}
           showmodal={visible}
           setshowmodal={setVisible}
-          // fullscreen
           size="md"
           dialogClassName="h100"
           title={"Categories manager"}>

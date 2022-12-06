@@ -104,8 +104,16 @@ const CollectionsTable = ({
             btnsArray={[
               { nameMain: "Add row", callback: rowsActons.addRow },
               { nameMain: "Delete all", callback: rowsActons.deleteAll },
-              { name: "Content", callback: rowsActons.viewContent },
-              { name: "Delete", callback: rowsActons.deleteOne },
+              {
+                name: "🔎",
+                callback: rowsActons.viewContent,
+                variant: "outline-light",
+              },
+              {
+                name: "🗑",
+                callback: rowsActons.deleteOne,
+                variant: "outline-light",
+              },
             ]}
           />
         </div>

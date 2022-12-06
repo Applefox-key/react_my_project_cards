@@ -40,7 +40,7 @@ const CategorySelection = ({
   }, [isPublic]);
 
   return (
-    <div>
+    <>
       <Dropdown>
         <CategoriesListHeader
           selected={selected}
@@ -54,7 +54,7 @@ const CategorySelection = ({
           {!filter && !selected && !isOne && (
             <Button
               className="text-primary fst-italic"
-              style={{ fontSize: "0.77vw" }}
+              style={{ fontSize: "1rem" }}
               variant="link"
               onClick={() => router("/collections/shared")}>
               🌀my shared collections
@@ -82,8 +82,7 @@ const CategorySelection = ({
           )}
         </Dropdown.Menu>
       </Dropdown>
-      ,
-    </div>
+    </>
   );
 };
 

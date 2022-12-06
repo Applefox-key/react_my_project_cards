@@ -49,7 +49,7 @@ const NavOneColl = ({ colObj, setContent }) => {
 
   return (
     <div className="d-flex   justify-content-between ">
-      <div className="d-flex   align-items-start">
+      <div className="d-flex  align-items-center">
         {mod ? (
           <ModalCommand
             mod={mod}
@@ -64,18 +64,17 @@ const NavOneColl = ({ colObj, setContent }) => {
           size="lg"
           aria-label="delete and renaming buttons"
           className="d-flex">
-          <MyDropDownBtn
-            as={ButtonGroup}
-            arr={gameMenu}
-            title="PLAY GAMES"
+          <Button
             variant="outline-primary"
-            dis={colObj.content ? colObj.content.length === 0 : true}
-          />
-          <Button variant="outline-primary" onClick={removeCollection}>
+            onClick={removeCollection}
+            className="text_white">
             Remove
           </Button>{" "}
-          <Button variant="outline-primary" onClick={() => setMod("share")}>
-            🌀Share
+          <Button
+            variant="outline-primary"
+            className="text_white"
+            onClick={() => setMod("share")}>
+            Share
           </Button>
           <MyDropDownBtn
             as={ButtonGroup}
@@ -94,8 +93,15 @@ const NavOneColl = ({ colObj, setContent }) => {
               },
             ]}
             title="Import"
-            variant="outline-primary"
+            variant="primary"
           />{" "}
+          <MyDropDownBtn
+            as={ButtonGroup}
+            arr={gameMenu}
+            title="PLAY GAMES"
+            variant="primary"
+            dis={colObj.content ? colObj.content.length === 0 : true}
+          />
           <BackBtn />
         </ButtonGroup>
       </div>{" "}

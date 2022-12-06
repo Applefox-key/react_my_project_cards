@@ -15,7 +15,7 @@ const PublicCollectionCard = ({ list }) => {
         );
       }}>
       <Card style={{ width: "18rem" }}>
-        <Card.Header>{list.collection.name}</Card.Header>
+        <Card.Header className="fw-bolder">{list.collection.name}</Card.Header>
         <CollectionCardBody content={list.content} />
       </Card>
     </div>

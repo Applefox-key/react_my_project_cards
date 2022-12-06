@@ -7,8 +7,9 @@ const MyFilter = ({ filter, setFilter }) => {
   const [value, setValue] = useState(filter);
 
   return (
-    <div className="w-50 ">
+    <div className="w-50">
       <MyInputGroup
+        classgroup="h-100 mb-0"
         label="🔎"
         value={value}
         size="lg"

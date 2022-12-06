@@ -1,37 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import ToggleBtnGroup from "../UI/ToggleBtnGroup";
+import { useNavigate } from "react-router-dom";
 import CollectionsMenu from "./CollectionsMenu";
 import PublicCollections from "./publicC/PublicCollections";
 import CollectionEditModal from "./usersC/CollectionEditModal";
 import UsersCollections from "./usersC/UsersCollections";
 
 const Collections = () => {
-  const router = useNavigate();
-  const page = useParams();
+  console.log("load");
+  console.log(window.location);
 
-  const [isPublic, setisPublic] = useState(page.tab === "pub");
-  const [isNew, setIsNew] = useState(false);
-  const [filter, setFilter] = useState("");
+  console.log(window.location.pathname.includes("pub"));
+
+  const router = useNavigate();
+
   const [selectedCategory, setselectedCategory] = useState("");
+  const [filter, setFilter] = useState("");
+  const [isNew, setIsNew] = useState(false);
+
   const [viewmode, setViewmode] = useState(
-    window.location.hash === "#2" ? "2" : "1"
+    window.location.hash === "#1" ? "1" : "0"
   );
-  const viewmodeChange = (event) => {
-    setViewmode(event.target.value);
-    router(`/collections/${isPublic ? "pub#" : "my#"}${event.target.value}`);
-  };
-  const TabChange = (event) => {
-    setisPublic(event.target.value === "2");
-    router(
-      `/collections/${event.target.value === "2" ? "pub#" : "my#"}${viewmode}`
-    );
+  const viewmodeChange = () => {
+    let newVal = 1 - viewmode;
+    setViewmode(newVal);
+    router(window.location.pathname + "#" + newVal);
   };
 
   useEffect(() => {
-    setViewmode(window.location.hash === "#2" ? "2" : "1");
+    setViewmode(window.location.hash === "#1" ? "1" : "0");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(viewmode);
+
   return (
     <div>
       {isNew && (
@@ -45,21 +45,9 @@ const Collections = () => {
           }}
         />
       )}
-      <div className="d-flex">
-        <ToggleBtnGroup
-          checked={isPublic ? 2 : 1}
-          className="w-100"
-          // value={isPublic ? "2" : "1"}
-          name="isPubl"
-          size="lg"
-          arr={["MY COLLECTIONS", "PUBLIC COLLECTIONS"]}
-          onChange={TabChange}
-        />
-      </div>
-
       <CollectionsMenu
         viewmodeChange={viewmodeChange}
-        isPublic={isPublic}
+        isPublic={window.location.pathname.includes("pub")}
         isNew={isNew}
         setIsNew={setIsNew}
         selectedCategory={selectedCategory}
@@ -67,8 +55,16 @@ const Collections = () => {
         setFilter={setFilter}
         setselectedCategory={setselectedCategory}
       />
+      {(selectedCategory || filter) && (
+        <div className="fs-4 mt-2 fst-italic">
+          Search results for {selectedCategory && " category..."}
+          <span className="text-primary">{selectedCategory.name}</span>
+          {filter && " text..."}
+          <span className="text-primary">{filter.toString()}</span>
+        </div>
+      )}
       <div>
-        {!isPublic ? (
+        {!window.location.pathname.includes("pub") ? (
           <UsersCollections
             selectedCategory={selectedCategory}
             filter={filter}

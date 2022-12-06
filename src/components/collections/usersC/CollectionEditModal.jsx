@@ -85,7 +85,7 @@ const CollectionEditModal = ({
               size="lg"
               label="Name"
               placeholder="name: my collection"
-              value={newName}
+              value={newName ? newName : ""}
               onChange={(e) => setNewName(e.target.value)}
             />
 

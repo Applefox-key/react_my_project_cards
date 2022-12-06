@@ -14,6 +14,7 @@ const UsersCollections = ({ viewmode, selectedCategory, filter, isNew }) => {
     );
   });
   const setPopup = usePopup();
+
   useEffect(() => {
     if (isNew) return;
     getCollections();
@@ -22,18 +23,12 @@ const UsersCollections = ({ viewmode, selectedCategory, filter, isNew }) => {
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNew, viewmode, selectedCategory, filter]);
-  // const filtredList = useCollectSelection(
-  //   collectionList,
-  //   selectedCategory,
-  //   filter
-  // );
 
   return (
     <>
-      {/* <div className="d-flex pb-2 justify-content-center mt-4"></div> */}
       {isLoading ? (
         <MySpinner />
-      ) : viewmode === "1" ? (
+      ) : window.location.hash !== "#1" ? (
         <CollectionCardsList
           filtredList={collectionList}
           getCollections={getCollections}

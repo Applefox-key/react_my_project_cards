@@ -23,7 +23,7 @@ const PublicCollections = ({ selectedCategory, filter, viewmode }) => {
     <>
       {isLoading ? (
         <MySpinner />
-      ) : viewmode === "2" ? (
+      ) : viewmode === 1 ? (
         <PublicCollectTable filtredList={filtredList} />
       ) : (
         <div className="d-flex p-2 flex-wrap justify-content-center">

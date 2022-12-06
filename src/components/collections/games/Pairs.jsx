@@ -53,6 +53,9 @@ const Pairs = () => {
       setCount([count[0], count[1] + 1]);
     }
   };
+  try {
+    console.log(items.length + itemsV[0].length);
+  } catch (error) {}
 
   return (
     <>

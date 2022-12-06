@@ -15,7 +15,7 @@ const CollectionCard = ({ collection }) => {
         );
       }}>
       <Card style={{ width: "18rem" }}>
-        <Card.Header>
+        <Card.Header className="fw-bolder">
           {collection.collection.name}{" "}
           {/* {countUnread ? <Badge bg="success">{countUnread}</Badge> : <></>} */}
         </Card.Header>
