@@ -310,6 +310,12 @@ const BaseAPI = {
     if (result.error) throw new Error(result.error);
     return result.data[0].content;
   },
+  async getPublicContentItem(id) {
+    let result = await this.serverReq("get", "/content/pub/" + id, true);
+
+    if (result.error) throw new Error(result.error);
+    return result.data;
+  },
   async getUser() {
     let result = await this.serverReq("get", "/users", true);
     if (result.error) throw new Error(result.error);

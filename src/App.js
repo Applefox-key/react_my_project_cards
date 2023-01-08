@@ -14,6 +14,7 @@ function App() {
   // useEffect(() => {
   //   BaseAPI.createDB();
   // }, []);
+  console.log(userAuth);
 
   const checkUserAuth = async () => {
     try {

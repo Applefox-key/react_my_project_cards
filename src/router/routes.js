@@ -18,6 +18,7 @@ import AdminPage from "../components/admin/AdminPage";
 import AdminPbCollection from "../components/admin/AdminPbCollection";
 import CategoriesManager from "../components/CategorySelection/CategoriesManager";
 import SharedColectManager from "../components/collections/SharedColectManager";
+import PublicContentCardInfo from "../components/collections/publicC/PublicContentCardInfo";
 
 export const publicRoutes = [
   { path: "/about", element: <About />, nameNav: "About" },
@@ -50,6 +51,10 @@ export const privateRoutes = [
 
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
   { path: "/collections/my/:id/:name/:item", element: <ContentCardInfo /> },
+  {
+    path: "/collections/pub/:id/:name/:item",
+    element: <PublicContentCardInfo />,
+  },
   { path: "/collections/pub/:id/:name", element: <PublicOneCollection /> },
   { path: "/collections/:tab", element: <Collections /> },
   { path: "/collections/shared", element: <SharedColectManager /> },
