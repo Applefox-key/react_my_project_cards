@@ -41,7 +41,7 @@ const SharedColectManager = () => {
   return (
     <div>
       <div className="d-flex ms-5">
-        <h1>🌀My shared collections</h1>
+        <h1>My shared collections</h1>
       </div>
 
       <div className="tableContainer">

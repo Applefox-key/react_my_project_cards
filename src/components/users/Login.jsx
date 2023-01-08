@@ -2,12 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import BaseAPI from "../../API/BaseAPI";
-import MyInputGroup from "../UI/MyInput/MyInputGroup";
 import { AuthContext } from "../../context";
-import { useNavigate, useParams } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import cl from "./login.module.css";
 
 const Login = () => {
   const router = useNavigate();
@@ -33,40 +30,43 @@ const Login = () => {
   // };
 
   return (
-    <Container style={{ width: "25rem", marginTop: "2rem" }}>
-      <Form onSubmit={login} className="my-3">
-        <MyInputGroup
-          value={email}
-          size="lg"
-          type="email"
-          placeholder="email"
-          label="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <MyInputGroup
-          value={password}
-          size="lg"
-          type="password"
-          placeholder="password"
-          label="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <Button type="button" size="lg" onClick={login}>
-          Log in
-        </Button>
-        <p></p>
-        <Button
-          size="lg"
-          type="button"
-          variant="outline-primary"
-          onClick={() => {
-            router("/signup");
-          }}>
-          Sign up
-        </Button>
-      </Form>
-    </Container>
+    <div className={cl.page}>
+      <br />
+      <div class={cl.containerlogin}>
+        <div
+          className={
+            cl["login-box"] + " " + cl["animated"] + " " + cl["fadeInUp"]
+          }>
+          <div className={cl["box-header"]}>
+            <h2 className={cl.h2login}>Log In</h2>
+          </div>
+          <label for="username">Email</label>
+          <br />
+          <input
+            value={email}
+            type="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <label for="password">Password</label>
+          <br />
+          <input
+            value={password}
+            type="password"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <Link className=" text-primary fs-5" to="/signup">
+            Creat Your Account
+          </Link>{" "}
+          <button type="submit" onClick={login}>
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

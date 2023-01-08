@@ -1,12 +1,32 @@
+.body{caret-color: transparent;}
+input{caret-color: black;}
 .App {
   text-align: center;
 }
 .main_page{
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0rem;
   /* display: contents;
   justify-content: center; */
 }
+
+.aboutcontent{
+  /* display: flex; */
+  margin-top: 2zsrem;
+  height: 100%;
+  /* backdrop-filter: blur(14px); */
+}.aboutpageImg{
+  /* filter: blur(3px); */
+  background-image: url(../img/loginpage.jpg);
+  background-size: 100%;
+  min-height: 100vh;background-attachment:scroll;
+  z-index: -4;
+  position: fixed;
+  left: 0;
+  right: 0;
+  border-top-right-radius: 35px;
+}
+
 .enable-button-pointers{
   cursor: auto;
 }

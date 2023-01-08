@@ -57,7 +57,7 @@ const CategorySelection = ({
               style={{ fontSize: "1rem" }}
               variant="link"
               onClick={() => router("/collections/shared")}>
-              🌀my shared collections
+              my shared collections
             </Button>
           )}
           {!isLoadingCat && categories && (

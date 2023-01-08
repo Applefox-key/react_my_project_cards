@@ -61,7 +61,7 @@ const PublicCollectionMenu = ({ collection, addToMyCollection }) => {
       {/* className="d-flex   align-items-end justify-content-end pt-2" */}
       {/* <div className="d-flex   align-items-start  align-items-end justify-content-end "> */}
 
-      <div>
+      <div className="h-100">
         <ButtonGroup aria-label="delete and renaming buttons" size="lg">
           <MyDropDownBtn
             as={ButtonGroup}
