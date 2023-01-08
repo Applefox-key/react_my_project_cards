@@ -4,7 +4,6 @@ import MyCardStatic from "../../UI/CARDS/MyCardStatic";
 import Result from "../../UI/CARDS/Result";
 import GameCount from "./GameCount";
 import TestOptions from "./TestOptions";
-import cl from "../../UI/CARDS/MyCard.module.css";
 const TestBody = ({ items }) => {
   const [num, setNum] = useState(0);
   const [active, setActive] = useState([]);
