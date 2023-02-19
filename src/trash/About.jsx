@@ -1,6 +1,6 @@
 import React from "react";
 import pct from "../img/aboutimg.png";
-import MyCardMini from "./UI/CARDS/MyCardMini";
+import MyCardMini from "../components/UI/CARDS/MyCardMini";
 
 const About = () => {
   const p0 = `Flash cards are the greate way to remember any information you want. `;
@@ -20,7 +20,7 @@ const About = () => {
       <div className="aboutcontent">
         <img src={pct} className="aboutImg" alt="about" />
         <h1 className="display-5 text-center aboutH">One card - one fact!</h1>
-        <div className="d-flex flex-wrap ">
+        <div className="d-flex flex-column">
           <MyCardMini
             item={{
               answer: a0,

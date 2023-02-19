@@ -1,8 +1,6 @@
 import UserOneCollection from "../components/collections/usersC/UserOneCollection";
-import About from "../components/About";
 import Login from "../components/users/Login";
 
-import SignUp from "../components/users/SignUp";
 import Profile from "../components/users/Profile";
 import PublicCollections from "../components/collections/publicC/PublicCollections";
 import PublicOneCollection from "../components/collections/publicC/PublicOneCollection";
@@ -21,11 +19,8 @@ import SharedColectManager from "../components/collections/SharedColectManager";
 import PublicContentCardInfo from "../components/collections/publicC/PublicContentCardInfo";
 
 export const publicRoutes = [
-  { path: "/about", element: <About />, nameNav: "About" },
-  { path: "/login", element: <Login />, nameNav: "Login" },
   { path: "/login/:email", element: <Login />, nameNav: "" },
-  { path: "/signup", element: <SignUp />, nameNav: "" },
-  { path: "/*", element: <About />, nameNav: "" },
+  { path: "/*", element: <Login />, nameNav: "" },
 ];
 export const adminRoutes = [
   { path: "/main", element: <AdminPage />, nameNav: "Main" },
@@ -34,7 +29,6 @@ export const adminRoutes = [
 ];
 export const privateRoutes = [
   { path: "/*", element: <Collections />, nameNav: "" },
-  { path: "/about", element: <About />, nameNav: "About" },
 
   {
     path: "/collections/my",
@@ -68,6 +62,5 @@ export const privateRoutes = [
   {
     path: "/public",
     element: <PublicCollections />,
-    // nameNav: "Public collections",
   },
 ];

@@ -35,12 +35,7 @@ const MyCardExtra = ({ item, mode = "0", flip, clc = true }) => {
           </CSSTransition>
           <CSSTransition in={flipped} timeout={1000} classNames="cardBack">
             <div className={cl["card-back"]}>
-              <h1
-                className={cl["cardFontSize_" + (1 - mode)]}
-                // className={["display-" + (mode === 0 ? 1 : 5), cl.text1].join(
-                //   " "
-                // )}
-              >
+              <h1 className={cl["cardFontSize_" + (1 - mode)]}>
                 {mode === "0" ? item.answer : item.question}
               </h1>
               <p className="display-5">{item.note}</p>

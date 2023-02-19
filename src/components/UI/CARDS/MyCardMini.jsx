@@ -35,15 +35,10 @@ const MyCardMini = ({ item, mode = "0", flip, clc = true }) => {
           </CSSTransition>
           <CSSTransition in={flipped} timeout={1000} classNames="cardBack">
             <div className={cl["card-back"]}>
-              <h1
-                className={cl["cardFontSizemini"]}
-                // className={["display-" + (mode === 0 ? 1 : 5), cl.text1].join(
-                //   " "
-                // )}
-              >
+              <h1 className={cl["cardFontSizemini"]}>
                 {mode === "0" ? item.answer : item.question}
               </h1>
-              <p className="display-5">{item.note}</p>
+              <p className="display-5 ms-2 me-2">{item.note}</p>
             </div>
           </CSSTransition>
         </button>

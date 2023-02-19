@@ -1,6 +1,6 @@
 import React from "react";
-import BaseAPI from "../../API/BaseAPI";
-import UserProfile from "./UserProfile";
+import BaseAPI from "../API/BaseAPI";
+import UserProfile from "../components/users/UserProfile";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
