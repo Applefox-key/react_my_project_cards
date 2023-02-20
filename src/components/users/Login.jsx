@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Logo from "../Logo";
 import AboutBox from "./AboutBox";
 
 import cl from "./login.module.css";
@@ -19,6 +20,9 @@ const Login = ({ mode = "0", flip, clc = true }) => {
         ) : (
           <SignUpBox setLoginMode={setLoginMode} />
         )}
+      </div>
+      <div className="w-10">
+        <Logo />
       </div>
     </div>
   );

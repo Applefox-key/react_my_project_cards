@@ -124,14 +124,11 @@
 	transition: 0.5s;
 }
 
-/* Animation Delay */
-
-/* .login-box {
-  -webkit-animation-duration: 1s;
-  -webkit-animation-delay: 1s;
-} */
 .invalid{
 	border-color: red;
 }.valid{
-	background-color: green;
+	border-color: green;
+}.err{
+	color: 	 red;
+	;
 }
