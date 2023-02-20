@@ -16,10 +16,14 @@ const AboutBox = () => {
       <h1
         className="display-1"
         style={{ fontFamily: "cursive", fontWeight: "bold" }}>
+        {" "}
         FLASH CARDS
       </h1>
       <h1 className="display-1">YOUR EFFECTIVE TEACHING ASSISTANT</h1>
-      <div className="display-6 ms-5 mt-5 d-flex justify-content-center">
+      <div
+        className={
+          "display-6 ms-5 mt-5 d-flex justify-content-center " + cl.infoCards
+        }>
         <div>
           <MyCardMini
             item={{
