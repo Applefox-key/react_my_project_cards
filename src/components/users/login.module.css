@@ -130,7 +130,7 @@
 	border-color: green;
 }.err{
 	color: 	 red;
-	;
+	font-size: large;
 }
 .infoCards:hover {
 		-webkit-transform: scale(1.05);
