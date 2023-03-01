@@ -61,7 +61,7 @@ const AboutGallery = () => {
   const prew = () => {
     if (direction) setDirection(false);
     setShowAnim(!anim);
-    const nextNum = itemNum === 0 ? items.length - 1 : itemNum - 1;
+    const nextNum = itemNum + 1 === items.length ? 0 : itemNum + 1;
     setItemNum(nextNum);
   };
 
