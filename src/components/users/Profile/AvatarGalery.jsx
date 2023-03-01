@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Image from "react-bootstrap/Image";
-import MyModal from "../UI/MyModal";
+import MyModal from "../../UI/MyModal";
 import Button from "react-bootstrap/esm/Button";
-import { useQuery } from "../../hooks/useQuery";
-import BaseAPI from "../../API/BaseAPI";
-import MySpinner from "../UI/MySpinner";
+import { useQuery } from "../../../hooks/useQuery";
+import BaseAPI from "../../../API/BaseAPI";
+import MySpinner from "../../UI/MySpinner";
 import Form from "react-bootstrap/Form";
-import ProfileImg from "../../img/profile.ico";
+import ProfileImg from "../../../img/profile.ico";
 import cl from "./users.module.css";
 
 const AvatarGalery = ({ visible, setVisible, fileChange }) => {

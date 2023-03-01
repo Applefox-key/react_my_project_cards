@@ -1,5 +1,5 @@
 import React from "react";
-import MyInputGroup from "../UI/MyInput/MyInputGroup";
+import MyInputGroup from "../../UI/MyInput/MyInputGroup";
 
 const ProfileText = ({ userDataForm, setUserDataForm, passRequired }) => {
   return (

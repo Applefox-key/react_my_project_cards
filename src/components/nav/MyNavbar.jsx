@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import MyNavLink from "./MyNavLink";
 import cl from "./MyNavbar.module.css";
 import { useAuth } from "../../hooks/useAuth";
-import UserAvatar from "../users/UserAvatar";
+import UserAvatar from "../users/Profile/UserAvatar";
 const MyNavbar = () => {
   const router = useNavigate();
   //get  elements with nameNav only

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
-import imgProfile from "../../img/profile.ico";
+import imgProfile from "../../../img/profile.ico";
 import Form from "react-bootstrap/Form";
 import ProfileImg from "./ProfileImg";
 import ProfileText from "./ProfileText";

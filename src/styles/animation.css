@@ -113,7 +113,21 @@
 
     animation-duration: 1000ms;
   } */
-  
+  .card_slide-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }.card_slide-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: opacity 500ms, transform 500ms;
+  }.card_slide-exit {
+    opacity: 1;
+    transform: translateX(0%);
+  }.card_slide-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 500ms, transform 500ms;
+  }
  
   .card_left-enter {
     opacity: 0;

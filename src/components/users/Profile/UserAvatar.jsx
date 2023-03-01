@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import BaseAPI from "../../API/BaseAPI";
+import BaseAPI from "../../../API/BaseAPI";
 import Image from "react-bootstrap/Image";
 import { useState, useEffect } from "react";
-import { useQuery } from "../../hooks/useQuery";
-import MySpinner from "../UI/MySpinner";
+import { useQuery } from "../../../hooks/useQuery";
+import MySpinner from "../../UI/MySpinner";
 
 const UserAvatar = (props) => {
   const [av, setAv] = useState();

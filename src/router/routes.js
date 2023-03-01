@@ -1,7 +1,6 @@
 import UserOneCollection from "../components/collections/usersC/UserOneCollection";
-import Login from "../components/users/Login";
 
-import Profile from "../components/users/Profile";
+import Profile from "../components/users/Profile/Profile";
 import PublicCollections from "../components/collections/publicC/PublicCollections";
 import PublicOneCollection from "../components/collections/publicC/PublicOneCollection";
 
@@ -17,9 +16,14 @@ import AdminPbCollection from "../components/admin/AdminPbCollection";
 import CategoriesManager from "../components/CategorySelection/CategoriesManager";
 import SharedColectManager from "../components/collections/SharedColectManager";
 import PublicContentCardInfo from "../components/collections/publicC/PublicContentCardInfo";
+import MainPage from "../components/users/Login/MainPage";
+import Login from "../components/users/Login/Login";
 
 export const publicRoutes = [
+  { path: "/about", element: <MainPage />, nameNav: "About" },
   { path: "/login/:email", element: <Login />, nameNav: "" },
+  { path: "/home", element: <Login />, nameNav: "" },
+  { path: "/login", element: <Login />, nameNav: "Login" },
   { path: "/*", element: <Login />, nameNav: "" },
 ];
 export const adminRoutes = [

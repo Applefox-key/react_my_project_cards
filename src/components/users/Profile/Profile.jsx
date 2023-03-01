@@ -2,11 +2,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import BaseAPI from "../../API/BaseAPI";
+import BaseAPI from "../../../API/BaseAPI";
 import UserProfile from "./UserProfile";
-import MySpinner from "../UI/MySpinner";
-import { useQuery } from "../../hooks/useQuery";
-import { usePopup } from "../../hooks/usePopup";
+import MySpinner from "../../UI/MySpinner";
+import { useQuery } from "../../../hooks/useQuery";
+import { usePopup } from "../../../hooks/usePopup";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
