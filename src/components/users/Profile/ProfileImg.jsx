@@ -6,7 +6,7 @@ import cl from "./users.module.css";
 
 const ProfileImg = (props) => {
   const changeAvatar = (url) => {
-    props.setUserDataForm({ ...props.userDataForm, img: url });
+    props.setUserDataForm({ ...props.userDataForm, ...url });
   };
   return (
     // <div className="d-flex justify-content-center mt-2 px-5">
