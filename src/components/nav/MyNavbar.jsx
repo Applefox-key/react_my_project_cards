@@ -19,7 +19,7 @@ const MyNavbar = () => {
   };
 
   return (
-    <div className={[cl.nav, "bg-light"].join(" ")}>
+    <div className={[cl.nav].join(" ")}>
       <Nav activeKey="/about" className="justify-content-end pe-4 ">
         {routesArr
           .filter((el) => el.nameNav)
@@ -31,8 +31,15 @@ const MyNavbar = () => {
 
         {userAuth.isAuth && (
           <div>
-            <UserAvatar style={{ width: "30px", height: "30px" }} />
-            <Button variant="outline-dark" size="lg" onClick={logout}>
+            <UserAvatar
+              style={{ width: "30px", height: "30px", marginLeft: "-1rem" }}
+            />
+            <Button
+              variant="outline-dark"
+              size="lg"
+              className={cl.logout}
+              style={{ height: "3.65rem" }}
+              onClick={logout}>
               Logout
             </Button>
           </div>

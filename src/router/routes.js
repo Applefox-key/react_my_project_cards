@@ -11,13 +11,12 @@ import Collections from "../components/collections/Collections";
 import TestCard from "../components/collections/games/TestCard";
 import TimeCard from "../components/collections/games/TimeCard";
 import WriteCard from "../components/collections/games/WriteCard";
-import AdminPage from "../components/admin/AdminPage";
-import AdminPbCollection from "../components/admin/AdminPbCollection";
 import CategoriesManager from "../components/CategorySelection/CategoriesManager";
 import SharedColectManager from "../components/collections/SharedColectManager";
 import PublicContentCardInfo from "../components/collections/publicC/PublicContentCardInfo";
 import MainPage from "../components/users/Login/MainPage";
 import Login from "../components/users/Login/Login";
+import AboutPage from "../components/AboutPage/AboutPage";
 
 export const publicRoutes = [
   { path: "/about", element: <MainPage />, nameNav: "About" },
@@ -26,12 +25,9 @@ export const publicRoutes = [
   { path: "/login", element: <Login />, nameNav: "Login" },
   { path: "/*", element: <Login />, nameNav: "" },
 ];
-export const adminRoutes = [
-  { path: "/main", element: <AdminPage />, nameNav: "Main" },
-  { path: "/admin/pub", element: <AdminPbCollection />, nameNav: "Public" },
-  { path: "/*", element: <AdminPage />, nameNav: "" },
-];
+
 export const privateRoutes = [
+  { path: "/about", element: <AboutPage />, nameNav: "About" },
   { path: "/*", element: <Collections />, nameNav: "" },
 
   {

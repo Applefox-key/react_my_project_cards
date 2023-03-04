@@ -7,7 +7,9 @@ const CollectionCardsList = ({ filtredList }) => {
       {!filtredList ? (
         <h2>No collections</h2>
       ) : (
-        <div className="d-flex  flex-wrap justify-content-center">
+        <div
+          className="d-flex  flex-wrap justify-content-center"
+          style={{ width: "90%", margin: "auto" }}>
           {filtredList.map((item) => (
             <CollectionCard collection={item} key={item.collection.id} />
           ))}

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../context";
-import { adminRoutes, privateRoutes, publicRoutes } from "../router/routes";
+import { privateRoutes, publicRoutes } from "../router/routes";
 
 const getRoutes = (userAuth) => {
   if (!userAuth.isAuth) return publicRoutes;
-  if (userAuth.role === "admin") return adminRoutes;
+
   return privateRoutes;
 };
 

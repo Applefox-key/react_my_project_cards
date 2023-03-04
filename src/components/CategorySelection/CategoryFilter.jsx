@@ -8,7 +8,10 @@ const CategoryFilter = ({ filter, setFilter }) => {
       onChange={(e) => setFilter(e.target.value.toLowerCase())}
       value={filter}
       placeholder="Type to filter...">
-      <Button className="w-25" variant="warning" onClick={() => setFilter("")}>
+      <Button
+        className="w-25"
+        variant="outline-secondary"
+        onClick={() => setFilter("")}>
         X
       </Button>
     </MyInputGroup>

@@ -11,7 +11,7 @@ const MyToggleBtnGroup = ({ checked, arr, onChange, ...props }) => {
           key={i}
           id={item + (i + 1)}
           type="radio"
-          variant="primaty"
+          variant="primary"
           name="radio"
           value={item.value}
           checked={checked === i}

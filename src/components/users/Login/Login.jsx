@@ -16,9 +16,7 @@ const Login = () => {
           <Image rounded src={choice} className={cl.imgLogin} />
         </div>
         <TextBlock regBtn={() => setLoginMode(false)} />
-        <div className="color_container"></div>
 
-        {/* <AboutBox /> */}
         {loginMode ? (
           <LoginBox setLoginMode={setLoginMode} />
         ) : (

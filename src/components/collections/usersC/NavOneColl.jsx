@@ -65,14 +65,15 @@ const NavOneColl = ({ colObj, setContent }) => {
           aria-label="delete and renaming buttons"
           className="d-flex">
           <Button
-            variant="outline-primary"
+            variant="light"
             onClick={removeCollection}
-            className="text_white">
+            // className="text_white"
+          >
             Remove
           </Button>{" "}
           <Button
-            variant="outline-primary"
-            className="text_white"
+            variant="light"
+            // className="text_white"
             onClick={() => setMod("share")}>
             Share
           </Button>
@@ -93,13 +94,13 @@ const NavOneColl = ({ colObj, setContent }) => {
               },
             ]}
             title="Import"
-            variant="primary"
+            variant="light"
           />{" "}
           <MyDropDownBtn
             as={ButtonGroup}
             arr={gameMenu}
             title="PLAY GAMES"
-            variant="primary"
+            variant="light"
             dis={colObj.content ? colObj.content.length === 0 : true}
           />
           <BackBtn />
