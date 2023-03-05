@@ -199,11 +199,25 @@ float:left;
   .hint1{
     width: 60%;
   }
+
+}
+@media screen and (max-width: 600px) {
+  .aboutP{
+    font-size: 3vw;
+    margin-bottom: 2rem;
+  }
+  .aboutH{
+    font-size: 5vw;
+  }
+  .hint1{
+    width: 80%; 
+  }
   .main_container{
     display: block;
   }
 }
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 1100px)and (min-height: 600px) {
   .aboutP{
     font-size: 3vw;
     margin-bottom: 2rem;

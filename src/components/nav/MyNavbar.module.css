@@ -34,7 +34,7 @@
       position: relative;
       font-size: small;     
       padding-right: 0rem;
-      width: max-content;
+      width: fit-content;
       flex-wrap: wrap;
     }
   }

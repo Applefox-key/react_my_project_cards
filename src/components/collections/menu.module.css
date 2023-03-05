@@ -10,7 +10,7 @@
 }
 @media screen and (min-width: 600px) and (min-height: 600px){
     .menuCollection{
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
       align-items: baseline;
       justify-content: center;
     }

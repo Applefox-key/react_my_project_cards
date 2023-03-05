@@ -53,31 +53,80 @@ text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 	font-size: 25px;
 	cursor: pointer;
 }
+/* 
+@media screen and (max-width: 1100px) and (min-height: 600px){  
+	.cardabout{
+		margin-top: 0;  
+		height: fit-content;
+		min-height: 35rem;
+		width: 100%;
+	}
+	.text_container{
+		width:auto;
+		top:10%;
+	}
+}
+
+@media screen and (max-width: 1100px) and (max-height: 350px){ 	
+	
+	.text_container{
+	width:auto;
+	top:10%;
+}
+.cardabout{
+	margin-top: 0;  
+	height: fit-content;
+	min-height: 35rem;
+	width: 100%;
+}
+} */
 
 
 
-
-@media (max-width: 600px) {
+@media screen and (max-width: 1100px) and (min-height: 600px){  
+	.cardabout{
+		margin-top: 0;  
+		height: fit-content;
+		min-height: 35rem;
+		width: 100%;
+	}
+	.text_container{
+		width:auto;
+		top:10%;
+	}
+  }
+ @media screen and (min-width: 600px) and (max-height: 400px){  
+		.text_container{
+		width:auto;
+		top:10%;
+	}
+	.cardabout{
+		margin-top: 0;  
+		height: fit-content;
+		min-height: 35rem;
+		width: 100%;
+	}
+  @media screen and (max-width: 700px) {  
+	.cardabout{
+		margin-top: 0;  
+		height: fit-content;
+		min-height: 35rem;
+		width: 100%;
+	}
+	
+	}
+ 
+  }
+  @media (max-width: 600px) {
 	.cardabout{
 		margin-top: 5rem;  
 		margin-left: 3rem;
 		height: fit-content;
 		min-height: 35rem;
 		width: auto;
-	}	.text_container{
+	}	
+	.text_container{
 		top:20px;
 		width: auto;
 	}
   }
-@media screen and (max-width: 1000px) and (max-height: 600px){  
-	.cardabout{
-		margin-top: 0;  
-		height: fit-content;
-		min-height: 35rem;
-		width: 100%;
-	}.containerlogin{
-		display: block;
-		width: auto;
-	}
-  }
- 
