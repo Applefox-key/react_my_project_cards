@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import CategorySelection from "../CategorySelection/CategorySelection";
 import MyFilter from "../UI/MyFilter";
 import MyToggleBtnGroup from "../UI/MyToggleBtnGroup";
+import cl from "./menu.module.css";
 
 const CollectionsMenu = (props) => {
   return (
@@ -11,7 +12,7 @@ const CollectionsMenu = (props) => {
         <h1>{props.isPublic ? "Public collections" : "My collections"}</h1>
       </div>{" "}
       <div></div>
-      <div className="d-flex align-items-center justify-content-end me-2">
+      <div className={cl.menuCollection}>
         <MyToggleBtnGroup
           className="togglegroup"
           checked={window.location.hash === "#1" ? 1 : 0}

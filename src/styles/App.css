@@ -82,32 +82,8 @@ float:left;
     align-self: baseline;
   text-align: end;
 }
-@media screen and (min-width: 600px) {
-  .aboutP{
-    font-size: 1vw;
-    margin-bottom: 2rem;
-  }
-  .aboutH{
-    font-size: 3vw; 
-  }
-  .hint1{
-    width: 60%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .aboutP{
-    font-size: 3vw;
-    margin-bottom: 2rem;
-  }
-  .aboutH{
-    font-size: 5vw;
-  }
-  .hint1{
-    width: 80%;
-  
-  
-  }
-}
+
+
 .mybadge{
   border: 1px solid black;
   background: linear-gradient(  to bottom gray red);
@@ -211,4 +187,34 @@ float:left;
 	display: flex ;
 	/* margin-top:5rem; */
 	justify-content: space-between;
+}
+@media screen and (min-width: 600px) {
+  .aboutP{
+    font-size: 1vw;
+    margin-bottom: 2rem;
+  }
+  .aboutH{
+    font-size: 3vw; 
+  }
+  .hint1{
+    width: 60%;
+  }
+  .main_container{
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .aboutP{
+    font-size: 3vw;
+    margin-bottom: 2rem;
+  }
+  .aboutH{
+    font-size: 5vw;
+  }
+  .hint1{
+    width: 80%; 
+  }
+  .main_container{
+    display: block;
+  }
 }

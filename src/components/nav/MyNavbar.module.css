@@ -5,7 +5,7 @@
     top: 5px;
     left: 0;
   }
-  .nav{
+ .nav{
    background-color:rgb(74 99 202);
     position:fixed;
     display:flex;
@@ -17,7 +17,7 @@
      z-index: 500;
  
   }
-  .logout{
+ .logout{
     font-size:large;
     height: 100%;
     border: none;
@@ -25,13 +25,16 @@
   }
 
   @media screen and (min-width: 600px) {
-    
     .nav{
       font-size: large;
     }
   }
   @media screen and (max-width: 600px) {
     .nav{
-      font-size: small;     padding-right: 0rem;
+      position: relative;
+      font-size: small;     
+      padding-right: 0rem;
+      width: max-content;
+      flex-wrap: wrap;
     }
   }

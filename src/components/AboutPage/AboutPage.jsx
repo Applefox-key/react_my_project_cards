@@ -4,7 +4,7 @@ import choice from "../../img/man_left.png";
 import { Image } from "react-bootstrap";
 import AboutGallery from "./AboutGallery";
 // import { useNavigate } from "react-router-dom";
-import TextBlock from "../users/Login/TextBlock";
+import TextBlock from "./TextBlock";
 import Logo from "../Logo";
 
 const AboutPage = () => {

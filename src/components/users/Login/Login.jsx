@@ -5,7 +5,7 @@ import choice from "../../../img/man4.png";
 import { Image } from "react-bootstrap";
 import LoginBox from "./LoginBox";
 import SignUpBox from "./SignUpBox";
-import TextBlock from "./TextBlock";
+import TextBlock from "../../AboutPage/TextBlock";
 const Login = () => {
   const [loginMode, setLoginMode] = useState(true);
   return (
