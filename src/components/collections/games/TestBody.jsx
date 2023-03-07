@@ -38,7 +38,7 @@ const TestBody = ({ items }) => {
             timeout={500}
             key={num}
             classNames="cardChange">
-            <div>
+            <div style={{ textAlign: "-webkit-center" }}>
               <MyCardStatic item={items[num].item} />
               <TestOptions
                 items={items[num].answ}

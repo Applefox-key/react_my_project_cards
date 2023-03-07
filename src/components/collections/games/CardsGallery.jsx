@@ -41,18 +41,16 @@ const CardsGallery = () => {
           <div>
             <p>{items && itemNum + 1 + "/" + items.length}</p>
 
-            <div className="mt-5 d-flex justify-content-center">
-              {/* <Button variant="primary" onClick={prew} disabled={itemNum === 0}>
-                {"❰"}
-              </Button>{" "} */}
+            <div className="mt-5 d-flex justify-content-center align-items-end">
               <button
-                className={cl.arrowBtn}
-                onClick={prew}
-                disabled={itemNum === 0}>
-                {"❰"}
-              </button>{" "}
+                type="button"
+                className={cl.collect_button}
+                disabled={itemNum === 0}
+                onClick={prew}>
+                <span className={cl.collect_button_text}>❰</span>
+              </button>
               <div
-                className="d-flex   justify-content-center"
+                className="d-flex   justify-content-end"
                 // style={{ width: "100%" }}
               >
                 <OneCardG
@@ -62,11 +60,11 @@ const CardsGallery = () => {
                 />
               </div>
               <button
-                className={cl.arrowBtn}
-                // variant="primary"
-                onClick={next}
-                disabled={items.length - 1 === itemNum}>
-                {"❱"}
+                type="button"
+                className={cl.collect_button}
+                disabled={items.length - 1 === itemNum}
+                onClick={next}>
+                <span className={cl.collect_button_text}>❱</span>
               </button>
             </div>
           </div>

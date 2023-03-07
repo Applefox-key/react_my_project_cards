@@ -44,7 +44,7 @@ const WriteCardBody = ({ items }) => {
           in={true}
           timeout={500}
           classNames="result">
-          <div className="mt-1">
+          <div className="mt-1" style={{ textAlign: "-webkit-center" }}>
             <div>{items && num + 1 + "/" + items.length}</div>
             <div className={cl.cardSize}>
               <OneCardG

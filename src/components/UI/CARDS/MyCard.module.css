@@ -9,29 +9,60 @@
   margin-right: auto;
   margin-left: auto;
 }
+.container_gallery{
+  width: 100rem;
+  height: 45rem;
+  margin-right: 0;
+  margin-left: 0;
+}
 .container_gallerymini{
-
   width: 37rem;
   height: 17rem;
-
   margin:auto;
-  /* margin-right: 15rem; */
   margin-bottom: 1rem;
 }
-.arrowBtn{
-  font-size: 6rem;
-  border:none;
-  background: none;
-  text-shadow: -3px 0px 3px rgba(0, 0, 0, 1);
+
+
+
+
+
+
+.collect_button {
+  height: 60px;
+  width: 50px;
+  /* display: flex;
+  align-items: flex-end; */
+  z-index: 5;
+	color: #FFFFFF;
+  font-size: 4rem;
+	border-radius: 15px;
+	border: solid 1px #3866a3;
+	padding: 0px 12px;
+	text-shadow: 1px 1px 0px #528ECC;
+	box-shadow: inset 1px 1px 0px 0px #BBDAF7;
+	text-decoration: none;
+	cursor: pointer;
+	/* position: relative; */
+	overflow: hidden;
+	font-family: Arial;
+	/* background: linear-gradient(180deg, #63B8EE 10%, #468CCF 100%); */
+	background: linear-gradient(180deg, #364378 10%, #4A63CA 100%);
+	/* display: inline-block;
+	vertical-align: middle; */
 }
-.arrowBtn:disabled{
-  background: none;
-  text-shadow: -3px 0px 3px rgb(216, 216, 216);
+.collect_button:hover {
+	background: linear-gradient(180deg, #468CCF 10%, #63B8EE 100%);
 }
-.arrowBtnAbout:hover{
-  background: none;
-  text-shadow: -3px 0px 3px rgb(216, 216, 216);
+.collect_button:disabled {text-shadow: 1px 1px 0px #ffffff;	color: #777777;
+	box-shadow: inset 1px 1px 2px 0px #ffffff;
+	background: linear-gradient(180deg, #ededed 10%, #dfdfdf 100%);
 }
+.collect_button_text {
+	position: relative;
+	display: inline-block;
+
+}
+
 .card-container {
   /* border:1px solid red; */
   width: 100%;
@@ -93,8 +124,10 @@
     width: 100%;
     overflow: auto;   
     border-radius: 15px;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    /* padding-right: 1.5rem;
+    padding-left: 1.5rem; */
+    padding-right: 2vw;
+    padding-left: 2vw;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   }
 
@@ -104,6 +137,7 @@
     top: 0;
     left: 0;
     font-size: 24vw;
+    /* font-stretch: ; */
 
   }
   

@@ -47,7 +47,7 @@ const TimeCardBody = ({ items }) => {
           {"START"}
         </Button>
       </div>
-      <div className="m-auto">
+      <div className="m-auto " style={{ textAlign: "-webkit-center" }}>
         <p>{items && num + 1 + "/" + items.length}</p>
         <OneCardG anim={anim} direction={true} item={items[num]} flip={flip} />
       </div>
