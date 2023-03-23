@@ -108,7 +108,8 @@ const BaseAPI = {
       name: ud.name,
       img: ud.img,
     };
-
+    if ((reqData.img = ""))
+      reqData.img = "/static/media/profile.dd82cd98f5e2825724fb.ico";
     return await this.serverReq("post", "/users", false, reqData);
   },
   async deleteCategory(catid) {
@@ -190,27 +191,10 @@ const BaseAPI = {
     // await BaseAPI.toLS("collectionsList", collectionList);
   },
   async editContent(newV) {
-    // id, s1, s2, t
-    // newV.id,
-    // newV.question,
-    // newV.answer,
-    // newV.note
     if (!newV.id || !newV.answer || !newV.question)
       throw new Error("please specify  the answer and the question");
-    // return {
-    //   status: false,
-    //   message: "please specify  the answer and the question",
-    // };
-    return await this.serverReq("patch", "/content", true, newV);
 
-    // let list = await BaseAPI.fromLS("extraList");
-    // let ind = list.findIndex((item) => item.id.toString() === id.toString());
-    // let oneEntry = list[ind];
-    // oneEntry.question = s1 ? s1 : oneEntry.expression;
-    // oneEntry.answer = s2 ? s2 : oneEntry.expression;
-    // oneEntry.note = t ? t : oneEntry.note;
-    // await BaseAPI.toLS("extraList", list);
-    // return true;
+    return await this.serverReq("patch", "/content", true, newV);
   },
   async getCategoriesList(isPublic = false) {
     const result = isPublic
@@ -350,6 +334,40 @@ const BaseAPI = {
       reqData = { ...ud, img: img };
     }
     return await this.serverReq("patch", "/users", true, reqData);
+  },
+  async sendMailResetToken(login) {
+    let reqData = {
+      email: login,
+      page: "card",
+    };
+    let result = await this.serverReq("post", "/resetpassword", false, reqData);
+    if (result.error) throw new Error(result.error);
+    return { status: true };
+  },
+  async CheckResetToken(resetToken) {
+    let reqParams = { resetToken: resetToken };
+
+    let result = await this.serverReq(
+      "get",
+      "/resetpassword",
+      false,
+      "",
+      reqParams
+    );
+    if (result.error) throw new Error(result.error);
+    return { status: true };
+  },
+  async setNewPassword(password, resetToken) {
+    let reqData = { password: password, resetToken: resetToken };
+    let result = await this.serverReq(
+      "patch",
+      "/resetpassword",
+      false,
+      reqData
+    );
+
+    if (result.error) throw new Error(result.error);
+    return { status: true };
   },
   getAvatarUrl(num) {
     const avlist = JSON.parse(localStorage.getItem("avatars"));

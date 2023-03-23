@@ -96,7 +96,7 @@ const SignUpBox = ({ setLoginMode }) => {
         <div className="mb-2">
           <AnimatedBtn
             title="Back to login form"
-            onClick={() => setLoginMode(true)}
+            onClick={() => setLoginMode(1)}
           />
         </div>
         <button type="submit" className={cl.btnlogin} onClick={newUser}>

@@ -5,7 +5,7 @@ import BaseAPI from "../../../API/BaseAPI";
 import { AuthContext } from "../../../context";
 import cl from "./login.module.css";
 import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { isEmailValid } from "../../../utils/validation";
 import { usePopup } from "../../../hooks/usePopup";
 
@@ -76,13 +76,16 @@ const LoginBox = ({ setLoginMode }) => {
             setPassword(e.target.value);
           }}
         />{" "}
-        <br />
         <div className={cl.err}>{err}</div>
+        <Link style={{ fontSize: "1.6rem" }} onClick={() => setLoginMode(3)}>
+          Forgot My Password
+        </Link>
+        <br />
         <br />
         <div className="mb-2">
           <AnimatedBtn
             title="Create Your Account"
-            onClick={() => setLoginMode(false)}
+            onClick={() => setLoginMode(2)}
           />
         </div>
         <button type="submit" className={cl.btnlogin} onClick={login}>

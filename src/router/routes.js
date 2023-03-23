@@ -17,6 +17,7 @@ import PublicContentCardInfo from "../components/collections/publicC/PublicConte
 import MainPage from "../components/users/Login/MainPage";
 import Login from "../components/users/Login/Login";
 import AboutPage from "../components/AboutPage/AboutPage";
+import ForgotPassword from "../components/users/Login/ForgotPassword";
 
 export const publicRoutes = [
   { path: "/about", element: <MainPage />, nameNav: "About" },
@@ -24,6 +25,11 @@ export const publicRoutes = [
   { path: "/home", element: <Login />, nameNav: "" },
   { path: "/login", element: <Login />, nameNav: "Login" },
   { path: "/*", element: <Login />, nameNav: "" },
+  {
+    path: "/resetpassword/:resetToken",
+    element: <ForgotPassword />,
+    nameNav: "",
+  },
 ];
 
 export const privateRoutes = [
