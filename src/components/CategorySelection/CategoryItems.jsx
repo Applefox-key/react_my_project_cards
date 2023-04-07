@@ -20,8 +20,8 @@ const CategoryItems = ({ list, add, selected, onSelect, isPublic }) => {
       ) : isPublic ? (
         <></>
       ) : (
-        <Button className="w-100" variant="primary" onClick={add}>
-          add new category
+        <Button className="w-100" variant="light" onClick={add}>
+          ➕ add new category
         </Button>
       )}
     </>

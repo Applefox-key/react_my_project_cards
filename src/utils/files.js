@@ -6,7 +6,13 @@ export const contentFromTxtFile = async (file, callbackForResult) => {
   const contArr = text.split(/[\r\n]/).filter((item) => item.trim());
   const expressionArr = contArr.map((row) => {
     let [s1, s2, t] = row.replace("  ", " ").split(";");
-    return { question: s1 ? s1 : "", answer: s2 ? s2 : "", note: t ? t : "" };
+    return {
+      question: s1 ? s1 : "",
+      answer: s2 ? s2 : "",
+      note: t ? t : "",
+      imgA: "",
+      imgQ: "",
+    };
   });
 
   callbackForResult(expressionArr);

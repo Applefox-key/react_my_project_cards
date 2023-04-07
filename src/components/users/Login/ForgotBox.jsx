@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
-import cl from "./login.module.css";
+import cl from "./login.module.scss";
 import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
 import { useParams } from "react-router-dom";
 import { isEmailValid } from "../../../utils/validation";
@@ -32,14 +32,17 @@ const ForgotBox = ({ setLoginMode }) => {
 
   return (
     <div className={cl.containerlogin}>
-      <div
-        className={
-          cl["login-box"] + " " + cl["animated"] + " " + cl["fadeInUp"]
-        }>
+      <div className={cl["login-box"]}>
         {" "}
         <div className={cl["box-header"]}>
           <h2 className={cl.h2login}>Password restore</h2>
         </div>{" "}
+        <div className="mb-2">
+          <AnimatedBtn
+            title="Back to login form"
+            onClick={() => setLoginMode(1)}
+          />
+        </div>
         <p
           style={{
             fontSize: "1.5rem",
@@ -64,12 +67,6 @@ const ForgotBox = ({ setLoginMode }) => {
         <div className={cl.err}>{err}</div>
         <div className={cl.success}>{success}</div>
         <br />
-        <div className="mb-2">
-          <AnimatedBtn
-            title="Back to login form"
-            onClick={() => setLoginMode(1)}
-          />
-        </div>
         {!success && (
           <button type="submit" className={cl.btnlogin} onClick={getToken}>
             SUBMIT

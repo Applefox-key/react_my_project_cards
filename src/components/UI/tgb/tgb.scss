@@ -1,0 +1,66 @@
+.wrap {
+
+    box-sizing: border-box;
+    width: 100px;
+    background-color: antiquewhite;
+    font-size: 1.3rem;
+    display: flex;
+    height: 35px;
+    position: relative;
+    margin-right: 3rem;
+    // border: 3px solid black;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 15px;
+
+    .left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        background-color: rgb(77, 77, 99);
+        color: lightsteelblue;
+        border-radius: 10px 0 0 10px;
+    }
+
+    // .left {
+    //     @extend .minibox;
+    //     // background-color: aquamarine;
+
+    // }
+
+    .right {
+        @extend .left;
+
+
+        border-radius: 0 10px 10px 0;
+    }
+
+    .choise {
+        @extend .left;
+        width: 48%;
+        height: 94%;
+        box-sizing: border-box;
+        position: absolute;
+        top: 2%;
+        left: 1.5%;
+
+        background-color: lightsteelblue;
+        border-radius: 10px 0 0 10px;
+        transition: all 0.4s ease-in-out;
+        color: rgb(77, 77, 99);
+        font-weight: 600;
+        border: outset #fde2fe;
+
+
+    }
+
+    .l {
+        top: 2%;
+        // left: 0;
+        left: 51%;
+        border-radius: 0 10px 10px 0;
+
+    }
+}

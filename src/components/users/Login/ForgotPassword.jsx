@@ -6,7 +6,7 @@ import { usePopup } from "../../../hooks/usePopup";
 // import BaseAPI from "../../../API/BaseAPI";
 
 // import cl from "./user.module.css";
-import cl from "./login.module.css";
+import cl from "./login.module.scss";
 
 const ForgotPassword = () => {
   const { resetToken } = useParams();

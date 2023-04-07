@@ -34,6 +34,7 @@ const useTextFilter = (list, textFilter) => {
 
 export const useCollectSelection = (list, category, filter = "", sort = "") => {
   // const withContent = list[0].content;
+
   const filtredByCategory = useCategoryFilter(list, category);
   const filtredByTextFiler = useTextFilter(filtredByCategory, filter);
   const sortedFilrderList = useSortedList(filtredByTextFiler, sort);

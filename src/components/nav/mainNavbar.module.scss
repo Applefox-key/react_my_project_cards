@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;500&display=swap');
+
+.navbarico {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 5px;
+  left: 0;
+}
+
+.navWrap {
+  width: 100%;
+  z-index: 900;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: Inter;
+  margin: auto;
+  // margin-bottom: 40px;
+  padding: 10px 40px;
+  // background-color: lightsteelblue;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: ghostwhite;
+  flex-wrap: wrap;
+
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+
+  }
+
+  .active {
+    color: rgb(7, 7, 232);
+    text-decoration: underline;
+    position: relative;
+
+    &::after {
+      content: "📍";
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      position: absolute;
+      // background-color: aqua;
+    }
+  }
+}
+
+.logout {
+  font-size: large;
+  height: 100%;
+  border: none;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 600px) {
+  .nav {
+    font-size: large;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav {
+    position: relative;
+    font-size: small;
+    padding-right: 0rem;
+    width: fit-content;
+    flex-wrap: wrap;
+  }
+}

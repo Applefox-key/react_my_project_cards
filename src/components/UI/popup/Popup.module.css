@@ -1,9 +1,11 @@
   .empty{
-    height: 1.5rem;
+    height: 1.8rem;
     opacity: 0;    
     position:  sticky;
-    top:3.8rem;
-    z-index: 500;    
+    top:5.8rem;
+    z-index: 1500;    
+    background-color: ghostwhite;
+   
   }
   .success{
     background-color: rgb(72, 255, 121);

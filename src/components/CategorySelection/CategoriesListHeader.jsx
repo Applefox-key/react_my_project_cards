@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import MyModal from "../UI/MyModal";
 import CategoriesManager from "../CategorySelection/CategoriesManager";
-
+import cl from "./CategorySelection.module.scss";
+import "../../styles/collectMenu.scss";
+import { IoSettingsOutline } from "react-icons/io5";
 const CategoriesListHeader = ({ selected, list, getList, isPublic, isOne }) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="d-flex">
+    <>
       {visible && (
         <MyModal
           onHide={(e) => {
@@ -23,10 +25,10 @@ const CategoriesListHeader = ({ selected, list, getList, isPublic, isOne }) => {
         </MyModal>
       )}
       <Dropdown.Toggle
-        style={{ width: "150px" }}
+        className={cl.div_width + " " + cl.dropbtn}
         id="dropdown-custom-components"
         size="lg"
-        variant={isOne ? "light" : "primary"}>
+        variant="light">
         {isPublic ? (
           ""
         ) : (
@@ -35,12 +37,13 @@ const CategoriesListHeader = ({ selected, list, getList, isPublic, isOne }) => {
               e.stopPropagation();
               setVisible(true);
             }}>
-            ⚙
+            <IoSettingsOutline />
           </span>
         )}
-        Category: {selected ? selected.name : ""}
+        Category:
+        {selected ? <div className={cl.selCat}>{selected.name}</div> : ""}
       </Dropdown.Toggle>
-    </div>
+    </>
   );
 };
 

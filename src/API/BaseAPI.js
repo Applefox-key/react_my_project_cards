@@ -1,5 +1,8 @@
 import * as fbHelpers from "../utils/serverFireBaseHlp/fbHelpers";
 import axios from "axios";
+import { SERVER_URL } from "./apiConst";
+import { contentRequestData } from "../utils/contentRequests";
+import { defaultSettings } from "../constants/defaultSettings";
 
 const BaseAPI = {
   async getAuthHeaders() {
@@ -9,20 +12,63 @@ const BaseAPI = {
       "Authorization": `Bearer ${token}`,
     };
   },
-  async serverReq(method, url, isHeader, data = "", params = "") {
+  getToken() {
+    let token = JSON.parse(localStorage.getItem("tokencards"));
+    if (!token) throw new Error("session not found");
+    return token;
+  },
+  async serverReq(
+    method,
+    url,
+    isHeader,
+    data = "",
+    params = "",
+    formData = ""
+  ) {
     let axiosConfig = {
       method: method,
-      // url: "http://localhost:8000" + url,
-      url: "http://34.214.160.243:8000" + url,
+      url: SERVER_URL + url,
     };
     if (params) axiosConfig.params = params;
-    if (data) axiosConfig.data = { data: data };
+
+    if (formData) {
+      axiosConfig.data = formData;
+
+      // axiosConfig.data = { "sss": { bbbbb: "sdsdsdad" } };
+      // if (data) axiosConfig.data.data = data;
+    } else if (data) axiosConfig.data = { data: data };
+    // if (data.imgAfile) axiosConfig.data.imgAfiles = data.imgAfile;
+    // if (data.imgQfile) axiosConfig.data.imgAfiles = data.imgQfile;
+
     if (isHeader) axiosConfig.headers = await this.getAuthHeaders();
 
     try {
       let result = await axios(axiosConfig);
       if ((method = "get")) return result.data;
       return { status: true, message: "success" };
+    } catch (error) {
+      if (error.code === "ERR_NETWORK") return { error: error.message };
+      return { error: error.response.data.error };
+    }
+  },
+  async getImg(imgS, token = "") {
+    let axiosConfig = {
+      method: "get",
+      url: SERVER_URL + "/" + imgS.replace(/\\/g, "/"),
+      responseType: "blob",
+    };
+    axiosConfig.headers = token
+      ? `"Authorization": Bearer ${token}`
+      : await this.getAuthHeaders();
+    try {
+      let result = await axios(axiosConfig);
+      const blob = new Blob([result.data], {
+        type: result.headers["content-type"],
+        // type: result.getResponseHeader("Content-Type"),
+      });
+      const url = URL.createObjectURL(blob);
+
+      return url;
     } catch (error) {
       if (error.code === "ERR_NETWORK") return { error: error.message };
       return { error: error.response.data.error };
@@ -48,10 +94,19 @@ const BaseAPI = {
       name: collectionFrom.name,
       note: collectionFrom.note,
       content: content,
+      colId: collectionFrom.id,
+      fromPub: fromPub,
     };
     if (fromPub) reqData.categoryName = collectionFrom.category;
     else reqData.categoryid = collectionFrom.categoryid;
     return await this.serverReq("post", "/collections/content", true, reqData);
+  },
+  async copySharedCollection(collectionFrom) {
+    let reqData = {
+      colId: collectionFrom.id,
+    };
+
+    return await this.serverReq("post", "/collections/copy", true, reqData);
   },
   async createContentFromArray(arr, colId) {
     arr.forEach((element, i) => {
@@ -69,16 +124,31 @@ const BaseAPI = {
     );
   },
   async createContent(content, colId) {
-    let reqData = {
-      question: content.question,
-      answer: content.answer,
-      note: content.note,
-    };
+    if (
+      !content.id ||
+      (!content.answer && !content.imgA) ||
+      (!content.question && !content.imgQ)
+    )
+      throw new Error("please specify the answer and the question");
+
+    let formData = contentRequestData(content);
+
+    // return await this.serverReq("patch", "/content", true, "", "", formData);
+
+    // let reqData = {
+    //   question: content.question,
+    //   answer: content.answer,
+    //   note: content.note,
+    //   imgA: content.imgA ? content.imgA : "",
+    //   imgQ: content.imgQ ? content.imgQ : "",
+    // };
     return await this.serverReq(
       "post",
       "/collections/" + colId + "/content",
       true,
-      reqData
+      "",
+      "",
+      formData
     );
     // let list = await BaseAPI.fromLS("extraList");
     // let wId = Date.now();
@@ -92,15 +162,16 @@ const BaseAPI = {
     // await BaseAPI.toLS("extraList", list);
     // return wId;
   },
-  async createPublicCollection(note, name, category, content) {
-    let reqData = {
-      name: name,
-      note: note,
-      category: category,
-      content: content,
-    };
-    return await this.serverReq("post", "/pbcollections", true, reqData);
-  },
+
+  // async createPublicCollection(note, name, category, content) {
+  //   let reqData = {
+  //     name: name,
+  //     note: note,
+  //     category: category,
+  //     content: content,
+  //   };
+  //   return await this.serverReq("post", "/pbcollections", true, reqData);
+  // },
   async createUser(ud) {
     let reqData = {
       email: ud.email,
@@ -150,12 +221,12 @@ const BaseAPI = {
     // if (indbase !== -1) list.splice(indbase, 1);
     // await BaseAPI.toLS("extraList", list);
   },
-  async deletePbColection(colId) {
-    return await this.serverReq("delete", "/pbcollections/" + colId, true);
-  },
-  async deleteUserPbColectionAll() {
-    return await this.serverReq("delete", "/pbcollections/user", true);
-  },
+  // async deletePbColection(colId) {
+  //   return await this.serverReq("delete", "/pbcollections/" + colId, true);
+  // },
+  // async deleteUserPbColectionAll() {
+  //   return await this.serverReq("delete", "/pbcollections/user", true);
+  // },
   async editCategory(newParam, catId) {
     if (!newParam || !catId) return { message: "nothing has changed" };
 
@@ -175,7 +246,6 @@ const BaseAPI = {
   },
   async editColParam(newParam, colId) {
     if (!newParam || !colId) return { message: "nothing has changed" };
-
     return await this.serverReq(
       "patch",
       "/collections/" + colId,
@@ -191,10 +261,16 @@ const BaseAPI = {
     // await BaseAPI.toLS("collectionsList", collectionList);
   },
   async editContent(newV) {
-    if (!newV.id || !newV.answer || !newV.question)
-      throw new Error("please specify  the answer and the question");
+    if (
+      !newV.id ||
+      (!newV.answer && !newV.imgA) ||
+      (!newV.question && !newV.imgQ)
+    )
+      throw new Error("please specify the answer and the question");
 
-    return await this.serverReq("patch", "/content", true, newV);
+    let formData = contentRequestData(newV);
+
+    return await this.serverReq("patch", "/content", true, "", "", formData);
   },
   async getCategoriesList(isPublic = false) {
     const result = isPublic
@@ -219,10 +295,16 @@ const BaseAPI = {
 
     return result.data;
   },
-  async getCollectionsAndContent(colId = "", categoryid = "", textFilter = "") {
+  async getCollectionsAndContent(
+    colId = "",
+    categoryid = "",
+    textFilter = "",
+    isPublic = ""
+  ) {
     let reqParams = {};
     if (categoryid) reqParams.categoryid = categoryid;
     if (textFilter) reqParams.textFilter = textFilter;
+    if (isPublic !== "") reqParams.isPublic = isPublic ? 1 : 0;
 
     let result = colId
       ? await this.serverReq("get", "/collections/" + colId + "/content", true)
@@ -257,6 +339,7 @@ const BaseAPI = {
   async getContentItem(id) {
     let result = await this.serverReq("get", "/content/" + id, true);
     if (result.error) throw new Error(result.error);
+
     return result.data;
   },
   //pbcollection's list/ or one by id
@@ -267,12 +350,12 @@ const BaseAPI = {
     if (result.error) throw new Error({ error: result.error });
     return result.data;
   },
-  //pbcollection's list shared by user
-  async getPublicCollectionsUser() {
-    let result = await this.serverReq("get", "/pbcollections/user", true);
-    if (result.error) throw new Error(result.error);
-    return result.data;
-  },
+  // //pbcollection's list shared by user
+  // async getPublicCollectionsUser() {
+  //   let result = await this.serverReq("get", "/pbcollections/user", true);
+  //   if (result.error) throw new Error(result.error);
+  //   return result.data;
+  // },
   //pbcollection with content
   async getPublicCollectionsAndContent(colId) {
     let result = colId
@@ -303,7 +386,14 @@ const BaseAPI = {
   async getUser() {
     let result = await this.serverReq("get", "/users", true);
     if (result.error) throw new Error(result.error);
-    let usrData = { ...result.data, password: "" };
+
+    let usrData = {
+      ...result.data,
+      password: "",
+      settings: result.data.settings
+        ? JSON.parse(result.data.settings)
+        : defaultSettings,
+    };
     return usrData;
   },
   async login(login, passw) {

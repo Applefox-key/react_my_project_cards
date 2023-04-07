@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import cl from "./MyCard.module.css";
-import "./MyCard.module.css";
+import cl from "./MyCard.module.scss";
+import "./MyCard.module.scss";
 import { CSSTransition } from "react-transition-group";
 import { useEffect } from "react";
 

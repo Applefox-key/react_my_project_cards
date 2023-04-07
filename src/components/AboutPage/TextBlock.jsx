@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cl from "./aboutPage.module.css";
+import cl from "./aboutPage.module.scss";
 const TextBlock = ({ regBtn, isAboutLink = true, aboutPage = false }) => {
   return (
     <div className={cl.text_container}>

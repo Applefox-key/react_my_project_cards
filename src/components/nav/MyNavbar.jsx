@@ -1,16 +1,16 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BaseAPI from "../../API/BaseAPI";
 import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
-import MyNavLink from "./MyNavLink";
-import cl from "./MyNavbar.module.css";
+
+import cl from "./mainNavbar.module.scss";
 import { useAuth } from "../../hooks/useAuth";
 import UserAvatar from "../users/Profile/UserAvatar";
 const MyNavbar = () => {
   const router = useNavigate();
   //get  elements with nameNav only
-  const [routesArr, userAuth, setUserAuth] = useAuth(true);
+
+  const { userRoutes, userAuth, setUserAuth } = useAuth(true);
 
   const logout = () => {
     BaseAPI.logout();
@@ -19,8 +19,35 @@ const MyNavbar = () => {
   };
 
   return (
-    <div className={[cl.nav].join(" ")}>
-      <Nav activeKey="/about" className="justify-content-end pe-4 ">
+    <div className={[cl.navWrap].join(" ")}>
+      {userRoutes
+        .filter((el) => el.nameNav)
+        .map((item, i) => (
+          <Link
+            to={item.path}
+            key={i}
+            className={
+              window.location.pathname.includes(item.path) ? cl.active : ""
+            }>
+            {item.nameNav}
+          </Link>
+        ))}
+      {userAuth.isAuth && (
+        <div>
+          <UserAvatar
+            style={{ width: "30px", height: "30px", marginLeft: "-1rem" }}
+          />
+          <Button
+            variant="outline-dark"
+            size="lg"
+            className={cl.logout}
+            style={{ height: "3.65rem" }}
+            onClick={logout}>
+            Logout
+          </Button>
+        </div>
+      )}
+      {/* <Nav activeKey="/about" className="justify-content-end pe-4 ">
         {routesArr
           .filter((el) => el.nameNav)
           .map((item, i) => (
@@ -44,7 +71,7 @@ const MyNavbar = () => {
             </Button>
           </div>
         )}
-      </Nav>
+      </Nav> */}
     </div>
   );
 };

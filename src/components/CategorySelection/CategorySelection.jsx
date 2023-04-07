@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useNavigate } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import CategoriesListHeader from "./CategoriesListHeader";
 import CategoryFilter from "./CategoryFilter";
 import CategoryItems from "./CategoryItems";
 import CategoryLink from "./CategoryLink";
+import cl from "./CategorySelection.module.scss";
 
 const CategorySelection = ({
   onSelect,
@@ -18,7 +17,7 @@ const CategorySelection = ({
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("");
   const [selected, setSelected] = useState(colCat);
-  const router = useNavigate();
+
   const [getCategories, isLoadingCat] = useQuery(async () => {
     const cat = await BaseAPI.getCategoriesList(isPublic);
     setCategories(cat);
@@ -41,25 +40,18 @@ const CategorySelection = ({
 
   return (
     <>
-      <Dropdown>
+      <Dropdown className={cl.div_width}>
         <CategoriesListHeader
+          className={cl.div_width}
           selected={selected}
           list={categories}
           getList={getCategories}
           isPublic={isPublic}
           isOne={isOne}
         />
-        <Dropdown.Menu style={{ width: "150px" }}>
+        <Dropdown.Menu className={cl.div_width}>
           <CategoryFilter filter={filter} setFilter={setFilter} />
-          {!filter && !selected && !isOne && (
-            <Button
-              className="text-primary fst-italic"
-              style={{ fontSize: "1rem" }}
-              variant="link"
-              onClick={() => router("/collections/shared")}>
-              my shared collections
-            </Button>
-          )}
+
           {!isLoadingCat && categories && (
             <div>
               {!filter && selected && (

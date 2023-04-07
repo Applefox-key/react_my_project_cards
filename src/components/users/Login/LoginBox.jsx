@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { AuthContext } from "../../../context";
-import cl from "./login.module.css";
+import cl from "./login.module.scss";
 import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { isEmailValid } from "../../../utils/validation";
@@ -45,13 +45,16 @@ const LoginBox = ({ setLoginMode }) => {
 
   return (
     <div className={cl.containerlogin}>
-      <div
-        className={
-          cl["login-box"] + " " + cl["animated"] + " " + cl["fadeInUp"]
-        }>
+      <div className={cl["login-box"]}>
         {" "}
-        <div className={cl["box-header"]}>
-          <h2 className={cl.h2login}>Log In</h2>
+        <div className="mb-2">
+          <div className={cl["box-header"]}>
+            <h2 className={cl.h2login}>Log In</h2>
+          </div>{" "}
+          <AnimatedBtn
+            title="Create Your Account"
+            onClick={() => setLoginMode(2)}
+          />
         </div>
         <label htmlFor="username">Email</label>
         <br />
@@ -82,12 +85,6 @@ const LoginBox = ({ setLoginMode }) => {
         </Link>
         <br />
         <br />
-        <div className="mb-2">
-          <AnimatedBtn
-            title="Create Your Account"
-            onClick={() => setLoginMode(2)}
-          />
-        </div>
         <button type="submit" className={cl.btnlogin} onClick={login}>
           Sign In
         </button>

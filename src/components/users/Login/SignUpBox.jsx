@@ -4,7 +4,7 @@ import { useContext } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { AuthContext } from "../../../context";
 import { useNavigate, useParams } from "react-router-dom";
-import cl from "./login.module.css";
+import cl from "./login.module.scss";
 import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
 import { usePopup } from "../../../hooks/usePopup";
 import { isEmailValid } from "../../../utils/validation";
@@ -47,12 +47,15 @@ const SignUpBox = ({ setLoginMode }) => {
 
   return (
     <div className={cl.containerlogin}>
-      <div
-        className={
-          cl["login-box"] + " " + cl["animated"] + " " + cl["fadeInUp"]
-        }>
+      <div className={cl["login-box"]}>
         <div className={cl["box-header"]}>
           <h2 className={cl.h2login}>Register</h2>
+        </div>{" "}
+        <div className="mb-2">
+          <AnimatedBtn
+            title="Back to login form"
+            onClick={() => setLoginMode(1)}
+          />
         </div>
         <label htmlFor="username">Email</label>
         <br />
@@ -91,14 +94,7 @@ const SignUpBox = ({ setLoginMode }) => {
           onChange={(e) => setName(e.target.value)}
         />
         <br />
-
         <div className={cl.err}>{err}</div>
-        <div className="mb-2">
-          <AnimatedBtn
-            title="Back to login form"
-            onClick={() => setLoginMode(1)}
-          />
-        </div>
         <button type="submit" className={cl.btnlogin} onClick={newUser}>
           Сreate an account
         </button>

@@ -1,8 +1,7 @@
 import React from "react";
 import AvatarGalery from "./AvatarGalery";
-import Button from "react-bootstrap/esm/Button";
 import Image from "react-bootstrap/Image";
-import cl from "./users.module.css";
+import cl from "./users.module.scss";
 
 const ProfileImg = (props) => {
   const changeAvatar = (url) => {
@@ -16,19 +15,20 @@ const ProfileImg = (props) => {
         setVisible={props.setVisible}
         fileChange={changeAvatar}
       />
-      <div>
-        <Image
-          rounded
-          src={props.userDataForm.img}
-          className={cl.avatarProfile}
-        />
-        <Button
+      <Image
+        rounded
+        src={props.userDataForm.img}
+        className={cl.avatarProfile}
+        onClick={() => {
+          props.setVisible(true);
+        }}
+      />{" "}
+      {/* <Button
           onClick={() => {
             props.setVisible(true);
           }}>
           Choose an avatar
-        </Button>
-      </div>
+        </Button> */}
     </div>
     // </div>
   );

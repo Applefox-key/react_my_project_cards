@@ -1,6 +1,6 @@
 import React from "react";
 
-import cl from "./AnimatedArrowBtn.module.css";
+import cl from "./AnimatedArrowBtn.module.scss";
 const AnimatedArrowBtn = ({ title, ...props }) => {
   return (
     <button className={cl.btn} {...props}>

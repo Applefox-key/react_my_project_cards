@@ -49,9 +49,6 @@ const RowContent = ({ content, i, btnsArray, namesArray, edit }) => {
             key={column}
             autofocus={editNames[0] === column}
           />
-        ) : Object.prototype.toString.call(content[column]) ===
-          "[object Date]" ? (
-          <td key={column}>{content[column].toISOString().slice(0, 10)}</td>
         ) : (
           <td key={column}>{content[column]}</td>
         )

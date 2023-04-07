@@ -8,7 +8,7 @@ import BaseAPI from "../../../API/BaseAPI";
 import MySpinner from "../../UI/MySpinner";
 import Form from "react-bootstrap/Form";
 import ProfileImg from "../../../img/profile.ico";
-import cl from "./users.module.css";
+import cl from "./users.module.scss";
 
 const AvatarGalery = ({ visible, setVisible, fileChange }) => {
   const [avatarUrlList, setAvatarUrlList] = useState([]);
@@ -23,7 +23,7 @@ const AvatarGalery = ({ visible, setVisible, fileChange }) => {
   }, []);
 
   const defaultImg = () => {
-    setChoice(ProfileImg);
+    setChoice({ img: ProfileImg });
   };
 
   const fromFile = (e) => {

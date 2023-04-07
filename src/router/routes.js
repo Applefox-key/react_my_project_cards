@@ -1,23 +1,30 @@
-import UserOneCollection from "../components/collections/usersC/UserOneCollection";
-
 import Profile from "../components/users/Profile/Profile";
-import PublicCollections from "../components/collections/publicC/PublicCollections";
-import PublicOneCollection from "../components/collections/publicC/PublicOneCollection";
-
-import CardsGallery from "../components/collections/games/CardsGallery";
-import ContentCardInfo from "../components/collections/usersC/ContentCardInfo";
-import Pairs from "../components/collections/games/Pairs";
-import Collections from "../components/collections/Collections";
-import TestCard from "../components/collections/games/TestCard";
-import TimeCard from "../components/collections/games/TimeCard";
-import WriteCard from "../components/collections/games/WriteCard";
+import PublicOneCollection from "../components/PublicCollections/PublicOneCollection";
+import CardsGallery from "../components/games/CardsGallery";
+import ContentCardInfo from "../components/PrivateCollections/OneCollection/ContentCardInfo";
+import Pairs from "../components/games/Pairs";
+import TestCard from "../components/games/TestCard";
+import TimeCard from "../components/games/TimeCard";
+import WriteCard from "../components/games/WriteCard";
 import CategoriesManager from "../components/CategorySelection/CategoriesManager";
-import SharedColectManager from "../components/collections/SharedColectManager";
-import PublicContentCardInfo from "../components/collections/publicC/PublicContentCardInfo";
+import PublicContentCardInfo from "../components/PublicCollections/PublicContentCardInfo";
 import MainPage from "../components/users/Login/MainPage";
 import Login from "../components/users/Login/Login";
 import AboutPage from "../components/AboutPage/AboutPage";
 import ForgotPassword from "../components/users/Login/ForgotPassword";
+import Collections from "../components/CollectionsListCommon/Collections";
+import UserOneCollection from "../components/PrivateCollections/OneCollection/UserOneCollection";
+import PublicCollectionsView from "../components/PublicCollections/PublicOneCollection";
+import EditCard from "../components/PrivateCollections/OneCollection/EditCard";
+
+export const GO_TO = {
+  about: "/about",
+  login: "/login",
+  shareManager: "/collections/shared",
+  myCollect: "/collections/my",
+  pubCollect: "/collections/pub",
+  editCard: "/collections/my/edit",
+};
 
 export const publicRoutes = [
   { path: "/about", element: <MainPage />, nameNav: "About" },
@@ -48,16 +55,16 @@ export const privateRoutes = [
   },
   { path: "/profile", element: <Profile />, nameNav: "Profile" },
   { path: "/categories", element: <CategoriesManager />, nameNav: "" },
-
+  { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
   { path: "/collections/my/:id/:name/:item", element: <ContentCardInfo /> },
+
   {
     path: "/collections/pub/:id/:name/:item",
     element: <PublicContentCardInfo />,
   },
   { path: "/collections/pub/:id/:name", element: <PublicOneCollection /> },
   { path: "/collections/:tab", element: <Collections /> },
-  { path: "/collections/shared", element: <SharedColectManager /> },
 
   { path: "/play_timecard/:tab/:id/:name", element: <TimeCard /> },
   { path: "/play_cards/:tab/:mode/:id/:name", element: <CardsGallery /> },
@@ -67,6 +74,6 @@ export const privateRoutes = [
 
   {
     path: "/public",
-    element: <PublicCollections />,
+    element: <PublicCollectionsView />,
   },
 ];

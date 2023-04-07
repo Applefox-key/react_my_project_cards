@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context";
 import { privateRoutes, publicRoutes } from "../router/routes";
+import { applyUserSettings } from "../utils/userSettings";
 
 const getRoutes = (userAuth) => {
   if (!userAuth.isAuth) return publicRoutes;
@@ -11,6 +12,17 @@ const getRoutes = (userAuth) => {
 export const useAuth = (returnAuthContext = false) => {
   const { userAuth, setUserAuth } = useContext(AuthContext);
   let userRoutes = getRoutes(userAuth);
-  if (returnAuthContext) return [userRoutes, userAuth, setUserAuth];
+  const updateSettings = (set) => {
+    setUserAuth({ ...userAuth, settings: set });
+    applyUserSettings(set);
+  };
+  if (returnAuthContext)
+    return { userRoutes, userAuth, setUserAuth, updateSettings };
   return userRoutes;
 };
+// export const use = (returnAuthContext = false) => {
+//   const { userAuth, setUserAuth } = useContext(AuthContext);
+//   let userRoutes = getRoutes(userAuth);
+//   if (returnAuthContext) return [userRoutes, userAuth, setUserAuth];
+//   return userRoutes;
+// };

@@ -1,0 +1,72 @@
+.div_width {
+    width: 100%;
+}
+
+.filter_input {
+    border-bottom: 1px solid lightsteelblue;
+
+
+    input {
+        border: none;
+        height: 3rem;
+        font-size: medium;
+        width: 90%;
+    }
+}
+
+.filter_btn {
+    // margin-left: 15px;
+    padding: 5px;
+}
+
+.dropbtn {
+    font-size: 1.6rem;
+    position: relative;
+
+    min-width: 150px;
+    // background-color: lavender;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .selCat {
+        color: chocolate;
+        font-style: italic;
+        padding-left: 5px;
+    }
+
+
+    span {
+        position: relative;
+        top: -8px;
+        left: 0px;
+        margin-right: 0;
+        opacity: 0;
+
+        &:hover {
+            color: blue;
+            // font-size: 1.8rem;
+        }
+    }
+
+    &:hover {
+        background-color: lightsteelblue;
+        border-color: lavender;
+
+        span {
+            opacity: 1;
+        }
+    }
+
+}
+
+.link {
+    a {
+        font-size: 1.3rem;
+    }
+
+    font-size: 1.3rem;
+    color: lightslategrey;
+}

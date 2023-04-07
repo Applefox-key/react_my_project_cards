@@ -1,5 +1,5 @@
 import React from "react";
-import cl from "./aboutPage.module.css";
+import cl from "./aboutPage.module.scss";
 import choice from "../../img/man_left.png";
 import { Image } from "react-bootstrap";
 import AboutGallery from "./AboutGallery";

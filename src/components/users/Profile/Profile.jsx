@@ -7,10 +7,12 @@ import UserProfile from "./UserProfile";
 import MySpinner from "../../UI/MySpinner";
 import { useQuery } from "../../../hooks/useQuery";
 import { usePopup } from "../../../hooks/usePopup";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const setPopup = usePopup();
+  const { updateSettings } = useAuth(true);
   const [getUserData, isLoading, error] = useQuery(async () => {
     const userData = await BaseAPI.getUser();
     if (userData) setUserData(userData);
@@ -27,9 +29,9 @@ const Profile = () => {
       setPopup.error(error);
       return;
     }
-    // if (!result.error) setPopup.success("The changes have been saved");
-    // else setPopup.error("Somethig goes wrong.." + error);
+    updateSettings(data.settings);
     setPopup.success("The changes have been saved");
+
     setUserData({ ...userData, ...data });
   };
   return (

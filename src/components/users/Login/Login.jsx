@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../../Logo";
-import cl from "./login.module.css";
+import cl from "./login.module.scss";
 import choice from "../../../img/man4.png";
 import { Image } from "react-bootstrap";
 import LoginBox from "./LoginBox";
