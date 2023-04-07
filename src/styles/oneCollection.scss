@@ -17,6 +17,11 @@
     position: relative;
     left: 15rem;
 
+    @media screen and (max-width: 600px) {
+        left: 0;
+        max-width: 100%;
+    }
+
 }
 
 .wrap_box {
@@ -65,7 +70,9 @@
     justify-content: center;
     align-items: center;
 
-
+    @media screen and (max-width: 600px) {
+        margin-left: 0;
+    }
 
     .little_card {
         @extend .mycard;
@@ -154,6 +161,10 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
+        @media screen and (max-width: 600px) {
+            flex-wrap: wrap;
+        }
     }
 
     .note {
@@ -208,6 +219,11 @@
             width: 150px;
             height: 150px;
             opacity: 0.3;
+
+            @media screen and (max-width: 600px) {
+                width: 50px;
+                height: 50px;
+            }
         }
 
         .img_choice {
@@ -223,6 +239,11 @@
             align-content: stretch;
             justify-content: center;
             border-radius: 5px;
+
+            @media screen and (max-width: 600px) {
+                width: 80px;
+                height: 80px;
+            }
 
             input {
                 position: absolute;
@@ -241,6 +262,11 @@
                 width: 200px;
                 height: 198px;
                 border-radius: 5px;
+
+                @media screen and (max-width: 600px) {
+                    width: 80px;
+                    height: 80px;
+                }
 
                 button {
                     max-height: 44px;
@@ -266,7 +292,7 @@
                 }
 
                 img {
-                    max-width: 100%;
+                    max-width: 80%;
                     max-height: 80%;
                 }
 

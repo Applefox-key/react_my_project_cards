@@ -22,11 +22,13 @@ const MenuPublicCollection = ({ collection, addToMyCollection, setMode }) => {
           Public collections
         </h1>
         <h1>{collection.name}</h1>
-        <p
-          className="badge fst-italic bg-primary ms-1 pointer"
-          style={{ fontSize: "1.1rem" }}>
-          {collection.category}
-        </p>
+        {collection.category && (
+          <p
+            className="badge fst-italic bg-primary ms-1 pointer"
+            style={{ fontSize: "1.1rem" }}>
+            {collection.category}
+          </p>
+        )}
         <TGB
           checked={window.location.hash === "#1" ? 1 : 0}
           onChange={setMode}

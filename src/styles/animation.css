@@ -16,7 +16,25 @@
     transition: all 500ms ease-in;
     transform-style: preserve-3d;
   }
-  
+/*   
+  .expression-exit{
+    animation: fadeOut;    animation-duration: 500ms;
+  }
+  .expression-exit-active{ 
+    animation-duration: 500ms;
+    animation: fadeOut;
+  } */
+  /* .expression-enter{
+    animation: fadeOut;    animation-duration: 500ms;
+  }
+  .expression-enter-active{
+    animation: fadeOut;
+  } */
+
+
+
+
+
   .expression-exit{
     transform: scale(1);
   }
@@ -62,24 +80,23 @@
     transform: rotateY(-180deg);
     transition: all 1000ms ease;
   }
-  
-  /* .card-enter {
-    animation: fadeInRight;
 
-    animation-duration: 1000ms;
-  }.card-enter-done {   
-    animation: fadeInRight;
+  .pair-enter {
+    animation: fadeInUp;
+    animation-duration: 800ms;
+  } .pair-enter-done {
+    animation: fadeInUp;
+    animation-duration: 800ms;
+  }
+  .pair-exit {
+    animation: fadeOutDown;
+    animation-duration: 800ms;
+  } .pair-exit-done {
+    animation: fadeOutDown;
+    animation-duration: 800ms;
+  }
 
-    animation-duration: 1000ms;
-  }.card-exit {
-    animation: fadeOutLeft;
 
-    animation-duration: 1000ms;
-  }.card-exit-done {   
-    animation: fadeOutLeft;
-
-    animation-duration: 1000ms;
-  }  */
 .card-enter {
     opacity: 0;
     transform: translateX(100%);

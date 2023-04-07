@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { AuthContext } from "../../../context";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import cl from "./login.module.scss";
 import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
 import { usePopup } from "../../../hooks/usePopup";
@@ -38,7 +38,9 @@ const SignUpBox = ({ setLoginMode }) => {
     });
 
     if (!ok.error) {
+      setPopup.success("Please log in");
       router("/login/" + email);
+      setLoginMode(1);
     } else {
       setPopup.error(ok.error);
       setErr(ok.error);
@@ -52,13 +54,16 @@ const SignUpBox = ({ setLoginMode }) => {
           <h2 className={cl.h2login}>Register</h2>
         </div>{" "}
         <div className="mb-2">
-          <AnimatedBtn
+          <h4>or</h4>
+          <Link className={cl.links} onClick={() => setLoginMode(1)}>
+            Back to login form
+          </Link>
+          {/* <AnimatedBtn
             title="Back to login form"
             onClick={() => setLoginMode(1)}
-          />
+          /> */}
         </div>
         <label htmlFor="username">Email</label>
-        <br />
         <input
           style={{ borderColor: isEmailValid(email) ? "green" : "red" }}
           value={email}
@@ -72,7 +77,6 @@ const SignUpBox = ({ setLoginMode }) => {
         />
         <br />
         <label htmlFor="password">Password</label>
-        <br />
         <input
           style={{ borderColor: password ? "green" : "red" }}
           value={password}
@@ -85,7 +89,6 @@ const SignUpBox = ({ setLoginMode }) => {
           }}
         />
         <label htmlFor="username">Name</label>
-        <br />
         <input
           value={name}
           type="string"

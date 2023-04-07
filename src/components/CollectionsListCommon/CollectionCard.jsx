@@ -5,6 +5,11 @@ import { getFirstEl } from "../../utils/arraysFunc";
 import { HiShare, HiOutlineShare } from "react-icons/hi";
 const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
   const router = useNavigate();
+  const generateContent = (el) => {
+    if (el.question) return el.question;
+    if (el.answer) return el.answer;
+    return "picture cards";
+  };
 
   return (
     <div className="oneCollect-wrap ">
@@ -31,12 +36,14 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
         <div>
           {getFirstEl(collection.content, 5).map((el, i) => (
             <div className="content-row" key={i}>
-              {el.question}{" "}
+              {generateContent(el)}
             </div>
           ))}
         </div>{" "}
         <span>{collection.content.length}</span>{" "}
-        <div className="cat_tag">{collection.collection.category}</div>
+        {collection.collection.category && (
+          <div className="cat_tag">{collection.collection.category}</div>
+        )}
       </div>
 
       {listFn && (
@@ -56,7 +63,6 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
               listFn.shareColl(collection.collection);
             }}>
             {collection.collection.isPublic ? <HiShare /> : <HiOutlineShare />}
-            {/* {collection.collection.isPublic ? "🕬" : "🕫"} */}
           </div>
         </>
       )}

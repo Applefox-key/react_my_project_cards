@@ -51,6 +51,16 @@ input {
   margin: auto;
 }
 
+.modal-h100 {
+  height: 100%;
+
+  @media screen and (max-width: 600px) {
+
+    width: 90vw;
+
+  }
+}
+
 .modal-max {
   width: fit-content;
   max-width: none !important;

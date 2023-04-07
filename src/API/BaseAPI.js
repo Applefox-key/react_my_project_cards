@@ -3,6 +3,7 @@ import axios from "axios";
 import { SERVER_URL } from "./apiConst";
 import { contentRequestData } from "../utils/contentRequests";
 import { defaultSettings } from "../constants/defaultSettings";
+import { userRequestData } from "../utils/userRequest";
 
 const BaseAPI = {
   async getAuthHeaders() {
@@ -178,6 +179,7 @@ const BaseAPI = {
       password: ud.password,
       name: ud.name,
       img: ud.img,
+      settings: defaultSettings,
     };
     if ((reqData.img = ""))
       reqData.img = "/static/media/profile.dd82cd98f5e2825724fb.ico";
@@ -386,10 +388,13 @@ const BaseAPI = {
   async getUser() {
     let result = await this.serverReq("get", "/users", true);
     if (result.error) throw new Error(result.error);
+    // let sss =
+    //   result.data.settings === "null" ? defaultSettings : result.data.settings;
 
     let usrData = {
       ...result.data,
       password: "",
+      // settings: sss,
       settings: result.data.settings
         ? JSON.parse(result.data.settings)
         : defaultSettings,
@@ -423,7 +428,16 @@ const BaseAPI = {
       let img = await fbHelpers.setImgToStorage(ud.id, ud.file);
       reqData = { ...ud, img: img };
     }
-    return await this.serverReq("patch", "/users", true, reqData);
+    let formData = userRequestData(ud);
+    // return await this.serverReq(
+    //   "post",
+    //   "/collections/" + colId + "/content",
+    //   true,
+    //   "",
+    //   "",
+    //   formData
+    // );
+    return await this.serverReq("patch", "/users", true, reqData, "", formData);
   },
   async sendMailResetToken(login) {
     let reqData = {
@@ -472,6 +486,7 @@ const BaseAPI = {
   createDB() {
     if (!localStorage.getItem("avatars")) {
       const avList = fbHelpers.getAvatarsFromStore();
+
       avList.then(localStorage.setItem("avatars", JSON.stringify(avList)));
     }
   },

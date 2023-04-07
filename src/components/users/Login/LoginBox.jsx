@@ -15,8 +15,10 @@ const LoginBox = ({ setLoginMode }) => {
   const [err, setErr] = useState("");
   // eslint-disable-next-line no-unused-vars
   const { userAuth, setUserAuth } = useContext(AuthContext);
-  const [email, setEmail] = useState(pageParam.email ? pageParam.email : "");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(
+    pageParam.email ? pageParam.email : "JohnDoe@test.test"
+  );
+  const [password, setPassword] = useState("JohnDoe");
   const setPopup = usePopup();
   const login = async (event) => {
     if (!isEmailValid(email)) {
@@ -51,13 +53,16 @@ const LoginBox = ({ setLoginMode }) => {
           <div className={cl["box-header"]}>
             <h2 className={cl.h2login}>Log In</h2>
           </div>{" "}
-          <AnimatedBtn
+          <h4>or</h4>
+          <Link className={cl.links} onClick={() => setLoginMode(2)}>
+            Create Your Account
+          </Link>
+          {/* <AnimatedBtn
             title="Create Your Account"
             onClick={() => setLoginMode(2)}
-          />
+          /> */}
         </div>
         <label htmlFor="username">Email</label>
-        <br />
         <input
           value={email}
           type="email"
@@ -69,7 +74,6 @@ const LoginBox = ({ setLoginMode }) => {
         />
         <br />
         <label htmlFor="password">Password</label>
-        <br />
         <input
           value={password}
           type="password"
@@ -80,7 +84,7 @@ const LoginBox = ({ setLoginMode }) => {
           }}
         />{" "}
         <div className={cl.err}>{err}</div>
-        <Link style={{ fontSize: "1.6rem" }} onClick={() => setLoginMode(3)}>
+        <Link className={cl.links} onClick={() => setLoginMode(3)}>
           Forgot My Password
         </Link>
         <br />

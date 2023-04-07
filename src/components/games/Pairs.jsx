@@ -33,18 +33,19 @@ const Pairs = () => {
   }, []);
 
   const choose = (e) => {
+    let tgId = e.target.id ? e.target.id : e.target.parentElement.id;
     if (!active) {
-      setActive(e.target.id);
+      setActive(tgId);
       return;
     }
     let [id1, set1] = [...active.split("&")];
-    let [id2, set2] = [...e.target.id.split("&")];
-    if (active === e.target.id) {
+    let [id2, set2] = [...tgId.split("&")];
+    if (active === tgId) {
       setActive("");
       return;
     }
     if (set1 === set2) {
-      setActive(e.target.id);
+      setActive(tgId);
       return;
     }
     let [res, arr1, arr2] = pairAnswerCheck(id1, id2, itemsV);

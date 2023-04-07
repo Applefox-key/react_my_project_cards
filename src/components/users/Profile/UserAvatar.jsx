@@ -5,12 +5,17 @@ import Image from "react-bootstrap/Image";
 import { useState, useEffect } from "react";
 import { useQuery } from "../../../hooks/useQuery";
 import MySpinner from "../../UI/MySpinner";
+import { useNavigate } from "react-router-dom";
+import { GO_TO } from "../../../router/routes";
+import { generateAvatarLink } from "../../../utils/userRequest";
 
 const UserAvatar = (props) => {
   const [av, setAv] = useState();
+  const router = useNavigate();
   const [getData, isLoading] = useQuery(async () => {
     let userData = await BaseAPI.getUser();
-    if (userData) setAv(userData.img);
+
+    if (userData) setAv(generateAvatarLink(userData.img));
   });
 
   useEffect(() => {
@@ -21,7 +26,13 @@ const UserAvatar = (props) => {
   return isLoading ? (
     <MySpinner />
   ) : (
-    <Image rounded src={av} style={{ width: "8%", height: "8%" }} {...props} />
+    <Image
+      onClick={() => router(GO_TO.profile)}
+      rounded
+      src={av}
+      style={{ width: "8%", height: "8%" }}
+      {...props}
+    />
   );
 };
 

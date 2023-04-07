@@ -17,7 +17,7 @@ const MyCardExtra = ({ item, mode = "0", flip, clc = true }) => {
     const tl = tx.length;
 
     if (ti) {
-      if (tl < 12) return "7vw";
+      if (tl < 6) return "7vw";
       if (tl <= 60) return "2.7vw";
       if (tl <= 130) return "1.7vw";
       if (tl <= 160) return "1.5vw";
@@ -25,7 +25,7 @@ const MyCardExtra = ({ item, mode = "0", flip, clc = true }) => {
       if (tl <= 350) return "1.1vw";
       return "0.8vw";
     } else {
-      if (tl < 12) return "14vw";
+      if (tl < 12) return "13vw";
       if (tl <= 60) return "4.7vw";
       if (tl <= 130) return "3.4vw";
       if (tl <= 160) return "3vw";

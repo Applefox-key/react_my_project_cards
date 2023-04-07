@@ -9,7 +9,7 @@ const MyFilter = ({ filter, setFilter }) => {
   const [value, setValue] = useState(filter);
 
   return (
-    <div className="w-25">
+    <div className="findWidth">
       <MyInputGroup
         classgroup={"h-100 mb-0 collect-find"}
         // classgroup={cl["collect-find"]}

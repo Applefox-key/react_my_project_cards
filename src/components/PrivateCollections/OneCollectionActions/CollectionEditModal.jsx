@@ -71,7 +71,7 @@ const CollectionEditModal = ({
       setshowmodal={setIsEdit}
       size="lg"
       fullscreen={fromFile}
-      dialogClassName="h100"
+      dialogClassName="modal-h100"
       title={"Collection's properties"}>
       <div className="d-flex flex-column justify-content-center  w-100">
         {/* <Popup /> */}

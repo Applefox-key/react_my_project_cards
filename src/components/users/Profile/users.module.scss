@@ -19,6 +19,7 @@
 
     .avatarProfile {
       width: 90%;
+      cursor: pointer;
       // margin: auto;
     }
   }
@@ -28,8 +29,10 @@
     // align-items: center;
     // justify-content: center;
     width: 90%;
+    cursor: pointer;
 
     input {
+      cursor: pointer;
       border-radius: 5px;
       width: 90%;
       margin: auto;

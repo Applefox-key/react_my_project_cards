@@ -24,6 +24,7 @@ export const GO_TO = {
   myCollect: "/collections/my",
   pubCollect: "/collections/pub",
   editCard: "/collections/my/edit",
+  profile: "/profile",
 };
 
 export const publicRoutes = [

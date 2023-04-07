@@ -10,9 +10,9 @@ import Form from "react-bootstrap/Form";
 import ProfileImg from "../../../img/profile.ico";
 import cl from "./users.module.scss";
 
-const AvatarGalery = ({ visible, setVisible, fileChange }) => {
+const AvatarGalery = ({ visible, setVisible, fileChange, initialImg }) => {
   const [avatarUrlList, setAvatarUrlList] = useState([]);
-  const [choice, setChoice] = useState({ img: ProfileImg });
+  const [choice, setChoice] = useState({ img: initialImg });
   const [getAvatarList, isLoading] = useQuery(async () => {
     setAvatarUrlList(await BaseAPI.getAvatarUrlList());
   });

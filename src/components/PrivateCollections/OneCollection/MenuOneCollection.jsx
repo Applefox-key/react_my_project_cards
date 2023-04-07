@@ -25,13 +25,17 @@ const MenuOneCollection = (props) => {
         <h1 className="menu-title" onClick={(e) => router(GO_TO.myCollect)}>
           My collections
         </h1>
+
         <div className="name-collect" onClick={() => setRenameMode(true)}>
-          <h1 className="pointer">{props.colObj.collection.name}</h1>
-          <span
-            // className="badge fst-italic bg-primary ms-1 pointer"
-            style={{ fontSize: "1.1rem" }}>
-            {props.colObj.collection.category}
-          </span>
+          <h1 className="pointer">
+            {/* {props.colObj.collection.category
+              ? props.colObj.collection.category + "➤ "
+              : ""} */}
+            {props.colObj.collection.name}
+          </h1>{" "}
+          {/* {props.colObj.collection.category && (
+            <span>{props.colObj.collection.category}</span>
+          )}{" "} */}
         </div>
         <TGB
           checked={window.location.hash === "#1" ? 1 : 0}

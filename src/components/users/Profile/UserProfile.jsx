@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
-import imgProfile from "../../../img/profile.ico";
+// import imgProfile from "../../../img/profile.ico";
 import Form from "react-bootstrap/Form";
 import ProfileImg from "./ProfileImg";
 import ProfileText from "./ProfileText";
 import cl from "./users.module.scss";
-import { defaultSettings } from "../../../constants/defaultSettings";
+import {
+  defaultAvatar,
+  defaultSettings,
+} from "../../../constants/defaultSettings";
 import { applyUserSettings } from "../../../utils/userSettings";
 
 const UserProfile = ({ userData, onClick, btnName }) => {
@@ -13,16 +16,19 @@ const UserProfile = ({ userData, onClick, btnName }) => {
   const [userDataForm, setUserDataForm] = useState({
     name: "",
     email: "",
-    img: imgProfile,
+    img: defaultAvatar,
     password: "",
     settings: defaultSettings,
   });
 
   const setColor = (e) => {
-    const newSet = {
-      ...userDataForm.settings,
-      colorBack: e.target.value,
-    };
+    const newSet =
+      typeof settings === "object"
+        ? {
+            ...userDataForm.settings,
+            colorBack: e.target.value,
+          }
+        : { colorBack: e.target.value };
     setUserDataForm({ ...userDataForm, settings: newSet });
     applyUserSettings(newSet);
   };
@@ -51,7 +57,6 @@ const UserProfile = ({ userData, onClick, btnName }) => {
               type="color"
               id="colorInput"
               onChange={setColor}
-              // defaultValue={userDataForm.settings.colorBack}
               value={userDataForm.settings.colorBack}
               title="Choose your background color"
             />{" "}

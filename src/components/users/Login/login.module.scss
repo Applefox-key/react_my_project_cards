@@ -5,6 +5,12 @@
 	box-shadow: -1px 28px 10px -37px rgb(66 68 90);
 }
 
+.links {
+
+	font-size: 1.6rem;
+	// margin-left: 50%;
+}
+
 .imgLogin {
 	padding-bottom: -10rem;
 
@@ -66,6 +72,8 @@
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		line-height: 2em;
+		margin-left: 24px;
+		display: flex;
 	}
 
 	input {

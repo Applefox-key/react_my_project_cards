@@ -15,14 +15,12 @@ const PairPart = ({ items, onClick, num, active }) => {
       active === el.id + "&" + num ? cl["active"] : "",
     ].join(" ");
   };
+
   return (
     <TransitionGroup
       className={cl.container + " flex-wrap justify-content-center"}>
       {items.map((el) => (
-        <CSSTransition
-          timeout={400}
-          classNames="expression"
-          key={el.id + "&" + num}>
+        <CSSTransition timeout={400} classNames="pair" key={el.id + "&" + num}>
           <button
             className={generateClassName(el)}
             id={el.id + "&" + num}
