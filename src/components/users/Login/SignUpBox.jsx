@@ -5,7 +5,6 @@ import BaseAPI from "../../../API/BaseAPI";
 import { AuthContext } from "../../../context";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import cl from "./login.module.scss";
-import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
 import { usePopup } from "../../../hooks/usePopup";
 import { isEmailValid } from "../../../utils/validation";
 
@@ -58,10 +57,6 @@ const SignUpBox = ({ setLoginMode }) => {
           <Link className={cl.links} onClick={() => setLoginMode(1)}>
             Back to login form
           </Link>
-          {/* <AnimatedBtn
-            title="Back to login form"
-            onClick={() => setLoginMode(1)}
-          /> */}
         </div>
         <label htmlFor="username">Email</label>
         <input

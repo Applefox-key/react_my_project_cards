@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import cl from "./login.module.scss";
-import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
 import { Link, useParams } from "react-router-dom";
 import { isEmailValid } from "../../../utils/validation";
 
@@ -42,10 +41,6 @@ const ForgotBox = ({ setLoginMode }) => {
           <Link className={cl.links} onClick={() => setLoginMode(1)}>
             Back to login form
           </Link>
-          {/* <AnimatedBtn
-            title="Back to login form"
-            onClick={() => setLoginMode(1)}
-          /> */}
         </div>
         <p
           style={{

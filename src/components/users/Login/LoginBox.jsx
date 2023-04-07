@@ -4,7 +4,7 @@ import { useContext } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { AuthContext } from "../../../context";
 import cl from "./login.module.scss";
-import AnimatedBtn from "../../UI/AnimatedBtn/AnimatedBtn";
+
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { isEmailValid } from "../../../utils/validation";
 import { usePopup } from "../../../hooks/usePopup";
@@ -57,10 +57,6 @@ const LoginBox = ({ setLoginMode }) => {
           <Link className={cl.links} onClick={() => setLoginMode(2)}>
             Create Your Account
           </Link>
-          {/* <AnimatedBtn
-            title="Create Your Account"
-            onClick={() => setLoginMode(2)}
-          /> */}
         </div>
         <label htmlFor="username">Email</label>
         <input

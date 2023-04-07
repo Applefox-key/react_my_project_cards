@@ -15,7 +15,11 @@ export const userRequestData = (userData) => {
 
 export const generateAvatarLink = (imgName) => {
   if (!imgName) return defaultAvatar;
-  if (imgName.includes("static/media")) return imgName;
+  if (
+    imgName.includes("static/media") ||
+    imgName.includes("firebasestorage.googleapis")
+  )
+    return imgName;
   return imgName.includes("blob")
     ? imgName
     : imgSrv + "avatars/?img=" + imgName + "&token=" + BaseAPI.getToken();
