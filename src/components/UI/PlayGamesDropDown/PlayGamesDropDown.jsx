@@ -18,7 +18,6 @@ const PlayGamesDropDown = ({ isPublic, dis, ...props }) => {
         disabled={dis}
         size="lg"
         variant="light"
-        className="menuBtn"
         title="PLAY GAMES">
         {gameMenu.map((item, i) =>
           item.href || item.onClick ? (

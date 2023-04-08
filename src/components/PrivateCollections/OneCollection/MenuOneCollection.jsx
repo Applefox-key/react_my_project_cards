@@ -27,15 +27,7 @@ const MenuOneCollection = (props) => {
         </h1>
 
         <div className="name-collect" onClick={() => setRenameMode(true)}>
-          <h1 className="pointer">
-            {/* {props.colObj.collection.category
-              ? props.colObj.collection.category + "➤ "
-              : ""} */}
-            {props.colObj.collection.name}
-          </h1>{" "}
-          {/* {props.colObj.collection.category && (
-            <span>{props.colObj.collection.category}</span>
-          )}{" "} */}
+          <h1 className="pointer">{props.colObj.collection.name}</h1>{" "}
         </div>
         <TGB
           checked={window.location.hash === "#1" ? 1 : 0}

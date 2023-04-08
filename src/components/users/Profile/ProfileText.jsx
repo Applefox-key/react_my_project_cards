@@ -5,7 +5,7 @@ import cl from "./users.module.scss";
 const ProfileText = ({ userDataForm, setUserDataForm, passRequired }) => {
   return (
     <div>
-      <h1 className="display-2">Your data</h1>
+      <h1 className="display-2 contrastColor">Your data</h1>
       <MyInputGroup
         classgroup={cl.inputGr}
         required

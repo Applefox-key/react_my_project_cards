@@ -1,6 +1,17 @@
+// $contrast-text: blue;
+:root {
+  --contrast-text: blue;
+}
+
+.contrastColor {
+  color: var(--contrast-text);
+}
+
 .body {
   caret-color: transparent;
   background-color: lavenderblush;
+
+
 }
 
 

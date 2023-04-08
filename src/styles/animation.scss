@@ -1,0 +1,421 @@
+@import 'animate.css';
+
+.animation-exit {
+  color: white;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.animation-exit-active {
+  transform: rotateY(180deg);
+  transition: all 500ms ease-in;
+  transform-style: preserve-3d;
+}
+
+.animation-enter {
+  color: white;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+.animation-enter-active {
+  transform: rotateY(0);
+  transition: all 500ms ease-in;
+  transform-style: preserve-3d;
+}
+
+/*   
+  .expression-exit{
+    animation: fadeOut;    animation-duration: 500ms;
+  }
+  .expression-exit-active{ 
+    animation-duration: 500ms;
+    animation: fadeOut;
+  } */
+/* .expression-enter{
+    animation: fadeOut;    animation-duration: 500ms;
+  }
+  .expression-enter-active{
+    animation: fadeOut;
+  } */
+
+
+
+
+
+.expression-exit {
+  transform: scale(1);
+}
+
+.expression-exit-active {
+  transform: scale(0.1);
+  transition: all 500ms ease-in;
+}
+
+.expression-enter {
+  transform: scale(0.1);
+}
+
+.expression-enter-active {
+  transform: scale(1);
+  transition: all 500ms ease-in;
+}
+
+.cardFront-enter {
+  transform: rotateY(180deg);
+}
+
+.cardFront-enter-active {
+  transition: all 1000ms ease;
+  transform: rotateY(0deg);
+}
+
+.cardFront-exit {
+  transform: rotateY(0deg);
+}
+
+.cardFront-exit-active {
+  transform: rotateY(180deg);
+  transition: all 1000ms ease;
+}
+
+.cardFront-exit-done {
+  transform: rotateY(180deg);
+}
+
+.cardBack-enter {
+  transform: rotateY(-180deg);
+}
+
+.cardBack-enter-active {
+  transform: rotateY(0deg);
+  transition: all 1000ms ease;
+}
+
+
+.cardBack-exit {
+  transform: rotateY(0deg);
+}
+
+.cardBack-exit-active {
+  transform: rotateY(-180deg);
+  transition: all 1000ms ease;
+}
+
+.pair-enter {
+  animation: fadeInUp;
+  animation-duration: 800ms;
+}
+
+.pair-enter-done {
+  animation: fadeInUp;
+  animation-duration: 800ms;
+}
+
+.pair-exit {
+  animation: fadeOutDown;
+  animation-duration: 800ms;
+}
+
+.pair-exit-done {
+  animation: fadeOutDown;
+  animation-duration: 800ms;
+}
+
+
+.card-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.card-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.card-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* .card_left-enter {
+    animation: fadeInLeft;
+ 
+    animation-duration: 1000ms;
+  }.card_left-enter-active {
+    animation: fadeInLeft;
+
+    animation-duration: 1000ms;
+  }.card_left-exit {
+    animation: fadeOutRight;
+
+    animation-duration: 1000ms;
+  }.card_left-exit-active {
+    animation: fadeOutRight;
+
+    animation-duration: 1000ms;
+  } */
+.card_slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.card_slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card_slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.card_slide-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card_left-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.card_left-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card_left-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.card_left-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+
+
+.card_down-enter {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.card_down-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card_down-exit-active {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card_down-exit {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.card_up-enter {
+  overflow: visible;
+  animation: backInUp;
+  animation-duration: 1000ms;
+}
+
+.card_up-enter-active {
+  overflow: visible;
+}
+
+.card_up-enter-done {
+  overflow: visible;
+  animation: backInUp;
+  animation-duration: 1000ms;
+}
+
+.card_up-exit {
+  overflow: visible;
+  animation: backOutUp;
+  animation-duration: 1000ms;
+}
+
+.card_up-exit-active {
+  overflow: visible;
+}
+
+.card_up-exit-done {
+  overflow: visible;
+  animation: backOutUp;
+  animation-duration: 1000ms;
+}
+
+.result-appear {
+  animation: jackInTheBox;
+  animation-duration: 1000ms;
+}
+
+.result-appear-done {
+  animation: jackInTheBox;
+  animation-duration: 1000ms;
+}
+
+.game-appear {
+  animation: lightSpeedInLeft;
+  /* animation: rollIn; */
+  animation-duration: 1000ms;
+}
+
+.game-appear-done {
+  animation: lightSpeedInLeft;
+  /* animation: rollOut; */
+  animation-duration: 1000ms;
+}
+
+
+.count-enter {
+  animation: bounceIn;
+  animation-duration: 300ms;
+}
+
+.count-enter-done {
+  animation: bounceIn;
+  animation-duration: 300ms;
+}
+
+.count-exit {
+  animation: bounceOut;
+  animation-duration: 300ms;
+}
+
+.count-exit-done {
+  animation: bounceOut;
+  animation-duration: 300ms;
+}
+
+
+.countLeft-enter {
+  animation: shakeX;
+  animation-duration: 300ms;
+}
+
+.countLeft-enter-done {
+  animation: shakeX;
+  animation-duration: 300ms;
+}
+
+
+
+.cardChange-enter {
+  animation: fadeInLeft;
+  animation-duration: 1000ms;
+}
+
+.cardChange-enter-done {
+  animation: fadeInleft;
+  animation-duration: 1000ms;
+}
+
+.cardChange-exit {
+  animation: fadeOutRight;
+  animation-duration: 1000ms;
+}
+
+.cardChange-exit-done {
+  animation: fadeOutRight;
+  animation-duration: 1000ms;
+}
+
+
+
+
+.sideb-enter {
+  animation: slideInDown;
+  animation-duration: 500ms;
+}
+
+.sideb-enter-done {
+  animation: slideInDown;
+  animation-duration: 500ms;
+}
+
+.sideb-exit {
+  animation: slideOutUp;
+  animation-duration: 500ms;
+}
+
+.sideb-exit-done {
+  animation: slideOutUp;
+  animation-duration: 500ms;
+}
+
+.flareEl {
+  position: relative;
+  /* overflow-x: hidden;  */
+}
+
+.flare {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  transform: skewX(-45deg);
+  animation: flareAnimation;
+  left: -150%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+  animation: flareAnimation 3s infinite linear;
+}
+
+@keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
+.attension-wrap {
+  position: relative;
+  background-color: transparent;
+
+  button {
+    width: 100%;
+  }
+}
+
+.attension {
+  background-color: transparent;
+  z-index: 800;
+  /* animation: shakeX infinite; */
+  /* background-color: red; */
+  position: absolute;
+  font-size: 1vw;
+  top: 10px;
+  /* height: 1rem;
+  width:1rem; */
+  /* border: 1px solid red; */
+  animation: bounce;
+  /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  /* don't forget to set a duration! */
+
+  /* position:absolute; */
+  /* animation: animate__shakeX  0.5s infinite; */
+
+  /* color:red; */
+}
