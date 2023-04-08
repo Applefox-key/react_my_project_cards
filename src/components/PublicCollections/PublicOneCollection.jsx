@@ -45,7 +45,7 @@ const PublicOneCollection = () => {
   return (
     <>
       {!isLoading ? (
-        <div className="wrap_box" style={{ width: "90%" }}>
+        <div className="wrap_box width90">
           <MenuPublicCollection
             collection={collection ? collection : PageParam}
             addToMyCollection={addToMyCollection}

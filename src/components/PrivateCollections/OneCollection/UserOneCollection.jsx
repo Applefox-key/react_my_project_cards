@@ -60,7 +60,10 @@ const UserOneCollection = () => {
 
       {collect && (
         <div className="string_submenu">
-          {collect.note ? "About collection: " + collect.note : ""}
+          {collect.note && (
+            <div className="note"> {"About collection: " + collect.note} </div>
+          )}
+          {collect.category && <div className="cat"> {collect.category}</div>}
         </div>
       )}
       <div className="wrapRelative">

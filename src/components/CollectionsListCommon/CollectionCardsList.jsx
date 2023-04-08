@@ -9,7 +9,7 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
           <h2>No collections</h2>{" "}
         </>
       ) : (
-        <div className="all_wrap" style={{ width: "90%", margin: "auto" }}>
+        <div className="all_wrap m-auto width90">
           {filtredList.map((item) => (
             <CollectionCard
               collection={item}

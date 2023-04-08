@@ -34,6 +34,7 @@ const Profile = () => {
 
     setUserData({ ...userData, ...data });
   };
+
   return (
     <div className="mt-4">
       {isLoading || !userData ? (

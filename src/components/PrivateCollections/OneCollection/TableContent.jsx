@@ -77,7 +77,7 @@ const TableContent = ({ content, setContent, pageParam }) => {
   };
 
   return (
-    <div className="m-auto" style={{ width: "90%" }}>
+    <div className="m-auto mt-2 width90">
       {content && (
         <MyTable
           onRowClick={editOn}
