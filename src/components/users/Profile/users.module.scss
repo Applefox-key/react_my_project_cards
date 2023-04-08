@@ -2,6 +2,12 @@
   width: 50%;
   margin: auto;
 
+  @media screen and (max-width: 600px) {
+    width: 100vw;
+  }
+
+
+
   .avatarDiv {
     width: 30%;
     max-width: 200px;
@@ -25,17 +31,15 @@
   }
 
   .backColorBox {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
     width: 90%;
     cursor: pointer;
 
     input {
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 2px;
       width: 90%;
       margin: auto;
+      background: var(--contrast-text);
     }
   }
 
@@ -44,17 +48,17 @@
 
     .inputGr {
       margin: auto;
-      border: 1px solid lavender;
       height: 4rem;
       width: 100%;
-
+      border: none;
 
       span {
         font-size: 13px;
-        font-weight: 900;
+        font-weight: 600;
         min-width: 8rem;
-        background-color: lightsteelblue;
-        // background-color: transparent;
+        color: var(--contrast-text); // background-color: lightsteelblue;
+        background-color: transparent;
+        border: none;
         // color: $contrast-color;
       }
     }

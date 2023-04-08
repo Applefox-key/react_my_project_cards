@@ -12,7 +12,7 @@
     }
 
     @media screen and (max-width: 600px) {
-        left: 0;
+        left: -22px;
     }
 
 }
@@ -142,6 +142,10 @@
             rgb(117, 189, 200) -9px 9px;
         transition: all 0.2s ease-in-out;
         cursor: help;
+
+        @media screen and (max-width: 600px) {
+            margin: 5px;
+        }
 
         .delbtn {
             position: absolute;
