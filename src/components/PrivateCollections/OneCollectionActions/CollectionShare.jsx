@@ -32,7 +32,8 @@ const CollectionShare = ({ colObj, setVisible }) => {
       title="Download the collection"
       setshowmodal={setVisible}
       // visible={true}
-      showmodal={true}>
+      showmodal={true}
+      dialogClassName="width100wv">
       <div>
         <MyInputGroup
           label="Collection name"

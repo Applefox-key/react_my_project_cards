@@ -54,21 +54,20 @@ const CardContent = ({ content, setContent, pageParam }) => {
               );
           }}>
           <div className="menuPart">
-            {btns.map((btn, i) =>
-              window.location.pathname.includes("pub") && btn.private ? (
-                <></>
-              ) : (
-                <Button
-                  key={i}
-                  variant="light"
-                  size="lg"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    btn.callback(el);
-                  }}>
-                  {btn.symb}
-                </Button>
-              )
+            {btns.map(
+              (btn, i) =>
+                !(window.location.pathname.includes("pub") && btn.private) && (
+                  <Button
+                    key={i}
+                    variant="light"
+                    size="lg"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      btn.callback(el);
+                    }}>
+                    {btn.symb}
+                  </Button>
+                )
             )}
           </div>
           <div className="onePart quest">

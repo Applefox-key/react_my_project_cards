@@ -16,7 +16,7 @@ const PublicCollectTable = ({ filtredList }) => {
       {!filtredList ? (
         <h2>No collections</h2>
       ) : (
-        <div className=" w-75 m-auto">
+        <div className="tblCollections">
           <MyTable
             classtbl="lavanderBack"
             onRowClick={viewContent}

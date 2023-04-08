@@ -3,11 +3,9 @@ import Button from "react-bootstrap/esm/Button";
 
 const ColumnWithBtns = ({ btnsArray, content }) => {
   return (
-    <p className="d-table-cell h-100">
+    <>
       {!!btnsArray.length && (
-        <td
-          key="btnA"
-          className="d-table-cell h-100 d-flex  align-items-center justify-content-end">
+        <td key="btnA" className="d-table-cell text-end">
           {btnsArray
             .filter((el) => !el.nameMain)
             .map((btn, i) =>
@@ -28,7 +26,7 @@ const ColumnWithBtns = ({ btnsArray, content }) => {
             )}
         </td>
       )}
-    </p>
+    </>
   );
 };
 

@@ -58,7 +58,7 @@
   border-radius: 10px 10px 0 0;
   border-bottom: 2px solid lightslategray;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-  font-size: 1.3vw;
+  font-size: 10px;
   display: flex;
   padding-left: 1rem;
   padding-top: 1rem;
@@ -69,6 +69,17 @@
   top: 5.7rem;
   background-color: ghostwhite;
   z-index: 700;
+
+  @media screen and ((max-height: 600px)) {
+    position: relative;
+    top: 0;
+    border-radius: 10px;
+  }
+
+  @media screen and ((max-width: 600px)) {
+
+    border-radius: 10px;
+  }
 }
 
 .box_menu {
@@ -89,7 +100,13 @@
     left: 0;
   }
 
-
+  @media screen and ((max-height: 600px)) {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   span {
     margin-right: 3rem;

@@ -96,7 +96,7 @@ const CollectionsTable = ({
       {!filtredList ? (
         <h2>No collections</h2>
       ) : (
-        <div className="m-auto" style={{ width: "85%" }}>
+        <div className="tblCollections">
           <MyTable
             classtbl="lavanderBack"
             onRowClick={editOn}
