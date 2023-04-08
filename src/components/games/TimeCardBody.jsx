@@ -43,7 +43,8 @@ const TimeCardBody = ({ items }) => {
           size="lg"
           onClick={start}
           disabled={num !== 0}
-          className="mb-3 ">
+          variant="light"
+          className="mb-3 lavanderBack">
           {"START"}
         </Button>
       </div>

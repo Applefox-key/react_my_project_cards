@@ -3,6 +3,7 @@
 	width: 20%;
 	height: 20%;
 	box-shadow: -1px 28px 10px -37px rgb(66 68 90);
+	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .links {
@@ -22,6 +23,12 @@
 	display: flex;
 	/* margin-top:5rem; */
 	justify-content: space-between;
+
+	@media screen and ((max-width: 600px)or (max-height: 600px)) {
+		flex-wrap: wrap;
+		flex-direction: column-reverse;
+		align-items: baseline;
+	}
 }
 
 .h2login {
@@ -41,6 +48,11 @@
 	height: 100%;
 	display: flex;
 	justify-content: flex-end;
+
+	@media screen and ((max-width: 600px)or (max-height: 600px)) {
+		display: block;
+		width: 100%;
+	}
 }
 
 .login-box {
@@ -57,6 +69,12 @@
 	text-align: center;
 	border-radius: 35px 0 0 35px;
 	margin-right: 5rem;
+
+	@media screen and ((max-width: 600px)or (max-height: 600px)) {
+		top: 0;
+		width: 100%;
+		margin: auto;
+	}
 
 	.box-header {
 		background-color: #0A58CA;
@@ -137,23 +155,4 @@
 .success {
 	color: rgb(26, 152, 26);
 	font-size: large;
-}
-
-@media screen and (max-width: 600px) {
-
-	.containerlogin {
-		display: block;
-	}
-
-	.main_conteiner {
-		flex-wrap: wrap;
-	}
-}
-
-@media screen and (max-width: 1000px) and (max-height: 600px) {
-
-	.main_conteiner {
-		flex-wrap: wrap;
-		justify-content: center;
-	}
 }

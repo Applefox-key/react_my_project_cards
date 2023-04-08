@@ -24,3 +24,20 @@ export const editCollectionHlp = async (
     await BaseAPI.editColParam(newParam, collection.id);
   }
 };
+
+export const getImportMenu = (cb) => {
+  return [
+    {
+      name: "Add from the file",
+      onClick: () => {
+        cb("file");
+      },
+    },
+    {
+      name: "Add from the list",
+      onClick: () => {
+        cb("list");
+      },
+    },
+  ];
+};

@@ -2,16 +2,14 @@ import React from "react";
 import TGB from "../UI/tgb/TGB";
 import "../../styles/collectMenu.scss";
 import { Button, ButtonGroup } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/collectMenu.scss";
-import MyDropDownBtn from "../UI/MyDropDownBtn/MyDropDowmBtn";
 import BackBtn from "../UI/BackBtn/BackBtn";
 import { GO_TO } from "../../router/routes";
-import { gameMenuArrPub } from "../../utils/games";
+
+import PlayGamesDropDown from "../UI/PlayGamesDropDown/PlayGamesDropDown";
 
 const MenuPublicCollection = ({ collection, addToMyCollection, setMode }) => {
-  const pageParam = useParams();
-  const gameMenu = gameMenuArrPub(pageParam);
   const router = useNavigate();
   return (
     <div className="string_menu d-flex justify-content-between mt-2">
@@ -29,16 +27,11 @@ const MenuPublicCollection = ({ collection, addToMyCollection, setMode }) => {
       </div>
       <div className="box_menu">
         <ButtonGroup
-          aria-label="delete and renaming buttons"
+          aria-label="action buttons"
           size="lg"
           className="d-flex w-100 flex-column menuBtn">
-          <MyDropDownBtn
-            as={ButtonGroup}
-            arr={gameMenu}
-            title="PLAY GAMES"
-            variant="light"
-            className="menuBtn"
-          />
+          <PlayGamesDropDown isPublic={true} />
+
           <Button
             variant="light"
             className="menuBtn"

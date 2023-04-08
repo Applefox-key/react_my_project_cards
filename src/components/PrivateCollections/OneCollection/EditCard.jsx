@@ -83,12 +83,13 @@ const EditCard = () => {
         </div>
         <Button
           size="lg"
+          variant="light"
           onClick={() =>
             router(`${GO_TO.myCollect}/${pageParam.id}/${pageParam.name}`)
           }>
           BACK
         </Button>{" "}
-        <Button size="lg" onClick={save}>
+        <Button size="lg" onClick={save} variant="light">
           SAVE CHANGES
         </Button>
       </div>

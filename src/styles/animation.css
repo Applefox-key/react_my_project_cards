@@ -304,3 +304,28 @@
       left: 150%;
   }
 }
+
+.attension-wrap{
+  position: relative;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+}
+.attension{
+  z-index: 800;
+  /* animation: shakeX infinite; */
+  /* background-color: red; */
+  position: absolute;
+  font-size: 1vw;
+  top:10px;
+  /* height: 1rem;
+  width:1rem; */
+  /* border: 1px solid red; */
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
+  animation-iteration-count: infinite; /* don't forget to set a duration! */
+  
+  /* position:absolute; */
+  /* animation: animate__shakeX  0.5s infinite; */
+  
+  /* color:red; */
+}
