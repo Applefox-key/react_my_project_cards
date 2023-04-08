@@ -10,18 +10,20 @@ import Form from "react-bootstrap/Form";
 import ProfileImg from "../../../img/profile.ico";
 import cl from "./users.module.scss";
 
-const AvatarGalery = ({ visible, setVisible, fileChange, initialImg }) => {
+const AvatarGalery = ({ setVisible, fileChange, initialImg }) => {
   const [avatarUrlList, setAvatarUrlList] = useState([]);
   const [choice, setChoice] = useState({ img: initialImg });
   const [getAvatarList, isLoading] = useQuery(async () => {
     setAvatarUrlList(await BaseAPI.getAvatarUrlList());
   });
-
   useEffect(() => {
     getAvatarList();
+    setChoice({ img: initialImg });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  useEffect(() => {
+    setChoice({ img: initialImg });
+  }, [initialImg]);
   const defaultImg = () => {
     setChoice({ img: ProfileImg });
   };
@@ -44,7 +46,7 @@ const AvatarGalery = ({ visible, setVisible, fileChange, initialImg }) => {
     <MyModal
       title={"Import from file"}
       subtitle={"Сlick on the picture or choose your own"}
-      showmodal={visible}
+      showmodal={true}
       setshowmodal={setVisible}>
       <div className="d-flex mt-3">
         <Form.Control type="file" onChange={fromFile} size="lg" />

@@ -13,14 +13,15 @@ const ProfileImg = (props) => {
   return (
     // <div className="d-flex justify-content-center mt-2 px-5">
     <div className={cl.avatarDiv}>
-      <AvatarGalery
-        visible={props.visible}
-        setVisible={props.setVisible}
-        fileChange={changeAvatar}
-        initialImg={
-          props.userDataForm.img ? props.userDataForm.img : defaultAvatar
-        }
-      />
+      {props.visible && (
+        <AvatarGalery
+          setVisible={props.setVisible}
+          fileChange={changeAvatar}
+          initialImg={
+            props.userDataForm.img ? props.userDataForm.img : defaultAvatar
+          }
+        />
+      )}
       <Image
         rounded
         src={generateAvatarLink(props.userDataForm.img)}
