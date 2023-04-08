@@ -26,7 +26,7 @@ const ProfileText = ({ userDataForm, setUserDataForm, passRequired }) => {
         value={userDataForm.email}
         onChange={(e) =>
           setUserDataForm({ ...userDataForm, email: e.target.value })
-        }></MyInputGroup>
+        }></MyInputGroup>{" "}
       <MyInputGroup
         classgroup={cl.inputGr}
         required={passRequired}
@@ -37,7 +37,7 @@ const ProfileText = ({ userDataForm, setUserDataForm, passRequired }) => {
         value={userDataForm.password}
         onChange={(e) =>
           setUserDataForm({ ...userDataForm, password: e.target.value })
-        }></MyInputGroup>
+        }></MyInputGroup>{" "}
     </div>
   );
 };

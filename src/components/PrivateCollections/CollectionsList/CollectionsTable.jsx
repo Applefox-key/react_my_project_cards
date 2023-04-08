@@ -98,6 +98,7 @@ const CollectionsTable = ({
       ) : (
         <div className="m-auto" style={{ width: "85%" }}>
           <MyTable
+            classtbl="lavanderBack"
             onRowClick={editOn}
             edit={editMode}
             dataArray={Array.from(filtredList, (el) => el.collection)}

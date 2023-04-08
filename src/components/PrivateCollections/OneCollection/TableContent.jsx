@@ -80,6 +80,7 @@ const TableContent = ({ content, setContent, pageParam }) => {
     <div className="m-auto mt-2 width90">
       {content && (
         <MyTable
+          classtbl="tblContent lavanderBack"
           onRowClick={editOn}
           edit={editMode}
           dataArray={content}

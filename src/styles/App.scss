@@ -1,6 +1,7 @@
 // $contrast-text: blue;
 :root {
-  --contrast-text: blue;
+  --contrast-text: black;
+  --wrap-opacity: 1;
 }
 
 .contrastColor {
@@ -91,6 +92,10 @@ input {
   background-color: lavender;
 }
 
+.border_r15 {
+  border-radius: 15px;
+}
+
 .color_container {
   z-index: -1;
   position: absolute;
@@ -120,4 +125,9 @@ input {
 .imgTbl {
   width: 1rem;
   height: 1rem;
+}
+
+.tblContent {
+  margin-left: 7rem;
+  width: 94%;
 }

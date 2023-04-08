@@ -67,6 +67,7 @@ const PublicOneCollection = () => {
                 />
               ) : (
                 <MyTable
+                  classtbl="tblContent lavanderBack"
                   onRowClick={openCard}
                   dataArray={content}
                   namesArray={["question", "answer", "note"]}

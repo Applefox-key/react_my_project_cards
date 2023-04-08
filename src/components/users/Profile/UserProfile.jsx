@@ -1,37 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
-// import imgProfile from "../../../img/profile.ico";
 import Form from "react-bootstrap/Form";
 import ProfileImg from "./ProfileImg";
 import ProfileText from "./ProfileText";
 import cl from "./users.module.scss";
-import {
-  defaultAvatar,
-  defaultSettings,
-} from "../../../constants/defaultSettings";
-import { applyUserSettings } from "../../../utils/userSettings";
+import { DEFAUL_USER_DATA } from "../../../constants/defaultSettings";
+import { updateStyles } from "../../../utils/userSettings";
 
 const UserProfile = ({ userData, onClick, btnName }) => {
   const [visible, setVisible] = useState(false);
-  const [userDataForm, setUserDataForm] = useState({
-    name: "",
-    email: "",
-    img: defaultAvatar,
-    password: "",
-    settings: defaultSettings,
-  });
-
-  const setColor = (e) => {
-    const newSet =
-      typeof settings === "object"
-        ? {
-            ...userDataForm.settings,
-            colorBack: e.target.value,
-          }
-        : { colorBack: e.target.value };
-    setUserDataForm({ ...userDataForm, settings: newSet });
-    applyUserSettings(newSet);
+  const [userDataForm, setUserDataForm] = useState(DEFAUL_USER_DATA);
+  const updateSettings = (e) => {
+    updateStyles(e, userDataForm, setUserDataForm);
   };
+
   useEffect(() => {
     if (!userData) return;
     setUserDataForm({ ...userData });
@@ -52,14 +34,32 @@ const UserProfile = ({ userData, onClick, btnName }) => {
             visible={visible}
             setVisible={setVisible}
           />{" "}
-          <div className={cl.backColorBox}>
-            <input
-              type="color"
-              id="colorInput"
-              onChange={setColor}
-              value={userDataForm.settings.colorBack}
-              title="Choose your background color"
-            />{" "}
+          <div className={cl.wrap_opacity}>
+            <div className={cl.backColorBox}>
+              <input
+                type="color"
+                id="colorBack"
+                onChange={updateSettings}
+                value={userDataForm.settings.colorBack}
+                title="Choose your background color"
+              />{" "}
+              <button
+                onClick={updateSettings}
+                id="toDefault"
+                title="turn back to the default style">
+                ↻
+              </button>
+            </div>
+            <Form.Range
+              onChange={updateSettings}
+              title="Choose main wrap opacity"
+              id="wrapOpacity"
+              value={
+                userDataForm.settings.wrapOpacity
+                  ? userDataForm.settings.wrapOpacity
+                  : 100
+              }
+            />
           </div>
         </div>
         <div className={cl.textDiv}>

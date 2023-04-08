@@ -400,22 +400,12 @@
 .attension {
   background-color: transparent;
   z-index: 800;
-  /* animation: shakeX infinite; */
-  /* background-color: red; */
   position: absolute;
   font-size: 1vw;
   top: 10px;
-  /* height: 1rem;
-  width:1rem; */
-  /* border: 1px solid red; */
   animation: bounce;
-  /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
-  /* don't forget to set a duration! */
 
-  /* position:absolute; */
-  /* animation: animate__shakeX  0.5s infinite; */
 
-  /* color:red; */
 }

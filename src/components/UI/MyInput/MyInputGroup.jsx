@@ -4,7 +4,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 const MyInputGroup = ({ children, label, classgroup, ...props }) => {
   return (
-    <InputGroup className={classgroup} style={{ marginBottom: "1rem" }}>
+    <InputGroup className={classgroup ? classgroup : "mb-3"}>
       {label ? <InputGroup.Text> {label}</InputGroup.Text> : <></>}
       <Form.Control {...props} aria-label={props.placeholder} />
 

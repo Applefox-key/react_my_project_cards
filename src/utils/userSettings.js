@@ -1,3 +1,8 @@
+import {
+  defaultSettings,
+  defaultStyleValue,
+} from "../constants/defaultSettings";
+
 const getContrastColor = (color) => {
   // to RGB
   const red = parseInt(color.substring(1, 3), 16);
@@ -12,11 +17,39 @@ const getContrastColor = (color) => {
     return "#000";
   }
 };
-export const applyUserSettings = (set) => {
-  if (set.hasOwnProperty("colorBack"))
+export const applyUserSettings = (set, prop = "") => {
+  if (set.hasOwnProperty("colorBack") && (prop === "colorBack" || !prop)) {
     document.body.style.backgroundColor = set.colorBack;
-  document.documentElement.style.setProperty(
-    "--contrast-text",
-    getContrastColor(set.colorBack)
-  );
+    document.documentElement.style.setProperty(
+      "--contrast-text",
+      getContrastColor(set.colorBack)
+    );
+  }
+  if (set.hasOwnProperty("wrapOpacity") && (prop === "wrapOpacity" || !prop)) {
+    document.documentElement.style.setProperty(
+      "--wrap-opacity",
+      set.wrapOpacity / 100
+    );
+  }
+};
+
+export const updateStyles = (e, userData, setUserData) => {
+  let nameS = e.target.id;
+  if (nameS === "toDefault") {
+    if (!window.confirm("turn back to the default settings?")) return;
+    setUserData({ ...userData, settings: defaultSettings });
+    applyUserSettings(defaultStyleValue);
+    return;
+  }
+  let val = e.target.value;
+  const newSet =
+    typeof userData.settings === "object"
+      ? {
+          ...userData.settings,
+          [nameS]: val,
+        }
+      : { [nameS]: val };
+  // debugger;
+  setUserData({ ...userData, settings: newSet });
+  applyUserSettings(newSet, nameS);
 };

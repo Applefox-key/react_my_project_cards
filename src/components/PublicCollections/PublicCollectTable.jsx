@@ -18,6 +18,7 @@ const PublicCollectTable = ({ filtredList }) => {
       ) : (
         <div className=" w-75 m-auto">
           <MyTable
+            classtbl="lavanderBack"
             onRowClick={viewContent}
             dataArray={Array.from(filtredList, (el) => el.collection)}
             namesArray={["category", "name", "note"]}

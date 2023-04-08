@@ -6,7 +6,14 @@
     width: 100vw;
   }
 
-
+  .wrap_opacity {
+    background-color: ghostwhite;
+    background-color: rgb(248, 248, 255, var(--wrap-opacity));
+    border-radius: 15px;
+    padding: 5px;
+    text-align: center;
+    width: 90%;
+  }
 
   .avatarDiv {
     width: 30%;
@@ -33,13 +40,33 @@
   .backColorBox {
     width: 90%;
     cursor: pointer;
+    margin: auto;
+    display: flex;
+
+    button {
+      width: 3rem;
+      font-size: 10px;
+      max-height: 3rem;
+      line-height: 0;
+      text-align: center;
+      font-size: 21px;
+      border-radius: 5px;
+      border-color: transparent;
+      background-color: lightsteelblue;
+      margin-left: 5px;
+
+      &:hover {
+        background-color: #00008B;
+        color: white;
+      }
+    }
 
     input {
       cursor: pointer;
       border-radius: 2px;
       width: 90%;
       margin: auto;
-      background: var(--contrast-text);
+      // background: var(--contrast-text);
     }
   }
 
@@ -51,6 +78,11 @@
       height: 4rem;
       width: 100%;
       border: none;
+      margin-bottom: 2rem;
+
+      @media screen and (max-width: 600px) {
+        margin-bottom: 0;
+      }
 
       span {
         font-size: 13px;

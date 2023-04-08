@@ -109,6 +109,7 @@
 
         .oneCollect {
             transform: translateY(-5px);
+
             background-color: lavender;
             box-shadow:
                 //  rgb(144, 144, 228) 0px 0px 0px 2px inset,
@@ -183,7 +184,7 @@
             font-weight: 800;
             background-color: lightsteelblue;
             position: relative;
-
+            border-radius: 5px;
 
         }
 
@@ -215,7 +216,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-
+            border-radius: 5px;
 
         }
     }
