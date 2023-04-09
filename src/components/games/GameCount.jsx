@@ -10,7 +10,7 @@ const GameCount = ({ count, all, left = "" }) => {
         <h1>
           <GameCountBage value={all} bg="warning" text="dark" />
         </h1>
-        <h4>{left}</h4>
+        <h4 className="contrastColor">{left}</h4>
       </div>
       <GameCountBage value={count[1]} lable="👎" bg="danger" />
     </div>

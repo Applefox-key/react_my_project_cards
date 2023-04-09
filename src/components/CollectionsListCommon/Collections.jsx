@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
 import "../../styles/oneCollection.scss";
 import UsersCollections from "../PrivateCollections/CollectionsList/UsersCollections";
@@ -16,7 +16,6 @@ const Collections = () => {
   const [filter, setFilter] = useState("");
   const [isNew, setIsNew] = useState(false);
   const [onlyShared, setOnlyShared] = useState(false);
-  const params = useParams();
   const [viewmode, setViewmode] = useState(
     window.location.hash === "#1" ? "1" : "0"
   );

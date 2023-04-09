@@ -16,7 +16,7 @@ const TestOptions = ({ items, onClick, active, right }) => {
   };
 
   return (
-    <div className="flex-center flex-wrap">
+    <div className={cl["test-options"]}>
       {items.map((el) => (
         <button
           key={el.id}

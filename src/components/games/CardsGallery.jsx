@@ -39,7 +39,9 @@ const CardsGallery = () => {
       {!isLoading && items ? (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
           <div>
-            <p>{items && itemNum + 1 + "/" + items.length}</p>
+            <p className="contrastColor">
+              {items && itemNum + 1 + "/" + items.length}
+            </p>
 
             <div className="mt-5 d-flex justify-content-center align-items-end">
               <button

@@ -44,8 +44,7 @@ const WriteCardBody = ({ items }) => {
           in={true}
           timeout={500}
           classNames="result">
-          <div className="mt-1" style={{ textAlign: "-webkit-center" }}>
-            <div>{items && num + 1 + "/" + items.length}</div>
+          <div className={cl["game-field"]}>
             <div className={cl.cardSize}>
               <OneCardG
                 anim={anim}
@@ -54,12 +53,17 @@ const WriteCardBody = ({ items }) => {
                 clickable={false}
               />{" "}
             </div>
-            <div className="d-flex align-items-center flex-wrap justify-content-center w-75 m-auto">
-              <GameCount
-                count={count}
-                all={items.length - count[0] - count[1]}
-                left={countLeft()}
-              />
+            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto">
+              <div className="d-flex flex-column">
+                <GameCount
+                  count={count}
+                  all={items.length - count[0] - count[1]}
+                  left={countLeft()}
+                />{" "}
+                <Button onClick={check} size="lg" disabled={!answer}>
+                  {flip ? "NEXT" : "CHECK AN ANSWER"}
+                </Button>
+              </div>
               <textarea
                 type={"text"}
                 value={answer}
@@ -71,9 +75,6 @@ const WriteCardBody = ({ items }) => {
                   setAnswer(e.target.value);
                 }}
               />{" "}
-              <Button onClick={check} size="lg" disabled={!answer}>
-                {flip ? "NEXT" : "CHECK AN ANSWER"}
-              </Button>{" "}
             </div>
           </div>
         </CSSTransition>

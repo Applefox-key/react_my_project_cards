@@ -25,6 +25,9 @@
 .oneCollect-wrap {
     position: relative;
 
+    @media screen and (max-width: 600px) {
+        margin-bottom: 10px;
+    }
 
     .cat_tag {
         position: absolute;

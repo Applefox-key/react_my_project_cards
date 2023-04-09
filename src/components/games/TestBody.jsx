@@ -4,6 +4,7 @@ import MyCardStatic from "../UI/CARDS/MyCardStatic";
 import Result from "../UI/CARDS/Result";
 import GameCount from "./GameCount";
 import TestOptions from "./TestOptions";
+import cl from "./Games.module.scss";
 
 const TestBody = ({ items }) => {
   const [num, setNum] = useState(0);
@@ -39,7 +40,7 @@ const TestBody = ({ items }) => {
             timeout={500}
             key={num}
             classNames="cardChange">
-            <div style={{ textAlign: "-webkit-center" }}>
+            <div className={cl["game-field"]}>
               <MyCardStatic item={items[num].item} />
               <TestOptions
                 items={items[num].answ}

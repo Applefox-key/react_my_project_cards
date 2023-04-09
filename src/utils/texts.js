@@ -43,3 +43,25 @@ export const onlyLetters = (text) => {
   res = res.replace(/\s/g, "");
   return res.toLowerCase();
 };
+//font for the cards
+export const fontS = ([tx, ti]) => {
+  const tl = tx.length;
+
+  if (ti) {
+    if (tl < 6) return { fontSize: "7vw" };
+    if (tl <= 60) return { fontSize: "2.7vw" };
+    if (tl <= 130) return { fontSize: "1.7vw" };
+    if (tl <= 160) return { fontSize: "1.5vw" };
+    if (tl <= 180) return { fontSize: "1.8vw" };
+    if (tl <= 350) return { fontSize: "1.1vw" };
+    return { fontSize: "0.8vw" };
+  } else {
+    if (tl < 12) return { fontSize: "13vw" };
+    if (tl <= 60) return { fontSize: "4.7vw" };
+    if (tl <= 130) return { fontSize: "3.4vw" };
+    if (tl <= 160) return { fontSize: "3vw" };
+    if (tl <= 180) return { fontSize: "2.7vw" };
+    if (tl <= 350) return { fontSize: "2.2vw" };
+    return { fontSize: "1.7vw" };
+  }
+};
