@@ -31,30 +31,23 @@
 
     .cat_tag {
         position: absolute;
+        top: 60px;
+        left: -270px;
         opacity: 0.9;
         max-width: 100%;
         min-width: 50%;
         width: fit-content;
-        // width: 400px;
         height: 3rem;
         padding-top: 5px;
-
-
-        top: 60px;
-        color: azure;
-
-        left: -270px;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-        text-align: start;
         padding-left: 15px;
         padding-right: 15px;
+        background: #4d4d63;
+        color: azure;
+        text-align: start;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
-        background: #4d4d63;
         transition: all 0.4s;
-        //    transform: rotate(-45deg);
-        // left: -370px;
-        // top: 260px;
     }
 
     .share {
@@ -73,6 +66,59 @@
     .shareSymb {
         @extend .share;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    .playMenubtn {
+        display: flex;
+        position: absolute;
+        left: 280px;
+        top: 97px;
+        opacity: 0.9;
+        height: fit-content;
+        background: #4d4d63;
+        color: azure;
+        text-align: start;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        padding: 0 20px;
+        padding-left: 0;
+        transition: all 0.4s;
+
+        p {
+            text-orientation: upright;
+            writing-mode: tb;
+            font-size: 8px;
+            letter-spacing: -4px;
+            margin-right: 8px;
+            padding: 0;
+            margin: 0;
+            border-right: 1px solid white;
+            background: crimson;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        .play-menu {
+            margin-left: 10px;
+            width: 15rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .oneP {
+                font-size: 20px;
+                margin: 1px;
+                text-align: center;
+                font-weight: 800;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    transform: translateY(-5px);
+                }
+            }
+        }
     }
 
     .sharebtn {
@@ -114,6 +160,13 @@
             opacity: 0.8;
             // left: -127px;
             // top: 111px;
+        }
+
+        .playMenubtn {
+            left: 75px;
+            top: 97px;
+            // opacity: 1;
+
         }
 
         .oneCollect {

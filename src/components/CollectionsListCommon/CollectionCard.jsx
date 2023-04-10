@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
 import { getFirstEl } from "../../utils/arraysFunc";
 import { HiShare, HiOutlineShare } from "react-icons/hi";
+import PlayMenu from "../UI/PlayGamesDropDown/PlayMenu";
 const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
   const router = useNavigate();
   const generateContent = (el) => {
@@ -44,6 +45,7 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
         {collection.collection.category && (
           <div className="cat_tag">{collection.collection.category}</div>
         )}
+        <PlayMenu collection={collection.collection} />
       </div>
 
       {listFn && (
@@ -63,7 +65,7 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
               listFn.shareColl(collection.collection);
             }}>
             {collection.collection.isPublic ? <HiShare /> : <HiOutlineShare />}
-          </div>
+          </div>{" "}
         </>
       )}
     </div>
