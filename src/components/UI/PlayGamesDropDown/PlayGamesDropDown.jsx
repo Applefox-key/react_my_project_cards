@@ -27,7 +27,7 @@ const PlayGamesDropDown = ({ isPublic, dis, ...props }) => {
               style={{ fontSize: "1.5rem" }}
               key={i}
               onClick={item.onClick ? item.onClick : () => router(item.href)}>
-              {item.name}
+              {item.symb} {item.name}
             </Dropdown.Item>
           ) : (
             <Dropdown.Divider key={i} />

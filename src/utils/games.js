@@ -20,14 +20,15 @@ export const pairAnswerCheck = (id1, id2, itemsV) => {
 export const gameMenuArr = (pageParam, isPublic = false) => [
   {
     name: "Cards: question - answer",
-    symb: "?!",
+    symb: "❓",
     href: `/play_cards/${isPublic ? "pub" : "my"}/0/${pageParam.id}/${
       pageParam.name
     }`,
   },
   {
     name: " Cards: answer - question",
-    symb: "⁉️",
+    symb: "❗",
+    // symb: "⸘",
     href: `/play_cards/${isPublic ? "pub" : "my"}/1/${pageParam.id}/${
       pageParam.name
     }`,
