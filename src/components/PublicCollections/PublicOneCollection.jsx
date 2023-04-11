@@ -35,8 +35,8 @@ const PublicOneCollection = () => {
   const addToMyCollection = async () => {
     if (!content) return;
     if (!collection) return;
-    await BaseAPI.copySharedCollection(collection);
-    setPopup.success("the collection has been added to your list");
+    let res = await BaseAPI.copySharedCollection(collection);
+    setPopup.success(res.message);
   };
   const openCard = (item) => {
     router(`/collections/pub/${collection.id}/${collection.name}/${item.id}`);

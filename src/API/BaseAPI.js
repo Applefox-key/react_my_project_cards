@@ -131,7 +131,6 @@ const BaseAPI = {
       (!content.question && !content.imgQ)
     )
       throw new Error("please specify the answer and the question");
-    debugger;
     let formData = contentRequestData(content);
 
     // return await this.serverReq("patch", "/content", true, "", "", formData);
