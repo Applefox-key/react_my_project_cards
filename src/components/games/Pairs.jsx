@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useGame } from "../../hooks/useGame";
-import MySpinner from "../UI/MySpinner";
 import cl from "./Games.module.scss";
 import PairPart from "./PairPart";
 import { shuffle } from "../../utils/arraysFunc";
@@ -10,6 +9,7 @@ import Result from "../UI/CARDS/Result";
 import BackBtn from "../UI/BackBtn/BackBtn";
 import { CSSTransition } from "react-transition-group";
 import { pairAnswerCheck } from "../../utils/games";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const Pairs = () => {
   const [items, setItems] = useState();
@@ -63,7 +63,7 @@ const Pairs = () => {
     <>
       <BackBtn size="lg" />
       {isLoading || !items ? (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       ) : (
         <CSSTransition
           in={true}

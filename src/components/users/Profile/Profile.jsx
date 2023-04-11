@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import UserProfile from "./UserProfile";
-import MySpinner from "../../UI/MySpinner";
 import { useQuery } from "../../../hooks/useQuery";
 import { usePopup } from "../../../hooks/usePopup";
 import { useAuth } from "../../../hooks/useAuth";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -38,7 +38,7 @@ const Profile = () => {
   return (
     <div className="mt-4">
       {isLoading || !userData ? (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       ) : (
         <UserProfile
           userData={userData}

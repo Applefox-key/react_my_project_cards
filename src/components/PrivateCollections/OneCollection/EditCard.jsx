@@ -3,12 +3,11 @@ import "../../../styles/oneCollection.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
 import BaseAPI from "../../../API/BaseAPI";
-import MySpinner from "../../UI/MySpinner";
-
 import Button from "react-bootstrap/Button";
 import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { GO_TO } from "../../../router/routes";
 import { usePopup } from "../../../hooks/usePopup";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 
 const EditCard = () => {
   const [item, setItem] = useState();
@@ -155,7 +154,7 @@ const EditCard = () => {
           </div>
         </>
       ) : (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       )}
     </form>
   );

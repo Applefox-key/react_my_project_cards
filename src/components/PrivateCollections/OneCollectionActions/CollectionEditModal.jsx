@@ -39,8 +39,18 @@ const CollectionEditModal = ({
 
   const saveChanges = async () => {
     try {
-      editCollectionHlp(newName, newNote, category, content, isNew, collection);
+      const res = await editCollectionHlp(
+        newName,
+        newNote,
+        category,
+        content,
+        isNew,
+        collection
+      );
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
+
+      if (res) route(`/collections/my/${res}/${newName.trim()}`);
+
       setIsEdit(false);
     } catch (error) {
       setPopup.error(error.message);

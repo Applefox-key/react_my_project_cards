@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import MySpinner from "../UI/MySpinner";
 
 import { CSSTransition } from "react-transition-group";
 
 import cl from "../UI/CARDS/MyCard.module.scss";
 import AnimatedArrowBtn from "../UI/AnimatedArrowBtn/AnimatedArrowBtn";
 import OneCardG from "../games/OneCardG";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 const AboutGallery = () => {
   const arr = [
     {
@@ -89,7 +89,7 @@ const AboutGallery = () => {
           </div>
         </CSSTransition>
       ) : (
-        <MySpinner />
+        <SpinnerLg />
       )}
     </div>
   );

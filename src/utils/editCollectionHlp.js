@@ -8,21 +8,23 @@ export const editCollectionHlp = async (
   isNew,
   collection
 ) => {
+  let res = "";
   let newParam = {};
   if (name) newParam.name = name.trim();
   if (note) newParam.note = note;
   if (isNew) {
     if (categoryel.id) newParam.categoryid = categoryel.id;
     //new from file with content
-    if (content) BaseAPI.CreateCollectionWithContent(newParam, content);
+    if (content) res = BaseAPI.CreateCollectionWithContent(newParam, content);
     //new without content
-    else await BaseAPI.createCollection(newParam);
+    else res = await BaseAPI.createCollection(newParam);
   } else {
     //edit collection's params
     if (categoryel.id !== collection.categoryid)
       newParam.categoryid = categoryel.id;
     await BaseAPI.editColParam(newParam, collection.id);
   }
+  if (!res.error && res) return res.id.id;
 };
 
 export const getImportMenu = (cb) => {

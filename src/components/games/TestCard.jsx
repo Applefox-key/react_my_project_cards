@@ -8,8 +8,8 @@ import { usePopup } from "../../hooks/usePopup";
 import { shuffle } from "../../utils/arraysFunc";
 import BackBtn from "../UI/BackBtn/BackBtn";
 
-import MySpinner from "../UI/MySpinner";
 import TestBody from "./TestBody";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const TestCard = () => {
   const setPopup = usePopup();
@@ -41,7 +41,7 @@ const TestCard = () => {
       <BackBtn variant="dark" size="lg" />
 
       {isLoading || !items ? (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
           <TestBody items={items} />

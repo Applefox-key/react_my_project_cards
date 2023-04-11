@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useGame } from "../../hooks/useGame";
-import MySpinner from "../UI/MySpinner";
 import { shuffle } from "../../utils/arraysFunc";
 import BackBtn from "../UI/BackBtn/BackBtn";
 import TimeCardBody from "./TimeCardBody";
 import { CSSTransition } from "react-transition-group";
 import { usePopup } from "../../hooks/usePopup";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const TimeCard = () => {
   const [items, setItems] = useState();
@@ -26,7 +26,7 @@ const TimeCard = () => {
           <TimeCardBody items={items} />
         </CSSTransition>
       ) : (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       )}
     </div>
   );

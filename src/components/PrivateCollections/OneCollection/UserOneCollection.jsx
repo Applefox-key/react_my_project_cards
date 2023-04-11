@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
-import MySpinner from "../../UI/MySpinner";
 import BaseAPI from "../../../API/BaseAPI";
 import TableContent from "./TableContent";
 import { usePopup } from "../../../hooks/usePopup";
 import CardContent from "./CardContent";
 import MenuOneCollection from "./MenuOneCollection";
 import "../../../styles/oneCollection.scss";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 const UserOneCollection = () => {
   const [content, setContent] = useState();
   const [collect, setCollect] = useState();
@@ -84,7 +84,7 @@ const UserOneCollection = () => {
             />
           )
         ) : (
-          <MySpinner />
+          <SpinnerLg className="span_wrap" />
         )}
       </div>
     </div>

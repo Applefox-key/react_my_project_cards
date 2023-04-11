@@ -4,7 +4,6 @@ import MyModal from "../UI/MyModal";
 import CategoriesManager from "../CategorySelection/CategoriesManager";
 import cl from "./CategorySelection.module.scss";
 import "../../styles/collectMenu.scss";
-import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineControl } from "react-icons/ai";
 const CategoriesListHeader = ({ selected, list, getList, isPublic, isOne }) => {
   const [visible, setVisible] = useState(false);

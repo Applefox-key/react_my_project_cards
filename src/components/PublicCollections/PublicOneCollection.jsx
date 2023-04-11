@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
 import MyTable from "../UI/table/MyTable";
-import MySpinner from "../UI/MySpinner";
 import BaseAPI from "../../API/BaseAPI";
 import { usePopup } from "../../hooks/usePopup";
 import CardContent from "../PrivateCollections/OneCollection/CardContent";
 import MenuPublicCollection from "./MenuPublicCollection";
 import "../../styles/oneCollection.scss";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
@@ -76,7 +76,7 @@ const PublicOneCollection = () => {
           </div>
         </div>
       ) : (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       )}
     </>
   );

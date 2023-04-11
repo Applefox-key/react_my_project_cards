@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import BaseAPI from "../../API/BaseAPI";
 import { useCollectSelection } from "../../hooks/useCollectSelection";
 import { useQuery } from "../../hooks/useQuery";
-import MySpinner from "../UI/MySpinner";
 import PublicCollectTable from "./PublicCollectTable";
 import { GO_TO } from "../../router/routes";
 import CollectionCardsList from "../CollectionsListCommon/CollectionCardsList";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const PublicCollectionsList = ({ selectedCategory, filter, viewmode }) => {
   const [list, setlist] = useState([]);
@@ -24,7 +24,7 @@ const PublicCollectionsList = ({ selectedCategory, filter, viewmode }) => {
   return (
     <>
       {isLoading ? (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       ) : viewmode === 1 ? (
         <PublicCollectTable filtredList={filtredList} />
       ) : (

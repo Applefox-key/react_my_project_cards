@@ -1,0 +1,42 @@
+.scanner {
+    color: var(--contrast-text);
+    font-size: 2rem;
+
+    span {
+        color: transparent;
+        font-size: 3.4rem;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "....";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            // height: 100%;
+            border-right: 4px solid #ffffff;
+            overflow: hidden;
+            color: #ffffff;
+
+            color: var(--contrast-text);
+            animation: load91371 2s linear infinite;
+            border-right-color: transparent;
+
+        }
+    }
+
+    @keyframes load91371 {
+
+        0%,
+        10%,
+        100% {
+            width: 0;
+        }
+
+        60%,
+        80% {
+            width: 100%;
+        }
+    }
+}

@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
 import { useQuery } from "../../../hooks/useQuery";
-import MySpinner from "../../UI/MySpinner";
-
 import CollectionsTable from "./CollectionsTable";
 import CollectionCardsList from "../../CollectionsListCommon/CollectionCardsList";
 import { GO_TO } from "../../../router/routes";
 import { share } from "../../../utils/contentRequests";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 
 const UsersCollections = ({
   viewmode,
@@ -72,7 +71,7 @@ const UsersCollections = ({
   return (
     <>
       {isLoading ? (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       ) : window.location.hash !== "#1" ? (
         <CollectionCardsList
           filtredList={collectionList}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useGame } from "../../hooks/useGame";
-import MySpinner from "../UI/MySpinner";
 import OneCardG from "./OneCardG";
 import { shuffle } from "../../utils/arraysFunc";
 import BackBtn from "../UI/BackBtn/BackBtn";
 import { CSSTransition } from "react-transition-group";
 import { usePopup } from "../../hooks/usePopup";
 import cl from "../UI/CARDS/MyCard.module.scss";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 const CardsGallery = () => {
   const [items, setItems] = useState();
   const [direction, setDirection] = useState(true);
@@ -51,10 +51,7 @@ const CardsGallery = () => {
                 onClick={prew}>
                 <span className={cl.collect_button_text}>❰</span>
               </button>
-              <div
-                className="d-flex   justify-content-end"
-                // style={{ width: "100%" }}
-              >
+              <div className="d-flex   justify-content-end">
                 <OneCardG
                   anim={anim}
                   direction={direction}
@@ -72,7 +69,7 @@ const CardsGallery = () => {
           </div>
         </CSSTransition>
       ) : (
-        <MySpinner />
+        <SpinnerLg className="span_wrap" />
       )}
     </div>
   );
