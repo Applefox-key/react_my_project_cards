@@ -44,7 +44,8 @@ const MenuActionsPart = ({ colObj, setContent }) => {
       <ButtonGroup
         size="lg"
         aria-label="delete and renaming buttons"
-        className="d-flex w-100 flex-column ">
+        // className="d-flex w-100 flex-column ">
+        className="actionMenu">
         <PlayGamesDropDown
           isPublic={false}
           dis={colObj.content ? colObj.content.length === 0 : true}

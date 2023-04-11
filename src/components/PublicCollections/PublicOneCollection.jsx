@@ -30,7 +30,7 @@ const PublicOneCollection = () => {
   useEffect(() => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [PageParam]);
+  }, [PageParam.id, PageParam.name]);
 
   const addToMyCollection = async () => {
     if (!content) return;

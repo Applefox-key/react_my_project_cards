@@ -11,7 +11,8 @@ const MyDropDownBtn = ({ arr, title, variant, dis, size = "lg", ...props }) => {
       size={size}
       variant={variant}
       {...props}
-      title={title}>
+      title={title}
+      className="btnMenu">
       {arr.map((item, i) =>
         item.href || item.onClick ? (
           <Dropdown.Item

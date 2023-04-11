@@ -29,7 +29,8 @@ const MenuPublicCollection = ({ collection, addToMyCollection, setMode }) => {
         <ButtonGroup
           aria-label="action buttons"
           size="lg"
-          className="d-flex w-100 flex-column">
+          // className="d-flex w-100 flex-column"
+          className="actionMenu">
           <PlayGamesDropDown isPublic={true} />
 
           <Button

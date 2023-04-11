@@ -20,17 +20,17 @@ const PlayMenu = ({ collection }) => {
       }}>
       <p>PLAY</p>
       <div className="play-menu">
-        {gameMenu.map((item, i) =>
-          item.name === "Divider" ? (
-            <></>
-          ) : (
-            <div
-              title={item.name}
-              className="oneP"
-              onClick={item.onClick ? item.onClick : () => router(item.href)}>
-              {item.symb}
-            </div>
-          )
+        {gameMenu.map(
+          (item, i) =>
+            item.name !== "Divider" && (
+              <div
+                key={i}
+                title={item.name}
+                className="oneP"
+                onClick={item.onClick ? item.onClick : () => router(item.href)}>
+                {item.symb}
+              </div>
+            )
         )}
       </div>{" "}
     </div>

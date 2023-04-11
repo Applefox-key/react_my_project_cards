@@ -11,11 +11,21 @@
 .body {
   caret-color: transparent;
   background-color: lavenderblush;
+
+
 }
 
 .App {
   text-align: center;
   caret-color: transparent;
+
+  textarea {
+    caret-color: auto;
+  }
+
+  input {
+    caret-color: auto;
+  }
 }
 
 .main_page {

@@ -39,9 +39,6 @@ const TestCard = () => {
   return (
     <div>
       <BackBtn variant="dark" size="lg" />
-      {/* <Button variant="dark" size="lg" onClick={back}>
-        {"❰ Back"}
-      </Button> */}
 
       {isLoading || !items ? (
         <MySpinner />

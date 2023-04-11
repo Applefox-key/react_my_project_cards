@@ -34,11 +34,13 @@ const UserOneCollection = () => {
     } catch (error) {}
   };
   useEffect(() => {
+    console.log(pageParam);
+
     getCategories();
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageParam]);
+  }, [pageParam.id, pageParam.name]);
 
   return (
     <div className="wrap_box tableContainer">

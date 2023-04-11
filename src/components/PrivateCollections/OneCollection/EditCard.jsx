@@ -59,14 +59,14 @@ const EditCard = () => {
       else await BaseAPI.editContent(item);
       route(`/collections/my/${pageParam.id}/${pageParam.name}`);
     } catch (error) {
-      setPopup(error.message);
+      setPopup.error(error.message);
     }
   };
 
   useEffect(() => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageParam]);
+  }, [pageParam.id, pageParam.name, pageParam.item]);
 
   return (
     <form className="big_card_wrap">

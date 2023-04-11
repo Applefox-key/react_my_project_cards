@@ -10,8 +10,8 @@ export const usePopup = () => {
   const popupError = (message) => {
     setPopupSettings([true, message, "error"]);
   };
-  const popupAttantion = (message) => {
-    setPopupSettings([true, message, "attantion"]);
+  const popupAttention = (message) => {
+    setPopupSettings([true, message, "attention"]);
   };
-  return { success: popupSuccess, error: popupError, advice: popupAttantion };
+  return { success: popupSuccess, error: popupError, advice: popupAttention };
 };

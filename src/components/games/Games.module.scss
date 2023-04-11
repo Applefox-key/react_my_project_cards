@@ -6,7 +6,7 @@
   @media screen and (min-width: 600px) and (max-height: 600px) {
     display: flex;
     align-items: flex-start;
-    flex-direction: column-reverse;
+    // flex-direction: column-reverse;
   }
 
   @media screen and (min-height: 600px) and (max-width: 600px) {
@@ -23,7 +23,7 @@
 
     @media screen and (min-width: 600px) and (max-height: 600px) {
       text-align: center;
-      flex-direction: columwwwwn;
+      flex-direction: column;
     }
 
     @media screen and (min-height: 600px) and (max-width: 600px) {

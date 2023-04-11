@@ -1,0 +1,18 @@
+.back {
+  margin: auto;
+  width: 10rem;
+  height: 3rem;
+  color: aliceblue;
+  background-color: rgb(0, 0, 0);
+  /* z-index: 550; */
+  border-radius: 4px;
+  font-size: 1rem;
+
+  &::before {
+    content: "";
+    background-color: red;
+    width: 5rem;
+    position: relative;
+    left: -10rem;
+  }
+}

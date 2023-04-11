@@ -97,7 +97,7 @@ const CollectionEditModal = ({
             </div>{" "}
           </div>
           <div className="input_with_lable">
-            <label for="i_name" className="lable">
+            <label htmlFor="i_name" className="lable">
               title:
             </label>
             <input

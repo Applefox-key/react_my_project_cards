@@ -49,7 +49,6 @@ export const updateStyles = (e, userData, setUserData) => {
           [nameS]: val,
         }
       : { [nameS]: val };
-  // debugger;
   setUserData({ ...userData, settings: newSet });
   applyUserSettings(newSet, nameS);
 };
