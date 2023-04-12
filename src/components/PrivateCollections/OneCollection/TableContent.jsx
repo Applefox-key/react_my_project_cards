@@ -67,6 +67,7 @@ const TableContent = ({ content, setContent, pageParam }) => {
         return;
       } else {
         await BaseAPI.editContent(newV);
+
         route(`/collections/my/${pageParam.id}/${pageParam.name}`);
       }
       setEditMode(null);

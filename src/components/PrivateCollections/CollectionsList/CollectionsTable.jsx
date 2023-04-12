@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BaseAPI from "../../../API/BaseAPI";
-
 import { usePopup } from "../../../hooks/usePopup";
-
 import MyTable from "../../UI/table/MyTable";
 import { GO_TO } from "../../../router/routes";
 
@@ -16,7 +14,6 @@ const CollectionsTable = ({
 }) => {
   const [editMode, setEditMode] = useState(null);
   const setPopup = usePopup();
-
   const router = useNavigate();
 
   const editOn = (content) => {
@@ -79,12 +76,30 @@ const CollectionsTable = ({
       } else if (newV.id === "new") {
         rowsActons.add(newV);
         return;
+      } else {
+        let res = await BaseAPI.editColParam(
+          {
+            name: newV.name,
+            note: newV.note ? newV.note : "",
+          },
+          newV.id
+        );
+        let c = collectionList.map((el) =>
+          el.collection.id === newV.id
+            ? {
+                ...el,
+                collection: {
+                  ...el.collection,
+                  name: newV.name,
+                  note: newV.note ? newV.note : "",
+                },
+              }
+            : el
+        );
+        setCollectionList(c);
       }
-      setEditMode(null);
 
-      // await BaseAPI.editCategory(newV, newV.id);
-      // getCategories();
-      //   route(`/categories`);
+      setEditMode(null);
     },
     viewContent(collection) {
       router(`${GO_TO.myCollect}/${collection.id}/${collection.name}`);
