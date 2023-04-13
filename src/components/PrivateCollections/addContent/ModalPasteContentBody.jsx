@@ -6,6 +6,7 @@ const ModalPasteContentBody = ({
   dataStr,
   setDataStr,
   setDataArr,
+  tab,
 }) => {
   const [editMode, setEditMode] = useState(null);
 
@@ -34,14 +35,30 @@ const ModalPasteContentBody = ({
   return (
     <div className="h-100">
       {!dataArr ? (
-        <textarea
-          value={dataStr}
-          placeholder="question ; answer ; note"
-          onChange={(e) => {
-            setDataStr(e.target.value);
-          }}
-          className="w-100 h-100 fs-4"
-        />
+        <div className="flex-center flex-wrap">
+          <textarea
+            rows="10"
+            value={dataStr.one}
+            placeholder={
+              tab === "tab1" ? "question ; answer ; note" : "questions"
+            }
+            onChange={(e) => {
+              setDataStr({ ...dataStr, one: e.target.value });
+            }}
+            className={tab === "tab2" ? "w-40 h-100 fs-4" : "w-100 h-100 fs-4"}
+          />
+          {tab === "tab2" && (
+            <textarea
+              rows="10"
+              value={dataStr.two}
+              placeholder="answers"
+              onChange={(e) => {
+                setDataStr({ ...dataStr, two: e.target.value });
+              }}
+              className="w-40 h-100 fs-4"
+            />
+          )}
+        </div>
       ) : (
         <MyTable
           edit={editMode}

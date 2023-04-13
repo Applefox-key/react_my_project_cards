@@ -66,6 +66,14 @@ const MenuActionsPart = ({ colObj, setContent }) => {
         </Button>{" "}
         <Button
           variant="light"
+          className="menuBtn"
+          onClick={() =>
+            router(`${GO_TO.print}/my/${pageParam.id}/${pageParam.name}`)
+          }>
+          Print
+        </Button>{" "}
+        <Button
+          variant="light"
           onClick={() => setMod("share")}
           className="menuBtn">
           Download

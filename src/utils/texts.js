@@ -3,33 +3,62 @@ export const contentFromText = async (
   callbackForResult,
   setPopupAdvise,
   auto = false,
-  separator = ";"
+  separator = ";",
+  tab
 ) => {
-  if (!text) {
-    setPopupAdvise("please paste:  question ; answer ; note");
+  if (!text.one) {
+    setPopupAdvise(
+      `please paste:  ${
+        tab === "tab1" ? "question ; answer ; note" : "questions"
+      }`
+    );
+    return;
+  }
+  if (!text.two && tab === "tab2") {
+    setPopupAdvise(`please paste: answers`);
     return;
   }
 
   try {
-    const contArr = text.split(/\n/).filter((item) => item.trim());
+    const contArr = text.one.split(/\n/).filter((item) => item.trim());
     if (!contArr) {
       setPopupAdvise("failed to recognize content");
       return;
     }
-    const contentArr = contArr.map((row, i) => {
-      let arr = row
-        .replace("  ", " ")
-        .split(separator)
-        .filter((el) => el);
-      if (auto) {
-        //automatically determine the column name
-        arr.sort((a, b) => a.length - b.length); //q n a
-        if (arr.length === 2) arr.splice(1, 0, "");
-        return { id: i, question: arr[0], answer: arr[2], note: arr[1] };
-      } else {
-        return { id: i, question: arr[0], answer: arr[1], note: arr[2] };
-      }
-    });
+    const contArr2 = text.two.split(/\n/).filter((item) => item.trim());
+    if (!contArr2 && tab === "tab2") {
+      setPopupAdvise("failed to recognize content");
+      return;
+    }
+    if (tab === "tab2" && contArr2.length !== contArr.length) {
+      setPopupAdvise("the quantity of questions does not match to the answers");
+      return;
+    }
+
+    let contentArr =
+      tab === "tab1"
+        ? contArr.map((row, i) => {
+            let arr = row
+              .replace("  ", " ")
+              .split(separator)
+              .filter((el) => el);
+            if (auto) {
+              //automatically determine the column name
+              arr.sort((a, b) => a.length - b.length); //q n a
+              if (arr.length === 2) arr.splice(1, 0, "");
+              return { id: i, question: arr[0], answer: arr[2], note: arr[1] };
+            } else {
+              return { id: i, question: arr[0], answer: arr[1], note: arr[2] };
+            }
+          })
+        : contArr.map((row, i) => {
+            return {
+              id: i,
+              question: row,
+              answer: contArr2[i],
+              note: "",
+            };
+          });
     callbackForResult(contentArr);
   } catch (error) {
     setPopupAdvise(error.message);
@@ -46,7 +75,6 @@ export const onlyLetters = (text) => {
 //font for the cards
 export const fontS = ([tx, ti]) => {
   const tl = tx.length;
-
   if (ti) {
     if (tl < 6) return { fontSize: "7vw" };
     if (tl <= 60) return { fontSize: "2.7vw" };

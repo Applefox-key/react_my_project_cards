@@ -29,6 +29,10 @@
   background-color: ghostwhite;
   flex-wrap: wrap;
 
+  @media print {
+    display: none;
+  }
+
   a {
     text-decoration: none;
     color: black;

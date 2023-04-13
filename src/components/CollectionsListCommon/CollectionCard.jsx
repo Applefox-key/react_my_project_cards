@@ -45,7 +45,9 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
         {collection.collection.category && (
           <div className="cat_tag">{collection.collection.category}</div>
         )}
-        <PlayMenu collection={collection.collection} />
+        {collection.content.length && (
+          <PlayMenu collection={collection.collection} />
+        )}
       </div>
 
       {listFn && (

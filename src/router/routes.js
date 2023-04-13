@@ -16,6 +16,7 @@ import Collections from "../components/CollectionsListCommon/Collections";
 import UserOneCollection from "../components/PrivateCollections/OneCollection/UserOneCollection";
 import PublicCollectionsView from "../components/PublicCollections/PublicOneCollection";
 import EditCard from "../components/PrivateCollections/OneCollection/EditCard";
+import PrintingForm from "../components/CollectionsListCommon/PrintingForm";
 
 export const GO_TO = {
   about: "/about",
@@ -25,6 +26,7 @@ export const GO_TO = {
   pubCollect: "/collections/pub",
   editCard: "/collections/my/edit",
   profile: "/profile",
+  print: "/print",
 };
 
 export const publicRoutes = [
@@ -59,6 +61,7 @@ export const privateRoutes = [
   { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
   { path: "/collections/my/:id/:name/:item", element: <ContentCardInfo /> },
+  { path: "/print/:tab/:id/:name", element: <PrintingForm /> },
 
   {
     path: "/collections/pub/:id/:name/:item",
