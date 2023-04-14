@@ -15,7 +15,8 @@ export const editCollectionHlp = async (
   if (isNew) {
     if (categoryel.id) newParam.categoryid = categoryel.id;
     //new from file with content
-    if (content) res = BaseAPI.CreateCollectionWithContent(newParam, content);
+    if (content)
+      res = await BaseAPI.CreateCollectionWithContent(newParam, content);
     //new without content
     else res = await BaseAPI.createCollection(newParam);
   } else {
@@ -24,7 +25,8 @@ export const editCollectionHlp = async (
       newParam.categoryid = categoryel.id;
     await BaseAPI.editColParam(newParam, collection.id);
   }
-  if (!res.error && res) return res.id.id;
+
+  if (!res.error && res.hasOwnProperty("id")) return res.id.id;
 };
 
 export const getImportMenu = (cb) => {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { HiShare, HiHeart } from "react-icons/hi";
 import MyFilter from "../UI/MyFilter/MyFilter";
 
 import "../../styles/collectMenu.scss";
@@ -8,6 +9,12 @@ import TGB from "../UI/tgb/TGB";
 
 const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
+  const filter = (field) => {
+    props.setOnlySharedFav({
+      ...props.onlySharedFav,
+      [field]: !props.onlySharedFav[field],
+    });
+  };
   return (
     <div className="string_menu d-flex justify-content-between mt-2">
       <div className="d-flex align-items-center"></div>{" "}
@@ -25,18 +32,33 @@ const CollectionsMenu = (props) => {
         <div className="actionMenu">
           {!isPublic && (
             <>
-              <div className="inputCheckBox">
+              <div className="inputCheck">
                 <input
                   id="onlySharedInput"
                   type="checkbox"
-                  value={props.onlyShared}
-                  onChange={() => props.setOnlyShared(!props.onlyShared)}
+                  value={props.onlySharedFav.shared}
+                  onChange={() => filter("shared")}
                 />
                 <label htmlFor="onlySharedInput">
                   show only shared
-                  <span />
+                  <span>{props.onlySharedFav.shared && <HiShare />}</span>
                 </label>
-              </div>{" "}
+              </div>
+              <div className="inputCheck">
+                <input
+                  id="onlyFavInput"
+                  type="checkbox"
+                  value={props.onlySharedFav.favorite}
+                  onChange={() => filter("favorite")}
+                />
+                <label htmlFor="onlyFavInput">
+                  show only favorite
+                  <span className="heart">
+                    {props.onlySharedFav.favorite && <HiHeart />}
+                  </span>
+                </label>
+              </div>
+
               <Button
                 onClick={() => props.setIsNew(!props.isNew)}
                 size="lg"

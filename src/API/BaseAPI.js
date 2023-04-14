@@ -34,12 +34,7 @@ const BaseAPI = {
 
     if (formData) {
       axiosConfig.data = formData;
-
-      // axiosConfig.data = { "sss": { bbbbb: "sdsdsdad" } };
-      // if (data) axiosConfig.data.data = data;
     } else if (data) axiosConfig.data = { data: data };
-    // if (data.imgAfile) axiosConfig.data.imgAfiles = data.imgAfile;
-    // if (data.imgQfile) axiosConfig.data.imgAfiles = data.imgQfile;
 
     if (isHeader) axiosConfig.headers = await this.getAuthHeaders();
 
@@ -96,8 +91,10 @@ const BaseAPI = {
       note: collectionFrom.note,
       content: content,
       colId: collectionFrom.id,
+      categoryid: collectionFrom.categoryid,
       fromPub: fromPub,
     };
+
     if (fromPub) reqData.categoryName = collectionFrom.category;
     else reqData.categoryid = collectionFrom.categoryid;
     return await this.serverReq("post", "/collections/content", true, reqData);
@@ -150,28 +147,8 @@ const BaseAPI = {
       "",
       formData
     );
-    // let list = await BaseAPI.fromLS("extraList");
-    // let wId = Date.now();
-    // list.push({
-    //   id: wId,
-    //   collectionid: colId,
-    //   question: content.question,
-    //   answer: content.answer,
-    //   note: content.note,
-    // });
-    // await BaseAPI.toLS("extraList", list);
-    // return wId;
   },
 
-  // async createPublicCollection(note, name, category, content) {
-  //   let reqData = {
-  //     name: name,
-  //     note: note,
-  //     category: category,
-  //     content: content,
-  //   };
-  //   return await this.serverReq("post", "/pbcollections", true, reqData);
-  // },
   async createUser(ud) {
     let reqData = {
       email: ud.email,
@@ -296,29 +273,48 @@ const BaseAPI = {
 
     return result.data;
   },
+
   async getCollectionsAndContent(
     colId = "",
     categoryid = "",
     textFilter = "",
-    isPublic = ""
+    isPublic = "",
+    isFavorite = ""
   ) {
-    let reqParams = {};
-    if (categoryid) reqParams.categoryid = categoryid;
-    if (textFilter) reqParams.textFilter = textFilter;
-    if (isPublic !== "") reqParams.isPublic = isPublic ? 1 : 0;
+    if (isFavorite) {
+      let result = await this.serverReq(
+        "get",
+        "/collections/favorite",
+        true,
+        "",
+        isPublic ? { isPublic: 1 } : ""
+      );
+      if (result.error) throw new Error(result.error);
 
-    let result = colId
-      ? await this.serverReq("get", "/collections/" + colId + "/content", true)
-      : await this.serverReq(
-          "get",
-          "/content",
-          true,
-          "",
-          reqParams === {} ? "" : reqParams
-        );
-    if (result.error) throw new Error(result.error);
+      return result.data;
+    } else {
+      let reqParams = {};
+      if (categoryid) reqParams.categoryid = categoryid;
+      if (textFilter) reqParams.textFilter = textFilter;
+      if (isPublic !== "") reqParams.isPublic = isPublic ? 1 : 0;
 
-    return result.data;
+      let result = colId
+        ? await this.serverReq(
+            "get",
+            "/collections/" + colId + "/content",
+            true
+          )
+        : await this.serverReq(
+            "get",
+            "/content",
+            true,
+            "",
+            reqParams === {} ? "" : reqParams
+          );
+      if (result.error) throw new Error(result.error);
+
+      return result.data;
+    }
   },
   async getCollectionsList(colId) {
     let result = colId

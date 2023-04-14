@@ -5,7 +5,7 @@ import { useQuery } from "../../../hooks/useQuery";
 import CollectionsTable from "./CollectionsTable";
 import CollectionCardsList from "../../CollectionsListCommon/CollectionCardsList";
 import { GO_TO } from "../../../router/routes";
-import { share } from "../../../utils/contentRequests";
+import { favorite, share } from "../../../utils/contentRequests";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 
 const UsersCollections = ({
@@ -13,7 +13,7 @@ const UsersCollections = ({
   selectedCategory,
   filter,
   isNew,
-  onlyShared,
+  onlySharedFav,
 }) => {
   const [collectionList, setCollectionList] = useState([]);
 
@@ -23,11 +23,13 @@ const UsersCollections = ({
         "",
         selectedCategory.id,
         filter,
-        onlyShared
+        onlySharedFav.shared,
+        onlySharedFav.favorite
       )
     );
   });
   const setPopup = usePopup();
+
   const listFn = {
     delColl: async (element) => {
       if (!window.confirm("Delete the collection?")) return;
@@ -59,6 +61,24 @@ const UsersCollections = ({
         setPopup.error("something goes wrong");
       }
     },
+    favoriteColl: async (element) => {
+      try {
+        await favorite(element, setPopup);
+        setCollectionList(
+          collectionList.map((elem) => {
+            if (elem.collection.id !== element.id) return elem;
+            let nec = {
+              ...elem.collection,
+              isFavorite: !elem.collection.isFavorite,
+            };
+
+            return { ...elem, collection: nec };
+          })
+        );
+      } catch (error) {
+        setPopup.error("something goes wrong");
+      }
+    },
   };
   useEffect(() => {
     if (isNew) return;
@@ -66,7 +86,14 @@ const UsersCollections = ({
 
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isNew, viewmode, selectedCategory, filter, onlyShared]);
+  }, [
+    isNew,
+    viewmode,
+    selectedCategory,
+    filter,
+    onlySharedFav.shared,
+    onlySharedFav.favorite,
+  ]);
 
   return (
     <>

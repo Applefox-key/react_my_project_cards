@@ -15,7 +15,10 @@ const Collections = () => {
   const [selectedCategory, setselectedCategory] = useState("");
   const [filter, setFilter] = useState("");
   const [isNew, setIsNew] = useState(false);
-  const [onlyShared, setOnlyShared] = useState(false);
+  const [onlySharedFav, setOnlySharedFav] = useState({
+    shared: false,
+    favorite: false,
+  });
   const [viewmode, setViewmode] = useState(
     window.location.hash === "#1" ? "1" : "0"
   );
@@ -58,8 +61,8 @@ const Collections = () => {
         setFilter={setFilter}
         selectedCategory={selectedCategory}
         setselectedCategory={setselectedCategory}
-        onlyShared={onlyShared}
-        setOnlyShared={setOnlyShared}
+        onlySharedFav={onlySharedFav}
+        setOnlySharedFav={setOnlySharedFav}
       />
       {(selectedCategory || filter) && (
         <div className="fs-4 mt-2 fst-italic">
@@ -76,7 +79,7 @@ const Collections = () => {
             filter={filter}
             viewmode={viewmode}
             isNew={isNew}
-            onlyShared={onlyShared}
+            onlySharedFav={onlySharedFav}
           />
         ) : (
           <PublicCollectionsList

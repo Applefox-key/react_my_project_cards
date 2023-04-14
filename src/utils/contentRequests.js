@@ -35,13 +35,30 @@ export const getImgQ = (contentItem) => {
 export const share = async (collection, setPopup) => {
   try {
     await BaseAPI.editColParam(
-      { isPublic: !collection.isPublic },
-      collection.id
+      { isPublic: !collection.collection.isPublic },
+      collection.collection.id
     );
+
     setPopup.success(
-      collection.isPublic
+      collection.collection.isPublic
         ? "the collection has been unshared"
         : "the collection has been shared"
+    );
+  } catch (error) {
+    setPopup.error(error);
+  }
+};
+export const favorite = async (collection, setPopup) => {
+  try {
+    await BaseAPI.editColParam(
+      { isFavorite: !collection.collection.isFavorite },
+      collection.collection.id
+    );
+
+    setPopup.success(
+      collection.collection.isFavorite
+        ? "the collection has been delete from the favorites"
+        : "the collection has been added to the favorites"
     );
   } catch (error) {
     setPopup.error(error);

@@ -2,8 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
 import { getFirstEl } from "../../utils/arraysFunc";
-import { HiShare, HiOutlineShare } from "react-icons/hi";
+import {
+  HiShare,
+  HiOutlineShare,
+  HiOutlineHeart,
+  HiHeart,
+  HiPrinter,
+} from "react-icons/hi";
 import PlayMenu from "../UI/PlayGamesDropDown/PlayMenu";
+import { GO_TO } from "../../router/routes";
+
 const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
   const router = useNavigate();
   const generateContent = (el) => {
@@ -11,6 +19,7 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
     if (el.answer) return el.answer;
     return "picture cards";
   };
+  console.log(collection.collection.isFavorite);
 
   return (
     <div className="oneCollect-wrap ">
@@ -52,13 +61,28 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
 
       {listFn && (
         <>
-          {collection.collection.isPublic ? (
+          {collection.collection.isFavorite && (
+            <div className="shareSymb heartSymb">
+              <HiHeart />
+            </div>
+          )}
+          {collection.collection.isPublic && (
             <div className="shareSymb">
               <HiShare />
             </div>
-          ) : (
-            <></>
           )}
+
+          <div
+            className="sharebtn prnbtn"
+            title="print cards"
+            onClick={(e) => {
+              e.stopPropagation();
+              router(
+                `${GO_TO.print}/my/${collection.collection.id}/${collection.collection.name}`
+              );
+            }}>
+            <HiPrinter />
+          </div>
           <div
             className="sharebtn"
             title={collection.collection.isPublic ? "unshare" : "share"}
@@ -67,7 +91,20 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
               listFn.shareColl(collection.collection);
             }}>
             {collection.collection.isPublic ? <HiShare /> : <HiOutlineShare />}
-          </div>{" "}
+          </div>
+          <div
+            className="sharebtn heartbtn"
+            title={collection.collection.isFavorite ? "delete" : "add"}
+            onClick={(e) => {
+              e.stopPropagation();
+              listFn.favoriteColl(collection.collection);
+            }}>
+            {collection.collection.isFavorite ? (
+              <HiHeart />
+            ) : (
+              <HiOutlineHeart />
+            )}
+          </div>
         </>
       )}
     </div>

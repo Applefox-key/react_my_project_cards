@@ -7,16 +7,19 @@ import BackBtn from "../../UI/BackBtn/BackBtn";
 import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
 import ModalCommand from "../OneCollectionActions/ModalCommand";
-import { usePopup } from "../../../hooks/usePopup";
-import { share } from "../../../utils/contentRequests";
 import "../../../styles/collectMenu.scss";
 import PlayGamesDropDown from "../../UI/PlayGamesDropDown/PlayGamesDropDown";
-import MyDropDownBtn from "../../UI/MyDropDownBtn/MyDropDowmBtn";
 import { getImportMenu } from "../../../utils/editCollectionHlp";
+import {
+  HiPrinter,
+  HiPlus,
+  HiOutlineDocumentDownload,
+  HiOutlineDocumentRemove,
+} from "react-icons/hi";
+import DropDownMenu from "../../UI/MyDropDownBtn/DropDownMenu";
 
 const MenuActionsPart = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
-  const setPopup = usePopup();
   const router = useNavigate();
   const pageParam = useParams();
 
@@ -44,25 +47,17 @@ const MenuActionsPart = ({ colObj, setContent }) => {
       <ButtonGroup
         size="lg"
         aria-label="delete and renaming buttons"
-        // className="d-flex w-100 flex-column ">
         className="actionMenu">
         <PlayGamesDropDown
           isPublic={false}
           dis={colObj.content ? colObj.content.length === 0 : true}
         />
         <Button variant="light" className="menuBtn" onClick={addRow}>
-          ➕ Add card
+          Add card <HiPlus />
         </Button>{" "}
-        <MyDropDownBtn
-          className="menuBtn"
-          as={ButtonGroup}
-          arr={importArr}
-          drop="end"
-          title="Import"
-          variant="light"
-        />
+        <DropDownMenu className="menuBtn" arr={importArr} title="Import" />
         <Button variant="light" className="menuBtn" onClick={removeCollection}>
-          Remove
+          Remove <HiOutlineDocumentRemove />
         </Button>{" "}
         <Button
           variant="light"
@@ -71,19 +66,26 @@ const MenuActionsPart = ({ colObj, setContent }) => {
             router(`${GO_TO.print}/my/${pageParam.id}/${pageParam.name}`)
           }>
           Print
+          <HiPrinter />
         </Button>{" "}
         <Button
           variant="light"
           onClick={() => setMod("share")}
           className="menuBtn">
-          Download
+          Download <HiOutlineDocumentDownload />
         </Button>{" "}
-        <Button
+        {/* <Button
           variant="light"
-          onClick={(e) => share(colObj.collection, setPopup)}
+          onClick={(e) => share(colObj, setPopup, setCollect)}
           className="menuBtn">
           {colObj.collection.isPublic ? "Unshare" : "Share"}
         </Button>
+        <Button
+          variant="light"
+          onClick={(e) => favorite(colObj, setPopup, setCollect)}
+          className="menuBtn">
+          {colObj.collection.isFavorite ? "❤️ from favorite" : "💔to favorite"}
+        </Button> */}
         <BackBtn />
       </ButtonGroup>
     </>

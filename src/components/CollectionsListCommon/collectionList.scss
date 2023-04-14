@@ -50,24 +50,6 @@
         transition: all 0.4s;
     }
 
-    .share {
-        position: absolute;
-        left: 0rem;
-        top: 5px;
-        background: transparent;
-        font-size: 16px;
-        border-radius: 38%;
-        cursor: pointer;
-        width: 3rem;
-        height: 3rem;
-        background: lavender;
-    }
-
-    .shareSymb {
-        @extend .share;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    }
-
     .playMenubtn {
         display: flex;
         position: absolute;
@@ -121,36 +103,70 @@
         }
     }
 
+    .share {
+        position: absolute;
+        left: 0rem;
+        top: 5px;
+        background: transparent;
+        font-size: 16px;
+        border-radius: 38%;
+        cursor: pointer;
+        width: 3rem;
+        height: 3rem;
+        background: lavender;
+    }
+
+    .shareSymb {
+        @extend .share;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    .heartSymb {
+        color: #f92f60;
+        left: 23px;
+    }
+
     .sharebtn {
         @extend .share;
-
         top: -1px;
         display: none;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
-
+        line-height: 1.3;
+        font-size: 20px;
 
         &:hover {
             background-color: lightsteelblue;
 
             &::after {
                 content: attr(title);
-                // background-color: lavender;
-                position: relative;
-                top: -3.5rem;
-                left: 3rem;
+                position: absolute;
+                top: 3rem;
+                left: -2rem;
                 font-size: 12px;
                 text-shadow: 2px 0px 6px rgba(144, 144, 228, 1);
             }
         }
     }
 
+    .heartbtn {
+        color: #f92f60;
+        left: 34px;
+    }
+
+    .prnbtn {
+        left: 0;
+        top: 18rem;
+    }
+
     &:hover {
-        .sharebtn {
+
+        .sharebtn,
+        .favoritebtn {
             display: block;
         }
 
-        .shareSymb {
+        .shareSymb,
+        .favoriteSymb {
             display: none;
         }
 
@@ -221,6 +237,7 @@
 
             &:hover {
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                transform: scale(1.2);
             }
         }
 
