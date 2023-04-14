@@ -5,7 +5,8 @@ import { defaultAvatar } from "../constants/defaultSettings";
 export const userRequestData = (userData) => {
   let formData = new FormData();
   Object.keys(userData).forEach((key) => {
-    if (key === "file") formData.append(key, userData[key]);
+    if (key === "file")
+      formData.append(key, userData[key] ? userData[key] : "");
     if (key === "settings")
       formData.append(`data[${key}]`, JSON.stringify(userData[key]));
     else formData.append(`data[${key}]`, userData[key]);

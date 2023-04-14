@@ -6,13 +6,14 @@ export const contentRequestData = (content) => {
 
   Object.keys(content).forEach((key) => {
     if (key === "imgAfile" || key === "imgQfile")
-      formData.append(key, content[key]);
-    else formData.append(`data[${key}]`, content[key]);
+      formData.append(key, content[key] ? content[key] : "");
+    else formData.append(`data[${key}]`, content[key] ? content[key] : "");
   });
   return formData;
 };
 
 const generateLink = (imgName, collectionID) => {
+  if (!imgName) return "";
   return imgName.includes("blob")
     ? imgName
     : imgSrv +

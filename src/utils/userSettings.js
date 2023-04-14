@@ -52,3 +52,14 @@ export const updateStyles = (e, userData, setUserData) => {
   setUserData({ ...userData, settings: newSet });
   applyUserSettings(newSet, nameS);
 };
+
+export const setVerticalCardFonrSize = (prop = "") => {
+  if (prop) {
+    document.documentElement.style.setProperty("--vertical-font", prop + "rem");
+  }
+};
+export const setCardColor = (prop = "") => {
+  if (prop) {
+    document.documentElement.style.setProperty("--card-color", prop);
+  }
+};

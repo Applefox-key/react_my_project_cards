@@ -345,35 +345,160 @@
     position: relative;
     margin-right: 3rem;
 
+
     @media print {
         display: none;
     }
 
+    .options-wrap {
+        position: absolute;
+        height: 8rem;
+        top: 0;
+        left: 11rem;
+        display: flex;
+        justify-content: flex-start;
+        border-radius: 15px;
+        transition: all 0.4s ease-in-out;
+
+        .input-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            border: 1px solid black;
+            border-radius: 15px;
+            width: 8rem;
+            height: 8rem;
+            box-sizing: border-box;
+            font-size: 1.5rem;
+            font-weight: 500;
+            background-color: #add8e6;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+
+            span {
+                height: 2rem;
+                font-size: 1.5rem;
+                background-color: #add8e6;
+            }
+
+            .limiter {
+                overflow: hidden;
+                border: 1px solid rgb(48, 140, 171);
+                width: 2rem;
+                height: 2rem;
+                // border: 1px solid red;
+                border-radius: 50%;
+                position: relative;
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+                transition: all 0.2s ease-in-out;
+                border: 1px solid lightblue;
+
+                input {
+                    position: relative;
+                    left: -1rem;
+                    top: -1rem;
+                    margin: auto;
+                    width: 4rem;
+                    height: 4rem;
+                }
+
+                &:hover {
+                    transform: scale(1.2);
+                    // box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                    // border: 1px solid lightblue;
+                }
+            }
+
+            button {
+
+                height: 4rem;
+                width: 5rem;
+                border-radius: 15rem;
+                border: none;
+                background-color: #add8e6;
+                font-size: 3rem;
+                line-height: 0;
+                transition: all 0.4s ease-in-out;
+
+                &:hover {
+                    background-color: #4acaf4;
+                    transform: scale(1.2);
+                }
+            }
+
+            .btnUp {
+                height: 3rem;
+                width: 100%;
+                font-size: 3rem;
+                padding-bottom: 1rem;
+
+                &:hover {
+                    transform: translateY(-5px);
+                }
+            }
+
+            .btnDown {
+                padding-top: 1rem;
+                width: 100%;
+                height: 3rem;
+                font-size: 3rem;
+
+                &:hover {
+                    // background-color: #4acaf4;
+                    transform: translateY(5px);
+                }
+            }
+        }
+
+        .optBtn {
+            border-radius: 15px;
+            z-index: 600;
+
+            width: 8rem;
+            height: 8rem;
+            font-size: 4rem;
+            background-color: lightblue;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
     .printBtns_wrap {
+
         position: sticky;
         top: 10rem;
         left: 51%;
 
         .printBtn {
+            border-radius: 15px;
             z-index: 600;
-            position: sticky;
-            top: 10rem;
-            left: 51%;
             width: 8rem;
             height: 8rem;
             font-size: 4rem;
-            background-color: antiquewhite;
+            background-color: lightblue;
             margin-left: 1rem;
+            transition: all 0.4s ease-in-out;
 
+            &:hover {
+                background-color: #4acaf4;
+                transform: translateX(5px);
+            }
 
         }
+
+        .rotate {
+            transform: rotate(90deg)
+        }
+
+
     }
 }
 
 .print_wrap {
     width: 100%;
     height: 100%;
-    max-width: 1000px;
+    max-width: 1040px;
 
     background-color: white;
     margin-left: 6rem;
@@ -385,6 +510,15 @@
 
     @media print {
         padding-left: 0;
+        margin-left: 26pt;
+
+    }
+
+    .break-after {
+        @media print {
+            page-break-after: always;
+        }
+
     }
 
     .print_cards_wrap {
@@ -397,12 +531,15 @@
         box-sizing: border-box;
         align-content: start;
 
-        .print_card {
+
+
+
+        .vertical_card {
             user-select: none; // border: 2px solid black;
             width: 400px;
             height: fit-content;
-
-            font-size: 14px;
+            font-size: var(--vertical-font);
+            // font-size: 1.4rem;
             box-sizing: border-box;
             border: 2px solid rgb(46, 45, 45);
             border-radius: 18px;
@@ -463,18 +600,23 @@
                 }
             }
 
+            .minHeightImg {
+                min-height: 130px;
+            }
+
             .print_part {
                 border-radius: 15px;
                 padding: 5px;
-
                 display: flex;
-                justify-content: flex-start;
                 box-sizing: border-box;
 
                 img {
-                    max-width: 150px;
-                    max-height: 150px;
+                    max-width: 130px;
+                    max-height: 130px;
+                    float: left;
+
                 }
+
 
 
             }
@@ -484,7 +626,7 @@
                 text-align: center;
                 border-radius: 15px;
                 background-color: gainsboro;
-                background-color: ivory;
+                background-color: var(--card-color);
                 padding: 15px 5pxs;
                 font-size: 16px;
                 font-weight: 600;
@@ -514,27 +656,117 @@
 
             @media print {
                 page-break-inside: avoid;
+
             }
+        }
+
+        .horizontal_card {
+            display: flex;
+            position: relative;
+            margin: 0;
+
+
+            .print_part {
+                width: 420px;
+                height: 220px;
+                border: 1px solid black;
+                text-align: center;
+                border-radius: 15px;
+                // background-color: gainsboro;
+                background-color: var(--card-color);
+                padding: 15px 5px;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                margin-bottom: 1rem;
+                display: flex;
+
+                img {
+                    float: left;
+                    max-width: 130px;
+                    max-height: 130px;
+                    margin-left: 5px;
+                    margin-top: 5px;
+                }
+            }
+
+            .question {
+                &::before {
+                    content: "Q";
+                    position: absolute;
+                    font-size: 155pt;
+                    color: #a9a9a924;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 1;
+                }
+            }
+
+            .answer {
+                &::before {
+                    content: "A";
+                    position: absolute;
+
+                    color: #a9a9a924;
+
+                    font-size: 155pt;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 1;
+                }
+            }
+
+            button {
+                position: absolute;
+                border: none;
+                border-radius: 50%;
+                width: 3rem;
+                height: 3rem;
+                left: -1rem;
+                top: -1rem;
+                font-size: 47px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+                font-size: 12px;
+                opacity: 0;
+                transition: all 0.4s ease-in-out;
+
+                &:hover {
+                    transform: translateY(-5px);
+                }
+
+                @media print {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                button {
+                    opacity: 1;
+                }
+
+                .print_part {
+                    background-color: aquamarine;
+                }
+            }
+
+            @media print {
+                page-break-inside: avoid;
+                margin-top: 0;
+            }
+        }
+
+        .width800 {
+            width: 800px
+        }
+
+
+        @media print {
+            max-width: fit-content;
+            margin: 0;
+            padding: 0;
+
+
         }
     }
 
 }
-
-
-// @media screen and (max-width: 600px) {
-//     .big_card_wrap {
-//         width: 100%;
-
-//         .oneSide {
-//             width: 100%;
-//             display: flex;
-//             flex-wrap: wrap;
-//             height: 100%;
-
-//             textarea {
-//                 width: 100%;
-//             }
-
-//         }
-//     }
-// }

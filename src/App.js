@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/App.scss";
 import "./styles/animation.scss";
+import "./styles/fonts.scss";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext, PopupContext } from "./context";
 import BaseAPI from "./API/BaseAPI";

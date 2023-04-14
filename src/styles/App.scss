@@ -2,7 +2,10 @@
 :root {
   --contrast-text: black;
   --wrap-opacity: 1;
+  --vertical-font: 1.8rem;
+  --card-color: "#fffff0";
 }
+
 
 .contrastColor {
   color: var(--contrast-text);
@@ -12,6 +15,15 @@
   caret-color: transparent;
   background-color: lavenderblush;
 
+  @media print {
+
+    margin: auto;
+
+    // @page {
+    //   margin: auto;
+    // }
+
+  }
 
 }
 
@@ -88,6 +100,10 @@ input {
 
 .pointer {
   cursor: pointer;
+}
+
+.z-index2 {
+  z-index: 2;
 }
 
 .w-40 {

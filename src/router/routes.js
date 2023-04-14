@@ -16,7 +16,7 @@ import Collections from "../components/CollectionsListCommon/Collections";
 import UserOneCollection from "../components/PrivateCollections/OneCollection/UserOneCollection";
 import PublicCollectionsView from "../components/PublicCollections/PublicOneCollection";
 import EditCard from "../components/PrivateCollections/OneCollection/EditCard";
-import PrintingForm from "../components/CollectionsListCommon/PrintingForm";
+import PrintingForm from "../components/Printing/PrintingForm";
 
 export const GO_TO = {
   about: "/about",
