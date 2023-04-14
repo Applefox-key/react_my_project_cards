@@ -64,17 +64,19 @@ const UsersCollections = ({
     favoriteColl: async (element) => {
       try {
         await favorite(element, setPopup);
-        setCollectionList(
-          collectionList.map((elem) => {
-            if (elem.collection.id !== element.id) return elem;
-            let nec = {
-              ...elem.collection,
-              isFavorite: !elem.collection.isFavorite,
-            };
+        let res = collectionList.map((elem) => {
+          console.log(elem);
 
-            return { ...elem, collection: nec };
-          })
-        );
+          if (elem.collection.id !== element.id) return elem;
+          let nec = {
+            ...elem.collection,
+            isFavorite: !elem.collection.isFavorite,
+          };
+
+          return { ...elem, collection: nec };
+        });
+
+        setCollectionList(res);
       } catch (error) {
         setPopup.error("something goes wrong");
       }

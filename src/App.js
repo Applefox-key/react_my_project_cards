@@ -10,7 +10,7 @@ import AppRouter from "./router/AppRouter";
 import { defaultSettings } from "./constants/defaultSettings";
 import { applyUserSettings } from "./utils/userSettings";
 
-function App() {
+function App({ props }) {
   const [userAuth, setUserAuth] = useState({
     isAuth: false,
     role: null,

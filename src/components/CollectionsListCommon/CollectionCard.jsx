@@ -61,15 +61,19 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
 
       {listFn && (
         <>
-          {collection.collection.isFavorite && (
+          {collection.collection.isFavorite ? (
             <div className="shareSymb heartSymb">
               <HiHeart />
             </div>
+          ) : (
+            <></>
           )}
-          {collection.collection.isPublic && (
+          {collection.collection.isPublic ? (
             <div className="shareSymb">
               <HiShare />
             </div>
+          ) : (
+            <></>
           )}
 
           <div
