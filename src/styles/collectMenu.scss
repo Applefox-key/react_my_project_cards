@@ -141,6 +141,8 @@
       width: 100%; //
       flex-wrap: wrap;
 
+      align-items: center;
+
       button {
         width: auto;
         justify-content: flex-start;
@@ -372,7 +374,8 @@
     background-color: white;
     padding: 10px;
     z-index: 4;
-    text-align: flex-start;
+    text-align: start;
+
 
     .divider {
       border-bottom: 1px solid;

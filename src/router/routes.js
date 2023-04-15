@@ -56,12 +56,12 @@ export const privateRoutes = [
     element: <Collections />,
     nameNav: "Public collections",
   },
+  { path: "/collections/:tab/print/:id/:name", element: <PrintingForm /> },
   { path: "/profile", element: <Profile />, nameNav: "Profile" },
   { path: "/categories", element: <CategoriesManager />, nameNav: "" },
   { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
   { path: "/collections/my/:id/:name/:item", element: <ContentCardInfo /> },
-  { path: "/print/:tab/:id/:name", element: <PrintingForm /> },
 
   {
     path: "/collections/pub/:id/:name/:item",

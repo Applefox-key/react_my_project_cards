@@ -61,7 +61,7 @@ const Pairs = () => {
 
   return (
     <>
-      <BackBtn size="lg" />
+      <BackBtn />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
@@ -71,9 +71,11 @@ const Pairs = () => {
           timeout={500}
           classNames="result">
           <div>
-            <GameCount count={count} all={items.length + itemsV[0].length} />
+            {items.length + itemsV[0].length !== 0 && (
+              <GameCount count={count} all={items.length + itemsV[0].length} />
+            )}
             {items.length + itemsV[0].length === 0 ? (
-              <Result text="Job is done!" />
+              <Result text="Job is done!" count={count} />
             ) : (
               <div className={cl.pairs_container}>
                 <PairPart

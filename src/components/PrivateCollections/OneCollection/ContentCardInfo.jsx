@@ -24,7 +24,7 @@ const ContentCardInfo = () => {
   return (
     <>
       <div className="text-center mx-5 my-5">
-        <BackBtn size="lg" variant="primary" />
+        <BackBtn variant="primary" />
       </div>
       <div className={cl.container_gallery + " m-auto"}>
         {item && <MyCardExtra item={item} />}

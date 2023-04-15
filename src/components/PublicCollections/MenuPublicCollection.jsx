@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/collectMenu.scss";
 import BackBtn from "../UI/BackBtn/BackBtn";
 import { GO_TO } from "../../router/routes";
-
+import { HiPrinter } from "react-icons/hi";
+import { GrChapterAdd } from "react-icons/gr";
 import PlayGamesDropDown from "../UI/PlayGamesDropDown/PlayGamesDropDown";
 
 const MenuPublicCollection = ({ collection, addToMyCollection, setMode }) => {
@@ -32,13 +33,24 @@ const MenuPublicCollection = ({ collection, addToMyCollection, setMode }) => {
           // className="d-flex w-100 flex-column"
           className="actionMenu">
           <PlayGamesDropDown isPublic={true} />
-
           <Button
             variant="light"
             className="menuBtn"
+            title="Copy to my collections"
             onClick={addToMyCollection}>
-            Add to my collections
-          </Button>
+            Copy to my set{<GrChapterAdd />}
+          </Button>{" "}
+          <Button
+            variant="light"
+            className="menuBtn"
+            onClick={() =>
+              router(
+                `${GO_TO.pubCollect}${GO_TO.print}/${collection.id}/${collection.name}`
+              )
+            }>
+            Print
+            <HiPrinter />
+          </Button>{" "}
           <BackBtn />
         </ButtonGroup>
       </div>

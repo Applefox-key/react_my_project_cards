@@ -1,9 +1,11 @@
 import React from "react";
 import GameCountBage from "./GameCountBage";
 
-const GameCount = ({ count, all, left = "" }) => {
+const GameCount = ({ count, all, left = "", result = 0 }) => {
+  console.log(result ? " countResult" : "");
+
   return (
-    <div className="d-flex justify-content-center mb-4">
+    <div className={result ? "countResult" : "count"}>
       <GameCountBage value={count[0]} lable="👍" bg="success" />
 
       <div className="countBtn">

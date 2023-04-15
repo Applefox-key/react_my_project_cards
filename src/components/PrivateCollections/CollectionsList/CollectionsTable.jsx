@@ -77,7 +77,7 @@ const CollectionsTable = ({
         rowsActons.add(newV);
         return;
       } else {
-        let res = await BaseAPI.editColParam(
+        await BaseAPI.editColParam(
           {
             name: newV.name,
             note: newV.note ? newV.note : "",

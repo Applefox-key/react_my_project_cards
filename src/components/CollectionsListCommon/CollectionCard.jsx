@@ -58,7 +58,17 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
           <PlayMenu collection={collection.collection} />
         )}
       </div>
-
+      <div
+        className="sharebtn prnbtn"
+        title="print cards"
+        onClick={(e) => {
+          e.stopPropagation();
+          router(
+            `${routeOne}${GO_TO.print}/${collection.collection.id}/${collection.collection.name}`
+          );
+        }}>
+        <HiPrinter />
+      </div>
       {listFn && (
         <>
           {collection.collection.isFavorite ? (
@@ -76,17 +86,6 @@ const CollectionCard = ({ collection, routeOne, listFn = "" }) => {
             <></>
           )}
 
-          <div
-            className="sharebtn prnbtn"
-            title="print cards"
-            onClick={(e) => {
-              e.stopPropagation();
-              router(
-                `${GO_TO.print}/my/${collection.collection.id}/${collection.collection.name}`
-              );
-            }}>
-            <HiPrinter />
-          </div>
           <div
             className="sharebtn"
             title={collection.collection.isPublic ? "unshare" : "share"}

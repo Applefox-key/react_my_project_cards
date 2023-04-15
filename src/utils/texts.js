@@ -150,3 +150,47 @@ export const fontPrint = ([tx, ti]) => {
     // return "font12";
   }
 };
+
+//font for the  cards printing
+export const fontLittle = ([tx, ti]) => {
+  const tl = tx.length;
+  console.log(tl, tx);
+
+  if (ti) {
+    if (tl <= 5) return "fontSize_little5";
+    if (tl <= 10) return "fontSize_little10";
+    if (tl <= 20) return "fontSize_little20";
+    if (tl <= 30) return "fontSize_little30";
+    if (tl <= 40) return "fontSize_little40";
+    if (tl <= 50) return "fontSize_little50";
+    if (tl <= 100) return "fontSize_little100";
+    if (tl <= 150) return "fontSize_little150";
+    if (tl <= 200) return "fontSize_little200";
+    if (tl <= 250) return "fontSize_little250";
+    if (tl <= 300) return "fontSize_little300";
+    if (tl <= 350) return "fontSize_little350";
+    return "fontSize_littleLG";
+  } else {
+    if (tl <= 5) return "fontSize_little5";
+    if (tl <= 10) return "fontSize_little10";
+    if (tl <= 20) return "fontSize_little20";
+    if (tl <= 30) return "fontSize_little30";
+    if (tl <= 40) return "fontSize_little40";
+    if (tl <= 50) return "fontSize_little50";
+    if (tl <= 100) return "fontSize_little100";
+    if (tl <= 150) return "fontSize_little150";
+    if (tl <= 200) return "fontSize_little200";
+    if (tl <= 250) return "fontSize_little250";
+    if (tl <= 300) return "fontSize_little300";
+    if (tl <= 350) return "fontSize_little350";
+    return "fontSize_littleLG";
+
+    // if (tl < 12) return "font93";
+    // if (tl <= 60) return "font34";
+    // if (tl <= 130) return "font24"; //73
+    // if (tl <= 160) return "font21";
+    // if (tl <= 180) return "font19";
+    // if (tl <= 350) return "font16";
+    // return "font12";
+  }
+};

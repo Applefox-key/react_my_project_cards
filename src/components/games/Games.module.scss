@@ -63,23 +63,51 @@
   width: 80%;
   height: 80%;
 
+  //landshaft
   @media screen and (min-width: 600px) and (max-height: 600px) {
     text-align: center;
     flex-direction: column;
     width: auto;
+
+
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: flex-start;
+    margin: 0;
   }
 
+  //mobile
   @media screen and (min-height: 600px) and (max-width: 600px) {
     text-align: center;
     flex-direction: column;
-  }
 
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: 0;
+  }
 }
+
 
 .container {
   margin: auto;
   position: relative;
   display: flex;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+
+  //landshaft
+  @media screen and (min-width: 600px) and (max-height: 600px) {
+    flex-direction: row;
+    margin: 0;
+    width: 100%;
+  }
+
+  //mobile
+  @media screen and (min-height: 600px) and (max-width: 600px) {
+    margin: 0;
+  }
 }
 
 .list_btn {
@@ -87,8 +115,9 @@
   padding: 10px 10px;
   margin: 15px 10px;
 
-  font-size: 14px;
-  line-height: 18px;
+  // font-size: 2rem;
+  // font-size: 14px;
+  // line-height: 30px;
   font-weight: 600;
 
   color: #5f6064;
@@ -98,25 +127,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  text-align: justify;
   border: none;
   border-radius: 10px;
   -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
 
-  max-width: 320px;
+  // max-width: 320px;
   min-width: 200px;
-  min-height: 10rem;
+  max-width: 400px;
+  min-height: 12rem;
 
   @media screen and (min-height: 600px) and (max-width: 600px) {
     max-width: 180px;
     min-width: 165px;
     padding: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    min-height: 10rem;
   }
 
   @media screen and (min-width: 600px) and (max-height: 600px) {
+    max-width: 320px;
     min-width: 300px;
-
+    font-size: 14px;
+    min-height: 10rem;
+    line-height: 18px;
   }
 
   img {
@@ -132,46 +168,19 @@
   }
 }
 
-// .list_btn {
-//   padding: 5px 5px;
-//   margin: 15px;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   min-width: 130px;
-//   min-height: 50px;
-
-//   font-size: 1.8rem;
-//   color: black;
-//   word-wrap: normal;
-
-//   border: none;
-//   border-color: #3498db;
-//   box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-//   -webkit-transition: all 150ms ease-in-out;
-//   transition: all 150ms ease-in-out;
-// }
 
 /* test */
 .wrong_answer {
   text-decoration: line-through;
-  background-color: aliceblue;
+  color: #b98787;
+  background-color: #dc354529;
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-  background: lavender;
-  color: cadetblue;
 }
 
-// .wrong_answer {
-//   text-decoration: line-through;
-//   box-shadow: 0 0 10px 0 #e82d6f inset, 0 0 10px 4px #f4449a;
-
-// }
-
 .right_answer {
-  color: #fff;
-  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  background-color: lightgreen;
+  border: 3px solid green;
+  outline: 2px solid forestgreen;
 }
 
 /* pairs */
@@ -188,26 +197,6 @@
   outline: 4px solid #ff6d6d !important;
   ;
 }
-
-
-// .answer {
-//   box-shadow: 0 0 10px 0 #f1c40f inset, 0 0 10px 4px #f1c40f;
-//   /* background-color: rgb(128, 226, 248);
-//   color: #fff;
-//   box-shadow: 0 0 40px 40px  #f1c40f  inset, 0 0 0 0  #f1c40f ; */
-// }
-
-// .active2 {
-//   color: #fff;
-//   background-color: black;
-//   box-shadow: 0 0 40px 40px #f1c40f inset, 0 0 0 0 #f1c40f;
-// }
-
-// .active1 {
-//   color: #fff;
-//   background-color: black;
-//   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
-// }
 
 .game_count {
   border: 1px;
@@ -260,56 +249,17 @@
 .cardSize {
   margin: auto;
   height: 60%;
+
   // width: 60%;
-}
-
-@media screen and (min-width: 600px) {
-  .container {
-    flex-direction: row;
-  }
-
-}
-
-//landshaft
-@media screen and (min-width: 600px) and (max-height: 600px) {
-  .container {
-    flex-direction: row;
-    margin: 0;
-    width: 100%;
-  }
-
-  .pairs_container {
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-content: flex-start;
-    margin: 0;
-  }
-
-  .cardSize {
+  @media screen and (min-width: 600px) and (max-height: 600px) {
     margin: auto;
     height: 50%;
     width: 100%;
   }
-}
 
-//mobile
-@media screen and (min-height: 600px) and (max-width: 600px) {
-  .container {
-    margin: 0;
-  }
-
-  .pairs_container {
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-content: flex-start;
-    margin: 0;
-  }
-
-  .cardSize {
+  @media screen and (min-height: 600px) and (max-width: 600px) {
     height: auto;
     width: auto;
     font-size: 20vw;
   }
-
-
 }

@@ -198,6 +198,36 @@ input {
   }
 }
 
+.count {
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+  transition: all 0.8s ease-in-out;
+}
+
+.countResult {
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+
+  button {
+
+    margin: 0 5rem;
+    font-size: 5rem;
+
+    span {
+      border-radius: 45px;
+    }
+  }
+
+  h1 {
+    display: none;
+  }
+}
+
+
 .tblContent {
   margin-left: 7rem;
   width: 94%;

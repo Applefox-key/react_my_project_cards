@@ -38,7 +38,7 @@ const TestCard = () => {
 
   return (
     <div>
-      <BackBtn variant="dark" size="lg" />
+      <BackBtn />
 
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />

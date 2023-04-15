@@ -19,7 +19,7 @@ const WriteCard = () => {
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <BackBtn size="lg" />
+      <BackBtn />
       {!isLoading && items ? (
         <WriteCardBody items={items} />
       ) : (

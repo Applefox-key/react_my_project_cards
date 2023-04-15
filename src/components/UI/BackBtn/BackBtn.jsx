@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const BackBtn = ({ path, variant = "dark", onClick, ...props }) => {
+const BackBtn = ({ path, onClick, ...props }) => {
   const router = useNavigate();
   const back = () => {
     if (path) router(path);
@@ -10,7 +10,7 @@ const BackBtn = ({ path, variant = "dark", onClick, ...props }) => {
     else router(-1);
   };
   return (
-    <Button variant={variant} onClick={back} {...props}>
+    <Button size="lg" variant="dark" onClick={back} {...props}>
       ❰ Back
     </Button>
   );

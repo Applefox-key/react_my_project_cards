@@ -2,6 +2,7 @@ import React from "react";
 import cl from "./Games.module.scss";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getImgA, getImgQ } from "../../utils/contentRequests";
+import { fontLittle } from "../../utils/texts";
 
 const PairPart = ({ items, onClick, num, active }) => {
   const imgEl = (el) => {
@@ -9,8 +10,10 @@ const PairPart = ({ items, onClick, num, active }) => {
     return imgurl ? <img src={imgurl} alt="img" /> : <></>;
   };
   const generateClassName = (el) => {
+    const set = num === 2 ? [el.answer, el.imgA] : [el.question, el.imgQ];
     return [
       cl.list_btn,
+      fontLittle(set),
       num === 2 ? cl.answer : "",
       active === el.id + "&" + num ? cl["active"] : "",
     ].join(" ");
@@ -18,7 +21,7 @@ const PairPart = ({ items, onClick, num, active }) => {
 
   return (
     <TransitionGroup
-      className={cl.container + " flex-wrap justify-content-center"}>
+      className={cl.container + " flex-wrap justify-content-center mt-5"}>
       {items.map((el) => (
         <CSSTransition timeout={400} classNames="pair" key={el.id + "&" + num}>
           <button

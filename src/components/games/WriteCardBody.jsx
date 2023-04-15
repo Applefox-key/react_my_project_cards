@@ -31,13 +31,11 @@ const WriteCardBody = ({ items }) => {
     }
     setFlip(!flip);
   };
+  const isResult = items.length === count[0] + count[1] && !flip;
   return (
     <div className={cl.cardSize}>
-      {items.length === count[0] + count[1] && !flip ? (
-        <div>
-          <Result text="Job is done!" />
-          <GameCount count={count} all={0} />
-        </div>
+      {isResult ? (
+        <Result text="Job is done!" count={count} />
       ) : (
         <CSSTransition
           appear={true}
@@ -55,11 +53,13 @@ const WriteCardBody = ({ items }) => {
             </div>
             <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto">
               <div className="d-flex flex-column">
-                <GameCount
-                  count={count}
-                  all={items.length - count[0] - count[1]}
-                  left={countLeft()}
-                />{" "}
+                {!isResult && (
+                  <GameCount
+                    count={count}
+                    all={items.length - count[0] - count[1]}
+                    left={countLeft()}
+                  />
+                )}
                 <Button onClick={check} size="lg" disabled={!answer}>
                   {flip ? "NEXT" : "CHECK AN ANSWER"}
                 </Button>

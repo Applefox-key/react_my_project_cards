@@ -28,11 +28,14 @@ const TestBody = ({ items }) => {
       setActive(na);
     }
   };
+
   return (
     <div>
-      <GameCount count={count} all={items.length - num} />
+      {items.length !== num && (
+        <GameCount count={count} all={items.length - num} />
+      )}
       {items.length === num ? (
-        <Result text="Job is done!" />
+        <Result text="Job is done!" count={count} />
       ) : (
         <SwitchTransition mode="out-in">
           <CSSTransition

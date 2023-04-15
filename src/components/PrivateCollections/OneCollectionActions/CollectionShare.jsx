@@ -52,7 +52,8 @@ const CollectionShare = ({ colObj, setVisible }) => {
           }}
         />
         <Button
-          className="fs-5"
+          className="fs-5 menuBtn"
+          size="lg"
           variant="outline-primary"
           disabled={!contentList}
           onClick={() => {

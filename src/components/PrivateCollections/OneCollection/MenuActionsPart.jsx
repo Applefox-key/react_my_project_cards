@@ -55,7 +55,11 @@ const MenuActionsPart = ({ colObj, setContent }) => {
         <Button variant="light" className="menuBtn" onClick={addRow}>
           Add card <HiPlus />
         </Button>{" "}
-        <DropDownMenu className="menuBtn" arr={importArr} title="Import" />
+        <DropDownMenu
+          className="menuBtn"
+          arr={importArr}
+          title="Import cards"
+        />
         <Button variant="light" className="menuBtn" onClick={removeCollection}>
           Remove <HiOutlineDocumentRemove />
         </Button>{" "}
@@ -63,7 +67,9 @@ const MenuActionsPart = ({ colObj, setContent }) => {
           variant="light"
           className="menuBtn"
           onClick={() =>
-            router(`${GO_TO.print}/my/${pageParam.id}/${pageParam.name}`)
+            router(
+              `${GO_TO.myCollect}${GO_TO.print}/${pageParam.id}/${pageParam.name}`
+            )
           }>
           Print
           <HiPrinter />
@@ -74,18 +80,6 @@ const MenuActionsPart = ({ colObj, setContent }) => {
           className="menuBtn">
           Download <HiOutlineDocumentDownload />
         </Button>{" "}
-        {/* <Button
-          variant="light"
-          onClick={(e) => share(colObj, setPopup, setCollect)}
-          className="menuBtn">
-          {colObj.collection.isPublic ? "Unshare" : "Share"}
-        </Button>
-        <Button
-          variant="light"
-          onClick={(e) => favorite(colObj, setPopup, setCollect)}
-          className="menuBtn">
-          {colObj.collection.isFavorite ? "❤️ from favorite" : "💔to favorite"}
-        </Button> */}
         <BackBtn />
       </ButtonGroup>
     </>

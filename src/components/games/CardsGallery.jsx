@@ -35,7 +35,7 @@ const CardsGallery = () => {
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <BackBtn size="lg" />
+      <BackBtn />
       {!isLoading && items ? (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
           <div>
