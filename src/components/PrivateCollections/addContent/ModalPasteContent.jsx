@@ -7,7 +7,7 @@ import { contentFromText } from "../../../utils/texts";
 import MyModal from "../../UI/MyModal";
 import PasteBtns from "./PasteBtns";
 import PasteOneList from "./PasteOneList";
-import { Form, Tab, Tabs } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
   const [dataArray, setDataArray] = useState();

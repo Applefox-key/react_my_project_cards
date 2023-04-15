@@ -387,7 +387,6 @@
                 border: 1px solid rgb(48, 140, 171);
                 width: 2rem;
                 height: 2rem;
-                // border: 1px solid red;
                 border-radius: 50%;
                 position: relative;
                 margin-top: 1.5rem;
@@ -527,9 +526,9 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        align-items: start;
+        align-items: flex-start;
         box-sizing: border-box;
-        align-content: start;
+        align-content: flex-start;
 
 
 
