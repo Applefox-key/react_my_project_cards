@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
-import MyInputGroup from "../../UI/MyInput/MyInputGroup";
 import MyTable from "../../UI/table/MyTable";
 
 import MyModal from "../../UI/MyModal";
 
 import { createFilesDataColl } from "../../../utils/files";
 
-const CollectionShare = ({ colObj, setVisible }) => {
+const CollectionDownload = ({ colObj, setVisible }) => {
   const [note, setNote] = useState("");
   const [textFile, settextFile] = useState(null);
   const [contentList, setContentList] = useState(colObj.content);
@@ -31,30 +30,39 @@ const CollectionShare = ({ colObj, setVisible }) => {
     <MyModal
       title="Download the collection"
       setshowmodal={setVisible}
-      // visible={true}
+      size="lg"
       showmodal={true}
       dialogClassName="width100wv">
-      <div>
-        <MyInputGroup
-          label="Collection name"
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />{" "}
-        <MyInputGroup
-          label="Note"
-          type="text"
-          value={note}
-          onChange={(e) => {
-            setNote(e.target.value);
-          }}
-        />
+      <div className="w-100">
+        <div className="input_with_lable">
+          <label htmlFor="i_name" className="lable">
+            title:
+          </label>
+          <input
+            autoFocus
+            id="i_name"
+            placeholder="name: my collection"
+            value={name ? name : ""}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="input_with_lable">
+          <label htmlFor="i_note" className="lable">
+            note:
+          </label>
+          <input
+            type="text"
+            id="i_note"
+            label="Note"
+            placeholder="note: my collection with english words"
+            value={note ? note : ""}
+            onChange={(e) => setNote(e.target.value)}
+          />
+        </div>
         <Button
-          className="fs-5 menuBtn"
+          className="fs-4 menuBtn w-50"
           size="lg"
-          variant="outline-primary"
+          variant="outline-black"
           disabled={!contentList}
           onClick={() => {
             createFile(contentList);
@@ -62,7 +70,7 @@ const CollectionShare = ({ colObj, setVisible }) => {
           💾Create file for download
         </Button>{" "}
         {textFile ? (
-          <a download={name} href={textFile} className="fs-4">
+          <a download={name} href={textFile} className="fs-4 position-absolute">
             🡇 Download
           </a>
         ) : (
@@ -78,4 +86,4 @@ const CollectionShare = ({ colObj, setVisible }) => {
   );
 };
 
-export default CollectionShare;
+export default CollectionDownload;

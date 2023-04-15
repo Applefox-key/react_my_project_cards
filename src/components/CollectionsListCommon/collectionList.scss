@@ -136,6 +136,7 @@
 
         &:hover {
             background-color: lightsteelblue;
+            transform: scale(1.2);
 
             &::after {
                 content: attr(title);
@@ -156,6 +157,25 @@
     .prnbtn {
         left: 0;
         top: 18rem;
+    }
+
+    .delbtn {
+        position: absolute;
+        // right: -5px;
+        left: 26rem;
+        // top: -6px;
+        padding: 5px;
+        // background: #e6e6fa;
+        font-size: 15px;
+        // border-radius: 38%;
+        display: none;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            transform: scale(1.2);
+        }
     }
 
     &:hover {
@@ -181,6 +201,10 @@
             top: 97px;
         }
 
+        .delbtn {
+            display: block;
+        }
+
         .oneCollect {
             transform: translateY(-5px);
 
@@ -194,9 +218,7 @@
                 rgb(255, 255, 255) -3px 3px 0px -0.5px,
                 rgb(117, 189, 200) -3px 3px;
 
-            .delbtn {
-                display: block;
-            }
+
         }
     }
 
@@ -223,23 +245,7 @@
             margin: 5px;
         }
 
-        .delbtn {
-            position: absolute;
-            right: -5px;
-            top: -6px;
-            padding: 5px;
-            background: #e6e6fa;
-            font-size: 12px;
-            border-radius: 38%;
-            display: none;
-            cursor: pointer;
-            transition: all 0.2s;
 
-            &:hover {
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-                transform: scale(1.2);
-            }
-        }
 
         .add_new_img {
             margin: auto;

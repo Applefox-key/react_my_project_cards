@@ -2,13 +2,13 @@ import React from "react";
 import ModalFileContent from "../addContent/ModalFileContent";
 
 import ModalPasteContent from "../addContent/ModalPasteContent";
-import CollectionShare from "./CollectionShare";
+import CollectionDownload from "./CollectionDownload";
 
 const ModalCommand = ({ mod, setMod, colObj, setContent }) => {
   return (
     <div>
       {mod === "share" && (
-        <CollectionShare setVisible={setMod} colObj={colObj} />
+        <CollectionDownload setVisible={setMod} colObj={colObj} />
       )}{" "}
       {mod === "list" && (
         <ModalPasteContent

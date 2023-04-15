@@ -12,7 +12,7 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
         <div className="all_wrap m-auto width90">
           {filtredList.map((item) => (
             <CollectionCard
-              collection={item}
+              oneSet={item}
               key={item.collection.id}
               routeOne={routeOne}
               listFn={listFn}
