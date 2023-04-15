@@ -8,7 +8,7 @@ const DropDownMenu = ({ arr, title }) => {
   return (
     <button
       className="menuBtn dropdown"
-      // onBlur={() => setMode(false)}
+      onBlur={() => setMode(false)}
       onClick={() => setMode(!mode)}>
       {title}
       {mode ? <VscTriangleDown /> : <VscTriangleRight />}
