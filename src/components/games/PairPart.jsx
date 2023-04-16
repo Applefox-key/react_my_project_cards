@@ -7,7 +7,12 @@ import { fontLittle } from "../../utils/texts";
 const PairPart = ({ items, onClick, num, active }) => {
   const imgEl = (el) => {
     let imgurl = num === 1 ? getImgQ(el) : getImgA(el);
-    return imgurl ? <img src={imgurl} alt="img" /> : <></>;
+    let onlyImg = num === 1 ? el.question : el.answer;
+    return imgurl ? (
+      <img src={imgurl} alt="img" className={!onlyImg ? cl["notFloat"] : ""} />
+    ) : (
+      <></>
+    );
   };
   const generateClassName = (el) => {
     const set = num === 2 ? [el.answer, el.imgA] : [el.question, el.imgQ];

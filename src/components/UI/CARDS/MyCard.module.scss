@@ -175,6 +175,8 @@
   padding-left: 2vw;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 
+
+
   .div-note {
     width: 100%;
     height: 100%;
@@ -192,6 +194,11 @@
     right: 10px
   }
 
+  .mwh {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
   img {
     max-width: 50%;
     max-height: 100%;
@@ -199,6 +206,11 @@
 
     @media screen and (min-width: 600px) and (max-height: 600px) {
       max-width: 25%;
+      max-height: 50%;
+    }
+
+    @media screen and (max-width: 600px) and (min-height: 600px) {
+      max-width: 100%;
       max-height: 50%;
     }
   }

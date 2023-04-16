@@ -12,7 +12,7 @@ const cardContent = (item, part, cl) => {
       {im && (
         <img
           src={part === "answer" ? getImgA(item) : getImgQ(item)}
-          className={tx ? cl["img_float"] : "mw-100 mh-100"}
+          className={tx ? cl["img_float"] : cl["mwh-100"]}
           alt=""
         />
       )}

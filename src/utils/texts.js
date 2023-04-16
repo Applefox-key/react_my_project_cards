@@ -157,19 +157,20 @@ export const fontLittle = ([tx, ti]) => {
   console.log(tl, tx);
 
   if (ti) {
-    if (tl <= 5) return "fontSize_little5";
-    if (tl <= 10) return "fontSize_little10";
-    if (tl <= 20) return "fontSize_little20";
-    if (tl <= 30) return "fontSize_little30";
-    if (tl <= 40) return "fontSize_little40";
-    if (tl <= 50) return "fontSize_little50";
-    if (tl <= 100) return "fontSize_little100";
-    if (tl <= 150) return "fontSize_little150";
-    if (tl <= 200) return "fontSize_little200";
-    if (tl <= 250) return "fontSize_little250";
-    if (tl <= 300) return "fontSize_little300";
-    if (tl <= 350) return "fontSize_little350";
-    return "fontSize_littleLG";
+    if (tl === 0) return "fontSize_little5 ";
+    if (tl <= 5) return "fontSize_little5 d-block";
+    if (tl <= 10) return "fontSize_little10 d-block";
+    if (tl <= 20) return "fontSize_little20 d-block";
+    if (tl <= 30) return "fontSize_little30 d-block";
+    if (tl <= 40) return "fontSize_little40 d-block";
+    if (tl <= 50) return "fontSize_little50 d-block";
+    if (tl <= 100) return "fontSize_little100 d-block";
+    if (tl <= 150) return "fontSize_little150 d-block";
+    if (tl <= 200) return "fontSize_little200 d-block";
+    if (tl <= 250) return "fontSize_little250 d-block";
+    if (tl <= 300) return "fontSize_little300 d-block";
+    if (tl <= 350) return "fontSize_little350 d-block";
+    return "fontSize_littleLG d-block";
   } else {
     if (tl <= 5) return "fontSize_little5";
     if (tl <= 10) return "fontSize_little10";
