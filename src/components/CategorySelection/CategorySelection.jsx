@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
-import CategoriesListHeader from "./CategoriesListHeader";
 import CategoryFilter from "./CategoryFilter";
 import CategoryItems from "./CategoryItems";
 import CategoryLink from "./CategoryLink";
 import cl from "./CategorySelection.module.scss";
+import CategorySetBtn from "./CategorySetBtn";
 
 const CategorySelection = ({
   onSelect,
@@ -17,39 +17,49 @@ const CategorySelection = ({
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("");
   const [selected, setSelected] = useState(colCat);
-
+  const [mode, setMode] = useState(false);
   const [getCategories, isLoadingCat] = useQuery(async () => {
     const cat = await BaseAPI.getCategoriesList(isPublic);
     setCategories(cat);
   });
   const addUserCategory = () => {
     BaseAPI.createCategory(filter);
-    onSelectItem(filter);
+    onSelectItem(filter, 0);
     getCategories();
   };
-  const onSelectItem = (item = "") => {
+  const onSelectItem = (value = "", close = 1) => {
     setFilter("");
-    setSelected(item);
-    onSelect(item);
+    setSelected(value);
+    onSelect(value);
+    if (!close) return;
+    setMode(false);
   };
 
   useEffect(() => {
     getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPublic]);
+  console.log(!!isPublic && mode);
 
   return (
-    <>
-      <Dropdown className={cl.div_width}>
-        <CategoriesListHeader
-          className={cl.div_width}
-          selected={selected}
-          list={categories}
-          getList={getCategories}
-          isPublic={isPublic}
-          isOne={isOne}
-        />
-        <Dropdown.Menu className={cl.div_width}>
+    <div className="w-100">
+      <Dropdown
+        className={[cl.div_width, "ps-0 pe-0"].join(" ")}
+        show={mode}
+        onToggle={(val) => setMode(val)}>
+        <Dropdown.Toggle
+          className={[cl.div_width, cl.dropbtn, "ps-3"].join(" ")}
+          id="dropdown-custom-components"
+          size="lg"
+          variant="light">
+          Category:
+          {selected ? <div className={cl.selCat}>{selected.name}</div> : ""}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu className={cl.max_content}>
+          {!isPublic && mode && (
+            <CategorySetBtn list={categories} getList={getCategories} />
+          )}
           <CategoryFilter filter={filter} setFilter={setFilter} />
 
           {!isLoadingCat && categories && (
@@ -74,7 +84,7 @@ const CategorySelection = ({
           )}
         </Dropdown.Menu>
       </Dropdown>
-    </>
+    </div>
   );
 };
 

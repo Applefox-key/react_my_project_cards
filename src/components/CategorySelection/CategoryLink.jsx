@@ -9,14 +9,8 @@ const CategoryLink = ({ onSelectItem, isPublic, isOne }) => {
       eventKey={"first"}
       onClick={() => {
         onSelectItem();
-        // if (linkParam.act) linkParam.act();
       }}>
       {isOne ? "...set no category ❌" : "...show all categories ♾️"}
-      {/* {isOne
-        ? "...set no category ❌"
-        : isPublic
-        ? "...show all categories ❌"
-        : "...show all categories ❌"} */}
     </Dropdown.Item>
   );
 };

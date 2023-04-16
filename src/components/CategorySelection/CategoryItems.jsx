@@ -1,13 +1,13 @@
 import React from "react";
-import { Button, Dropdown } from "react-bootstrap";
-
+import cl from "./CategorySelection.module.scss";
 const CategoryItems = ({ list, add, selected, onSelect, isPublic }) => {
   return (
     <>
       {list.length ? (
         list.map((item) => (
-          <Dropdown.Item
+          <div
             style={{ fontSize: "1.5rem" }}
+            className={cl["drop-item"]}
             active={selected.id === item.id}
             key={item.id}
             eventKey={item.id}
@@ -15,14 +15,14 @@ const CategoryItems = ({ list, add, selected, onSelect, isPublic }) => {
               onSelect(item);
             }}>
             {item.name}
-          </Dropdown.Item>
+          </div>
         ))
       ) : isPublic ? (
         <></>
       ) : (
-        <Button className="w-100" variant="light" onClick={add}>
-          ➕ add new category
-        </Button>
+        <div className={cl["add-cat-btn"]} variant="light" onClick={add}>
+          + add new category
+        </div>
       )}
     </>
   );

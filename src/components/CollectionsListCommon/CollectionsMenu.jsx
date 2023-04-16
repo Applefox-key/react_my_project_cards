@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { HiShare, HiHeart } from "react-icons/hi";
+import { HiShare, HiHeart, HiPlus } from "react-icons/hi";
 import MyFilter from "../UI/MyFilter/MyFilter";
 
 import "../../styles/collectMenu.scss";
@@ -58,23 +58,23 @@ const CollectionsMenu = (props) => {
                   </span>
                 </label>
               </div>
-
+              <div className="divider mb-2 mt-2"></div>
               <Button
                 onClick={() => props.setIsNew(!props.isNew)}
                 size="lg"
                 className="menuBtn mt-1 mb-1"
                 variant="light">
-                CREATE NEW
+                Create new set <HiPlus />
               </Button>
             </>
           )}{" "}
-          <div className="select_wrap">
+          <div className="select_wrap w-auto">
             <CategorySelection
               onSelect={props.setselectedCategory}
               colCat={props.selectedCategory}
               isPublic={isPublic}
             />{" "}
-          </div>
+          </div>{" "}
         </div>
       </div>
     </div>

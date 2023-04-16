@@ -7,8 +7,43 @@
 
 }
 
+.max_content {
+    width: max-content;
+    min-width: 21rem;
+}
+
+.hoverScale {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: lightsteelblue;
+        background-color: ghostwhite;
+        transform: scale(1.2);
+        border: 1px solid rgb(167, 45, 233);
+    }
+}
+
+.drop-item {
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+    font-size: 2rem;
+
+    &:hover {
+        background-color: lavender;
+        border-radius: 5px;
+        transform: scale(1.2);
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    }
+}
+
+.add-cat-btn {
+    @extend .drop-item;
+    font-size: 1.5rem;
+}
+
 .filter_input {
     border-bottom: 1px solid lightsteelblue;
+    display: flex;
 
 
     input {
@@ -16,20 +51,55 @@
         height: 3rem;
         font-size: medium;
         width: 90%;
+
+        &:focus {
+            outline: none;
+            // border-bottom: 1px solid lightslategrey;
+        }
+    }
+
+    .filter_btn {
+
+        // margin-left: 15px;
+        border: none;
+        height: 100%;
+        background-color: transparent;
+        line-height: 2;
+        font-size: 1.4rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            // background-color: lightsteelblue;
+            // background-color: ghostwhite;
+            transform: scale(1.4);
+            // border: 1px solid rgb(167, 45, 233);
+        }
     }
 }
 
-.filter_btn {
-    // margin-left: 15px;
-    padding: 5px;
+.setting_btn {
+    @extend .drop-item;
+
+    width: 100%;
+    height: 3rem;
+    border: none;
+    position: relative;
+    top: -10px;
+    left: -5px;
+    width: 100%;
+    font-size: 2rem;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lavender;
+    border-radius: 4px;
 }
 
 .dropbtn {
     font-size: 1.6rem;
     position: relative;
-
     min-width: 150px;
-    // background-color: lavender;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +111,6 @@
         font-style: italic;
         padding-left: 5px;
     }
-
 
     span {
         position: absolute;
@@ -57,6 +126,8 @@
         }
     }
 
+
+
     &:hover {
         background-color: lightsteelblue;
         border-color: lavender;
@@ -71,8 +142,10 @@
 .link {
     a {
         font-size: 1.3rem;
+        text-align: end;
     }
 
+    text-align: end;
     font-size: 1.3rem;
     color: lightslategrey;
 }

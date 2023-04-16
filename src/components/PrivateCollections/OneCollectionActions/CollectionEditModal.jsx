@@ -95,7 +95,7 @@ const CollectionEditModal = ({
                 label={`import from file`}
               />
             )}
-            <div className="select_wrap">
+            <div className="select_wrap w-auto">
               <CategorySelection
                 isOne={true}
                 onSelect={setCateg}

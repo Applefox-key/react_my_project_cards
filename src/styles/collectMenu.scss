@@ -313,13 +313,16 @@
   background-color: lightsteelblue;
   padding: 9px 20px;
   border-radius: 12px;
-  // max-width: 770px;
   width: 100%;
 
-  .select_wrap {
-    width: fit-content;
-    display: flex;
-  }
+
+
+}
+
+.select_wrap {
+  width: fit-content;
+  display: flex;
+  width: 100%;
 }
 
 .menuCollection {
@@ -355,6 +358,14 @@
   }
 }
 
+.divider {
+  border-bottom: 1px solid;
+
+  @media screen and ((max-width: 600px)) {
+    display: none;
+  }
+}
+
 .dropdown {
   font-size: 2rem;
   height: 42.5px;
@@ -377,9 +388,7 @@
     text-align: start;
 
 
-    .divider {
-      border-bottom: 1px solid;
-    }
+
 
     .drop-item {
       margin: 5px;

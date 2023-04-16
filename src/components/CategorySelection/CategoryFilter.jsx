@@ -1,23 +1,23 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import MyInputGroup from "../UI/MyInput/MyInputGroup";
 import cl from "./CategorySelection.module.scss";
 const CategoryFilter = ({ filter, setFilter }) => {
   return (
-    <MyInputGroup
-      classgroup={cl.filter_input}
-      onChange={(e) => setFilter(e.target.value.toLowerCase())}
-      value={filter}
-      placeholder="type to filter...">
+    <div className={cl.filter_input}>
+      <input
+        type="text"
+        onChange={(e) => setFilter(e.target.value.toLowerCase())}
+        value={filter}
+        placeholder="type to filter..."
+      />
       {filter && (
-        <Button
+        <div
           className={cl.filter_btn}
           variant="outline-light"
           onClick={() => setFilter("")}>
           ❌
-        </Button>
+        </div>
       )}
-    </MyInputGroup>
+    </div>
   );
 };
 export default CategoryFilter;
