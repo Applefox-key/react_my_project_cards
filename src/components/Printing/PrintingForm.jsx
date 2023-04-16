@@ -8,6 +8,7 @@ import PrintingMenu from "./PrintingMenu";
 import CardVertical from "./CardVertical";
 import CardColumn from "./CardColumn";
 import CardHorizontal from "./CardHorizontal";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const PrintingForm = () => {
   const [content, setContent] = useState([]);
@@ -16,7 +17,7 @@ const PrintingForm = () => {
   const [mode, setMode] = useState(2);
   const params = useParams();
 
-  const [getContent, ,] = useQuery(async () => {
+  const [getContent, isLoading] = useQuery(async () => {
     const collectionContent =
       params.tab === "my"
         ? await BaseAPI.getContent(params.id)
@@ -70,49 +71,60 @@ const PrintingForm = () => {
     }
   };
   return (
-    <div className="print_wrap">
-      {mode}
-      {mode === 0 && (
-        <div className="print_cards_wrap">
-          <div className="width800">
-            {contentPage.length &&
-              contentPage.map((el, i) => getCardFragment(el, i))}
-          </div>
+    <>
+      {isLoading ? (
+        <SpinnerLg />
+      ) : (
+        <div className="print_wrap">
+          {mode}
+          {mode === 0 && (
+            <div className="print_cards_wrap">
+              <div className="width800">
+                {contentPage.length &&
+                  contentPage.map((el, i) => getCardFragment(el, i))}
+              </div>
+            </div>
+          )}
+          {mode === 1 && (
+            <>
+              <div className="print_cards_wrap">
+                {contentPage.length &&
+                  contentPage.map(
+                    (el, i) => i % 2 === 0 && getCardFragment(el, i)
+                  )}
+              </div>
+              <div className="print_cards_wrap">
+                {contentPage.length &&
+                  contentPage.map(
+                    (el, i) => i % 2 !== 0 && getCardFragment(el, i)
+                  )}
+              </div>
+            </>
+          )}
+          {mode === 2 && (
+            <div className="print_cards_wrap">
+              {contentPage.length &&
+                contentPage.map((el, i) => getCardFragment(el, i))}
+            </div>
+          )}
+          {mode === 3 && (
+            <div>
+              <div className="print_cards_wrap break-after">
+                {contentPage.length &&
+                  contentPage.map((el, i) =>
+                    getCardFragment(el, i, "question")
+                  )}
+              </div>
+              <div className="print_cards_wrap">
+                {contentPage.length &&
+                  contentPage.map((el, i) => getCardFragment(el, i, "answer"))}
+              </div>
+            </div>
+          )}
+          <PrintingMenu {...{ refresh, mode, setMode }} />
         </div>
       )}
-      {mode === 1 && (
-        <>
-          <div className="print_cards_wrap">
-            {contentPage.length &&
-              contentPage.map((el, i) => i % 2 === 0 && getCardFragment(el, i))}
-          </div>
-          <div className="print_cards_wrap">
-            {contentPage.length &&
-              contentPage.map((el, i) => i % 2 !== 0 && getCardFragment(el, i))}
-          </div>
-        </>
-      )}
-      {mode === 2 && (
-        <div className="print_cards_wrap">
-          {contentPage.length &&
-            contentPage.map((el, i) => getCardFragment(el, i))}
-        </div>
-      )}
-      {mode === 3 && (
-        <div>
-          <div className="print_cards_wrap break-after">
-            {contentPage.length &&
-              contentPage.map((el, i) => getCardFragment(el, i, "question"))}
-          </div>
-
-          <div className="print_cards_wrap">
-            {contentPage.length &&
-              contentPage.map((el, i) => getCardFragment(el, i, "answer"))}
-          </div>
-        </div>
-      )}
-      <PrintingMenu {...{ refresh, mode, setMode }} />
-    </div>
+    </>
   );
 };
 

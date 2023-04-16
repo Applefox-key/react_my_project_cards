@@ -79,6 +79,7 @@ const Collections = () => {
             filter={filter}
             viewmode={viewmode}
             isNew={isNew}
+            setIsNew={setIsNew}
             onlySharedFav={onlySharedFav}
           />
         ) : (

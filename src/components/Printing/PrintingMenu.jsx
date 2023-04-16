@@ -43,16 +43,15 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
           </button>
           {viewOptions && (
             <div className="options-wrap">
-              <div className="input-wrap">
-                <button
-                  title={mode > 1 ? "side position" : "column count"}
-                  onClick={
-                    mode > 1
-                      ? () => setMode(mode === 2 ? 3 : 2)
-                      : () => setMode(mode ? 0 : 1)
-                  }>
-                  {actionBtnName()}
-                </button>
+              <div
+                className="input-wrap"
+                title={mode > 1 ? "side position" : "column count"}
+                onClick={
+                  mode > 1
+                    ? () => setMode(mode === 2 ? 3 : 2)
+                    : () => setMode(mode ? 0 : 1)
+                }>
+                <button>{actionBtnName()}</button>
                 <span>{mode > 1 ? "variant" : "column"}</span>
               </div>
               <BtnColor />

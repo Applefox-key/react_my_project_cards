@@ -12,6 +12,7 @@ const UsersCollections = ({
   viewmode,
   selectedCategory,
   filter,
+  setIsNew,
   isNew,
   onlySharedFav,
 }) => {
@@ -80,6 +81,9 @@ const UsersCollections = ({
       } catch (error) {
         setPopup.error("something goes wrong");
       }
+    },
+    addNew: async () => {
+      setIsNew(true);
     },
   };
   useEffect(() => {
