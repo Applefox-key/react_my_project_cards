@@ -6,7 +6,16 @@ import { fontLittle } from "../../utils/texts";
 const TestOptions = ({ items, onClick, active, right }) => {
   const imgEl = (el) => {
     let imgurl = getImgA(el);
-    return imgurl ? <img src={imgurl} alt="img" /> : <></>;
+
+    return imgurl ? (
+      <img
+        src={imgurl}
+        alt="img"
+        className={!el.answer ? cl["notFloat"] : ""}
+      />
+    ) : (
+      <></>
+    );
   };
   const generateClassName = (el) => {
     console.log("ans", el.answer);

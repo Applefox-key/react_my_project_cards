@@ -85,44 +85,27 @@ export const oneElemHorizontal = (el, part) => {
     </div>
   );
 };
-// //printing card vertical
-// export const cardVertical = (el, i, ref, params, drugDropProp, del) => (
-//   <div
-//     key={el.id}
-//     id={el.id}
-//     ref={ref}
-//     className="vertical_card"
-//     {...drugDropProp(i)}>
-//     <button onClick={() => del(el)}>❌</button>
-//     <>{oneElemVertical(el, "question")}</>
-//     <>{oneElemVertical(el, "answer")}</>
-//     <div className="print-name">
-//       {params.name} <span>{i + 1}</span>
-//     </div>
-//   </div>
-// );
-// //printing card horizontal
-// export const cardHorizontal = (el, i, ref, drugDropProp, del) => (
-//   <div
-//     key={el.id}
-//     id={el.id}
-//     ref={ref}
-//     className="horizontal_card"
-//     {...drugDropProp(i)}>
-//     <>{oneElemHorizontal(el, "question")}</>
-//     <>{oneElemHorizontal(el, "answer")}</>
-//     <button onClick={() => del(el)}>❌</button>
-//   </div>
-// );
-// //printing card horizontal column
-// export const cardHorizontalPart = (el, i, ref, drugDropProp, del, part) => (
-//   <div
-//     key={el.id}
-//     id={el.id}
-//     ref={ref}
-//     className="horizontal_card me-4"
-//     {...drugDropProp(i)}>
-//     <>{oneElemHorizontal(el, part)}</>
-//     <button onClick={() => del(el)}>❌</button>
-//   </div>
-// );
+
+export const onePartLittle = (el, part) => {
+  let im = part === "question" ? el.imgQ : el.imgA;
+  let tx = part === "question" ? el.question : el.answer;
+  let classImg = im && tx.length === 0 ? "float-none" : "";
+  let classDiv = "onePart " + (part === "question" ? "quest" : "answ");
+  classDiv += tx.length < 30 ? " text-center" : "";
+  // im && tx.length === 0 ? "float-none" : "";
+  // if (tx.length)
+  // classDiv = classDiv + ?
+
+  return (
+    <div className={classDiv}>
+      {im && (
+        <img
+          src={part === "question" ? getImgQ(el) : getImgA(el)}
+          className={classImg}
+          alt=""
+        />
+      )}
+      {tx}
+    </div>
+  );
+};

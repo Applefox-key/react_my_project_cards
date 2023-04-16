@@ -3,8 +3,8 @@ import "../../../styles/oneCollection.scss";
 import { Button } from "react-bootstrap";
 import BaseAPI from "../../../API/BaseAPI";
 import { useNavigate } from "react-router-dom";
-import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { GO_TO } from "../../../router/routes";
+import { onePartLittle } from "../../../utils/cardFragment";
 
 const CardContent = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
@@ -70,14 +70,8 @@ const CardContent = ({ content, setContent, pageParam }) => {
                 )
             )}
           </div>
-          <div className="onePart quest">
-            {el.imgQ && <img src={getImgQ(el)} alt="" />}
-            {el.question}
-          </div>
-          <div className="onePart answ">
-            {el.imgA && <img src={getImgA(el)} alt="" />}
-            {el.answer}
-          </div>
+          {onePartLittle(el, "question")}
+          {onePartLittle(el, "answer")}
         </div>
       ))}
     </div>
