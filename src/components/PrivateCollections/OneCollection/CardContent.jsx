@@ -18,7 +18,6 @@ const CardContent = ({ content, setContent, pageParam }) => {
     {
       private: true,
       symb: "🖊",
-      // symb: "🖊🖉🖊✐🖋️",
       callback: (item) => {
         route(`${GO_TO.editCard}/${pageParam.id}/${pageParam.name}/${item.id}`);
       },

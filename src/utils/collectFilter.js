@@ -25,11 +25,8 @@ export const getFiltredCollections = (collectionsList, filter) => {
 //for public collections list
 export const filterByCategory = (list, category) => {
   if (category)
-    return list.filter(
-      (item) =>
-        category.id.includes(list[0].collection ? item.collection.id : item.id)
-      // category.id ===
-      // (list[0].collection ? item.collection.categoryid : item.categoryid)
+    return list.filter((item) =>
+      category.id.includes(list[0].collection ? item.collection.id : item.id)
     );
   return list;
 };

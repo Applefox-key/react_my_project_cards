@@ -11,20 +11,16 @@ const TimeCardBody = ({ items }) => {
   const start = () => {
     items.forEach((_, i) => {
       setTimeout(() => {
-        // setCard({ ...card, flip: true });
         setFlip(true);
       }, 1000 * oneDelay * (i * 2 + 1));
 
       if (i + 1 < items.length)
         setTimeout(() => {
-          // setCard({ flip: false, num: i, anim: i });
           setShowAnim(i % 2 === 0);
           setFlip(false);
           setNum(i + 1);
         }, 1000 * oneDelay * (i * 2 + 2));
     });
-
-    //
   };
 
   return (

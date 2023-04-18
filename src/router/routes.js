@@ -12,7 +12,7 @@ import MainPage from "../components/users/Login/MainPage";
 import Login from "../components/users/Login/Login";
 import AboutPage from "../components/AboutPage/AboutPage";
 import ForgotPassword from "../components/users/Login/ForgotPassword";
-import Collections from "../components/CollectionsListCommon/Collections";
+import Collections from "../components/CollectionsCommon/Collections";
 import UserOneCollection from "../components/PrivateCollections/OneCollection/UserOneCollection";
 import PublicCollectionsView from "../components/PublicCollections/PublicOneCollection";
 import EditCard from "../components/PrivateCollections/OneCollection/EditCard";

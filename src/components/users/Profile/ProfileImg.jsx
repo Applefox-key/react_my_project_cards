@@ -11,7 +11,6 @@ const ProfileImg = (props) => {
   };
 
   return (
-    // <div className="d-flex justify-content-center mt-2 px-5">
     <div className={cl.avatarDiv}>
       {props.visible && (
         <AvatarGalery
@@ -29,15 +28,8 @@ const ProfileImg = (props) => {
         onClick={() => {
           props.setVisible(true);
         }}
-      />{" "}
-      {/* <Button
-          onClick={() => {
-            props.setVisible(true);
-          }}>
-          Choose an avatar
-        </Button> */}
+      />
     </div>
-    // </div>
   );
 };
 

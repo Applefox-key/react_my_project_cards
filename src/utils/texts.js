@@ -44,7 +44,7 @@ export const contentFromText = async (
               .filter((el) => el);
             if (auto) {
               //automatically determine the column name
-              arr.sort((a, b) => a.length - b.length); //q n a
+              arr.sort((a, b) => a.length - b.length);
               if (arr.length === 2) arr.splice(1, 0, "");
               return { id: i, question: arr[0], answer: arr[2], note: arr[1] };
             } else {
@@ -75,8 +75,7 @@ export const onlyLetters = (text) => {
 //font for the cards
 export const fontS = ([tx, ti]) => {
   const tl = tx.length;
-  // const tl = tx.length;
-  console.log(tl, ti, tx);
+
   if (ti || ti === "null") {
     if (tl <= 5) return "fontSize_lengthImg5";
     if (tl <= 10) return "fontSize_lengthImg10";
@@ -110,7 +109,6 @@ export const fontS = ([tx, ti]) => {
 //font for the  cards printing
 export const fontPrint = ([tx, ti]) => {
   const tl = tx.length;
-  console.log(tl, tx);
 
   if (ti) {
     if (tl <= 5) return "fontSize_printImg5";
@@ -140,21 +138,12 @@ export const fontPrint = ([tx, ti]) => {
     if (tl <= 300) return "fontSize_print300";
     if (tl <= 350) return "fontSize_print350";
     return "fontSize_printLG";
-
-    // if (tl < 12) return "font93";
-    // if (tl <= 60) return "font34";
-    // if (tl <= 130) return "font24"; //73
-    // if (tl <= 160) return "font21";
-    // if (tl <= 180) return "font19";
-    // if (tl <= 350) return "font16";
-    // return "font12";
   }
 };
 
 //font for the  cards printing
 export const fontLittle = ([tx, ti]) => {
   const tl = tx.length;
-  console.log(tl, tx);
 
   if (ti) {
     if (tl === 0) return "fontSize_little5 ";
@@ -185,13 +174,5 @@ export const fontLittle = ([tx, ti]) => {
     if (tl <= 300) return "fontSize_little300";
     if (tl <= 350) return "fontSize_little350";
     return "fontSize_littleLG";
-
-    // if (tl < 12) return "font93";
-    // if (tl <= 60) return "font34";
-    // if (tl <= 130) return "font24"; //73
-    // if (tl <= 160) return "font21";
-    // if (tl <= 180) return "font19";
-    // if (tl <= 350) return "font16";
-    // return "font12";
   }
 };

@@ -60,7 +60,6 @@ const BaseAPI = {
       let result = await axios(axiosConfig);
       const blob = new Blob([result.data], {
         type: result.headers["content-type"],
-        // type: result.getResponseHeader("Content-Type"),
       });
       const url = URL.createObjectURL(blob);
 
@@ -81,7 +80,6 @@ const BaseAPI = {
       name: set.name,
     };
     if (set.note) reqData.note = set.note;
-    // if (set.category.id) reqData.categoryid = set.category.id;
     if (set.categoryid) reqData.categoryid = set.categoryid;
     return await this.serverReq("post", "/collections", true, reqData);
   },
@@ -110,7 +108,6 @@ const BaseAPI = {
     arr.forEach((element, i) => {
       if (!element.question || !element.answer)
         return { error: "you cannot add an empty value ....row " + (i + 1) };
-      // throw new Error("you cannot add an empty value ....row " + (i + 1));
     });
     let reqData = { list: arr };
 
@@ -129,16 +126,6 @@ const BaseAPI = {
     )
       throw new Error("please specify the answer and the question");
     let formData = contentRequestData(content);
-
-    // return await this.serverReq("patch", "/content", true, "", "", formData);
-
-    // let reqData = {
-    //   question: content.question,
-    //   answer: content.answer,
-    //   note: content.note,
-    //   imgA: content.imgA ? content.imgA : "",
-    //   imgQ: content.imgQ ? content.imgQ : "",
-    // };
     return await this.serverReq(
       "post",
       "/collections/" + colId + "/content",
@@ -177,34 +164,14 @@ const BaseAPI = {
   async deleteColection(colId) {
     if (colId === "new") return;
     return await this.serverReq("delete", "/collections/" + colId, true);
-
-    // let collectionList = await BaseAPI.fromLS("collectionsList");
-
-    // let num = collectionList.findIndex(
-    //   (item) => item.id.toString() === colId.toString()
-    // );
-    // this.deleteColContent(colId);
-    // collectionList.splice(num, 1);
-    // await BaseAPI.toLS("collectionsList", collectionList);
   },
   async deleteColectionAll() {
     return await this.serverReq("delete", "/collections", true);
   },
   async deleteContent(wId) {
     return await this.serverReq("delete", "/content/" + wId, true);
-    // let list = await BaseAPI.fromLS("extraList");
-    // let indbase = list.findIndex(
-    //   (item) => item.id.toString() === wId.toString()
-    // );
-    // if (indbase !== -1) list.splice(indbase, 1);
-    // await BaseAPI.toLS("extraList", list);
   },
-  // async deletePbColection(colId) {
-  //   return await this.serverReq("delete", "/pbcollections/" + colId, true);
-  // },
-  // async deleteUserPbColectionAll() {
-  //   return await this.serverReq("delete", "/pbcollections/user", true);
-  // },
+
   async editCategory(newParam, catId) {
     if (!newParam || !catId) return { message: "nothing has changed" };
 
@@ -214,13 +181,6 @@ const BaseAPI = {
       true,
       newParam
     );
-
-    // let collectionList = await this.getCollectionsList();
-    // let num = collectionList.findIndex(
-    //   (item) => item.id.toString() === colId.toString()
-    // );
-    // collectionList[num] = { ...collectionList[num], name: newName };
-    // await BaseAPI.toLS("collectionsList", collectionList);
   },
   async editColParam(newParam, colId) {
     if (!newParam || !colId) return { message: "nothing has changed" };
@@ -230,13 +190,6 @@ const BaseAPI = {
       true,
       newParam
     );
-
-    // let collectionList = await this.getCollectionsList();
-    // let num = collectionList.findIndex(
-    //   (item) => item.id.toString() === colId.toString()
-    // );
-    // collectionList[num] = { ...collectionList[num], name: newName };
-    // await BaseAPI.toLS("collectionsList", collectionList);
   },
   async editContent(newV) {
     if (
@@ -347,12 +300,6 @@ const BaseAPI = {
     if (result.error) throw new Error({ error: result.error });
     return result.data;
   },
-  // //pbcollection's list shared by user
-  // async getPublicCollectionsUser() {
-  //   let result = await this.serverReq("get", "/pbcollections/user", true);
-  //   if (result.error) throw new Error(result.error);
-  //   return result.data;
-  // },
   //pbcollection with content
   async getPublicCollectionsAndContent(colId) {
     let result = colId
@@ -383,9 +330,6 @@ const BaseAPI = {
   async getUser() {
     let result = await this.serverReq("get", "/users", true);
     if (result.error) throw new Error(result.error);
-    // let sss =
-    //   result.data.settings === "null" ? defaultSettings : result.data.settings;
-
     let usrData = {
       ...result.data,
       password: "",
@@ -424,14 +368,6 @@ const BaseAPI = {
       reqData = { ...ud, img: img };
     }
     let formData = userRequestData(ud);
-    // return await this.serverReq(
-    //   "post",
-    //   "/collections/" + colId + "/content",
-    //   true,
-    //   "",
-    //   "",
-    //   formData
-    // );
     return await this.serverReq("patch", "/users", true, reqData, "", formData);
   },
   async sendMailResetToken(login) {

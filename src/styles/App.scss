@@ -1,4 +1,3 @@
-// $contrast-text: blue;
 :root {
   --contrast-text: black;
   --wrap-opacity: 1;
@@ -16,15 +15,8 @@
   background-color: lavenderblush;
 
   @media print {
-
     margin: auto;
-
-    // @page {
-    //   margin: auto;
-    // }
-
   }
-
 }
 
 .App {
@@ -62,7 +54,6 @@
 }
 
 //elements
-
 input {
   caret-color: black;
 }
@@ -75,6 +66,7 @@ input {
 .flex-center {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .flex-standart {
@@ -109,9 +101,6 @@ input {
   z-index: 2;
 }
 
-.w-40 {
-  width: 40%
-}
 
 .hide {
   display: none;
@@ -129,6 +118,11 @@ input {
 .width90 {
   width: 90%;
 }
+
+.w-40 {
+  width: 40%
+}
+
 
 .width100wv {
   width: 100vw;
@@ -263,5 +257,21 @@ input {
         min-width: 4rem;
       }
     }
+  }
+}
+
+.btn-x {
+  border-radius: 20px;
+  width: 3rem;
+  height: 3rem;
+  line-height: 0;
+  border: none;
+  margin-left: 5px;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
+  background-color: ghostwhite;
+
+  &:hover {
+    transform: scale(1.2);
   }
 }

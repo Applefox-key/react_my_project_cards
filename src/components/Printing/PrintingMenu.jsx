@@ -8,7 +8,6 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
   const [viewOptions, setViewOptions] = useState(false);
 
   const actionBtnName = () => {
-    // {mode === 2 ? "🗖" : mode > 2 ? "↕️" : "🗗"}
     switch (mode) {
       case 0:
         return "1";

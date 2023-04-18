@@ -4,7 +4,7 @@ import ColumnInput from "./ColumnInput";
 import ColumnWithBtns from "./ColumnWithBtns";
 
 const RowContent = ({ content, i, btnsArray, namesArray, edit }) => {
-  const [editValue, setEditValue] = useState({ ...content }); //{ ...content }
+  const [editValue, setEditValue] = useState({ ...content });
   const editNames = edit ? edit.names : [];
 
   const editOk = () => {

@@ -7,8 +7,3 @@ export const getFirstEl = (arr, count) => {
   if (arr.length > count) return arr.slice(0, count);
   return arr;
 };
-// export const delId = (arr, id) => {
-//   let ind = arr.findIndex((item) => item.id.toString() === id.toString());
-//   arr.splice(ind, 1);
-//   return arr;
-// };

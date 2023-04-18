@@ -5,11 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "../../../styles/collectMenu.scss";
 import CategorySelection from "../../CategorySelection/CategorySelection";
-
 import { usePopup } from "../../../hooks/usePopup";
-
 import { contentFromTxtFile } from "../../../utils/files";
-
 import { editCollectionHlp } from "../../../utils/editCollectionHlp";
 import ModalFileContentBtns from "../addContent/ModalFileContentBtns";
 import ContentFromFile from "../addContent/ContentFromFile";
@@ -48,9 +45,7 @@ const CollectionEditModal = ({
         collection
       );
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
-
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
-
       setIsEdit(false);
     } catch (error) {
       setPopup.error(error.message);

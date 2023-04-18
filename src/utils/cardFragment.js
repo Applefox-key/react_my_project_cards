@@ -92,9 +92,6 @@ export const onePartLittle = (el, part) => {
   let classImg = im && tx.length === 0 ? "float-none" : "";
   let classDiv = "onePart " + (part === "question" ? "quest" : "answ");
   classDiv += tx.length < 30 ? " text-center" : "";
-  // im && tx.length === 0 ? "float-none" : "";
-  // if (tx.length)
-  // classDiv = classDiv + ?
 
   return (
     <div className={classDiv}>

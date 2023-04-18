@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 import { isEmailValid } from "../../../utils/validation";
 
 const ForgotBox = ({ setLoginMode }) => {
-  // const router = useNavigate();
   const pageParam = useParams();
   const [err, setErr] = useState("");
   const [success, setSuccess] = useState("");

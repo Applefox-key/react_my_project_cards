@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const MenuOneCollection = (props) => {
   const [renameMode, setRenameMode] = useState(false);
   const router = useNavigate();
-  console.log(props);
 
   return (
     <div className="string_menu d-flex justify-content-between mt-2">

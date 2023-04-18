@@ -1,21 +1,29 @@
 import React from "react";
 import cl from "./CategorySelection.module.scss";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 const CategoryItems = ({ list, add, selected, onSelect, isPublic }) => {
+  const classGenerator = (item) => {
+    const active_id = !selected ? "" : isPublic ? selected.name : selected.id;
+    const item_id = isPublic ? item.name : item.id;
+
+    return [
+      cl["drop-item"],
+      active_id === item_id ? cl["active"] : "",
+      "fs-4",
+    ].join(" ");
+  };
   return (
     <>
       {list.length ? (
         list.map((item) => (
-          <div
-            style={{ fontSize: "1.5rem" }}
-            className={cl["drop-item"]}
-            active={selected.id === item.id}
+          <DropdownItem
+            className={classGenerator(item)}
             key={item.id}
-            eventKey={item.id}
             onClick={() => {
               onSelect(item);
             }}>
             {item.name}
-          </div>
+          </DropdownItem>
         ))
       ) : isPublic ? (
         <></>

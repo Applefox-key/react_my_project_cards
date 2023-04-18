@@ -59,25 +59,6 @@ const ModalFileContent = ({ setVisible, setContent, colId }) => {
         fileContent={fileContent}
         addToColection={addToColection}
       />
-      {/* <div className="modal-h50">
-        {!fileContent ? (
-          <></>
-        ) : (
-          <>
-            <Button
-              size="lg"
-              className="mt-1"
-              variant="outline-secondary"
-              onClick={addToColection}>
-              Add the content
-            </Button>
-            <MyTable
-              dataArray={fileContent}
-              namesArray={["question", "answer", "note"]}
-            />
-          </>
-        )}
-      </div> */}
     </MyModal>
   );
 };

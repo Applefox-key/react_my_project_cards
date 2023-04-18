@@ -34,8 +34,6 @@ const UserOneCollection = () => {
     } catch (error) {}
   };
   useEffect(() => {
-    console.log(pageParam);
-
     getCategories();
     getContent();
     if (error) setPopup.error(error);

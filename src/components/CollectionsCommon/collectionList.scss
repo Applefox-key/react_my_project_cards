@@ -20,8 +20,11 @@
         left: 0;
         margin: auto;
     }
+
 }
 
+
+//----------------------------
 .oneCollect-wrap {
     position: relative;
 
@@ -161,13 +164,9 @@
 
     .delbtn {
         position: absolute;
-        // right: -5px;
         left: 26rem;
-        // top: -6px;
         padding: 5px;
-        // background: #e6e6fa;
         font-size: 15px;
-        // border-radius: 38%;
         display: none;
         cursor: pointer;
         transition: all 0.2s;

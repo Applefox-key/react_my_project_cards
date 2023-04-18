@@ -6,9 +6,8 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
   return (
     <>
       <div className="all_wrap m-auto width90">
-        {!filtredList ? (
+        {!filtredList || !filtredList.length ? (
           <>
-            {" "}
             {listFn ? (
               <div className="oneCollect-wrap" onClick={listFn.addNew}>
                 <div className="oneCollect display-2">ADD NEW SET OF CARDS</div>

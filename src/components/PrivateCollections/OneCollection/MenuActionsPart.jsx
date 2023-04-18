@@ -55,11 +55,6 @@ const MenuActionsPart = ({ colObj, setContent }) => {
         <Button variant="light" className="menuBtn" onClick={addRow}>
           Add card <HiPlus />
         </Button>{" "}
-        <DropDownMenu
-          className="menuBtn"
-          arr={importArr}
-          title="Import cards"
-        />
         <Button variant="light" className="menuBtn" onClick={removeCollection}>
           Remove <HiOutlineDocumentRemove />
         </Button>{" "}
@@ -80,10 +75,14 @@ const MenuActionsPart = ({ colObj, setContent }) => {
           className="menuBtn">
           Download <HiOutlineDocumentDownload />
         </Button>{" "}
+        <DropDownMenu
+          className="menuBtn"
+          arr={importArr}
+          title="Import cards"
+        />
         <BackBtn />
       </ButtonGroup>
     </>
-    // </div>
   );
 };
 

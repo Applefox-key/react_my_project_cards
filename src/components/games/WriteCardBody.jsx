@@ -11,7 +11,7 @@ import { CSSTransition } from "react-transition-group";
 
 const WriteCardBody = ({ items }) => {
   const [answer, setAnswer] = useState("");
-  const [count, setCount] = useState([0, 0]); // const [card, setCard] = useState({ flip: false, num: 0, anim: false });
+  const [count, setCount] = useState([0, 0]);
   const [num, setNum] = useState(0);
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);

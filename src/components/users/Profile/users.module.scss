@@ -23,7 +23,6 @@
 
     width: 350px;
     height: 367px;
-    // border: 1px solid lavender;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +32,6 @@
     .avatarProfile {
       width: 90%;
       cursor: pointer;
-      // margin: auto;
     }
   }
 
@@ -66,7 +64,6 @@
       border-radius: 2px;
       width: 90%;
       margin: auto;
-      // background: var(--contrast-text);
     }
   }
 
@@ -88,10 +85,9 @@
         font-size: 13px;
         font-weight: 600;
         min-width: 8rem;
-        color: var(--contrast-text); // background-color: lightsteelblue;
+        color: var(--contrast-text);
         background-color: transparent;
         border: none;
-        // color: $contrast-color;
       }
     }
 

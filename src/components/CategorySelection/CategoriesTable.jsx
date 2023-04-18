@@ -4,8 +4,7 @@ import BaseAPI from "../../API/BaseAPI";
 import { usePopup } from "../../hooks/usePopup";
 import MyTable from "../UI/table/MyTable";
 
-const CategoriesManager = () => {
-  const [categoriesTbl, setCategoriesTbl] = useState();
+const CategoriesTable = ({ categoriesTbl, setCategoriesTbl }) => {
   const [editMode, setEditMode] = useState(null);
   const setPopup = usePopup();
 
@@ -76,7 +75,9 @@ const CategoriesManager = () => {
 
   return (
     <div>
-      {categoriesTbl && (
+      {!categoriesTbl ? (
+        <h2>No collections</h2>
+      ) : (
         <MyTable
           onRowClick={editOn}
           edit={editMode}
@@ -92,4 +93,4 @@ const CategoriesManager = () => {
     </div>
   );
 };
-export default CategoriesManager;
+export default CategoriesTable;

@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
-// import { useParams } from "react-router-dom";
-// import BaseAPI from "../../../API/BaseAPI";
-
-// import cl from "./user.module.css";
 import cl from "./login.module.scss";
 
 const ForgotPassword = () => {

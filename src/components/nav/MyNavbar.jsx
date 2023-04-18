@@ -8,10 +8,7 @@ import { useAuth } from "../../hooks/useAuth";
 import UserAvatar from "../users/Profile/UserAvatar";
 const MyNavbar = () => {
   const router = useNavigate();
-  //get  elements with nameNav only
-
   const { userRoutes, userAuth, setUserAuth } = useAuth(true);
-
   const logout = () => {
     BaseAPI.logout();
     setUserAuth({ isAuth: false, role: null });

@@ -1,6 +1,4 @@
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
 import { initializeApp } from "firebase/app";
-// import * as Storage from "https://www.gstatic.com/firebasejs/9.8.3/firebase-storage.js";
 import {
   getStorage,
   ref,
@@ -8,7 +6,6 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-// } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-storage.js";
 
 export function firebaseInit() {
   const firebaseConfig = {
@@ -21,16 +18,11 @@ export async function getAvatarsFromStore() {
   firebaseInit();
   let imgarr = [];
   const storage = await getStorage();
-  //const storageData = await Storage.ref(storage, "avatars/");
   const listRef = await ref(storage, "avatars");
 
   try {
     let res = await listAll(listRef);
-
-    res.prefixes.forEach((folderRef) => {
-      // All the prefixes under listRef.
-      // You may call listAll() recursively on them.
-    });
+    res.prefixes.forEach((folderRef) => {});
     res.items.forEach((itemRef, i) => {
       getDownloadURL(itemRef).then((url) => {
         imgarr.push({ name: itemRef.name, url: url });
@@ -44,8 +36,6 @@ export async function getAvatarsFromStore() {
 }
 
 export async function setImgToStorage(userKey, file) {
-  // let img = document.getElementById("fileName");
-  // const [file] = img.files;
   firebaseInit();
   if (file) {
     const storage = await getStorage();

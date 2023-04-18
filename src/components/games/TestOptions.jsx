@@ -18,13 +18,8 @@ const TestOptions = ({ items, onClick, active, right }) => {
     );
   };
   const generateClassName = (el) => {
-    console.log("ans", el.answer);
-    console.log("right", right);
-
-    console.log(right !== el.id.toString() && right);
     return [
       cl.list_btn,
-      // cl.right_answer,
       fontLittle([el.answer, el.imgA]),
       active.includes(el.id.toString()) ? cl.wrong_answer : "",
       right === el.id.toString() ? cl.right_answer : "",

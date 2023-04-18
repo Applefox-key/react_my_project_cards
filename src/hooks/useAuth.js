@@ -20,9 +20,3 @@ export const useAuth = (returnAuthContext = false) => {
     return { userRoutes, userAuth, setUserAuth, updateSettings };
   return userRoutes;
 };
-// export const use = (returnAuthContext = false) => {
-//   const { userAuth, setUserAuth } = useContext(AuthContext);
-//   let userRoutes = getRoutes(userAuth);
-//   if (returnAuthContext) return [userRoutes, userAuth, setUserAuth];
-//   return userRoutes;
-// };

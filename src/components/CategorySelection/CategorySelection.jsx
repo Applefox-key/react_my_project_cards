@@ -11,12 +11,13 @@ import CategorySetBtn from "./CategorySetBtn";
 const CategorySelection = ({
   onSelect,
   colCat = "",
-  isPublic = false,
-  isOne = false,
+  colCatPub = "",
+  isOne,
 }) => {
+  const isPublic = window.location.pathname.includes("pub");
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("");
-  const [selected, setSelected] = useState(colCat);
+  const [selected, setSelected] = useState(isPublic ? colCatPub : colCat);
   const [mode, setMode] = useState(false);
   const [getCategories, isLoadingCat] = useQuery(async () => {
     const cat = await BaseAPI.getCategoriesList(isPublic);
@@ -37,10 +38,15 @@ const CategorySelection = ({
 
   useEffect(() => {
     getCategories();
+    setSelected(isPublic ? colCatPub : colCat);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPublic]);
-  console.log(!!isPublic && mode);
-
+  useEffect(() => {
+    const col = isPublic ? colCatPub : colCat;
+    if (col.id === selected.id) return;
+    setSelected(col);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [colCat, colCatPub, isPublic]);
   return (
     <div className="w-100">
       <Dropdown

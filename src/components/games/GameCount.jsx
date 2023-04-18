@@ -2,8 +2,6 @@ import React from "react";
 import GameCountBage from "./GameCountBage";
 
 const GameCount = ({ count, all, left = "", result = 0 }) => {
-  console.log(result ? " countResult" : "");
-
   return (
     <div className={result ? "countResult" : "count"}>
       <GameCountBage value={count[0]} lable="👍" bg="success" />
@@ -20,4 +18,3 @@ const GameCount = ({ count, all, left = "", result = 0 }) => {
 };
 
 export default GameCount;
-// {" POSITIVE: " + count[0]}

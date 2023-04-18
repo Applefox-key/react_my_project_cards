@@ -3,29 +3,26 @@ import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
 import { useQuery } from "../../../hooks/useQuery";
 import CollectionsTable from "./CollectionsTable";
-import CollectionCardsList from "../../CollectionsListCommon/CollectionCardsList";
+import CollectionCardsList from "../../CollectionsCommon/CollectionCardsList";
 import { GO_TO } from "../../../router/routes";
 import { favorite, share } from "../../../utils/contentRequests";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 
 const UsersCollections = ({
   viewmode,
-  selectedCategory,
-  filter,
-  setIsNew,
-  isNew,
-  onlySharedFav,
+  commonSettings,
+  privateSettings,
+  setSettingsPrivat,
 }) => {
   const [collectionList, setCollectionList] = useState([]);
-
   const [getCollections, isLoading, error] = useQuery(async () => {
     setCollectionList(
       await BaseAPI.getCollectionsAndContent(
         "",
-        selectedCategory.id,
-        filter,
-        onlySharedFav.shared,
-        onlySharedFav.favorite
+        commonSettings.selectedCategorymy.id,
+        commonSettings.filter,
+        privateSettings.shared,
+        privateSettings.favorite
       )
     );
   });
@@ -66,8 +63,6 @@ const UsersCollections = ({
       try {
         await favorite(element, setPopup);
         let res = collectionList.map((elem) => {
-          console.log(elem);
-
           if (elem.collection.id !== element.id) return elem;
           let nec = {
             ...elem.collection,
@@ -83,24 +78,23 @@ const UsersCollections = ({
       }
     },
     addNew: async () => {
-      setIsNew(true);
+      setSettingsPrivat("isNew");
     },
   };
   useEffect(() => {
-    if (isNew) return;
+    if (privateSettings.isNew) return;
     getCollections();
 
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    isNew,
+    privateSettings.isNew,
     viewmode,
-    selectedCategory,
-    filter,
-    onlySharedFav.shared,
-    onlySharedFav.favorite,
+    commonSettings.selectedCategorymy,
+    commonSettings.filter,
+    privateSettings.shared,
+    privateSettings.favorite,
   ]);
-
   return (
     <>
       {isLoading ? (
@@ -114,7 +108,7 @@ const UsersCollections = ({
       ) : (
         <CollectionsTable
           getCollections={getCollections}
-          selectedCategory={selectedCategory}
+          selectedCategory={commonSettings.selectedCategorymy}
           filtredList={collectionList}
           collectionList={collectionList}
           setCollectionList={setCollectionList}

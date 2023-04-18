@@ -15,7 +15,6 @@ const OneCardG = ({
   return (
     <>
       <div
-        // className={"my-3 w-100"}
         className={clgal ? clgal : cl.container_gallery}
         style={{ display: direction ? "block" : "none" }}>
         <SwitchTransition mode="out-in">

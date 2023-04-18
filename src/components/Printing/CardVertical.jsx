@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 const CardVertical = ({ el, i, drugDrop, del, mode }) => {
   const params = useParams();
-  console.log(!mode ? "vertical_card width800" : "vertical_card");
 
   return (
     <div

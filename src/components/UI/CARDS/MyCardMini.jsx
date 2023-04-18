@@ -22,13 +22,7 @@ const MyCardMini = ({ item, mode = "0", flip, clc = true }) => {
           }}>
           <CSSTransition in={!flipped} timeout={1000} classNames={"cardFront"}>
             <div className={cl["card-front"]}>
-              <h1
-                className={cl["cardFontSizemini"]}
-                // style={{ fontSize: showDivWidth() }}
-                // className={["display-" + (mode === 0 ? 1 : 5), cl.text1].join(
-                //   " "
-                // )}
-              >
+              <h1 className={cl["cardFontSizemini"]}>
                 {mode === "0" ? item.question : item.answer}
               </h1>
             </div>

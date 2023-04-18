@@ -41,10 +41,6 @@ const LoginBox = ({ setLoginMode }) => {
     }
   };
 
-  // const serverQuery = async () => {
-  //   let response = await BaseAPI.login(email, password);
-  // };
-
   return (
     <div className={cl.containerlogin}>
       <div className={cl["login-box"]}>
