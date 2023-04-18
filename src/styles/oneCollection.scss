@@ -149,6 +149,12 @@
             width: 100%;
             padding: 10px;
 
+            .imgOnly {
+                float: none;
+                max-height: 100%;
+                max-width: 100%;
+            }
+
             img {
                 float: left;
                 max-width: 60px;

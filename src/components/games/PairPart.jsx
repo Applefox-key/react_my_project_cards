@@ -9,7 +9,7 @@ const PairPart = ({ items, onClick, num, active }) => {
     let imgurl = num === 1 ? getImgQ(el) : getImgA(el);
     let onlyImg = num === 1 ? el.question : el.answer;
     return imgurl ? (
-      <img src={imgurl} alt="img" className={!onlyImg ? cl["notFloat"] : ""} />
+      <img src={imgurl} alt="img" className={!onlyImg ? cl["imgOnly"] : ""} />
     ) : (
       <></>
     );

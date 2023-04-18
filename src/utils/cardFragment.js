@@ -89,7 +89,7 @@ export const oneElemHorizontal = (el, part) => {
 export const onePartLittle = (el, part) => {
   let im = part === "question" ? el.imgQ : el.imgA;
   let tx = part === "question" ? el.question : el.answer;
-  let classImg = im && tx.length === 0 ? "float-none" : "";
+  let classImg = im && tx.length === 0 ? "imgOnly" : "";
   let classDiv = "onePart " + (part === "question" ? "quest" : "answ");
   classDiv += tx.length < 30 ? " text-center" : "";
 

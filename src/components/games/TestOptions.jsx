@@ -8,11 +8,7 @@ const TestOptions = ({ items, onClick, active, right }) => {
     let imgurl = getImgA(el);
 
     return imgurl ? (
-      <img
-        src={imgurl}
-        alt="img"
-        className={!el.answer ? cl["notFloat"] : ""}
-      />
+      <img src={imgurl} alt="img" className={!el.answer ? cl["imgOnly"] : ""} />
     ) : (
       <></>
     );
