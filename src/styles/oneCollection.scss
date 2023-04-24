@@ -114,11 +114,37 @@
             height: 16%;
             display: flex;
             justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
+
+            .note-wrap {
+
+                max-width: 190px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                border: 1px solid red;
+                background-color: coral;
+                border-radius: 25px;
+                border-bottom-left-radius: 0;
+            }
+
+            .note {
+                color: white;
+                font-size: 15px;
+                overflow: hidden;
+                padding: 0 5px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-height: 100%;
+            }
 
             button {
 
                 background-color: transparent;
                 border: none;
+                padding: 5px;
+                width: 3rem;
 
                 &:hover {
                     background-color: #607aff;

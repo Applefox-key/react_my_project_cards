@@ -53,21 +53,28 @@ const CardContent = ({ content, setContent, pageParam }) => {
               );
           }}>
           <div className="menuPart">
-            {btns.map(
-              (btn, i) =>
-                !(window.location.pathname.includes("pub") && btn.private) && (
-                  <Button
-                    key={i}
-                    variant="light"
-                    size="lg"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      btn.callback(el);
-                    }}>
-                    {btn.symb}
-                  </Button>
-                )
-            )}
+            <div className={el.note ? "note-wrap" : ""}>
+              <span className="note">{el.note}</span>
+            </div>
+            <div>
+              {btns.map(
+                (btn, i) =>
+                  !(
+                    window.location.pathname.includes("pub") && btn.private
+                  ) && (
+                    <Button
+                      key={i}
+                      variant="light"
+                      size="lg"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        btn.callback(el);
+                      }}>
+                      {btn.symb}
+                    </Button>
+                  )
+              )}
+            </div>
           </div>
           {onePartLittle(el, "question")}
           {onePartLittle(el, "answer")}
