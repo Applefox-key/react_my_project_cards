@@ -21,7 +21,7 @@ const PrintingForm = () => {
     const collectionContent =
       params.tab === "my"
         ? await BaseAPI.getContent(params.id)
-        : BaseAPI.getPublicContent(params.id);
+        : await BaseAPI.getPublicContent(params.id);
     setContent(collectionContent);
     setContentPage(collectionContent);
   });
@@ -32,7 +32,6 @@ const PrintingForm = () => {
   useEffect(() => {
     getContent();
   }, []);
-
   const del = (el) => {
     setContentPage(contentPage.filter((item) => el.id !== item.id));
   };
