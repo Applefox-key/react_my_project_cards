@@ -24,7 +24,9 @@ const WriteCardBody = ({ items }) => {
       setAnswer("");
       setShowAnim(!anim);
     } else {
-      let ra = onlyLetters(mode ? items[num].answer : items[num].question);
+      let ra = onlyLetters(
+        mode === "0" ? items[num].answer : items[num].question
+      );
       let a = onlyLetters(answer);
 
       ra === a
