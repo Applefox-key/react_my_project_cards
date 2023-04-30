@@ -73,7 +73,7 @@ export const privateRoutes = [
   { path: "/play_timecard/:tab/:id/:name", element: <TimeCard /> },
   { path: "/play_cards/:tab/:mode/:id/:name", element: <CardsGallery /> },
   { path: "/play_test/:tab/:id/:name", element: <TestCard /> },
-  { path: "/play_write/:tab/:id/:name", element: <WriteCard /> },
+  { path: "/play_write/:tab/:mode/:id/:name", element: <WriteCard /> },
   { path: "/play_pairs/:tab/:id/:name", element: <Pairs /> },
 
   {

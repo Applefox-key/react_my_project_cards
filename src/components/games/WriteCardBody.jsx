@@ -8,6 +8,7 @@ import GameCount from "./GameCount";
 import { onlyLetters } from "../../utils/texts";
 import Result from "../UI/CARDS/Result";
 import { CSSTransition } from "react-transition-group";
+import { useParams } from "react-router-dom";
 
 const WriteCardBody = ({ items }) => {
   const [answer, setAnswer] = useState("");
@@ -15,6 +16,7 @@ const WriteCardBody = ({ items }) => {
   const [num, setNum] = useState(0);
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);
+  const mode = useParams().mode;
   const countLeft = () => items && num + 1 + "/" + items.length;
   const check = () => {
     if (flip) {
@@ -22,7 +24,7 @@ const WriteCardBody = ({ items }) => {
       setAnswer("");
       setShowAnim(!anim);
     } else {
-      let ra = onlyLetters(items[num].answer);
+      let ra = onlyLetters(mode ? items[num].answer : items[num].question);
       let a = onlyLetters(answer);
 
       ra === a

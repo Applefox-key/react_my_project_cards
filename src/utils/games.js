@@ -57,8 +57,16 @@ export const gameMenuArr = (pageParam, isPublic = false) => [
   },
   {
     name: "Write the right answer",
-    symb: "🖊️",
-    href: `/play_write/${isPublic ? "pub" : "my"}/${pageParam.id}/${
+    symb: "🖍️",
+    href: `/play_write/${isPublic ? "pub" : "my"}/0/${pageParam.id}/${
+      pageParam.name
+    }`,
+  },
+  //🖊️
+  {
+    name: "Write the right question",
+    symb: "✏️",
+    href: `/play_write/${isPublic ? "pub" : "my"}/1/${pageParam.id}/${
       pageParam.name
     }`,
   },

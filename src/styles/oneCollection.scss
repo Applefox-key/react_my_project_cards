@@ -379,6 +379,8 @@
         display: none;
     }
 
+
+
     .options-wrap {
         position: absolute;
         height: 8rem;
@@ -517,6 +519,9 @@
             transform: rotate(90deg)
         }
 
+        @media screen and (max-width:900px) {
+            display: flex;
+        }
 
     }
 }
@@ -537,6 +542,11 @@
         padding-left: 0;
         margin-left: 26pt;
 
+    }
+
+    @media screen and (max-width:900px) {
+        flex-direction: column-reverse;
+        width: fit-content;
     }
 
     .break-after {
