@@ -40,6 +40,9 @@ const LoginBox = ({ setLoginMode }) => {
       setErr(error);
     }
   };
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") login();
+  };
 
   return (
     <div className={cl.containerlogin}>
@@ -68,6 +71,7 @@ const LoginBox = ({ setLoginMode }) => {
         <label htmlFor="password">Password</label>
         <input
           value={password}
+          onKeyPress={onKeyPress}
           type="password"
           id="password"
           onChange={(e) => {
