@@ -21,7 +21,7 @@ const MenuOneCollection = (props) => {
       )}
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h1 onClick={(e) => router(GO_TO.myCollect)}>My collections</h1>
+        <h2 onClick={(e) => router(GO_TO.myCollect)}>My collections</h2>
 
         <div className="name-collect" onClick={() => setRenameMode(true)}>
           <h1 className="pointer">{props.colObj.collection.name}</h1>{" "}

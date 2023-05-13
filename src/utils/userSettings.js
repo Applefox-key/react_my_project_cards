@@ -20,6 +20,7 @@ const getContrastColor = (color) => {
 export const applyUserSettings = (set, prop = "") => {
   if (set.hasOwnProperty("colorBack") && (prop === "colorBack" || !prop)) {
     document.body.style.backgroundColor = set.colorBack;
+    document.documentElement.style.setProperty("--color-back", set.colorBack);
     document.documentElement.style.setProperty(
       "--contrast-text",
       getContrastColor(set.colorBack)

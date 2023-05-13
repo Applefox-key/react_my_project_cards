@@ -1,8 +1,12 @@
 :root {
+  --color-back: lavenderblush;
   --contrast-text: black;
   --wrap-opacity: 1;
   --vertical-font: 1.8rem;
   --card-color: "#fffff0";
+
+
+
 
   --background-color-base: white;
   --background-color-dark: #6a99db;
@@ -23,7 +27,7 @@
 
 .body {
   caret-color: transparent;
-  background-color: lavenderblush;
+  background-color: var(--color-back);
 
   @media print {
     margin: auto;

@@ -11,16 +11,15 @@ const MenuPublicCollection = ({ collection, setMode }) => {
     <div className="string_menu d-flex justify-content-between mt-2">
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h1 className="menu-title" onClick={(e) => router(GO_TO.pubCollect)}>
-          Public collections
-        </h1>
+        <h2 onClick={(e) => router(GO_TO.pubCollect)}>Public collections</h2>
         <h1>{collection.name}</h1>
 
         <TGB
           checked={window.location.hash === "#1" ? 1 : 0}
           onChange={setMode}
         />
-      </div>
+      </div>{" "}
+      {collection.note ? "About collection: " + collection.note : ""}
     </div>
   );
 };

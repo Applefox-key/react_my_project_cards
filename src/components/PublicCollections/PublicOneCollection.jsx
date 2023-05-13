@@ -55,12 +55,12 @@ const PublicOneCollection = () => {
             collection={collection ? collection : PageParam}
             setMode={modeChange}
           />
-          {collection && (
+          {/* {collection && (
             <div className="string_submenu">
               {collection.note ? "About collection: " + collection.note : ""}
             </div>
-          )}
-          <div className="wrapRelative">
+          )} */}
+          <div className="m-auto">
             {content &&
               (mode === 0 ? (
                 <CardContent

@@ -61,7 +61,7 @@ const UserOneCollection = () => {
           </>
         )}
 
-        <div className="wrapRelative">
+        <div className="m-auto">
           {!isLoading && content ? (
             mode === 0 ? (
               <CardContent
