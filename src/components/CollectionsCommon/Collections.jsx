@@ -15,6 +15,7 @@ import {
   restoreSettings,
   saveSet,
 } from "../../utils/pageSettings";
+import SideBar from "../SideBar/SideBarCollections/SideBar";
 
 const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -57,7 +58,7 @@ const Collections = () => {
   const viewmodeChange = () => {
     let newVal = 1 - viewmode;
     setViewmode(newVal);
-    router(window.location.pathname + "#" + newVal);
+    router(window.location.pathname + "#" + newVal, { replace: true });
   };
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const Collections = () => {
 
   useEffect(() => {
     if (window.location.hash === "")
-      router(window.location.pathname + "#" + viewmode);
+      router(window.location.pathname + "#" + viewmode, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.hash]);
 
@@ -84,52 +85,58 @@ const Collections = () => {
     privateSettings.shared,
   ]);
   return (
-    <div className="wrap_box">
-      {privateSettings.isNew && (
-        <CollectionEditModal
-          isEdit={privateSettings.isNew}
-          setIsEdit={(val) =>
-            setPrivateSettings({ ...privateSettings, isNew: val })
-          }
-          isNew={privateSettings.isNew}
-          onHide={() => {
-            setPrivateSettings({
-              ...privateSettings,
-              isNew: false,
-            });
-            router(`${GO_TO.myCollect}#${viewmode}`);
-          }}
-        />
-      )}
-      <CollectionsMenu
+    <div className="d-flex">
+      <SideBar
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
         setSettingsCommon={setSettingsCommon}
         privateSettings={privateSettings}
         setSettingsPrivat={setSettingsPrivat}
       />
-      {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })}
-      <div className="allcollect">
-        {commonSettings.byCategory ? (
-          <CategoriesFolders
-            setSettingsCommon={setSettingsCommon}
-            filterTxt={commonSettings.filter}
-            viewmode={viewmode}
-          />
-        ) : !isPublic ? (
-          <UsersCollections
-            viewmode={viewmode}
-            commonSettings={commonSettings}
-            setSettingsCommon={setSettingsCommon}
-            privateSettings={privateSettings}
-            setSettingsPrivat={setSettingsPrivat}
-          />
-        ) : (
-          <PublicCollectionsList
-            commonSettings={commonSettings}
-            viewmode={viewmode}
+      <div className="wrap_box">
+        {privateSettings.isNew && (
+          <CollectionEditModal
+            isEdit={privateSettings.isNew}
+            setIsEdit={(val) =>
+              setPrivateSettings({ ...privateSettings, isNew: val })
+            }
+            isNew={privateSettings.isNew}
+            onHide={() => {
+              setPrivateSettings({
+                ...privateSettings,
+                isNew: false,
+              });
+              router(`${GO_TO.myCollect}#${viewmode}`);
+            }}
           />
         )}
+        <CollectionsMenu
+          viewmodeChange={viewmodeChange}
+          commonSettings={commonSettings}
+        />
+        {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })}
+        <div className="allcollect">
+          {commonSettings.byCategory ? (
+            <CategoriesFolders
+              setSettingsCommon={setSettingsCommon}
+              filterTxt={commonSettings.filter}
+              viewmode={viewmode}
+            />
+          ) : !isPublic ? (
+            <UsersCollections
+              viewmode={viewmode}
+              commonSettings={commonSettings}
+              setSettingsCommon={setSettingsCommon}
+              privateSettings={privateSettings}
+              setSettingsPrivat={setSettingsPrivat}
+            />
+          ) : (
+            <PublicCollectionsList
+              commonSettings={commonSettings}
+              viewmode={viewmode}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

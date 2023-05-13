@@ -144,7 +144,7 @@ export const fontPrint = ([tx, ti]) => {
 //font for the  cards printing
 export const fontLittle = ([tx, ti]) => {
   const tl = tx.length;
-  const isSpace = tx.includes(" ");
+  // const isSpace = tx.includes(" ");
 
   if (ti) {
     if (tl === 0) return "fontSize_little5 ";

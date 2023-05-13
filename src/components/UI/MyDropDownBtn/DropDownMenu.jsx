@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../styles/collectMenu.scss";
 import { VscTriangleDown, VscTriangleRight } from "react-icons/vsc";
+
 const DropDownMenu = ({ arr, title }) => {
   const [mode, setMode] = useState(false);
   const router = useNavigate();

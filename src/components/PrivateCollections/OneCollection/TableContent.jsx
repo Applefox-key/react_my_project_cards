@@ -78,7 +78,7 @@ const TableContent = ({ content, setContent, pageParam }) => {
   };
 
   return (
-    <div className="m-auto mt-2 width90">
+    <div className="m-auto mt-2 ">
       {content && (
         <MyTable
           classtbl="tblContent lavanderBack"

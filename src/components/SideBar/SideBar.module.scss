@@ -1,0 +1,172 @@
+.sideBar-wrap {
+    z-index: 800;
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    width: fit-content;
+    display: flex;
+    text-align: center;
+    border: 1px solid lightsteelblue;
+    border-radius: 0 35px 35px 0;
+    background-color: ghostwhite;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.sideBar-narrow {
+    height: 100%;
+    width: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    z-index: 700;
+
+    .shadow {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    }
+
+    button {
+        width: 5rem;
+        height: 5rem;
+        font-size: 20px;
+        margin: 5px 0;
+        background-color: ghostwhite;
+        color: #646f7d;
+        padding: 0;
+        border-radius: 5px;
+        border: none;
+        position: relative;
+
+        span {
+            display: flex;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        }
+
+        .activeSpan {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+
+        &:hover {
+            background-color: lightsteelblue;
+
+            &::before {
+                content: attr(data-title);
+                width: fit-content;
+                white-space: nowrap;
+                padding: 2px 5px;
+                background-color: lightsteelblue;
+                opacity: 1;
+                color: black;
+                border-radius: 5px;
+                font-size: 12px;
+                position: absolute;
+                left: 5rem;
+                top: -2rem;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+        }
+    }
+
+    .activeBtn {
+        background-color: red;
+    }
+}
+
+
+
+.sideBar-wide {
+    padding-left: 5px;
+    z-index: 600;
+    height: 100vh;
+    width: 25rem;
+    background-color: ghostwhite;
+    background-color: rgb(248, 248, 255, var(--wrap-opacity));
+    background-color: ghostwhite;
+    color: black;
+    padding-top: 3.5rem;
+    color: var(--color-text-base);
+    transition: all 0.4s ease-in-out;
+    border-radius: 0 35px 35px 0;
+
+    .addingLink {
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: lightsteelblue;
+        }
+    }
+
+    h3 {
+        margin: 0;
+    }
+
+
+}
+
+.link-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    margin: 5px 0;
+    font-size: 16px;
+    text-shadow: 0px 0px 1px rgba(66, 68, 90, 1);
+    position: relative;
+    color: black;
+
+    span {
+        color: #0d6af5;
+        margin: 0 0.5rem;
+    }
+
+    button {
+        background-color: ghostwhite;
+        color: black;
+        border: none;
+
+        &:hover {
+            background-color: lightsteelblue;
+        }
+    }
+
+    &:hover {
+        background-color: lightsteelblue;
+    }
+}
+
+.link-box-active {
+    background-color: lightsteelblue; // #eed8bc;
+}
+
+.miniMenu {
+    background-color: lightsteelblue;
+    color: var(--color-text-base);
+    position: absolute;
+    top: 110%;
+    right: 2px;
+    z-index: 3;
+    width: 80%;
+    padding: 5px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+    button {
+        background-color: lightsteelblue;
+        margin: 5px 10px;
+        transition: all 0.2s ease-in-out;
+        text-align: start;
+        border-radius: 5px;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}

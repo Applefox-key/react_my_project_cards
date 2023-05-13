@@ -5,7 +5,7 @@ import "./collectionList.scss";
 const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
   return (
     <>
-      <div className="all_wrap m-auto width90">
+      <div className="all_wrap m-auto">
         {!filtredList || !filtredList.length ? (
           <>
             {listFn ? (

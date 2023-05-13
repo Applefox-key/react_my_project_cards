@@ -7,7 +7,7 @@ const CategoryFilter = ({ filter, setFilter }) => {
         type="text"
         onChange={(e) => setFilter(e.target.value.toLowerCase())}
         value={filter}
-        placeholder="type to filter..."
+        placeholder="type to filter or adding..."
       />
       {filter && (
         <div

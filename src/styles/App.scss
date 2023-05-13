@@ -3,8 +3,19 @@
   --wrap-opacity: 1;
   --vertical-font: 1.8rem;
   --card-color: "#fffff0";
-}
 
+  --background-color-base: white;
+  --background-color-dark: #6a99db;
+  --background-color-medium: #d7e5fa;
+  --background-color-light: ghostwhite; //rgb(255, 251, 247);
+  --background-color-intense: #286CCB;
+  --background-color-pale: aliceblue;
+  --color-marker: #0d6af5;
+  --color-text-label: white;
+  --color-text-inform: lightblue;
+  --color-text-base: black;
+  --background-color-opacity50: rgba(50, 90, 188, 0.5);
+}
 
 .contrastColor {
   color: var(--contrast-text);

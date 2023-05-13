@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
 import { getFirstEl } from "../../utils/arraysFunc";
-import PlayMenu from "../UI/PlayGamesDropDown/PlayMenu";
+import PlayMenu from "../UI/PlayMenu/PlayMenu";
 import CollectionCardBtns from "./CollectionCardBtns";
 
 const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {

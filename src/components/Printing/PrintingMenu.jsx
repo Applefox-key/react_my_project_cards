@@ -3,10 +3,11 @@ import { useState } from "react";
 import { TbSettingsAutomation } from "react-icons/tb";
 import BtnFontSize from "./BtnFontSize";
 import BtnColor from "./BtnColor";
-
+import { AiOutlineRollback } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 const PrintingMenu = ({ refresh, mode, setMode }) => {
   const [viewOptions, setViewOptions] = useState(false);
-
+  const router = useNavigate();
   const actionBtnName = () => {
     switch (mode) {
       case 0:
@@ -63,6 +64,9 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
           title="print"
           onClick={() => window.print()}>
           🖶
+        </button>{" "}
+        <button className="backBtn" title="back" onClick={() => router(-1)}>
+          <AiOutlineRollback />
         </button>
       </div>
     </div>

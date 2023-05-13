@@ -388,7 +388,7 @@
   }
 }
 
-.attension-wrap {
+.attention-wrap {
   position: relative;
   background-color: transparent;
   width: 20rem;
@@ -401,16 +401,24 @@
 
 }
 
-.attension {
-  background-color: transparent;
+.ball {
+  background-image: url(../img/basketball.png);
+  background-size: 141%;
+  background-repeat: no-repeat;
   z-index: 800;
   position: absolute;
   font-size: 2rem;
-  top: 10px;
-  left: 70%;
-  animation: bounce;
+  top: 31px;
+  left: 20px;
+  animation-name: bounce;
   animation-duration: 3s;
   animation-iteration-count: infinite;
-
-
+  width: 24px;
+  height: 24px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-position-y: -5px;
+  background-position-x: -5px;
 }

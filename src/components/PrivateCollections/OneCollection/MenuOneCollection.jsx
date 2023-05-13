@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../../../styles/collectMenu.scss";
 import TGB from "../../UI/tgb/TGB";
 import CollectionEditModal from "../OneCollectionActions/CollectionEditModal";
-import MenuActionsPart from "./MenuActionsPart";
 import { GO_TO } from "../../../router/routes";
 import { useNavigate } from "react-router-dom";
 
@@ -22,9 +21,7 @@ const MenuOneCollection = (props) => {
       )}
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h1 className="menu-title" onClick={(e) => router(GO_TO.myCollect)}>
-          My collections
-        </h1>
+        <h1 onClick={(e) => router(GO_TO.myCollect)}>My collections</h1>
 
         <div className="name-collect" onClick={() => setRenameMode(true)}>
           <h1 className="pointer">{props.colObj.collection.name}</h1>{" "}
@@ -34,13 +31,16 @@ const MenuOneCollection = (props) => {
           onChange={props.setMode}
         />
       </div>
-      <div className="box_menu">
-        <MenuActionsPart
-          setContent={props.setContent}
-          colObj={props.colObj}
-          mode={props.mode}
-          setMode={props.setMode}
-        />
+      <div>
+        {props.colObj.collection.note && (
+          <div className="note">
+            {" "}
+            {"About collection: " + props.colObj.collection.note}{" "}
+          </div>
+        )}
+        {props.colObj.collection.category && (
+          <div className="cat"> {props.colObj.collection.category}</div>
+        )}
       </div>
     </div>
   );

@@ -8,11 +8,12 @@ import CardContent from "./CardContent";
 import MenuOneCollection from "./MenuOneCollection";
 import "../../../styles/oneCollection.scss";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+import SideBarSet from "../../SideBar/SideBarSet/SideBarSet";
+
 const UserOneCollection = () => {
   const [content, setContent] = useState();
   const [collect, setCollect] = useState();
   const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
-  const [categories, setCategories] = useState([]);
   const pageParam = useParams();
   const setPopup = usePopup();
   const router = useNavigate();
@@ -27,63 +28,58 @@ const UserOneCollection = () => {
     setMode(newVal);
     router(window.location.pathname + "#" + newVal);
   };
-  const getCategories = async () => {
-    try {
-      const cat = await BaseAPI.getCategoriesList();
-      setCategories(cat);
-    } catch (error) {}
-  };
+
   useEffect(() => {
-    getCategories();
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name]);
 
   return (
-    <div className="wrap_box tableContainer">
-      {collect && (
-        <>
-          <MenuOneCollection
-            getList={getCategories}
-            setContent={setContent}
-            mode={mode}
-            setMode={modeChange}
-            colObj={{
-              collection: collect,
-              content: content,
-              categories: categories,
-            }}
-          />
-        </>
-      )}
-
-      {collect && (
-        <div className="string_submenu">
-          {collect.note && (
-            <div className="note"> {"About collection: " + collect.note} </div>
-          )}
-          {collect.category && <div className="cat"> {collect.category}</div>}
-        </div>
-      )}
-      <div className="wrapRelative">
-        {!isLoading && content ? (
-          mode === 0 ? (
-            <CardContent
+    <div className="d-flex">
+      <SideBarSet
+        setContent={setContent}
+        mode={mode}
+        setMode={modeChange}
+        colObj={{
+          collection: collect,
+          content: content,
+        }}
+      />
+      <div className="wrap_box tableContainer">
+        {collect && (
+          <>
+            <MenuOneCollection
               setContent={setContent}
-              content={content}
-              pageParam={pageParam}
+              mode={mode}
+              setMode={modeChange}
+              colObj={{
+                collection: collect,
+                content: content,
+              }}
             />
-          ) : (
-            <TableContent
-              setContent={setContent}
-              content={content}
-              pageParam={pageParam}
-            />
-          )
-        ) : (
-          <SpinnerLg className="span_wrap" />
+          </>
         )}
+
+        <div className="wrapRelative">
+          {!isLoading && content ? (
+            mode === 0 ? (
+              <CardContent
+                setContent={setContent}
+                content={content}
+                pageParam={pageParam}
+              />
+            ) : (
+              <TableContent
+                setContent={setContent}
+                content={content}
+                pageParam={pageParam}
+              />
+            )
+          ) : (
+            <SpinnerLg className="span_wrap" />
+          )}
+        </div>
       </div>
     </div>
   );

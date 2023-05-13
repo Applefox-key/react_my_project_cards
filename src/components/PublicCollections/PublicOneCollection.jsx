@@ -8,6 +8,7 @@ import CardContent from "../PrivateCollections/OneCollection/CardContent";
 import MenuPublicCollection from "./MenuPublicCollection";
 import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
+import SideBarSet from "../SideBar/SideBarSet/SideBarSet";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
@@ -43,13 +44,15 @@ const PublicOneCollection = () => {
   };
 
   return (
-    <>
+    <div className="d-flex">
+      <SideBarSet
+        collection={collection ? collection : PageParam}
+        addToMyCollection={addToMyCollection}
+      />
       {!isLoading ? (
         <div className="wrap_box width90">
           <MenuPublicCollection
             collection={collection ? collection : PageParam}
-            addToMyCollection={addToMyCollection}
-            mode={mode}
             setMode={modeChange}
           />
           {collection && (
@@ -78,7 +81,7 @@ const PublicOneCollection = () => {
       ) : (
         <SpinnerLg className="span_wrap" />
       )}
-    </>
+    </div>
   );
 };
 
