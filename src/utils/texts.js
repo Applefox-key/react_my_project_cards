@@ -9,7 +9,11 @@ export const contentFromText = async (
   if (!text.one) {
     setPopupAdvise(
       `please paste:  ${
-        tab === "tab1" ? "question ; answer ; note" : "questions"
+        tab === "tab1"
+          ? "question ; answer ; note"
+          : tab === "tab2"
+          ? "questions"
+          : `question row and then answer row`
       }`
     );
     return;
@@ -35,30 +39,47 @@ export const contentFromText = async (
       return;
     }
 
-    let contentArr =
-      tab === "tab1"
-        ? contArr.map((row, i) => {
-            let arr = row
-              .replace("  ", " ")
-              .split(separator)
-              .filter((el) => el);
-            if (auto) {
-              //automatically determine the column name
-              arr.sort((a, b) => a.length - b.length);
-              if (arr.length === 2) arr.splice(1, 0, "");
-              return { id: i, question: arr[0], answer: arr[2], note: arr[1] };
-            } else {
-              return { id: i, question: arr[0], answer: arr[1], note: arr[2] };
-            }
-          })
-        : contArr.map((row, i) => {
-            return {
-              id: i,
-              question: row,
-              answer: contArr2[i],
-              note: "",
-            };
-          });
+    let contentArr = [];
+    if (tab === "tab1")
+      contentArr = contArr.map((row, i) => {
+        let arr = row
+          .replace("  ", " ")
+          .split(separator)
+          .filter((el) => el);
+        if (auto) {
+          //automatically determine the column name
+          arr.sort((a, b) => a.length - b.length);
+          if (arr.length === 2) arr.splice(1, 0, "");
+          return { id: i, question: arr[0], answer: arr[2], note: arr[1] };
+        } else {
+          return { id: i, question: arr[0], answer: arr[1], note: arr[2] };
+        }
+      });
+    if (tab === "tab2")
+      contentArr = contArr.map((row, i) => {
+        return {
+          id: i,
+          question: row,
+          answer: contArr2[i],
+          note: "",
+        };
+      });
+    if (tab === "tab3")
+      if (contArr.length % 2 !== 0) {
+        setPopupAdvise(
+          "the quantity of questions does not match to the answers"
+        );
+        return;
+      }
+    for (let i = 0; i < contArr.length; i += 2) {
+      const element = {
+        id: i / 2,
+        question: contArr[i] ? contArr[i] : "",
+        answer: contArr[i + 1] ? contArr[i + 1] : "",
+        note: "",
+      };
+      contentArr.push(element);
+    }
     callbackForResult(contentArr);
   } catch (error) {
     setPopupAdvise(error.message);

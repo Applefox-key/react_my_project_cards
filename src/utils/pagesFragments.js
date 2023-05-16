@@ -1,43 +1,51 @@
-export const fragment_SearchingTips = ({
-  selectedCategorypub,
-  selectedCategorymy,
-  filter,
-  byCategory,
-  setSettingsCommon,
-}) => {
+export const fragment_SearchingTips = (
+  commonSet,
+  privateSet,
+  setSettingsCommon
+) => {
   const isPublic = window.location.pathname.includes("pub");
-  const selectedCategory = isPublic ? selectedCategorypub : selectedCategorymy;
+  const selectedCategory = isPublic
+    ? commonSet.selectedCategorypub
+    : commonSet.selectedCategorymy;
   const selectedCategoryName = selectedCategory ? selectedCategory.name : "";
   const categoryField = isPublic ? "selectedCategorypub" : "selectedCategorymy";
-
+  let only = privateSet.shared ? "only shared" : "";
+  only += privateSet.favorite
+    ? only === ""
+      ? "only favorite"
+      : ", only favorite"
+    : "";
   return (
     <>
-      <h2 className="text-end contrastColor">
+      {/* <h2 className="text-end contrastColor">
         {(isPublic ? "PUBLIC " : "MY ") +
           (byCategory ? "CATEGORIES" : "COLLECTIONS")}
-      </h2>
-
-      {(selectedCategoryName || filter) && (
-        <div className="fs-2 mt-2 fst-italic contrastColor">
-          <span>- Search results for</span>
+      </h2> */}
+      <h5>{only}</h5>
+      {(selectedCategoryName || commonSet.filter) && (
+        <div className="fs-2 m-auto mt-2 fst-italic ">
+          <span className="searchResult">search results for... </span>
 
           {selectedCategoryName && (
             <>
               <button
-                className="btn-x  ms-3 fs-2 mt-2 fst-italic"
+                className="btn-x"
                 onClick={() => setSettingsCommon(categoryField, "")}>
                 ❎ category....
                 <span className=" text-primary "> {selectedCategoryName}</span>
               </button>
             </>
           )}
-          {filter && (
+          {commonSet.filter && (
             <>
               <button
-                className="btn-x  ms-3 fs-2 mt-2 fst-italic"
+                className="btn-x"
                 onClick={() => setSettingsCommon("filter", "")}>
                 ❎ text....
-                <span className=" text-primary "> {filter.toString()}</span>
+                <span className=" text-primary ">
+                  {" "}
+                  {commonSet.filter.toString()}
+                </span>
               </button>
             </>
           )}

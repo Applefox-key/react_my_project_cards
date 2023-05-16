@@ -2,6 +2,7 @@ import React from "react";
 import MyFilter from "../UI/MyFilter/MyFilter";
 import "../../styles/collectMenu.scss";
 import TGB from "../UI/tgb/TGB";
+import { fragment_SearchingTips } from "../../utils/pagesFragments";
 
 const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
@@ -20,6 +21,13 @@ const CollectionsMenu = (props) => {
           onChange={props.viewmodeChange}
         />
       </div>
+      {/* {props.privateSettings.shared && "only shared "}
+      {props.privateSettings.favorite && "only favorite "} */}
+      {fragment_SearchingTips(
+        props.commonSettings,
+        props.privateSettings,
+        props.setSettingsCommon
+      )}
     </div>
   );
 };

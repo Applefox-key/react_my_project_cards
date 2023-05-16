@@ -40,7 +40,12 @@ const ModalPasteContentBody = ({
             rows="10"
             value={dataStr.one}
             placeholder={
-              tab === "tab1" ? "question ; answer ; note" : "questions"
+              tab === "tab1"
+                ? "question ; answer ; note"
+                : tab === "tab2"
+                ? "questions"
+                : `question
+answer`
             }
             onChange={(e) => {
               setDataStr({ ...dataStr, one: e.target.value });

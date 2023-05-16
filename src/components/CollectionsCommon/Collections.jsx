@@ -113,8 +113,10 @@ const Collections = () => {
         <CollectionsMenu
           viewmodeChange={viewmodeChange}
           commonSettings={commonSettings}
+          privateSettings={privateSettings}
+          setSettingsCommon={setSettingsCommon}
         />
-        {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })}
+        {/* {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })} */}
         <div className="allcollect">
           {commonSettings.byCategory ? (
             <CategoriesFolders

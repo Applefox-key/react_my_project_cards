@@ -198,7 +198,7 @@ input {
 
 .tblCollections {
   margin: auto;
-  width: 85%;
+  width: 95%;
 
   @media screen and (max-height: 600px) {
     width: 100%;
@@ -239,7 +239,6 @@ input {
     span {
       border-radius: 45px;
     }
-
   }
 
   h1 {
@@ -249,8 +248,8 @@ input {
 
 
 .tblContent {
-  margin-left: 7rem;
-  width: 94%;
+  margin: auto;
+  width: 95%;
 
   @media screen and (max-height: 600px) {
     margin: auto;
@@ -258,8 +257,6 @@ input {
 
   @media screen and (max-width: 600px) {
     margin: auto;
-
-
 
 
     tr {
@@ -284,8 +281,19 @@ input {
   width: fit-content;
   transition: all 0.2s ease-in-out;
   background-color: ghostwhite;
+  // ms-3 fs-2 mt-2 fst-italic
+  margin-left: 1.5rem;
+  font-size: 14px;
+  font-style: italic;
+
+
 
   &:hover {
     transform: scale(1.2);
   }
+}
+
+.searchResult {
+  font-size: 14px;
+  color: gray;
 }

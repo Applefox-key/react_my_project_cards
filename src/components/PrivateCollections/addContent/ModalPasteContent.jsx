@@ -53,33 +53,36 @@ const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
       size="md"
       dialogClassName="h100"
       title={"Adding"}>
-      <div className="flex-standart w-75 mt-5">
+      <div className="flex-standart">
         {" "}
         <PasteBtns
           dataArray={dataArray}
           actions={{ read: read, add: add, back: back }}
         />{" "}
+        {!dataArray && tab === "tab1" && (
+          <PasteOneList
+            options={{
+              check: check,
+              setCheck: setCheck,
+            }}
+            separator={separator}
+            setSeparator={setSeparator}
+          />
+        )}
         <Form.Select
           size="lg"
-          className="w-50 mb-4 fs-4"
+          className="w-auto fs-4"
           value={tab}
           onChange={(e) => setTab(e.target.value)}>
           <option value="tab1">From the list with a separator</option>
           <option value="tab2">
             From the two list (questions and answers)
           </option>
+          <option value="tab3">
+            From the row-list (questions upon the answers)
+          </option>
         </Form.Select>
       </div>{" "}
-      {!dataArray && tab === "tab1" && (
-        <PasteOneList
-          options={{
-            check: check,
-            setCheck: setCheck,
-          }}
-          separator={separator}
-          setSeparator={setSeparator}
-        />
-      )}
       <div className="modal-h50 mt-2">
         <ModalPasteContentBody
           dataArr={dataArray}
