@@ -44,7 +44,7 @@
         padding-top: 5px;
         padding-left: 15px;
         padding-right: 15px;
-        background: #4d4d63;
+        background-color: var(--background-switch);
         color: azure;
         text-align: start;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -60,7 +60,7 @@
         top: 97px;
         opacity: 0.9;
         height: fit-content;
-        background: #4d4d63;
+        background-color: var(--background-switch);
         color: azure;
         text-align: start;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -110,13 +110,12 @@
         position: absolute;
         left: 0rem;
         top: 5px;
-        background: transparent;
         font-size: 16px;
         border-radius: 38%;
         cursor: pointer;
         width: 3rem;
         height: 3rem;
-        background: lavender;
+        background-color: var(--background-second);
     }
 
     .shareSymb {
@@ -138,7 +137,7 @@
         font-size: 20px;
 
         &:hover {
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
             transform: scale(1.2);
 
             &::after {
@@ -207,7 +206,7 @@
         .oneCollect {
             transform: translateY(-5px);
 
-            background-color: lavender;
+            background-color: var(--background-second);
             box-shadow:
                 //  rgb(144, 144, 228) 0px 0px 0px 2px inset,
                 rgb(255, 255, 255) -1px 1px 0px -0.5px,
@@ -222,7 +221,7 @@
     }
 
     .oneCollect {
-        background-color: ghostwhite;
+        background-color: var(--background-wrap);
         overflow: hidden;
         margin: 20px;
         width: 260px;
@@ -258,7 +257,7 @@
             height: 3rem;
             height: 4rem;
             font-weight: 800;
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
             position: relative;
             border-radius: 5px;
 
@@ -272,8 +271,7 @@
             color: darkblue;
             font-size: 1.2rem;
             border: 2px solid rgb(144, 144, 228);
-            background-color: rgb(161, 161, 219);
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
             // border-top-left-radius: 50%;
             // border-top-right-radius: 50%;
             width: 6rem;
@@ -283,8 +281,7 @@
         }
 
         .content-row {
-            background-color: gainsboro;
-            background-color: lavender;
+            background-color: var(--background-second);
             margin: 5px 0;
             max-height: 20px;
             text-align: left;

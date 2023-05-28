@@ -6,15 +6,15 @@
     height: 4rem;
     font-size: 1.5rem;
     margin-right: 1rem;
-    border-color: lightsteelblue;
+    border-color: var(--background-header);
     margin-bottom: 2rem;
 
     &:hover {
-      background-color: lightsteelblue;
+      background-color: var(--background-header);
     }
 
     &:disabled {
-      border-color: lightsteelblue;
+      border-color: var(--background-header);
       color: #ddd1c2;
 
     }
@@ -32,29 +32,29 @@
     padding: 0 5px;
     margin: 0;
     min-width: 7%;
-    background: lightsteelblue;
+    background: var(--background-header);
     border-radius: 5px;
   }
 
   input {
-    border-color: lightsteelblue;
+    border-color: var(--background-header);
     width: 93%;
     border: none;
-    border-bottom: 1px solid lightsteelblue;
+    border-bottom: 1px solid var(--background-header);
 
     &:focus {
       outline: none;
-      border-bottom: 2px solid lightsteelblue
+      border-bottom: 2px solid var(--background-header);
     }
   }
 }
 
 .string_menu {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   min-height: 2vw;
   border: none;
-  border-radius: 10px 10px 0 0;
+  // border-radius: 10px 10px 0 0;
   border-bottom: 2px solid lightslategray;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   font-size: 10px;
@@ -66,13 +66,13 @@
   justify-content: space-between;
   position: sticky;
   top: 5.7rem;
-  background-color: ghostwhite;
+  background-color: var(--background-wrap);
   z-index: 700;
-
+  border-radius: 35px 35px 0 0;
 
   // position: relative;
   top: 0;
-  border-radius: 10px;
+  // border-radius: 10px;
 
   h5 {
     position: absolute;
@@ -86,13 +86,9 @@
   @media screen and ((max-height: 600px)) {
     position: relative;
     top: 0;
-    border-radius: 10px;
+    // border-radius: 10px;
   }
 
-  @media screen and ((max-width: 600px)) {
-
-    border-radius: 10px;
-  }
 }
 
 
@@ -102,7 +98,7 @@
   // top: 70px;
   // left: -60px;
   width: 222px;
-  background-color: ghostwhite;
+  background-color: var(--background-wrap);
   border-radius: 10px;
   min-height: 3rem;
   padding: 10px;
@@ -179,7 +175,7 @@
 }
 
 .menu-title {
-  background-color: lightsteelblue;
+  background-color: var(--background-header);
   top: 4px;
   border-radius: 0 5px 5px 0;
   text-align: end;
@@ -219,7 +215,7 @@
     bottom: -15px;
     font-size: 10px;
     left: 40%;
-    color: coral;
+    color: var(--background-note);
   }
 
   &:hover {
@@ -230,7 +226,7 @@
       right: 10px;
       width: fit-content;
       white-space: nowrap;
-      background-color: lightsteelblue;
+      background-color: var(--background-header);
       padding: 0 5px;
       font-size: 14px;
       border-radius: 10px;
@@ -270,7 +266,7 @@
 }
 
 .collect-find {
-  border: 1px solid lightsteelblue;
+  border: 1px solid;
   border-radius: 5px;
 
   input,
@@ -345,7 +341,7 @@
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  background-color: lightsteelblue;
+  background-color: var(--background-header);
   padding: 9px 20px;
   border-radius: 12px;
   width: 100%;
@@ -386,10 +382,10 @@
 .menuBtn {
   width: 100%;
   min-width: 150px;
-  background-color: ghostwhite;
+  background-color: var(--background-wrap);
 
   &:hover {
-    background-color: lightsteelblue;
+    background-color: var(--background-header);
   }
 }
 
@@ -430,8 +426,7 @@
       transition: all 0.3s ease-in-out;
 
       &:hover {
-        background-color: lightsteelblue;
-        background-color: ghostwhite;
+        background-color: var(--background-wrap);
         transform: scale(1.2);
       }
     }

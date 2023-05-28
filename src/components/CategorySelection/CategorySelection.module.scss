@@ -12,19 +12,10 @@
     min-width: 21rem;
 }
 
-.hoverScale {
-    transition: all 0.3s ease-in-out;
 
-    &:hover {
-        background-color: lightsteelblue;
-        background-color: ghostwhite;
-        transform: scale(1.2);
-        border: 1px solid rgb(167, 45, 233);
-    }
-}
 
 .active {
-    background-color: lavender;
+    background-color: var(--background-second);
     border-radius: 5px;
     transform: scale(1.2);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
@@ -51,7 +42,7 @@
 }
 
 .filter_input {
-    border-bottom: 1px solid lightsteelblue;
+    border-bottom: 1px solid var(--background-header);
     display: flex;
 
 
@@ -95,7 +86,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: lavender;
+    background-color: var(--background-second);
     border-radius: 4px;
 }
 
@@ -131,7 +122,7 @@
 
 
     &:hover {
-        background-color: lightsteelblue;
+        background-color: var(--background-header);
         border-color: lavender;
 
         span {

@@ -12,11 +12,11 @@
   margin-top: 1rem;
 
   &:hover {
-    background: #4461F2;
+    background: var(--background-intense);
 
     &::before {
       content: "";
-      background: #4461F2;
+      background: var(--background-intense);
     }
   }
 

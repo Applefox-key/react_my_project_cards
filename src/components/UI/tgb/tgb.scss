@@ -2,7 +2,7 @@
 
     box-sizing: border-box;
     width: 100px;
-    background-color: antiquewhite;
+    background-color: var(--background-wrap);
     font-size: 1.3rem;
     display: flex;
     height: 35px;
@@ -26,8 +26,8 @@
         text-align: center;
         box-sizing: border-box;
         width: 100%;
-        background-color: rgb(77, 77, 99);
-        color: lightsteelblue;
+        background-color: var(--background-switch);
+        color: var(--background-header);
         border-radius: 10px 0 0 10px;
     }
 
@@ -47,12 +47,14 @@
         top: 2%;
         left: 1.5%;
 
-        background-color: lightsteelblue;
+        background-color: var(--background-header);
         border-radius: 10px 0 0 10px;
         transition: all 0.4s ease-in-out;
         color: rgb(77, 77, 99);
         font-weight: 600;
-        border: outset #fde2fe;
+        // border: outset #fde2fe;
+        border: outset white;
+        // border: 1px solid white;
 
 
     }

@@ -13,11 +13,11 @@
     text-shadow: white 1px 1px 1px;
 
     .note {
-        color: lightsteelblue;
+        color: var(--background-header);
     }
 
     .cat {
-        background-color: lightsteelblue;
+        background-color: var(--background-header);
         top: 4px;
         border-radius: 5px 0 0 5px;
         text-align: start;
@@ -36,13 +36,12 @@
     position: relative;
     z-index: 600;
     min-height: 100vh;
-    width: 90%;
+    width: 100%;
     margin: auto;
-    padding: 30px;
-    border: 1px solid lightsteelblue;
+    //   padding: 30px;
+    border: 1px solid var(--background-header);
     border-radius: 35px;
-    background-color: ghostwhite;
-    background-color: rgb(248, 248, 255, var(--wrap-opacity));
+    background-color: rgb(var(--background-wrap-rgb), var(--wrap-opacity));
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
@@ -60,7 +59,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: white;
+    background-color: var(--background-wrap);
     padding: 1rem;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
     border: 1px solid #646464;
@@ -87,13 +86,12 @@
         @extend .mycard;
         width: 30rem;
         height: 20rem;
-        border: 2px solid lightsteelblue;
+        border: 2px solid var(--background-header);
         border-radius: 35px;
-        background-color: ghostwhite;
+        background-color: var(--background-wrap);
 
         .menuPart {
-            background-color: #c4cdfb;
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
             width: 100%;
@@ -109,8 +107,8 @@
                 height: 100%;
                 display: flex;
                 align-items: center;
-                border: 1px solid red;
-                background-color: coral;
+                border: 1px solid var(--border-note);
+                background-color: var(--background-note);
                 border-radius: 25px;
                 border-bottom-left-radius: 0;
             }
@@ -133,7 +131,7 @@
                 width: 3rem;
 
                 &:hover {
-                    background-color: #607aff;
+                    background-color: var(--color-intense)
                 }
             }
         }
@@ -141,14 +139,13 @@
         .quest {
             font-weight: 600;
             font-size: 1.5rem;
-            background-color: cornsilk;
-
+            background-color: var(--background-first);
         }
 
         .answ {
             font-weight: 600;
             font-size: 1.5rem;
-            background-color: lavender;
+            background-color: var(--background-second);
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
         }
@@ -185,14 +182,13 @@
 
 .big_card_wrap {
     margin: 40px auto;
-    background-color: white;
     padding: 40px;
     border: 1px solid;
     border-radius: 15px;
     width: 50%;
-    border: 1px solid lightsteelblue;
+    border: 1px solid var(--background-header);
     border-radius: 35px;
-    background-color: ghostwhite;
+    background-color: var(--background-wrap);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
     @media screen and (max-width: 600px) {
@@ -227,7 +223,7 @@
         height: 40px;
         width: 180px;
         font-size: 1.7rem;
-        background-color: lavender;
+        background-color: var(--background-second);
 
 
     }
@@ -247,12 +243,12 @@
 
         .quest {
 
-            background-color: cornsilk;
+            background-color: var(--background-first);
         }
 
         .answ {
 
-            background-color: lavender;
+            background-color: var(--background-second);
         }
 
         textarea {
@@ -282,12 +278,11 @@
 
         .img_choice {
             margin-right: 5px;
-            background-color: white;
+            background-color: var(--background-wrap);
             position: relative;
             width: 200px;
             height: 200px;
-            border: 1px dashed red;
-
+            border: 1px dashed var(--border-note);
             display: flex;
             flex-wrap: wrap;
             align-content: stretch;
@@ -338,7 +333,7 @@
                     transition: all 0.2s ease-in-out;
 
                     &:hover {
-                        background-color: bisque;
+                        background-color: var(--background-first);
                         width: 3rem;
                         height: 3rem;
 

@@ -6,11 +6,12 @@
     width: fit-content;
     display: flex;
     text-align: center;
-    border: 1px solid lightsteelblue;
+    border: 1px solid var(--background-header);
     border-radius: 0 35px 35px 0;
-    background-color: ghostwhite;
+    background-color: var(--background-wrap);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     align-self: flex-start;
+    margin-right: 2rem;
 }
 
 .sideBar-narrow {
@@ -29,7 +30,7 @@
         height: 5rem;
         font-size: 20px;
         margin: 5px 0;
-        background-color: ghostwhite;
+        background-color: var(--background-wrap);
         color: #646f7d;
         padding: 0;
         border-radius: 5px;
@@ -51,14 +52,14 @@
         }
 
         &:hover {
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
 
             &::before {
                 content: attr(data-title);
                 width: fit-content;
                 white-space: nowrap;
                 padding: 2px 5px;
-                background-color: lightsteelblue;
+                background-color: var(--background-header);
                 opacity: 1;
                 color: black;
                 border-radius: 5px;
@@ -84,12 +85,9 @@
     z-index: 600;
     height: 100vh;
     width: 25rem;
-    background-color: ghostwhite;
-    background-color: rgb(248, 248, 255, var(--wrap-opacity));
-    background-color: ghostwhite;
+    background-color: var(--background-wrap);
     color: black;
     padding-top: 3.5rem;
-    color: var(--color-text-base);
     transition: all 0.4s ease-in-out;
     border-radius: 0 35px 35px 0;
 
@@ -98,7 +96,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
         }
     }
 
@@ -125,27 +123,27 @@
     }
 
     button {
-        background-color: ghostwhite;
+        background-color: var(--background-wrap);
         color: black;
         border: none;
 
         &:hover {
-            background-color: lightsteelblue;
+            background-color: var(--background-header);
         }
     }
 
     &:hover {
-        background-color: lightsteelblue;
+        background-color: var(--background-header);
     }
 }
 
 .link-box-active {
-    background-color: lightsteelblue; // #eed8bc;
+    background-color: var(--background-header); // #eed8bc;
 }
 
 .miniMenu {
-    background-color: lightsteelblue;
-    color: var(--color-text-base);
+    background-color: var(--background-header);
+    color: black;
     position: absolute;
     top: 110%;
     right: 2px;
@@ -160,7 +158,7 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
     button {
-        background-color: lightsteelblue;
+        background-color: var(--background-header);
         margin: 5px 10px;
         transition: all 0.2s ease-in-out;
         text-align: start;

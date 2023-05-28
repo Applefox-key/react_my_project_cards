@@ -10,7 +10,7 @@ const MenuOneCollection = (props) => {
   const router = useNavigate();
 
   return (
-    <div className="string_menu d-flex justify-content-between mt-2">
+    <div className="string_menu d-flex justify-content-between">
       {renameMode && (
         <CollectionEditModal
           isEdit={renameMode}

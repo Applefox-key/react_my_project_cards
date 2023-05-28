@@ -8,7 +8,7 @@ import { GO_TO } from "../../router/routes";
 const MenuPublicCollection = ({ collection, setMode }) => {
   const router = useNavigate();
   return (
-    <div className="string_menu d-flex justify-content-between mt-2">
+    <div className="string_menu d-flex justify-content-between">
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
         <h2 onClick={(e) => router(GO_TO.pubCollect)}>Public collections</h2>

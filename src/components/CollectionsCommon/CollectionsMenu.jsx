@@ -8,7 +8,7 @@ const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
 
   return (
-    <div className="string_menu d-flex justify-content-between mt-2">
+    <div className="string_menu d-flex justify-content-between">
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
         <h1>{isPublic ? "Public collections" : "My collections"}</h1>

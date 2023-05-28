@@ -1,24 +1,35 @@
 :root {
-  --color-back: lavenderblush;
+  --color-back: #f3f3f3;
   --contrast-text: black;
   --wrap-opacity: 1;
   --vertical-font: 1.8rem;
   --card-color: "#fffff0";
 
 
+  // --background-wrap-rgb: 245, 245, 249;
+  // --background-wrap: #F5F5F9;
+  // --background-header: lightsteelblue;
+  // --background-first: cornsilk;
+  // --background-second: lavender;
+  // --background-third: #add8e6;
+  // --background-switch: #4d4d63;
+  // --background-intense: #0A58CA;
+  // --color-intense: #4461F2;
+  // --background-note: coral;
+  // --border-note: red;
 
 
-  --background-color-base: white;
-  --background-color-dark: #6a99db;
-  --background-color-medium: #d7e5fa;
-  --background-color-light: ghostwhite; //rgb(255, 251, 247);
-  --background-color-intense: #286CCB;
-  --background-color-pale: aliceblue;
-  --color-marker: #0d6af5;
-  --color-text-label: white;
-  --color-text-inform: lightblue;
-  --color-text-base: black;
-  --background-color-opacity50: rgba(50, 90, 188, 0.5);
+  --background-wrap-rgb: 234, 234, 234;
+  --background-wrap: rgb(234 234 234);
+  --background-header: #6da4cb;
+  --background-first: #e5edf9;
+  --background-second: #fcfbf7;
+  --background-third: #add8e6;
+  --background-switch: #313236;
+  --background-intense: #0A58CA;
+  --color-intense: #4461F2;
+  --background-note: #ed666d;
+  --border-note: red;
 }
 
 .contrastColor {
@@ -62,7 +73,7 @@
   left: 0;
   bottom: 0;
   padding: 5px;
-  background: #EFF2FE;
+  background: var(--background-second);
   font-size: large;
   width: 100%;
   height: 5%;
@@ -121,7 +132,7 @@ input {
 }
 
 .lavanderBack {
-  background-color: lavender;
+  background-color: var(--background-second);
 }
 
 .border_r15 {
@@ -171,7 +182,7 @@ input {
   height: 587.16px;
   left: 381.43px;
   top: 326.68px;
-  background: #4461F2;
+  background: var(--color-intense);
   opacity: 0.45;
   filter: blur(158.5px);
 }
@@ -249,7 +260,7 @@ input {
 
 .tblContent {
   margin: auto;
-  width: 95%;
+  width: 100%;
 
   @media screen and (max-height: 600px) {
     margin: auto;
@@ -262,7 +273,7 @@ input {
     tr {
       display: flex;
       flex-wrap: wrap;
-      border-bottom: 1px solid lightsteelblue;
+      border-bottom: 1px solid var(--background-header);
 
       td {
         min-width: 4rem;
@@ -280,7 +291,7 @@ input {
   margin-left: 5px;
   width: fit-content;
   transition: all 0.2s ease-in-out;
-  background-color: ghostwhite;
+  background-color: var(--background-wrap);
   // ms-3 fs-2 mt-2 fst-italic
   margin-left: 1.5rem;
   font-size: 14px;

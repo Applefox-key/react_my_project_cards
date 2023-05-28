@@ -215,7 +215,7 @@
 }
 
 .card-front {
-  background: rgb(255, 251, 247);
+  background: var(--background-first);
   position: absolute;
   top: 0;
   left: 0;
@@ -223,8 +223,8 @@
 }
 
 .card-back {
-  background: rgb(234, 247, 234);
-  background: #b5dbef;
+
+  background: var(--background-second);
 }
 
 .hint {
