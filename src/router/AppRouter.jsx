@@ -10,7 +10,7 @@ const AppRouter = () => {
   return (
     <div>
       <MyNavbar />
-      <div style={{ marginTop: "2.5rem" }} />
+      {/* <div style={{ marginTop: "2.5rem" }} /> */}
       <Popup />
       <div className="color_container"></div>
       <div className="main_page">

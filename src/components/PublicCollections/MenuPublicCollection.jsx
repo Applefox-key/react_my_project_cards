@@ -4,6 +4,7 @@ import "../../styles/collectMenu.scss";
 import { useNavigate } from "react-router-dom";
 import "../../styles/collectMenu.scss";
 import { GO_TO } from "../../router/routes";
+import { MdArrowBackIos } from "react-icons/md";
 
 const MenuPublicCollection = ({ collection, setMode }) => {
   const router = useNavigate();
@@ -11,7 +12,10 @@ const MenuPublicCollection = ({ collection, setMode }) => {
     <div className="string_menu d-flex justify-content-between">
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h2 onClick={(e) => router(GO_TO.pubCollect)}>Public collections</h2>
+        <h2 onClick={(e) => router(GO_TO.pubCollect)}>
+          {" "}
+          {<MdArrowBackIos />}Public collections
+        </h2>
         <h1>{collection.name}</h1>
 
         <TGB

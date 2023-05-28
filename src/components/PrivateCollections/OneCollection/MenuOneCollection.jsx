@@ -4,6 +4,7 @@ import TGB from "../../UI/tgb/TGB";
 import CollectionEditModal from "../OneCollectionActions/CollectionEditModal";
 import { GO_TO } from "../../../router/routes";
 import { useNavigate } from "react-router-dom";
+import { MdArrowBackIos } from "react-icons/md";
 
 const MenuOneCollection = (props) => {
   const [renameMode, setRenameMode] = useState(false);
@@ -21,7 +22,9 @@ const MenuOneCollection = (props) => {
       )}
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h2 onClick={(e) => router(GO_TO.myCollect)}>My collections</h2>
+        <h2 onClick={(e) => router(GO_TO.myCollect)}>
+          {<MdArrowBackIos />}My collections
+        </h2>
 
         <div className="name-collect" onClick={() => setRenameMode(true)}>
           <h1 className="pointer">{props.colObj.collection.name}</h1>{" "}

@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import cl from "./mainNavbar.module.scss";
 import { useAuth } from "../../hooks/useAuth";
 import UserAvatar from "../users/Profile/UserAvatar";
+import Popup from "../UI/popup/Popup";
 const MyNavbar = () => {
   const router = useNavigate();
   const { userRoutes, userAuth, setUserAuth } = useAuth(true);

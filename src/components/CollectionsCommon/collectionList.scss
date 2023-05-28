@@ -206,7 +206,8 @@
         .oneCollect {
             transform: translateY(-5px);
 
-            background-color: var(--background-second);
+            // background-color: var(--background-second);
+            background-color: var(--background-first);
             box-shadow:
                 //  rgb(144, 144, 228) 0px 0px 0px 2px inset,
                 rgb(255, 255, 255) -1px 1px 0px -0.5px,
@@ -282,6 +283,7 @@
 
         .content-row {
             background-color: var(--background-second);
+            background-color: var(--background-first);
             margin: 5px 0;
             max-height: 20px;
             text-align: left;

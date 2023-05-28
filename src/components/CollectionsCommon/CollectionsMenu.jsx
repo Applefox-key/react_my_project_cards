@@ -9,9 +9,12 @@ const CollectionsMenu = (props) => {
 
   return (
     <div className="string_menu d-flex justify-content-between">
-      <div className="d-flex align-items-center"></div>{" "}
+      {/* <div className="d-flex align-items-center"></div>{" "} */}
       <div className="menufind">
-        <h1>{isPublic ? "Public collections" : "My collections"}</h1>
+        <h1>
+          {isPublic ? "Public collections" : "My collections"}
+          {props.commonSettings.byCategory ? ": CATEGORIES" : ""}
+        </h1>
         <MyFilter
           filter={props.commonSettings.filter}
           setFilter={(val) => props.setSettingsCommon("filter", val)}

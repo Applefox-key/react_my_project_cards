@@ -17,10 +17,6 @@ export const fragment_SearchingTips = (
     : "";
   return (
     <>
-      {/* <h2 className="text-end contrastColor">
-        {(isPublic ? "PUBLIC " : "MY ") +
-          (byCategory ? "CATEGORIES" : "COLLECTIONS")}
-      </h2> */}
       <h5>{only}</h5>
       {(selectedCategoryName || commonSet.filter) && (
         <div className="fs-2 m-auto mt-2 fst-italic ">
