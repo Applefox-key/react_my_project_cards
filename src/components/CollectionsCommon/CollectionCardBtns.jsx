@@ -47,6 +47,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
         <>
           <div
             className="sharebtn delbtn"
+            title="delete"
             onClick={(e) => {
               e.stopPropagation();
               listFn.delColl(oneSet.collection);

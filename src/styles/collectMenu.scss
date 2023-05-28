@@ -252,6 +252,10 @@
     padding: 2px 5px;
     border-radius: 9px;
     color: var(--contrast-text);
+
+    @media screen and (max-width:900px) {
+      font-size: 1.5rem;
+    }
   }
 
 
@@ -262,6 +266,10 @@
     @media screen and (max-width: 600px) and (min-height: 600px) {
       width: 100%;
     }
+  }
+
+  @media screen and (max-width:900px) {
+    justify-content: center;
   }
 }
 
