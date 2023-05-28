@@ -64,13 +64,14 @@
                 white-space: nowrap;
                 padding: 2px 5px;
                 background-color: var(--background-header);
+                background-color: var(--background-second);
                 opacity: 1;
                 color: black;
                 border-radius: 5px;
                 font-size: 12px;
                 position: absolute;
-                left: 5rem;
-                top: -2rem;
+                left: 6rem;
+                top: 1rem;
                 box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             }
 
@@ -131,18 +132,26 @@
         color: black;
         border: none;
 
-        &:hover {
-            background-color: var(--background-header);
-        }
+        // &:hover {
+        //     background-color: var(--background-header);
+        // }
     }
 
     &:hover {
-        background-color: var(--background-header);
+        background-color: var(--background-first);
+
+        button {
+            background-color: var(--background-first);
+        }
     }
 }
 
 .link-box-active {
     background-color: var(--background-header); // #eed8bc;
+
+    button {
+        background-color: var(--background-header);
+    }
 }
 
 .miniMenu {

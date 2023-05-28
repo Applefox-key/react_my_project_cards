@@ -79,8 +79,12 @@
     // background-color: rgb(110, 218, 89);
     font-style: italic;
     color: #00d26a;
-
     top: 44px;
+
+    @media screen and ((max-width: 900px)) {
+      top: 80px;
+      width: 95px;
+    }
   }
 
   @media screen and ((max-height: 600px)) {
@@ -270,6 +274,7 @@
 
   @media screen and (max-width:900px) {
     justify-content: center;
+    flex-direction: column;
   }
 }
 
