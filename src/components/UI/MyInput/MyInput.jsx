@@ -12,6 +12,7 @@ const MyInput = ({ name, content, callback = null, onblur, onEnter = "" }) => {
       aria-label={name}
       value={value}
       onBlur={onblur}
+      placeholder={name}
       onClick={(e) => {
         e.stopPropagation();
       }}

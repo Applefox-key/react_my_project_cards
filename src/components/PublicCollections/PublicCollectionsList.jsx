@@ -28,7 +28,7 @@ const PublicCollectionsList = ({ commonSettings, viewmode }) => {
     <>
       {isLoading ? (
         <SpinnerLg className="span_wrap" />
-      ) : viewmode === 1 ? (
+      ) : viewmode === 1 || window.location.hash === "#1" ? (
         <PublicCollectTable filtredList={filtredList} />
       ) : (
         <div className="d-flex p-2 flex-wrap justify-content-center">

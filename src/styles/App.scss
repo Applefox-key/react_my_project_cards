@@ -211,12 +211,45 @@ input {
   margin: auto;
   width: 95%;
 
+  td,
+  th {
+    text-align: start;
+  }
+
+  .tbColor {
+    background-color: var(--background-first);
+  }
+
   @media screen and (max-height: 600px) {
     width: 100%;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     width: 100%;
+
+    tr {
+      display: flex;
+      flex-wrap: nowrap;
+      border-bottom: 1px solid var(--background-header);
+      flex-direction: column;
+      // justify-content: stretch;
+      font-size: 10px;
+
+
+
+      td,
+      th {
+        min-width: 4rem;
+        padding: 0px;
+
+        // border: 0.3px solid grey;
+        button {
+          font-size: 10px;
+        }
+      }
+    }
+
+
   }
 }
 
@@ -262,6 +295,15 @@ input {
   margin: auto;
   width: 100%;
 
+  td,
+  th {
+    text-align: start;
+  }
+
+  .tbColor {
+    background-color: var(--background-first);
+  }
+
   @media screen and (max-height: 600px) {
     margin: auto;
   }
@@ -274,9 +316,18 @@ input {
       display: flex;
       flex-wrap: wrap;
       border-bottom: 1px solid var(--background-header);
+      flex-direction: column;
+      font-size: 10px;
 
-      td {
+      td,
+      th {
         min-width: 4rem;
+        padding: 2px;
+
+        // border: 0.3px solid grey;
+        button {
+          font-size: 10px;
+        }
       }
     }
   }

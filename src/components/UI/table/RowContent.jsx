@@ -50,7 +50,13 @@ const RowContent = ({ content, i, btnsArray, namesArray, edit }) => {
             autofocus={editNames[0] === column}
           />
         ) : (
-          <td key={column}>{content[column]}</td>
+          <td
+            key={column}
+            className={
+              column === "question" || column === "name" ? "tbColor" : ""
+            }>
+            {content[column]}
+          </td>
         )
       )}
       {btnsArray && (

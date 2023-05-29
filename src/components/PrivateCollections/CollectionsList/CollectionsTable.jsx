@@ -102,7 +102,7 @@ const CollectionsTable = ({
       setEditMode(null);
     },
     viewContent(collection) {
-      router(`${GO_TO.myCollect}/${collection.id}/${collection.name}`);
+      router(`${GO_TO.myCollect}/${collection.id}/${collection.name}#1`);
     },
   };
 

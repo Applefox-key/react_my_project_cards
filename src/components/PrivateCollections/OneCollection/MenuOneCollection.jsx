@@ -22,7 +22,7 @@ const MenuOneCollection = (props) => {
       )}
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h2 onClick={(e) => router(GO_TO.myCollect)}>
+        <h2 onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
           {<MdArrowBackIos />}My collections
         </h2>
 

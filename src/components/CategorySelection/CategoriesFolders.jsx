@@ -37,7 +37,10 @@ const CategoriesFolders = ({ setSettingsCommon, filterTxt, viewmode }) => {
       ) : !parseInt(viewmode) ? (
         <div className="all_wrap m-auto width90">
           {filtredList().map((el) => (
-            <div className="oneCollect-wrap" onClick={() => categoryFilter(el)}>
+            <div
+              key={el.id}
+              className="oneCollect-wrap"
+              onClick={() => categoryFilter(el)}>
               <div className="oneCollect display-2 flex-center ">
                 {el.name}
                 <span>

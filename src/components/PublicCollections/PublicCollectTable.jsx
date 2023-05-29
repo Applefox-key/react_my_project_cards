@@ -8,7 +8,7 @@ const PublicCollectTable = ({ filtredList }) => {
   const router = useNavigate();
 
   const viewContent = (collection) => {
-    router(`${GO_TO.pubCollect}/${collection.id}/${collection.name}`);
+    router(`${GO_TO.pubCollect}/${collection.id}/${collection.name}#1`);
   };
 
   return (

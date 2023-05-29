@@ -12,7 +12,7 @@ const MenuPublicCollection = ({ collection, setMode }) => {
     <div className="string_menu d-flex justify-content-between">
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <h2 onClick={(e) => router(GO_TO.pubCollect)}>
+        <h2 onClick={(e) => router(GO_TO.pubCollect + window.location.hash)}>
           {" "}
           {<MdArrowBackIos />}Public collections
         </h2>
