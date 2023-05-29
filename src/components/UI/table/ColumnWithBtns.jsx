@@ -5,7 +5,7 @@ const ColumnWithBtns = ({ btnsArray, content }) => {
   return (
     <>
       {!!btnsArray.length && (
-        <td key="btnA" className="d-table-cell text-end">
+        <td key="btnA" className="d-table-cell text-end tblBtns">
           {btnsArray
             .filter((el) => !el.nameMain)
             .map((btn, i) =>
