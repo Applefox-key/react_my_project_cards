@@ -114,16 +114,21 @@ const CollectionsTable = ({
         <div className="tblCollections">
           <MyTable
             classtbl="lavanderBack"
-            onRowClick={editOn}
+            onRowClick={rowsActons.viewContent}
             edit={editMode}
             dataArray={Array.from(filtredList, (el) => el.collection)}
             namesArray={["category", "name", "note"]}
             btnsArray={[
               { nameMain: "Add row", callback: rowsActons.addRow },
               { nameMain: "Delete all", callback: rowsActons.deleteAll },
+              // {
+              //   name: "🔎",
+              //   callback: rowsActons.viewContent,
+              //   variant: "outline-light",
+              // },
               {
-                name: "🔎",
-                callback: rowsActons.viewContent,
+                name: "🖊",
+                callback: editOn,
                 variant: "outline-light",
               },
               {
