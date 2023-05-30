@@ -64,21 +64,22 @@ export const contentFromText = async (
           note: "",
         };
       });
-    if (tab === "tab3")
+    if (tab === "tab3") {
       if (contArr.length % 2 !== 0) {
         setPopupAdvise(
           "the quantity of questions does not match to the answers"
         );
         return;
       }
-    for (let i = 0; i < contArr.length; i += 2) {
-      const element = {
-        id: i / 2,
-        question: contArr[i] ? contArr[i] : "",
-        answer: contArr[i + 1] ? contArr[i + 1] : "",
-        note: "",
-      };
-      contentArr.push(element);
+      for (let i = 0; i < contArr.length; i += 2) {
+        const element = {
+          id: i / 2,
+          question: contArr[i] ? contArr[i] : "",
+          answer: contArr[i + 1] ? contArr[i + 1] : "",
+          note: "",
+        };
+        contentArr.push(element);
+      }
     }
     callbackForResult(contentArr);
   } catch (error) {

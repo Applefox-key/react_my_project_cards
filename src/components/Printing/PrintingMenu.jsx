@@ -4,6 +4,7 @@ import { TbSettingsAutomation } from "react-icons/tb";
 import BtnFontSize from "./BtnFontSize";
 import BtnColor from "./BtnColor";
 import { AiOutlineRollback } from "react-icons/ai";
+import { BsCardHeading, BsPhoneFlip } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 const PrintingMenu = ({ refresh, mode, setMode }) => {
   const [viewOptions, setViewOptions] = useState(false);
@@ -28,13 +29,13 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
         <button className="printBtn" title="refresh" onClick={refresh}>
           ⟳
         </button>{" "}
-        <button
+        {/* <button
           className="printBtn"
           title={mode ? "print mode horizontal" : "print mode: vertikal"}
           onClick={() => setMode(mode < 2 ? 2 : 1)}>
           {mode > 1 ? "☰" : "☷"}
-        </button>{" "}
-        <div className="position-relative">
+        </button>{" "} */}
+        <div className="settingBox">
           <button
             className="printBtn"
             title={"options"}
@@ -43,6 +44,17 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
           </button>
           {viewOptions && (
             <div className="options-wrap">
+              <button
+                className="printBtnMode"
+                title={"print mode two-sides card or one-side card"}
+                onClick={() => setMode(mode < 2 ? 2 : 1)}>
+                {mode > 1 ? (
+                  <BsPhoneFlip className="rotate" />
+                ) : (
+                  <BsCardHeading />
+                )}
+              </button>{" "}
+              <BtnColor />
               <div
                 className="input-wrap"
                 title={mode > 1 ? "side position" : "column count"}
@@ -54,7 +66,6 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
                 <button>{actionBtnName()}</button>
                 <span>{mode > 1 ? "variant" : "column"}</span>
               </div>
-              <BtnColor />
               {mode < 2 && <BtnFontSize />}
             </div>
           )}

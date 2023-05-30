@@ -75,7 +75,8 @@ const PrintingForm = () => {
         <SpinnerLg />
       ) : (
         <div className="print_wrap">
-          {mode}
+          {" "}
+          <PrintingMenu {...{ refresh, mode, setMode }} />
           {mode === 0 && (
             <div className="print_cards_wrap">
               <div className="width800">
@@ -85,20 +86,20 @@ const PrintingForm = () => {
             </div>
           )}
           {mode === 1 && (
-            <>
+            <div className="d-flex">
               <div className="print_cards_wrap">
                 {contentPage.length &&
                   contentPage.map(
                     (el, i) => i % 2 === 0 && getCardFragment(el, i)
                   )}
               </div>
-              <div className="print_cards_wrap">
+              <div className="print_cards_wrap separated-columns">
                 {contentPage.length &&
                   contentPage.map(
                     (el, i) => i % 2 !== 0 && getCardFragment(el, i)
                   )}
               </div>
-            </>
+            </div>
           )}
           {mode === 2 && (
             <div className="print_cards_wrap">
@@ -108,19 +109,18 @@ const PrintingForm = () => {
           )}
           {mode === 3 && (
             <div>
-              <div className="print_cards_wrap break-after">
+              <div className="print_cards_wrap break-after separated-sides">
                 {contentPage.length &&
                   contentPage.map((el, i) =>
                     getCardFragment(el, i, "question")
                   )}
               </div>
-              <div className="print_cards_wrap">
+              <div className="print_cards_wrap separated-sides">
                 {contentPage.length &&
                   contentPage.map((el, i) => getCardFragment(el, i, "answer"))}
               </div>
             </div>
           )}
-          <PrintingMenu {...{ refresh, mode, setMode }} />
         </div>
       )}
     </>
