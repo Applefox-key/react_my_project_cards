@@ -4,7 +4,13 @@ import { TbSettingsAutomation } from "react-icons/tb";
 import BtnFontSize from "./BtnFontSize";
 import BtnColor from "./BtnColor";
 import { AiOutlineRollback } from "react-icons/ai";
-import { BsCardHeading, BsPhoneFlip } from "react-icons/bs";
+import {
+  BsCardHeading,
+  BsPhoneFlip,
+  BsPostcard,
+  BsPrinter,
+  BsWindowStack,
+} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 const PrintingMenu = ({ refresh, mode, setMode }) => {
   const [viewOptions, setViewOptions] = useState(false);
@@ -16,9 +22,9 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
       case 1:
         return "2";
       case 2:
-        return "🗖";
+        return <BsPostcard />;
       case 3:
-        return "🗗";
+        return <BsWindowStack />;
       default:
         break;
     }
@@ -74,7 +80,7 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
           className="printBtn"
           title="print"
           onClick={() => window.print()}>
-          🖶
+          <BsPrinter />
         </button>{" "}
         <button className="backBtn" title="back" onClick={() => router(-1)}>
           <AiOutlineRollback />
