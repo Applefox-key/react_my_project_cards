@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/esm/Button";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
+
+import { CSSTransition } from "react-transition-group";
 
 import { useGame } from "../../hooks/useGame";
 import { usePopup } from "../../hooks/usePopup";

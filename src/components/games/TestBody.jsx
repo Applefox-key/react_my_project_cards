@@ -5,7 +5,7 @@ import Result from "../UI/CARDS/Result";
 import GameCount from "./GameCount";
 import TestOptions from "./TestOptions";
 import cl from "./Games.module.scss";
-
+import { testAnswerCheck } from "../../utils/games";
 const TestBody = ({ items }) => {
   const [num, setNum] = useState(0);
   const [active, setActive] = useState([]);
@@ -13,7 +13,9 @@ const TestBody = ({ items }) => {
   const [right, setRight] = useState();
 
   const choose = (e) => {
-    if (items[num].item.id.toString() === e.target.id.toString()) {
+    // debugger;
+    let res = testAnswerCheck(num, e.target.id, items);
+    if (res) {
       setRight(e.target.id);
       setCount([count[0] + 1, count[1]]);
       setTimeout(() => {

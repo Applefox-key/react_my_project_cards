@@ -17,6 +17,17 @@ export const pairAnswerCheck = (id1, id2, itemsV) => {
     return [false];
   }
 };
+export const testAnswerCheck = (num, id2, items) => {
+  if (items[num].item.id.toString() === id2.toString()) return true;
+  let writeAnswer = items[num].item.answer.toString();
+  let ind2 = items[num].answ.findIndex(
+    (el) => el.id.toString() === id2.toString()
+  );
+
+  let userAnswer = items[num].answ[ind2].answer.toString();
+
+  return writeAnswer === userAnswer;
+};
 export const gameMenuArr = (pageParam, isPublic = false) => [
   {
     name: "Cards: question - answer",
