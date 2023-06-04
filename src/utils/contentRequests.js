@@ -34,7 +34,7 @@ export const getImgQ = (contentItem) => {
 };
 export const share = async (collection, setPopup) => {
   try {
-    await BaseAPI.editColParam(
+    await BaseAPI.switchIsPublic(
       { isPublic: !collection.isPublic },
       collection.id
     );

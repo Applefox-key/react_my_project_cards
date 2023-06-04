@@ -1,0 +1,424 @@
+.wrapCard {
+    display: flex;
+
+    @media screen and (max-width:900px) {
+        flex-wrap: wrap;
+    }
+
+    .onePlaylist-wrap {
+        background-color: var(--background-wrap);
+        // overflow: hidden;
+        margin: 20px;
+        width: 260px;
+        height: 307px;
+        position: relative;
+        padding: 10px;
+        border: 2px solid rgb(144, 144, 228);
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        transition: all 0.4s ease-in-out;
+        cursor: help;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+
+        button {
+            height: 2.5rem;
+            min-width: 2.5rem;
+            line-height: 1;
+            border-radius: 10px;
+            margin: 0 2px;
+            transition: all 0.4s ease-in-out;
+            background-color: var(--background-first);
+            cursor: pointer;
+
+            font-size: 16px;
+            // border-radius: 38%;
+
+            width: 3rem;
+            height: 3rem;
+
+            &:hover {
+                scale: 1.2;
+            }
+        }
+
+        .listHeader {
+            background-color: var(--background-header);
+            width: 100%;
+            font-size: 20px;
+            border-radius: 10px;
+
+
+        }
+
+        .listBody {
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 70%;
+            overflow: auto;
+
+            .listItem {
+                width: 100%;
+                background-color: var(--background-first);
+
+                padding: 5px;
+                text-align: start;
+                display: flex;
+                justify-content: space-between;
+                transition: all 0.4s ease-in-out;
+
+                .item-btns {
+                    display: none;
+                    border: none;
+                    transition: all 0.4s ease-in-out;
+
+                    button {
+                        border: none;
+                    }
+                }
+
+                &:hover {
+                    background-color: var(--background-second);
+
+                    .item-btns {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .list-btns {
+            display: none;
+            // position: absolute;
+            // top: -20px;
+            transition: all 0.4s ease-in-out;
+            justify-content: space-between;
+            padding-right: 5px;
+
+            @media screen and (max-width:900px) {
+                display: flex;
+            }
+
+            button {
+                border: none;
+                box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+                width: 3rem;
+                height: 3rem;
+                font-size: 16px;
+                border-radius: 38%;
+                cursor: pointer;
+                background-color: var(--background-second);
+
+                &:hover {
+                    background-color: var(--background-second);
+                }
+            }
+        }
+
+        .listFooter {
+            background-color: var(--background-header);
+            width: 100%;
+            font-size: 17px;
+            height: 3.2rem;
+            border-radius: 10px;
+            text-align: center;
+            // display: flex;
+            // justify-content: space-between;
+
+
+
+
+
+            .fff {
+                position: relative;
+                width: 3rem;
+                z-index: 700;
+                top: -32rem;
+                left: 15px;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+
+            .list-btns {
+                display: flex;
+            }
+        }
+
+
+    }
+}
+
+.wrapTbl {
+    .onePlaylist-wrap {
+        background-color: var(--background-wrap);
+        margin: 20px;
+        width: 98%;
+        height: fit-content;
+        position: relative;
+        padding: 10px;
+        border: 2px solid rgb(144, 144, 228);
+        border-radius: 10px;
+        transition: all 0.4s ease-in-out;
+        cursor: help;
+        display: flex;
+        justify-content: space-between;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+        button {
+            height: 2.5rem;
+            min-width: 2.5rem;
+            line-height: 1;
+            border-radius: 10px;
+            margin: 0 2px;
+            transition: all 0.4s ease-in-out;
+            background-color: var(--background-first);
+            cursor: pointer;
+            font-size: 16px;
+            width: 3rem;
+            height: 3rem;
+
+            &:hover {
+                scale: 1.2;
+            }
+        }
+
+        .listHeader {
+            background-color: var(--background-header);
+            width: 100%;
+            font-size: 20px;
+            border-radius: 10px 10px 0 0;
+            height: -webkit-fill-available;
+        }
+
+        .listBody {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 70%;
+            overflow: auto;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+            .listItem {
+                width: 100%;
+                background-color: var(--background-first);
+
+                padding: 5px;
+                text-align: start;
+                display: flex;
+                justify-content: space-between;
+                transition: all 0.4s ease-in-out;
+
+                .item-btns {
+                    display: none;
+                    border: none;
+                    transition: all 0.4s ease-in-out;
+
+                    button {
+                        border: none;
+                    }
+                }
+
+                &:hover {
+                    background-color: var(--background-second);
+
+                    .item-btns {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .tbl {
+            display: flex;
+            width: 20%;
+            flex-direction: column;
+
+            @media screen and (max-width:900px) {
+                width: 30%;
+            }
+        }
+
+        .list-btns {
+            width: 100%;
+            display: none;
+            transition: all 0.4s ease-in-out;
+            justify-content: space-between;
+            padding-right: 5px;
+            align-items: flex-end;
+
+            @media screen and (max-width:900px) {
+                display: flex;
+                width: 100%;
+            }
+
+            button {
+                width: 3rem;
+                height: 3rem;
+                font-size: 16px;
+                border-radius: 38%;
+                cursor: pointer;
+                background-color: var(--background-second);
+                border: none;
+                box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+                &:hover {
+                    background-color: var(--background-second);
+                }
+            }
+        }
+
+        .listFooter {
+            background-color: var(--background-header);
+            width: 100%;
+            font-size: 17px;
+            min-height: 3.2rem;
+            border-radius: 0 0 10px 10px;
+            text-align: center;
+            display: flex;
+            height: -webkit-fill-available;
+            padding-bottom: 5px;
+
+            .fff {
+                position: relative;
+                width: 3rem;
+                z-index: 700;
+                top: -10rem;
+                left: 40px;
+
+                @media screen and (max-width:900px) {
+                    width: 30%;
+                    left: -250%;
+                    top: -36%;
+                    position: absolute;
+                }
+
+            }
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+
+            .list-btns {
+                display: flex;
+            }
+        }
+
+
+    }
+}
+
+
+
+
+.tabBox {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+    .tab {
+        border-bottom: 1px solid black;
+        width: 50%;
+        text-align: center;
+        // background-color: var(--background-second);
+    }
+
+    .left {
+        text-align: center;
+        width: 50%;
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+        border-radius: 0 10px 0 0;
+        background-color: var(--background-header);
+    }
+
+    .right {
+        text-align: center;
+        width: 50%;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-radius: 10px 0 0 0;
+        background-color: var(--background-header);
+    }
+}
+
+.selectionButtons {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-align: end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-header);
+
+    @media screen and (max-width:900px) {
+        flex-wrap: wrap;
+
+    }
+
+    .filter {
+        scale: 0.9;
+        width: 30%;
+
+        @media screen and (max-width:900px) {
+            width: 50%;
+
+        }
+
+    }
+
+    button {
+        margin-left: 1rem;
+        border-radius: 5px;
+        border: none;
+        font-size: 12px;
+    }
+}
+
+.tblCollections {
+    padding-top: 1rem;
+    height: 20rem;
+    overflow-x: scroll;
+    font-size: 12px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    position: relative;
+
+    border-collapse: collapse;
+
+    span {
+        &::after {
+            content: "my";
+            color: coral;
+            position: absolute;
+            right: 0;
+
+        }
+    }
+
+    .isNotSelected {
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            border: 0.5px solid grey;
+
+        }
+    }
+
+    .isSelected {
+        background-color: var(--background-first);
+    }
+}

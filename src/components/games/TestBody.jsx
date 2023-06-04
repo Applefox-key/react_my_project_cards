@@ -13,7 +13,6 @@ const TestBody = ({ items }) => {
   const [right, setRight] = useState();
 
   const choose = (e) => {
-    // debugger;
     let res = testAnswerCheck(num, e.target.id, items);
     if (res) {
       setRight(e.target.id);

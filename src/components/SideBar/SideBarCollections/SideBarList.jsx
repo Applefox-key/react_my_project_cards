@@ -6,6 +6,7 @@ import MySpinner from "../../UI/MySpinner";
 import CategoryFilter from "../../CategorySelection/CategoryFilter";
 import CategoryMiniMenu from "./CategoryMiniMenu";
 import { useMemo } from "react";
+import CategorySetBtn from "../../CategorySelection/CategorySetBtn";
 
 const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
   const isPublic = window.location.pathname.includes("pub");
@@ -32,6 +33,11 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
     getList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    getList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPublic]);
+
   const deleteOne = async (element) => {
     if (!window.confirm("Delete this label?")) return;
     await BaseAPI.deleteLabel(element.id);
@@ -67,7 +73,12 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
         if (!e.relatedTarget) setIsMenu("");
       }}>
       <div className={cl["link-box"]}>
-        <h3>CATEGORIES</h3>
+        {" "}
+        <h3>
+          {" "}
+          <CategorySetBtn getList={getList} icon={true} />
+          CATEGORIES
+        </h3>
         {!isPublic && (
           <CategoryMiniMenu
             isMenu={isMenu === "all"}
@@ -75,9 +86,9 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
             el={{ id: "all" }}
             deleteFn={deleteAll}
           />
-        )}
+        )}{" "}
       </div>
-
+      s
       <CategoryFilter filter={filter} setFilter={setFilter} />
       {!filter && selected && (
         <div

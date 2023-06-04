@@ -28,57 +28,46 @@ export const testAnswerCheck = (num, id2, items) => {
 
   return writeAnswer === userAnswer;
 };
-export const gameMenuArr = (pageParam, isPublic = false) => [
-  {
-    name: "Cards: question - answer",
-    symb: "❓",
-    href: `/play_cards/${isPublic ? "pub" : "my"}/0/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-  {
-    name: " Cards: answer - question",
-    symb: "❗",
-    // symb: "⸘",
-    href: `/play_cards/${isPublic ? "pub" : "my"}/1/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-  {
-    name: "Cards: time",
-    symb: "⌛",
-    href: `/play_timecard/${isPublic ? "pub" : "my"}/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-  { name: "Divider", symb: "|", href: "" },
-  {
-    name: "Find pairs",
-    symb: "🎏",
-    href: `/play_pairs/${isPublic ? "pub" : "my"}/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-  {
-    name: "Find the right answer",
-    symb: "🔠",
-    href: `/play_test/${isPublic ? "pub" : "my"}/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-  {
-    name: "Write the right answer",
-    symb: "🖍️",
-    href: `/play_write/${isPublic ? "pub" : "my"}/0/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-  //🖊️
-  {
-    name: "Write the right question",
-    symb: "✏️",
-    href: `/play_write/${isPublic ? "pub" : "my"}/1/${pageParam.id}/${
-      pageParam.name
-    }`,
-  },
-];
+export const gameMenuArr = (pageParam, isPublic = false, playlist = false) => {
+  let urlPart = playlist ? "pl" : isPublic ? "pub" : "my";
+  return [
+    {
+      name: "Cards: question - answer",
+      symb: "❓",
+      href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+    },
+    {
+      name: " Cards: answer - question",
+      symb: "❗",
+      // symb: "⸘",
+      href: `/play_cards/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+    },
+    {
+      name: "Cards: time",
+      symb: "⌛",
+      href: `/play_timecard/${urlPart}/${pageParam.id}/${pageParam.name}`,
+    },
+    { name: "Divider", symb: "|", href: "" },
+    {
+      name: "Find pairs",
+      symb: "🎏",
+      href: `/play_pairs/${urlPart}/${pageParam.id}/${pageParam.name}`,
+    },
+    {
+      name: "Find the right answer",
+      symb: "🔠",
+      href: `/play_test/${urlPart}/${pageParam.id}/${pageParam.name}`,
+    },
+    {
+      name: "Write the right answer",
+      symb: "🖍️",
+      href: `/play_write/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+    },
+    //🖊️
+    {
+      name: "Write the right question",
+      symb: "✏️",
+      href: `/play_write/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+    },
+  ];
+};

@@ -1,7 +1,5 @@
 .allcollect {
-    // max-width: 90%;
     position: relative;
-    // left: 15rem;
     font-size: 13px;
     margin-top: 1rem;
 
@@ -24,11 +22,82 @@
         left: 0;
         margin: auto;
     }
+}
+
+.playlist {
+    width: 3rem;
+    position: relative;
+
+    .playMenubtn {
+        display: none;
+        position: absolute;
+        opacity: 0.9;
+        height: fit-content;
+        background-color: var(--background-switch);
+        color: azure;
+        text-align: start;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        padding: 0 20px;
+        padding-left: 0;
+        transition: all 0.4s;
+        right: 0;
+
+        bottom: 0px;
+
+        p {
+            text-orientation: upright;
+            writing-mode: tb;
+            font-size: 8px;
+            letter-spacing: -4px;
+            margin-right: 8px;
+            padding: 0;
+            margin: 0;
+            border-right: 1px solid white;
+            background: crimson;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        .play-menu {
+            margin-left: 10px;
+            width: 18rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .oneP {
+                font-size: 20px;
+                margin: 1px;
+                text-align: center;
+                font-weight: 800;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    transform: translateY(-5px);
+                }
+            }
+        }
+
+        .play-vert {
+            flex-direction: column;
+            width: fit-content;
+        }
+
+    }
+
+    &:hover {
+        .playMenubtn {
+            display: flex;
+        }
+    }
 
 }
 
-
 //----------------------------
+
 .oneCollect-wrap {
     position: relative;
 
@@ -108,6 +177,12 @@
                 }
             }
         }
+
+        .play-vert {
+            flex-direction: column;
+            width: fit-content;
+        }
+
     }
 
     .share {
@@ -130,6 +205,12 @@
     .heartSymb {
         color: #f92f60;
         left: 23px;
+    }
+
+    .mypbbtn {
+        @extend .share;
+        cursor: auto;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
 
     .sharebtn {
@@ -214,6 +295,7 @@
             top: 97px;
         }
 
+
         .delbtn {
             display: block;
         }
@@ -225,12 +307,12 @@
             background-color: var(--background-first);
             box-shadow:
                 //  rgb(144, 144, 228) 0px 0px 0px 2px inset,
-                rgb(255, 255, 255) -1px 1px 0px -0.5px,
-                rgb(151, 219, 150) -1px 1px,
-                rgb(255, 255, 255) -2px 2px 0px -0.5px,
-                rgb(197, 188, 147) -2px 2px,
-                rgb(255, 255, 255) -3px 3px 0px -0.5px,
-                rgb(117, 189, 200) -3px 3px;
+                var(--background-wrap) -1px 1px 0px -0.5px,
+                var(--background-header) -1px 1px,
+                var(--background-wrap) -2px 2px 0px -0.5px,
+                var(--background-header) -2px 2px,
+                var(--background-wrap) -3px 3px 0px -0.5px,
+                var(--background-header) -3px 3px;
 
 
         }
@@ -245,14 +327,14 @@
         position: relative;
         padding: 10px;
         border: 2px solid rgb(144, 144, 228);
-        border-radius: 10px;
+
         box-shadow:
-            rgb(255, 255, 255) -3px 3px 0px -2px,
-            rgb(151, 219, 150) -3px 3px,
-            rgb(255, 255, 255) -6px 6px 0px -2px,
-            rgb(197, 188, 147) -6px 6px,
-            rgb(255, 255, 255) -9px 9px 0px -2px,
-            rgb(117, 189, 200) -9px 9px;
+            var(--background-wrap) -3px 3px 0px -2px,
+            var(--background-header) -3px 3px,
+            var(--background-wrap) -6px 6px 0px -2px,
+            var(--background-header) -6px 6px,
+            var(--background-wrap) -9px 9px 0px -2px,
+            var(--background-header) -9px 9px;
         transition: all 0.2s ease-in-out;
         cursor: help;
 

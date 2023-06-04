@@ -12,7 +12,11 @@ export const useGame = (setCallback = null, changeContent = null) => {
     const content =
       pageParam.tab === "pub"
         ? await BaseAPI.getPublicContent(pageParam.id)
-        : await BaseAPI.getContent(pageParam.id);
+        : pageParam.tab === "my"
+        ? await BaseAPI.getContent(pageParam.id)
+        : await BaseAPI.getContentPlaylist(pageParam.id); //playlist
+    console.log(content);
+
     const newContent = changeContent ? changeContent(content) : content;
     if (setCallback) setCallback(newContent);
   };

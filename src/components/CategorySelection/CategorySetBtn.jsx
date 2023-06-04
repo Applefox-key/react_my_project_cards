@@ -3,7 +3,7 @@ import MyModal from "../UI/MyModal";
 import CategoriesManager from "../CategorySelection/CategoriesManager";
 import { AiOutlineControl } from "react-icons/ai";
 import cl from "./CategorySelection.module.scss";
-const CategorySetBtn = ({ getList, list, icon }) => {
+const CategorySetBtn = ({ getList, icon }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -38,7 +38,7 @@ const CategorySetBtn = ({ getList, list, icon }) => {
           size="md"
           dialogClassName="h100"
           title={"Categories manager"}>
-          <CategoriesManager categories={list} getCategories={getList} />
+          <CategoriesManager />
         </MyModal>
       )}
     </>

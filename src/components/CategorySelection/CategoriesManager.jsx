@@ -68,7 +68,7 @@ const CategoriesManager = () => {
         return;
       } else {
         await BaseAPI.editCategory(newV, newV.id);
-        setCategoriesTbl();
+        updateCategories();
       }
       setEditMode(null);
     },

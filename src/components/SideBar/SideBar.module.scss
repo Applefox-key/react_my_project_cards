@@ -122,6 +122,12 @@
     position: relative;
     color: black;
 
+    div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     span {
         color: #0d6af5;
         margin: 0 0.5rem;

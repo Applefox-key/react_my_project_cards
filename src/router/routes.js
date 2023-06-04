@@ -17,6 +17,7 @@ import UserOneCollection from "../components/PrivateCollections/OneCollection/Us
 import PublicCollectionsView from "../components/PublicCollections/PublicOneCollection";
 import EditCard from "../components/PrivateCollections/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
+import PlayLists from "../components/Playlists/PlayLists";
 
 export const GO_TO = {
   about: "/about",
@@ -56,6 +57,7 @@ export const privateRoutes = [
     element: <Collections />,
     nameNav: "Public collections",
   },
+  { path: "/playlist", element: <PlayLists />, nameNav: "Playlists" },
   { path: "/collections/:tab/print/:id/:name", element: <PrintingForm /> },
   { path: "/profile", element: <Profile />, nameNav: "Profile" },
   { path: "/categories", element: <CategoriesManager />, nameNav: "" },

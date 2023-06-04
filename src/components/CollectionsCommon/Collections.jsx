@@ -7,7 +7,6 @@ import UsersCollections from "../PrivateCollections/CollectionsList/UsersCollect
 import CollectionEditModal from "../PrivateCollections/OneCollectionActions/CollectionEditModal";
 import PublicCollectionsList from "../PublicCollections/PublicCollectionsList";
 import CategoriesFolders from "../CategorySelection/CategoriesFolders";
-import { fragment_SearchingTips } from "../../utils/pagesFragments";
 import { GO_TO } from "../../router/routes";
 
 import {

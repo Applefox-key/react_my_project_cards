@@ -13,8 +13,10 @@ const CategorySelection = ({
   colCat = "",
   colCatPub = "",
   isOne,
+  isPb = null,
 }) => {
-  const isPublic = window.location.pathname.includes("pub");
+  const isPublic =
+    isPb === null ? window.location.pathname.includes("pub") : isPb;
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("");
   const [selected, setSelected] = useState(isPublic ? colCatPub : colCat);
@@ -63,9 +65,7 @@ const CategorySelection = ({
         </Dropdown.Toggle>
 
         <Dropdown.Menu className={cl.max_content}>
-          {!isPublic && mode && (
-            <CategorySetBtn list={categories} getList={getCategories} />
-          )}
+          {!isPublic && mode && <CategorySetBtn getList={getCategories} />}
           <CategoryFilter filter={filter} setFilter={setFilter} />
 
           {!isLoadingCat && categories && (

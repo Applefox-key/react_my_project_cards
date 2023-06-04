@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
 import { GrChapterAdd } from "react-icons/gr";
+import { TfiSharethis } from "react-icons/tfi";
 import {
   HiShare,
   HiOutlineShare,
@@ -12,6 +13,7 @@ import {
 import { GO_TO } from "../../router/routes";
 import { usePopup } from "../../hooks/usePopup";
 import BaseAPI from "../../API/BaseAPI";
+import { FiUserCheck } from "react-icons/fi";
 
 const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
   const router = useNavigate();
@@ -32,17 +34,23 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
       </div>
 
       {!listFn ? (
-        <div
-          className="sharebtn"
-          title={"copy to my collections"}
-          onClick={async (e) => {
-            if (!oneSet.content) return;
-            if (!oneSet.collection) return;
-            let res = await BaseAPI.copySharedCollection(oneSet.collection);
-            setPopup.success(res.message);
-          }}>
-          <GrChapterAdd />
-        </div>
+        oneSet.isMy ? (
+          <div className="mypbbtn" title={"my collections"}>
+            <FiUserCheck />
+          </div>
+        ) : (
+          <div
+            className="sharebtn"
+            title={"copy to my collections"}
+            onClick={async (e) => {
+              if (!oneSet.content) return;
+              if (!oneSet.collection) return;
+              let res = await BaseAPI.copySharedCollection(oneSet.collection);
+              setPopup.success(res.message);
+            }}>
+            <GrChapterAdd />
+          </div>
+        )
       ) : (
         <>
           <div
@@ -61,7 +69,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
           )}
           {!!oneSet.collection.isPublic && (
             <div className="shareSymb">
-              <HiShare />
+              <TfiSharethis />
             </div>
           )}
 
@@ -72,7 +80,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
               e.stopPropagation();
               listFn.shareColl(oneSet.collection);
             }}>
-            {oneSet.collection.isPublic ? <HiShare /> : <HiOutlineShare />}
+            {oneSet.collection.isPublic ? <TfiSharethis /> : <HiOutlineShare />}
           </div>
 
           <div

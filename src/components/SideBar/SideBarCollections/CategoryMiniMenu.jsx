@@ -1,7 +1,8 @@
 import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
-import { RiDeleteBin2Line, RiDeleteRow } from "react-icons/ri";
+import { RiDeleteBin2Line } from "react-icons/ri";
 import cl from "../SideBar.module.scss";
+
 const CategoryMiniMenu = ({ el, setIsMenu, isMenu, deleteFn }) => {
   return (
     <>
@@ -20,8 +21,7 @@ const CategoryMiniMenu = ({ el, setIsMenu, isMenu, deleteFn }) => {
               e.stopPropagation();
               deleteFn(el);
             }}>
-            {/* <RiDeleteRow /> */}
-            <RiDeleteBin2Line />{" "}
+            <RiDeleteBin2Line />
             {el.id !== "all" ? "delete label" : "delete all"}
           </button>
         </div>

@@ -29,6 +29,24 @@ export const editCollectionHlp = async (
   if (!res.error && res.hasOwnProperty("id")) return res.id.id;
 };
 
+export const editPlaylistHlp = async (name, listIds, playlistid) => {
+  let res = "";
+  let newParam = {};
+
+  newParam.listIds = listIds.length ? listIds.join(",").trim() : "";
+  if (name) newParam.name = name.trim();
+
+  //new
+  if (playlistid === "new") {
+    res = await BaseAPI.createPlaylist(newParam);
+  } else {
+    //edit collection's params
+    await BaseAPI.editPlaylist(newParam, playlistid);
+  }
+
+  if (!res.error && res.hasOwnProperty("id")) return res.id.id;
+};
+
 export const getImportMenu = (cb) => {
   return [
     {

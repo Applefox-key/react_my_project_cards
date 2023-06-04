@@ -83,6 +83,12 @@ const BaseAPI = {
     if (set.categoryid) reqData.categoryid = set.categoryid;
     return await this.serverReq("post", "/collections", true, reqData);
   },
+  async createPlaylist(set) {
+    let reqData = {
+      ...set,
+    };
+    return await this.serverReq("post", "/playlists", true, reqData);
+  },
   async CreateCollectionWithContent(collectionFrom, content, fromPub = false) {
     let reqData = {
       name: collectionFrom.name,
@@ -171,7 +177,10 @@ const BaseAPI = {
   async deleteContent(wId) {
     return await this.serverReq("delete", "/content/" + wId, true);
   },
-
+  async deletePlaylist(id) {
+    if (id === "new") return;
+    return await this.serverReq("delete", "/playlists/" + id, true);
+  },
   async editCategory(newParam, catId) {
     if (!newParam || !catId) return { message: "nothing has changed" };
 
@@ -190,6 +199,19 @@ const BaseAPI = {
       true,
       newParam
     );
+  },
+  async switchIsPublic(newParam, colId) {
+    if (!newParam || !colId) return { message: "nothing has changed" };
+    return await this.serverReq(
+      "patch",
+      "/collections/share/" + colId,
+      true,
+      newParam
+    );
+  },
+  async editPlaylist(newParam, id) {
+    if (!newParam || !id) return { message: "nothing has changed" };
+    return await this.serverReq("patch", "/playlists/" + id, true, newParam);
   },
   async editContent(newV) {
     if (
@@ -286,17 +308,40 @@ const BaseAPI = {
     if (result.error) throw new Error(result.error);
     return result.data[0].content;
   },
+  async getContentPlaylist(id) {
+    let result = await this.serverReq(
+      "get",
+      "/playlists/" + id + "/content",
+      true
+    );
+
+    if (result.error) throw new Error(result.error);
+    return result.data;
+  },
   async getContentItem(id) {
     let result = await this.serverReq("get", "/content/" + id, true);
     if (result.error) throw new Error(result.error);
 
     return result.data;
   },
+  async getPlaylists(id = "") {
+    let result = id
+      ? await this.serverReq("get", "/playlists/" + id, true)
+      : await this.serverReq("get", "/playlists/", true);
+    if (result.error) throw new Error(result.error);
+    return result.data;
+  },
+
   //pbcollection's list/ or one by id
   async getPublicCollections(colId) {
     let result = colId
       ? await this.serverReq("get", "/pbcollections/" + colId, true)
       : await this.serverReq("get", "/pbcollections", true);
+    if (result.error) throw new Error({ error: result.error });
+    return result.data;
+  }, //pbcollection's list/ or one by id
+  async getPublicCollectionsWithCount() {
+    let result = await this.serverReq("get", "/pbcollections/count", true);
     if (result.error) throw new Error({ error: result.error });
     return result.data;
   },

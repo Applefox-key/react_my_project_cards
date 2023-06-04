@@ -21,7 +21,7 @@ const useCategoryFilter = (list, category) => {
 
   return filtred;
 };
-const useTextFilter = (list, textFilter) => {
+export const useTextFilter = (list, textFilter) => {
   const filtred = useMemo(() => {
     if (textFilter) return getFiltredCollections(list, textFilter);
     else return list;
