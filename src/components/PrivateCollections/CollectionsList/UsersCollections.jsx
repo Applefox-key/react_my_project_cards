@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
 import { useQuery } from "../../../hooks/useQuery";
-import CollectionsTable from "./CollectionsTable";
 import CollectionCardsList from "../../CollectionsCommon/CollectionCardsList";
 import { GO_TO } from "../../../router/routes";
 import { favorite, share } from "../../../utils/contentRequests";
@@ -89,7 +88,7 @@ const UsersCollections = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     privateSettings.isNew,
-    viewmode,
+
     commonSettings.selectedCategorymy,
     commonSettings.filter,
     privateSettings.shared,
@@ -99,19 +98,11 @@ const UsersCollections = ({
     <>
       {isLoading ? (
         <SpinnerLg className="span_wrap" />
-      ) : window.location.hash !== "#1" ? (
+      ) : (
         <CollectionCardsList
           filtredList={collectionList}
           listFn={listFn}
           routeOne={GO_TO.myCollect}
-        />
-      ) : (
-        <CollectionsTable
-          getCollections={getCollections}
-          selectedCategory={commonSettings.selectedCategorymy}
-          filtredList={collectionList}
-          collectionList={collectionList}
-          setCollectionList={setCollectionList}
         />
       )}
     </>

@@ -23,7 +23,7 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
           );
         }}>
         <div className="header">{oneSet.collection.name}</div>
-        <div>
+        <div className="collectBody">
           {getFirstEl(oneSet.content, 5).map((el, i) => (
             <div className="content-row" key={i}>
               {generateContent(el)}
@@ -34,7 +34,9 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
         {oneSet.collection.category && (
           <div className="cat_tag">{oneSet.collection.category}</div>
         )}
-        {oneSet.content.length && <PlayMenu collection={oneSet.collection} />}
+        {!!oneSet.content.length && window.location.hash !== "#1" && (
+          <PlayMenu collection={oneSet.collection} />
+        )}
       </div>
       <CollectionCardBtns {...{ oneSet, routeOne, listFn }} />
     </div>

@@ -84,36 +84,37 @@ const Collections = () => {
     privateSettings.shared,
   ]);
   return (
-    <div className="d-flex">
-      <SideBar
+    <div className="wrap_box">
+      {privateSettings.isNew && (
+        <CollectionEditModal
+          isEdit={privateSettings.isNew}
+          setIsEdit={(val) =>
+            setPrivateSettings({ ...privateSettings, isNew: val })
+          }
+          isNew={privateSettings.isNew}
+          onHide={() => {
+            setPrivateSettings({
+              ...privateSettings,
+              isNew: false,
+            });
+            router(`${GO_TO.myCollect}#${viewmode}`);
+          }}
+        />
+      )}
+      <CollectionsMenu
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
-        setSettingsCommon={setSettingsCommon}
         privateSettings={privateSettings}
-        setSettingsPrivat={setSettingsPrivat}
-      />
-      <div className="wrap_box">
-        {privateSettings.isNew && (
-          <CollectionEditModal
-            isEdit={privateSettings.isNew}
-            setIsEdit={(val) =>
-              setPrivateSettings({ ...privateSettings, isNew: val })
-            }
-            isNew={privateSettings.isNew}
-            onHide={() => {
-              setPrivateSettings({
-                ...privateSettings,
-                isNew: false,
-              });
-              router(`${GO_TO.myCollect}#${viewmode}`);
-            }}
-          />
-        )}
-        <CollectionsMenu
+        setSettingsCommon={setSettingsCommon}
+      />{" "}
+      <div className="d-flex">
+        {" "}
+        <SideBar
           viewmodeChange={viewmodeChange}
           commonSettings={commonSettings}
-          privateSettings={privateSettings}
           setSettingsCommon={setSettingsCommon}
+          privateSettings={privateSettings}
+          setSettingsPrivat={setSettingsPrivat}
         />
         {/* {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })} */}
         <div className="allcollect">

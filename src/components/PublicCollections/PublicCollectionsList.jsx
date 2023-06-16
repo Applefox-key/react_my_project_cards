@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import BaseAPI from "../../API/BaseAPI";
 import { useCollectSelection } from "../../hooks/useCollectSelection";
 import { useQuery } from "../../hooks/useQuery";
-import PublicCollectTable from "./PublicCollectTable";
 import { GO_TO } from "../../router/routes";
 import CollectionCardsList from "../CollectionsCommon/CollectionCardsList";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
@@ -29,8 +28,6 @@ const PublicCollectionsList = ({ commonSettings, viewmode }) => {
     <>
       {isLoading ? (
         <SpinnerLg className="span_wrap" />
-      ) : viewmode === 1 || window.location.hash === "#1" ? (
-        <PublicCollectTable filtredList={filtredList} />
       ) : (
         <div className="d-flex p-2 flex-wrap justify-content-center">
           <CollectionCardsList

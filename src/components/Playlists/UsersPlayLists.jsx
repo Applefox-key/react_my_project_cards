@@ -10,6 +10,7 @@ import { editPlaylistHlp } from "../../utils/editCollectionHlp";
 import PlaylistBtns from "./PlaylistBtns";
 import PlayMenu from "../UI/PlayMenu/PlayMenu";
 import { useTextFilter } from "../../hooks/useCollectSelection";
+import { useNavigate } from "react-router-dom";
 
 const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
   const [list, setList] = useState([]);
@@ -17,6 +18,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
     setList(await BaseAPI.getPlaylists());
   });
   const setPopup = usePopup();
+  const route = useNavigate();
   const listFn = {
     delColl: async (element, colid = "") => {
       if (
@@ -66,6 +68,8 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonSettings.editEl, commonSettings.filter]);
   const filtredList = useTextFilter(list, commonSettings.filter);
+  console.log(list);
+
   return (
     <>
       {isLoading ? (
@@ -80,10 +84,24 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
               )}
               <div className={cl.listBody}>
                 {el.collections.map((col) => (
-                  <div className={cl.listItem} key={col.id}>
+                  <div
+                    className={cl.listItem}
+                    key={col.id}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      route(
+                        `/collections/${col.isMy ? "my" : "pub"}/${col.id}/${
+                          col.name
+                        }`
+                      );
+                    }}>
                     {col.name}
                     <div className={cl["item-btns"]}>
-                      <button onClick={() => listFn.delColl(el, col.id)}>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          listFn.delColl(el, col.id);
+                        }}>
                         <FaMinus />
                       </button>
                     </div>

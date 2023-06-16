@@ -4,7 +4,6 @@ import "./collectionList.scss";
 import { GrChapterAdd } from "react-icons/gr";
 import { TfiSharethis } from "react-icons/tfi";
 import {
-  HiShare,
   HiOutlineShare,
   HiOutlineHeart,
   HiHeart,
@@ -20,7 +19,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
 
   const setPopup = usePopup();
   return (
-    <div>
+    <div className="btns-div">
       <div
         className="sharebtn prnbtn"
         title="print cards"
@@ -53,15 +52,6 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
         )
       ) : (
         <>
-          <div
-            className="sharebtn delbtn"
-            title="delete"
-            onClick={(e) => {
-              e.stopPropagation();
-              listFn.delColl(oneSet.collection);
-            }}>
-            ❌
-          </div>
           {!!oneSet.collection.isFavorite && (
             <div className="shareSymb heartSymb">
               <HiHeart />
@@ -72,7 +62,6 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
               <TfiSharethis />
             </div>
           )}
-
           <div
             className="sharebtn"
             title={oneSet.collection.isPublic ? "unshare" : "share"}
@@ -82,7 +71,6 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
             }}>
             {oneSet.collection.isPublic ? <TfiSharethis /> : <HiOutlineShare />}
           </div>
-
           <div
             className="sharebtn heartbtn"
             title={oneSet.collection.isFavorite ? "unfavorite" : "to favorite"}
@@ -91,6 +79,15 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
               listFn.favoriteColl(oneSet.collection);
             }}>
             {oneSet.collection.isFavorite ? <HiHeart /> : <HiOutlineHeart />}
+          </div>{" "}
+          <div
+            className="sharebtn delbtn"
+            title="delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              listFn.delColl(oneSet.collection);
+            }}>
+            ❌
           </div>
         </>
       )}

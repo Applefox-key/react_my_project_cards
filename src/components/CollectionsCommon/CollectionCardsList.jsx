@@ -5,7 +5,10 @@ import "./collectionList.scss";
 const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
   return (
     <>
-      <div className="all_wrap m-auto">
+      <div
+        className={
+          window.location.hash === "#1" ? "tbl_wrap" : "all_wrap m-auto"
+        }>
         {!filtredList || !filtredList.length ? (
           <>
             {listFn ? (

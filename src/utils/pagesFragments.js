@@ -19,7 +19,7 @@ export const fragment_SearchingTips = (
     <>
       <h5>{only}</h5>
       {(selectedCategoryName || commonSet.filter) && (
-        <div className="fs-2 m-auto mt-2 fst-italic ">
+        <div className="serch_result_box">
           <span className="searchResult">search results for... </span>
 
           {selectedCategoryName && (

@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../CollectionsCommon/collectionList.scss";
 import "../../styles/oneCollection.scss";
-
 import {
   collectionPageSettings,
   restoreSettings,
@@ -60,29 +59,28 @@ const Playlists = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonSettings.filter]);
   return (
-    <div className="d-flex">
-      <SideBarPlay
+    <div className="wrap_box ">
+      {commonSettings.editEl && (
+        <PlayListEditModal
+          isEdit={commonSettings.editEl}
+          setIsEdit={(val) => setSettingsCommon("editEl", val)}
+          list={commonSettings.editEl}
+          onHide={() => {
+            setSettingsCommon("editEl", "");
+          }}
+        />
+      )}
+      <PlayListsMenu
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
         setSettingsCommon={setSettingsCommon}
       />
-      <div className="wrap_box ">
-        {commonSettings.editEl && (
-          <PlayListEditModal
-            isEdit={commonSettings.editEl}
-            setIsEdit={(val) => setSettingsCommon("editEl", val)}
-            list={commonSettings.editEl}
-            onHide={() => {
-              setSettingsCommon("editEl", "");
-            }}
-          />
-        )}
-        <PlayListsMenu
+      <div className="d-flex">
+        <SideBarPlay
           viewmodeChange={viewmodeChange}
           commonSettings={commonSettings}
           setSettingsCommon={setSettingsCommon}
         />
-
         <div className="allcollect">
           <UsersPlayLists
             viewmode={viewmode}
