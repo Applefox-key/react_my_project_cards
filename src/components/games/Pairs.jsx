@@ -10,11 +10,13 @@ import BackBtn from "../UI/BackBtn/BackBtn";
 import { CSSTransition } from "react-transition-group";
 import { pairAnswerCheck } from "../../utils/games";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
+import Hint from "./Hint";
 
 const Pairs = () => {
   const [items, setItems] = useState();
   const [itemsV, setItemsV] = useState([]);
   const [active, setActive] = useState();
+  const [note, setNote] = useState();
   const [count, setCount] = useState([0, 0]);
   const contentParts = (arr = null) => {
     let newArr = arr ? shuffle([...arr]) : [...items];
@@ -32,20 +34,31 @@ const Pairs = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const itemNote = (ids) => {
+    let [id, set] = [...ids.split("&")];
+
+    let ind = itemsV[set - 1].findIndex(
+      (el) => el.id.toString() === id.toString()
+    );
+    setNote(itemsV[set - 1][ind].note ? itemsV[set - 1][ind].note : "");
+  };
   const choose = (e) => {
     let tgId = e.target.id ? e.target.id : e.target.parentElement.id;
     if (!active) {
       setActive(tgId);
+      itemNote(tgId);
       return;
     }
     let [id1, set1] = [...active.split("&")];
     let [id2, set2] = [...tgId.split("&")];
     if (active === tgId) {
       setActive("");
+      setNote("");
       return;
     }
     if (set1 === set2) {
       setActive(tgId);
+      itemNote(tgId);
       return;
     }
     let [res, arr1, arr2] = pairAnswerCheck(id1, id2, itemsV);
@@ -54,6 +67,7 @@ const Pairs = () => {
       else setItemsV([arr1, arr2]);
       setCount([count[0] + 1, count[1]]);
       setActive("");
+      setNote("");
     } else {
       setCount([count[0], count[1] + 1]);
     }
@@ -61,6 +75,7 @@ const Pairs = () => {
 
   return (
     <>
+      {note ? <Hint text={note} /> : <></>}
       <BackBtn />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />

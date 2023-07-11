@@ -29,13 +29,16 @@ const PairPart = ({ items, onClick, num, active }) => {
       className={cl.container + " flex-wrap justify-content-center mt-5"}>
       {items.map((el) => (
         <CSSTransition timeout={400} classNames="pair" key={el.id + "&" + num}>
-          <button
-            className={generateClassName(el)}
-            id={el.id + "&" + num}
-            onClick={onClick}>
-            {imgEl(el)}
-            {el[num === 1 ? "question" : "answer"]}
-          </button>
+          <>
+            {/* {active === el.id + "&" + num && el.note && <Hint text="" />} */}
+            <button
+              className={generateClassName(el)}
+              id={el.id + "&" + num}
+              onClick={onClick}>
+              {imgEl(el)}
+              {el[num === 1 ? "question" : "answer"]}
+            </button>
+          </>
         </CSSTransition>
       ))}
     </TransitionGroup>

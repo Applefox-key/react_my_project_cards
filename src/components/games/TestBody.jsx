@@ -6,6 +6,7 @@ import GameCount from "./GameCount";
 import TestOptions from "./TestOptions";
 import cl from "./Games.module.scss";
 import { testAnswerCheck } from "../../utils/games";
+import Hint from "./Hint";
 const TestBody = ({ items }) => {
   const [num, setNum] = useState(0);
   const [active, setActive] = useState([]);
@@ -32,6 +33,7 @@ const TestBody = ({ items }) => {
 
   return (
     <div>
+      {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
       {items.length !== num && (
         <GameCount count={count} all={items.length - num} />
       )}

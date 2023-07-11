@@ -16,7 +16,7 @@ const MyInput = ({ name, content, callback = null, onblur, onEnter = "" }) => {
       onClick={(e) => {
         e.stopPropagation();
       }}
-      onKeyPress={(e) => {
+      onKeyDown={(e) => {
         if (!onEnter) return;
         if (e.key === "Enter") onEnter();
       }}

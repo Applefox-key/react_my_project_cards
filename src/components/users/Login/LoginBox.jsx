@@ -71,7 +71,7 @@ const LoginBox = ({ setLoginMode }) => {
         <label htmlFor="password">Password</label>
         <input
           value={password}
-          onKeyPress={onKeyPress}
+          onKeyDown={onKeyPress}
           type="password"
           id="password"
           onChange={(e) => {

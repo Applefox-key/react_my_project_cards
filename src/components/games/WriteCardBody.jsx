@@ -9,6 +9,7 @@ import { onlyLetters } from "../../utils/texts";
 import Result from "../UI/CARDS/Result";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
+import Hint from "./Hint";
 
 const WriteCardBody = ({ items }) => {
   const [answer, setAnswer] = useState("");
@@ -36,8 +37,10 @@ const WriteCardBody = ({ items }) => {
     setFlip(!flip);
   };
   const isResult = items.length === count[0] + count[1] && !flip;
+
   return (
     <div className={cl.cardSize}>
+      {items[num].note ? <Hint text={items[num].note} /> : <></>}
       {isResult ? (
         <Result text="Job is done!" count={count} />
       ) : (
@@ -72,7 +75,7 @@ const WriteCardBody = ({ items }) => {
                 type={"text"}
                 value={answer}
                 className={cl.writeAnswer}
-                onKeyPress={(e) => {
+                onKeyDown={(e) => {
                   if (e.key === "Enter") check();
                 }}
                 onChange={(e) => {
