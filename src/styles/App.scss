@@ -194,6 +194,16 @@ input {
   filter: blur(158.5px);
 }
 
+.wrongBack {
+  background-color: #dc3545;
+  color: white;
+}
+
+.rightBack {
+  background-color: forestgreen;
+  color: white;
+}
+
 @media screen and (max-width: 600px) {
   .main_container {
     display: block;

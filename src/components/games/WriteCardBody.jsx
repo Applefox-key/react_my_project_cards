@@ -21,6 +21,9 @@ const WriteCardBody = ({ items }) => {
   const countLeft = () => items && num + 1 + "/" + items.length;
   const check = () => {
     if (flip) {
+      document
+        .getElementById("answerArea")
+        .classList.remove("rightBack", "wrongBack");
       setNum(Math.min(num + 1, items.length - 1));
       setAnswer("");
       setShowAnim(!anim);
@@ -29,10 +32,13 @@ const WriteCardBody = ({ items }) => {
         mode === "0" ? items[num].answer : items[num].question
       );
       let a = onlyLetters(answer);
-
       ra === a
         ? setCount([count[0] + 1, count[1]])
         : setCount([count[0], count[1] + 1]);
+
+      document
+        .getElementById("answerArea")
+        .classList.add(ra === a ? "rightBack" : "wrongBack");
     }
     setFlip(!flip);
   };
@@ -73,6 +79,7 @@ const WriteCardBody = ({ items }) => {
               </div>
               <textarea
                 type={"text"}
+                id="answerArea"
                 value={answer}
                 className={cl.writeAnswer}
                 onKeyDown={(e) => {

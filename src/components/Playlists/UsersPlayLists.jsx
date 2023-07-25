@@ -96,6 +96,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                       );
                     }}>
                     {col.name}
+
                     <div className={cl["item-btns"]}>
                       <button
                         onClick={(e) => {

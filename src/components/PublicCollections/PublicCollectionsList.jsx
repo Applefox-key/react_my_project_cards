@@ -14,16 +14,16 @@ const PublicCollectionsList = ({ commonSettings, viewmode }) => {
 
     setlist(col);
   });
+
+  useEffect(() => {
+    getPbCollWithCont();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const filtredList = useCollectSelection(
     list,
     commonSettings.selectedCategorypub,
     commonSettings.filter
   );
-  useEffect(() => {
-    getPbCollWithCont();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <>
       {isLoading ? (

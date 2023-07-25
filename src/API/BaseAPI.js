@@ -235,6 +235,16 @@ const BaseAPI = {
     }
     return result.data;
   },
+  async getCategoriesListWithCollections(isPublic = false) {
+    const result = isPublic
+      ? await this.serverReq("get", "/categories/public/collections", true)
+      : await this.serverReq("get", "/categories/user/collections", true);
+
+    if (result.error) {
+      throw new Error(result.error);
+    }
+    return result.data;
+  },
   async getCategoryCollections(catId) {
     const result = await this.serverReq(
       "get",

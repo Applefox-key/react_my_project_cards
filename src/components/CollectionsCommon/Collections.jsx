@@ -6,7 +6,6 @@ import CollectionsMenu from "./CollectionsMenu";
 import UsersCollections from "../PrivateCollections/CollectionsList/UsersCollections";
 import CollectionEditModal from "../PrivateCollections/OneCollectionActions/CollectionEditModal";
 import PublicCollectionsList from "../PublicCollections/PublicCollectionsList";
-import CategoriesFolders from "../CategorySelection/CategoriesFolders";
 import { GO_TO } from "../../router/routes";
 
 import {
@@ -15,6 +14,7 @@ import {
   saveSet,
 } from "../../utils/pageSettings";
 import SideBar from "../SideBar/SideBarCollections/SideBar";
+import CategoriesFoldersView from "../CategorySelection/CategoriesFoldersView";
 
 const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -119,7 +119,7 @@ const Collections = () => {
         {/* {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })} */}
         <div className="allcollect">
           {commonSettings.byCategory ? (
-            <CategoriesFolders
+            <CategoriesFoldersView
               setSettingsCommon={setSettingsCommon}
               filterTxt={commonSettings.filter}
               viewmode={viewmode}

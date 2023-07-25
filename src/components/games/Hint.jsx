@@ -9,9 +9,12 @@ const Hint = ({ text }) => {
   };
   return (
     <div className={cl.hint} onClick={switchShow}>
-      <Button size="lg" variant={show ? "warning" : "dark"}>
+      <Button
+        size="lg"
+        variant={show ? "warning" : "dark"}
+        className={cl.hintbtn}>
         NOTE
-        {show ? <FcNoIdea /> : <FcIdea />}
+        {show ? <FcNoIdea className={cl.hintOn} /> : <FcIdea />}
       </Button>
 
       {show ? <div className={cl.hintText}>{text}</div> : <></>}
