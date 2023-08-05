@@ -30,33 +30,34 @@ const TestBody = ({ items }) => {
       setActive(na);
     }
   };
-
   return (
     <div>
-      {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
-      {items.length !== num && (
-        <GameCount count={count} all={items.length - num} />
-      )}
       {items.length === num ? (
         <Result text="Job is done!" count={count} />
       ) : (
-        <SwitchTransition mode="out-in">
-          <CSSTransition
-            appear={false}
-            timeout={500}
-            key={num}
-            classNames="cardChange">
-            <div className={cl["game-field"]}>
-              <MyCardStatic item={items[num].item} />
-              <TestOptions
-                items={items[num].answ}
-                onClick={choose}
-                active={active}
-                right={right}
-              />
-            </div>
-          </CSSTransition>
-        </SwitchTransition>
+        <>
+          {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
+          {items.length !== num && (
+            <GameCount count={count} all={items.length - num} />
+          )}
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              appear={false}
+              timeout={500}
+              key={num}
+              classNames="cardChange">
+              <div className={cl["game-field"]}>
+                <MyCardStatic item={items[num].item} />
+                <TestOptions
+                  items={items[num].answ}
+                  onClick={choose}
+                  active={active}
+                  right={right}
+                />
+              </div>
+            </CSSTransition>
+          </SwitchTransition>
+        </>
       )}
     </div>
   );
