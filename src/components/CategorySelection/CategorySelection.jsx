@@ -45,10 +45,11 @@ const CategorySelection = ({
   }, [isPublic]);
   useEffect(() => {
     const col = isPublic ? colCatPub : colCat;
-    if (col.id === selected.id) return;
+    if (col.id === selected.id || !col.id) return;
     setSelected(col);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colCat, colCatPub, isPublic]);
+  // debugger;
   return (
     <div className="w-100">
       <Dropdown
