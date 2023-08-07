@@ -43,9 +43,9 @@
         padding: 0 20px;
         padding-left: 0;
         transition: all 0.4s;
-        right: 0;
-
+        right: -5px;
         bottom: 0px;
+        transition: all 0.4s ease-in-out;
 
         p {
             text-orientation: upright;
@@ -63,7 +63,7 @@
 
         .play-menu {
             margin-left: 10px;
-            width: 18rem;
+            width: 16rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -76,8 +76,29 @@
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
 
+                .sub {
+                    width: fit-content;
+                    display: none;
+                    position: absolute;
+                    left: 3px;
+                    top: -45px;
+                    border: 1px solid red;
+                    border-radius: 5px;
+                    background-color: var(--background-switch);
+
+                    div {
+                        font-size: 16px;
+                    }
+                }
+
                 &:hover {
                     transform: translateY(-5px);
+
+                    border-bottom: 1px solid red;
+
+                    .sub {
+                        display: block;
+                    }
                 }
             }
         }
@@ -85,8 +106,23 @@
         .play-vert {
             flex-direction: column;
             width: fit-content;
-        }
 
+            .oneP {
+                font-size: 20px;
+                margin: 1px;
+                text-align: center;
+                font-weight: 800;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                .sub {
+
+                    left: 25px;
+                    top: -5px;
+                }
+
+            }
+        }
     }
 
     &:hover {
@@ -231,7 +267,7 @@
 
         .play-menu {
             margin-left: 10px;
-            width: 18rem;
+            width: 16rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -244,8 +280,23 @@
                 cursor: pointer;
                 transition: all 0.2s ease-in-out;
 
+                .sub {
+                    width: fit-content;
+                    display: none;
+                    position: absolute;
+                    background-color: var(--background-switch);
+
+                    div {
+                        font-size: 16px;
+                    }
+                }
+
                 &:hover {
                     transform: translateY(-5px);
+
+                    .sub {
+                        display: block;
+                    }
                 }
             }
         }
@@ -377,7 +428,7 @@
         }
 
         .playMenubtn {
-            left: 40px;
+            left: 70px;
             top: 97px;
         }
 
@@ -573,7 +624,7 @@
 
             .play-menu {
                 margin-left: 10px;
-                width: 18rem;
+                width: 16rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;

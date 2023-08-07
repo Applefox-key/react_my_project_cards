@@ -7,6 +7,7 @@ import CategoryFilter from "../../CategorySelection/CategoryFilter";
 import CategoryMiniMenu from "./CategoryMiniMenu";
 import { useMemo } from "react";
 import CategorySetBtn from "../../CategorySelection/CategorySetBtn";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
   const isPublic = window.location.pathname.includes("pub");
@@ -40,7 +41,7 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
 
   const deleteOne = async (element) => {
     if (!window.confirm("Delete this label?")) return;
-    await BaseAPI.deleteLabel(element.id);
+    await BaseAPI.deleteCategory(element.id);
     let arr = list.filter((elem) => elem.id !== element.id);
     setList(arr);
   };
@@ -88,7 +89,6 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
           />
         )}{" "}
       </div>
-      s
       <CategoryFilter filter={filter} setFilter={setFilter} />
       {!filter && selected && (
         <div
@@ -111,25 +111,30 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
               + add new category
             </div>
           ) : (
-            filtredList.map((el) => (
-              <div
-                className={classGenerator(el)}
-                key={el.id}
-                onClick={() => onSelectItem(el)}>
-                <div>
-                  <span>✦</span>
-                  {el.name}
+            <div className={cl["catlist-box"]}>
+              {filtredList.map((el) => (
+                <div
+                  className={classGenerator(el)}
+                  key={el.id}
+                  onClick={() => onSelectItem(el)}>
+                  <div>
+                    <span>✦</span>
+                    {el.name}
+                  </div>
+                  {!isPublic && (
+                    <button
+                      title="delete label (collections will not be deleted)"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteOne(el);
+                      }}>
+                      <RiDeleteBin2Line />
+                      {/* {el.id !== "all" ? "delete label" : "delete all"} */}
+                    </button>
+                  )}
                 </div>
-                {!isPublic && (
-                  <CategoryMiniMenu
-                    isMenu={isMenu === el.id}
-                    setIsMenu={setIsMenu}
-                    el={el}
-                    deleteFn={deleteOne}
-                  />
-                )}
-              </div>
-            ))
+              ))}
+            </div>
           )}
         </>
       )}

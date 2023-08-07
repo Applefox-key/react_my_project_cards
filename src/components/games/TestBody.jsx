@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import MyCardStatic from "../UI/CARDS/MyCardStatic";
 import Result from "../UI/CARDS/Result";
 import GameCount from "./GameCount";
 import TestOptions from "./TestOptions";
 import cl from "./Games.module.scss";
 import { testAnswerCheck } from "../../utils/games";
 import Hint from "./Hint";
+import { useParams } from "react-router-dom";
+import OneCardG from "./OneCardG";
+
 const TestBody = ({ items }) => {
   const [num, setNum] = useState(0);
   const [active, setActive] = useState([]);
   const [count, setCount] = useState([0, 0]);
   const [right, setRight] = useState();
-
+  const mode = useParams().mode;
   const choose = (e) => {
-    let res = testAnswerCheck(num, e.target.id, items);
+    let id = e.target.id ? e.target.id : e.target.parentElement.id;
+    let res = testAnswerCheck(num, id, items);
     if (res) {
-      setRight(e.target.id);
+      setRight(id);
       setCount([count[0] + 1, count[1]]);
       setTimeout(() => {
         setRight("");
@@ -26,7 +29,7 @@ const TestBody = ({ items }) => {
     } else {
       setCount([count[0], count[1] + 1]);
       let na = [...active];
-      na.push(e.target.id);
+      na.push(id);
       setActive(na);
     }
   };
@@ -47,12 +50,17 @@ const TestBody = ({ items }) => {
               key={num}
               classNames="cardChange">
               <div className={cl["game-field"]}>
-                <MyCardStatic item={items[num].item} />
+                <OneCardG
+                  direction={true}
+                  item={items[num].item}
+                  clickable={false}
+                />
                 <TestOptions
                   items={items[num].answ}
                   onClick={choose}
                   active={active}
                   right={right}
+                  mode={parseInt(mode)}
                 />
               </div>
             </CSSTransition>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useGame } from "../../hooks/useGame";
 import { shuffle } from "../../utils/arraysFunc";
-import BackBtn from "../UI/BackBtn/BackBtn";
+import BackBtn from "../UI/BlackBtn/BackBtn";
 import TimeCardBody from "./TimeCardBody";
 import { CSSTransition } from "react-transition-group";
 import { usePopup } from "../../hooks/usePopup";

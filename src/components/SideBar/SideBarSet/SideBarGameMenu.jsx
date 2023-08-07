@@ -10,22 +10,29 @@ const SideBarGameMenu = () => {
     pageParam,
     window.location.pathname.includes("pub")
   );
+
+  const menu = (item, i, s = "") => {
+    return (
+      <div
+        className={cl["link-box"]}
+        key={i}
+        onClick={item.onClick ? item.onClick : () => router(item.href)}>
+        {s ? s : item.symb}
+        {/* {item.symb && item.symb} */}
+        {item.name}
+      </div>
+    );
+  };
+
+  const menuEl = (el, i) => {
+    if (el.type === "Divider") return <div className="divider" key={i}></div>;
+    if (el.type === "item") return menu(el, i);
+    else return <>{el.items.map((item, j) => menu(item, j, el.symb))}</>;
+  };
   return (
     <div className="mt-5">
       <h3>PLAY GAMES</h3>
-      {gameMenu.map((item, i) =>
-        item.href || item.onClick ? (
-          <div
-            className={cl["link-box"]}
-            key={i}
-            onClick={item.onClick ? item.onClick : () => router(item.href)}>
-            {item.symb && item.symb}
-            {item.name}
-          </div>
-        ) : (
-          <div className="divider" key={i}></div>
-        )
-      )}
+      {gameMenu.map((item, i) => menuEl(item, i))}
     </div>
   );
 };

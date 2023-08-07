@@ -34,15 +34,19 @@ export const mainAndImg = (side, mode, item, cl) => {
     <>
       <div className={cl["card-" + side]}>
         <div className={mainDivClass}>
-          {variant === "front0" || variant === "back1" ? (
-            <>{cardContent(item, "question", cl)}</>
-          ) : note ? (
+          {note && side === "back" ? (
             <div className={cl["div-note"]}>
               {item.note && <p className={cl["card-note"]}>{item.note}</p>}
               <div className="d-flex justify-content-center ">
-                <>{cardContent(item, "answer", cl)}</>
+                {variant === "back1" ? (
+                  <>{cardContent(item, "question", cl)}</>
+                ) : (
+                  <>{cardContent(item, "answer", cl)}</>
+                )}
               </div>
             </div>
+          ) : variant === "front0" || variant === "back1" ? (
+            <>{cardContent(item, "question", cl)}</>
           ) : (
             <>{cardContent(item, "answer", cl)}</>
           )}
@@ -50,6 +54,26 @@ export const mainAndImg = (side, mode, item, cl) => {
       </div>
     </>
   );
+  // return (
+  //   <>
+  //     <div className={cl["card-" + side]}>
+  //       <div className={mainDivClass}>
+  //         {variant === "front0" || variant === "back1" ? (
+  //           <>{cardContent(item, "question", cl)}</>
+  //         ) : note ? (
+  //           <div className={cl["div-note"]}>
+  //             {item.note && <p className={cl["card-note"]}>{item.note}</p>}
+  //             <div className="d-flex justify-content-center ">
+  //               <>{cardContent(item, "answer", cl)}</>
+  //             </div>
+  //           </div>
+  //         ) : (
+  //           <>{cardContent(item, "answer", cl)}</>
+  //         )}
+  //       </div>
+  //     </div>
+  //   </>
+  // );
 };
 
 //____________________________________________PRINTING CARD

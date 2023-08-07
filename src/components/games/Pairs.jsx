@@ -6,7 +6,7 @@ import PairPart from "./PairPart";
 import { shuffle } from "../../utils/arraysFunc";
 import GameCount from "./GameCount";
 import Result from "../UI/CARDS/Result";
-import BackBtn from "../UI/BackBtn/BackBtn";
+import BackBtn from "../UI/BlackBtn/BackBtn";
 import { CSSTransition } from "react-transition-group";
 import { pairAnswerCheck } from "../../utils/games";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";

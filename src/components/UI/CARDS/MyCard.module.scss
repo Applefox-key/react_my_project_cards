@@ -139,6 +139,8 @@
 
 .card-button {
   /* border: 1px solid green; */
+  word-break: break-word;
+  hyphens: auto;
   padding: 0;
   margin: 0;
   border: none;
@@ -150,6 +152,11 @@
   transform-style: preserve-3d;
   perspective: 5000px;
   border-radius: 15px;
+
+  @media screen and (max-width: 600px) {
+    max-height: max-content;
+    height: auto;
+  }
 
 
 }
@@ -232,14 +239,7 @@
 
 }
 
-@media screen and (min-width: 600px) and (min-height: 600px) {
 
-  /* .card-container {
-      width: 60%;
-      height: 40rem;
-    }   */
-
-}
 
 @media screen and (min-width: 800px) and (max-height: 391px) {
 

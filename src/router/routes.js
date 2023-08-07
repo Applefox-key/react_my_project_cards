@@ -18,6 +18,7 @@ import PublicCollectionsView from "../components/PublicCollections/PublicOneColl
 import EditCard from "../components/PrivateCollections/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
 import PlayLists from "../components/Playlists/PlayLists";
+import PartCard from "../components/games/PartCard";
 
 export const GO_TO = {
   about: "/about",
@@ -74,9 +75,10 @@ export const privateRoutes = [
 
   { path: "/play_timecard/:tab/:id/:name", element: <TimeCard /> },
   { path: "/play_cards/:tab/:mode/:id/:name", element: <CardsGallery /> },
-  { path: "/play_test/:tab/:id/:name", element: <TestCard /> },
+  { path: "/play_test/:tab/:mode/:id/:name", element: <TestCard /> },
   { path: "/play_write/:tab/:mode/:id/:name", element: <WriteCard /> },
   { path: "/play_pairs/:tab/:id/:name", element: <Pairs /> },
+  { path: "/play_parts/:tab/:mode/:id/:name", element: <PartCard /> },
 
   {
     path: "/public",

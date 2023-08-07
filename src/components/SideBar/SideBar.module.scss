@@ -116,6 +116,12 @@
 
 }
 
+.catlist-box {
+    max-height: 75vh;
+    background-color: var(--background-first);
+    overflow: auto;
+}
+
 .link-box {
     display: flex;
     justify-content: space-between;

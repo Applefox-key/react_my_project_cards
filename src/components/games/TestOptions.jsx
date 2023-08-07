@@ -1,14 +1,14 @@
 import React from "react";
 import cl from "./Games.module.scss";
-import { getImgA } from "../../utils/contentRequests";
+import { getImgA, getImgQ } from "../../utils/contentRequests";
 import { fontLittle } from "../../utils/texts";
 
-const TestOptions = ({ items, onClick, active, right }) => {
+const TestOptions = ({ items, onClick, active, right, mode }) => {
   const imgEl = (el) => {
-    let imgurl = getImgA(el);
-
+    let imgurl = mode ? getImgQ(el) : getImgA(el);
+    let textAQ = mode ? el.question : el.answer;
     return imgurl ? (
-      <img src={imgurl} alt="img" className={!el.answer ? cl["imgOnly"] : ""} />
+      <img src={imgurl} alt="img" className={!textAQ ? cl["imgOnly"] : ""} />
     ) : (
       <></>
     );
@@ -16,7 +16,7 @@ const TestOptions = ({ items, onClick, active, right }) => {
   const generateClassName = (el) => {
     return [
       cl.list_btn,
-      fontLittle([el.answer, el.imgA]),
+      fontLittle(mode ? [el.question, el.imgQ] : [el.answer, el.imgA]),
       active.includes(el.id.toString()) ? cl.wrong_answer : "",
       right === el.id.toString() ? cl.right_answer : "",
     ].join(" ");
@@ -34,7 +34,7 @@ const TestOptions = ({ items, onClick, active, right }) => {
           }
           className={generateClassName(el)}>
           {imgEl(el)}
-          {el.answer}
+          {mode ? el.question : el.answer}
         </button>
       ))}
     </div>

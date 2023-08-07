@@ -1,3 +1,5 @@
+import { shuffle } from "./arraysFunc";
+
 export const pairAnswerCheck = (id1, id2, itemsV) => {
   let arr1 = [...itemsV[0]];
   let arr2 = [...itemsV[1]];
@@ -28,46 +30,135 @@ export const testAnswerCheck = (num, id2, items) => {
 
   return writeAnswer === userAnswer;
 };
+
+export const formatContentParts = (arr, mode) => {
+  shuffle(arr);
+  let res = arr.map((el, i) => {
+    let parts = mode ? el.question : el.answer;
+    //remove extra spaces
+    parts = parts.trim().toLowerCase().replace(/\s+/g, " ");
+    //analyse parts
+    if (!parts.length) return null;
+    let spaceCount = 0;
+    for (let i = 0; i < parts.length; i++) {
+      if (parts[i] === " ") {
+        spaceCount++;
+      }
+    }
+    if (spaceCount < 2) {
+      let a = [...parts];
+      let answ = shuffle(a);
+      return { item: el, parts: answ, answ: [...parts] };
+    }
+    if (spaceCount < 10) {
+      let a = parts.split(" ");
+      let answ = shuffle(a);
+      return { item: el, parts: answ, answ: parts.split(" ") };
+    }
+    return null;
+  });
+  return res.filter((el) => el !== null);
+};
+
 export const gameMenuArr = (pageParam, isPublic = false, playlist = false) => {
   let urlPart = playlist ? "pl" : isPublic ? "pub" : "my";
   return [
     {
-      name: "Cards: question - answer",
-      symb: "❓",
-      href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+      name: "Cards",
+      symb: "⏹️",
+      type: "menu",
+      items: [
+        {
+          type: "item",
+          name: "Cards: question - answer",
+          symb: "❓",
+          href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+        },
+        {
+          type: "item",
+          name: " Cards: answer - question",
+          symb: "❗",
+          // symb: "⸘",
+          href: `/play_cards/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+        },
+      ],
     },
+
+    { type: "Divider", name: "Divider", symb: "|", href: "" },
     {
-      name: " Cards: answer - question",
-      symb: "❗",
-      // symb: "⸘",
-      href: `/play_cards/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
-    },
-    {
+      type: "item",
       name: "Cards: time",
       symb: "⌛",
       href: `/play_timecard/${urlPart}/${pageParam.id}/${pageParam.name}`,
     },
-    { name: "Divider", symb: "|", href: "" },
+
     {
+      type: "item",
       name: "Find pairs",
-      symb: "🎏",
+      symb: "🎭",
       href: `/play_pairs/${urlPart}/${pageParam.id}/${pageParam.name}`,
-    },
+    }, //🎏
+    { type: "Divider", name: "Divider", symb: "|", href: "" },
     {
-      name: "Find the right answer",
+      name: "Test",
       symb: "🔠",
-      href: `/play_test/${urlPart}/${pageParam.id}/${pageParam.name}`,
-    },
+      type: "menu",
+      items: [
+        {
+          type: "item",
+          name: "Find the right answer",
+          symb: "❗",
+          href: `/play_test/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+        },
+        {
+          type: "item",
+          name: "Find the right question",
+          symb: "❓",
+          href: `/play_test/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+        },
+      ],
+    }, //🖍️
+    { type: "Divider", name: "Divider", symb: "|", href: "" },
     {
-      name: "Write the right answer",
-      symb: "🖍️",
-      href: `/play_write/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+      name: "Write...",
+      symb: "🖋️",
+      type: "menu",
+      items: [
+        {
+          type: "item",
+          name: "Write the right answer",
+          symb: "❗",
+          href: `/play_write/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+        },
+
+        {
+          type: "item",
+          name: "Write the right question",
+          symb: "❓",
+          href: `/play_write/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+        },
+      ],
     },
-    //🖊️
+    { type: "Divider", name: "Divider", symb: "|", href: "" },
     {
-      name: "Write the right question",
-      symb: "✏️",
-      href: `/play_write/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+      name: "Parts...",
+      symb: "🧩",
+      type: "menu",
+      items: [
+        {
+          type: "item",
+          name: "Parts from answer",
+          symb: "❗",
+          href: `/play_parts/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+        },
+
+        {
+          type: "item",
+          name: "Parts from question",
+          symb: "❓",
+          href: `/play_parts/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+        },
+      ],
     },
   ];
 };

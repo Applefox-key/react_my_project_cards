@@ -4,7 +4,7 @@ import { useState } from "react";
 import BaseAPI from "../../API/BaseAPI";
 import { useQuery } from "../../hooks/useQuery";
 import { useParams } from "react-router-dom";
-import BackBtn from "../UI/BackBtn/BackBtn";
+import BackBtn from "../UI/BlackBtn/BackBtn";
 import cl from "../UI/CARDS/MyCard.module.scss";
 
 const PublicContentCardInfo = () => {
