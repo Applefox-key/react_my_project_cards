@@ -227,6 +227,15 @@
   top: 0;
   left: 0;
   font-size: 24vw;
+
+}
+
+.card-result {
+  @media screen and (max-width: 600px) {
+    position: relative;
+    height: 54vh;
+    overflow: hidden;
+  }
 }
 
 .card-back {

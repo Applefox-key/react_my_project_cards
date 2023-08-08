@@ -17,7 +17,7 @@ const Result = ({ text, count }) => {
       <div className={[cl.container_gallery, count ? "mt-5" : ""].join(" ")}>
         <div className={cl["card-container"]}>
           <button className={cl["card-button"]} onClick={back}>
-            <div className={cl["card-front"]}>
+            <div className={[cl["card-front"], cl["card-result"]].join(" ")}>
               <div className="">
                 <h1 className="display-1">{text}</h1>
                 {count && <GameCount count={count} result={true} />}
