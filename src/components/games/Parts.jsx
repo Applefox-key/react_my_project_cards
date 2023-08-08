@@ -6,6 +6,9 @@ const Parts = ({ items, onClick, active, lastOk }) => {
     return [
       cl.list_btn,
       active.includes(i.toString()) ? cl.wrong_answer : "",
+      active.includes(i.toString()) && lastOk !== i.toString()
+        ? cl.disactive_part
+        : "",
     ].join(" ");
   };
   return (

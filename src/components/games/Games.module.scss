@@ -24,13 +24,13 @@
       margin: 1rem;
       min-width: 6rem;
       min-height: 6rem;
-      font-size: 5rem;
+      font-size: 4rem;
       line-height: 1;
 
-      @media screen and (min-width: 600px) {
+      @media screen and (max-width: 600px) {
         min-width: 5rem;
-        min-height: 4rem;
-        font-size: 4rem;
+        min-height: 5rem;
+        font-size: 3rem;
       }
     }
 
@@ -234,6 +234,11 @@
   color: #b98787;
   background-color: #dc354529;
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.disactive_part {
+  color: transparent;
+  background-color: transparent;
 }
 
 .right_answer {
