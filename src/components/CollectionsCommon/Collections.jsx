@@ -84,7 +84,7 @@ const Collections = () => {
     privateSettings.shared,
   ]);
   return (
-    <div className="wrap_box">
+    <div className="wrap_box d-flex">
       {privateSettings.isNew && (
         <CollectionEditModal
           isEdit={privateSettings.isNew}
@@ -100,23 +100,22 @@ const Collections = () => {
             router(`${GO_TO.myCollect}#${viewmode}`);
           }}
         />
-      )}
-      <CollectionsMenu
+      )}{" "}
+      {/* <div className="d-flex"> */}
+      <SideBar
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
-        privateSettings={privateSettings}
         setSettingsCommon={setSettingsCommon}
-      />{" "}
-      <div className="d-flex">
-        {" "}
-        <SideBar
+        privateSettings={privateSettings}
+        setSettingsPrivat={setSettingsPrivat}
+      />
+      <div className="width90">
+        <CollectionsMenu
           viewmodeChange={viewmodeChange}
           commonSettings={commonSettings}
-          setSettingsCommon={setSettingsCommon}
           privateSettings={privateSettings}
-          setSettingsPrivat={setSettingsPrivat}
-        />
-        {/* {fragment_SearchingTips({ ...commonSettings, setSettingsCommon })} */}
+          setSettingsCommon={setSettingsCommon}
+        />{" "}
         <div className="allcollect">
           {commonSettings.byCategory ? (
             <CategoriesFoldersView

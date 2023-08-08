@@ -12,7 +12,9 @@ const Parts = ({ items, onClick, active, lastOk }) => {
     <div className={cl["part-options"]}>
       {items.map(
         (el, i) =>
-          (!active.includes(i.toString()) || lastOk === i.toString()) && (
+          (!active.includes(i.toString()) ||
+            lastOk === i.toString() ||
+            window.screen.availWidth < 700) && (
             <button
               key={i}
               id={i}

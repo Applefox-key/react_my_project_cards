@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { RxFileMinus, RxFilePlus } from "react-icons/rx";
+import { IoMdRemove } from "react-icons/io";
+import { BiListPlus } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { AiOutlineRollback } from "react-icons/ai";
-import { RiFileEditLine, RiFileDownloadLine } from "react-icons/ri";
+import { AiOutlinePlus, AiOutlineRollback } from "react-icons/ai";
+import { BsFiletypeTxt } from "react-icons/bs";
 import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
 import { HiPrinter } from "react-icons/hi";
@@ -36,22 +37,22 @@ const SideBarIconsSet = ({ colObj, setContent }) => {
       )}
       <button data-title="Add card" onClick={addRow}>
         <span>
-          <RxFilePlus />
+          <AiOutlinePlus />
         </span>
       </button>{" "}
       <button data-title="Remove" onClick={removeCollection}>
         <span>
-          <RxFileMinus />{" "}
+          <IoMdRemove />{" "}
         </span>
       </button>{" "}
       <button data-title="Add from the file" onClick={() => setMod("file")}>
         <span>
-          <RiFileDownloadLine />
+          <BsFiletypeTxt />
         </span>
       </button>{" "}
       <button data-title="Add from the list" onClick={() => setMod("list")}>
         <span>
-          <RiFileEditLine />
+          <BiListPlus />
         </span>
       </button>{" "}
       <button

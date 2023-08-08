@@ -59,7 +59,7 @@ const Playlists = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonSettings.filter]);
   return (
-    <div className="wrap_box ">
+    <div className="wrap_box d-flex ">
       {commonSettings.editEl && (
         <PlayListEditModal
           isEdit={commonSettings.editEl}
@@ -70,13 +70,13 @@ const Playlists = () => {
           }}
         />
       )}
-      <PlayListsMenu
+      <SideBarPlay
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
         setSettingsCommon={setSettingsCommon}
-      />
-      <div className="d-flex">
-        <SideBarPlay
+      />{" "}
+      <div className="width90">
+        <PlayListsMenu
           viewmodeChange={viewmodeChange}
           commonSettings={commonSettings}
           setSettingsCommon={setSettingsCommon}
@@ -87,7 +87,7 @@ const Playlists = () => {
             commonSettings={commonSettings}
             setSettingsCommon={setSettingsCommon}
           />
-        </div>
+        </div>{" "}
       </div>
     </div>
   );

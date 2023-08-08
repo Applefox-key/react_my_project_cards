@@ -55,11 +55,6 @@ const PublicOneCollection = () => {
             collection={collection ? collection : PageParam}
             setMode={modeChange}
           />
-          {/* {collection && (
-            <div className="string_submenu">
-              {collection.note ? "About collection: " + collection.note : ""}
-            </div>
-          )} */}
           <div className="m-auto">
             {content &&
               (mode === 0 ? (
