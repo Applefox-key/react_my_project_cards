@@ -111,6 +111,22 @@
                 background-color: var(--background-note);
                 border-radius: 25px;
                 border-bottom-left-radius: 0;
+
+                &:hover {
+                    max-width: 70%;
+                    border: 2px solid var(--background-header);
+                    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+                    min-height: 100%;
+                    height: fit-content;
+                    z-index: 3;
+
+                    .note {
+                        overflow: unset;
+                        white-space: wrap;
+                        max-height: fit-content;
+                        height: fit-content;
+                    }
+                }
             }
 
             .note {
@@ -190,6 +206,14 @@
     border-radius: 35px;
     background-color: var(--background-wrap);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    position: relative;
+    padding-top: 6px;
+
+    h3 {
+        text-align: initial;
+        // background-color: var(--background-second);
+        margin-top: 5px;
+    }
 
     @media screen and (max-width: 600px) {
         width: 100%;
@@ -200,6 +224,8 @@
         align-items: center;
         justify-content: flex-end;
 
+
+
         @media screen and (max-width: 600px) {
             flex-wrap: wrap;
         }
@@ -207,14 +233,19 @@
 
     .note {
         display: flex;
-        width: 70%;
+        width: 100%;
+        background-color: var(--background-second);
+        border-radius: 5px;
+        margin-bottom: 10px;
 
         input {
             margin-left: 5px;
+            border-radius: 5px 5px 0 0;
             height: 3rem;
             font-size: 2rem;
-            border: none;
-            border-bottom: 1px solid;
+            border: 1px dashed;
+            width: 100%;
+            background-color: var(--background-first);
         }
     }
 
@@ -228,10 +259,26 @@
 
     }
 
+    .questDiv {
+        margin-top: 5px;
+        padding: 10px;
+        background-color: var(--background-first);
+        border: 1px solid;
+        border-radius: 5px;
+    }
+
+    .answtDiv {
+        border-radius: 5px;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: var(--background-second);
+        border: 1px solid;
+    }
+
     .oneSide {
         display: flex;
         width: 100%;
-        height: 200px;
+        height: 185px;
         margin: auto;
 
         @media screen and (max-width: 600px) {
@@ -241,13 +288,15 @@
             height: 100%;
         }
 
-        .quest {
 
+
+        .quest {
+            border-radius: 5px;
             background-color: var(--background-first);
         }
 
         .answ {
-
+            border-radius: 5px;
             background-color: var(--background-second);
         }
 
@@ -255,7 +304,9 @@
             height: 100%;
             font-size: 2rem;
             width: 70%;
-            min-height: 200px;
+            min-height: 180px;
+            border: 1px dashed grey;
+            font-weight: 600;
 
             @media screen and (max-width: 600px) {
                 width: 100%;
@@ -270,6 +321,7 @@
             height: 150px;
             opacity: 0.3;
 
+
             @media screen and (max-width: 600px) {
                 width: 50px;
                 height: 50px;
@@ -277,17 +329,18 @@
         }
 
         .img_choice {
-            margin-right: 5px;
+            // margin-right: 5px;
             background-color: var(--background-wrap);
             position: relative;
             width: 200px;
-            height: 200px;
-            border: 1px dashed var(--border-note);
+            height: 185px;
+            // border: 1px dashed var(--border-note);
             display: flex;
             flex-wrap: wrap;
             align-content: stretch;
             justify-content: center;
             border-radius: 5px;
+            border: 1px dashed black;
 
             @media screen and (max-width: 600px) {
                 width: 80px;
@@ -309,7 +362,8 @@
                 align-content: space-between;
                 justify-content: space-between;
                 width: 200px;
-                height: 198px;
+                height: auto;
+                max-height: 180px;
                 border-radius: 5px;
 
                 @media screen and (max-width: 600px) {
@@ -329,7 +383,7 @@
                     border-radius: 5px;
                     border: none;
                     background-color: transparent;
-
+                    position: absolute;
                     transition: all 0.2s ease-in-out;
 
                     &:hover {
@@ -341,8 +395,9 @@
                 }
 
                 img {
-                    max-width: 80%;
-                    max-height: 80%;
+                    margin: auto;
+                    max-width: 90%;
+                    max-height: 90%;
                 }
 
             }

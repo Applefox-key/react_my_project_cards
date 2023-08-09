@@ -1,5 +1,5 @@
 import imgProfile from "../img/profile.ico";
-export const defaultColorBack = "ghostwhite";
+export const defaultColorBack = "white";
 export const defaultStyleValue = {
   colorBack: defaultColorBack,
   wrapOpacity: 100,

@@ -69,17 +69,7 @@ const EditCard = () => {
 
   return (
     <form className="big_card_wrap">
-      {" "}
       <div className="menuRow">
-        {" "}
-        <div className="note">
-          <h3>NOTE</h3>{" "}
-          <input
-            type="text"
-            value={item ? item.note : ""}
-            onChange={(e) => setItem({ ...item, note: e.target.value })}
-          />
-        </div>
         <Button
           size="lg"
           variant="light"
@@ -92,65 +82,80 @@ const EditCard = () => {
           SAVE CHANGES
         </Button>
       </div>
+      <div className="note">
+        <h3>NOTE:</h3>{" "}
+        <input
+          type="text"
+          placeholder="write a note..."
+          value={item ? item.note : ""}
+          onChange={(e) => setItem({ ...item, note: e.target.value })}
+        />
+      </div>
       {item ? (
         <>
-          <h3>QUESTION</h3>{" "}
-          <div className="oneSide quest">
-            <div className={item.imgQ ? "img_choice" : "img_choice img_back"}>
-              <input
-                type="file"
-                id="imgQ"
-                value={item.imgQFile ? item.imgQFile : ""}
-                onChange={fromFile}
+          <div className="questDiv">
+            <h3>QUESTION</h3>{" "}
+            <div className="oneSide quest">
+              <div className={item.imgQ ? "img_choice" : "img_choice img_back"}>
+                <input
+                  type="file"
+                  id="imgQ"
+                  value={item.imgQFile ? item.imgQFile : ""}
+                  onChange={fromFile}
+                />
+                {item.imgQ && (
+                  <div className="img">
+                    <button
+                      variant="outline-secondary"
+                      onClick={() =>
+                        setItem({ ...item, imgQ: "", imgQFile: "" })
+                      }>
+                      ❌
+                    </button>
+                    <img src={getImgQ(item)} alt="" />
+                  </div>
+                )}
+              </div>
+              <textarea
+                className="quest"
+                type="text"
+                placeholder="write a question....."
+                value={item.question}
+                onChange={(e) => setItem({ ...item, question: e.target.value })}
               />
-              {item.imgQ && (
-                <div className="img">
-                  <button
-                    variant="outline-secondary"
-                    onClick={() =>
-                      setItem({ ...item, imgQ: "", imgQFile: "" })
-                    }>
-                    ❌
-                  </button>
-                  <img src={getImgQ(item)} alt="" />
-                </div>
-              )}
             </div>
-            <textarea
-              className="quest"
-              type="text"
-              value={item.question}
-              onChange={(e) => setItem({ ...item, question: e.target.value })}
-            />
-          </div>{" "}
-          <h3>ANSWER</h3>{" "}
-          <div className="oneSide ">
-            <div className={item.imgA ? "img_choice" : "img_choice img_back"}>
-              <input
-                type="file"
-                id="imgA"
-                value={item.imgAFile ? item.imgAFile : ""}
-                onChange={fromFile}
+          </div>
+          <div className="answtDiv">
+            <h3>ANSWER</h3>
+            <div className="oneSide ">
+              <div className={item.imgA ? "img_choice" : "img_choice img_back"}>
+                <input
+                  type="file"
+                  id="imgA"
+                  value={item.imgAFile ? item.imgAFile : ""}
+                  onChange={fromFile}
+                />
+                {item.imgA && (
+                  <div className="img">
+                    {" "}
+                    <button
+                      onClick={() =>
+                        setItem({ ...item, imgA: "", imgAFile: "" })
+                      }>
+                      ❌
+                    </button>
+                    <img src={getImgA(item)} alt="" />
+                  </div>
+                )}
+              </div>
+              <textarea
+                className="answ"
+                type="text"
+                placeholder="write an answer..."
+                value={item.answer}
+                onChange={(e) => setItem({ ...item, answer: e.target.value })}
               />
-              {item.imgA && (
-                <div className="img">
-                  {" "}
-                  <button
-                    onClick={() =>
-                      setItem({ ...item, imgA: "", imgAFile: "" })
-                    }>
-                    ❌
-                  </button>
-                  <img src={getImgA(item)} alt="" />
-                </div>
-              )}
             </div>
-            <textarea
-              className="answ"
-              type="text"
-              value={item.answer}
-              onChange={(e) => setItem({ ...item, answer: e.target.value })}
-            />
           </div>
         </>
       ) : (
