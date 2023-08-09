@@ -28,7 +28,7 @@ const PartCard = () => {
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode]);
+  }, [window.location.pathname]);
   return (
     <div>
       <BackBtn />

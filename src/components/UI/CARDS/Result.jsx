@@ -12,15 +12,23 @@ const Result = ({ text, count }) => {
   const back = () => {
     router(-1);
   };
+  const againFn = (e) => {
+    e.preventDefault();
+    const path = window.location.pathname + "/1";
+    router(path);
+  };
   return (
     <CSSTransition appear={true} in={true} timeout={500} classNames="result">
       <div className={[cl.container_gallery, count ? "mt-5" : ""].join(" ")}>
         <div className={cl["card-container"]}>
           <button className={cl["card-button"]} onClick={back}>
             <div className={[cl["card-front"], cl["card-result"]].join(" ")}>
-              <div className="">
+              <div>
                 <h1 className="display-1">{text}</h1>
                 {count && <GameCount count={count} result={true} />}
+                <h1 className={cl["result-again"]} onClick={againFn}>
+                  Play again
+                </h1>
               </div>
             </div>
           </button>

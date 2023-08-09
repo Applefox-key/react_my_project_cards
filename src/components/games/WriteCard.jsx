@@ -7,13 +7,11 @@ import WriteCardBody from "./WriteCardBody";
 import { usePopup } from "../../hooks/usePopup";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
-import { useParams } from "react-router-dom";
 
 const WriteCard = () => {
   const [items, setItems] = useState();
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useGame(setItems, shuffle);
-  const param = useParams().mode;
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
@@ -21,7 +19,7 @@ const WriteCard = () => {
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
-  }, [param]);
+  }, [window.location.pathname]);
   return (
     <div style={{ overflow: "hidden" }}>
       <BackBtn /> <SwitchModeBtn modes={["WRITE ANSWER", " WRITE QUESTION"]} />

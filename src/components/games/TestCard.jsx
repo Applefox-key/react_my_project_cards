@@ -1,17 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-
 import { CSSTransition } from "react-transition-group";
-
 import { useGame } from "../../hooks/useGame";
 import { usePopup } from "../../hooks/usePopup";
 import { shuffle } from "../../utils/arraysFunc";
 import BackBtn from "../UI/BlackBtn/BackBtn";
-
 import TestBody from "./TestBody";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
-import { useParams } from "react-router-dom";
 
 const TestCard = () => {
   const setPopup = usePopup();
@@ -31,7 +27,6 @@ const TestCard = () => {
   };
 
   const [getContent, isLoading, error] = useGame(setItems, contentParts);
-  const param = useParams().mode;
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
@@ -41,7 +36,7 @@ const TestCard = () => {
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [param]);
+  }, [window.location.pathname]);
   return (
     <div>
       <BackBtn />

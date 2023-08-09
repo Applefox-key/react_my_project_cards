@@ -18,6 +18,7 @@ const Pairs = () => {
   const [active, setActive] = useState();
   const [note, setNote] = useState();
   const [count, setCount] = useState([0, 0]);
+
   const contentParts = (arr = null) => {
     let newArr = arr ? shuffle([...arr]) : [...items];
     if (!newArr.length) return [[], []];
@@ -29,11 +30,15 @@ const Pairs = () => {
     return [a1, a2];
   };
   const [getContent, isLoading] = useGame(setItemsV, contentParts);
+
   useEffect(() => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  useEffect(() => {
+    getContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.location.pathname]);
   const itemNote = (ids) => {
     let [id, set] = [...ids.split("&")];
 

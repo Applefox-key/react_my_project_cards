@@ -444,12 +444,24 @@
             transform: rotate(-8.6deg);
             left: -10px;
             top: 0;
+
+            @media screen and (max-width: 600px) {
+                transform: rotate(-5deg);
+                top: -11px;
+                left: -23px;
+            }
         }
 
         &::after {
-            transform: rotate(-3.5deg);
+            transform: rotate(3.5deg);
             left: -5px;
             top: 0;
+
+            @media screen and (max-width: 600px) {
+                transform: rotate(5deg);
+                top: -12px;
+                left: -22px;
+            }
         }
 
 
