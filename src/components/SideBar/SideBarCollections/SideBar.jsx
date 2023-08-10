@@ -25,12 +25,13 @@ const SideBar = ({ addOne, setExpressions, onSelectCategory, ...props }) => {
         <div className={cl["sideBar-wide"]}>
           {/* <ThemesChoosing /> */}
           <SideBarList
-            onSelect={(val) =>
+            onSelect={(val) => {
               props.setSettingsCommon(
                 isPublic ? "selectedCategorypub" : "selectedCategorymy",
                 val
-              )
-            }
+              );
+              setSideBar({ ...sideBar, show: !sideBar.show });
+            }}
             colCatPub={props.commonSettings.selectedCategorypub}
             colCat={props.commonSettings.selectedCategorymy}
           />

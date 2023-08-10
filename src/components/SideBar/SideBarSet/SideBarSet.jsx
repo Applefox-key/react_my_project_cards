@@ -3,7 +3,6 @@ import cl from "../SideBar.module.scss";
 import SideBarIconsSet from "./SideBarIconsSet";
 import SideBarGameMenu from "./SideBarGameMenu";
 import SideBarIconsSetPub from "./SideBarIconsSetPub";
-
 const SideBarSet = (props) => {
   const [sideBar, setSideBar] = useState({ show: false });
   const isPublic = window.location.pathname.includes("pub");

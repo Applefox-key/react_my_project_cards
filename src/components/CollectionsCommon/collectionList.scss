@@ -532,6 +532,11 @@
         transition: all 0.2s ease-in-out;
         z-index: 0;
 
+        &::before,
+        &::after {
+            content: unset;
+        }
+
         @media screen and (max-width: 900px) {
             margin-bottom: 0px;
         }

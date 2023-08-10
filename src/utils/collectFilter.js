@@ -25,16 +25,18 @@ export const getFiltredCollections = (collectionsList, filter) => {
 //for public collections list
 export const filterByCategory = (list, category) => {
   if (category) {
-    let catid = Array.isArray(category.id) ? category.id : [category.id];
-    return list.filter((item) =>
-      catid.includes(
-        item.hasOwnProperty("isPublic") && !item.isPublic
-          ? item.categoryid
-          : list[0].collection
-          ? item.collection.id
-          : item.id
-      )
-    );
+    let isPubCat = Array.isArray(category.id);
+    let catid = isPubCat ? category.id : [category.id];
+
+    return list.filter((item) => {
+      return catid.includes(
+        isPubCat
+          ? list[0].collection
+            ? item.collection.id
+            : item.id
+          : item.categoryid
+      );
+    });
   }
   return list;
 };
