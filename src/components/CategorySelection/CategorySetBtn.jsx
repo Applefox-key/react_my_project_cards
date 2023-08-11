@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import MyModal from "../UI/MyModal";
-import CategoriesManager from "../CategorySelection/CategoriesManager";
+
+import CategoriesManager from "./CategoriesManager";
 import { AiOutlineControl } from "react-icons/ai";
 import cl from "./CategorySelection.module.scss";
+import MyModal from "../UI/MyModal";
 const CategorySetBtn = ({ getList, icon }) => {
   const [visible, setVisible] = useState(false);
 

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../CollectionsCommon/collectionList.scss";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
-import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import MyTable from "../UI/table/MyTable";
+import SpinnerLg from "./UI/SpinnerLg/SpinnerLg";
+import MyTable from "./UI/table/MyTable";
 
 const CategoriesFolders = ({ setSettingsCommon, filterTxt, viewmode }) => {
   const [categories, setCategories] = useState([]);

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import BaseAPI from "../../API/BaseAPI";
+
 import { usePopup } from "../../hooks/usePopup";
 import MyTable from "../UI/table/MyTable";
+import BaseAPI from "../../API/BaseAPI";
 
 const CategoriesManager = () => {
   const [categoriesTbl, setCategoriesTbl] = useState();
