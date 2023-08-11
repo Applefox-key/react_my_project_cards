@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import MyCardExtra from "../UI/CARDS/MyCardExtra";
+import MyCard from "../UI/CARDS/MyCard";
 import { useState } from "react";
 import BaseAPI from "../../API/BaseAPI";
 import { useQuery } from "../../hooks/useQuery";
@@ -28,7 +28,7 @@ const PublicContentCardInfo = () => {
         <BackBtn size="lg" variant="primary" />
       </div>
       <div className={cl.container_gallery + " m-auto"}>
-        {item && <MyCardExtra item={item} />}
+        {item && <MyCard item={item} />}
       </div>
     </>
   );

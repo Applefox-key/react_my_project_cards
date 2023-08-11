@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import { useEffect } from "react";
 import { mainAndImg } from "../../../utils/cardFragment";
 
-const MyCardExtra = ({ item, mode = "0", flip, clc = true }) => {
+const MyCard = ({ item, mode = "0", flip, clc = true }) => {
   const [flipped, setFlipped] = useState(false);
   useEffect(() => {
     if (flip !== flipped && flip !== undefined) setFlipped(!flipped);
@@ -32,4 +32,4 @@ const MyCardExtra = ({ item, mode = "0", flip, clc = true }) => {
   );
 };
 
-export default MyCardExtra;
+export default MyCard;
