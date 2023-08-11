@@ -83,7 +83,10 @@ const WriteCardBody = ({ items }) => {
                 value={answer}
                 className={cl.writeAnswer}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") check();
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    check();
+                  }
                 }}
                 onChange={(e) => {
                   setAnswer(e.target.value);
