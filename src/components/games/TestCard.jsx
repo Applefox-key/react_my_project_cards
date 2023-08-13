@@ -7,12 +7,11 @@ import { shuffle } from "../../utils/arraysFunc";
 import BackBtn from "../UI/BlackBtn/BackBtn";
 import TestBody from "./TestBody";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const TestCard = () => {
   const setPopup = usePopup();
   const [items, setItems] = useState();
-
+  const [key, setKey] = useState(Date.now());
   const contentParts = (arr) => {
     shuffle(arr);
     let res = arr.map((el, i) => {
@@ -25,7 +24,10 @@ const TestCard = () => {
     });
     return res;
   };
-
+  const changeItems = (newVal) => {
+    setItems([...newVal]);
+    setKey(Date.now());
+  };
   const [getContent, isLoading, error] = useGame(setItems, contentParts);
   useEffect(() => {
     getContent();
@@ -34,18 +36,18 @@ const TestCard = () => {
   }, []);
   useEffect(() => {
     getContent();
+    setKey(Date.now());
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.pathname]);
+  }, [window.location.pathname, window.location.hash]);
   return (
     <div>
       <BackBtn />
-      <SwitchModeBtn modes={["FIND ANSWER", " FIND QUESTION"]} />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
-          <TestBody items={items} />
+          <TestBody items={items} setItems={changeItems} key={key} />
         </CSSTransition>
       )}
     </div>

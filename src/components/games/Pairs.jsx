@@ -39,6 +39,7 @@ const Pairs = () => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname]);
+
   const itemNote = (ids) => {
     let [id, set] = [...ids.split("&")];
 

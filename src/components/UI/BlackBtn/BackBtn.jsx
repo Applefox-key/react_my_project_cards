@@ -11,7 +11,7 @@ const BackBtn = ({ path, onClick, ...props }) => {
   };
   return (
     <Button size="lg" variant="dark" onClick={back} {...props}>
-      ❰ Back
+      ❰ BACK
     </Button>
   );
 };

@@ -168,8 +168,9 @@
 
 }
 
-.result-again {
-  width: 16rem;
+.result-again,
+.result-againer {
+  min-width: 16rem;
   height: fit-content;
   font-size: 3rem;
   margin: auto;
@@ -186,6 +187,11 @@
     transform: scale(1.2);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
   }
+}
+
+.result-againer {
+  margin-top: 0rem;
+  // width: fit-content;
 }
 
 .card-front,

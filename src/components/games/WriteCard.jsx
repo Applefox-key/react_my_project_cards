@@ -6,25 +6,33 @@ import BackBtn from "../UI/BlackBtn/BackBtn";
 import WriteCardBody from "./WriteCardBody";
 import { usePopup } from "../../hooks/usePopup";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const WriteCard = () => {
   const [items, setItems] = useState();
+  const [key, setKey] = useState(Date.now());
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useGame(setItems, shuffle);
+  const changeItems = (newVal) => {
+    setItems([...newVal]);
+    setKey(Date.now());
+  };
+
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
   }, []);
+
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
-  }, [window.location.pathname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window.location.pathname, window.location.hash]);
+
   return (
     <div style={{ overflow: "hidden" }}>
-      <BackBtn /> <SwitchModeBtn modes={["WRITE ANSWER", " WRITE QUESTION"]} />
+      <BackBtn />
       {!isLoading && items ? (
-        <WriteCardBody items={items} />
+        <WriteCardBody items={items} setItems={changeItems} key={key} />
       ) : (
         <SpinnerLg className="span_wrap" />
       )}

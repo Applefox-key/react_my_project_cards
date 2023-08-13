@@ -21,11 +21,12 @@ const SwitchModeBtn = ({ ...props }) => {
       size="lg"
       variant="dark"
       onClick={change}
-      title={`game mode: ${props.modes[parseInt(mode)]}. Change mode to the ${
-        props.modes[1 - parseInt(mode)]
-      }`}
+      title={`game mode: ${
+        props.modes[parseInt(mode)]
+      }. RESTART with change mode to the ${props.modes[1 - parseInt(mode)]}`}
       {...props}>
-      {props.modes[parseInt(mode)]} ❱
+      SWITCH MODE
+      {/* {props.modes[parseInt(mode)]} ❱ */}
     </Button>
   );
 };

@@ -7,15 +7,21 @@ import "animate.css";
 import { useNavigate } from "react-router-dom";
 import GameCount from "../../games/GameCount";
 
-const Result = ({ text, count }) => {
+const Result = ({ text, count, mist }) => {
   const router = useNavigate();
   const back = () => {
+    console.log("back");
+
     router(-1);
   };
-  const againFn = (e) => {
-    e.preventDefault();
-    const path = window.location.pathname + "/1";
-    router(path);
+  const againFn = function (e) {
+    console.log("againFn");
+    e.stopPropagation();
+    router(window.location.pathname + "#" + Date.now(), { replace: true });
+  };
+  const againMist = function (e) {
+    e.stopPropagation();
+    mist();
   };
   return (
     <CSSTransition appear={true} in={true} timeout={500} classNames="result">
@@ -26,9 +32,16 @@ const Result = ({ text, count }) => {
               <div>
                 <h1 className="display-1">{text}</h1>
                 {count && <GameCount count={count} result={true} />}
-                <h1 className={cl["result-again"]} onClick={againFn}>
-                  Play again
-                </h1>
+                <div>
+                  <h1 className={cl["result-again"]} onClick={againFn}>
+                    Play again
+                  </h1>
+                  {mist && (
+                    <h1 className={cl["result-againer"]} onClick={againMist}>
+                      Play again with errors
+                    </h1>
+                  )}
+                </div>
               </div>
             </div>
           </button>

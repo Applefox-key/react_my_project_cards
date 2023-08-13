@@ -6,19 +6,22 @@ import BackBtn from "../UI/BlackBtn/BackBtn";
 import PartBody from "./PartBody";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import { useParams } from "react-router-dom";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
+
 import { formatContentParts } from "../../utils/games";
 
 const PartCard = () => {
   const setPopup = usePopup();
   const [items, setItems] = useState();
+  const [key, setKey] = useState(Date.now());
   const mode = useParams().mode;
   const contentParts = (arr) => {
     return formatContentParts(arr, parseInt(mode));
   };
-
   const [getContent, isLoading, error] = useGame(setItems, contentParts);
-
+  const changeItems = (newVal) => {
+    setItems([...newVal]);
+    setKey(Date.now());
+  };
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
@@ -28,17 +31,16 @@ const PartCard = () => {
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.pathname]);
+  }, [window.location.pathname, window.location.hash]);
+
   return (
     <div>
       <BackBtn />
-      <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
-
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
-          <PartBody items={items} />
+          <PartBody items={items} setItems={changeItems} key={key} />
         </CSSTransition>
       )}
     </div>

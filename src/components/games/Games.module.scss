@@ -356,3 +356,52 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   }
 }
+
+.writeHint {
+  position: absolute;
+  left: 55%;
+  top: -15px;
+  box-shadow: var(--background-first) 0px 1px 2px 0px, var(--background-first) 0px 2px 6px 2px;
+  color: var(--contrast-text);
+  background-color: transparent;
+  border-radius: 5px;
+
+
+  &:hover {
+    background-color: #0d6efd;
+    // color: transparent;
+  }
+
+  @media screen and (max-width: 600px) {
+    position: relative;
+    left: unset;
+    top: unset;
+    font-size: 1.4rem;
+  }
+
+  @media screen and (max-height: 600px) {
+    position: relative;
+    left: unset;
+    top: unset;
+    font-size: 1.4rem;
+  }
+}
+
+// .hintWrite {
+//   // position: absolute;
+//   /* color: var(--contrast-text); */
+//   // font-size: large;
+//   left: 55%;
+//   top: 0px;
+//   // background: honeydew;
+//   // min-width: 3rem;
+//   // border-radius: 5px;
+//   font-size: 45px;
+//   // border-radius: 50%;
+//   width: 7rem;
+//   height: 7rem;
+//   transition: all 0.2s ease-in-out;
+//   box-shadow: var(--background-first) 0px 1px 2px 0px, var(--background-first) 0px 2px 6px 2px;
+//   color: var(--contrast-text);
+//   ;
+// }
