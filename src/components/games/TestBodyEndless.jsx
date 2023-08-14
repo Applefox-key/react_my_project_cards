@@ -7,7 +7,7 @@ import Hint from "./Hint";
 import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
-import { ProgressBar } from "react-bootstrap";
+import Balancer from "../UI/Balancer/Balancer";
 
 const TestBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);
@@ -24,6 +24,7 @@ const TestBodyEndless = ({ items }) => {
   const choose = (e) => {
     let id = e.target.id ? e.target.id : e.target.parentElement.id;
     let res = testAnswerCheck(num, id, allItems);
+
     let [newNum, newArr] = recount(res, allItems, num);
     setAllItems(newArr);
     //right answer
@@ -65,10 +66,8 @@ const TestBodyEndless = ({ items }) => {
                 classNames="cardChange">
                 <div className={cl["game-field"]}>
                   <div className="d-flex flex-column">
-                    <ProgressBar
-                      className={cl.progressBar}
-                      animated
-                      now={
+                    <Balancer
+                      current={
                         allItems[num].probability === 1
                           ? 100
                           : 100 - allItems[num].probability * 5

@@ -6,8 +6,8 @@ import OneCardG from "./OneCardG";
 import Parts from "./Parts";
 import PartAnswer from "./PartAnswer";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
-import { ProgressBar } from "react-bootstrap";
 import { recount } from "../../utils/games";
+import Balancer from "../UI/Balancer/Balancer";
 
 const PartBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);
@@ -80,10 +80,8 @@ const PartBodyEndless = ({ items }) => {
               classNames="cardChange">
               <div className={cl["game-field"]}>
                 <div className="d-flex flex-column">
-                  <ProgressBar
-                    className={cl.progressBar}
-                    animated
-                    now={
+                  <Balancer
+                    current={
                       allItems[num].probability === 1
                         ? 100
                         : 100 - allItems[num].probability * 5

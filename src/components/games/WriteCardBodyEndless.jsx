@@ -8,8 +8,8 @@ import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
 import Hint from "./Hint";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
-import { ProgressBar } from "react-bootstrap";
 import { recount } from "../../utils/games";
+import Balancer from "../UI/Balancer/Balancer";
 
 const WriteCardBodyEndless = ({ items }) => {
   const [answer, setAnswer] = useState("");
@@ -79,20 +79,15 @@ const WriteCardBodyEndless = ({ items }) => {
             timeout={500}
             classNames="result">
             <div className={cl["game-field"]}>
-              {" "}
               <div className="d-flex flex-column">
-                <ProgressBar
-                  className={cl.progressBar}
-                  animated
-                  now={valProgress()}
-                />
+                <Balancer current={valProgress()} key={num} />
                 <div className={cl.cardSize}>
                   <OneCardG
                     anim={anim}
                     item={allItems[num]}
                     flip={flip}
                     clickable={false}
-                  />{" "}
+                  />
                 </div>
                 <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
                   <div className="d-flex flex-column">
