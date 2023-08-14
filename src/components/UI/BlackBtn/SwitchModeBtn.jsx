@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { BsPhoneFlip } from "react-icons/bs";
+import cl from "./BackBtn.module.scss";
 
 const SwitchModeBtn = ({ ...props }) => {
   const router = useNavigate();
@@ -18,6 +20,7 @@ const SwitchModeBtn = ({ ...props }) => {
 
   return (
     <Button
+      className="position-relative"
       size="lg"
       variant="dark"
       onClick={change}
@@ -25,7 +28,11 @@ const SwitchModeBtn = ({ ...props }) => {
         props.modes[parseInt(mode)]
       }. RESTART with change mode to the ${props.modes[1 - parseInt(mode)]}`}
       {...props}>
-      SWITCH MODE
+      <BsPhoneFlip />
+
+      <span className={cl.endlesTitle}>FLIP SIDE</span>
+      {/* {endless ? <FaInfinity /> : <GiStarCycle />} */}
+      <span className={cl.endlesName}> {parseInt(mode) + 1}</span>
       {/* {props.modes[parseInt(mode)]} ❱ */}
     </Button>
   );

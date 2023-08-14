@@ -7,11 +7,15 @@ import { shuffle } from "../../utils/arraysFunc";
 import BackBtn from "../UI/BlackBtn/BackBtn";
 import TestBody from "./TestBody";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
+import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
+import TestBodyEndless from "./TestBodyEndless";
 
 const TestCard = () => {
   const setPopup = usePopup();
   const [items, setItems] = useState();
+  const [endless, setEndless] = useState(false);
   const [key, setKey] = useState(Date.now());
+
   const contentParts = (arr) => {
     shuffle(arr);
     let res = arr.map((el, i) => {
@@ -42,12 +46,16 @@ const TestCard = () => {
   }, [window.location.pathname, window.location.hash]);
   return (
     <div>
-      <BackBtn />
+      <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
-          <TestBody items={items} setItems={changeItems} key={key} />
+          {endless ? (
+            <TestBodyEndless items={items} key={key} />
+          ) : (
+            <TestBody items={items} setItems={changeItems} key={key} />
+          )}
         </CSSTransition>
       )}
     </div>

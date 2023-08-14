@@ -6,10 +6,13 @@ import BackBtn from "../UI/BlackBtn/BackBtn";
 import WriteCardBody from "./WriteCardBody";
 import { usePopup } from "../../hooks/usePopup";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
+import WriteCardBodyEndless from "./WriteCardBodyEndless";
+import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
 
 const WriteCard = () => {
   const [items, setItems] = useState();
   const [key, setKey] = useState(Date.now());
+  const [endless, setEndless] = useState(false);
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useGame(setItems, shuffle);
   const changeItems = (newVal) => {
@@ -30,9 +33,17 @@ const WriteCard = () => {
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <BackBtn />
+      <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
       {!isLoading && items ? (
-        <WriteCardBody items={items} setItems={changeItems} key={key} />
+        endless ? (
+          <WriteCardBodyEndless
+            items={items}
+            setItems={changeItems}
+            key={key}
+          />
+        ) : (
+          <WriteCardBody items={items} setItems={changeItems} key={key} />
+        )
       ) : (
         <SpinnerLg className="span_wrap" />
       )}

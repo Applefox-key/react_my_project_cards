@@ -8,6 +8,7 @@ import OneCardG from "./OneCardG";
 import Parts from "./Parts";
 import PartAnswer from "./PartAnswer";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
+
 const PartBody = ({ items, setItems }) => {
   const [num, setNum] = useState(0);
   const [activeIDs, setActiveIDs] = useState([]);

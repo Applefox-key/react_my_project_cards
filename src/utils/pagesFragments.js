@@ -9,12 +9,15 @@ export const fragment_SearchingTips = (
     : commonSet.selectedCategorymy;
   const selectedCategoryName = selectedCategory ? selectedCategory.name : "";
   const categoryField = isPublic ? "selectedCategorypub" : "selectedCategorymy";
-  let only = privateSet.shared ? "only shared" : "";
-  only += privateSet.favorite
-    ? only === ""
-      ? "only favorite"
-      : ", only favorite"
-    : "";
+  let only = "";
+  if (!isPublic) {
+    only = privateSet.shared ? "only shared" : "";
+    only += privateSet.favorite
+      ? only === ""
+        ? "only favorite"
+        : ", only favorite"
+      : "";
+  }
   return (
     <>
       <h5>{only}</h5>

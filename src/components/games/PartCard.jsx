@@ -6,12 +6,14 @@ import BackBtn from "../UI/BlackBtn/BackBtn";
 import PartBody from "./PartBody";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import { useParams } from "react-router-dom";
-
 import { formatContentParts } from "../../utils/games";
+import PartBodyEndless from "./PartBodyEndless";
+import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
 
 const PartCard = () => {
   const setPopup = usePopup();
   const [items, setItems] = useState();
+  const [endless, setEndless] = useState(false);
   const [key, setKey] = useState(Date.now());
   const mode = useParams().mode;
   const contentParts = (arr) => {
@@ -36,11 +38,16 @@ const PartCard = () => {
   return (
     <div>
       <BackBtn />
+      <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
-          <PartBody items={items} setItems={changeItems} key={key} />
+          {endless ? (
+            <PartBodyEndless items={items} key={key} />
+          ) : (
+            <PartBody items={items} setItems={changeItems} key={key} />
+          )}
         </CSSTransition>
       )}
     </div>
