@@ -68,8 +68,6 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonSettings.editEl, commonSettings.filter]);
   const filtredList = useTextFilter(list, commonSettings.filter);
-  console.log(list);
-
   return (
     <>
       {isLoading ? (

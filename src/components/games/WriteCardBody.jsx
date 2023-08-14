@@ -9,7 +9,6 @@ import Result from "../UI/CARDS/Result";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
 import Hint from "./Hint";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const WriteCardBody = ({ items, setItems }) => {
   const [answer, setAnswer] = useState("");
@@ -61,75 +60,69 @@ const WriteCardBody = ({ items, setItems }) => {
   };
   const isResult = items.length === count[0] + count[1] && !flip;
   return (
-    <>
-      {" "}
-      {!isResult && (
-        <SwitchModeBtn modes={["WRITE ANSWER", " WRITE QUESTION"]} />
-      )}
-      <div className={cl.cardSize}>
-        {items[num].note ? <Hint text={items[num].note} /> : <></>}
-        {isResult ? (
-          <Result
-            text="Job is done!"
-            count={count}
-            mist={mistakes.length ? workWithErrors : null}
-          />
-        ) : (
-          <CSSTransition
-            appear={true}
-            in={true}
-            timeout={500}
-            classNames="result">
-            <div className={cl["game-field"]}>
-              <div className={cl.cardSize}>
-                <OneCardG
-                  anim={anim}
-                  item={items[num]}
-                  flip={flip}
-                  clickable={false}
-                />{" "}
-              </div>
-              <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
-                <div className="d-flex flex-column">
-                  {!isResult && (
-                    <GameCount
-                      count={count}
-                      all={items.length - count[0] - count[1]}
-                      left={countLeft()}
-                    />
-                  )}{" "}
-                  <Button onClick={check} size="lg" disabled={!answer}>
-                    {flip ? "NEXT" : "CHECK AN ANSWER"}
-                  </Button>{" "}
-                  <button
-                    onClick={hintT}
-                    size="lg"
-                    disabled={flip}
-                    className={cl.writeHint}>
-                    SHOW THE NEXT LETTER
-                  </button>
-                </div>
-                <textarea
-                  type={"text"}
-                  id="answerArea"
-                  value={answer}
-                  className={cl.writeAnswer}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      check();
-                    }
-                  }}
-                  onChange={(e) => {
-                    setAnswer(e.target.value);
-                  }}
-                />{" "}
-              </div>
+    <div className={cl.cardSize}>
+      {items[num].note ? <Hint text={items[num].note} /> : <></>}
+      {isResult ? (
+        <Result
+          text="Job is done!"
+          count={count}
+          mist={mistakes.length ? workWithErrors : null}
+        />
+      ) : (
+        <CSSTransition
+          appear={true}
+          in={true}
+          timeout={500}
+          classNames="result">
+          <div className={cl["game-field"]}>
+            <div className={cl.cardSize}>
+              <OneCardG
+                anim={anim}
+                item={items[num]}
+                flip={flip}
+                clickable={false}
+              />{" "}
             </div>
-          </CSSTransition>
-        )}
-      </div>
-    </>
+            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
+              <div className="d-flex flex-column">
+                {!isResult && (
+                  <GameCount
+                    count={count}
+                    all={items.length - count[0] - count[1]}
+                    left={countLeft()}
+                  />
+                )}{" "}
+                <Button onClick={check} size="lg" disabled={!answer}>
+                  {flip ? "NEXT" : "CHECK AN ANSWER"}
+                </Button>{" "}
+                <button
+                  onClick={hintT}
+                  size="lg"
+                  disabled={flip}
+                  className={cl.writeHint}>
+                  SHOW THE NEXT LETTER
+                </button>
+              </div>
+              <textarea
+                type={"text"}
+                id="answerArea"
+                value={answer}
+                className={cl.writeAnswer}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    check();
+                  }
+                }}
+                onChange={(e) => {
+                  setAnswer(e.target.value);
+                }}
+              />{" "}
+            </div>
+          </div>
+        </CSSTransition>
+      )}
+    </div>
   );
 };
 

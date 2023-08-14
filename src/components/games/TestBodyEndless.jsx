@@ -6,7 +6,6 @@ import { recount, testAnswerCheck } from "../../utils/games";
 import Hint from "./Hint";
 import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 import Balancer from "../UI/Balancer/Balancer";
 
 const TestBodyEndless = ({ items }) => {
@@ -46,9 +45,7 @@ const TestBodyEndless = ({ items }) => {
 
   return (
     <>
-      {!!allItems.length && (
-        <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
-      )}
+      {/* <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} /> */}
       <div>
         {!!allItems.length && (
           <>

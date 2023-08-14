@@ -10,12 +10,9 @@ import GameCount from "../../games/GameCount";
 const Result = ({ text, count, mist }) => {
   const router = useNavigate();
   const back = () => {
-    console.log("back");
-
     router(-1);
   };
   const againFn = function (e) {
-    console.log("againFn");
     e.stopPropagation();
     router(window.location.pathname + "#" + Date.now(), { replace: true });
   };
@@ -26,7 +23,7 @@ const Result = ({ text, count, mist }) => {
   return (
     <CSSTransition appear={true} in={true} timeout={500} classNames="result">
       <div className={[cl.container_gallery, count ? "mt-5" : ""].join(" ")}>
-        <div className={cl["card-container"]}>
+        <div id="gameresult" className={cl["card-container"]}>
           <button className={cl["card-button"]} onClick={back}>
             <div className={[cl["card-front"], cl["card-result"]].join(" ")}>
               <div>

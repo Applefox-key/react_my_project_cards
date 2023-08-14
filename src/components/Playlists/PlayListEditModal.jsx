@@ -27,8 +27,6 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
     }
   };
 
-  console.log("list");
-  console.log(list);
   return (
     <MyModal
       onHide={onHide ? onHide : (e) => setIsEdit(false)}

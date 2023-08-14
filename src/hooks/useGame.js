@@ -15,8 +15,6 @@ export const useGame = (setCallback = null, changeContent = null) => {
         : pageParam.tab === "my"
         ? await BaseAPI.getContent(pageParam.id)
         : await BaseAPI.getContentPlaylist(pageParam.id); //playlist
-    console.log(content);
-
     const newContent = changeContent ? changeContent(content) : content;
     if (setCallback) setCallback(newContent);
   };

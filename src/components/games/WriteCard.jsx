@@ -8,6 +8,7 @@ import { usePopup } from "../../hooks/usePopup";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import WriteCardBodyEndless from "./WriteCardBodyEndless";
 import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
+import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const WriteCard = () => {
   const [items, setItems] = useState();
@@ -23,24 +24,16 @@ const WriteCard = () => {
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
-  }, []);
-
-  useEffect(() => {
-    getContent();
-    if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname, window.location.hash]);
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
+      <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />{" "}
+      <SwitchModeBtn modes={["WRITE ANSWER", " WRITE QUESTION"]} />
       {!isLoading && items ? (
         endless ? (
-          <WriteCardBodyEndless
-            items={items}
-            setItems={changeItems}
-            key={key}
-          />
+          <WriteCardBodyEndless items={items} key={key} />
         ) : (
           <WriteCardBody items={items} setItems={changeItems} key={key} />
         )

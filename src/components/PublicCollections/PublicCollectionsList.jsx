@@ -10,8 +10,6 @@ const PublicCollectionsList = ({ commonSettings, viewmode }) => {
   const [list, setlist] = useState([]);
   const [getPbCollWithCont, isLoading] = useQuery(async () => {
     const col = await BaseAPI.getPublicCollectionsAndContent();
-    console.log(col);
-
     setlist(col);
   });
 

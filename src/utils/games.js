@@ -18,7 +18,6 @@ export const recount = (isRight, arr, num) => {
     totalSum += item.probability;
     return item;
   });
-  console.log(newArr);
   // SUM "index"
   // const totalSum = newArr.reduce((sum, item) => sum + item.probability, 0);
   // rundom from 1 to totalSum

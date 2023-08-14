@@ -7,7 +7,6 @@ import Hint from "./Hint";
 import OneCardG from "./OneCardG";
 import Parts from "./Parts";
 import PartAnswer from "./PartAnswer";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const PartBody = ({ items, setItems }) => {
   const [num, setNum] = useState(0);
@@ -60,62 +59,53 @@ const PartBody = ({ items, setItems }) => {
     setActiveIDs(na);
   };
   return (
-    <>
-      {items.length !== num && (
-        <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
+    <div>
+      {items.length === num ? (
+        <Result
+          text="Job is done!"
+          count={count}
+          mist={mistakes.length ? workWithErrors : null}
+        />
+      ) : (
+        <>
+          {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
+          {items.length !== num && (
+            <GameCount count={count} all={items.length - num} />
+          )}
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              appear={false}
+              timeout={500}
+              key={num}
+              classNames="cardChange">
+              <div className={cl["game-field"]}>
+                <OneCardG
+                  direction={true}
+                  item={items[num].item}
+                  clickable={false}
+                />{" "}
+                <PartAnswer
+                  item={items[num]}
+                  onClick={undo}
+                  activeVAL={activeVAL}
+                />
+                <Parts
+                  items={items[num].parts}
+                  onClick={(e) => clickPart(e, items[num].answ)}
+                  active={activeIDs}
+                  lastOk={
+                    items[num].answ[activeIDs.length - 1] ===
+                    activeVAL[activeIDs.length - 1]
+                      ? ""
+                      : activeIDs[activeIDs.length - 1]
+                  }
+                />
+              </div>
+            </CSSTransition>
+          </SwitchTransition>
+        </>
       )}
-      <div>
-        {items.length === num ? (
-          <Result
-            text="Job is done!"
-            count={count}
-            mist={mistakes.length ? workWithErrors : null}
-          />
-        ) : (
-          <>
-            {items[num].item.note ? (
-              <Hint text={items[num].item.note} />
-            ) : (
-              <></>
-            )}
-            {items.length !== num && (
-              <GameCount count={count} all={items.length - num} />
-            )}
-            <SwitchTransition mode="out-in">
-              <CSSTransition
-                appear={false}
-                timeout={500}
-                key={num}
-                classNames="cardChange">
-                <div className={cl["game-field"]}>
-                  <OneCardG
-                    direction={true}
-                    item={items[num].item}
-                    clickable={false}
-                  />{" "}
-                  <PartAnswer
-                    item={items[num]}
-                    onClick={undo}
-                    activeVAL={activeVAL}
-                  />
-                  <Parts
-                    items={items[num].parts}
-                    onClick={(e) => clickPart(e, items[num].answ)}
-                    active={activeIDs}
-                    lastOk={
-                      items[num].answ[activeIDs.length - 1] ===
-                      activeVAL[activeIDs.length - 1]
-                        ? ""
-                        : activeIDs[activeIDs.length - 1]
-                    }
-                  />
-                </div>
-              </CSSTransition>
-            </SwitchTransition>
-          </>
-        )}
-      </div>
-    </>
+    </div>
   );
 };
 

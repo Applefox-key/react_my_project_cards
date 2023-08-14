@@ -5,7 +5,6 @@ import Hint from "./Hint";
 import OneCardG from "./OneCardG";
 import Parts from "./Parts";
 import PartAnswer from "./PartAnswer";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 import { recount } from "../../utils/games";
 import Balancer from "../UI/Balancer/Balancer";
 
@@ -62,59 +61,53 @@ const PartBodyEndless = ({ items }) => {
     setActiveIDs(na);
   };
   return (
-    <>
-      <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
-      <div>
-        (
-        <>
-          {allItems[num].item.note ? (
-            <Hint text={allItems[num].item.note} />
-          ) : (
-            <></>
-          )}
-          <SwitchTransition mode="out-in">
-            <CSSTransition
-              appear={false}
-              timeout={500}
-              key={anim}
-              classNames="cardChange">
-              <div className={cl["game-field"]}>
-                <div className="d-flex flex-column">
-                  <Balancer
-                    current={
-                      allItems[num].probability === 1
-                        ? 100
-                        : 100 - allItems[num].probability * 5
-                    }
-                  />
-                  <OneCardG
-                    direction={true}
-                    item={allItems[num].item}
-                    clickable={false}
-                  />{" "}
-                  <PartAnswer
-                    item={allItems[num]}
-                    onClick={undo}
-                    activeVAL={activeVAL}
-                  />
-                  <Parts
-                    items={allItems[num].parts}
-                    onClick={(e) => clickPart(e, allItems[num].answ)}
-                    active={activeIDs}
-                    lastOk={
-                      allItems[num].answ[activeIDs.length - 1] ===
-                      activeVAL[activeIDs.length - 1]
-                        ? ""
-                        : activeIDs[activeIDs.length - 1]
-                    }
-                  />
-                </div>
-              </div>
-            </CSSTransition>
-          </SwitchTransition>
-        </>
-      </div>
-    </>
+    <div>
+      {allItems[num].item.note ? (
+        <Hint text={allItems[num].item.note} />
+      ) : (
+        <></>
+      )}
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          appear={false}
+          timeout={500}
+          key={anim}
+          classNames="cardChange">
+          <div className={cl["game-field"]}>
+            <div className="d-flex flex-column">
+              <Balancer
+                current={
+                  allItems[num].probability === 1
+                    ? 100
+                    : 100 - allItems[num].probability * 5
+                }
+              />
+              <OneCardG
+                direction={true}
+                item={allItems[num].item}
+                clickable={false}
+              />{" "}
+              <PartAnswer
+                item={allItems[num]}
+                onClick={undo}
+                activeVAL={activeVAL}
+              />
+              <Parts
+                items={allItems[num].parts}
+                onClick={(e) => clickPart(e, allItems[num].answ)}
+                active={activeIDs}
+                lastOk={
+                  allItems[num].answ[activeIDs.length - 1] ===
+                  activeVAL[activeIDs.length - 1]
+                    ? ""
+                    : activeIDs[activeIDs.length - 1]
+                }
+              />
+            </div>
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
+    </div>
   );
 };
 

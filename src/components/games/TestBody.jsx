@@ -8,7 +8,6 @@ import { testAnswerCheck } from "../../utils/games";
 import Hint from "./Hint";
 import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
-import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const TestBody = ({ items, setItems }) => {
   const [num, setNum] = useState(0);
@@ -44,53 +43,44 @@ const TestBody = ({ items, setItems }) => {
     }
   };
   return (
-    <>
-      {items.length !== num && (
-        <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
+    <div>
+      {items.length === num ? (
+        <Result
+          text="Job is done!"
+          count={count}
+          mist={mistakes.length ? workWithErrors : null}
+        />
+      ) : (
+        <>
+          {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
+          {items.length !== num && (
+            <GameCount count={count} all={items.length - num} />
+          )}
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              appear={false}
+              timeout={500}
+              key={num}
+              classNames="cardChange">
+              <div className={cl["game-field"]}>
+                <OneCardG
+                  direction={true}
+                  item={items[num].item}
+                  clickable={false}
+                />
+                <TestOptions
+                  items={items[num].answ}
+                  onClick={choose}
+                  active={active}
+                  right={right}
+                  mode={parseInt(mode)}
+                />
+              </div>
+            </CSSTransition>
+          </SwitchTransition>
+        </>
       )}
-      <div>
-        {items.length === num ? (
-          <Result
-            text="Job is done!"
-            count={count}
-            mist={mistakes.length ? workWithErrors : null}
-          />
-        ) : (
-          <>
-            {items[num].item.note ? (
-              <Hint text={items[num].item.note} />
-            ) : (
-              <></>
-            )}
-            {items.length !== num && (
-              <GameCount count={count} all={items.length - num} />
-            )}
-            <SwitchTransition mode="out-in">
-              <CSSTransition
-                appear={false}
-                timeout={500}
-                key={num}
-                classNames="cardChange">
-                <div className={cl["game-field"]}>
-                  <OneCardG
-                    direction={true}
-                    item={items[num].item}
-                    clickable={false}
-                  />
-                  <TestOptions
-                    items={items[num].answ}
-                    onClick={choose}
-                    active={active}
-                    right={right}
-                    mode={parseInt(mode)}
-                  />
-                </div>
-              </CSSTransition>
-            </SwitchTransition>
-          </>
-        )}
-      </div>
-    </>
+    </div>
   );
 };
 

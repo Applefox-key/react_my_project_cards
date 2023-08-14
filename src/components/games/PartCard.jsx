@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { formatContentParts } from "../../utils/games";
 import PartBodyEndless from "./PartBodyEndless";
 import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
+import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const PartCard = () => {
   const setPopup = usePopup();
@@ -38,7 +39,8 @@ const PartCard = () => {
   return (
     <div>
       <BackBtn />
-      <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
+      <SwitchEndlessBtn endless={endless} setEndless={setEndless} />{" "}
+      <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (

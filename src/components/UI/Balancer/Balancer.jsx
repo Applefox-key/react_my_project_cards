@@ -7,7 +7,7 @@ import {
   FaBalanceScaleRight,
 } from "react-icons/fa";
 
-const Balancer = ({ current, key }) => {
+const Balancer = ({ current }) => {
   return (
     <div className={cl["balancer-wrap"]}>
       <ProgressBar

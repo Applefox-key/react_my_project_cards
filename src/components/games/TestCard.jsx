@@ -9,6 +9,7 @@ import TestBody from "./TestBody";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
 import TestBodyEndless from "./TestBodyEndless";
+import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 
 const TestCard = () => {
   const setPopup = usePopup();
@@ -33,11 +34,11 @@ const TestCard = () => {
     setKey(Date.now());
   };
   const [getContent, isLoading, error] = useGame(setItems, contentParts);
-  useEffect(() => {
-    getContent();
-    if (error) setPopup.error(error);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getContent();
+  //   if (error) setPopup.error(error);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   useEffect(() => {
     getContent();
     setKey(Date.now());
@@ -47,6 +48,7 @@ const TestCard = () => {
   return (
     <div>
       <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
+      <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
