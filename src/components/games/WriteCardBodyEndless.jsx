@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import Hint from "./Hint";
 import { recount } from "../../utils/games";
 import Balancer from "../UI/Balancer/Balancer";
+import ProbabilityList from "./ProbabilityList";
 
 const WriteCardBodyEndless = ({ items }) => {
   const [answer, setAnswer] = useState("");
@@ -69,56 +70,51 @@ const WriteCardBodyEndless = ({ items }) => {
   return (
     <div className={cl.cardSize}>
       {allItems[num].note ? <Hint text={allItems[num].note} /> : <></>}
-      {
-        <CSSTransition
-          appear={true}
-          in={true}
-          timeout={500}
-          classNames="result">
-          <div className={cl["game-field"]}>
-            <div className="d-flex flex-column">
-              <Balancer current={valProgress()} key={num} />
-              <div className={cl.cardSize}>
-                <OneCardG
-                  anim={anim}
-                  item={allItems[num]}
-                  flip={flip}
-                  clickable={false}
-                />
-              </div>
-              <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
-                <div className="d-flex flex-column">
-                  <Button onClick={check} size="lg" disabled={!answer}>
-                    {flip ? "NEXT" : "CHECK AN ANSWER"}
-                  </Button>{" "}
-                  <button
-                    onClick={hintT}
-                    size="lg"
-                    disabled={flip}
-                    className={cl.writeHint}>
-                    SHOW THE NEXT LETTER
-                  </button>
-                </div>
-                <textarea
-                  type={"text"}
-                  id="answerArea"
-                  value={answer}
-                  className={cl.writeAnswer}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      check();
-                    }
-                  }}
-                  onChange={(e) => {
-                    setAnswer(e.target.value);
-                  }}
-                />{" "}
-              </div>{" "}
+      <ProbabilityList arr={allItems} />
+      <CSSTransition appear={true} in={true} timeout={500} classNames="result">
+        <div className={cl["game-field"]}>
+          <div className="d-flex flex-column">
+            <Balancer current={valProgress()} key={num} />
+            <div className={cl.cardSize}>
+              <OneCardG
+                anim={anim}
+                item={allItems[num]}
+                flip={flip}
+                clickable={false}
+              />
             </div>
+            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
+              <div className="d-flex flex-column">
+                <Button onClick={check} size="lg" disabled={!answer}>
+                  {flip ? "NEXT" : "CHECK AN ANSWER"}
+                </Button>{" "}
+                <button
+                  onClick={hintT}
+                  size="lg"
+                  disabled={flip}
+                  className={cl.writeHint}>
+                  SHOW THE NEXT LETTER
+                </button>
+              </div>
+              <textarea
+                type={"text"}
+                id="answerArea"
+                value={answer}
+                className={cl.writeAnswer}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    check();
+                  }
+                }}
+                onChange={(e) => {
+                  setAnswer(e.target.value);
+                }}
+              />{" "}
+            </div>{" "}
           </div>
-        </CSSTransition>
-      }
+        </div>
+      </CSSTransition>
     </div>
   );
 };

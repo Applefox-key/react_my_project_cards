@@ -7,6 +7,7 @@ import Parts from "./Parts";
 import PartAnswer from "./PartAnswer";
 import { recount } from "../../utils/games";
 import Balancer from "../UI/Balancer/Balancer";
+import ProbabilityList from "./ProbabilityList";
 
 const PartBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);
@@ -67,6 +68,7 @@ const PartBodyEndless = ({ items }) => {
       ) : (
         <></>
       )}
+      <ProbabilityList arr={allItems} />
       <SwitchTransition mode="out-in">
         <CSSTransition
           appear={false}

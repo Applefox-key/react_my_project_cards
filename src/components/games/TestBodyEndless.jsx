@@ -7,6 +7,7 @@ import Hint from "./Hint";
 import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
 import Balancer from "../UI/Balancer/Balancer";
+import ProbabilityList from "./ProbabilityList";
 
 const TestBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);
@@ -45,7 +46,6 @@ const TestBodyEndless = ({ items }) => {
 
   return (
     <>
-      {/* <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} /> */}
       <div>
         {!!allItems.length && (
           <>
@@ -53,8 +53,8 @@ const TestBodyEndless = ({ items }) => {
               <Hint text={items[num].item.note} />
             ) : (
               <></>
-            )}
-
+            )}{" "}
+            <ProbabilityList arr={allItems} />
             <SwitchTransition mode="out-in">
               <CSSTransition
                 appear={false}
@@ -63,13 +63,14 @@ const TestBodyEndless = ({ items }) => {
                 classNames="cardChange">
                 <div className={cl["game-field"]}>
                   <div className="d-flex flex-column">
+                    {" "}
                     <Balancer
                       current={
                         allItems[num].probability === 1
                           ? 100
                           : 100 - allItems[num].probability * 5
                       }
-                    />
+                    />{" "}
                     <OneCardG
                       direction={true}
                       item={allItems[num].item}

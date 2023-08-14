@@ -34,18 +34,33 @@
     }
 }
 
+.balancer-wrapMini {
+    width: 30%;
+    border-radius: 5px;
+    // height: 45rem;
+    margin: auto;
+
+    display: flex;
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    height: 5px;
+}
+
 .balancer-leftWrap {
     background-color: ghostwhite;
     width: 50%;
     border-radius: 5px 0 0 5px;
     display: flex;
     justify-content: flex-end;
+    height: 5px;
 }
 
 .balancer-rightWrap {
     background-color: ghostwhite;
     width: 50%;
     border-radius: 0 5px 5px 0;
+    height: 5px;
+    border-left: 1px solid black;
 }
 
 .balancer-icon {

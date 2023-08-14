@@ -386,3 +386,47 @@
     font-size: 1.4rem;
   }
 }
+
+.probListWrap {
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  width: fit-content;
+  font-size: 25px;
+  height: fit-content;
+  z-index: 1900;
+  border-radius: 5px;
+
+  text-align: end;
+
+  .probList {
+    background-color: var(--background-second);
+    width: fit-content;
+    max-height: 80vh;
+    overflow: auto;
+    font-size: 14px;
+    text-align: start;
+    padding: 0 10px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    .probListRow {
+      display: flex;
+      width: 30vw;
+
+      .probListText {
+        width: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        // max-width: 200px;
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+
+}
