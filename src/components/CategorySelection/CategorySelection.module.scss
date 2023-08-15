@@ -189,8 +189,15 @@
             width: 100%;
             font-size: 20px;
             border-radius: 10px;
-
-
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 800;
+            color: lightblue;
+            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
         }
 
         .listBody {
@@ -256,10 +263,10 @@
             }
         }
 
-        span {
-            margin: auto;
-            color: white;
-        }
+        // span {
+        //     margin: auto;
+        //     color: white;
+        // }
 
         .list-btns {
             display: none;
@@ -299,7 +306,9 @@
             text-align: center;
             // display: flex;
             // justify-content: space-between;
-
+            font-weight: 800;
+            color: lightblue;
+            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
 
 
 

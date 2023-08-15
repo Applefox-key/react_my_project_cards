@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { usePopup } from "../../hooks/usePopup";
 import { favorite, share } from "../../utils/contentRequests";
 import CollectionRowBtns from "./CollectionRowBtns";
+import { FiFolder } from "react-icons/fi";
 
 const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
   const [categories, setCategories] = useState([]);
@@ -108,6 +109,7 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
           {filtredList().map((el) => (
             <div key={el.id} className={cl["list-wrap"]}>
               <div className={cl.listHeader} onClick={() => categoryFilter(el)}>
+                <FiFolder className="mt-2" />
                 {el.name.toUpperCase()}
               </div>
               <div className={cl.listBody}>

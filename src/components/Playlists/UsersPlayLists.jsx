@@ -118,7 +118,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                     <PlaylistBtns el={el} listFn={listFn} />{" "}
                     {!!el.collections.length && (
                       <div className={"playlist"}>
-                        play
+                        {/* <span>play</span> */}
                         <PlayMenu
                           collection={{ id: el.id, name: el.name }}
                           playlist={true}

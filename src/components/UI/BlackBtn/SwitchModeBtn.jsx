@@ -28,7 +28,7 @@ const SwitchModeBtn = ({ ...props }) => {
             timeout={200}
             classNames={"endl"}>
             <Button
-              className="position-relative"
+              className={cl.btnGame}
               size="lg"
               variant="dark"
               onClick={change}

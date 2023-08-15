@@ -42,13 +42,15 @@ const PlayMenu = ({ collection, playlist = false, verticals = false }) => {
   };
   return (
     <div
-      className={"playMenubtn"}
+      // className={"playMenubtn"}
+      className={verticals ? "playMenubtn-vert" : "playMenubtn"}
       onClick={(e) => {
         e.stopPropagation();
         setShowmenu(!showmenu);
       }}>
       <p>PLAY</p>
-      <div className={verticals ? "play-menu play-vert" : "play-menu"}>
+      {/* <div className={verticals ? "play-menu play-vert" : "play-menu"}> */}
+      <div className={"play-menu"}>
         {gameMenu.map((item, i) => menuEl(item, i))}
       </div>{" "}
     </div>

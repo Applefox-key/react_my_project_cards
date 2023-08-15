@@ -11,7 +11,7 @@ const SwitchEndlessBtn = ({ endless, setEndless }) => {
         <SwitchTransition>
           <CSSTransition key={endless} timeout={200} classNames={"endl"}>
             <Button
-              className="position-relative ms-1 me-1"
+              className={cl.btnGame}
               size="lg"
               variant="dark"
               onClick={() => setEndless(!endless)}

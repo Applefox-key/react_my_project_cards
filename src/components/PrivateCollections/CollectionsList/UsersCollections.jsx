@@ -42,18 +42,18 @@ const UsersCollections = ({
     shareColl: async (element) => {
       try {
         await share(element, setPopup);
+        let res = privateSettings.shared
+          ? collectionList.filter((elem) => elem.collection.id !== element.id)
+          : collectionList.map((elem) => {
+              if (elem.collection.id !== element.id) return elem;
+              let nec = {
+                ...elem.collection,
+                isPublic: !elem.collection.isPublic,
+              };
 
-        setCollectionList(
-          collectionList.map((elem) => {
-            if (elem.collection.id !== element.id) return elem;
-            let nec = {
-              ...elem.collection,
-              isPublic: !elem.collection.isPublic,
-            };
-
-            return { ...elem, collection: nec };
-          })
-        );
+              return { ...elem, collection: nec };
+            });
+        setCollectionList(res);
       } catch (error) {
         setPopup.error("something goes wrong");
       }
@@ -61,15 +61,19 @@ const UsersCollections = ({
     favoriteColl: async (element) => {
       try {
         await favorite(element, setPopup);
-        let res = collectionList.map((elem) => {
-          if (elem.collection.id !== element.id) return elem;
-          let nec = {
-            ...elem.collection,
-            isFavorite: !elem.collection.isFavorite,
-          };
 
-          return { ...elem, collection: nec };
-        });
+        let res = privateSettings.favorite
+          ? collectionList.filter((elem) => elem.collection.id !== element.id)
+          : collectionList.map((elem) => {
+              if (elem.collection.id !== element.id) return elem;
+
+              let nec = {
+                ...elem.collection,
+                isFavorite: !elem.collection.isFavorite,
+              };
+
+              return { ...elem, collection: nec };
+            });
 
         setCollectionList(res);
       } catch (error) {

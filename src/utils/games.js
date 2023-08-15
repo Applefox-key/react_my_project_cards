@@ -93,28 +93,33 @@ export const formatContentParts = (arr, mode) => {
 export const gameMenuArr = (pageParam, isPublic = false, playlist = false) => {
   let urlPart = playlist ? "pl" : isPublic ? "pub" : "my";
   return [
+    // {
+    //   name: "Cards",
+    //   symb: "⏹️",
+    //   type: "menu",
+    //   items: [
+    //     {
+    //       type: "item",
+    //       name: "Cards: question - answer",
+    //       symb: "❓",
+    //       href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+    //     },
+    //     {
+    //       type: "item",
+    //       name: " Cards: answer - question",
+    //       symb: "❗",
+    //       // symb: "⸘",
+    //       href: `/play_cards/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
+    //     },
+    //   ],
+    // },
     {
-      name: "Cards",
+      type: "item",
+      name: "Cards: gallery",
       symb: "⏹️",
-      type: "menu",
-      items: [
-        {
-          type: "item",
-          name: "Cards: question - answer",
-          symb: "❓",
-          href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-        },
-        {
-          type: "item",
-          name: " Cards: answer - question",
-          symb: "❗",
-          // symb: "⸘",
-          href: `/play_cards/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
-        },
-      ],
+      href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
     },
 
-    { type: "Divider", name: "Divider", symb: "|", href: "" },
     {
       type: "item",
       name: "Cards: time",
@@ -129,66 +134,26 @@ export const gameMenuArr = (pageParam, isPublic = false, playlist = false) => {
       href: `/play_pairs/${urlPart}/${pageParam.id}/${pageParam.name}`,
     }, //🎏
     { type: "Divider", name: "Divider", symb: "|", href: "" },
+
     {
+      type: "item",
       name: "Test",
       symb: "🔠",
-      type: "menu",
-      items: [
-        {
-          type: "item",
-          name: "Find the right answer",
-          symb: "❗",
-          href: `/play_test/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-        },
-        {
-          type: "item",
-          name: "Find the right question",
-          symb: "❓",
-          href: `/play_test/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
-        },
-      ],
-    }, //🖍️
-    { type: "Divider", name: "Divider", symb: "|", href: "" },
+      href: `/play_test/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
+    },
+
     {
+      type: "item",
       name: "Write...",
       symb: "🖋️",
-      type: "menu",
-      items: [
-        {
-          type: "item",
-          name: "Write the right answer",
-          symb: "❗",
-          href: `/play_write/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-        },
-
-        {
-          type: "item",
-          name: "Write the right question",
-          symb: "❓",
-          href: `/play_write/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
-        },
-      ],
+      href: `/play_write/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
     },
-    { type: "Divider", name: "Divider", symb: "|", href: "" },
+
     {
+      type: "item",
       name: "Parts...",
       symb: "🧩",
-      type: "menu",
-      items: [
-        {
-          type: "item",
-          name: "Parts from answer",
-          symb: "❗",
-          href: `/play_parts/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-        },
-
-        {
-          type: "item",
-          name: "Parts from question",
-          symb: "❓",
-          href: `/play_parts/${urlPart}/1/${pageParam.id}/${pageParam.name}`,
-        },
-      ],
+      href: `/play_parts/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
     },
   ];
 };

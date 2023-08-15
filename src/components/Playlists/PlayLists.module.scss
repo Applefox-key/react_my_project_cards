@@ -1,5 +1,6 @@
 .wrapCard {
     display: flex;
+    flex-wrap: wrap;
 
     @media screen and (max-width:900px) {
         flex-wrap: wrap;
@@ -9,6 +10,7 @@
         background-color: var(--background-wrap);
         margin: 20px;
         width: 260px;
+        min-width: 260px;
         height: 307px;
         position: relative;
         padding: 10px;
@@ -34,6 +36,7 @@
             width: 3rem;
             height: 3rem;
 
+
             &:hover {
                 scale: 1.2;
             }
@@ -44,7 +47,12 @@
             width: 100%;
             font-size: 20px;
             border-radius: 10px;
-
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 800;
+            color: lightblue;
+            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
 
         }
 
@@ -73,6 +81,11 @@
                     border: none;
                     transition: all 0.4s ease-in-out;
 
+                    @media screen and (max-width:900px) {
+                        position: relative;
+                        right: 45px;
+                    }
+
                     button {
                         border: none;
                     }
@@ -89,10 +102,13 @@
         }
 
         .list-btns {
+            margin: auto;
             display: none;
             transition: all 0.4s ease-in-out;
             justify-content: space-between;
-            padding-right: 5px;
+            padding: 0 5px;
+
+
 
             @media screen and (max-width:900px) {
                 display: flex;
@@ -101,13 +117,15 @@
             button {
                 border: none;
                 box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-                width: 3rem;
-                height: 3rem;
+                width: 2.8rem;
+                height: 2.8rem;
                 font-size: 16px;
                 margin-top: 1px;
                 border-radius: 5px;
                 cursor: pointer;
                 background-color: var(--background-first);
+                box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+                border-radius: 50%;
 
                 &:hover {
                     background-color: var(--background-second);
@@ -142,7 +160,7 @@
             transform: translateY(-5px);
 
             .list-btns {
-                display: flex;
+                display: block;
             }
         }
 
@@ -153,9 +171,10 @@
 .wrapTbl {
     .onePlaylist-wrap {
         background-color: var(--background-wrap);
-        margin: 20px;
+        margin: 5px;
         width: 98%;
-        height: fit-content;
+        // height: fit-content;
+        height: 12rem;
         position: relative;
         padding: 10px;
         border-radius: 10px;
@@ -165,6 +184,12 @@
         justify-content: space-between;
         overflow: hidden;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+        @media screen and (max-width:900px) {
+            flex-direction: column-reverse;
+            width: 100%;
+            height: 16rem;
+        }
 
         button {
             height: 2.5rem;
@@ -190,6 +215,16 @@
             font-size: 20px;
             border-radius: 10px 10px 0 0;
             height: -webkit-fill-available;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+
+            font-weight: 800;
+            color: lightblue;
+            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
+
+
         }
 
         .listBody {
@@ -198,9 +233,14 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            height: 70%;
+            height: 100%;
             overflow: auto;
             box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+            @media screen and (max-width:900px) {
+                width: 100%;
+                border-radius: 10px;
+            }
 
             .listItem {
                 width: 100%;
@@ -237,7 +277,7 @@
             flex-direction: column;
 
             @media screen and (max-width:900px) {
-                width: 30%;
+                width: 100%;
             }
         }
 
@@ -250,7 +290,7 @@
             align-items: flex-end;
 
             @media screen and (max-width:900px) {
-                display: flex;
+                // display: flex;
                 width: 100%;
             }
 
@@ -263,6 +303,13 @@
                 // background-color: var(--background-second);
                 border: none;
                 box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+                @media screen and (max-width:900px) {
+                    width: 2rem;
+                    height: 2rem;
+                    font-size: 10px;
+
+                }
 
                 &:hover {
                     background-color: var(--background-second);
