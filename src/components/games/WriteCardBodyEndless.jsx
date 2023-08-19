@@ -52,8 +52,9 @@ const WriteCardBodyEndless = ({ items }) => {
       let [newNum, newArr] = recount(res, allItems, num);
       el.classList.remove("rightBack", "wrongBack");
       setAnswer("");
+      if (res) setNum(newNum);
       setAllItems(newArr);
-      setNum(newNum);
+      // setNum(newNum);
       setShowAnim(!anim);
     } else {
       let ra = onlyLetters(

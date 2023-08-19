@@ -32,8 +32,8 @@ const TestBodyEndless = ({ items }) => {
       setRight(id);
       setTimeout(() => {
         setRight("");
+        if (!active.length) setNum(newNum);
         setActive([]);
-        setNum(newNum);
         setAnim(1 - anim);
       }, 300);
     } else {

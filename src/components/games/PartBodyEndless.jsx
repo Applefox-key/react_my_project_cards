@@ -42,12 +42,13 @@ const PartBodyEndless = ({ items }) => {
     //right answer
     if (answ.length === nV.length) {
       let [newNum, newArr] = recount(noMistake, allItems, num);
+
       setAllItems(newArr);
       setTimeout(() => {
         setActiveVAL([]);
         setActiveIDs([]);
+        if (noMistake) setNum(newNum);
         setNoMistake(true);
-        setNum(newNum);
         setAnim(1 - anim);
       }, 500);
     }
