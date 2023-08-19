@@ -2,7 +2,7 @@
 import { shuffle } from "./arraysFunc";
 
 //update probability of the element and get new random num based on the probabilities
-export const recount = (isRight, arr, num) => {
+export const recount = (isRight, arr, num, shuffleField = "") => {
   const delta = isRight ? -1 : 1;
   //find total SUM and form new array with new propability
   let totalSum = 0;
@@ -13,6 +13,15 @@ export const recount = (isRight, arr, num) => {
         20
       );
       totalSum += newProbability;
+
+      if (shuffleField && isRight) {
+        let shuffeled = shuffle([...item[shuffleField]]);
+        return {
+          ...item,
+          [shuffleField]: shuffeled,
+          probability: newProbability,
+        };
+      }
       return { ...item, probability: newProbability };
     }
     totalSum += item.probability;
@@ -78,6 +87,7 @@ export const formatContentParts = (arr, mode) => {
     if (spaceCount < 2) {
       let a = [...parts];
       let answ = shuffle(a);
+
       return { item: el, parts: answ, answ: [...parts] };
     }
     if (spaceCount < 10) {

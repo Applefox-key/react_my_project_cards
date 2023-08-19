@@ -41,8 +41,7 @@ const PartBodyEndless = ({ items }) => {
     }
     //right answer
     if (answ.length === nV.length) {
-      let [newNum, newArr] = recount(noMistake, allItems, num);
-
+      let [newNum, newArr] = recount(noMistake, allItems, num, "parts");
       setAllItems(newArr);
       setTimeout(() => {
         setActiveVAL([]);
@@ -77,19 +76,21 @@ const PartBodyEndless = ({ items }) => {
           key={anim}
           classNames="cardChange">
           <div className={cl["game-field"]}>
-            <div className="d-flex flex-column">
-              <Balancer
-                current={
-                  allItems[num].probability === 1
-                    ? 100
-                    : 100 - allItems[num].probability * 5
-                }
-              />
-              <OneCardG
-                direction={true}
-                item={allItems[num].item}
-                clickable={false}
-              />{" "}
+            <div className={cl.topEndlessParts}>
+              <div className="d-flex flex-column">
+                <Balancer
+                  current={
+                    allItems[num].probability === 1
+                      ? 100
+                      : 100 - allItems[num].probability * 5
+                  }
+                />
+                <OneCardG
+                  direction={true}
+                  item={allItems[num].item}
+                  clickable={false}
+                />{" "}
+              </div>
               <PartAnswer
                 item={allItems[num]}
                 onClick={undo}

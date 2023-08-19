@@ -117,7 +117,7 @@ const WriteCardBody = ({ items, setItems }) => {
                 onChange={(e) => {
                   setAnswer(e.target.value);
                 }}
-              />{" "}
+              />
             </div>
           </div>
         </CSSTransition>

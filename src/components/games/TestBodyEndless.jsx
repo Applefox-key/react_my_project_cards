@@ -26,7 +26,7 @@ const TestBodyEndless = ({ items }) => {
     let res = testAnswerCheck(num, id, allItems);
 
     let [newNum, newArr] = recount(res, allItems, num);
-    setAllItems(newArr);
+
     //right answer
     if (res) {
       setRight(id);
@@ -42,6 +42,7 @@ const TestBodyEndless = ({ items }) => {
       na.push(id);
       setActive(na);
     }
+    setAllItems(newArr);
   };
 
   return (

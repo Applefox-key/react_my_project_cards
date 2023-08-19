@@ -74,18 +74,21 @@ const WriteCardBodyEndless = ({ items }) => {
       <ProbabilityList arr={allItems} />
       <CSSTransition appear={true} in={true} timeout={500} classNames="result">
         <div className={cl["game-field"]}>
-          <div className="d-flex flex-column">
-            <Balancer current={valProgress()} key={num} />
-            <div className={cl.cardSize}>
-              <OneCardG
-                anim={anim}
-                item={allItems[num]}
-                flip={flip}
-                clickable={false}
-              />
+          {" "}
+          <div className={cl.topEndless}>
+            <div className="d-flex flex-column">
+              <Balancer current={valProgress()} key={num} />
+              <div className={cl.cardSize}>
+                <OneCardG
+                  anim={anim}
+                  item={allItems[num]}
+                  flip={flip}
+                  clickable={false}
+                />
+              </div>
             </div>
-            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
-              <div className="d-flex flex-column">
+            <div className={cl.writeEndless}>
+              <div className={cl.writeBtns}>
                 <Button onClick={check} size="lg" disabled={!answer}>
                   {flip ? "NEXT" : "CHECK AN ANSWER"}
                 </Button>{" "}
