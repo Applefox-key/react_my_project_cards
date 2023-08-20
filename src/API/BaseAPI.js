@@ -341,7 +341,11 @@ const BaseAPI = {
     if (result.error) throw new Error(result.error);
     return result.data;
   },
-
+  async getGameResults(listid, game = "") {
+    let reqData = { listid: listid };
+    if (game) reqData.game = game;
+    return await this.serverReq("POST", "/gamesresult/get", true, reqData, "");
+  },
   //pbcollection's list/ or one by id
   async getPublicCollections(colId) {
     let result = colId
@@ -433,6 +437,10 @@ const BaseAPI = {
     let result = await this.serverReq("post", "/resetpassword", false, reqData);
     if (result.error) throw new Error(result.error);
     return { status: true };
+  },
+  async saveGameResults(tempRes) {
+    let reqData = { newProb: tempRes };
+    return await this.serverReq("post", "/gamesresult", true, reqData, "");
   },
   async CheckResetToken(resetToken) {
     let reqParams = { resetToken: resetToken };

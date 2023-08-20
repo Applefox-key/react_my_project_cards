@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import TestOptions from "./TestOptions";
 import cl from "./Games.module.scss";
@@ -8,15 +8,12 @@ import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
 import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
+import { addProbabilities, saveTempResults } from "../../utils/gamesResults";
 
 const TestBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);
   const [anim, setAnim] = useState(0);
-  const [allItems, setAllItems] = useState(
-    items.map((el) => {
-      return { ...el, probability: 10 };
-    })
-  );
+  const [allItems, setAllItems] = useState([]);
   const [active, setActive] = useState([]);
   const [right, setRight] = useState();
   const mode = useParams().mode;
@@ -35,6 +32,7 @@ const TestBodyEndless = ({ items }) => {
         if (!active.length) setNum(newNum);
         setActive([]);
         setAnim(1 - anim);
+        saveTempResults(newArr[num], "test", mode);
       }, 300);
     } else {
       //wrong answer
@@ -45,6 +43,10 @@ const TestBodyEndless = ({ items }) => {
     setAllItems(newArr);
   };
 
+  useEffect(() => {
+    addProbabilities(items, "test", mode, setAllItems);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <div>

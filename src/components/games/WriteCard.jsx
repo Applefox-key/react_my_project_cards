@@ -9,6 +9,8 @@ import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import WriteCardBodyEndless from "./WriteCardBodyEndless";
 import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
+import { saveResults } from "../../utils/gamesResults";
+import { useParams } from "react-router-dom";
 
 const WriteCard = () => {
   const [items, setItems] = useState();
@@ -16,10 +18,25 @@ const WriteCard = () => {
   const [endless, setEndless] = useState(false);
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useGame(setItems, shuffle);
+  const mode = useParams().mode;
   const changeItems = (newVal) => {
     setItems([...newVal]);
     setKey(Date.now());
   };
+
+  useEffect(() => {
+    if (!endless) return;
+    return () => {
+      saveResults("write");
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    };
+  }, [endless]);
+
+  useEffect(() => {
+    if (!endless) return;
+    saveResults("write");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode]);
 
   useEffect(() => {
     getContent();

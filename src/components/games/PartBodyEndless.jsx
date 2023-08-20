@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import cl from "./Games.module.scss";
 import Hint from "./Hint";
@@ -8,6 +8,8 @@ import PartAnswer from "./PartAnswer";
 import { recount } from "../../utils/games";
 import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
+import { addProbabilities, saveTempResults } from "../../utils/gamesResults";
+import { useParams } from "react-router-dom";
 
 const PartBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);
@@ -15,11 +17,8 @@ const PartBodyEndless = ({ items }) => {
   const [activeVAL, setActiveVAL] = useState([]);
   const [noMistake, setNoMistake] = useState(true);
   const [anim, setAnim] = useState(0);
-  const [allItems, setAllItems] = useState(
-    items.map((el) => {
-      return { ...el, probability: 10 };
-    })
-  );
+  const [allItems, setAllItems] = useState([]);
+  const mode = useParams().mode;
 
   const clickPart = (e, answ) => {
     let id = e.target.id;
@@ -43,6 +42,7 @@ const PartBodyEndless = ({ items }) => {
     if (answ.length === nV.length) {
       let [newNum, newArr] = recount(noMistake, allItems, num, "parts");
       setAllItems(newArr);
+      saveTempResults(newArr[num], "parts", mode);
       setTimeout(() => {
         setActiveVAL([]);
         setActiveIDs([]);
@@ -61,57 +61,70 @@ const PartBodyEndless = ({ items }) => {
     setActiveVAL(nr);
     setActiveIDs(na);
   };
+
+  useEffect(() => {
+    addProbabilities(items, "parts", mode, setAllItems);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div>
-      {allItems[num].item.note ? (
-        <Hint text={allItems[num].item.note} />
-      ) : (
-        <></>
-      )}
-      <ProbabilityList arr={allItems} />
-      <SwitchTransition mode="out-in">
-        <CSSTransition
-          appear={false}
-          timeout={500}
-          key={anim}
-          classNames="cardChange">
-          <div className={cl["game-field"]}>
-            <div className={cl.topEndlessParts}>
-              <div className="d-flex flex-column">
-                <Balancer
-                  current={
-                    allItems[num].probability === 1
-                      ? 100
-                      : 100 - allItems[num].probability * 5
-                  }
-                />
-                <OneCardG
-                  direction={true}
-                  item={allItems[num].item}
-                  clickable={false}
-                />{" "}
+    <>
+      {!!allItems.length && (
+        <div>
+          {allItems[num].item.note ? (
+            <Hint text={allItems[num].item.note} />
+          ) : (
+            <></>
+          )}
+          <ProbabilityList arr={allItems} />
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              appear={false}
+              timeout={500}
+              key={anim}
+              classNames="cardChange">
+              <div className={cl["game-field"]}>
+                <div className={cl.topEndlessParts}>
+                  <div className="d-flex flex-column">
+                    <OneCardG
+                      direction={true}
+                      item={allItems[num].item}
+                      clickable={false}
+                      clgal={cl.container_galleryEndless}
+                    />{" "}
+                  </div>{" "}
+                  <Balancer
+                    current={
+                      allItems[num].probability === 1
+                        ? 100
+                        : 100 - allItems[num].probability * 5
+                    }
+                  />
+                  <div className="d-flex flex-column">
+                    <Parts
+                      items={allItems[num].parts}
+                      onClick={(e) => clickPart(e, allItems[num].answ)}
+                      active={activeIDs}
+                      lastOk={
+                        allItems[num].answ[activeIDs.length - 1] ===
+                        activeVAL[activeIDs.length - 1]
+                          ? ""
+                          : activeIDs[activeIDs.length - 1]
+                      }
+                    />
+                    <PartAnswer
+                      item={allItems[num]}
+                      onClick={undo}
+                      activeVAL={activeVAL}
+                    />
+                  </div>
+                </div>
               </div>
-              <PartAnswer
-                item={allItems[num]}
-                onClick={undo}
-                activeVAL={activeVAL}
-              />
-              <Parts
-                items={allItems[num].parts}
-                onClick={(e) => clickPart(e, allItems[num].answ)}
-                active={activeIDs}
-                lastOk={
-                  allItems[num].answ[activeIDs.length - 1] ===
-                  activeVAL[activeIDs.length - 1]
-                    ? ""
-                    : activeIDs[activeIDs.length - 1]
-                }
-              />
-            </div>
-          </div>
-        </CSSTransition>
-      </SwitchTransition>
-    </div>
+            </CSSTransition>
+          </SwitchTransition>
+        </div>
+      )}
+    </>
   );
 };
 

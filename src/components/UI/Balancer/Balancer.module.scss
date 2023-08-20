@@ -11,7 +11,7 @@
 
     @media screen and (min-width: 800px) and (max-height: 391px) {
         width: 40rem;
-
+        margin-top: 0.5rem;
         // max-height: 20rem;
 
     }
@@ -19,13 +19,13 @@
     @media screen and (max-width: 600px) and (min-height: 600px) {
         width: 30rem;
         // max-height: 45rem;
-
+        margin-top: 0.5rem;
     }
 
     @media screen and (min-width: 600px) and (max-height: 600px) {
         max-width: 80vw;
         // max-height: 90vh;
-
+        margin-top: 0.5rem;
     }
 
     @media screen and (max-width: 300px) and (min-height: 600px) {
@@ -71,6 +71,10 @@
     left: 49%;
     color: var(--contrast-text);
 
+    @media screen and (max-width: 900px) {
+        display: none;
+
+    }
 }
 
 .balancer-left {

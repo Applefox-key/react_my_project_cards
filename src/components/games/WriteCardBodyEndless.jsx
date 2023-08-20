@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import OneCardG from "./OneCardG";
 import cl from "./Games.module.scss";
@@ -10,15 +10,12 @@ import Hint from "./Hint";
 import { recount } from "../../utils/games";
 import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
+import { addProbabilities, saveTempResults } from "../../utils/gamesResults";
 
 const WriteCardBodyEndless = ({ items }) => {
   const [answer, setAnswer] = useState("");
   const [num, setNum] = useState(0);
-  const [allItems, setAllItems] = useState(
-    items.map((el) => {
-      return { ...el, probability: 10 };
-    })
-  );
+  const [allItems, setAllItems] = useState([]);
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);
   const mode = useParams().mode;
@@ -39,12 +36,14 @@ const WriteCardBodyEndless = ({ items }) => {
     let res = document
       .getElementById("answerArea")
       .className.includes("rightBack");
+
     let newProb = Math.min(
       Math.max(allItems[num].probability + (res ? -1 : 1), 0),
       20
     );
     return 100 - newProb * 5;
   };
+
   const check = () => {
     if (flip) {
       let el = document.getElementById("answerArea");
@@ -52,7 +51,10 @@ const WriteCardBodyEndless = ({ items }) => {
       let [newNum, newArr] = recount(res, allItems, num);
       el.classList.remove("rightBack", "wrongBack");
       setAnswer("");
-      if (res) setNum(newNum);
+      if (res) {
+        setNum(newNum);
+      }
+      saveTempResults(newArr[num], "write", mode);
       setAllItems(newArr);
       // setNum(newNum);
       setShowAnim(!anim);
@@ -67,58 +69,69 @@ const WriteCardBodyEndless = ({ items }) => {
     }
     setFlip(!flip);
   };
+  useEffect(() => {
+    addProbabilities(items, "write", mode, setAllItems); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className={cl.cardSize}>
-      {allItems[num].note ? <Hint text={allItems[num].note} /> : <></>}
-      <ProbabilityList arr={allItems} />
-      <CSSTransition appear={true} in={true} timeout={500} classNames="result">
-        <div className={cl["game-field"]}>
-          {" "}
-          <div className={cl.topEndless}>
-            <div className="d-flex flex-column">
-              <Balancer current={valProgress()} key={num} />
-              <div className={cl.cardSize}>
-                <OneCardG
-                  anim={anim}
-                  item={allItems[num]}
-                  flip={flip}
-                  clickable={false}
-                />
+    <div>
+      {!!allItems.length && (
+        <div className={cl.cardSize}>
+          {allItems[num].note ? <Hint text={allItems[num].note} /> : <></>}
+          <ProbabilityList arr={allItems} />
+          <CSSTransition
+            appear={true}
+            in={true}
+            timeout={500}
+            classNames="result">
+            <div className={cl["game-field"]}>
+              {" "}
+              <div className={cl.topEndless}>
+                <div className="d-flex flex-column">
+                  <Balancer current={valProgress()} key={num} />
+                  <div className={cl.cardSize}>
+                    <OneCardG
+                      anim={anim}
+                      item={allItems[num]}
+                      flip={flip}
+                      clickable={false}
+                    />
+                  </div>
+                </div>
+                <div className={cl.writeEndless}>
+                  <div className={cl.writeBtns}>
+                    <Button onClick={check} size="lg" disabled={!answer}>
+                      {flip ? "NEXT" : "CHECK AN ANSWER"}
+                    </Button>{" "}
+                    <button
+                      onClick={hintT}
+                      size="lg"
+                      disabled={flip}
+                      className={cl.writeHint}>
+                      SHOW THE NEXT LETTER
+                    </button>
+                  </div>
+                  <textarea
+                    type={"text"}
+                    id="answerArea"
+                    value={answer}
+                    className={cl.writeAnswer}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        check();
+                      }
+                    }}
+                    onChange={(e) => {
+                      setAnswer(e.target.value);
+                    }}
+                  />{" "}
+                </div>{" "}
               </div>
             </div>
-            <div className={cl.writeEndless}>
-              <div className={cl.writeBtns}>
-                <Button onClick={check} size="lg" disabled={!answer}>
-                  {flip ? "NEXT" : "CHECK AN ANSWER"}
-                </Button>{" "}
-                <button
-                  onClick={hintT}
-                  size="lg"
-                  disabled={flip}
-                  className={cl.writeHint}>
-                  SHOW THE NEXT LETTER
-                </button>
-              </div>
-              <textarea
-                type={"text"}
-                id="answerArea"
-                value={answer}
-                className={cl.writeAnswer}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    check();
-                  }
-                }}
-                onChange={(e) => {
-                  setAnswer(e.target.value);
-                }}
-              />{" "}
-            </div>{" "}
-          </div>
+          </CSSTransition>
         </div>
-      </CSSTransition>
+      )}
     </div>
   );
 };

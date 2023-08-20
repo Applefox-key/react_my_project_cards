@@ -84,11 +84,6 @@ const PartBody = ({ items, setItems }) => {
                   item={items[num].item}
                   clickable={false}
                 />{" "}
-                <PartAnswer
-                  item={items[num]}
-                  onClick={undo}
-                  activeVAL={activeVAL}
-                />
                 <Parts
                   items={items[num].parts}
                   onClick={(e) => clickPart(e, items[num].answ)}
@@ -99,6 +94,11 @@ const PartBody = ({ items, setItems }) => {
                       ? ""
                       : activeIDs[activeIDs.length - 1]
                   }
+                />{" "}
+                <PartAnswer
+                  item={items[num]}
+                  onClick={undo}
+                  activeVAL={activeVAL}
                 />
               </div>
             </CSSTransition>

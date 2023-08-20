@@ -83,7 +83,7 @@ const WriteCardBody = ({ items, setItems }) => {
                 clickable={false}
               />{" "}
             </div>
-            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative">
+            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative mt-5">
               <div className="d-flex flex-column">
                 {!isResult && (
                   <GameCount

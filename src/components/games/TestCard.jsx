@@ -10,13 +10,15 @@ import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
 import TestBodyEndless from "./TestBodyEndless";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
+import { saveResults } from "../../utils/gamesResults";
+import { useParams } from "react-router-dom";
 
 const TestCard = () => {
   const setPopup = usePopup();
   const [items, setItems] = useState();
   const [endless, setEndless] = useState(false);
   const [key, setKey] = useState(Date.now());
-
+  const mode = useParams().mode;
   const contentParts = (arr) => {
     shuffle(arr);
     let res = arr.map((el, i) => {
@@ -29,22 +31,36 @@ const TestCard = () => {
     });
     return res;
   };
+
   const changeItems = (newVal) => {
     setItems([...newVal]);
     setKey(Date.now());
   };
   const [getContent, isLoading, error] = useGame(setItems, contentParts);
-  // useEffect(() => {
-  //   getContent();
-  //   if (error) setPopup.error(error);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+
+  useEffect(() => {
+    if (!endless) return;
+    return () => {
+      saveResults("test");
+    }; // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endless]);
+
+  useEffect(
+    () => {
+      if (!endless) return;
+      saveResults("test");
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    [mode]
+  );
+
   useEffect(() => {
     getContent();
     setKey(Date.now());
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname, window.location.hash]);
+  console.log(endless);
+
   return (
     <div>
       <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />

@@ -10,6 +10,7 @@ import { formatContentParts } from "../../utils/games";
 import PartBodyEndless from "./PartBodyEndless";
 import SwitchEndlessBtn from "../UI/BlackBtn/SwitchEndlessBtn";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
+import { saveResults } from "../../utils/gamesResults";
 
 const PartCard = () => {
   const setPopup = usePopup();
@@ -26,11 +27,22 @@ const PartCard = () => {
     setKey(Date.now());
   };
   useEffect(() => {
-    getContent();
-    if (error) setPopup.error(error);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (!endless) return;
+    return () => {
+      console.log("leave...send results to the server");
+      saveResults("parts");
+    }; // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endless]);
+  useEffect(
+    () => {
+      if (!endless) return;
+      console.log("mode...send results to the server");
+      saveResults("parts");
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    [mode]
+  );
   useEffect(() => {
+    console.log(window.location.pathname);
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps

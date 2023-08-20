@@ -34,10 +34,6 @@ const Pairs = () => {
   useEffect(() => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    getContent();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname]);
 
   const itemNote = (ids) => {
