@@ -10,7 +10,7 @@ const PlayMenu = ({ collection, playlist = false, verticals = false }) => {
     collection,
     window.location.pathname.includes("pub"),
     playlist
-  );
+  ).filter((el) => el.type !== "Divider");
 
   const menu = (item, i, clName = "oneP") => {
     return (

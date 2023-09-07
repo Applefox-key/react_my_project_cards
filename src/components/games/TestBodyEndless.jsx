@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import TestOptions from "./TestOptions";
 import cl from "./Games.module.scss";
-import { recount, testAnswerCheck } from "../../utils/games";
+import { testAnswerCheck } from "../../utils/games";
 import Hint from "./Hint";
 import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
 import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
-import { addProbabilities, saveTempResults } from "../../utils/gamesResults";
+import {
+  addProbabilities,
+  recount,
+  saveTempResults,
+} from "../../utils/gamesResults";
 
 const TestBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);

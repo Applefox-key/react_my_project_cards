@@ -141,11 +141,14 @@
   margin-right: 2rem;
 }
 
+.wordBreak {
+  word-break: break-word;
+  hyphens: auto;
+}
 
 .card-button {
   /* border: 1px solid green; */
-  word-break: break-word;
-  hyphens: auto;
+
   padding: 0;
   margin: 0;
   border: none;
@@ -237,7 +240,15 @@
     font-size: small;
     text-align: end;
     top: 0;
-    right: 10px
+    right: 10px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--background-note);
+      border-radius: 10px;
+      font-size: 3rem;
+      text-align: center;
+    }
   }
 
   .mwh {

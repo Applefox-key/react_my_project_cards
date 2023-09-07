@@ -29,20 +29,17 @@ const PartCard = () => {
   useEffect(() => {
     if (!endless) return;
     return () => {
-      console.log("leave...send results to the server");
       saveResults("parts");
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endless]);
   useEffect(
     () => {
       if (!endless) return;
-      console.log("mode...send results to the server");
       saveResults("parts");
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [mode]
   );
   useEffect(() => {
-    console.log(window.location.pathname);
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps

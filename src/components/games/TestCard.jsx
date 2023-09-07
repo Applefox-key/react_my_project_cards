@@ -59,7 +59,6 @@ const TestCard = () => {
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname, window.location.hash]);
-  console.log(endless);
 
   return (
     <div>

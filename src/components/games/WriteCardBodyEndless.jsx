@@ -7,10 +7,14 @@ import { onlyLetters } from "../../utils/texts";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
 import Hint from "./Hint";
-import { recount } from "../../utils/games";
+
 import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
-import { addProbabilities, saveTempResults } from "../../utils/gamesResults";
+import {
+  addProbabilities,
+  recount,
+  saveTempResults,
+} from "../../utils/gamesResults";
 
 const WriteCardBodyEndless = ({ items }) => {
   const [answer, setAnswer] = useState("");

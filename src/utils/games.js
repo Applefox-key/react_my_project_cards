@@ -1,44 +1,6 @@
 // import BaseAPI from "../API/BaseAPI";
 import { shuffle } from "./arraysFunc";
 
-//update probability of the element and get new random num based on the probabilities
-export const recount = (isRight, arr, num, shuffleField = "") => {
-  const delta = isRight ? -1 : 1;
-  //find total SUM and form new array with new propability
-  let totalSum = 0;
-  const newArr = arr.map((item, i) => {
-    if (i === num) {
-      const newProbability = Math.min(
-        Math.max(item.probability + delta, 1),
-        20
-      );
-      totalSum += newProbability;
-
-      if (shuffleField && isRight) {
-        let shuffeled = shuffle([...item[shuffleField]]);
-        return {
-          ...item,
-          [shuffleField]: shuffeled,
-          probability: newProbability,
-        };
-      }
-      return { ...item, probability: newProbability };
-    }
-    totalSum += item.probability;
-    return item;
-  });
-  // SUM "index"
-  // const totalSum = newArr.reduce((sum, item) => sum + item.probability, 0);
-  // rundom from 1 to totalSum
-  const randomValue = Math.floor(Math.random() * totalSum) + 1;
-  let numb = 0;
-  for (let i = 0; i < newArr.length; i++) {
-    numb += newArr[i].probability;
-    if (randomValue < numb) return [i, newArr];
-  }
-
-  return [newArr.length - 1, newArr];
-};
 export const pairAnswerCheck = (id1, id2, itemsV) => {
   let arr1 = [...itemsV[0]];
   let arr2 = [...itemsV[1]];

@@ -20,7 +20,7 @@ const MyCard = ({ item, mode = "0", flip, clc = true }) => {
           onClick={() => {
             if (clc) setFlipped(!flipped);
           }}>
-          <CSSTransition in={!flipped} timeout={1000} classNames={"cardFront"}>
+          <CSSTransition in={!flipped} timeout={1000} classNames="cardFront">
             {mainAndImg("front", mode, item, cl)}
           </CSSTransition>
           <CSSTransition in={flipped} timeout={1000} classNames="cardBack">

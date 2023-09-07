@@ -49,7 +49,7 @@ const CategorySelection = ({
     setSelected(col);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colCat, colCatPub, isPublic]);
-  // debugger;
+
   return (
     <div className="w-100">
       <Dropdown
