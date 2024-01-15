@@ -2,17 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
 import BaseAPI from "../../../API/BaseAPI";
-import TableContent from "./TableContent";
 import { usePopup } from "../../../hooks/usePopup";
 import CardContent from "./CardContent";
-import MenuOneCollection from "./MenuOneCollection";
 import "../../../styles/oneCollection.scss";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
-import SideBarSet from "../../SideBar/SideBarSet/SideBarSet";
+import OneCollectionMenu from "./OneCollectionMenu";
+import SideBarGameMenu from "../../SideBar/SideBarGameMenu";
+import CardContentList from "./CardContentList";
+import { GO_TO } from "../../../router/routes";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
   const [collect, setCollect] = useState();
+  const [sideBar, setSideBar] = useState();
   const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
   const pageParam = useParams();
   const setPopup = usePopup();
@@ -37,31 +39,33 @@ const UserOneCollection = () => {
 
   return (
     <div className="d-flex">
-      <SideBarSet
-        setContent={setContent}
-        mode={mode}
-        setMode={modeChange}
-        colObj={{
-          collection: collect,
-          content: content,
-        }}
-      />
       <div className="wrap_box tableContainer">
         {collect && (
-          <>
-            <MenuOneCollection
+          <div className="d-flex">
+            <OneCollectionMenu
               setContent={setContent}
               mode={mode}
               setMode={modeChange}
+              sideBar={sideBar}
+              setSideBar={setSideBar}
               colObj={{
                 collection: collect,
                 content: content,
               }}
-            />
-          </>
+            />{" "}
+            <p
+              className="backBtnText"
+              onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
+              My collections
+            </p>{" "}
+          </div>
         )}
-
-        <div className="m-auto">
+        <div className="m-auto d-flex">
+          {sideBar && (
+            <div className="sideBar-wide">
+              <SideBarGameMenu />
+            </div>
+          )}
           {!isLoading && content ? (
             mode === 0 ? (
               <CardContent
@@ -70,7 +74,7 @@ const UserOneCollection = () => {
                 pageParam={pageParam}
               />
             ) : (
-              <TableContent
+              <CardContentList
                 setContent={setContent}
                 content={content}
                 pageParam={pageParam}

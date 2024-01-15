@@ -23,6 +23,7 @@ const cardContent = (item, part, cl) => {
 //main card back and front
 export const mainAndImg = (side, mode, item, cl) => {
   let variant = side + mode;
+  // debugger;
   let note = item.note ? item.note.trim() : "";
   let isFlex =
     variant === "front0" || variant === "back1" ? !item.question : !item.answer;

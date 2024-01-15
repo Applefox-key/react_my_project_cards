@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
-import MyTable from "../UI/table/MyTable";
 import BaseAPI from "../../API/BaseAPI";
 import { usePopup } from "../../hooks/usePopup";
 import CardContent from "../PrivateCollections/OneCollection/CardContent";
 import MenuPublicCollection from "./MenuPublicCollection";
 import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import SideBarSet from "../SideBar/SideBarSet/SideBarSet";
+import SideBarGameMenu from "../SideBar/SideBarGameMenu";
+import { GO_TO } from "../../router/routes";
+import { BsSearch } from "react-icons/bs";
+import { onePartLittle } from "../../utils/cardFragment";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
+  const [sideBar, setSideBar] = useState();
   const [content, setContent] = useState();
   const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
   const [collection, setCollection] = useState(PageParam);
@@ -45,17 +48,27 @@ const PublicOneCollection = () => {
 
   return (
     <div className="d-flex">
-      <SideBarSet
-        collection={collection ? collection : PageParam}
-        addToMyCollection={addToMyCollection}
-      />
       {!isLoading ? (
         <div className="wrap_box width90">
+          <p
+            className="backBtnText"
+            onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
+            Public collections
+          </p>{" "}
           <MenuPublicCollection
             collection={collection ? collection : PageParam}
             setMode={modeChange}
+            addToMyCollection={addToMyCollection}
+            sideBar={sideBar}
+            setSideBar={setSideBar}
           />
-          <div className="m-auto">
+          <div className="m-auto d-flex align-items-start">
+            {" "}
+            {sideBar && (
+              <div className="sideBar-wide">
+                <SideBarGameMenu />
+              </div>
+            )}{" "}
             {content &&
               (mode === 0 ? (
                 <CardContent
@@ -64,12 +77,25 @@ const PublicOneCollection = () => {
                   pageParam={PageParam}
                 />
               ) : (
-                <MyTable
-                  classtbl="tblContent lavanderBack"
-                  onRowClick={openCard}
-                  dataArray={content}
-                  namesArray={["question", "answer", "note"]}
-                />
+                <div className="listContent-wrap">
+                  {content && (
+                    <div className="listContent">
+                      {content.map((el, i) => (
+                        <div className="one-row">
+                          <div className="btn-box">
+                            <button
+                              title="view card"
+                              onClick={() => openCard(el)}>
+                              <BsSearch />
+                            </button>
+                          </div>
+                          {onePartLittle(el, "question")}
+                          {onePartLittle(el, "answer")}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
           </div>
         </div>

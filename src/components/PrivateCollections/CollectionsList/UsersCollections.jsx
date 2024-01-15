@@ -26,7 +26,6 @@ const UsersCollections = ({
     );
   });
   const setPopup = usePopup();
-
   const listFn = {
     delColl: async (element) => {
       if (!window.confirm("Delete the collection?")) return;
@@ -92,7 +91,6 @@ const UsersCollections = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     privateSettings.isNew,
-
     commonSettings.selectedCategorymy,
     commonSettings.filter,
     privateSettings.shared,

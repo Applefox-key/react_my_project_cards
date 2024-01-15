@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import cl from "../SideBar.module.scss";
-import { useQuery } from "../../../hooks/useQuery";
-import BaseAPI from "../../../API/BaseAPI";
-import MySpinner from "../../UI/MySpinner";
-import CategoryFilter from "../../CategorySelection/CategoryFilter";
+import cl from "./SideBar.module.scss";
+import { useQuery } from "../../hooks/useQuery";
+import BaseAPI from "../../API/BaseAPI";
+import MySpinner from "../UI/MySpinner";
+import CategoryFilter from "../CategorySelection/CategoryFilter";
 import CategoryMiniMenu from "./CategoryMiniMenu";
 import { useMemo } from "react";
-import CategorySetBtn from "../../CategorySelection/CategorySetBtn";
-import { RiDeleteBin2Line } from "react-icons/ri";
+import CategorySetBtn from "../CategorySelection/CategorySetBtn";
+import { BsXCircle } from "react-icons/bs";
+import { MdFilterAltOff } from "react-icons/md";
 
-const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
+const SideBarCateg = ({ setSettingsCommon, colCat = "", colCatPub = "" }) => {
   const isPublic = window.location.pathname.includes("pub");
   const [list, setList] = useState([]);
   const [filter, setFilter] = useState("");
@@ -38,7 +39,13 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
     getList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPublic]);
-
+  const onSelect = (val) => {
+    setSettingsCommon(
+      isPublic ? "selectedCategorypub" : "selectedCategorymy",
+      val
+    );
+    // setSettingsCommon("sideBar", false);
+  };
   const deleteOne = async (element) => {
     if (!window.confirm("Delete this label?")) return;
     await BaseAPI.deleteCategory(element.id);
@@ -74,11 +81,9 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
         if (!e.relatedTarget) setIsMenu("");
       }}>
       <div className={cl["link-box"]}>
-        {" "}
-        <h3>
-          {" "}
+        <h3 className="d-flex align-items-center">
           <CategorySetBtn getList={getList} icon={true} />
-          CATEGORIES
+          Categories
         </h3>
         {!isPublic && (
           <CategoryMiniMenu
@@ -96,7 +101,8 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
           onClick={() => {
             onSelectItem();
           }}>
-          {"...show all categories ♾️"}
+          <MdFilterAltOff />
+          {" show all categories"}
         </div>
       )}
       {isLoadingCat ? (
@@ -123,13 +129,14 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
                   </div>
                   {!isPublic && (
                     <button
+                      className=""
                       title="delete label (collections will not be deleted)"
                       onClick={(e) => {
                         e.stopPropagation();
                         deleteOne(el);
                       }}>
-                      <RiDeleteBin2Line />
-                      {/* {el.id !== "all" ? "delete label" : "delete all"} */}
+                      <BsXCircle />
+                      {/* <RiDeleteBin2Line /> */}
                     </button>
                   )}
                 </div>
@@ -141,4 +148,4 @@ const SideBarList = ({ onSelect, colCat = "", colCatPub = "" }) => {
     </div>
   );
 };
-export default SideBarList;
+export default SideBarCateg;

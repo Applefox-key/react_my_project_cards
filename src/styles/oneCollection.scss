@@ -45,8 +45,41 @@
     // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+.sideBar-wrap {
+    z-index: 800;
+    position: sticky;
+    top: 6rem;
+    min-height: 100vh;
+    width: fit-content;
+    display: flex;
+    text-align: center;
+    // border: 1px solid var(--background-header);
+    // border-radius: 0 35px 35px 0;
+    background-color: var(--background-wrap);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    align-self: flex-start;
+    margin-right: 2rem;
+
+    @media screen and (max-width:900px) {
+        margin-right: 0rem;
+    }
+}
+
+.backBtnText {
+    position: absolute;
+    right: 26px;
+    z-index: 1000;
+}
+
+.collectionNoteText {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    z-index: 1000;
+}
+
 .tableContainer {
-    width: 90%;
+    // width: 90%;
     margin: auto;
 
 }
@@ -72,11 +105,11 @@
 
 .little_card_wrap {
     display: flex;
-    margin-left: 6rem;
     flex-wrap: wrap;
     font-size: small;
     justify-content: center;
     align-items: center;
+    width: fit-content;
 
     @media screen and (max-width: 600px) {
         margin-left: 0;
@@ -197,6 +230,136 @@
             height: 48px;
 
         }
+    }
+}
+
+
+.listContent-wrap {
+    width: 80%;
+    margin: auto;
+    margin-top: 1.5rem;
+    // margin-left: 1.5rem;
+
+    .listContent {
+        font-size: 12px;
+        width: 100%;
+
+
+        @media screen and (max-width: 600px) {
+            margin-left: 0;
+        }
+
+        .one-row {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 1.5em;
+            color: black;
+
+            @media screen and (max-width: 600px) {
+                position: relative;
+            }
+
+            .btn-box {
+                display: flex;
+                justify-content: center;
+                max-width: 45px;
+                margin-right: 2rem;
+
+                @media screen and (max-width: 600px) {
+                    position: absolute;
+                    top: -15px;
+                    left: -5px;
+                    background-color: var(--background-switch);
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    border-radius: 5px;
+                }
+
+            }
+
+            button {
+
+                background-color: transparent;
+                border-radius: 50%;
+                border: none;
+                font-size: 16px;
+                color: #5f6368;
+                display: none;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    transform: translateY(-5px);
+                }
+
+                @media screen and (max-width: 600px) {
+                    font-size: 11px;
+                    padding: 2px;
+                    color: white;
+
+                }
+            }
+
+            &:nth-child(even) {
+                background-color: #F7F6F6;
+            }
+
+            &:hover {
+                color: red;
+
+                button {
+                    display: block;
+                }
+
+                // background-color: red;
+            }
+
+
+
+            .onePart {
+                width: fit-content;
+                text-align: start;
+
+                @media screen and (max-width: 600px) {
+                    font-size: 10px;
+                    padding: 3px;
+                    text-wrap: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+
+            .quest {
+                margin-right: 1rem;
+                height: auto;
+                font-weight: 500;
+                background-color: transparent;
+                position: relative;
+                border-radius: 0px;
+                text-align: left;
+                margin-right: 1rem;
+                text-wrap: nowrap;
+
+                @media screen and (max-width: 600px) {
+                    // text-align: start;
+                }
+            }
+
+            .answ {
+                color: grey;
+
+                &::before {
+                    content: "/";
+                }
+            }
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 95%;
+
     }
 }
 

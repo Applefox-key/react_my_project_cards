@@ -33,7 +33,8 @@
   --background-wrap-rgb: 248, 248, 255;
   --background-wrap: #ffffff;
   --background-header: #6da4cb;
-
+  --background-header: #f7f6f6;
+  // --background-header: #005FA1;
   --background-first: #fcfbf7;
   --background-second: #ededed;
   --background-third: #add8e6;
@@ -42,6 +43,7 @@
   --color-intense: #4461F2;
   --background-note: #ed666d;
   --border-note: red;
+  --color-checked: #FF4500;
 }
 
 .contrastColor {
@@ -114,6 +116,10 @@ input {
   }
 }
 
+.position-relative {
+  position: relative;
+}
+
 .flex-standart {
   display: flex;
   justify-content: space-between;
@@ -123,6 +129,10 @@ input {
 .center-div {
   width: fit-content;
   margin: auto;
+}
+
+.w-60 {
+  width: 45%;
 }
 
 .span_wrap {
@@ -176,6 +186,14 @@ input {
 //modal
 .modal-h100 {
   height: 100%;
+
+  @media screen and (max-width: 600px) {
+    width: 90vw;
+  }
+}
+
+.modal-hfc {
+  height: fit-content;
 
   @media screen and (max-width: 600px) {
     width: 90vw;

@@ -5,15 +5,14 @@ import { useQuery } from "../../../hooks/useQuery";
 import BaseAPI from "../../../API/BaseAPI";
 import Button from "react-bootstrap/Button";
 import { getImgA, getImgQ } from "../../../utils/contentRequests";
-import { GO_TO } from "../../../router/routes";
 import { usePopup } from "../../../hooks/usePopup";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+import BackBtn from "../../UI/BlackBtn/BackBtn";
 
 const EditCard = () => {
   const [item, setItem] = useState();
   const pageParam = useParams();
   const setPopup = usePopup();
-  const router = useNavigate();
   const [getContent, ,] = useQuery(async () => {
     const content =
       pageParam.item === "new"
@@ -70,14 +69,7 @@ const EditCard = () => {
   return (
     <form className="big_card_wrap">
       <div className="menuRow">
-        <Button
-          size="lg"
-          variant="light"
-          onClick={() =>
-            router(`${GO_TO.myCollect}/${pageParam.id}/${pageParam.name}`)
-          }>
-          BACK
-        </Button>{" "}
+        <BackBtn variant="light" />
         <Button size="lg" onClick={save} variant="light">
           SAVE CHANGES
         </Button>

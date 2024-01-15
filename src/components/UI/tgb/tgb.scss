@@ -1,4 +1,5 @@
-.wrap {
+.wrap,
+.wrapS {
 
     box-sizing: border-box;
     width: 100px;
@@ -21,7 +22,10 @@
         font-size: 1rem;
     }
 
-    .left {
+
+
+    .left,
+    .leftEl {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -29,13 +33,14 @@
         box-sizing: border-box;
         width: 100%;
         background-color: var(--background-switch);
-        color: var(--background-header);
+        color: grey;
         border-radius: 10px 0 0 10px;
     }
 
 
 
-    .right {
+    .right,
+    .rightEl {
         @extend .left;
         border-radius: 0 10px 10px 0;
     }
@@ -43,7 +48,169 @@
     .choise {
         @extend .left;
         width: 48%;
+        height: 90%;
+        box-sizing: border-box;
+        position: absolute;
+        top: 5%;
+        left: 1%;
+
+        background-color: var(--background-header);
+        border-radius: 10px 0 0 10px;
+        transition: all 0.4s ease-in-out;
+        color: rgb(77, 77, 99);
+        font-weight: 600;
+        // border: outset #fde2fe;
+        border: outset white;
+        // border: 1px solid white;
+        color: var(--color-checked);
+
+    }
+
+    .l {
+        // top: 5%;
+        left: 51%;
+        border-radius: 0 10px 10px 0;
+
+        @media screen and (max-width:600px) {
+            font-size: 9px;
+        }
+
+    }
+}
+
+.wrapS {
+    height: 25px;
+    width: 90%;
+    margin: auto;
+    font-size: 1rem;
+
+}
+
+.btnBar {
+    span {
+        display: flex;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    }
+
+    .activeSpan {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        color: orangered;
+    }
+
+
+}
+
+// span {
+//     display: flex;
+//     border-radius: 5px;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100%;
+//     height: 100%;
+//     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+// }
+
+// .activeSpan {
+//     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+//     color: orangered;
+// }
+
+.viewBtn,
+.btnBar {
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    font-size: 18px;
+    color: #5f6368;
+
+    &:hover {
+        background-color: #e8eaed;
+    }
+}
+
+.viewBtn {
+    &:hover {
+        // background-color: var(--background-header);
+
+        &::before {
+            content: attr(data-title);
+            width: fit-content;
+            white-space: nowrap;
+            padding: 2px 5px;
+            background-color: var(--background-header);
+            background-color: var(--background-second);
+            opacity: 1;
+            color: black;
+            border-radius: 5px;
+            font-size: 12px;
+            position: absolute;
+            // left: 50%;
+            bottom: -1.5rem;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
+
+    }
+}
+
+.checked {
+    color: #005FA1;
+    color: #FF4500;
+
+}
+
+.wrapBox {
+    box-sizing: border-box;
+    width: 50px;
+    height: 25px;
+    background-color: #EBEBEB;
+    font-size: 1.2rem;
+    display: flex;
+    position: relative;
+    margin-right: 3rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 15px;
+
+
+
+    @media screen and (max-width: 900px) {
+        margin-right: 0px;
+        margin-top: 5px;
+        width: 50px;
+        height: 25px;
+        font-size: 1rem;
+    }
+
+    .leftPart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-sizing: border-box;
+        width: 50%;
+        background-color: #EBEBEB;
+        color: #005FA1;
+        border-radius: 10px 0 0 10px;
+    }
+
+
+
+    .rightPart {
+        @extend .leftPart;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .choise {
+        @extend .left;
+        width: 48%;
         height: 94%;
+        font-size: 1.2rem;
         box-sizing: border-box;
         position: absolute;
         top: 2%;
@@ -53,6 +220,7 @@
         border-radius: 10px 0 0 10px;
         transition: all 0.4s ease-in-out;
         color: rgb(77, 77, 99);
+        color: white;
         font-weight: 600;
         // border: outset #fde2fe;
         border: outset white;
@@ -65,6 +233,7 @@
         top: 2%;
         left: 51%;
         border-radius: 0 10px 10px 0;
+
 
     }
 }

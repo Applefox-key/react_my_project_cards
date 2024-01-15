@@ -3,7 +3,6 @@ import "../CollectionsCommon/collectionList.scss";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import MyTable from "../UI/table/MyTable";
 import cl from "./CategorySelection.module.scss";
 import { useNavigate } from "react-router-dom";
 import { usePopup } from "../../hooks/usePopup";
@@ -110,7 +109,9 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
             <div key={el.id} className={cl["list-wrap"]}>
               <div className={cl.listHeader} onClick={() => categoryFilter(el)}>
                 <FiFolder className="mt-2" />
-                {el.name.toUpperCase()}
+                <div>
+                  {el.name.toUpperCase()} <span>({el.collections.length})</span>
+                </div>
               </div>
               <div className={cl.listBody}>
                 {el.collections.map((col) => (
@@ -125,27 +126,23 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
                       col={col}
                       listFn={listFn}
                     />
-                    {/* <div className={cl["item-btns"]}></div> */}
                   </div>
                 ))}
-              </div>
-              <div className={cl.tbl}>
-                <div className={cl.listFooter}>
-                  <span>{el.collections.length}</span>{" "}
-                  <div className={cl["list-btns"]}></div>
-                </div>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="tblCollections">
-          <MyTable
-            classtbl="lavanderBack"
-            onRowClick={categoryFilter}
-            dataArray={filtredList()}
-            namesArray={["name", isPublic ? "" : "collection_count"]}
-          />{" "}
+        <div className={cl["tbl-wrap"]}>
+          {filtredList().map((el) => (
+            <div
+              key={el.id}
+              className={cl.listRow}
+              onClick={() => categoryFilter(el)}>
+              <div className={cl.rowHeader}>{el.name}</div>
+              <span>{el.collections.length}</span>
+            </div>
+          ))}
         </div>
       )}
     </>

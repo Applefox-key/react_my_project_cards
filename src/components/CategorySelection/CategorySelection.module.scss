@@ -49,7 +49,7 @@
     input {
         border: none;
         height: 3rem;
-        font-size: medium;
+        font-size: x-small;
         width: 90%;
 
         &:focus {
@@ -143,6 +143,43 @@
     color: lightslategrey;
 }
 
+.tbl-wrap {
+    text-align: left;
+    margin: auto;
+    width: max-content;
+    min-width: 50%;
+
+    .listRow {
+        display: flex;
+        cursor: pointer;
+
+        &:nth-child(even) {
+            background-color: rgb(247, 246, 246);
+        }
+
+        .rowHeader {
+            font-weight: 600;
+        }
+
+        &:hover {
+            color: red;
+
+        }
+    }
+
+    span {
+
+        background-color: transparent;
+        color: gray;
+        width: fit-content;
+        font-size: 10px;
+
+        &::before {
+            content: "/";
+        }
+    }
+}
+
 .wrapCard {
     display: flex;
     flex-wrap: wrap;
@@ -151,7 +188,8 @@
         background-color: var(--background-wrap);
         margin: 20px;
         width: 260px;
-        height: 307px;
+        min-width: 260px;
+        height: 175px;
         position: relative;
         padding: 10px;
         border-radius: 10px;
@@ -168,15 +206,16 @@
             min-width: 2.5rem;
             line-height: 1;
             border-radius: 10px;
-            margin: 0 2px;
+            // margin: 0 2px;
             transition: all 0.4s ease-in-out;
             background-color: var(--background-first);
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             // width: 3rem;
             // height: 3rem;
-            width: 2.3rem;
-            height: 2.3rem;
+            width: 2rem;
+            height: 2rem;
+            padding: 0;
 
             &:hover {
                 scale: 1.2;
@@ -185,19 +224,19 @@
         }
 
         .listHeader {
-            background-color: var(--background-header);
-            width: 100%;
-            font-size: 20px;
-            border-radius: 10px;
+
             display: flex;
             justify-content: space-between;
             padding: 0 5px;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 10px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-weight: 800;
-            color: lightblue;
-            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
+            font-weight: 500;
+
+            color: black;
         }
 
         .listBody {
@@ -207,17 +246,16 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            height: 70%;
+            height: 80%;
             overflow: auto;
 
             .listItem {
                 width: 100%;
                 background-color: var(--background-first);
-
                 padding: 1px;
                 text-align: start;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 transition: all 0.4s ease-in-out;
 
                 span {
@@ -227,14 +265,15 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    width: 90%;
+                    max-width: 85%;
+                    width: fit-content;
                 }
 
                 .item-btns {
                     display: none;
                     border: none;
                     transition: all 0.4s ease-in-out;
-                    width: 14rem;
+                    width: 10rem;
                     text-align: end;
                     background: var(--background-header);
                     height: 2.5rem;
@@ -245,15 +284,30 @@
                 }
 
                 .item-btns-static {
-                    // width: 6rem;
                     display: flex;
+                    font-size: 10px;
+                    color: GREY;
+                }
+
+                .item-btns-pb {
+                    @extend .item-btns-static;
+
                 }
 
                 &:hover {
                     background-color: var(--background-second);
+                    justify-content: space-between;
+
+                    span {
+                        color: var(--color-checked);
+                    }
 
                     .item-btns {
                         display: block;
+                    }
+
+                    span {
+                        width: 50%;
                     }
 
                     .item-btns-static {
@@ -262,11 +316,6 @@
                 }
             }
         }
-
-        // span {
-        //     margin: auto;
-        //     color: white;
-        // }
 
         .list-btns {
             display: none;
@@ -290,6 +339,7 @@
                 border-radius: 5px;
                 cursor: pointer;
                 background-color: var(--background-first);
+                color: grey;
 
                 &:hover {
                     background-color: var(--background-second);
@@ -306,9 +356,9 @@
             text-align: center;
             // display: flex;
             // justify-content: space-between;
-            font-weight: 800;
-            color: lightblue;
-            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
+            // font-weight: 800;
+            color: black;
+            // text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
 
 
 
@@ -331,6 +381,10 @@
         }
 
 
+    }
+
+    @media screen and (max-width:600px) {
+        justify-content: center;
     }
 }
 

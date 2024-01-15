@@ -1,18 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
-import { GrChapterAdd } from "react-icons/gr";
-import { TfiSharethis } from "react-icons/tfi";
-import {
-  HiOutlineShare,
-  HiOutlineHeart,
-  HiHeart,
-  HiPrinter,
-} from "react-icons/hi";
+import { HiShare } from "react-icons/hi2";
+import { HiOutlineHeart, HiHeart, HiPrinter } from "react-icons/hi";
 import { GO_TO } from "../../router/routes";
 import { usePopup } from "../../hooks/usePopup";
 import BaseAPI from "../../API/BaseAPI";
 import { FiUserCheck } from "react-icons/fi";
+import { CiShare2 } from "react-icons/ci";
+import { LuCopyPlus } from "react-icons/lu";
 
 const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
   const router = useNavigate();
@@ -47,19 +43,29 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
               let res = await BaseAPI.copySharedCollection(oneSet.collection);
               setPopup.success(res.message);
             }}>
-            <GrChapterAdd />
+            <LuCopyPlus />
           </div>
         )
       ) : (
         <>
+          {" "}
+          <div
+            className="sharebtn delbtn"
+            title="delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              listFn.delColl(oneSet.collection);
+            }}>
+            ❌
+          </div>
+          {!!oneSet.collection.isPublic && (
+            <div className="shareSymb">
+              <HiShare />
+            </div>
+          )}
           {!!oneSet.collection.isFavorite && (
             <div className="shareSymb heartSymb">
               <HiHeart />
-            </div>
-          )}
-          {!!oneSet.collection.isPublic && (
-            <div className="shareSymb">
-              <TfiSharethis />
             </div>
           )}
           <div
@@ -69,7 +75,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
               e.stopPropagation();
               listFn.shareColl(oneSet.collection);
             }}>
-            {oneSet.collection.isPublic ? <TfiSharethis /> : <HiOutlineShare />}
+            {oneSet.collection.isPublic ? <HiShare /> : <CiShare2 />}
           </div>
           <div
             className="sharebtn heartbtn"
@@ -80,15 +86,6 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
             }}>
             {oneSet.collection.isFavorite ? <HiHeart /> : <HiOutlineHeart />}
           </div>{" "}
-          <div
-            className="sharebtn delbtn"
-            title="delete"
-            onClick={(e) => {
-              e.stopPropagation();
-              listFn.delColl(oneSet.collection);
-            }}>
-            ❌
-          </div>
         </>
       )}
     </div>

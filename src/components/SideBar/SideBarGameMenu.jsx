@@ -1,7 +1,8 @@
 import React from "react";
-import cl from "../SideBar.module.scss";
-import { gameMenuArr } from "../../../utils/games";
+import cl from "./SideBar.module.scss";
+
 import { useNavigate, useParams } from "react-router-dom";
+import { gameMenuArr } from "../../utils/games";
 
 const SideBarGameMenu = () => {
   const pageParam = useParams();

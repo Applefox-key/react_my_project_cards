@@ -4,6 +4,12 @@
 
     @media screen and (max-width:900px) {
         flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .firstRow {
+        display: flex;
+        align-items: center;
     }
 
     .onePlaylist-wrap {
@@ -11,7 +17,7 @@
         margin: 20px;
         width: 260px;
         min-width: 260px;
-        height: 307px;
+        height: 207px;
         position: relative;
         padding: 10px;
         border-radius: 10px;
@@ -23,36 +29,81 @@
         justify-content: space-between;
         overflow: hidden;
 
-        button {
-            height: 2.5rem;
-            min-width: 2.5rem;
-            line-height: 1;
-            border-radius: 10px;
-            margin: 0 2px;
-            transition: all 0.4s ease-in-out;
-            background-color: var(--background-first);
+
+
+        .btn {
+            padding: 5px;
+            font-size: 15px;
+            border: none;
             cursor: pointer;
-            font-size: 16px;
-            width: 3rem;
-            height: 3rem;
+            transition: all 0.2s;
+            background-color: transparent;
+            border-radius: 10px;
 
 
             &:hover {
                 scale: 1.2;
             }
+
+        }
+
+        .btnP {
+            width: 44px;
+            height: 44px;
+            background-color: transparent;
+            border-radius: 50%;
+            border: none;
+            font-size: 18px;
+            color: #5f6368;
+            z-index: 5;
+            position: relative;
+
+            &:hover {
+                background-color: #e8eaed;
+                background-color: var(--background-switch);
+
+                &::before {
+                    content: attr(data-title);
+                    width: fit-content;
+                    white-space: nowrap;
+                    padding: 2px 5px;
+                    background-color: var(--background-header);
+                    background-color: var(--background-second);
+                    opacity: 1;
+                    color: black;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    position: absolute;
+                    // left: 50%;
+                    bottom: -1.5rem;
+                    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+                }
+            }
+        }
+
+        .btnGames-wrap {
+            position: relative;
+        }
+
+        .btnShow {
+            @extend .btnP;
+            background-color: var(--background-switch);
+            opacity: 0.9;
         }
 
         .listHeader {
-            background-color: var(--background-header);
+            // background-color: var(--background-header);
+
             width: 100%;
-            font-size: 20px;
+            font-size: 18px;
             border-radius: 10px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-weight: 800;
-            color: lightblue;
-            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
+            font-weight: 500;
+
+            color: black;
+            // text-shadow: -1px 1px 1px rgba(66, 68, 90, 1);
 
         }
 
@@ -63,7 +114,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            height: 70%;
+            height: 80%;
             overflow: auto;
 
             .listItem {
@@ -170,25 +221,37 @@
 
 .wrapTbl {
     .onePlaylist-wrap {
-        background-color: var(--background-wrap);
-        margin: 5px;
+        // background-color: var(--background-wrap);
+        // margin: 0 5px 5px 0;
         width: 98%;
-        // height: fit-content;
-        height: 12rem;
+        // position: relative;
+        // border-radius: 10px;
+        // transition: all 0.4s ease-in-out;
+        // cursor: help;
+        // display: flex;
+        // justify-content: space-between;
+        // overflow: hidden;
+        // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        // font-size: 12px;
         position: relative;
-        padding: 10px;
-        border-radius: 10px;
-        transition: all 0.4s ease-in-out;
-        cursor: help;
+        padding-left: 15px;
         display: flex;
-        justify-content: space-between;
-        overflow: hidden;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        // flex-direction: row-reverse;
+        width: 80vw;
+        transition: all 0.2s ease-in-out;
+        z-index: 0;
+        height: 1.5em;
+        line-height: 1.5em;
+
+        &:nth-child(even) {
+            background-color: rgb(247, 246, 246);
+        }
 
         @media screen and (max-width:900px) {
             flex-direction: column-reverse;
+            align-items: flex-start;
             width: 100%;
-            height: 16rem;
+            // height: 16rem;
         }
 
         button {
@@ -209,33 +272,58 @@
             }
         }
 
+        .btn {
+            display: none;
+            padding: 5px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: transparent;
+            border-radius: 10px;
+
+
+            &:hover {
+                scale: 1.2;
+            }
+
+        }
+
+        .firstRow {
+            display: flex;
+            align-items: center;
+            // flex-direction: row-reverse;
+        }
+
         .listHeader {
             background-color: var(--background-header);
             width: 100%;
-            font-size: 20px;
+            font-size: 12px;
             border-radius: 10px 10px 0 0;
             height: -webkit-fill-available;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
 
-
-            font-weight: 800;
-            color: lightblue;
-            text-shadow: -2px 1px 6px rgba(66, 68, 90, 1);
+            // padding-left: 15px;
+            font-weight: 600;
+            color: black;
+            // text-shadow: -1px 1px 1px rgba(66, 68, 90, 1);
 
 
         }
 
         .listBody {
+            display: none;
+
             width: 80%;
-            display: flex;
-            flex-direction: column;
+            // flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             height: 100%;
-            overflow: auto;
-            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
             @media screen and (max-width:900px) {
                 width: 100%;
@@ -346,7 +434,16 @@
         }
 
         &:hover {
-            transform: translateY(-5px);
+
+            // transform: translateY(-5px);
+            .listHeader {
+
+                color: #FF4500;
+            }
+
+            .btn {
+                display: block;
+            }
 
             .list-btns {
                 display: flex;
@@ -357,8 +454,28 @@
     }
 }
 
+.chooseList {
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin-left: 1rem;
+    padding: 5px;
+    width: 55%;
+}
 
+.choosedList {
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin-left: 1rem;
+    padding: 5px;
+    width: 45%;
+    min-height: 186px;
 
+    button {
+        font-size: 10px;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+}
 
 .tabBox {
     margin-top: 5px;
@@ -395,13 +512,13 @@
 }
 
 .selectionButtons {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    // border-left: 1px solid black;
+    // border-right: 1px solid black;
     text-align: end;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--background-header);
+    // background-color: var(--background-header);
 
     @media screen and (max-width:900px) {
         flex-wrap: wrap;
@@ -409,8 +526,8 @@
     }
 
     .filter {
-        scale: 0.9;
-        width: 30%;
+        scale: 0.8;
+        // width: 30%;
 
         @media screen and (max-width:900px) {
             width: 50%;
@@ -429,27 +546,43 @@
 
 .tblCollections {
     padding-top: 1rem;
+    padding-left: 7px;
     height: 20rem;
-    overflow-x: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     font-size: 12px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-top: 1px solid grey;
+    // border-left: 1px solid black;
+    // border-right: 1px solid black;
+    position: relative;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    min-width: 100%;
+
     position: relative;
 
-    border-collapse: collapse;
-
     span {
-        &::after {
-            content: "my";
-            color: coral;
-            position: absolute;
-            right: 0;
+        position: absolute;
+        left: -0px;
+        font-size: 6px;
+        color: grey;
 
-        }
+        // top: 6px; // &::after {
+        //     content: "my";
+        //     color: coral;
+        //     position: absolute;
+        //     right: 0;
+
+        // }
     }
 
     .isNotSelected {
         transition: all 0.4s ease-in-out;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+
 
         &:hover {
             border: 0.5px solid grey;
@@ -458,6 +591,24 @@
     }
 
     .isSelected {
+
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
         background-color: var(--background-first);
+        color: var(--color-checked);
+    }
+}
+
+.selectedEl {
+    @extend .isNotSelected;
+    position: relative;
+
+    &:hover {
+        color: var(--color-checked);
+        text-decoration: line-through;
+
+
     }
 }

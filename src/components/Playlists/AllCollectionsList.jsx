@@ -6,6 +6,8 @@ import cl from "./PlayLists.module.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import MyFilter from "../UI/MyFilter/MyFilter";
 import CategorySelection from "../CategorySelection/CategorySelection";
+import MySwitch from "../UI/tgb/MySwitch";
+import { IoHomeOutline } from "react-icons/io5";
 
 const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
   const limit = 10;
@@ -46,65 +48,86 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
   const handleClearSelection = () => {
     setSelectedIds([]);
   };
-  const setisPublic = (val) => {
-    setisPub(val);
-    setCat("");
+
+  const isPubChange = () => {
+    let newVal = !isPub;
+    setisPub(newVal);
   };
   return (
     <>
-      {" "}
-      <div className="flex-standart  bg-light mb-1">
-        <h3 className="text-secondary">Choose up to 10 collections</h3>{" "}
-        <h5 className="text-danger">
-          left........{limit - selectedIds.length}
-        </h5>
-      </div>
-      <div className={cl.tabBox}>
-        {" "}
-        <div
-          className={!isPub ? cl.left : cl.tab}
-          onClick={(e) => setisPublic(false)}>
-          My
-        </div>
-        <div
-          className={isPub ? cl.right : cl.tab}
-          onClick={(e) => setisPublic(true)}>
-          Public
-        </div>
-      </div>
       <div className={cl.selectionButtons}>
+        {" "}
         <div className={cl.filter}>
           <MyFilter filter={filter} setFilter={setFilter} />
         </div>
         <div>
           <CategorySelection isPb={isPub} onSelect={setCat} />
+        </div>{" "}
+        <p className="text-secondary">Choose up to 10 collections</p>
+      </div>{" "}
+      <div className="d-flex align-items-start">
+        <div id="choose-list" className={cl.chooseList}>
+          <div className={cl.tabBox}>
+            <MySwitch
+              checked={isPub}
+              onChange={isPubChange}
+              leftEl="My collections"
+              rightEl="Public collections"
+            />
+          </div>
+
+          <div className={cl.tblCollections}>
+            {isLoading ? (
+              <SpinnerLg className="span_wrap" />
+            ) : !filtredList ? (
+              <h2>No collections</h2>
+            ) : (
+              <div>
+                {filtredList.map((el) => (
+                  <div
+                    key={el.id}
+                    className={
+                      selectedIds.includes(el.id)
+                        ? cl.isSelected
+                        : cl.isNotSelected
+                    }
+                    onClick={() => handleItemClick(el.id)}>
+                    {el.name}
+                    {el.isMy && (
+                      <span>
+                        <IoHomeOutline />
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}{" "}
+          </div>
         </div>
-        <div>
-          {limit - selectedIds.length >= filtredList.length && (
-            <button onClick={handleSelectAll}>Select All</button>
-          )}
-          <button onClick={handleClearSelection}>Clear Selection</button>
-        </div>
-      </div>
-      {isLoading ? (
-        <SpinnerLg className="span_wrap" />
-      ) : !filtredList ? (
-        <h2>No collections</h2>
-      ) : (
-        <div className={cl.tblCollections}>
-          {filtredList.map((el) => (
-            <div
-              key={el.id}
-              className={
-                selectedIds.includes(el.id) ? cl.isSelected : cl.isNotSelected
-              }
-              onClick={() => handleItemClick(el.id)}>
-              {el.name}
-              {el.isMy && <span></span>}
+        <div id="choosed-list" className={cl.choosedList}>
+          <div className={cl.tabBox}>
+            <p className="text-danger">{selectedIds.length}/10</p>
+            <div>
+              {limit - selectedIds.length >= filtredList.length && (
+                <button onClick={handleSelectAll}>Select All</button>
+              )}
+              <button onClick={handleClearSelection}>Clear Selection</button>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+
+          {filtredList
+            .filter((elem) => selectedIds.includes(elem.id))
+            .map((el) => (
+              <div
+                key={el.id}
+                className={cl.selectedEl}
+                onClick={() => handleItemClick(el.id)}>
+                {el.name}
+                {el.isMy && <span></span>}
+              </div>
+            ))}
+        </div>{" "}
+      </div>
     </>
   );
 };

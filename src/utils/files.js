@@ -33,13 +33,13 @@ export const expressionsFromTxtFile = async (file, callbackForResult) => {
 
 const valueOrEmpty = (val) => (val ? val + ";" : "");
 
-export const createFilesDataColl = (list) => {
+export const createFilesDataColl = (list, columnsArr = [1, 1, 1]) => {
   const content = list
     .map(
       (el) =>
-        valueOrEmpty(el.question) +
-        valueOrEmpty(el.answer) +
-        valueOrEmpty(el.note)
+        (columnsArr[0] ? valueOrEmpty(el.question) : "") +
+        (columnsArr[1] ? valueOrEmpty(el.answer) : "") +
+        (columnsArr[2] ? valueOrEmpty(el.note) : "")
     )
     .join("\n");
 

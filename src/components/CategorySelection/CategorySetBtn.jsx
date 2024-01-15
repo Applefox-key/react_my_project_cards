@@ -1,21 +1,33 @@
 import React, { useState } from "react";
 
 import CategoriesManager from "./CategoriesManager";
-import { AiOutlineControl } from "react-icons/ai";
 import cl from "./CategorySelection.module.scss";
 import MyModal from "../UI/MyModal";
+import { IoIosSettings } from "react-icons/io";
 const CategorySetBtn = ({ getList, icon }) => {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      {icon ? (
+      <div
+        className={icon ? "" : cl["setting_btn"]}
+        title="Categories manager"
+        onClick={(e) => {
+          e.stopPropagation();
+          setVisible(true);
+        }}>
+        <p>
+          {icon ? "" : "manager"} <IoIosSettings />
+        </p>
+      </div>
+
+      {/* {icon ? (
         <span
           onClick={(e) => {
             e.stopPropagation();
             setVisible(true);
           }}>
-          <AiOutlineControl />
+          <IoIosSettings />
         </span>
       ) : (
         <div
@@ -25,9 +37,9 @@ const CategorySetBtn = ({ getList, icon }) => {
             e.stopPropagation();
             setVisible(true);
           }}>
-          manager <AiOutlineControl />
+          manager <IoIosSettings />
         </div>
-      )}
+      )} */}
       {visible && (
         <MyModal
           onHide={(e) => {

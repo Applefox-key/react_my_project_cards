@@ -1,21 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineRollback } from "react-icons/ai";
-import { GrChapterAdd } from "react-icons/gr";
+import { LuCopyPlus } from "react-icons/lu";
 import { GO_TO } from "../../../router/routes";
 import { HiPrinter } from "react-icons/hi";
 
-const SideBarIconsSetPub = ({ collection, addToMyCollection }) => {
+const OnePbCollectionBtns = ({ collection, addToMyCollection }) => {
   const router = useNavigate();
 
   return (
     <>
-      <button data-title="Copy to my collections" onClick={addToMyCollection}>
+      <button
+        className="viewBtn"
+        data-title="Copy to my collections"
+        onClick={addToMyCollection}>
         <span>
-          <GrChapterAdd />
+          <LuCopyPlus />
         </span>
       </button>{" "}
       <button
+        className="viewBtn"
         data-title="Print"
         onClick={() =>
           router(
@@ -29,6 +33,7 @@ const SideBarIconsSetPub = ({ collection, addToMyCollection }) => {
       </button>{" "}
       <button
         data-title="Back to collections list"
+        className="viewBtn"
         onClick={() => router(GO_TO.pubCollect)}>
         <span>
           {" "}
@@ -39,4 +44,4 @@ const SideBarIconsSetPub = ({ collection, addToMyCollection }) => {
   );
 };
 
-export default SideBarIconsSetPub;
+export default OnePbCollectionBtns;

@@ -1,7 +1,7 @@
 import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
 import { RiDeleteBin2Line } from "react-icons/ri";
-import cl from "../SideBar.module.scss";
+import cl from "./SideBar.module.scss";
 
 const CategoryMiniMenu = ({ el, setIsMenu, isMenu, deleteFn }) => {
   return (

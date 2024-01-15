@@ -21,6 +21,24 @@
   }
 }
 
+.editBtnAbs {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  button {
+    font-size: 1.3rem;
+    margin-right: 0rem;
+
+    @media screen and (max-width:600px) {
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-left: 5px;
+
+    }
+  }
+
+}
 
 .input_with_lable {
   width: 100%;
@@ -38,7 +56,7 @@
 
   input {
     border-color: var(--background-header);
-    width: 90%;
+    width: 80%;
     border: none;
     border-bottom: 1px solid var(--background-header);
 
@@ -253,10 +271,12 @@
 
 
   h1 {
-    background: var(--color-back);
+    // background: var(--color-back);
+    background: #f7f6f6;
     padding: 2px 5px;
     border-radius: 9px;
-    color: var(--contrast-text);
+    // color: var(--contrast-text);
+    color: black;
 
     @media screen and (max-width:900px) {
       font-size: 1.5rem;
@@ -453,4 +473,36 @@
     justify-content: flex-start;
     max-width: 21rem;
   }
+}
+
+.sideBar-wide {
+  padding-left: 5px;
+  z-index: 600;
+  height: 100vh;
+  width: 25rem;
+  background-color: var(--background-wrap);
+  color: black;
+  // padding-top: 3.5rem;
+  transition: all 0.4s ease-in-out;
+  border-radius: 0 35px 35px 0;
+
+  @media screen and ((max-width: 600px)) {
+    position: absolute;
+    width: 100%;
+  }
+
+  .addingLink {
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--background-header);
+    }
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+
 }

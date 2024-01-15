@@ -13,8 +13,8 @@ import {
   restoreSettings,
   saveSet,
 } from "../../utils/pageSettings";
-import SideBar from "../SideBar/SideBarCollections/SideBar";
 import CategoriesFoldersView from "../CategorySelection/CategoriesFoldersView";
+import SideBarCateg from "../SideBar/SideBarCateg";
 
 const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -27,6 +27,7 @@ const Collections = () => {
     selectedCategorymy: pageSet.selectedCategorymy,
     filter: pageSet.filter,
     byCategory: pageSet.byCategory,
+    sideBar: false,
   });
 
   const [privateSettings, setPrivateSettings] = useState({
@@ -80,6 +81,7 @@ const Collections = () => {
     commonSettings.filter,
     commonSettings.selectedCategorymy,
     commonSettings.selectedCategorypub,
+    commonSettings.sideBar,
     privateSettings.favorite,
     privateSettings.shared,
   ]);
@@ -101,42 +103,48 @@ const Collections = () => {
           }}
         />
       )}{" "}
-      {/* <div className="d-flex"> */}
-      <SideBar
-        viewmodeChange={viewmodeChange}
-        commonSettings={commonSettings}
-        setSettingsCommon={setSettingsCommon}
-        privateSettings={privateSettings}
-        setSettingsPrivat={setSettingsPrivat}
-      />
-      <div className="width90">
-        <CollectionsMenu
-          viewmodeChange={viewmodeChange}
-          commonSettings={commonSettings}
-          privateSettings={privateSettings}
-          setSettingsCommon={setSettingsCommon}
-        />{" "}
-        <div className="allcollect">
-          {commonSettings.byCategory ? (
-            <CategoriesFoldersView
-              setSettingsCommon={setSettingsCommon}
-              filterTxt={commonSettings.filter}
-              viewmode={viewmode}
-            />
-          ) : !isPublic ? (
-            <UsersCollections
-              viewmode={viewmode}
-              commonSettings={commonSettings}
-              setSettingsCommon={setSettingsCommon}
-              privateSettings={privateSettings}
-              setSettingsPrivat={setSettingsPrivat}
-            />
-          ) : (
-            <PublicCollectionsList
-              commonSettings={commonSettings}
-              viewmode={viewmode}
-            />
+      <div className="w-100">
+        <div className="d-flex align-items-center position-relative">
+          <CollectionsMenu
+            viewmodeChange={viewmodeChange}
+            commonSettings={commonSettings}
+            privateSettings={privateSettings}
+            setSettingsCommon={setSettingsCommon}
+            setSettingsPrivat={setSettingsPrivat}
+          />
+        </div>
+        <div className="d-flex align-items-start">
+          {commonSettings.sideBar && (
+            <div className="sideBar-wide">
+              <SideBarCateg
+                setSettingsCommon={setSettingsCommon}
+                colCatPub={commonSettings.selectedCategorypub}
+                colCat={commonSettings.selectedCategorymy}
+              />
+            </div>
           )}
+          <div className="allcollect ms-4">
+            {commonSettings.byCategory ? (
+              <CategoriesFoldersView
+                setSettingsCommon={setSettingsCommon}
+                filterTxt={commonSettings.filter}
+                viewmode={viewmode}
+              />
+            ) : !isPublic ? (
+              <UsersCollections
+                viewmode={viewmode}
+                commonSettings={commonSettings}
+                setSettingsCommon={setSettingsCommon}
+                privateSettings={privateSettings}
+                setSettingsPrivat={setSettingsPrivat}
+              />
+            ) : (
+              <PublicCollectionsList
+                commonSettings={commonSettings}
+                viewmode={viewmode}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

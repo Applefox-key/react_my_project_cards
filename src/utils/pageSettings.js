@@ -12,6 +12,7 @@ export const collectionPageSettings = (
   if (field.includes("selectedCategory")) {
     newVal.byCategory = false;
     newVal.filter = "";
+    newVal.sideBar = "";
   }
   return newVal;
 };

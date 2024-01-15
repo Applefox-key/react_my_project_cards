@@ -8,7 +8,6 @@ import {
   saveSet,
 } from "../../utils/pageSettings";
 import PlayListsMenu from "./PlayListsMenu";
-import SideBarPlay from "../SideBar/SideBarPlayList.jsx/SideBarPlay";
 import UsersPlayLists from "./UsersPlayLists";
 import PlayListEditModal from "./PlayListEditModal";
 
@@ -59,7 +58,7 @@ const Playlists = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonSettings.filter]);
   return (
-    <div className="wrap_box d-flex ">
+    <div className="wrap_box">
       {commonSettings.editEl && (
         <PlayListEditModal
           isEdit={commonSettings.editEl}
@@ -70,25 +69,18 @@ const Playlists = () => {
           }}
         />
       )}
-      <SideBarPlay
+      <PlayListsMenu
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
         setSettingsCommon={setSettingsCommon}
-      />{" "}
-      <div className="width90">
-        <PlayListsMenu
-          viewmodeChange={viewmodeChange}
+      />
+      <div className="allcollect">
+        <UsersPlayLists
+          viewmode={viewmode}
           commonSettings={commonSettings}
           setSettingsCommon={setSettingsCommon}
         />
-        <div className="allcollect">
-          <UsersPlayLists
-            viewmode={viewmode}
-            commonSettings={commonSettings}
-            setSettingsCommon={setSettingsCommon}
-          />
-        </div>{" "}
-      </div>
+      </div>{" "}
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React from "react";
 import "../CollectionsCommon/collectionList.scss";
-import { TfiSharethis } from "react-icons/tfi";
 import { FiUserCheck } from "react-icons/fi";
 import cl from "./CategorySelection.module.scss";
-import { HiHeart, HiOutlineHeart, HiOutlineShare } from "react-icons/hi2";
-import { RiDeleteBin2Line } from "react-icons/ri";
+import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
+import { HiShare } from "react-icons/hi2";
+import { CiShare2 } from "react-icons/ci";
+import { FaRegHeart } from "react-icons/fa";
 
 const CollectionRowBtns = ({ col, catid, listFn = "" }) => {
   return (
@@ -12,7 +13,7 @@ const CollectionRowBtns = ({ col, catid, listFn = "" }) => {
       {window.location.pathname.includes("pub") ? (
         <div className={cl["item-btns-staticpub"]}>
           {col.isMy ? (
-            <div className="mypbbtn" title={"my collections"}>
+            <div className={cl["item-btns-pb"]} title={"my collections"}>
               <FiUserCheck />
             </div>
           ) : (
@@ -22,8 +23,8 @@ const CollectionRowBtns = ({ col, catid, listFn = "" }) => {
       ) : (
         <>
           <div className={cl["item-btns-static"]}>
-            {col.isFavorite ? <HiHeart /> : <></>}
-            {col.isPublic ? <TfiSharethis /> : <></>}
+            {col.isFavorite ? <FaRegHeart /> : <></>}
+            {col.isPublic ? <CiShare2 /> : <></>}
           </div>
           <div className={cl["item-btns"]}>
             <button
@@ -32,7 +33,7 @@ const CollectionRowBtns = ({ col, catid, listFn = "" }) => {
                 e.stopPropagation();
                 listFn.shareColl(col, catid);
               }}>
-              {col.isPublic ? <TfiSharethis /> : <HiOutlineShare />}
+              {col.isPublic ? <HiShare /> : <CiShare2 />}
             </button>
             <button
               title={col.isFavorite ? "unfavorite" : "to favorite"}
@@ -48,7 +49,7 @@ const CollectionRowBtns = ({ col, catid, listFn = "" }) => {
                 e.stopPropagation();
                 listFn.delColl(col, catid);
               }}>
-              <RiDeleteBin2Line />
+              ❌{/* <RiDeleteBin2Line /> */}
             </button>
           </div>
         </>

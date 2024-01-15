@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
 
-const PlayMenu = ({ collection, playlist = false, verticals = false }) => {
+const PlayMenu = ({
+  collection,
+  playlist = false,
+  verticals = false,
+  small = false,
+}) => {
   const [showmenu, setShowmenu] = useState(false);
+  console.log(collection);
 
   const router = useNavigate();
   const gameMenu = gameMenuArr(
@@ -12,7 +18,7 @@ const PlayMenu = ({ collection, playlist = false, verticals = false }) => {
     playlist
   ).filter((el) => el.type !== "Divider");
 
-  const menu = (item, i, clName = "oneP") => {
+  const menu = (item, i, clName = small ? "oneP sm-btn" : "oneP") => {
     return (
       <div
         key={i}
@@ -27,9 +33,10 @@ const PlayMenu = ({ collection, playlist = false, verticals = false }) => {
       </div>
     );
   };
+
   const submenu = (item, i) => {
     return (
-      <div key={i} title={item.name} className="oneP">
+      <div key={i} title={item.name} className={small ? "oneP sm-btn" : "oneP"}>
         {item.symb}
         <div className="sub">{item.items.map((el, j) => menu(el, j, ""))}</div>
       </div>
@@ -44,13 +51,14 @@ const PlayMenu = ({ collection, playlist = false, verticals = false }) => {
     <div
       // className={"playMenubtn"}
       className={verticals ? "playMenubtn-vert" : "playMenubtn"}
+      // className={"playMenubtn-vert"}
       onClick={(e) => {
         e.stopPropagation();
         setShowmenu(!showmenu);
       }}>
-      <p>PLAY</p>
-      {/* <div className={verticals ? "play-menu play-vert" : "play-menu"}> */}
-      <div className={"play-menu"}>
+      {/* <p>PLAY</p> */}
+      <div className={verticals ? "play-menu play-vert" : "play-menu"}>
+        {/* <div className={"play-menu"}> */}
         {gameMenu.map((item, i) => menuEl(item, i))}
       </div>{" "}
     </div>

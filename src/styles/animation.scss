@@ -450,3 +450,23 @@
   animation: swing;
   animation-duration: 300ms;
 }
+
+.showPlay-enter {
+  animation: fadeInDown;
+  animation-duration: 300ms;
+}
+
+.showPlay-enter-done {
+  animation: fadeInDown;
+  animation-duration: 300ms;
+}
+
+.showPlay-exit {
+  animation: fadeInDown;
+  animation-duration: 300ms;
+}
+
+.showPlay-exit-done {
+  animation: fadeInDown;
+  animation-duration: 300ms;
+}

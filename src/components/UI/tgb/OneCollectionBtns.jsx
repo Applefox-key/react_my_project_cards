@@ -10,8 +10,9 @@ import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
 import { HiPrinter } from "react-icons/hi";
 import ModalCommand from "../../PrivateCollections/OneCollectionActions/ModalCommand";
+import { VscClearAll } from "react-icons/vsc";
 
-const SideBarIconsSet = ({ colObj, setContent }) => {
+const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
   const router = useNavigate();
   const pageParam = useParams();
@@ -20,7 +21,11 @@ const SideBarIconsSet = ({ colObj, setContent }) => {
     await BaseAPI.deleteColection(colObj.collection.id);
     router(GO_TO.myCollect);
   };
-
+  const deleteAll = async () => {
+    if (!window.confirm("Delete all?")) return;
+    await BaseAPI.deleteColContent(pageParam.id);
+    setContent([]);
+  };
   const addRow = () => {
     router(`${GO_TO.editCard}/${pageParam.id}/${pageParam.name}/new`);
   };
@@ -35,28 +40,46 @@ const SideBarIconsSet = ({ colObj, setContent }) => {
           colObj={colObj}
         />
       )}
-      <button data-title="Add card" onClick={addRow}>
+      <button data-title="Add card" className="viewBtn" onClick={addRow}>
         <span>
           <AiOutlinePlus />
         </span>
       </button>{" "}
-      <button data-title="Remove" onClick={removeCollection}>
+      <button
+        data-title="Remove collection"
+        className="viewBtn"
+        onClick={removeCollection}>
         <span>
           <IoMdRemove />{" "}
         </span>
       </button>{" "}
-      <button data-title="Add from the file" onClick={() => setMod("file")}>
+      <button
+        data-title="Delete all content"
+        className="viewBtn"
+        onClick={deleteAll}>
+        <span>
+          <VscClearAll />
+        </span>
+      </button>{" "}
+      <button
+        data-title="Add from the file"
+        className="viewBtn"
+        onClick={() => setMod("file")}>
         <span>
           <BsFiletypeTxt />
         </span>
       </button>{" "}
-      <button data-title="Add from the list" onClick={() => setMod("list")}>
+      <button
+        data-title="Add from the list"
+        className="viewBtn"
+        onClick={() => setMod("list")}>
         <span>
           <BiListPlus />
         </span>
       </button>{" "}
       <button
         data-title="Print"
+        className="viewBtn"
         onClick={() =>
           router(
             `${GO_TO.myCollect}${GO_TO.print}/${pageParam.id}/${pageParam.name}`
@@ -66,12 +89,18 @@ const SideBarIconsSet = ({ colObj, setContent }) => {
           <HiPrinter />
         </span>
       </button>{" "}
-      <button data-title="Download" onClick={() => setMod("share")}>
+      <button
+        data-title="Download"
+        className="viewBtn"
+        onClick={() => setMod("share")}>
         <span>
           <MdOutlineFileDownload />
         </span>
       </button>{" "}
-      <button data-title="Back" onClick={() => router(GO_TO.myCollect)}>
+      <button
+        data-title="Back"
+        className="viewBtn"
+        onClick={() => router(GO_TO.myCollect)}>
         <span>
           {" "}
           <AiOutlineRollback />{" "}
@@ -81,4 +110,4 @@ const SideBarIconsSet = ({ colObj, setContent }) => {
   );
 };
 
-export default SideBarIconsSet;
+export default OneCollectionBtns;

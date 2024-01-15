@@ -11,6 +11,7 @@ const MyCard = ({ item, mode = "0", flip, clc = true }) => {
     if (flip !== flipped && flip !== undefined) setFlipped(!flipped);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flip]);
+  console.log(item);
 
   return (
     <>

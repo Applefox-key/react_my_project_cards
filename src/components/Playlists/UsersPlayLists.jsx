@@ -7,10 +7,9 @@ import { useQuery } from "../../hooks/useQuery";
 import cl from "./PlayLists.module.scss";
 import { FaMinus } from "react-icons/fa";
 import { editPlaylistHlp } from "../../utils/editCollectionHlp";
-import PlaylistBtns from "./PlaylistBtns";
-import PlayMenu from "../UI/PlayMenu/PlayMenu";
 import { useTextFilter } from "../../hooks/useCollectSelection";
 import { useNavigate } from "react-router-dom";
+import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
 
 const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
   const [list, setList] = useState([]);
@@ -68,6 +67,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commonSettings.editEl, commonSettings.filter]);
   const filtredList = useTextFilter(list, commonSettings.filter);
+
   return (
     <>
       {isLoading ? (
@@ -77,9 +77,26 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
           className={window.location.hash !== "#1" ? cl.wrapCard : cl.wrapTbl}>
           {filtredList.map((el) => (
             <div key={el.id} className={cl["onePlaylist-wrap"]}>
-              {window.location.hash !== "#1" && (
-                <div className={cl.listHeader}> {el.name}</div>
-              )}
+              <div className={cl.firstRow}>
+                {window.location.hash !== "#1" && (
+                  <BtnPlayMenu
+                    collection={list}
+                    playlist={true}
+                    small={window.location.hash !== "#1"}
+                    verticals={window.location.hash !== "#1"}
+                  />
+                )}
+                <div
+                  className={cl.listHeader}
+                  onClick={() => listFn.editMode(el)}>
+                  {el.name}
+                </div>
+                <button
+                  onClick={() => listFn.delPlaylist(el)}
+                  className={cl.btn}>
+                  ❌
+                </button>
+              </div>
               <div className={cl.listBody}>
                 {el.collections.map((col) => (
                   <div
@@ -94,7 +111,6 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                       );
                     }}>
                     {col.name}
-
                     <div className={cl["item-btns"]}>
                       <button
                         onClick={(e) => {
@@ -106,28 +122,6 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              <div className={window.location.hash === "#1" ? cl.tbl : ""}>
-                {window.location.hash === "#1" && (
-                  <div className={cl.listHeader}> {el.name}</div>
-                )}
-                {/* <div className={"oneCollect-wrap " + cl.listFooter}> */}
-                <div className={cl.listFooter}>
-                  <div className={cl["list-btns"]}>
-                    <PlaylistBtns el={el} listFn={listFn} />{" "}
-                    {!!el.collections.length && (
-                      <div className={"playlist"}>
-                        {/* <span>play</span> */}
-                        <PlayMenu
-                          collection={{ id: el.id, name: el.name }}
-                          playlist={true}
-                          verticals={window.location.hash !== "#1"}
-                        />
-                      </div>
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
           ))}

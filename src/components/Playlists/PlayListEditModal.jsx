@@ -8,6 +8,7 @@ import { usePopup } from "../../hooks/usePopup";
 import MyModal from "../UI/MyModal";
 import AllCollectionsList from "./AllCollectionsList";
 import { editPlaylistHlp } from "../../utils/editCollectionHlp";
+import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
 
 const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
   const route = useNavigate();
@@ -15,6 +16,7 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
   const [selectedIds, setSelectedIds] = useState(
     list.collections ? list.collections.map((el) => el.id) : []
   );
+
   const setPopup = usePopup();
 
   const saveChanges = async () => {
@@ -26,38 +28,43 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
       setPopup.error(error.message);
     }
   };
-
+  const titleWin = () => {
+    return (
+      <div className="d-flex align-items-center w-100">
+        <BtnPlayMenu collection={list} playlist={true} verticals={false} />
+        <div className="input_with_lable mb-0">
+          <label htmlFor="i_name" className="lable">
+            Title:
+          </label>
+          <input
+            autoFocus
+            id="i_name"
+            placeholder="name: my playlist"
+            value={newName ? newName : ""}
+            onChange={(e) => setNewName(e.target.value)}
+          />
+        </div>
+      </div>
+    );
+  };
   return (
     <MyModal
       onHide={onHide ? onHide : (e) => setIsEdit(false)}
       showmodal={isEdit}
       setshowmodal={setIsEdit}
-      size="lg"
-      dialogClassName="modal-h100"
-      title={"Playlist properties"}>
+      // size="lg"
+      title={titleWin()}
+      dialogClassName="modal-h100">
       <div className="d-flex flex-column justify-content-center  w-100">
-        <div className="d-flex flex-column justify-content-center align-items-center w-100">
-          <div className="input_with_lable">
-            <label htmlFor="i_name" className="lable">
-              title:
-            </label>
-            <input
-              autoFocus
-              id="i_name"
-              placeholder="name: my playlist"
-              value={newName ? newName : ""}
-              onChange={(e) => setNewName(e.target.value)}
-            />
-          </div>
-        </div>
         <div>
           <AllCollectionsList
             selectedIds={selectedIds}
             setSelectedIds={setSelectedIds}
           />
         </div>
-        <div className="edit_btn_menu">
+        <div className="edit_btn_menu editBtnAbs">
           <Button
+            className="mb-0"
             size="lg"
             variant="light"
             disabled={!newName && list.id === "new"}
@@ -65,6 +72,7 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
             SAVE CHANGES
           </Button>
           <Button
+            className="mb-0"
             size="lg"
             variant="light"
             onClick={(e) => {
