@@ -39,7 +39,10 @@ const OneCollectionMenu = (props) => {
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={props.setMode}
           />
-          <OneCollectionBtns />
+          <OneCollectionBtns
+            colObj={props.colObj}
+            setContent={props.setContent}
+          />
         </div>
       </div>
       <div>

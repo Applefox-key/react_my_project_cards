@@ -1,5 +1,4 @@
 import React from "react";
-import MyTable from "../../UI/table/MyTable";
 import BaseAPI from "../../../API/BaseAPI";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

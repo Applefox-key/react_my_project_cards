@@ -29,7 +29,6 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
   const addRow = () => {
     router(`${GO_TO.editCard}/${pageParam.id}/${pageParam.name}/new`);
   };
-
   return (
     <>
       {mod && (
