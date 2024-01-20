@@ -7,7 +7,7 @@ const TextBlock = ({ regBtn, isAboutLink = true, aboutPage = false }) => {
       {" "}
       {aboutPage ? (
         <>
-          <div className={cl.text1}>Learn More</div>
+          <div className={cl.text1}>Learn More </div>
           <div className={cl.text2}>about flash cards</div>
           <div className={cl.text2}>or</div>
           <a

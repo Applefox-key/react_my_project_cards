@@ -71,7 +71,7 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
             <MySwitch
               checked={isPub}
               onChange={isPubChange}
-              leftEl="My collections"
+              leftEl="My library"
               rightEl="Public collections"
             />
           </div>

@@ -30,13 +30,13 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
 
       {!listFn ? (
         oneSet.isMy ? (
-          <div className="mypbbtn" title={"my collections"}>
+          <div className="mypbbtn" title={"my library"}>
             <FiUserCheck />
           </div>
         ) : (
           <div
             className="sharebtn"
-            title={"copy to my collections"}
+            title={"copy to my library"}
             onClick={async (e) => {
               if (!oneSet.content) return;
               if (!oneSet.collection) return;

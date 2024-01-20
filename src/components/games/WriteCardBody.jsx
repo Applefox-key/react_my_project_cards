@@ -69,11 +69,7 @@ const WriteCardBody = ({ items, setItems }) => {
           mist={mistakes.length ? workWithErrors : null}
         />
       ) : (
-        <CSSTransition
-          appear={true}
-          in={true}
-          timeout={500}
-          classNames="result">
+        <CSSTransition appear={true} in={true} timeout={500} classNames="game">
           <div className={cl["game-field"]}>
             <div className={cl.cardSize}>
               <OneCardG

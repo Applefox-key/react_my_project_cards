@@ -12,12 +12,12 @@ const AboutPage = () => {
       <div>
         {" "}
         <br />
-        <div className="main_container">
+        <div className="main_container position-relative">
           <Image rounded src={choice} className={cl.imgabout} />
           <TextBlock isAboutLink={false} aboutPage={true} />
           <div className={cl.cardabout}>
             <AboutGallery />
-          </div>
+          </div>{" "}
         </div>
         <div className="w-10">
           <Logo />

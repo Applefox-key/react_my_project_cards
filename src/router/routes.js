@@ -19,6 +19,7 @@ import EditCard from "../components/PrivateCollections/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
 import PlayLists from "../components/Playlists/PlayLists";
 import PartCard from "../components/games/PartCard";
+import HomePage from "../components/HomePage";
 
 export const GO_TO = {
   about: "/about",
@@ -32,6 +33,7 @@ export const GO_TO = {
 };
 
 export const publicRoutes = [
+  { path: "/home", element: <HomePage />, nameNav: "Home" },
   { path: "/about", element: <MainPage />, nameNav: "About" },
   { path: "/login/:email", element: <Login />, nameNav: "" },
   { path: "/home", element: <Login />, nameNav: "" },
@@ -45,13 +47,14 @@ export const publicRoutes = [
 ];
 
 export const privateRoutes = [
+  { path: "/home", element: <HomePage />, nameNav: "Home" },
   { path: "/about", element: <AboutPage />, nameNav: "About" },
   { path: "/*", element: <Collections />, nameNav: "" },
 
   {
     path: "/collections/my",
     element: <Collections />,
-    nameNav: "My collections",
+    nameNav: "My library",
   },
   {
     path: "/collections/pub",

@@ -24,7 +24,7 @@ const CollectionsMenu = (props) => {
             sideBar={props.commonSettings.sideBar}
           />
           <h1>
-            {isPublic ? "Public collections" : "My collections"}
+            {isPublic ? "Public collections" : "My library"}
             {props.commonSettings.byCategory ? ": CATEGORIES" : ""}
           </h1>{" "}
         </div>

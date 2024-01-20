@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
 import { CSSTransition } from "react-transition-group";
-
 import cl from "../UI/CARDS/MyCard.module.scss";
-import AnimatedArrowBtn from "../UI/AnimatedArrowBtn/AnimatedArrowBtn";
+import clA from "./aboutPage.module.scss";
 import OneCardG from "../games/OneCardG";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
+import { MdOutlineNavigateNext } from "react-icons/md";
+
 const AboutGallery = () => {
   const arr = [
     {
@@ -67,8 +67,8 @@ const AboutGallery = () => {
   };
 
   return (
-    <div style={{ overflow: "hidden" }}>
-      {" "}
+    <div className={clA["cardbox"]}>
+      <div className={clA.yellow}>Let's get to know each other better!</div>{" "}
       {items ? (
         <CSSTransition
           appear={true}
@@ -76,9 +76,11 @@ const AboutGallery = () => {
           timeout={500}
           classNames="result">
           <div>
-            <div className=" me-5">
-              {" "}
-              <AnimatedArrowBtn onClick={prew} />{" "}
+            <div className=" me-5 position-relative">
+              {/* <AnimatedArrowBtn onClick={prew} />{" "} */}
+              <button onClick={prew} className={clA["collect_button"]}>
+                <MdOutlineNavigateNext />
+              </button>
               <OneCardG
                 anim={anim}
                 direction={direction}

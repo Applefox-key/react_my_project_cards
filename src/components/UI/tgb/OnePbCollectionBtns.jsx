@@ -12,7 +12,7 @@ const OnePbCollectionBtns = ({ collection, addToMyCollection }) => {
     <>
       <button
         className="viewBtn"
-        data-title="Copy to my collections"
+        data-title="Copy to my library"
         onClick={addToMyCollection}>
         <span>
           <LuCopyPlus />

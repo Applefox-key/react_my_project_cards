@@ -56,7 +56,7 @@ const UserOneCollection = () => {
             <p
               className="backBtnText"
               onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
-              My collections
+              My library
             </p>{" "}
           </div>
         )}

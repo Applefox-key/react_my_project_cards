@@ -1,4 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
+
+.headerNav {
+  width: 100%;
+  background-color: #193B70;
+  padding: 20px;
+  height: 150px;
+  color: white;
+  text-align: start;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  @media screen and (max-width:600px) {
+    height: 100px;
+  }
+
+  @media screen and (max-width:900px) {
+    height: 100px;
+  }
+
+  h1 {
+    font-size: 8rem;
+    margin-right: 2rem;
+    margin-bottom: -2.5rem;
+
+    @media screen and (max-width:600px) {
+      font-size: 36px;
+    }
+
+    @media screen and (max-width:900px) {
+      font-size: 36px;
+    }
+  }
+
+  span {
+    font-family: 'Kurale', serif;
+    text-align: end;
+    // width: 100%;
+    font-size: 40px;
+    font-style: italic;
+
+    @media screen and (max-width:600px) {
+      font-size: 16px;
+    }
+
+    @media screen and (max-width:900px) {
+      font-size: 16px;
+    }
+  }
+}
 
 .navbarico {
   width: 30px;
@@ -38,27 +90,30 @@
 
   a {
     text-decoration: none;
-    color: black;
+    color: #193B70;
     font-weight: 500;
-
-
 
     @media screen and (max-width: 900px) {
       margin-right: 12px;
       margin-right: 3px;
       font-size: 12px;
+    }
 
-
+    @media screen and (max-width: 600px) {
+      margin-right: 12px;
+      margin-right: 3px;
+      font-size: 8px;
     }
   }
 
   .active {
-    color: rgb(7, 7, 232);
+    color: #193B70;
     text-decoration: underline;
     position: relative;
+    font-weight: 800;
 
     &::after {
-      content: "📍";
+      content: "🗲";
       width: 2rem;
       height: 2rem;
       border-radius: 50%;

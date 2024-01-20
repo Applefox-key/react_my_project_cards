@@ -124,30 +124,39 @@
 
 
 .card-enter {
-  opacity: 0;
-  transform: translateX(100%);
+  // opacity: 0;
+  // transform: translateX(100%);
+  // animation-duration: 1000ms; 
+  animation: fadeInRight;
+  animation-duration: 500ms;
 }
 
 .card-enter-active {
-  opacity: 1;
-  transform: translateX(0%);
-  transition: opacity 500ms, transform 500ms;
+  // opacity: 1;
+  // transform: translateX(0%);
+  // transition: opacity 500ms, transform 500ms;
+  animation: fadeInRight;
+  animation-duration: 500ms;
 }
 
 .card-exit {
-  opacity: 1;
-  transform: translateX(0%);
+  // opacity: 1;
+  // transform: translateX(0%);
+  animation: fadeOut;
+  animation-duration: 500ms;
 }
 
 .card-exit-active {
   opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 500ms, transform 500ms;
+  // transform: translateX(-100%);
+  // transition: opacity 500ms, transform 500ms;
+  animation: fadeOut;
+  animation-duration: 500ms;
 }
 
 /* .card_left-enter {
     animation: fadeInLeft;
- 
+ fadeOutDown
     animation-duration: 1000ms;
   }.card_left-enter-active {
     animation: fadeInLeft;
@@ -185,25 +194,28 @@
 }
 
 .card_left-enter {
-  opacity: 0;
-  transform: translateX(-100%);
+  animation: fadeInLeft;
+  animation-duration: 500ms;
 }
 
 .card_left-enter-active {
-  opacity: 1;
-  transform: translateX(0%);
-  transition: opacity 500ms, transform 500ms;
+  // opacity: 1;
+  // transform: translateX(0%);
+  // transition: opacity 500ms, transform 500ms;
+
+  animation: fadeInLeft;
+  animation-duration: 500ms;
 }
 
 .card_left-exit {
-  opacity: 1;
-  transform: translateX(0%);
+  opacity: 0;
+  animation: fadeOut;
+  animation-duration: 500ms;
 }
 
 .card_left-exit-active {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 500ms, transform 500ms;
+  animation: fadeOut;
+  animation-duration: 500ms;
 }
 
 
@@ -273,13 +285,15 @@
 }
 
 .game-appear {
-  animation: lightSpeedInLeft;
+  // animation: lightSpeedInLeft;
+  animation: fadeIn;
   /* animation: rollIn; */
   animation-duration: 1000ms;
 }
 
 .game-appear-done {
-  animation: lightSpeedInLeft;
+  // animation: lightSpeedInLeft;
+  animation: fadeIn;
   /* animation: rollOut; */
   animation-duration: 1000ms;
 }

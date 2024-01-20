@@ -13,7 +13,7 @@ const CollectionRowBtns = ({ col, catid, listFn = "" }) => {
       {window.location.pathname.includes("pub") ? (
         <div className={cl["item-btns-staticpub"]}>
           {col.isMy ? (
-            <div className={cl["item-btns-pb"]} title={"my collections"}>
+            <div className={cl["item-btns-pb"]} title={"my library"}>
               <FiUserCheck />
             </div>
           ) : (

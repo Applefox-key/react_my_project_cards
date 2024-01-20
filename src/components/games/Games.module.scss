@@ -109,7 +109,12 @@
   border-radius: 10%;
   background: none;
   border: none;
-
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  line-height: 3;
+  padding: 0;
+  margin: 5px;
 }
 
 .list {
@@ -201,6 +206,7 @@
   min-width: 200px;
   max-width: 400px;
   min-height: 12rem;
+  // transition: all 0.2s ease-in-out;
 
   @media screen and (min-height: 600px) and (max-width: 600px) {
     max-width: 180px;
