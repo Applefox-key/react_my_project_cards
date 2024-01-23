@@ -8,12 +8,17 @@ import { AiOutlinePlus, AiOutlineRollback } from "react-icons/ai";
 import { BsFiletypeTxt } from "react-icons/bs";
 import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
-import { HiPrinter } from "react-icons/hi";
+import { HiPrinter, HiShare } from "react-icons/hi";
 import ModalCommand from "../../PrivateCollections/OneCollectionActions/ModalCommand";
 import { VscClearAll } from "react-icons/vsc";
+import { CiFolderOff, CiShare2, CiSquarePlus } from "react-icons/ci";
+import { favorite, share } from "../../../utils/contentRequests";
+import { usePopup } from "../../../hooks/usePopup";
+import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 
 const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
+  const [collPar, setCollPar] = useState(colObj.collection);
   const router = useNavigate();
   const pageParam = useParams();
   const removeCollection = async () => {
@@ -26,9 +31,30 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
     await BaseAPI.deleteColContent(pageParam.id);
     setContent([]);
   };
+  const setPopup = usePopup();
   const addRow = () => {
     router(`${GO_TO.editCard}/${pageParam.id}/${pageParam.name}/new`);
   };
+  const shareColl = async () => {
+    try {
+      const newVal = { ...collPar, isPublic: !collPar.isPublic };
+      await share(newVal, setPopup);
+      setCollPar(newVal);
+    } catch (error) {
+      setPopup.error("something goes wrong");
+    }
+  };
+  const favColl = async () => {
+    try {
+      const newVal = { ...collPar, isFavorite: !collPar.isFavorite };
+      await favorite(newVal, setPopup);
+      setCollPar(newVal);
+    } catch (error) {
+      setPopup.error("something goes wrong");
+    }
+  };
+  console.log(colObj);
+
   return (
     <>
       {mod && (
@@ -39,43 +65,76 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
           colObj={colObj}
         />
       )}
-      <button data-title="Add card" className="viewBtn" onClick={addRow}>
+      <button
+        data-title={collPar.isFavorite ? "unfavorite" : "to favorite"}
+        className={collPar.isFavorite ? "viewBtn checked" : "viewBtn"}
+        onClick={favColl}>
+        <span>{collPar.isFavorite ? <HiHeart /> : <HiOutlineHeart />}</span>
+      </button>{" "}
+      <button
+        data-title={collPar.isPublic ? "Unshare" : "Share"}
+        className={collPar.isPublic ? "viewBtn checked" : "viewBtn"}
+        onClick={shareColl}>
+        <span>{collPar.isPublic ? <HiShare /> : <CiShare2 />}</span>
+      </button>
+      <div data-title="Add" className="drop-down-menuBtn">
+        {" "}
         <span>
           <AiOutlinePlus />
         </span>
-      </button>{" "}
-      <button
-        data-title="Remove collection"
-        className="viewBtn"
-        onClick={removeCollection}>
+        <div className="buttonBox">
+          {" "}
+          <button data-title="Add card" className="viewBtn" onClick={addRow}>
+            <span>
+              <CiSquarePlus />
+            </span>
+          </button>{" "}
+          <button
+            data-title="Add from the file"
+            className="viewBtn"
+            onClick={() => setMod("file")}>
+            <span>
+              <BsFiletypeTxt />
+            </span>
+          </button>
+          <button
+            data-title="Add from the list"
+            className="viewBtn"
+            onClick={() => setMod("list")}>
+            <span>
+              <BiListPlus />
+            </span>
+          </button>{" "}
+        </div>
+      </div>
+      <div data-title="Delete" className="drop-down-menuBtn">
         <span>
-          <IoMdRemove />{" "}
+          <IoMdRemove />
         </span>
-      </button>{" "}
-      <button
-        data-title="Delete all content"
-        className="viewBtn"
-        onClick={deleteAll}>
-        <span>
-          <VscClearAll />
-        </span>
-      </button>{" "}
-      <button
-        data-title="Add from the file"
-        className="viewBtn"
-        onClick={() => setMod("file")}>
-        <span>
-          <BsFiletypeTxt />
-        </span>
-      </button>{" "}
-      <button
-        data-title="Add from the list"
-        className="viewBtn"
-        onClick={() => setMod("list")}>
-        <span>
-          <BiListPlus />
-        </span>
-      </button>{" "}
+        <div className="buttonBox">
+          <button
+            data-title="Remove collection"
+            className="viewBtn"
+            onClick={removeCollection}>
+            <span>
+              <CiFolderOff />
+            </span>
+          </button>{" "}
+          <button
+            data-title="Delete all content"
+            className="viewBtn"
+            onClick={deleteAll}>
+            <span>
+              <VscClearAll />
+            </span>
+          </button>{" "}
+        </div>
+        {/* <button data-title="Delete" className="viewBtn" onClick={deleteAll}>
+          <span>
+            <VscClearAll />
+          </span>
+        </button>{" "} */}
+      </div>
       <button
         data-title="Print"
         className="viewBtn"

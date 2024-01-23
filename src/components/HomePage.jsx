@@ -49,14 +49,12 @@ const HomePage = () => {
           </p>
         </div>
         <div className="color-boxes">
-          {/* <div className="position-reletive"> */}
           <div className="green">SUCCEED!!!</div>
           <div className="blue">Learn</div>
           <div className="orange">Grow</div>{" "}
           <div className="yellow" onClick={toLogin}>
             Let's get to know each other better!
           </div>
-          {/* </div> */}
         </div>
       </div>
       <div className="w-10">{/* <Logo /> */}</div>

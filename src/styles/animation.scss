@@ -124,53 +124,27 @@
 
 
 .card-enter {
-  // opacity: 0;
-  // transform: translateX(100%);
-  // animation-duration: 1000ms; 
   animation: fadeInRight;
   animation-duration: 500ms;
 }
 
 .card-enter-active {
-  // opacity: 1;
-  // transform: translateX(0%);
-  // transition: opacity 500ms, transform 500ms;
   animation: fadeInRight;
   animation-duration: 500ms;
 }
 
 .card-exit {
-  // opacity: 1;
-  // transform: translateX(0%);
   animation: fadeOut;
   animation-duration: 500ms;
 }
 
 .card-exit-active {
   opacity: 0;
-  // transform: translateX(-100%);
-  // transition: opacity 500ms, transform 500ms;
   animation: fadeOut;
   animation-duration: 500ms;
 }
 
-/* .card_left-enter {
-    animation: fadeInLeft;
- fadeOutDown
-    animation-duration: 1000ms;
-  }.card_left-enter-active {
-    animation: fadeInLeft;
 
-    animation-duration: 1000ms;
-  }.card_left-exit {
-    animation: fadeOutRight;
-
-    animation-duration: 1000ms;
-  }.card_left-exit-active {
-    animation: fadeOutRight;
-
-    animation-duration: 1000ms;
-  } */
 .card_slide-enter {
   opacity: 0;
   transform: translateX(100%);
@@ -199,10 +173,6 @@
 }
 
 .card_left-enter-active {
-  // opacity: 1;
-  // transform: translateX(0%);
-  // transition: opacity 500ms, transform 500ms;
-
   animation: fadeInLeft;
   animation-duration: 500ms;
 }
@@ -285,16 +255,12 @@
 }
 
 .game-appear {
-  // animation: lightSpeedInLeft;
   animation: fadeIn;
-  /* animation: rollIn; */
   animation-duration: 1000ms;
 }
 
 .game-appear-done {
-  // animation: lightSpeedInLeft;
   animation: fadeIn;
-  /* animation: rollOut; */
   animation-duration: 1000ms;
 }
 
@@ -377,7 +343,6 @@
 
 .flareEl {
   position: relative;
-  /* overflow-x: hidden;  */
 }
 
 .flare {
@@ -410,9 +375,6 @@
   button {
     width: 100%;
   }
-
-
-
 }
 
 .ball {

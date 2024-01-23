@@ -121,7 +121,8 @@
 // }
 
 .viewBtn,
-.btnBar {
+.btnBar,
+.drop-down-menuBtn {
     width: 44px;
     height: 44px;
     background-color: transparent;
@@ -159,10 +160,56 @@
     }
 }
 
-.checked {
-    color: #005FA1;
-    color: #FF4500;
+.drop-down-menuBtn {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
+    .buttonBox {
+        border: 1px solid;
+        border-radius: 25px;
+        background-color: var(--background-wrap);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        display: none;
+        position: absolute;
+        top: 30px;
+        left: 10px;
+    }
+
+    &:hover {
+        // &::before {
+        //     content: attr(data-title);
+        //     width: fit-content;
+        //     white-space: nowrap;
+        //     padding: 2px 5px;
+        //     background-color: var(--background-header);
+        //     background-color: var(--background-second);
+        //     opacity: 1;
+        //     color: black;
+        //     border-radius: 5px;
+        //     font-size: 12px;
+        //     position: absolute;
+        //     // left: 50%;
+        //     top: -1.5rem;
+        //     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        // }
+
+        .buttonBox {
+            display: flex;
+        }
+    }
+}
+
+.checked {
+    color: #FF4500;
+}
+
+.checkedR {
+    color: #0d6af5;
+    rotate: 90deg;
+    transition: all 0.2s ease-in-out;
 }
 
 .wrapBox {

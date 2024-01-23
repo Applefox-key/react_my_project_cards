@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PlayMenu from "./PlayMenu";
 import cl from "./PlayMenu.module.scss";
+import { MdOutlineModelTraining } from "react-icons/md";
 
 const BtnPlayMenu = ({ collection, verticals = true, ...props }) => {
   const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ const BtnPlayMenu = ({ collection, verticals = true, ...props }) => {
         className={show ? cl.btnShow : cl.btnP}
         data-title={"Games"}
         onClick={onClick}>
-        ☰
+        <MdOutlineModelTraining />
       </button>
 
       {show && (

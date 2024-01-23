@@ -50,7 +50,6 @@
     padding: 0 5px;
     margin: 0;
     min-width: 7%;
-    // background: var(--background-header);
     border-radius: 5px;
   }
 
@@ -72,8 +71,6 @@
   margin: 0 auto;
   min-height: 2vw;
   border: none;
-  // border-radius: 10px 10px 0 0;
-  // border-bottom: 2px solid lightslategray;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   font-size: 10px;
   display: flex;
@@ -87,39 +84,28 @@
   background-color: var(--background-wrap);
   z-index: 700;
   border-radius: 35px 35px 0 0;
-  // border-radius: 5px;
-
-  // position: relative;
   top: 0;
-  // border-radius: 10px;
 
   h5 {
     position: absolute;
-    // background-color: rgb(110, 218, 89);
     font-style: italic;
     color: orangered;
     top: 44px;
 
     @media screen and ((max-width: 900px)) {
-      top: 80px;
-      width: 95px;
+      top: 85px;
+      left: 90px;
     }
   }
 
   @media screen and ((max-height: 600px)) {
     position: relative;
     top: 0;
-    // border-radius: 10px;
   }
 
 }
 
-
-
 .box_menu {
-  // position: absolute;
-  // top: 70px;
-  // left: -60px;
   width: 222px;
   background-color: var(--background-wrap);
   border-radius: 10px;
@@ -243,9 +229,10 @@
 
   &:hover {
     &::before {
-      content: "click to edit the collection settings";
+      content: "click to edit collection's settings";
       position: absolute;
-      top: -25px;
+      // top: -35px;\
+      bottom: -20px;
       right: 10px;
       width: fit-content;
       white-space: nowrap;
@@ -271,11 +258,9 @@
 
 
   h1 {
-    // background: var(--color-back);
     background: #f7f6f6;
     padding: 2px 5px;
     border-radius: 9px;
-    // color: var(--contrast-text);
     color: black;
 
     @media screen and (max-width:900px) {
@@ -480,11 +465,11 @@
   z-index: 600;
   height: 100vh;
   width: 25rem;
-  background-color: var(--background-wrap);
+  // background-color: var(--background-wrap);
   color: black;
-  // padding-top: 3.5rem;
   transition: all 0.4s ease-in-out;
   border-radius: 0 35px 35px 0;
+  background: #f7f6f6;
 
   @media screen and ((max-width: 600px)) {
     position: absolute;
@@ -502,6 +487,7 @@
 
   h3 {
     margin: 0;
+    font-size: 16px;
   }
 
 

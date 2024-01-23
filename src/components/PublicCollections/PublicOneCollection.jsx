@@ -9,7 +9,6 @@ import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SideBarGameMenu from "../SideBar/SideBarGameMenu";
 import { GO_TO } from "../../router/routes";
-import { BsSearch } from "react-icons/bs";
 import { onePartLittle } from "../../utils/cardFragment";
 
 const PublicOneCollection = () => {
@@ -81,14 +80,14 @@ const PublicOneCollection = () => {
                   {content && (
                     <div className="listContent">
                       {content.map((el, i) => (
-                        <div className="one-row">
-                          <div className="btn-box">
+                        <div className="one-row" onClick={() => openCard(el)}>
+                          {/* <div className="btn-box">
                             <button
                               title="view card"
                               onClick={() => openCard(el)}>
                               <BsSearch />
                             </button>
-                          </div>
+                          </div> */}
                           {onePartLittle(el, "question")}
                           {onePartLittle(el, "answer")}
                         </div>

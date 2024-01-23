@@ -28,7 +28,7 @@ const UsersCollections = ({
   const setPopup = usePopup();
   const listFn = {
     delColl: async (element) => {
-      if (!window.confirm("Delete the collection?")) return;
+      if (!window.confirm("Delete this collection?")) return;
       try {
         await BaseAPI.deleteColection(element.id);
         setCollectionList(

@@ -7,7 +7,6 @@ import BtnPlayMenu from "../../UI/PlayMenu/BtnPlayMenu";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
-
   return (
     <div className="string_menu d-flex justify-content-between">
       {renameMode && (

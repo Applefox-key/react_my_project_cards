@@ -46,7 +46,7 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
   };
   const listFn = {
     delColl: async (element, catid) => {
-      if (!window.confirm("Delete the collection?")) return;
+      if (!window.confirm("Delete this collection?")) return;
       try {
         await BaseAPI.deleteColection(element.id);
         let newval = categories.map((cat) =>

@@ -4,37 +4,10 @@
   --wrap-opacity: 1;
   --vertical-font: 1.8rem;
   --card-color: "#fffff0";
-
-
-  // --background-wrap-rgb: 245, 245, 249;
-  // --background-wrap: #F5F5F9;
-  // --background-header: lightsteelblue;
-  // --background-first: cornsilk;
-  // --background-second: lavender;
-  // --background-third: #add8e6;
-  // --background-switch: #4d4d63;
-  // --background-intense: #0A58CA;
-  // --color-intense: #4461F2;
-  // --background-note: coral;
-  // --border-note: red;
-
-
-  // --background-wrap-rgb: 248, 248, 255;
-  // --background-wrap: ghostwhite;
-  // --background-header: #6da4cb;
-  // --background-first: #e5edf9;
-  // --background-second: #fcfbf7;
-  // --background-third: #add8e6;
-  // --background-switch: #313236;
-  // --background-intense: #0A58CA;
-  // --color-intense: #4461F2;
-  // --background-note: #ed666d;
-  // --border-note: red;
   --background-wrap-rgb: 248, 248, 255;
   --background-wrap: #ffffff;
   --background-header: #6da4cb;
   --background-header: #f7f6f6;
-  // --background-header: #005FA1;
   --background-first: #fcfbf7;
   --background-second: #ededed;
   --background-third: #add8e6;
@@ -90,7 +63,6 @@
   }
 
   @media screen and (max-height: 600px) {
-    // padding-left: 41px;
     flex-direction: column-reverse;
   }
 
@@ -104,6 +76,12 @@
 
   @media screen and (max-width:600px) {
     flex-direction: column-reverse;
+    align-items: flex-start
+  }
+
+  @media screen and (max-width:900px) {
+    flex-direction: column-reverse;
+    align-items: center;
   }
 }
 
@@ -112,6 +90,8 @@
   font-size: 2rem;
   margin-top: 3rem;
   margin-left: 3rem;
+
+
 
   @media screen and (max-width:600px) {
     margin: auto;
@@ -142,7 +122,7 @@
 
   p {
     margin-top: 2rem;
-    color: #554e4e;
+    color: var(--contrast-text);
     text-align: center;
     font-family: 'Lato';
     font-size: 16px;
@@ -216,24 +196,22 @@
     border-radius: 50%;
     background-color: #FDDC58;
     rotate: 10deg;
-    left: 500px;
+    left: 80px;
     top: 100px;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     font-size: 4rem;
     color: black;
     display: flex;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     padding: 10px;
     transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
     @media screen and (max-width:900px) {
       left: 520px;
       top: 70px;
-      // height: 170px;
-      // width: 170px;
-      // font-size: 1rem;
     }
 
     @media screen and (max-width:600px) {
@@ -263,7 +241,6 @@
     color: black;
     font-size: 6rem;
     font-weight: 800;
-    // font-family: cursive;
     rotate: 0deg;
     left: 190px;
 
@@ -383,7 +360,7 @@ input {
 .modal-h100 {
   height: 100%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     width: 90vw;
   }
 }

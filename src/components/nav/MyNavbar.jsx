@@ -13,14 +13,17 @@ const MyNavbar = () => {
     setUserAuth({ isAuth: false, role: null });
     router("/login");
   };
-
+  const headerBig =
+    window.location.pathname.includes("home") ||
+    window.location.pathname.includes("about") ||
+    window.location.pathname.includes("login");
   return (
     <>
-      <div className={cl.headerNav}>
-        <h1>FlashMinds: </h1>
-        {/* <span>MASTER YOUR KNOWLEDGE WITH FLASHCARDS</span> */}
-        <span> Master Your Knowledge with Flashcards</span>
+      <div className={headerBig ? cl.headerNav : cl.headerNavSmall}>
+        <h1>FlashMinds </h1>
+        {headerBig && <span> Master Your Knowledge with Flashcards</span>}
       </div>
+
       <div className={[cl.navWrap].join(" ")}>
         {userRoutes
           .filter((el) => el.nameNav)

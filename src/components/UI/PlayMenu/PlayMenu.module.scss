@@ -4,14 +4,18 @@
     background-color: transparent;
     border-radius: 50%;
     border: none;
-    font-size: 18px;
+    font-size: 30px;
+    line-height: 0.7;
     color: #5f6368;
     z-index: 5;
     position: relative;
+    transition: all 0.4s ease-in-out;
 
     &:hover {
         background-color: #e8eaed;
         background-color: var(--background-switch);
+
+        color: white;
 
         &::before {
             content: attr(data-title);
@@ -25,7 +29,6 @@
             border-radius: 5px;
             font-size: 12px;
             position: absolute;
-            // left: 50%;
             bottom: -1.5rem;
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
         }
@@ -40,4 +43,10 @@
     @extend .btnP;
     background-color: var(--background-switch);
     opacity: 0.9;
+    color: yellow;
+    rotate: 360deg;
+
+    &:hover {
+        color: yellow;
+    }
 }

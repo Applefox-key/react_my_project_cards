@@ -23,7 +23,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
       if (
         !window.confirm(
           colid
-            ? "remove the collection from playlist?"
+            ? "remove this collection from playlist?"
             : "clear this playlist?"
         )
       )

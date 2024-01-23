@@ -49,7 +49,7 @@ const CategorySetBtn = ({ getList, icon }) => {
           showmodal={visible}
           setshowmodal={setVisible}
           size="md"
-          dialogClassName="h100"
+          dialogClassName="modal-h100"
           title={"Categories manager"}>
           <CategoriesManager />
         </MyModal>

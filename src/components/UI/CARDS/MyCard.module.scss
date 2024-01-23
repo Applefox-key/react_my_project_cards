@@ -72,23 +72,17 @@
 .collect_button {
   height: 60px;
   width: 60px;
-
   z-index: 5;
-  // color: #FFFFFF;
   font-size: 4rem;
   border-radius: 30px;
   border: solid 1px black;
   padding: 0px 12px;
-  // text-shadow: 1px 1px 0px #528ECC;
-  // box-shadow: inset 1px 1px 0px 0px #BBDAF7;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   font-family: Arial;
-  // background: linear-gradient(180deg, #364378 10%, #4A63CA 100%);
 
   &:hover {
-    // background: linear-gradient(180deg, #468CCF 10%, #63B8EE 100%);
     background-color: black;
     color: white;
   }
@@ -165,10 +159,8 @@
   border-radius: 15px;
 
   @media screen and (max-width: 600px) {
-    // max-height: max-content;
     height: auto;
     height: inherit;
-    // padding: 10px 0;
   }
 
 
@@ -204,7 +196,6 @@
 
 .result-againer {
   margin-top: 0rem;
-  // width: fit-content;
 
   @media screen and (max-width: 600px) {
 

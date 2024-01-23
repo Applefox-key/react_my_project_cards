@@ -5,10 +5,7 @@ import { useState } from "react";
 import { usePopup } from "../../../hooks/usePopup";
 import "../../../styles/oneCollection.scss";
 import { onePartLittle } from "../../../utils/cardFragment";
-import { BsSearch } from "react-icons/bs";
-import { TbHttpDelete } from "react-icons/tb";
 import { GO_TO } from "../../../router/routes";
-import { AiOutlineEdit } from "react-icons/ai";
 
 const CardContentList = ({ content, setContent, pageParam }) => {
   const setPopup = usePopup();
@@ -90,24 +87,25 @@ const CardContentList = ({ content, setContent, pageParam }) => {
       {content && (
         <div className="listContent">
           {content.map((el, i) => (
-            <div className="one-row">
+            <div
+              className="one-row"
+              onClick={(e) => rowsActons.editCard(el, e)}>
               <div className="btn-box">
                 {" "}
                 <button
                   title="Delete row"
-                  onClick={() => rowsActons.deleteOne(el)}>
-                  <TbHttpDelete />
+                  onClick={(e) => rowsActons.deleteOne(el, e)}>
+                  ❌
                 </button>
-                <button
+                {/* <button
                   title="Edit row"
-                  onClick={() => rowsActons.editCard(el)}>
+                  onClick={(e) => rowsActons.editCard(el, e)}>
                   <AiOutlineEdit />
-                </button>
-                <button
+                </button> */}
+                {/* <button
                   title="view card"
                   onClick={() => rowsActons.openCard(el)}>
-                  <BsSearch />
-                </button>
+                  <BsSearch />                </button> */}
               </div>
               {onePartLittle(el, "question")}
               {onePartLittle(el, "answer")}

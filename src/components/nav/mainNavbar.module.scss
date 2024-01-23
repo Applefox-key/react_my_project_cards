@@ -5,13 +5,14 @@
   width: 100%;
   background-color: #193B70;
   padding: 20px;
-  height: 150px;
+  height: 120px;
   color: white;
   text-align: start;
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
   flex-wrap: wrap;
+  align-content: flex-end;
 
   @media screen and (max-width:600px) {
     height: 100px;
@@ -38,7 +39,6 @@
   span {
     font-family: 'Kurale', serif;
     text-align: end;
-    // width: 100%;
     font-size: 40px;
     font-style: italic;
 
@@ -48,6 +48,33 @@
 
     @media screen and (max-width:900px) {
       font-size: 16px;
+    }
+  }
+}
+
+.headerNavSmall {
+  @extend .headerNav;
+  height: 50px;
+  display: flex;
+
+  align-content: center;
+
+  @media screen and (max-width:900px) {
+    width: 100vw;
+
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-right: 1rem;
+    margin-bottom: 0rem;
+
+    @media screen and (max-width:600px) {
+      font-size: 36px;
+    }
+
+    @media screen and (max-width:900px) {
+      font-size: 36px;
     }
   }
 }
@@ -99,7 +126,7 @@
       font-size: 12px;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
       margin-right: 12px;
       margin-right: 3px;
       font-size: 8px;
@@ -135,7 +162,6 @@
   font-weight: 500;
 
   @media screen and (max-width: 900px) {
-    // margin-right: 12px;
     margin-right: 0px;
     font-size: 12px;
     padding: 3px;
@@ -150,11 +176,9 @@
   display: flex;
 
   h1 {
-    // background: var(--color-back);
     padding: 2px 5px;
     border-radius: 9px;
-    // color: var(--contrast-text);
-    color: white
+    color: white;
   }
 
   button {

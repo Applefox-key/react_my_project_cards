@@ -40,8 +40,8 @@ export const share = async (collection, setPopup) => {
     );
     setPopup.success(
       collection.isPublic
-        ? "the collection has been unshared"
-        : "the collection has been shared"
+        ? "collection has been unshared"
+        : "collection has been shared"
     );
   } catch (error) {
     setPopup.error(error.message);
@@ -55,8 +55,8 @@ export const favorite = async (collection, setPopup) => {
     );
     setPopup.success(
       collection.isFavorite
-        ? "the collection has been delete from the favorites"
-        : "the collection has been added to the favorites"
+        ? "collection has been delete from the favorites"
+        : "collection has been added to the favorites"
     );
   } catch (error) {
     setPopup.error(error.message);
