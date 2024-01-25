@@ -66,6 +66,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
           {!!oneSet.collection.isFavorite && (
             <div className="shareSymb heartSymb">
               <HiHeart />
+              {/* <FcBookmark /> */}
             </div>
           )}
           <div

@@ -294,7 +294,7 @@ const BaseAPI = {
             "/content",
             true,
             "",
-            reqParams === {} ? "" : reqParams
+            reqParams === categoryid || textFilter || isPublic ? reqParams : ""
           );
       if (result.error) throw new Error(result.error);
 

@@ -1,10 +1,11 @@
 import React from "react";
 import { oneElemVertical } from "../../utils/cardFragment";
 import { useParams } from "react-router-dom";
+import { useStretchingText } from "../../hooks/useStretchingText";
 
 const CardVertical = ({ el, i, drugDrop, del, mode }) => {
   const params = useParams();
-
+  useStretchingText("print_text");
   return (
     <div
       key={el.id}

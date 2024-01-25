@@ -926,11 +926,21 @@
                 box-sizing: border-box;
                 overflow-wrap: break-word;
 
-                img {
+                .imgT {
+                    float: left;
                     max-width: 130px;
                     max-height: 130px;
-                    float: left;
+                    margin-left: 5px;
+                    margin-top: 5px;
                 }
+
+                .imgOmly {
+                    max-width: 60%;
+                    height: fit-content;
+                }
+
+
+
             }
 
             .question {
@@ -998,13 +1008,27 @@
                 display: flex;
                 overflow-wrap: break-word;
 
-                img {
+                // img {
+                //     float: left;
+                //     max-width: 130px;
+                //     max-height: 130px;
+                //     margin-left: 5px;
+                //     margin-top: 5px;
+                // }
+
+                .imgT {
                     float: left;
                     max-width: 130px;
                     max-height: 130px;
                     margin-left: 5px;
                     margin-top: 5px;
                 }
+
+                .imgOmly {
+                    max-width: 60%;
+                    height: fit-content;
+                }
+
             }
 
             .question {

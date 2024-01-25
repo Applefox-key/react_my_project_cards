@@ -4,6 +4,7 @@ import cl from "./MyCard.module.scss";
 import { CSSTransition } from "react-transition-group";
 import { useEffect } from "react";
 import { mainAndImg } from "../../../utils/cardFragment";
+import { useStretchingText } from "../../../hooks/useStretchingText";
 
 const MyCard = ({ item, mode = "0", flip, clc = true }) => {
   const [flipped, setFlipped] = useState(false);
@@ -12,6 +13,7 @@ const MyCard = ({ item, mode = "0", flip, clc = true }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flip]);
   console.log(item);
+  useStretchingText("cardText");
 
   return (
     <>

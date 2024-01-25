@@ -1,7 +1,9 @@
 import React from "react";
 import { oneElemHorizontal } from "../../utils/cardFragment";
+import { useStretchingText } from "../../hooks/useStretchingText";
 
 const CardColumn = ({ el, i, drugDrop, del, part }) => {
+  useStretchingText("print_text");
   return (
     <div
       key={el.id}

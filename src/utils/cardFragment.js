@@ -1,5 +1,5 @@
 import { getImgA, getImgQ } from "./contentRequests";
-import { fontPrint, fontS } from "./texts";
+// import { fontPrint } from "./texts";
 //main card content back and front
 //mode 0 - question is on the front
 //mode 1 - question is on the back
@@ -9,14 +9,23 @@ const cardContent = (item, part, cl) => {
 
   return (
     <>
-      {im && (
-        <img
-          src={part === "answer" ? getImgA(item) : getImgQ(item)}
-          className={tx ? cl["img_float"] : cl["mwh-100"]}
-          alt=""
-        />
+      {im ? (
+        <>
+          <img
+            src={part === "answer" ? getImgA(item) : getImgQ(item)}
+            className={tx ? cl["img_float"] : cl["mwh"]}
+            alt=""
+          />
+          {tx && (
+            <div className={cl["wh-75"]}>
+              <p className="cardText">{tx}</p>
+            </div>
+          )}
+        </>
+      ) : (
+        tx && <p className="cardText">{tx}</p>
       )}
-      {tx && <h1 className={fontS([tx, im])}>{tx}</h1>}
+      {}
     </>
   );
 };
@@ -27,9 +36,7 @@ export const mainAndImg = (side, mode, item, cl) => {
   let note = item.note ? item.note.trim() : "";
   let isFlex =
     variant === "front0" || variant === "back1" ? !item.question : !item.answer;
-  let mainDivClass = isFlex
-    ? "d-flex justify-content-center w-100 h-100"
-    : "mw-100 mh-100";
+  let mainDivClass = isFlex ? cl.imgContent : cl.textContent;
 
   return (
     <>
@@ -37,8 +44,12 @@ export const mainAndImg = (side, mode, item, cl) => {
         <div className={mainDivClass}>
           {note && side === "back" ? (
             <div className={cl["div-note"]}>
-              {item.note && <p className={cl["card-note"]}>{item.note}</p>}
-              <div className="d-flex justify-content-center ">
+              {item.note && (
+                <p className={cl["card-note"]}>
+                  <span>{item.note}</span>
+                </p>
+              )}
+              <div className={cl["card-text-sibl"]}>
                 {variant === "back1" ? (
                   <>{cardContent(item, "question", cl)}</>
                 ) : (
@@ -55,26 +66,6 @@ export const mainAndImg = (side, mode, item, cl) => {
       </div>
     </>
   );
-  // return (
-  //   <>
-  //     <div className={cl["card-" + side]}>
-  //       <div className={mainDivClass}>
-  //         {variant === "front0" || variant === "back1" ? (
-  //           <>{cardContent(item, "question", cl)}</>
-  //         ) : note ? (
-  //           <div className={cl["div-note"]}>
-  //             {item.note && <p className={cl["card-note"]}>{item.note}</p>}
-  //             <div className="d-flex justify-content-center ">
-  //               <>{cardContent(item, "answer", cl)}</>
-  //             </div>
-  //           </div>
-  //         ) : (
-  //           <>{cardContent(item, "answer", cl)}</>
-  //         )}
-  //       </div>
-  //     </div>
-  //   </>
-  // );
 };
 
 //____________________________________________PRINTING CARD
@@ -86,11 +77,15 @@ export const oneElemVertical = (el, part) => {
   let classJustify = tx ? "" : " justify-content-center";
   return (
     <div className={"print_part " + part + classMinHeight + classJustify}>
-      <div className="mw-100 mh-100">
+      <div className="printContent">
         {im && (
-          <img src={part === "question" ? getImgQ(el) : getImgA(el)} alt="" />
+          <img
+            src={part === "question" ? getImgQ(el) : getImgA(el)}
+            alt=""
+            className={tx ? "imgT" : "imgOmly"}
+          />
         )}
-        {tx}
+        {tx && <div className="print_text">{tx}</div>}
       </div>
     </div>
   );
@@ -100,12 +95,17 @@ export const oneElemHorizontal = (el, part) => {
   let im = part === "question" ? el.imgQ : el.imgA;
   let tx = part === "question" ? el.question : el.answer;
   return (
-    <div className={"print_part " + part + " " + fontPrint([tx, im])}>
-      <div className="mw-100 mh-100 z-index2">
+    // <div className={"print_part " + part + " " + fontPrint([tx, im])}>
+    <div className={"print_part " + part}>
+      <div className="printContent">
         {im && (
-          <img src={part === "question" ? getImgQ(el) : getImgA(el)} alt="" />
+          <img
+            src={part === "question" ? getImgQ(el) : getImgA(el)}
+            alt=""
+            className={tx ? "imgT" : "imgOmly"}
+          />
         )}
-        {tx}
+        {tx && <div className="print_text">{tx}</div>}
       </div>
     </div>
   );

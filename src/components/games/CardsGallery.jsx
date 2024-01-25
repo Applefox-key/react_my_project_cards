@@ -51,7 +51,7 @@ const CardsGallery = () => {
               {items && itemNum + 1 + "/" + items.length}
             </p>
 
-            <div className="mt-5 d-flex justify-content-center align-items-end">
+            <div className={cl["card-and-arrow"]}>
               <button
                 type="button"
                 className={cl.collect_button}
