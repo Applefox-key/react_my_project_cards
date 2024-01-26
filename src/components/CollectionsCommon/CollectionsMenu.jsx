@@ -7,6 +7,7 @@ import ByCategoryBtn from "../UI/tgb/ByCategoryBtn";
 import BackMenuBtn from "../UI/tgb/BackMenuBtn";
 import SidebarShowBtn from "../UI/tgb/SidebarShowBtn";
 import { HiHeart, HiPlus, HiShare } from "react-icons/hi";
+import { Form } from "react-bootstrap";
 
 const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
@@ -27,13 +28,28 @@ const CollectionsMenu = (props) => {
             {isPublic ? "Public collections" : "My library"}
             {props.commonSettings.byCategory ? ": CATEGORIES" : ""}
           </h1>{" "}
-        </div>
+        </div>{" "}
         <MyFilter
           filter={props.commonSettings.filter}
           setFilter={(val) => props.setSettingsCommon("filter", val)}
         />{" "}
         <div>
           <div className="d-flex">
+            {!props.commonSettings.byCategory && (
+              <Form.Select
+                size="sm"
+                onChange={(e) =>
+                  props.setSettingsCommon("sorting", parseInt(e.target.value))
+                }
+                aria-label="Default select example"
+                className="wsort m-auto">
+                <option>Sort</option>
+                <option value="1">A-Z name</option>
+                <option value="2">Z-A name</option>
+                <option value="3">A-Z category</option>
+                <option value="4">Z-A category</option>
+              </Form.Select>
+            )}
             <ViewSwitch
               checked={window.location.hash === "#1" ? 1 : 0}
               onChange={props.viewmodeChange}

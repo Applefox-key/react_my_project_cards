@@ -236,7 +236,8 @@
     .listContent {
         font-size: 12px;
         width: 100%;
-
+        display: table;
+        border-spacing: 10px 20px;
 
         @media screen and (max-width: 600px) {
             margin-left: 0;
@@ -256,6 +257,8 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             border-radius: 5px;
+            display: table-row;
+
 
             @media screen and (max-width: 600px) {
                 position: relative;
@@ -265,11 +268,11 @@
                 display: flex;
                 justify-content: center;
                 max-width: 45px;
-                margin-right: 2rem;
+                // margin-right: 2rem;
                 position: absolute;
-                top: 0px;
-                left: -10px;
-                padding: 5px;
+                // top: 0px;
+                // left: -10px;
+                // padding: 5px;
                 border-radius: 15px;
                 // background-color: var(--background-wrap);
                 // width: fit-content;
@@ -326,9 +329,11 @@
 
 
             .onePart {
-                width: fit-content;
-                text-align: center;
-                width: 50%;
+                // width: fit-content;
+                text-align: left;
+                // width: 50%;
+                padding-bottom: 5px;
+                padding-top: 5px;
 
                 @media screen and (max-width: 600px) {
                     font-size: 10px;
@@ -340,8 +345,8 @@
 
                 .imgOnly {
                     float: none;
-                    max-height: 100%;
-                    max-width: 100%;
+                    max-height: 200px;
+                    max-width: 200px;
                 }
 
                 img {
@@ -367,12 +372,20 @@
                 // text-align: left;
                 margin-right: 1rem;
                 // text-wrap: nowrap;
-                border-right: 1px solid grey;
+                // border-right: 1px solid grey;
+                display: table-cell;
+                max-width: 50%;
+                width: max-content;
+                padding-left: 15px;
+
+
             }
 
             .answ {
                 color: grey;
-
+                display: table-cell;
+                width: max-content;
+                max-width: 50%;
                 // &::before {
                 //     content: "/";
                 // }

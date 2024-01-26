@@ -6,9 +6,9 @@ import CollectionCardsList from "../../CollectionsCommon/CollectionCardsList";
 import { GO_TO } from "../../../router/routes";
 import { favorite, share } from "../../../utils/contentRequests";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+import { useCollectSelection } from "../../../hooks/useCollectSelection";
 
 const UsersCollections = ({
-  viewmode,
   commonSettings,
   privateSettings,
   setSettingsPrivat,
@@ -26,6 +26,7 @@ const UsersCollections = ({
     );
   });
   const setPopup = usePopup();
+
   const listFn = {
     delColl: async (element) => {
       if (!window.confirm("Delete this collection?")) return;
@@ -84,25 +85,23 @@ const UsersCollections = ({
     },
   };
   useEffect(() => {
-    if (privateSettings.isNew) return;
     getCollections();
-
-    if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    privateSettings.isNew,
+  }, []);
+
+  const filtredList = useCollectSelection(
+    collectionList,
     commonSettings.selectedCategorymy,
     commonSettings.filter,
-    privateSettings.shared,
-    privateSettings.favorite,
-  ]);
+    commonSettings.sorting
+  );
   return (
     <>
       {isLoading ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CollectionCardsList
-          filtredList={collectionList}
+          filtredList={filtredList}
           listFn={listFn}
           routeOne={GO_TO.myCollect}
         />

@@ -9,13 +9,14 @@ import { usePopup } from "../../hooks/usePopup";
 import { favorite, share } from "../../utils/contentRequests";
 import CollectionRowBtns from "./CollectionRowBtns";
 import { FiFolder } from "react-icons/fi";
+import { sortByField } from "../../utils/arraysFunc";
 
 const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
   const [categories, setCategories] = useState([]);
   const isPublic = window.location.pathname.includes("pub");
   const [getCategories, isLoadingCat] = useQuery(async () => {
     const cat = await BaseAPI.getCategoriesListWithCollections(isPublic);
-    setCategories(cat);
+    setCategories(sortByField(cat, "name"));
   });
   const setPopup = usePopup();
   useEffect(() => {
@@ -95,9 +96,6 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
         setPopup.error("something goes wrong");
       }
     },
-    // addNew: async () => {
-    //   setSettingsPrivat("isNew");
-    // },
   };
   return (
     <>

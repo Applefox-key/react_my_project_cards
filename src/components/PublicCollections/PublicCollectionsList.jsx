@@ -6,7 +6,7 @@ import { GO_TO } from "../../router/routes";
 import CollectionCardsList from "../CollectionsCommon/CollectionCardsList";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
-const PublicCollectionsList = ({ commonSettings, viewmode }) => {
+const PublicCollectionsList = ({ commonSettings }) => {
   const [list, setlist] = useState([]);
   const [getPbCollWithCont, isLoading] = useQuery(async () => {
     const col = await BaseAPI.getPublicCollectionsAndContent();
@@ -20,8 +20,10 @@ const PublicCollectionsList = ({ commonSettings, viewmode }) => {
   const filtredList = useCollectSelection(
     list,
     commonSettings.selectedCategorypub,
-    commonSettings.filter
+    commonSettings.filter,
+    commonSettings.sorting
   );
+
   return (
     <>
       {isLoading ? (

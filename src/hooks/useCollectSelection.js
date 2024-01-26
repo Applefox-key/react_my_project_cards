@@ -3,11 +3,12 @@ import {
   filterByCategory,
   getFiltredCollections,
 } from "../utils/collectFilter";
+import { sortByFieldC } from "../utils/arraysFunc";
 
-const useSortedList = (list, sort) => {
+const useSortedList = (list, sort = "") => {
   const sortedList = useMemo(() => {
     return sort
-      ? [...list].sort((a, b) => a[sort].localeCompare(b[sort]))
+      ? sortByFieldC(list, sort < 3 ? "name" : "category", !(sort % 2))
       : list;
   }, [sort, list]);
 

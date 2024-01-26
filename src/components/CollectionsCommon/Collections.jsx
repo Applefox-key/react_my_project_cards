@@ -28,6 +28,7 @@ const Collections = () => {
     filter: pageSet.filter,
     byCategory: pageSet.byCategory,
     sideBar: false,
+    sorting: 0,
   });
 
   const [privateSettings, setPrivateSettings] = useState({
@@ -82,6 +83,7 @@ const Collections = () => {
     commonSettings.selectedCategorymy,
     commonSettings.selectedCategorypub,
     commonSettings.sideBar,
+    commonSettings.sorting,
     privateSettings.favorite,
     privateSettings.shared,
   ]);
@@ -112,7 +114,7 @@ const Collections = () => {
             setSettingsCommon={setSettingsCommon}
             setSettingsPrivat={setSettingsPrivat}
           />
-        </div>
+        </div>{" "}
         <div className="d-flex align-items-start">
           {commonSettings.sideBar && (
             <div className="sideBar-wide">
@@ -123,6 +125,7 @@ const Collections = () => {
               />
             </div>
           )}
+
           <div className="allcollect ms-4">
             {commonSettings.byCategory ? (
               <CategoriesFoldersView

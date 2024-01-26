@@ -10,6 +10,8 @@ import OneCollectionMenu from "./OneCollectionMenu";
 import SideBarGameMenu from "../../SideBar/SideBarGameMenu";
 import CardContentList from "./CardContentList";
 import { GO_TO } from "../../../router/routes";
+import { Form } from "react-bootstrap";
+import { sortByField } from "../../../utils/arraysFunc";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
@@ -36,7 +38,14 @@ const UserOneCollection = () => {
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name]);
-
+  const sortContent = (val) => {
+    const newVal = sortByField(
+      [...content],
+      val < 3 ? "question" : "answer",
+      !(val % 2)
+    );
+    setContent(newVal);
+  };
   return (
     <div className="d-flex">
       <div className="wrap_box tableContainer">
@@ -59,13 +68,25 @@ const UserOneCollection = () => {
               My library
             </p>{" "}
           </div>
-        )}
+        )}{" "}
+        <Form.Select
+          size="sm"
+          onChange={(e) => sortContent(parseInt(e.target.value))}
+          aria-label="Default select example"
+          className="wsort m-auto">
+          <option>Sort</option>
+          <option value="1">A-Z questions</option>
+          <option value="2">Z-A questions</option>
+          <option value="3">A-Z answers</option>
+          <option value="2">Z-A answers</option>
+        </Form.Select>
         <div className="m-auto d-flex">
           {sideBar && (
             <div className="sideBar-wide">
               <SideBarGameMenu />
             </div>
           )}
+
           {!isLoading && content ? (
             mode === 0 ? (
               <CardContent

@@ -116,7 +116,7 @@ export const onePartLittle = (el, part) => {
   let tx = part === "question" ? el.question : el.answer;
   let classImg = im && tx.length === 0 ? "imgOnly" : "";
   let classDiv = "onePart " + (part === "question" ? "quest" : "answ");
-  classDiv += tx.length < 30 ? " text-center" : "";
+  // classDiv += tx.length < 15 ? " text-center" : "";
 
   return (
     <div className={classDiv}>

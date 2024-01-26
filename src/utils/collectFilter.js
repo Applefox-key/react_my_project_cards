@@ -34,6 +34,8 @@ export const filterByCategory = (list, category) => {
           ? list[0].collection
             ? item.collection.id
             : item.id
+          : list[0].collection
+          ? item.collection.categoryid
           : item.categoryid
       );
     });
