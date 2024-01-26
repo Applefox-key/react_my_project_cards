@@ -97,7 +97,7 @@ const UsersCollections = ({
   );
   return (
     <>
-      {isLoading ? (
+      {isLoading && error ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CollectionCardsList
