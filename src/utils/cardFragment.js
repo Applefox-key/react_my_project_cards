@@ -45,8 +45,9 @@ export const mainAndImg = (side, mode, item, cl) => {
           {note && side === "back" ? (
             <div className={cl["div-note"]}>
               {item.note && (
-                <p className={cl["card-note"]}>
-                  <span>{item.note}</span>
+                <p className={cl["card-note"]} data-title={item.note}>
+                  {item.note}
+                  {/* <span>{item.note}</span> */}
                 </p>
               )}
               <div className={cl["card-text-sibl"]}>

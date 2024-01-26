@@ -74,7 +74,8 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 90%;
+    padding-top: 20px;
+    // height: 90%;
 
 }
 
@@ -320,7 +321,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-content: center;
 
     }
@@ -330,41 +331,75 @@
         text-align: end;
         top: 0;
         font-size: 16px;
-        left: 0px;
+        left: 0;
+        // top: -10px;
         transition: all 0.2s ease-in-out;
         text-wrap: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        position: absolute;
-        width: 90%;
+        color: var(--color-checked); // position: relative;
+        width: 100%;
         text-align: left;
+        // background-color: var(--color-checked);
+        width: 100%;
+        height: 30px;
+        // background-color: red;
 
-        &:before {
-            content: "💡";
-        }
 
-        span {
-            display: none;
+        // &:before {
+        //     content: "💡";
+        // }
+
+        // span {
+        //     transition: all 0.4s ease-in-out;
+        //     white-space: nowrap;
+        //     overflow: hidden;
+        //     text-overflow: ellipsis;
+        //     max-width: 100%;
+
+        // }
+        transition: all 0.2s ease-in-out;
+
+        &::before {
+            // transition: all 0.1s ease-in-out;
+            content: "";
+            // display: none;
         }
 
         &:hover {
-            span {
+            color: transparent;
+
+            &::before {
                 display: block;
-                font-size: 12px;
+                content: attr(data-title);
+                position: absolute;
+                height: fit-content;
+                padding: 10px;
+                // display: block;
+                width: 100%;
+                top: 0;
+                left: 0;
+                color: white;
+                font-size: 18px;
+                background-color: var(--color-checked);
+                // height: fit-content;
             }
 
-            &:before {
-                content: "";
-            }
 
-            background-color: var(--background-note);
-            border-radius: 10px;
-            font-size: 3rem;
-            text-align: center;
-            text-wrap: wrap;
-            text-overflow: inherit;
-            overflow: inherit;
-            width: 90%;
+            // height: fit-content;
+
+
+
+
+
+            // background-color: var(--background-note);
+            // border-radius: 10px;
+            // font-size: 3rem;
+            // text-align: center;
+            // text-wrap: wrap;
+            // text-overflow: inherit;
+            // overflow: inherit;
+            // width: 90%;
         }
     }
 

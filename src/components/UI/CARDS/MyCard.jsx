@@ -5,6 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import { useEffect } from "react";
 import { mainAndImg } from "../../../utils/cardFragment";
 import { useStretchingText } from "../../../hooks/useStretchingText";
+import Hint from "../../games/Hint";
 
 const MyCard = ({ item, mode = "0", flip, clc = true }) => {
   const [flipped, setFlipped] = useState(false);
@@ -18,6 +19,8 @@ const MyCard = ({ item, mode = "0", flip, clc = true }) => {
   return (
     <>
       <div className={cl["card-container"]}>
+        {" "}
+        {/* {item.note ? <Hint text={item.note} /> : <></>} */}
         <button
           className={cl["card-button"]}
           onClick={() => {
