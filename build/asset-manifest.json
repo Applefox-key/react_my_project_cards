@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e5f91ba3.css",
+    "main.js": "/static/js/main.ddedd1a4.js",
+    "static/media/man_left.png": "/static/media/man_left.447e18e8defeb7470146.png",
+    "static/media/man4.png": "/static/media/man4.ee7a0f5bf3f3d2a769dd.png",
+    "static/media/profile.ico": "/static/media/profile.dd82cd98f5e2825724fb.ico",
+    "static/media/basketball.png": "/static/media/basketball.25d6e645e4421f1699c6.png",
+    "index.html": "/index.html",
+    "main.e5f91ba3.css.map": "/static/css/main.e5f91ba3.css.map",
+    "main.ddedd1a4.js.map": "/static/js/main.ddedd1a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e5f91ba3.css",
+    "static/js/main.ddedd1a4.js"
+  ]
+}
