@@ -75,7 +75,7 @@
     justify-content: center;
     width: 100%;
     padding-top: 20px;
-    // height: 90%;
+    height: 90%;
 
 }
 
@@ -368,6 +368,8 @@
 
         &:hover {
             color: transparent;
+            text-wrap: wrap;
+
 
             &::before {
                 display: block;
@@ -381,6 +383,7 @@
                 left: 0;
                 color: white;
                 font-size: 18px;
+                border-radius: 0 0 15px 15px;
                 background-color: var(--color-checked);
                 // height: fit-content;
             }
