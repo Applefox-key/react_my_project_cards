@@ -40,7 +40,7 @@ const Collections = () => {
   const updateRef = () => {
     latestStateRef.current = {
       ...commonSettings,
-      ...viewmode,
+      // ...viewmode,
       ...privateSettings,
       viewmode,
     };

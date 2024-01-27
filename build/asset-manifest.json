@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.c2f9b773.css",
-    "main.js": "/static/js/main.ddedd1a4.js",
+    "main.js": "/static/js/main.16486a54.js",
     "static/media/man_left.png": "/static/media/man_left.447e18e8defeb7470146.png",
     "static/media/man4.png": "/static/media/man4.ee7a0f5bf3f3d2a769dd.png",
     "static/media/profile.ico": "/static/media/profile.dd82cd98f5e2825724fb.ico",
     "static/media/basketball.png": "/static/media/basketball.25d6e645e4421f1699c6.png",
     "index.html": "/index.html",
     "main.c2f9b773.css.map": "/static/css/main.c2f9b773.css.map",
-    "main.ddedd1a4.js.map": "/static/js/main.ddedd1a4.js.map"
+    "main.16486a54.js.map": "/static/js/main.16486a54.js.map"
   },
   "entrypoints": [
     "static/css/main.c2f9b773.css",
-    "static/js/main.ddedd1a4.js"
+    "static/js/main.16486a54.js"
   ]
 }

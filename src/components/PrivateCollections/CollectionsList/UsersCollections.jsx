@@ -85,9 +85,18 @@ const UsersCollections = ({
     },
   };
   useEffect(() => {
+    if (privateSettings.isNew) return;
     getCollections();
+
+    if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    privateSettings.isNew,
+    commonSettings.selectedCategorymy,
+    commonSettings.filter,
+    privateSettings.shared,
+    privateSettings.favorite,
+  ]);
 
   const filtredList = useCollectSelection(
     collectionList,
