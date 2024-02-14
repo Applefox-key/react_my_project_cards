@@ -2,7 +2,7 @@ import React from "react";
 import cl from "./Games.module.scss";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { getImgA, getImgQ } from "../../utils/contentRequests";
-// import { fontLittle } from "../../utils/texts";
+import { fontLittle } from "../../utils/texts";
 
 const PairPart = ({ items, onClick, num, active }) => {
   const imgEl = (el) => {
@@ -15,15 +15,15 @@ const PairPart = ({ items, onClick, num, active }) => {
     );
   };
   const generateClassName = (el) => {
-    // const set = num === 2 ? [el.answer, el.imgA] : [el.question, el.imgQ];
+    const set = num === 2 ? [el.answer, el.imgA] : [el.question, el.imgQ];
     return [
       cl.list_btn,
-      // fontLittle(set),
+      fontLittle(set),
       num === 2 ? cl.answer : "",
       active === el.id + "&" + num ? cl["active"] : "",
     ].join(" ");
   };
-
+  // useStretchingText("cardText");
   return (
     <TransitionGroup
       className={cl.container + " flex-wrap justify-content-center mt-5"}>

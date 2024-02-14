@@ -299,22 +299,26 @@
 
 
 .cardChange-enter {
-  animation: fadeInLeft;
+  // animation: fadeInleft;
+  animation: fadeIn;
   animation-duration: 1000ms;
 }
 
 .cardChange-enter-done {
-  animation: fadeInleft;
+  // animation: fadeInleft;
+  animation: fadeIn;
   animation-duration: 1000ms;
 }
 
 .cardChange-exit {
-  animation: fadeOutRight;
+  // animation: fadeOutRight;
+  animation: fadeOut;
   animation-duration: 1000ms;
 }
 
 .cardChange-exit-done {
-  animation: fadeOutRight;
+  // animation: fadeOutRight;
+  animation: fadeOut;
   animation-duration: 1000ms;
 }
 

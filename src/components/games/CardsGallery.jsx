@@ -61,6 +61,7 @@ const CardsGallery = () => {
               </button>
               <div className="d-flex   justify-content-end">
                 <OneCardG
+                  clgal={cl.container_gallery_view}
                   anim={anim}
                   direction={direction}
                   item={items[itemNum]}

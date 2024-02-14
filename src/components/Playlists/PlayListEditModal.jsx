@@ -55,14 +55,12 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
       // size="lg"
       title={titleWin()}
       dialogClassName="modal-h100">
-      <div className="d-flex flex-column justify-content-center  w-100">
-        <div>
-          <AllCollectionsList
-            selectedIds={selectedIds}
-            setSelectedIds={setSelectedIds}
-          />
-        </div>
-        <div className="edit_btn_menu editBtnAbs">
+      <AllCollectionsList
+        selectedIds={selectedIds}
+        setSelectedIds={setSelectedIds}
+      />
+      <div className="editBtnAbs">
+        <div className="edit_btn_menu ">
           <Button
             className="mb-0"
             size="lg"

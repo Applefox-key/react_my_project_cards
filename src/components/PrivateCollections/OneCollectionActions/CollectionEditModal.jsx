@@ -18,6 +18,7 @@ const CollectionEditModal = ({
   isEdit,
   setIsEdit,
   onHide,
+  changeCat,
 }) => {
   const route = useNavigate();
   const [content, setContent] = useState();
@@ -44,7 +45,9 @@ const CollectionEditModal = ({
         isNew,
         collection
       );
+
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
+      if (category.id !== collection.categoryid) changeCat(category);
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
       setIsEdit(false);
     } catch (error) {
@@ -81,7 +84,10 @@ const CollectionEditModal = ({
       <div className="d-flex flex-column justify-content-center  w-100">
         {/* <Popup /> */}
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
-          <div className="header_modal">
+          <div
+            className={
+              isNew ? "header_modal" : "header_modal justify-content-end"
+            }>
             {isNew && (
               <Form.Check
                 className="fs-4"
@@ -95,8 +101,8 @@ const CollectionEditModal = ({
                 isOne={true}
                 onSelect={setCateg}
                 colCat={{
-                  id: collection.categoryid,
-                  name: collection.category,
+                  id: category.id,
+                  name: category.name,
                 }}
               />
             </div>{" "}

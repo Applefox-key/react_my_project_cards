@@ -53,6 +53,7 @@ const UserOneCollection = () => {
           <div className="d-flex">
             <OneCollectionMenu
               setContent={setContent}
+              setCollect={setCollect}
               mode={mode}
               setMode={modeChange}
               sideBar={sideBar}
@@ -75,10 +76,10 @@ const UserOneCollection = () => {
           aria-label="Default select example"
           className="wsort m-auto">
           <option>Sort</option>
-          <option value="1">A-Z questions</option>
-          <option value="2">Z-A questions</option>
-          <option value="3">A-Z answers</option>
-          <option value="2">Z-A answers</option>
+          <option value="1">Questions A-Z </option>
+          <option value="2">Questions Z-A </option>
+          <option value="3">Answers A-Z </option>
+          <option value="2">Answers Z-A </option>
         </Form.Select>
         <div className="m-auto d-flex">
           {sideBar && (

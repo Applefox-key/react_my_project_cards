@@ -11,7 +11,7 @@
 
 .textContent {
     width: 100%;
-    height: 100%;
+    height: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,12 +117,33 @@
     }
 }
 
-.container_gallery {
-    width: 100rem;
-    height: 45rem;
+
+
+.container_gallery,
+.container_gallery_view,
+.container_gallery_result {
+    width: 75rem;
+    height: 35rem;
     margin-bottom: 5rem;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 1rem;
+
+    // @media screen and (max-width: 1600px) and (max-height: 700px) {
+    //     width: 75rem;
+    //     height: 35rem;
+
+    // }
+    @media screen and (max-width: 1600px) and (max-height: 700px) {
+        margin-bottom: 1rem;
+
+    }
+
+    @media screen and (min-width: 800px) and (max-height: 391px) {
+        width: 75rem;
+        height: 35rem;
+
+    }
 
 
     @media screen and (min-width: 800px) and (max-height: 391px) {
@@ -138,14 +159,40 @@
     }
 
     @media screen and (min-width: 600px) and (max-height: 600px) {
+        // max-width: 80vw;
+        // max-height: 90vh;
         max-width: 80vw;
-        max-height: 90vh;
+        max-height: 70vh;
+        /* margin-top: -1rem; */
+        margin-bottom: 3rem;
+        margin-left: 2rem;
 
     }
 
     @media screen and (max-width: 300px) and (min-height: 600px) {
         width: 20rem;
         max-height: 35rem;
+
+    }
+}
+
+
+
+.container_gallery_result {
+    padding-bottom: 4rem;
+
+    @media screen and (min-width: 600px) and (max-height: 600px) {
+        margin: auto;
+
+    }
+}
+
+.container_gallery_view {
+    margin-bottom: 4rem;
+
+    @media screen and (max-width: 1600px) and (max-height: 700px) {
+        width: 100rem;
+        height: 45rem;
 
     }
 }
@@ -280,6 +327,15 @@
         width: fit-content;
         min-width: unset;
         font-size: large;
+        scale: 0.8;
+    }
+
+    @media screen and (max-height: 400px) {
+        width: fit-content;
+        min-width: unset;
+        font-size: large;
+        scale: 0.8;
+        margin-top: 1rem;
     }
 
     &:hover {
@@ -444,6 +500,7 @@
     @media screen and (max-width: 600px) {
         position: relative;
         height: 54vh;
+        height: 32vh;
         overflow: hidden;
     }
 }

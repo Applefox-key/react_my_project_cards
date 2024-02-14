@@ -32,6 +32,7 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, cat, isPub]);
   const handleItemClick = (id) => {
+    if (limit === selectedIds.length && !selectedIds.includes(id)) return;
     setSelectedIds((prevIds) => {
       if (prevIds.includes(id)) {
         return prevIds.filter((prevId) => prevId !== id);
@@ -56,26 +57,39 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
   return (
     <>
       <div className={cl.selectionButtons}>
-        {" "}
         <div className={cl.filter}>
           <MyFilter filter={filter} setFilter={setFilter} />
         </div>
-        <div>
-          <CategorySelection isPb={isPub} onSelect={setCat} />
-        </div>{" "}
-        <p className="text-secondary">Choose up to 10 collections</p>
+        <CategorySelection isPb={isPub} onSelect={setCat} />
       </div>{" "}
       <div className="d-flex align-items-start">
-        <div id="choose-list" className={cl.chooseList}>
+        <div id="choosed-list" className={cl.choosedList}>
           <div className={cl.tabBox}>
-            <MySwitch
-              checked={isPub}
-              onChange={isPubChange}
-              leftEl="My library"
-              rightEl="Public collections"
-            />
+            <span className="text-secondary text-center mb-0">
+              Choose up to 10 collections
+            </span>
+            <p className="text-danger">{selectedIds.length}/10</p>{" "}
+            <div>
+              {limit - selectedIds.length >= filtredList.length && (
+                <button onClick={handleSelectAll}>Select All</button>
+              )}
+              <button onClick={handleClearSelection}>Clear Selection</button>
+            </div>
           </div>
 
+          {filtredList
+            .filter((elem) => selectedIds.includes(elem.id))
+            .map((el) => (
+              <div
+                key={el.id}
+                className={cl.selectedEl}
+                onClick={() => handleItemClick(el.id)}>
+                {el.name}
+                {el.isMy && <span></span>}
+              </div>
+            ))}
+        </div>{" "}
+        <div id="choose-list" className={cl.chooseList}>
           <div className={cl.tblCollections}>
             {isLoading ? (
               <SpinnerLg className="span_wrap" />
@@ -102,31 +116,16 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
                 ))}
               </div>
             )}{" "}
+          </div>{" "}
+          <div className="mt-2">
+            <MySwitch
+              checked={isPub}
+              onChange={isPubChange}
+              leftEl="My library"
+              rightEl="Public collections"
+            />
           </div>
         </div>
-        <div id="choosed-list" className={cl.choosedList}>
-          <div className={cl.tabBox}>
-            <p className="text-danger">{selectedIds.length}/10</p>
-            <div>
-              {limit - selectedIds.length >= filtredList.length && (
-                <button onClick={handleSelectAll}>Select All</button>
-              )}
-              <button onClick={handleClearSelection}>Clear Selection</button>
-            </div>
-          </div>
-
-          {filtredList
-            .filter((elem) => selectedIds.includes(elem.id))
-            .map((el) => (
-              <div
-                key={el.id}
-                className={cl.selectedEl}
-                onClick={() => handleItemClick(el.id)}>
-                {el.name}
-                {el.isMy && <span></span>}
-              </div>
-            ))}
-        </div>{" "}
       </div>
     </>
   );

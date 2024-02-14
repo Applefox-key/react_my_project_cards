@@ -7,6 +7,16 @@ import BtnPlayMenu from "../../UI/PlayMenu/BtnPlayMenu";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
+  const changeCat = (cat) => {
+    props.setCollect({
+      ...props.colObj,
+      collection: {
+        ...props.colObj.collection,
+        categoryid: cat.id ? cat.id : "",
+        category: cat.name ? cat.name : "",
+      },
+    });
+  };
   return (
     <div className="string_menu d-flex justify-content-between">
       {renameMode && (
@@ -15,6 +25,7 @@ const OneCollectionMenu = (props) => {
           setIsEdit={setRenameMode}
           collection={props.colObj.collection}
           cancel={setRenameMode}
+          changeCat={changeCat}
         />
       )}
       {/* <div className="d-flex align-items-center"></div>{" "} */}

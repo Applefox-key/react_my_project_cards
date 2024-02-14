@@ -9,7 +9,7 @@ const PlayMenu = ({
   small = false,
 }) => {
   const [showmenu, setShowmenu] = useState(false);
-  console.log(collection);
+  // console.log(collection);
 
   const router = useNavigate();
   const gameMenu = gameMenuArr(

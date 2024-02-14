@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import CategoryFilter from "./CategoryFilter";
 import CategoryItems from "./CategoryItems";
+import CategoryLink from "./CategoryLink";
 import cl from "./CategorySelection.module.scss";
-import { Button } from "react-bootstrap";
-import { MdFilterAltOff } from "react-icons/md";
-import { BiSolidRightArrow } from "react-icons/bi";
+import CategorySetBtn from "./CategorySetBtn";
 
 const CategorySelection = ({
   onSelect,
@@ -49,33 +49,34 @@ const CategorySelection = ({
     setSelected(col);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colCat, colCatPub, isPublic]);
+
   return (
     <div className="w-100">
-      {" "}
-      {/* <div>Select</div> */}
-      <Button
-        className={cl.dropbtn}
-        variant="light"
-        onClick={() => setMode(!mode)}>
-        Category
-        <BiSolidRightArrow className={mode ? "ms-1 checkedR" : "ms-2"} />
-        {selected.name ? <div className={cl.selCat}>{selected.name}</div> : ""}
-      </Button>
-      {mode && (
-        <div className={cl.modal_select}>
+      <Dropdown
+        className={[cl.div_width, "ps-0 pe-0"].join(" ")}
+        show={mode}
+        onToggle={(val) => setMode(val)}>
+        <Dropdown.Toggle
+          className={[cl.div_width, cl.dropbtn, "ps-3"].join(" ")}
+          id="dropdown-custom-components"
+          size="lg"
+          variant="light">
+          Category:
+          {selected ? <div className={cl.selCat}>{selected.name}</div> : ""}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu className={cl.max_content}>
+          {!isPublic && mode && <CategorySetBtn getList={getCategories} />}
           <CategoryFilter filter={filter} setFilter={setFilter} />
+
           {!isLoadingCat && categories && (
             <div>
               {!filter && selected && (
-                <div
-                  className={cl.addingLink}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onSelectItem();
-                  }}>
-                  <MdFilterAltOff />
-                  {" show all categories"}
-                </div>
+                <CategoryLink
+                  onSelectItem={onSelectItem}
+                  isPublic={isPublic}
+                  isOne={isOne}
+                />
               )}
               <CategoryItems
                 add={addUserCategory}
@@ -88,8 +89,8 @@ const CategorySelection = ({
               />
             </div>
           )}
-        </div>
-      )}
+        </Dropdown.Menu>
+      </Dropdown>
     </div>
   );
 };

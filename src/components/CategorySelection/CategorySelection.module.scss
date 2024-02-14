@@ -12,26 +12,38 @@
     min-width: 21rem;
 }
 
-
+.modal_select {
+    position: absolute;
+    z-index: 600;
+    background-color: rgb(237, 249, 248);
+    width: 200px;
+    // right: 0;
+    margin-left: 1rem;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    padding-left: 5px;
+}
 
 .active {
     background-color: var(--background-second);
     border-radius: 5px;
-    transform: scale(1.2);
+    // transform: scale(1.2);
+    transform: translateX(5px);
+    color: var(--color-checked);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 
 .drop-item {
-    margin: 5px;
+    // margin: 5px;
     transition: all 0.3s ease-in-out;
-    font-size: 2rem;
-
+    font-size: 10px;
+    text-align: left;
 
 
     &:hover {
         background-color: lavender;
         border-radius: 5px;
-        transform: scale(1.2);
+        // transform: scale(1.2);
+        transform: translateX(5px);
         box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
     }
 }
@@ -95,21 +107,32 @@
     border-radius: 4px;
 }
 
+.selCat {
+    color: chocolate;
+    font-style: italic;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    // font-size: 8px;
+}
+
 .dropbtn {
     font-size: 1.6rem;
     position: relative;
-    min-width: 150px;
-    width: 100%;
+    min-width: 200px;
+    width: fit-content;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    box-sizing: unset;
+    // height: 35px;
 
-    .selCat {
-        color: chocolate;
-        font-style: italic;
-        padding-left: 5px;
+    &::after,
+    &::before {
+        box-sizing: unset;
     }
+
 
     span {
         position: absolute;
@@ -126,14 +149,14 @@
 
 
 
-    &:hover {
-        background-color: var(--background-header);
-        border-color: lavender;
+    // &:hover {
+    //     background-color: var(--background-header);
+    //     border-color: rgb(202, 202, 239);
 
-        span {
-            opacity: 1;
-        }
-    }
+    //     span {
+    //         opacity: 1;
+    //     }
+    // }
 
 }
 
@@ -160,6 +183,11 @@
 
         &:nth-child(even) {
             background-color: rgb(247, 246, 246);
+        }
+
+        &:nth-child(odd) {
+            color: var(--contrast-text);
+            // background-color: rgb(247, 246, 246);
         }
 
         .rowHeader {

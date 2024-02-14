@@ -44,12 +44,25 @@ const CollectionsMenu = (props) => {
                 aria-label="Default select example"
                 className="wsort m-auto">
                 <option>Sort</option>
-                <option value="1">A-Z name</option>
-                <option value="2">Z-A name</option>
-                <option value="3">A-Z category</option>
-                <option value="4">Z-A category</option>
+                <option value="1">Name A-Z</option>
+                <option value="2">Name Z-A </option>
+                <option value="3">Category A-Z</option>
+                <option value="4">Category Z-A</option>
               </Form.Select>
             )}
+            <Form.Select
+              size="sm"
+              onChange={(e) =>
+                props.setSettingsCommon("sorting", parseInt(e.target.value))
+              }
+              aria-label="Default select example"
+              className="wsort m-auto">
+              <option>Category</option>
+              <option value="1">Name A-Z</option>
+              <option value="2">Name Z-A </option>
+              <option value="3">Category A-Z</option>
+              <option value="4">Category Z-A</option>
+            </Form.Select>
             <ViewSwitch
               checked={window.location.hash === "#1" ? 1 : 0}
               onChange={props.viewmodeChange}

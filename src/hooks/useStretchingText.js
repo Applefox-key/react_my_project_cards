@@ -10,8 +10,15 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
       textElements.forEach((element) => {
         let maxCycles = 50;
         const boxElement = element.parentElement;
-        maxWidth = boxElement.clientWidth;
-        maxHeight = boxElement.clientHeight;
+        maxWidth = Math.max(
+          boxElement.clientWidth * 0.9
+          // boxElement.offsetWidth
+        );
+        maxHeight = Math.max(
+          boxElement.clientHeight * 0.9
+          // boxElement.offsetWidth
+        );
+        // debugger;
         fontSize = maxHeight;
         let minFontSize = initialMinFontSize;
         let maxFontSize = fontSize;

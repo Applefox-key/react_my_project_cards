@@ -10,12 +10,14 @@ import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SideBarGameMenu from "../SideBar/SideBarGameMenu";
 import { GO_TO } from "../../router/routes";
 import { onePartLittle } from "../../utils/cardFragment";
+// import { useAuth } from "../../hooks/useAuth";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
   const [sideBar, setSideBar] = useState();
   const [content, setContent] = useState();
-  const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
+  // const { userAuth } = useAuth(true);
+  const [mode, setMode] = useState(0);
   const [collection, setCollection] = useState(PageParam);
   const setPopup = usePopup();
   const [getContent, isLoading] = useQuery(async () => {
@@ -56,6 +58,7 @@ const PublicOneCollection = () => {
           </p>{" "}
           <MenuPublicCollection
             collection={collection ? collection : PageParam}
+            viewMode={mode}
             setMode={modeChange}
             addToMyCollection={addToMyCollection}
             sideBar={sideBar}

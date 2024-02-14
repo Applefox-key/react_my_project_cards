@@ -6,6 +6,7 @@ import ProfileText from "./ProfileText";
 import cl from "./users.module.scss";
 import { DEFAUL_USER_DATA } from "../../../constants/defaultSettings";
 import { updateStyles } from "../../../utils/userSettings";
+import { InputGroup } from "react-bootstrap";
 
 const UserProfile = ({ userData, onClick, btnName }) => {
   const [visible, setVisible] = useState(false);
@@ -19,6 +20,16 @@ const UserProfile = ({ userData, onClick, btnName }) => {
     setUserDataForm({ ...userData });
   }, [userData]);
 
+  const change = (val) => {
+    const newSet =
+      typeof userDataForm.settings === "object"
+        ? {
+            ...userDataForm.settings,
+            listView: val,
+          }
+        : { listView: val };
+    setUserDataForm({ ...userDataForm, settings: newSet });
+  };
   return (
     <Form
       className={cl.userForm}
@@ -35,6 +46,31 @@ const UserProfile = ({ userData, onClick, btnName }) => {
             setVisible={setVisible}
           />{" "}
           <div className={cl.wrap_opacity}>
+            <div className={cl.wrap_listview}>
+              default view:
+              <InputGroup
+                className=" ms-2 align-items-center justify-content-center w-50"
+                id="view">
+                <Form.Check
+                  inline
+                  label="cards"
+                  name="group1"
+                  type={"radio"}
+                  id={"ch1"}
+                  checked={!userDataForm.settings.listView}
+                  onChange={() => change(false)}
+                />
+                <Form.Check
+                  inline
+                  label="list"
+                  name="group1"
+                  type={"radio"}
+                  checked={userDataForm.settings.listView}
+                  id={"ch2"}
+                  onChange={() => change(true)}
+                />
+              </InputGroup>
+            </div>
             <div className={cl.backColorBox}>
               <input
                 type="color"

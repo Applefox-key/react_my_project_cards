@@ -3,7 +3,7 @@
   justify-content: flex-end;
 
   button {
-    height: 4rem;
+    // height: 3rem;
     font-size: 1.5rem;
     margin-right: 1rem;
     border-color: var(--background-header);
@@ -23,8 +23,8 @@
 
 .editBtnAbs {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 11px;
+  left: 25px;
 
   button {
     font-size: 1.3rem;
@@ -34,7 +34,6 @@
       font-size: 1rem;
       padding: 0.5rem;
       margin-left: 5px;
-
     }
   }
 
@@ -361,10 +360,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  // margin-top: 2rem;
+  // margin-bottom: 2rem;
   background-color: var(--background-header);
-  padding: 9px 20px;
+  padding: 9px 10px;
   border-radius: 12px;
   width: 100%;
 

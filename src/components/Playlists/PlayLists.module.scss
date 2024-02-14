@@ -210,13 +210,18 @@
 
 .wrapTbl {
     border-radius: 5px;
+    width: max-content;
+    margin: auto;
 
     .onePlaylist-wrap {
+        // display: table-column;
         width: 98%;
         position: relative;
         padding-left: 15px;
+        padding: 0 35px;
         display: flex;
-        width: 80vw;
+        // width: 80vw;
+        // width: max-content;
         transition: all 0.2s ease-in-out;
         z-index: 0;
         height: 1.5em;
@@ -262,7 +267,8 @@
             transition: all 0.2s;
             background-color: transparent;
             border-radius: 10px;
-
+            position: absolute;
+            right: 0;
 
             &:hover {
                 scale: 1.2;
@@ -436,7 +442,9 @@
     margin-left: 1rem;
     padding: 5px;
     width: 45%;
-    min-height: 186px;
+    // min-height: 186px;
+    // max-height: 186px;
+    height: 195px;
 
     button {
         font-size: 10px;
@@ -445,11 +453,20 @@
     }
 }
 
+
 .tabBox {
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
+    position: relative;
+
+    span {
+        position: absolute;
+        font-size: 10px;
+        top: -12px;
+        left: 32px;
+    }
 
     .tab {
         border-bottom: 1px solid black;
@@ -491,6 +508,7 @@
 
     .filter {
         scale: 0.8;
+        width: -webkit-fill-available;
 
         @media screen and (max-width:900px) {
             width: 50%;
@@ -510,13 +528,13 @@
 .tblCollections {
     padding-top: 1rem;
     padding-left: 7px;
-    height: 20rem;
+    height: 189px;
     overflow-y: auto;
     overflow-x: hidden;
     font-size: 12px;
-    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
     position: relative;
-    margin-top: 1rem;
+    // margin-bottom: 1rem;
     border-collapse: collapse;
     min-width: 100%;
 

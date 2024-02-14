@@ -23,10 +23,7 @@ const MenuPublicCollection = (props) => {
           </div>
         </div>
         <div className="d-flex">
-          <ViewSwitch
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={props.setMode}
-          />
+          <ViewSwitch checked={[props.viewMode]} onChange={props.setMode} />
           <OnePbCollectionBtns
             collection={props.collection}
             addToMyCollection={props.addToMyCollection}

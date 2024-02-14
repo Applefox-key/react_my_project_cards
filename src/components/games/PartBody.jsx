@@ -84,22 +84,24 @@ const PartBody = ({ items, setItems }) => {
                   item={items[num].item}
                   clickable={false}
                 />{" "}
-                <Parts
-                  items={items[num].parts}
-                  onClick={(e) => clickPart(e, items[num].answ)}
-                  active={activeIDs}
-                  lastOk={
-                    items[num].answ[activeIDs.length - 1] ===
-                    activeVAL[activeIDs.length - 1]
-                      ? ""
-                      : activeIDs[activeIDs.length - 1]
-                  }
-                />{" "}
-                <PartAnswer
-                  item={items[num]}
-                  onClick={undo}
-                  activeVAL={activeVAL}
-                />
+                <div className={cl.pazlbox}>
+                  <PartAnswer
+                    item={items[num]}
+                    onClick={undo}
+                    activeVAL={activeVAL}
+                  />
+                  <Parts
+                    items={items[num].parts}
+                    onClick={(e) => clickPart(e, items[num].answ)}
+                    active={activeIDs}
+                    lastOk={
+                      items[num].answ[activeIDs.length - 1] ===
+                      activeVAL[activeIDs.length - 1]
+                        ? ""
+                        : activeIDs[activeIDs.length - 1]
+                    }
+                  />{" "}
+                </div>
               </div>
             </CSSTransition>
           </SwitchTransition>
