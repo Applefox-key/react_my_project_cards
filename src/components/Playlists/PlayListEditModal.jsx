@@ -13,6 +13,9 @@ import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
 const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
   const route = useNavigate();
   const [newName, setNewName] = useState(list.name ? list.name : "");
+  const [selectedItems, setSelectedItems] = useState(
+    list.collections ? [...list.collections] : []
+  );
   const [selectedIds, setSelectedIds] = useState(
     list.collections ? list.collections.map((el) => el.id) : []
   );
@@ -54,10 +57,12 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
       setshowmodal={setIsEdit}
       // size="lg"
       title={titleWin()}
-      dialogClassName="modal-h100">
+      dialogClassName="modal-h100 playlistModal ">
       <AllCollectionsList
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
+        selectedItems={selectedItems}
+        setSelectedItems={setSelectedItems}
       />
       <div className="editBtnAbs">
         <div className="edit_btn_menu ">

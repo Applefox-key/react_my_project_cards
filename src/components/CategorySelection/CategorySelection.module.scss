@@ -12,6 +12,31 @@
     min-width: 21rem;
 }
 
+.catSelect {
+    position: relative;
+
+    div {
+        position: absolute;
+        top: -4px;
+    }
+
+    span {
+        position: absolute;
+        top: -6px;
+        left: 5px;
+        font-size: 8px;
+        padding: 0 2px 0px 2px;
+        background-color: var(--background-wrap);
+        border-radius: 3px 3px 0 0;
+        color: #343A40;
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 400;
+        font-size: 0.8rem;
+    }
+
+
+}
+
 .modal_select {
     position: absolute;
     z-index: 600;

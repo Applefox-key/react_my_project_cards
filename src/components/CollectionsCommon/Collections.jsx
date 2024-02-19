@@ -14,7 +14,6 @@ import {
   saveSet,
 } from "../../utils/pageSettings";
 import CategoriesFoldersView from "../CategorySelection/CategoriesFoldersView";
-import SideBarCateg from "../SideBar/SideBarCateg";
 import { useAuth } from "../../hooks/useAuth";
 
 const Collections = () => {
@@ -119,39 +118,27 @@ const Collections = () => {
             setSettingsPrivat={setSettingsPrivat}
           />
         </div>{" "}
-        <div className="d-flex align-items-start">
-          {commonSettings.sideBar && (
-            <div className="sideBar-wide">
-              <SideBarCateg
-                setSettingsCommon={setSettingsCommon}
-                colCatPub={commonSettings.selectedCategorypub}
-                colCat={commonSettings.selectedCategorymy}
-              />
-            </div>
+        <div className="allcollect ms-4">
+          {commonSettings.byCategory ? (
+            <CategoriesFoldersView
+              setSettingsCommon={setSettingsCommon}
+              filterTxt={commonSettings.filter}
+              viewmode={viewmode}
+            />
+          ) : !isPublic ? (
+            <UsersCollections
+              viewmode={viewmode}
+              commonSettings={commonSettings}
+              setSettingsCommon={setSettingsCommon}
+              privateSettings={privateSettings}
+              setSettingsPrivat={setSettingsPrivat}
+            />
+          ) : (
+            <PublicCollectionsList
+              commonSettings={commonSettings}
+              viewmode={viewmode}
+            />
           )}
-
-          <div className="allcollect ms-4">
-            {commonSettings.byCategory ? (
-              <CategoriesFoldersView
-                setSettingsCommon={setSettingsCommon}
-                filterTxt={commonSettings.filter}
-                viewmode={viewmode}
-              />
-            ) : !isPublic ? (
-              <UsersCollections
-                viewmode={viewmode}
-                commonSettings={commonSettings}
-                setSettingsCommon={setSettingsCommon}
-                privateSettings={privateSettings}
-                setSettingsPrivat={setSettingsPrivat}
-              />
-            ) : (
-              <PublicCollectionsList
-                commonSettings={commonSettings}
-                viewmode={viewmode}
-              />
-            )}
-          </div>
         </div>
       </div>
     </div>

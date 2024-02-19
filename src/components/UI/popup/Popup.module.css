@@ -3,7 +3,7 @@
     opacity: 0;    
     position:  sticky;
     top:5.8rem;
-    z-index: 1500;    
+    z-index: 1000;    
     background-color: var(--background-wrap);
    
   }

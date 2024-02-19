@@ -4,6 +4,7 @@ import { SERVER_URL } from "./apiConst";
 import { contentRequestData } from "../utils/contentRequests";
 import { defaultSettings } from "../constants/defaultSettings";
 import { userRequestData } from "../utils/userRequest";
+import { sortByField } from "../utils/arraysFunc";
 
 const BaseAPI = {
   async getAuthHeaders() {
@@ -233,7 +234,7 @@ const BaseAPI = {
     if (result.error) {
       throw new Error(result.error);
     }
-    return result.data;
+    return sortByField(result.data, "name");
   },
   async getCategoriesListWithCollections(isPublic = false) {
     const result = isPublic

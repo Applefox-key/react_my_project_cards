@@ -222,7 +222,7 @@
         display: flex;
         // width: 80vw;
         // width: max-content;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
         z-index: 0;
         height: 1.5em;
         line-height: 1.5em;
@@ -282,7 +282,8 @@
         }
 
         .listHeader {
-            background-color: var(--background-header);
+            // background-color: var(--background-header);
+            background-color: transparent;
             width: 100%;
             font-size: 12px;
             border-radius: 10px 10px 0 0;
@@ -292,6 +293,7 @@
             text-overflow: ellipsis;
             font-weight: 600;
             color: black;
+
         }
 
         .listBody {
@@ -410,6 +412,9 @@
         }
 
         &:hover {
+            transform: translateX(10px);
+            background-color: mistyrose;
+
             .listHeader {
 
                 color: #FF4500;
@@ -434,6 +439,7 @@
     margin-left: 1rem;
     padding: 5px;
     width: 55%;
+
 }
 
 .choosedList {
@@ -446,10 +452,12 @@
     // max-height: 186px;
     height: 195px;
 
+
     button {
-        font-size: 10px;
+        font-size: 9px;
         border: 1px solid grey;
         border-radius: 5px;
+        padding: 4px;
     }
 }
 
@@ -461,11 +469,19 @@
     font-size: 14px;
     position: relative;
 
+    p {
+        font-size: 9px;
+        margin-right: 5px;
+    }
+
     span {
+        font-size: 8px;
+        width: 50%;
+        text-wrap: nowrap;
         position: absolute;
-        font-size: 10px;
-        top: -12px;
-        left: 32px;
+        // font-size: 10px;
+        top: 12px;
+        // left: 32px;
     }
 
     .tab {
@@ -500,6 +516,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 5px;
 
     @media screen and (max-width:900px) {
         flex-wrap: wrap;
@@ -570,6 +587,13 @@
         background-color: var(--background-first);
         color: var(--color-checked);
     }
+}
+
+.chooseTbl {
+    @extend .tblCollections;
+    font-size: 10px;
+    height: 155px;
+
 }
 
 .selectedEl {

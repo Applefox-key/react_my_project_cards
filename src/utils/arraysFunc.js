@@ -46,3 +46,9 @@ export const sortByFieldC = (content, field, descending = false) => {
   };
   return content.slice().sort(compareFn);
 };
+
+//checking if Object with field id === value in the array
+export const isObjInArray = (arr, attr, value) => {
+  return arr.some((obj) => obj[attr] === value);
+};
+// check is object in Array if not -> add if it is - delete

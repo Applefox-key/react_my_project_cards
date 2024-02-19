@@ -76,7 +76,10 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
         <div
           className={window.location.hash !== "#1" ? cl.wrapCard : cl.wrapTbl}>
           {filtredList.map((el) => (
-            <div key={el.id} className={cl["onePlaylist-wrap"]}>
+            <div
+              key={el.id}
+              className={cl["onePlaylist-wrap"]}
+              onClick={() => listFn.editMode(el)}>
               <div className={cl.firstRow}>
                 {window.location.hash !== "#1" && (
                   <BtnPlayMenu
@@ -92,7 +95,10 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                   {el.name}
                 </div>
                 <button
-                  onClick={() => listFn.delPlaylist(el)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    listFn.delPlaylist(el);
+                  }}
                   className={cl.btn}>
                   ❌
                 </button>
@@ -103,7 +109,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                     className={cl.listItem}
                     key={col.id}
                     onClick={(e) => {
-                      e.preventDefault();
+                      e.stopPropagation();
                       route(
                         `/collections/${col.isMy ? "my" : "pub"}/${col.id}/${
                           col.name
@@ -114,7 +120,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                     <div className={cl["item-btns"]}>
                       <button
                         onClick={(e) => {
-                          e.preventDefault();
+                          e.stopPropagation();
                           listFn.delColl(el, col.id);
                         }}>
                         <FaMinus />

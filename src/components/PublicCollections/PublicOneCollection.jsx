@@ -7,14 +7,13 @@ import CardContent from "../PrivateCollections/OneCollection/CardContent";
 import MenuPublicCollection from "./MenuPublicCollection";
 import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import SideBarGameMenu from "../SideBar/SideBarGameMenu";
 import { GO_TO } from "../../router/routes";
 import { onePartLittle } from "../../utils/cardFragment";
 // import { useAuth } from "../../hooks/useAuth";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
-  const [sideBar, setSideBar] = useState();
+  // const [sideBar, setSideBar] = useState();
   const [content, setContent] = useState();
   // const { userAuth } = useAuth(true);
   const [mode, setMode] = useState(0);
@@ -61,16 +60,8 @@ const PublicOneCollection = () => {
             viewMode={mode}
             setMode={modeChange}
             addToMyCollection={addToMyCollection}
-            sideBar={sideBar}
-            setSideBar={setSideBar}
           />
           <div className="m-auto d-flex align-items-start">
-            {" "}
-            {sideBar && (
-              <div className="sideBar-wide">
-                <SideBarGameMenu />
-              </div>
-            )}{" "}
             {content &&
               (mode === 0 ? (
                 <CardContent
@@ -84,13 +75,6 @@ const PublicOneCollection = () => {
                     <div className="listContent">
                       {content.map((el, i) => (
                         <div className="one-row" onClick={() => openCard(el)}>
-                          {/* <div className="btn-box">
-                            <button
-                              title="view card"
-                              onClick={() => openCard(el)}>
-                              <BsSearch />
-                            </button>
-                          </div> */}
                           {onePartLittle(el, "question")}
                           {onePartLittle(el, "answer")}
                         </div>

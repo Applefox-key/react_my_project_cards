@@ -5,7 +5,8 @@ import { MdOutlineModelTraining } from "react-icons/md";
 
 const BtnPlayMenu = ({ collection, verticals = true, ...props }) => {
   const [show, setShow] = useState(false);
-  const onClick = () => {
+  const onClick = (e) => {
+    e.stopPropagation();
     setShow(!show);
   };
   return (

@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "../../../styles/collectMenu.scss";
-import CategorySelection from "../../CategorySelection/CategorySelection";
 import { usePopup } from "../../../hooks/usePopup";
 import { contentFromTxtFile } from "../../../utils/files";
 import { editCollectionHlp } from "../../../utils/editCollectionHlp";
 import ModalFileContentBtns from "../addContent/ModalFileContentBtns";
 import ContentFromFile from "../addContent/ContentFromFile";
 import MyModal from "../../UI/MyModal";
+import FilterByCategory from "../../CategorySelection/FilterByCategory";
 
 const CollectionEditModal = ({
   collection = {},
@@ -82,31 +82,7 @@ const CollectionEditModal = ({
       dialogClassName="modal-h100"
       title={"Collection's properties"}>
       <div className="d-flex flex-column justify-content-center  w-100">
-        {/* <Popup /> */}
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
-          <div
-            className={
-              isNew ? "header_modal" : "header_modal justify-content-end"
-            }>
-            {isNew && (
-              <Form.Check
-                className="fs-4"
-                id={`isfile`}
-                onChange={() => setFromFile(!fromFile)}
-                label={`import from file`}
-              />
-            )}
-            <div className="select_wrap w-auto">
-              <CategorySelection
-                isOne={true}
-                onSelect={setCateg}
-                colCat={{
-                  id: category.id,
-                  name: category.name,
-                }}
-              />
-            </div>{" "}
-          </div>
           <div className="input_with_lable">
             <label htmlFor="i_name" className="lable">
               title:
@@ -133,6 +109,49 @@ const CollectionEditModal = ({
             />
           </div>
         </div>{" "}
+        <div
+          className={
+            isNew ? "header_modal" : "header_modal justify-content-end"
+          }>
+          {" "}
+          <div className="select_wrap">
+            <FilterByCategory
+              firstItem="no category"
+              onSelect={setCateg}
+              colCat={{
+                id: category.id,
+                name: category.name,
+              }}
+            />{" "}
+            {isNew && (
+              <Form.Check
+                className="fs-4"
+                id={`isfile`}
+                onChange={() => setFromFile(!fromFile)}
+                label={`import from file`}
+              />
+            )}
+            {!fromFile && (
+              <div className="edit_btn_menu">
+                <Button
+                  size="lg"
+                  variant="light"
+                  disabled={!newName && isNew}
+                  onClick={saveChanges}>
+                  SAVE CHANGES
+                </Button>
+                <Button
+                  size="lg"
+                  variant="light"
+                  onClick={(e) => {
+                    setIsEdit(false);
+                  }}>
+                  CANCEL
+                </Button>
+              </div>
+            )}
+          </div>{" "}
+        </div>
         {fromFile && (
           <div>
             <ModalFileContentBtns
@@ -143,25 +162,6 @@ const CollectionEditModal = ({
               fileContent={content}
               addToColection={saveChanges}
             />
-          </div>
-        )}
-        {!fromFile && (
-          <div className="edit_btn_menu">
-            <Button
-              size="lg"
-              variant="light"
-              disabled={!newName && isNew}
-              onClick={saveChanges}>
-              SAVE CHANGES
-            </Button>
-            <Button
-              size="lg"
-              variant="light"
-              onClick={(e) => {
-                setIsEdit(false);
-              }}>
-              CANCEL
-            </Button>
           </div>
         )}
       </div>

@@ -4,7 +4,8 @@ import CategoriesManager from "./CategoriesManager";
 import cl from "./CategorySelection.module.scss";
 import MyModal from "../UI/MyModal";
 import { IoIosSettings } from "react-icons/io";
-const CategorySetBtn = ({ getList, icon }) => {
+
+const CategoryManagerBtn = ({ getList, icon }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -43,7 +44,7 @@ const CategorySetBtn = ({ getList, icon }) => {
       {visible && (
         <MyModal
           onHide={(e) => {
-            getList();
+            if (getList) getList();
             setVisible(false);
           }}
           showmodal={visible}
@@ -58,4 +59,4 @@ const CategorySetBtn = ({ getList, icon }) => {
   );
 };
 
-export default CategorySetBtn;
+export default CategoryManagerBtn;

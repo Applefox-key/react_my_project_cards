@@ -5,11 +5,17 @@ import { useQuery } from "../../hooks/useQuery";
 import cl from "./PlayLists.module.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import MyFilter from "../UI/MyFilter/MyFilter";
-import CategorySelection from "../CategorySelection/CategorySelection";
 import MySwitch from "../UI/tgb/MySwitch";
 import { IoHomeOutline } from "react-icons/io5";
+import FilterByCategory from "../CategorySelection/FilterByCategory";
+import { FaAngleDoubleLeft } from "react-icons/fa";
 
-const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
+const AllCollectionsList = ({
+  selectedIds,
+  setSelectedIds,
+  selectedItems,
+  setSelectedItems,
+}) => {
   const limit = 10;
   const [list, setlist] = useState([]);
   const [filter, setFilter] = useState("");
@@ -31,23 +37,32 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
     getColl();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, cat, isPub]);
-  const handleItemClick = (id) => {
-    if (limit === selectedIds.length && !selectedIds.includes(id)) return;
+  const handleItemClick = (elem) => {
+    if (limit === selectedIds.length && !selectedIds.includes(elem.id)) return;
+    const isExist = selectedIds.includes(elem.id);
+    setSelectedItems(
+      isExist
+        ? selectedItems.filter((item) => item.id !== elem.id)
+        : [...selectedItems, elem]
+    );
+
     setSelectedIds((prevIds) => {
-      if (prevIds.includes(id)) {
-        return prevIds.filter((prevId) => prevId !== id);
+      if (prevIds.includes(elem.id)) {
+        return prevIds.filter((prevId) => prevId !== elem.id);
       } else {
-        return [...prevIds, id];
+        return [...prevIds, elem.id];
       }
     });
   };
   const handleSelectAll = () => {
     const allIds = filtredList.map((el) => el.id);
     setSelectedIds(allIds);
+    setSelectedItems([...filtredList]);
   };
 
   const handleClearSelection = () => {
     setSelectedIds([]);
+    setSelectedItems([]);
   };
 
   const isPubChange = () => {
@@ -56,12 +71,6 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
   };
   return (
     <>
-      <div className={cl.selectionButtons}>
-        <div className={cl.filter}>
-          <MyFilter filter={filter} setFilter={setFilter} />
-        </div>
-        <CategorySelection isPb={isPub} onSelect={setCat} />
-      </div>{" "}
       <div className="d-flex align-items-start">
         <div id="choosed-list" className={cl.choosedList}>
           <div className={cl.tabBox}>
@@ -70,33 +79,41 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
             </span>
             <p className="text-danger">{selectedIds.length}/10</p>{" "}
             <div>
-              {limit - selectedIds.length >= filtredList.length && (
-                <button onClick={handleSelectAll}>Select All</button>
-              )}
               <button onClick={handleClearSelection}>Clear Selection</button>
             </div>
           </div>
 
-          {filtredList
-            .filter((elem) => selectedIds.includes(elem.id))
-            .map((el) => (
-              <div
-                key={el.id}
-                className={cl.selectedEl}
-                onClick={() => handleItemClick(el.id)}>
-                {el.name}
-                {el.isMy && <span></span>}
-              </div>
-            ))}
+          {/* {filtredList
+          .filter((elem) => selectedIds.includes(elem.id)) */}
+          {selectedItems.map((el) => (
+            <div
+              key={el.id}
+              className={cl.selectedEl}
+              onClick={() => handleItemClick(el)}>
+              {el.name}
+              {el.isMy && <span></span>}
+            </div>
+          ))}
         </div>{" "}
+        {limit - selectedIds.length >= filtredList.length && (
+          <button onClick={handleSelectAll}>
+            <FaAngleDoubleLeft />
+          </button>
+        )}
         <div id="choose-list" className={cl.chooseList}>
-          <div className={cl.tblCollections}>
+          <div className={cl.selectionButtons}>
+            <div className={cl.filter}>
+              <MyFilter filter={filter} setFilter={setFilter} />
+            </div>
+            <FilterByCategory isPb={isPub} onSelect={setCat} />
+          </div>{" "}
+          <div className={cl.chooseTbl}>
             {isLoading ? (
               <SpinnerLg className="span_wrap" />
             ) : !filtredList ? (
               <h2>No collections</h2>
             ) : (
-              <div>
+              <>
                 {filtredList.map((el) => (
                   <div
                     key={el.id}
@@ -105,7 +122,7 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
                         ? cl.isSelected
                         : cl.isNotSelected
                     }
-                    onClick={() => handleItemClick(el.id)}>
+                    onClick={() => handleItemClick(el)}>
                     {el.name}
                     {el.isMy && (
                       <span>
@@ -114,7 +131,7 @@ const AllCollectionsList = ({ selectedIds, setSelectedIds }) => {
                     )}
                   </div>
                 ))}
-              </div>
+              </>
             )}{" "}
           </div>{" "}
           <div className="mt-2">

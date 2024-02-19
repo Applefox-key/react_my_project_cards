@@ -40,7 +40,7 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
   };
 
   const openColllection = (e, col) => {
-    e.preventDefault();
+    e.stopPropagation();
     let tab = isPublic ? "pub" : "my";
     tab = isPublic && col.isMy ? "my" : tab;
     route(`/collections/${tab}/${col.id}/${col.name}`);
