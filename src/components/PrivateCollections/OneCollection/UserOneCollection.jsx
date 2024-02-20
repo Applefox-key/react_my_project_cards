@@ -37,14 +37,7 @@ const UserOneCollection = () => {
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name]);
-  const sortContent = (val) => {
-    const newVal = sortByField(
-      [...content],
-      val < 3 ? "question" : "answer",
-      !(val % 2)
-    );
-    setContent(newVal);
-  };
+
   return (
     <div className="d-flex">
       <div className="wrap_box tableContainer">
@@ -66,11 +59,8 @@ const UserOneCollection = () => {
               My library
             </p>{" "}
           </div>
-        )}{" "}
-        <Sortbox
-          options={["Questions", "Answers"]}
-          onChange={(e) => sortContent(parseInt(e.target.value))}
-        />
+        )}
+
         {/* <Form.Select
           size="sm"
           onChange={(e) => sortContent(parseInt(e.target.value))}

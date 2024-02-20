@@ -9,6 +9,11 @@
     border-color: var(--background-header);
     margin-bottom: 2rem;
 
+    @media screen and (max-width:900px) {
+      font-size: 1rem;
+
+    }
+
     &:hover {
       background-color: var(--background-header);
     }
@@ -59,8 +64,11 @@
     border-bottom: 1px solid var(--background-header);
 
     &:focus {
-      outline: none;
+      // outline: none;
+      // outline:
+      outline-color: var(--color-checked);
       border-bottom: 2px solid var(--background-header);
+      // background-color:
     }
   }
 }
@@ -79,11 +87,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
   position: sticky;
-  top: 5.7rem;
+  top: 4rem;
   background-color: var(--background-wrap);
   z-index: 700;
   border-radius: 35px 35px 0 0;
-  top: 0;
+
 
   h5 {
     position: absolute;
@@ -92,15 +100,13 @@
     top: 44px;
 
     @media screen and ((max-width: 900px)) {
-      top: 85px;
-      left: 90px;
+      // top: 85px;
+      // left: 90px;
+      position: initial;
     }
   }
 
-  @media screen and ((max-height: 600px)) {
-    position: relative;
-    top: 0;
-  }
+
 
 }
 

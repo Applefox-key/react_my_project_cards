@@ -3,10 +3,11 @@ import "../../styles/collectMenu.scss";
 import ViewSwitch from "../UI/tgb/ViewSwitch";
 import OnePbCollectionBtns from "../UI/tgb/OnePbCollectionBtns";
 import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
+import Sortbox from "../UI/Sortbox";
 
 const MenuPublicCollection = (props) => {
   return (
-    <div className="string_menu d-flex justify-content-between">
+    <div className="string_menu">
       <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
         <div className="d-flex align-items-center">
@@ -22,6 +23,10 @@ const MenuPublicCollection = (props) => {
             </div>
           </div>
         </div>
+        <Sortbox
+          options={["Questions", "Answers"]}
+          onChange={(e) => props.sortContent(parseInt(e.target.value))}
+        />
         <div className="d-flex">
           <ViewSwitch checked={[props.viewMode]} onChange={props.setMode} />
           <OnePbCollectionBtns

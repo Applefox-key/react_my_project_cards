@@ -91,7 +91,7 @@ const Collections = () => {
     // viewmode,
   ]);
   return (
-    <div className="wrap_box d-flex">
+    <div className="wrap_box">
       {privateSettings.isNew && (
         <CollectionEditModal
           isEdit={privateSettings.isNew}
@@ -107,18 +107,18 @@ const Collections = () => {
             router(`${GO_TO.myCollect}#${viewmode}`);
           }}
         />
-      )}{" "}
+      )}
       <div className="w-100">
-        <div className="d-flex align-items-center position-relative">
-          <CollectionsMenu
-            viewmodeChange={viewmodeChange}
-            commonSettings={commonSettings}
-            privateSettings={privateSettings}
-            setSettingsCommon={setSettingsCommon}
-            setSettingsPrivat={setSettingsPrivat}
-          />
-        </div>{" "}
-        <div className="allcollect ms-4">
+        {/* <div className="d-flex align-items-center position-relative"> */}
+        <CollectionsMenu
+          viewmodeChange={viewmodeChange}
+          commonSettings={commonSettings}
+          privateSettings={privateSettings}
+          setSettingsCommon={setSettingsCommon}
+          setSettingsPrivat={setSettingsPrivat}
+        />
+        {/* </div>{" "} */}
+        <div className="allcollect">
           {commonSettings.byCategory ? (
             <CategoriesFoldersView
               setSettingsCommon={setSettingsCommon}

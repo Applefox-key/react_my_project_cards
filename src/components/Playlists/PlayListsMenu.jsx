@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const PlayListsMenu = (props) => {
   const router = useNavigate();
   return (
-    <div className="string_menu d-flex justify-content-between">
+    <div className="string_menu">
       <div className="menufind">
         <h1>My playlists</h1>
         <MyFilter

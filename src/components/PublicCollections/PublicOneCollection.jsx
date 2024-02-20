@@ -9,6 +9,7 @@ import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import { GO_TO } from "../../router/routes";
 import { onePartLittle } from "../../utils/cardFragment";
+import { sortByField } from "../../utils/arraysFunc";
 // import { useAuth } from "../../hooks/useAuth";
 
 const PublicOneCollection = () => {
@@ -45,7 +46,14 @@ const PublicOneCollection = () => {
   const openCard = (item) => {
     router(`/collections/pub/${collection.id}/${collection.name}/${item.id}`);
   };
-
+  const sortContent = (val) => {
+    const newVal = sortByField(
+      [...content],
+      val < 3 ? "question" : "answer",
+      !(val % 2)
+    );
+    setContent(newVal);
+  };
   return (
     <div className="d-flex">
       {!isLoading ? (
@@ -60,6 +68,7 @@ const PublicOneCollection = () => {
             viewMode={mode}
             setMode={modeChange}
             addToMyCollection={addToMyCollection}
+            sortContent={sortContent}
           />
           <div className="m-auto d-flex align-items-start">
             {content &&

@@ -10,6 +10,8 @@
     .firstRow {
         display: flex;
         align-items: center;
+
+
     }
 
     .onePlaylist-wrap {
@@ -39,10 +41,11 @@
             transition: all 0.2s;
             background-color: transparent;
             border-radius: 10px;
-
+            display: none;
 
             &:hover {
                 scale: 1.2;
+
             }
 
         }
@@ -80,8 +83,9 @@
             }
         }
 
-        .btnGames-wrap {
+        .btnGames {
             position: relative;
+            display: none;
         }
 
         .btnShow {
@@ -198,6 +202,14 @@
 
         &:hover {
             transform: translateY(-5px);
+
+            .btn {
+                display: block;
+            }
+
+            .btnGames {
+                display: block;
+            }
 
             .list-btns {
                 display: block;
@@ -458,6 +470,8 @@
         border: 1px solid grey;
         border-radius: 5px;
         padding: 4px;
+
+
     }
 }
 
@@ -481,7 +495,11 @@
         position: absolute;
         // font-size: 10px;
         top: 12px;
+
         // left: 32px;
+        @media screen and (max-width:900px) {
+            top: -10px;
+        }
     }
 
     .tab {

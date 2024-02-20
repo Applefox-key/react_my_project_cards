@@ -53,7 +53,6 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
       setPopup.error("something goes wrong");
     }
   };
-  console.log(colObj);
 
   return (
     <>

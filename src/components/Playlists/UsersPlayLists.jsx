@@ -82,12 +82,14 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
               onClick={() => listFn.editMode(el)}>
               <div className={cl.firstRow}>
                 {window.location.hash !== "#1" && (
-                  <BtnPlayMenu
-                    collection={list}
-                    playlist={true}
-                    small={window.location.hash !== "#1"}
-                    verticals={window.location.hash !== "#1"}
-                  />
+                  <div className={cl.btnGames}>
+                    <BtnPlayMenu
+                      collection={list}
+                      playlist={true}
+                      small={window.location.hash !== "#1"}
+                      verticals={window.location.hash !== "#1"}
+                    />
+                  </div>
                 )}
                 <div
                   className={cl.listHeader}

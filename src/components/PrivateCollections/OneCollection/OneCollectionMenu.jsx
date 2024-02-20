@@ -4,6 +4,8 @@ import CollectionEditModal from "../OneCollectionActions/CollectionEditModal";
 import ViewSwitch from "../../UI/tgb/ViewSwitch";
 import OneCollectionBtns from "../../UI/tgb/OneCollectionBtns";
 import BtnPlayMenu from "../../UI/PlayMenu/BtnPlayMenu";
+import Sortbox from "../../UI/Sortbox";
+import { sortByField } from "../../../utils/arraysFunc";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
@@ -17,8 +19,16 @@ const OneCollectionMenu = (props) => {
       },
     });
   };
+  const sortContent = (val) => {
+    const newVal = sortByField(
+      [...props.content],
+      val < 3 ? "question" : "answer",
+      !(val % 2)
+    );
+    props.setContent(newVal);
+  };
   return (
-    <div className="string_menu d-flex justify-content-between">
+    <div className="string_menu">
       {renameMode && (
         <CollectionEditModal
           isEdit={renameMode}
@@ -45,10 +55,16 @@ const OneCollectionMenu = (props) => {
           </div>
         </div>
         <div className="d-flex">
+          <Sortbox
+            options={["Questions", "Answers"]}
+            onChange={(e) => sortContent(parseInt(e.target.value))}
+          />
           <ViewSwitch
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={props.setMode}
           />
+        </div>
+        <div className="d-flex">
           <OneCollectionBtns
             colObj={props.colObj}
             setContent={props.setContent}
