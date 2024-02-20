@@ -57,7 +57,7 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
       setshowmodal={setIsEdit}
       // size="lg"
       title={titleWin()}
-      dialogClassName="modal-h100 playlistModal ">
+      dialogClassName="modal-h100">
       <AllCollectionsList
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}

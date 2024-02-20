@@ -9,9 +9,6 @@ import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import OneCollectionMenu from "./OneCollectionMenu";
 import CardContentList from "./CardContentList";
 import { GO_TO } from "../../../router/routes";
-// import { Form } from "react-bootstrap";
-import { sortByField } from "../../../utils/arraysFunc";
-import Sortbox from "../../UI/Sortbox";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
