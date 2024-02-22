@@ -38,20 +38,16 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
   const shareColl = async () => {
     try {
       const newVal = { ...collPar, isPublic: !collPar.isPublic };
-      await share(newVal, setPopup);
+      await share(collPar, setPopup);
       setCollPar(newVal);
     } catch (error) {
       setPopup.error("something goes wrong");
     }
   };
   const favColl = async () => {
-    try {
-      const newVal = { ...collPar, isFavorite: !collPar.isFavorite };
-      await favorite(newVal, setPopup);
-      setCollPar(newVal);
-    } catch (error) {
-      setPopup.error("something goes wrong");
-    }
+    const newVal = { ...collPar, isFavorite: !collPar.isFavorite };
+    await favorite(collPar, setPopup);
+    setCollPar(newVal);
   };
 
   return (

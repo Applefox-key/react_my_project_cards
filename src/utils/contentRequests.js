@@ -49,12 +49,14 @@ export const share = async (collection, setPopup) => {
 };
 export const favorite = async (collection, setPopup) => {
   try {
+    const val = collection.isFavorite;
     await BaseAPI.editColParam(
       { isFavorite: !collection.isFavorite },
       collection.id
     );
+
     setPopup.success(
-      collection.isFavorite
+      val
         ? "collection has been delete from the favorites"
         : "collection has been added to the favorites"
     );
