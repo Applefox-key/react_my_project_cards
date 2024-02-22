@@ -134,9 +134,17 @@
     &:hover {
         background-color: #e8eaed;
     }
+
 }
 
 .viewBtn {
+
+    @media screen and (max-width:900px) {
+
+        width: 35px;
+        height: 35px;
+    }
+
     &:hover {
         // background-color: var(--background-header);
 

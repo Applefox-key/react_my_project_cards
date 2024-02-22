@@ -9,7 +9,6 @@
   button {
     background-color: transparent;
     color: grey;
-    font-family: cursive;
   }
 }
 
@@ -268,12 +267,10 @@
 }
 
 .menufind {
-  width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-right: 2rem;
-  width: 70%;
   width: 100%;
   flex-wrap: wrap;
 
@@ -303,6 +300,7 @@
   @media screen and (max-width:900px) {
     justify-content: center;
     flex-direction: column;
+
   }
 }
 
@@ -311,11 +309,21 @@
   border-radius: 5px;
 
 
+  @media screen and (max-width: 900px) {
+    // width: 50%;
+    margin: auto;
+
+  }
+
 
   input,
   span {
     border: none;
 
+    @media screen and (max-width: 900px) {
+      font-size: 10px;
+
+    }
   }
 
 

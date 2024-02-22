@@ -682,8 +682,8 @@
             height: fit-content;
 
             @media screen and (max-width: 600px) {
-                left: 20px;
-
+                right: 20px;
+                top: 0;
             }
         }
 
@@ -693,7 +693,8 @@
             right: 36px;
 
             @media screen and (max-width: 600px) {
-                left: 10px;
+                right: 10px;
+                top: 0;
             }
         }
 
@@ -926,6 +927,8 @@
             align-items: center;
             border-radius: 0;
             box-shadow: none;
+            margin-top: 1rem;
+            padding-left: 20px;
 
             @media screen and (max-width: 900px) {
                 margin: 0px;
@@ -1091,14 +1094,15 @@
         .btns-div {
             display: flex;
             justify-content: flex-end;
-            left: 0px;
+            left: 10px;
             top: 0px;
-            // height: 32px;
+            position: absolute;
             width: 30px;
 
             @media screen and (max-width:900px) {
-                right: 0px;
-                top: 4px;
+                // right: 0px;
+                // top: 4px;
+                left: 35px;
             }
 
             .share {
@@ -1117,11 +1121,17 @@
                 background-color: transparent;
                 border: none;
                 box-shadow: none;
+                position: absolute;
+                left: -15px;
+                top: 6px;
+                color: grey;
             }
 
             .heartSymb {
                 color: #f92f60;
-                left: auto;
+                position: absolute;
+                left: -10px;
+                top: -1px;
             }
 
             .mypbbtn {
@@ -1179,18 +1189,24 @@
             }
 
             .delbtn {
-                position: relative;
-                left: auto;
+                position: absolute;
+                left: -10px;
+                top: -15px;
                 padding: 2px;
                 font-size: 19px;
                 display: none;
                 cursor: pointer;
                 transition: all 0.2s;
+                right: unset;
 
 
                 &:hover {
                     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
                     transform: scale(1.2);
+
+                    &::after {
+                        bottom: 3rem;
+                    }
                 }
             }
         }
@@ -1226,10 +1242,6 @@
                     bottom: 7px;
                 }
 
-                // .sharebtn,
-                // .favoritebtn {
-                //     display: block;
-                // }
 
                 .share {
                     color: grey;
@@ -1253,7 +1265,7 @@
                 .delbtn {
                     font-size: 8px;
                     display: block;
-                    left: 0rem;
+                    // left: 0rem;
                     line-height: 2;
                 }
             }

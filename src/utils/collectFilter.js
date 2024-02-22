@@ -1,5 +1,6 @@
 export const getFiltredCollections = (collectionsList, filter) => {
   if (!filter.trim()) return collectionsList;
+  if (!collectionsList.length) return collectionsList;
   if (collectionsList[0].collection) {
     //list format - collections and content
     return collectionsList.filter((item) => {

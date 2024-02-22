@@ -442,6 +442,7 @@
     h3 {
         text-align: initial;
         margin-top: 5px;
+        color: var(--color-checked);
     }
 
     @media screen and (max-width: 600px) {
@@ -453,10 +454,13 @@
         align-items: center;
         justify-content: flex-end;
 
-
-
         @media screen and (max-width: 600px) {
-            flex-wrap: wrap;
+
+            //flex-wrap: wrap;
+            button {
+                font-size: 12px;
+                height: 35px
+            }
         }
     }
 
