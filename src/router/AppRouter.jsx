@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MyNavbar from "../components/nav/MyNavbar";
-import Popup from "../components/UI/popup/Popup";
 import { useAuth } from "../hooks/useAuth";
 
 const AppRouter = () => {
@@ -10,7 +9,6 @@ const AppRouter = () => {
   return (
     <>
       <MyNavbar />
-      <Popup />
       <div className="color_container"></div>
       <div className="main_page">
         <Routes>

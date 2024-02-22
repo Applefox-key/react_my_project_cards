@@ -2,10 +2,10 @@ import React from "react";
 import MyFilter from "../UI/MyFilter/MyFilter";
 import "../../styles/collectMenu.scss";
 import { fragment_SearchingTips } from "../../utils/pagesFragments";
-import ViewSwitch from "../UI/tgb/ViewSwitch";
 import { HiPlus } from "react-icons/hi2";
 import { AiOutlineRollback } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import ToggleView from "../UI/TogleView/ToggleView";
 
 const PlayListsMenu = (props) => {
   const router = useNavigate();
@@ -18,10 +18,6 @@ const PlayListsMenu = (props) => {
           setFilter={(val) => props.setSettingsCommon("filter", val)}
         />
         <div className="d-flex">
-          <ViewSwitch
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={props.viewmodeChange}
-          />
           <button
             className="viewBtn"
             onClick={() => props.setSettingsCommon("editEl", { id: "new" })}
@@ -36,6 +32,12 @@ const PlayListsMenu = (props) => {
             className="viewBtn">
             <AiOutlineRollback />
           </button>
+        </div>{" "}
+        <div className="view-settings">
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={props.viewmodeChange}
+          />
         </div>
       </div>
       {fragment_SearchingTips(

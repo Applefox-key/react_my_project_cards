@@ -1,3 +1,18 @@
+.view-settings {
+  position: absolute;
+  bottom: -25px;
+  bottom: 0px;
+  right: 14px;
+  right: 0px;
+  display: flex;
+
+  button {
+    background-color: transparent;
+    color: grey;
+    font-family: cursive;
+  }
+}
+
 .edit_btn_menu {
   display: flex;
   justify-content: flex-end;
@@ -8,6 +23,7 @@
     margin-right: 1rem;
     border-color: var(--background-header);
     margin-bottom: 2rem;
+
 
     @media screen and (max-width:900px) {
       font-size: 1rem;

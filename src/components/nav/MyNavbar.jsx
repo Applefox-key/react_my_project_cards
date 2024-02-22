@@ -4,6 +4,7 @@ import BaseAPI from "../../API/BaseAPI";
 import cl from "./mainNavbar.module.scss";
 import { useAuth } from "../../hooks/useAuth";
 import UserAvatar from "../users/Profile/UserAvatar";
+import Popup from "../UI/popup/Popup";
 
 const MyNavbar = () => {
   const router = useNavigate();
@@ -25,6 +26,8 @@ const MyNavbar = () => {
       </div>
 
       <div className={[cl.navWrap].join(" ")}>
+        {" "}
+        <Popup />
         {userRoutes
           .filter((el) => el.nameNav)
           .map((item, i) => (

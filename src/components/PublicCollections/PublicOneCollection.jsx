@@ -46,12 +46,8 @@ const PublicOneCollection = () => {
   const openCard = (item) => {
     router(`/collections/pub/${collection.id}/${collection.name}/${item.id}`);
   };
-  const sortContent = (val) => {
-    const newVal = sortByField(
-      [...content],
-      val < 3 ? "question" : "answer",
-      !(val % 2)
-    );
+  const sortContent = (val, isDec) => {
+    const newVal = sortByField([...content], val, isDec);
     setContent(newVal);
   };
   return (

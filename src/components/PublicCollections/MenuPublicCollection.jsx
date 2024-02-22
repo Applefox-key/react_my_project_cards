@@ -1,9 +1,9 @@
 import React from "react";
 import "../../styles/collectMenu.scss";
-import ViewSwitch from "../UI/tgb/ViewSwitch";
 import OnePbCollectionBtns from "../UI/tgb/OnePbCollectionBtns";
 import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
-import Sortbox from "../UI/Sortbox";
+import ToggleView from "../UI/TogleView/ToggleView";
+import SortMenu from "../UI/SortMenu/SortMenu";
 
 const MenuPublicCollection = (props) => {
   return (
@@ -23,12 +23,8 @@ const MenuPublicCollection = (props) => {
             </div>
           </div>
         </div>
-        <Sortbox
-          options={["Questions", "Answers"]}
-          onChange={(e) => props.sortContent(parseInt(e.target.value))}
-        />
+
         <div className="d-flex">
-          <ViewSwitch checked={[props.viewMode]} onChange={props.setMode} />
           <OnePbCollectionBtns
             collection={props.collection}
             addToMyCollection={props.addToMyCollection}
@@ -38,6 +34,19 @@ const MenuPublicCollection = (props) => {
       {props.collection.note
         ? "About collection: " + props.collection.note
         : ""}
+      <div className="view-settings">
+        <ToggleView
+          checked={window.location.hash === "#1" ? 1 : 0}
+          onChange={props.setMode}
+        />{" "}
+        <SortMenu
+          fields={[
+            { value: "question", label: "Questions" },
+            { value: "answer", label: "Answers" },
+          ]}
+          onSelect={props.sortContent}
+        />
+      </div>
     </div>
   );
 };

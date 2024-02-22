@@ -1,25 +1,32 @@
   .empty{
     height: 1.8rem;
     opacity: 0;    
-    position:  sticky;
-    top:5.8rem;
+    position:  absolute;
+    /* top:5.8rem; */
+    top:3.2rem;
     z-index: 1000;    
     background-color: var(--background-wrap);
-   
+    display: none;
+   width: 100%;
+   margin-left: -40px;
   }
   .success{
-    background-color: rgb(72, 255, 121);
+    background-color: rgb(72, 255, 121); 
+    display: block;
+   
   }  
   .attention{
     background-color: rgb(250, 255, 116);
+    display: block;
   }
   .error{
     background-color: rgb(255, 3, 53);
-    color:white
+    color:white;
+    display: block;
   }
   .toast{
 
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-right:10%;
     width:100%;
     display: flex;

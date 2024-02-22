@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../../../styles/collectMenu.scss";
 import CollectionEditModal from "../OneCollectionActions/CollectionEditModal";
-import ViewSwitch from "../../UI/tgb/ViewSwitch";
 import OneCollectionBtns from "../../UI/tgb/OneCollectionBtns";
 import BtnPlayMenu from "../../UI/PlayMenu/BtnPlayMenu";
-import Sortbox from "../../UI/Sortbox";
 import { sortByField } from "../../../utils/arraysFunc";
+import SortMenu from "../../UI/SortMenu/SortMenu";
+import ToggleView from "../../UI/TogleView/ToggleView";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
@@ -19,14 +19,12 @@ const OneCollectionMenu = (props) => {
       },
     });
   };
-  const sortContent = (val) => {
-    const newVal = sortByField(
-      [...props.content],
-      val < 3 ? "question" : "answer",
-      !(val % 2)
-    );
+  const sortContent = (val, isDec) => {
+    const newVal = sortByField([...props.colObj.content], val, isDec);
+
     props.setContent(newVal);
   };
+
   return (
     <div className="string_menu">
       {renameMode && (
@@ -38,11 +36,11 @@ const OneCollectionMenu = (props) => {
           changeCat={changeCat}
         />
       )}
-      {/* <div className="d-flex align-items-center"></div>{" "} */}
 
       <div className="menufind">
         <div className="d-flex align-items-center">
           <BtnPlayMenu collection={props.colObj.collection} />
+
           <div className="d-flex">
             <div className="collectionNoteText">
               {props.colObj.collection.category && (
@@ -54,17 +52,8 @@ const OneCollectionMenu = (props) => {
             </div>
           </div>
         </div>
-        <div className="d-flex">
-          <Sortbox
-            options={["Questions", "Answers"]}
-            onChange={(e) => sortContent(parseInt(e.target.value))}
-          />
-          <ViewSwitch
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={props.setMode}
-          />
-        </div>
-        <div className="d-flex">
+
+        <div className="d-flex position-relative">
           <OneCollectionBtns
             colObj={props.colObj}
             setContent={props.setContent}
@@ -77,6 +66,19 @@ const OneCollectionMenu = (props) => {
             {"About collection: " + props.colObj.collection.note}{" "}
           </div>
         )}
+      </div>
+      <div className="view-settings">
+        <ToggleView
+          checked={window.location.hash === "#1" ? 1 : 0}
+          onChange={props.setMode}
+        />{" "}
+        <SortMenu
+          fields={[
+            { value: "question", label: "Questions" },
+            { value: "answer", label: "Answers" },
+          ]}
+          onSelect={sortContent}
+        />
       </div>
     </div>
   );

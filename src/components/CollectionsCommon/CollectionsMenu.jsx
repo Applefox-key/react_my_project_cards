@@ -2,17 +2,18 @@ import React from "react";
 import MyFilter from "../UI/MyFilter/MyFilter";
 import "../../styles/collectMenu.scss";
 import { fragment_SearchingTips } from "../../utils/pagesFragments";
-import ViewSwitch from "../UI/tgb/ViewSwitch";
 import ByCategoryBtn from "../UI/tgb/ByCategoryBtn";
 import BackMenuBtn from "../UI/tgb/BackMenuBtn";
 import { HiHeart, HiPlus, HiShare } from "react-icons/hi";
-// import { Form } from "react-bootstrap";
 import FilterByCategory from "../CategorySelection/FilterByCategory";
-import Sortbox from "../UI/Sortbox";
+import ToggleView from "../UI/TogleView/ToggleView";
+import SortMenu from "../UI/SortMenu/SortMenu";
 
 const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
-
+  const sortContent = (field, isDec) => {
+    props.setSettingsCommon("sorting", { field, isDec });
+  };
   return (
     <div className="string_menu">
       {/* <div className="d-flex align-items-center"></div>{" "} */}
@@ -39,18 +40,6 @@ const CollectionsMenu = (props) => {
         />{" "}
         <div>
           <div className="d-flex">
-            {!props.commonSettings.byCategory && (
-              <Sortbox
-                options={["Name", "Category"]}
-                onChange={(e) =>
-                  props.setSettingsCommon("sorting", parseInt(e.target.value))
-                }
-              />
-            )}
-            <ViewSwitch
-              checked={window.location.hash === "#1" ? 1 : 0}
-              onChange={props.viewmodeChange}
-            />{" "}
             <ByCategoryBtn
               commonSettings={props.commonSettings}
               setSettingsCommon={props.setSettingsCommon}
@@ -85,6 +74,19 @@ const CollectionsMenu = (props) => {
             )}
             <BackMenuBtn />
           </div>
+        </div>
+        <div className="view-settings">
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={props.viewmodeChange}
+          />{" "}
+          <SortMenu
+            fields={[
+              { value: "name", label: "Name" },
+              { value: "category", label: "Category" },
+            ]}
+            onSelect={sortContent}
+          />
         </div>
       </div>
 

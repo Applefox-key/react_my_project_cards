@@ -29,7 +29,7 @@ const PublicCollectionsList = ({ commonSettings }) => {
       {isLoading ? (
         <SpinnerLg className="span_wrap" />
       ) : (
-        <div className="d-flex p-2 flex-wrap justify-content-center">
+        <div className="d-flex flex-wrap justify-content-center">
           <CollectionCardsList
             selectedCategory={commonSettings.selectedCategorypub}
             filtredList={filtredList}

@@ -7,7 +7,7 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
     <>
       <div
         className={
-          window.location.hash === "#1" ? "tbl_wrap" : "all_wrap m-auto"
+          window.location.hash === "#1" ? "tbl_wrap mt-5" : "all_wrap m-auto"
         }>
         {!filtredList || !filtredList.length ? (
           <>

@@ -40,7 +40,7 @@ const CardContent = ({ content, setContent, pageParam }) => {
   ];
 
   return (
-    <div className="little_card_wrap">
+    <div className=" little_card_wrap mt-5">
       {content.map((el) => (
         <div
           key={el.id}

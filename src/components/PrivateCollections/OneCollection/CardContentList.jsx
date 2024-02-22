@@ -89,12 +89,18 @@ const CardContentList = ({ content, setContent, pageParam }) => {
           {content.map((el, i) => (
             <div
               className="one-row"
-              onClick={(e) => rowsActons.editCard(el, e)}>
+              onClick={(e) => {
+                e.stopPropagation();
+                rowsActons.editCard(el, e);
+              }}>
               <div className="btn-box">
                 {" "}
                 <button
                   title="Delete row"
-                  onClick={(e) => rowsActons.deleteOne(el, e)}>
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    rowsActons.deleteOne(el, e);
+                  }}>
                   ❌
                 </button>
                 {/* <button

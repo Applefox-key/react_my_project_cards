@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./collectionList.scss";
 import { HiShare } from "react-icons/hi2";
-import { HiOutlineHeart, HiHeart, HiPrinter } from "react-icons/hi";
-import { GO_TO } from "../../router/routes";
+import { HiOutlineHeart, HiHeart } from "react-icons/hi";
 import { usePopup } from "../../hooks/usePopup";
 import BaseAPI from "../../API/BaseAPI";
 import { FiUserCheck } from "react-icons/fi";
@@ -11,23 +9,9 @@ import { CiShare2 } from "react-icons/ci";
 import { LuCopyPlus } from "react-icons/lu";
 
 const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
-  const router = useNavigate();
-
   const setPopup = usePopup();
   return (
     <div className="btns-div">
-      <div
-        className="sharebtn prnbtn"
-        title="print cards"
-        onClick={(e) => {
-          e.stopPropagation();
-          router(
-            `${routeOne}${GO_TO.print}/${oneSet.collection.id}/${oneSet.collection.name}`
-          );
-        }}>
-        <HiPrinter />
-      </div>
-
       {!listFn ? (
         oneSet.isMy ? (
           <div className="mypbbtn" title={"my library"}>
@@ -66,7 +50,6 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
           {!!oneSet.collection.isFavorite && (
             <div className="shareSymb heartSymb">
               <HiHeart />
-              {/* <FcBookmark /> */}
             </div>
           )}
           <div

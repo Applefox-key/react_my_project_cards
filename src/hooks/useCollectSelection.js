@@ -5,11 +5,12 @@ import {
 } from "../utils/collectFilter";
 import { sortByFieldC } from "../utils/arraysFunc";
 
-const useSortedList = (list, sort = "") => {
+const useSortedList = (list, sort) => {
   const sortedList = useMemo(() => {
     return sort
-      ? sortByFieldC(list, sort < 3 ? "name" : "category", !(sort % 2))
-      : list;
+      ? sortByFieldC(list, sort.field, sort.isDec)
+      : // sortByFieldC(list, sort < 3 ? "name" : "category", !(sort % 2))
+        list;
   }, [sort, list]);
 
   return sortedList;

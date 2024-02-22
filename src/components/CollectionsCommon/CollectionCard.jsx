@@ -26,6 +26,9 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
         <span>{oneSet.content.length}</span>{" "}
         {oneSet.collection.category && (
           <div className="cat_tag">{oneSet.collection.category}</div>
+        )}{" "}
+        {!!oneSet.content.length && window.location.hash !== "#1" && (
+          <PlayMenu collection={oneSet.collection} />
         )}
         <div className="collectBody">
           {getFirstEl(oneSet.content, 5).map((el, i) => (
@@ -35,9 +38,6 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
           ))}
         </div>
       </div>{" "}
-      {!!oneSet.content.length && window.location.hash !== "#1" && (
-        <PlayMenu collection={oneSet.collection} />
-      )}
       <CollectionCardBtns {...{ oneSet, routeOne, listFn }} />
     </div>
   );

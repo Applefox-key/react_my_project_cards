@@ -58,17 +58,6 @@ const UserOneCollection = () => {
           </div>
         )}
 
-        {/* <Form.Select
-          size="sm"
-          onChange={(e) => sortContent(parseInt(e.target.value))}
-          aria-label="Default select example"
-          className="wsort m-auto">
-          <option>Sort</option>
-          <option value="1">Questions A-Z </option>
-          <option value="2">Questions Z-A </option>
-          <option value="3">Answers A-Z </option>
-          <option value="2">Answers Z-A </option>
-        </Form.Select> */}
         <div className="m-auto d-flex">
           {!isLoading && content ? (
             mode === 0 ? (

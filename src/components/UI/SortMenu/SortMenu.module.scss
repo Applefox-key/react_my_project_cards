@@ -1,0 +1,27 @@
+.dropdown-toggle {
+    position: relative;
+    border: none;
+    // background-color: white;
+    width: 8rem;
+    display: flex;
+    justify-content: flex-start;
+
+    svg {
+        margin-right: 1rem;
+        padding: 2px;
+        font-size: 14px;
+
+        &:hover {
+            outline: 3px solid rgb(134, 181, 251);
+        }
+    }
+}
+
+.dropdown-menu {
+    position: absolute;
+    list-style: none;
+    text-align: left;
+    cursor: pointer;
+    background-color: white;
+    width: 8rem;
+}
