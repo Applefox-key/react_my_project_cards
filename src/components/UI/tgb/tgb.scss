@@ -1,3 +1,5 @@
+@import 'animate.css';
+
 .wrap,
 .wrapS {
 
@@ -125,45 +127,63 @@
 .drop-down-menuBtn {
     width: 44px;
     height: 44px;
+    width: 35px;
+    height: 35px;
+
+
     background-color: transparent;
     border-radius: 50%;
     border: none;
     font-size: 18px;
     color: #5f6368;
+    z-index: 900;
+    transition: all 0.2s ease-in-out;
+
+    @media screen and (max-width:900px) {
+        margin-bottom: 0px;
+
+    }
 
     &:hover {
-        background-color: #e8eaed;
+        // background-color: #e8eaed;
+        // color: #193b70;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     }
 
 }
 
 .viewBtn {
+    margin-bottom: 20px;
+    position: relative;
 
-    @media screen and (max-width:900px) {
-
-        width: 35px;
-        height: 35px;
-    }
+    // @media screen and (max-width:900px) {
+    //     margin-bottom: 0px;
+    //     width: 35px;
+    //     height: 35px;
+    // }
 
     &:hover {
         // background-color: var(--background-header);
+
 
         &::before {
             content: attr(data-title);
             width: fit-content;
             white-space: nowrap;
             padding: 2px 5px;
-            background-color: var(--background-header);
+            // background-color: var(--background-header);
             background-color: var(--background-second);
             opacity: 1;
             color: black;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 9px;
             position: absolute;
             // left: 50%;
-            bottom: -1.5rem;
+            bottom: -10px;
+            // top: -9px;
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-            animation: fadeOut 3s forwards;
+            animation: fadeOut 4s forwards;
             z-index: 2000;
         }
 
@@ -184,6 +204,11 @@
     align-items: center;
     position: relative;
 
+    &:hover {
+        font-size: 12px;
+        align-items: flex-start;
+    }
+
     .buttonBox {
         border: 1px solid;
         border-radius: 25px;
@@ -191,8 +216,26 @@
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
         display: none;
         position: absolute;
-        top: 30px;
-        left: 10px;
+        top: 20px;
+        // left: 0px;
+        animation: zoomIn 1s forwards;
+        // opacity: 0;
+        box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+
+        .viewBtn {
+            margin-bottom: 0;
+            margin-top: 0;
+
+            &:hover {
+                &::before {
+                    top: unset;
+                    bottom: unset;
+                    right: 40px;
+                    height: fit-content;
+                }
+            }
+        }
     }
 
     &:hover {
@@ -215,6 +258,9 @@
 
         .buttonBox {
             display: flex;
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
         }
     }
 }

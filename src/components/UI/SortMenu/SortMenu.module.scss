@@ -6,6 +6,11 @@
     display: flex;
     justify-content: flex-start;
 
+    &:hover {
+        // outline: 3px solid rgb(134, 181, 251);
+        color: #193b70;
+    }
+
     svg {
         margin-right: 1rem;
         padding: 2px;
@@ -13,6 +18,7 @@
 
         &:hover {
             outline: 3px solid rgb(134, 181, 251);
+            color: #193b70;
         }
     }
 }

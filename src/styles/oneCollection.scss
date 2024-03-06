@@ -64,6 +64,9 @@
     position: absolute;
     right: 26px;
     z-index: 1000;
+    font-size: 10px;
+    font-size: 10px;
+    top: -2px;
 }
 
 .collectionNoteText {
@@ -237,7 +240,7 @@
         font-size: 12px;
         width: 100%;
         display: table;
-        border-spacing: 10px 20px;
+        border-spacing: 3px 2px;
 
         @media screen and (max-width: 600px) {
             margin-left: 0;
@@ -278,7 +281,8 @@
                 max-width: 45px;
                 // margin-right: 2rem;
                 position: absolute;
-                top: -9px;
+                top: 2px;
+                left: -23px;
 
                 // top: 0px;
                 // left: -10px;
@@ -328,13 +332,19 @@
             }
 
             &:hover {
-                color: red;
+                color: var(--color-checked);
                 // box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
                 // scale: 1.01;
                 z-index: 3;
+                transform: translateX(5px);
 
                 button {
                     display: block;
+                }
+
+                .answ {
+                    color: var(--color-checked);
+                    border-color: var(--color-checked);
                 }
             }
 
@@ -443,11 +453,28 @@
         text-align: initial;
         margin-top: 5px;
         color: var(--color-checked);
+
+
     }
 
     @media screen and (max-width: 600px) {
         width: 100%;
     }
+
+    @media screen and (min-width:1200px) {
+
+        width: 80%;
+    }
+
+    .editCard {
+        @media screen and (min-width:1200px) {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+    }
+
+
 
     .menuRow {
         display: flex;
@@ -498,14 +525,22 @@
         background-color: var(--background-first);
         border: 1px solid;
         border-radius: 5px;
+
+        @media screen and (min-width:1200px) {
+            width: 50%;
+        }
     }
 
     .answtDiv {
         border-radius: 5px;
-        margin-top: 10px;
+        margin-top: 5px;
         padding: 10px;
         background-color: var(--background-second);
         border: 1px solid;
+
+        @media screen and (min-width:1200px) {
+            width: 50%;
+        }
     }
 
     .oneSide {

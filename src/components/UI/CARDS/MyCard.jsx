@@ -6,13 +6,12 @@ import { useEffect } from "react";
 import { mainAndImg } from "../../../utils/cardFragment";
 import { useStretchingText } from "../../../hooks/useStretchingText";
 
-const MyCard = ({ item, mode = "0", flip, clc = true }) => {
+const MyCard = ({ item, mode = "0", flip, clc = true, ...props }) => {
   const [flipped, setFlipped] = useState(false);
   useEffect(() => {
     if (flip !== flipped && flip !== undefined) setFlipped(!flipped);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flip]);
-  console.log(item);
   useStretchingText("cardText");
 
   return (

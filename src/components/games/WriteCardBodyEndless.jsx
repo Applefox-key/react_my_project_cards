@@ -80,7 +80,7 @@ const WriteCardBodyEndless = ({ items }) => {
   return (
     <div>
       {!!allItems.length && (
-        <div className={cl.cardSize}>
+        <>
           {allItems[num].note ? <Hint text={allItems[num].note} /> : <></>}
           <ProbabilityList arr={allItems} />
           <CSSTransition
@@ -112,7 +112,7 @@ const WriteCardBodyEndless = ({ items }) => {
                       size="lg"
                       disabled={flip}
                       className={cl.writeHint}>
-                      SHOW THE NEXT LETTER
+                      HINT
                     </button>
                   </div>
                   <textarea
@@ -134,7 +134,7 @@ const WriteCardBodyEndless = ({ items }) => {
               </div>
             </div>
           </CSSTransition>
-        </div>
+        </>
       )}
     </div>
   );

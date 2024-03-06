@@ -84,7 +84,7 @@ const EditCard = () => {
         />
       </div>
       {item ? (
-        <>
+        <div className="editCard">
           <div className="questDiv">
             <h3>QUESTION</h3>{" "}
             <div className="oneSide quest">
@@ -149,7 +149,7 @@ const EditCard = () => {
               />
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <SpinnerLg className="span_wrap" />
       )}

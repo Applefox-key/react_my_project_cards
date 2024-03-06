@@ -84,7 +84,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                 {window.location.hash !== "#1" && (
                   <div className={cl.btnGames}>
                     <BtnPlayMenu
-                      collection={list}
+                      collection={el}
                       playlist={true}
                       small={window.location.hash !== "#1"}
                       verticals={window.location.hash !== "#1"}

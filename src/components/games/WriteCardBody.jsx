@@ -18,7 +18,7 @@ const WriteCardBody = ({ items, setItems }) => {
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);
   const mode = useParams().mode;
-  const countLeft = () => items && num + 1 + "/" + items.length;
+  // const countLeft = () => items && num + 1 + "/" + items.length;
 
   const hintT = () => {
     let ra = onlyLetters(
@@ -60,7 +60,7 @@ const WriteCardBody = ({ items, setItems }) => {
   };
   const isResult = items.length === count[0] + count[1] && !flip;
   return (
-    <div className={cl.cardSize}>
+    <>
       {items[num].note ? <Hint text={items[num].note} /> : <></>}
       {isResult ? (
         <Result
@@ -71,34 +71,43 @@ const WriteCardBody = ({ items, setItems }) => {
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
           <div className={cl["game-field"]}>
+            {!isResult && (
+              <div className={cl["countWrite"]}>
+                <GameCount
+                  count={count}
+                  all={items.length - count[0] - count[1]}
+                  // left={countLeft()}
+                />
+              </div>
+            )}
             <div className={cl.cardSize}>
               <OneCardG
                 anim={anim}
                 item={items[num]}
                 flip={flip}
                 clickable={false}
-              />{" "}
+              />
+              <button
+                onClick={hintT}
+                size="lg"
+                disabled={flip}
+                className={cl.writeHint1}>
+                HINT
+              </button>
             </div>
-            <div className="d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative mt-5">
-              <div className="d-flex flex-column">
-                {!isResult && (
-                  <GameCount
-                    count={count}
-                    all={items.length - count[0] - count[1]}
-                    left={countLeft()}
-                  />
-                )}{" "}
-                <Button onClick={check} size="lg" disabled={!answer}>
-                  {flip ? "NEXT" : "CHECK AN ANSWER"}
-                </Button>{" "}
+            <div className={cl.writeBox}>
+              <div className={cl.actionBtns}>
                 <button
                   onClick={hintT}
                   size="lg"
                   disabled={flip}
                   className={cl.writeHint}>
-                  SHOW THE NEXT LETTER
+                  HINT
                 </button>
-              </div>
+                <Button onClick={check} size="lg" disabled={!answer}>
+                  {flip ? "NEXT" : "CHECK"}
+                </Button>{" "}
+              </div>{" "}
               <textarea
                 type={"text"}
                 id="answerArea"
@@ -118,7 +127,7 @@ const WriteCardBody = ({ items, setItems }) => {
           </div>
         </CSSTransition>
       )}
-    </div>
+    </>
   );
 };
 
