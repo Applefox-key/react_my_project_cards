@@ -36,7 +36,7 @@ const PairPart = ({ items, onClick, num, active }) => {
               id={el.id + "&" + num}
               onClick={onClick}>
               {imgEl(el)}
-              <div className="cardText">
+              <div className="cardText w-unset">
                 {el[num === 1 ? "question" : "answer"]}
               </div>
             </button>

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/esm/Button";
+
 import OneCardG from "./OneCardG";
 import cl from "./Games.module.scss";
 import { onlyLetters } from "../../utils/texts";
@@ -8,7 +8,6 @@ import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
 import Hint from "./Hint";
 
-import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
 import {
   addProbabilities,
@@ -76,9 +75,20 @@ const WriteCardBodyEndless = ({ items }) => {
   useEffect(() => {
     addProbabilities(items, "write", mode, setAllItems); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const leftBtn = {
+    onClick: hintT,
+    name: "HELP",
+    disabled: flip,
+    fontstyle: "fs-14",
+  };
+  const rightBtn = {
+    onClick: check,
+    name: flip ? "NEXT" : "CHECK",
+    fontstyle: "fs-14",
+  };
 
   return (
-    <div>
+    <>
       {!!allItems.length && (
         <>
           {allItems[num].note ? <Hint text={allItems[num].note} /> : <></>}
@@ -89,54 +99,39 @@ const WriteCardBodyEndless = ({ items }) => {
             timeout={500}
             classNames="result">
             <div className={cl["game-field"]}>
-              {" "}
-              <div className={cl.topEndless}>
-                <div className="d-flex flex-column">
-                  <Balancer current={valProgress()} key={num} />
-                  <div className={cl.cardSize}>
-                    <OneCardG
-                      anim={anim}
-                      item={allItems[num]}
-                      flip={flip}
-                      clickable={false}
-                    />
-                  </div>
-                </div>
-                <div className={cl.writeEndless}>
-                  <div className={cl.writeBtns}>
-                    <Button onClick={check} size="lg" disabled={!answer}>
-                      {flip ? "NEXT" : "CHECK AN ANSWER"}
-                    </Button>{" "}
-                    <button
-                      onClick={hintT}
-                      size="lg"
-                      disabled={flip}
-                      className={cl.writeHint}>
-                      HINT
-                    </button>
-                  </div>
-                  <textarea
-                    type={"text"}
-                    id="answerArea"
-                    value={answer}
-                    className={cl.writeAnswer}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        check();
-                      }
-                    }}
-                    onChange={(e) => {
-                      setAnswer(e.target.value);
-                    }}
-                  />{" "}
-                </div>{" "}
+              <div className={cl.cardSize}>
+                <OneCardG
+                  anim={anim}
+                  item={allItems[num]}
+                  flip={flip}
+                  clickable={false}
+                  leftBtn={leftBtn}
+                  rightBtn={rightBtn}
+                  progr={valProgress()}
+                />
+              </div>
+              <div className={cl.writeBox}>
+                <textarea
+                  type={"text"}
+                  id="answerArea"
+                  value={answer}
+                  className={cl.writeAnswer}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      check();
+                    }
+                  }}
+                  onChange={(e) => {
+                    setAnswer(e.target.value);
+                  }}
+                />{" "}
               </div>
             </div>
           </CSSTransition>
         </>
       )}
-    </div>
+    </>
   );
 };
 

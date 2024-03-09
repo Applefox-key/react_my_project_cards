@@ -43,7 +43,7 @@ const TestBody = ({ items, setItems }) => {
     }
   };
   return (
-    <div>
+    <div className="mt-4">
       {items.length === num ? (
         <Result
           text="Job is done!"
@@ -63,11 +63,7 @@ const TestBody = ({ items, setItems }) => {
               key={num}
               classNames="cardChange">
               <div className={cl["game-field"]}>
-                <OneCardG
-                  direction={true}
-                  item={items[num].item}
-                  clickable={false}
-                />
+                <OneCardG item={items[num].item} clickable={false} />
                 <TestOptions
                   items={items[num].answ}
                   onClick={choose}

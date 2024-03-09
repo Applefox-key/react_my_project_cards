@@ -2,9 +2,15 @@
   display: block;
   text-align: center;
   margin-top: 0.5rem;
-  background: rgb(var(--background-wrap-rgb), var(--wrap-opacity));
+  // background: rgb(var(--background-wrap-rgb), var(--wrap-opacity));
+  background-color: transparent;
 
-  @media screen and (min-width: 600px) and (max-height: 600px) {
+  @media screen and (min-width: 1700px) and (max-height: 600px) {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  @media screen and (max-height: 400px) {
     display: flex;
     align-items: flex-start;
   }
@@ -53,13 +59,15 @@
     justify-content: center;
 
     @media screen and (max-width: 900px) {
-      display: block;
+      // display: block;
+      flex-direction: column-reverse;
 
     }
 
     @media screen and (min-width: 900px)and (max-height:600px) {
       display: block;
       width: -webkit-fill-available;
+      // flex-direction: column-reverse;
 
     }
   }
@@ -96,17 +104,38 @@
       text-align: center;
       // flex-direction: column;
       margin: 1rem 0;
+      margin-bottom: 2rem;
       // position: absolute;
       // left: 45px;
     }
 
     @media screen and (min-height: 600px) and (max-width: 600px) {
-      text-align: center;
+      // text-align: start;
+      display: flex;
+
+      justify-content: flex-start;
       min-height: 3rem;
       width: 100%;
+      margin-top: 0rem;
+      margin-bottom: 2rem;
       // border: 1px dashed black // margin-top: 1.8rem;
-      box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+      box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgb(181 177 177 / 50%) -3px -3px 6px 1px inset; //rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
       // flex-direction: column;
+    }
+
+    @media screen and (min-width:600px)and (max-height: 600px) {
+      // text-align: start;
+      display: flex;
+
+      justify-content: flex-start;
+      min-height: 3rem;
+      width: 50%;
+      min-width: 3rem;
+      margin: auto;
+      margin-top: 0rem;
+      margin-bottom: 2rem;
+      box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgb(181 177 177 / 50%) -3px -3px 6px 1px inset; //rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
     }
   }
 
@@ -120,15 +149,23 @@
     @media screen and (min-width: 600px) and (max-height: 600px) {
       text-align: center;
       flex-direction: column;
+      margin-bottom: 1rem;
     }
 
     @media screen and (min-height: 600px) and (max-width: 600px) {
       text-align: center;
       flex-direction: column;
+      margin-bottom: 1rem;
     }
   }
 }
 
+.endlessMenu {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
 .countBtn {
   cursor: auto;
@@ -136,33 +173,57 @@
   border-radius: 10%;
   background: none;
   border: none;
-  // width: 5rem;
-  // height: 5rem;
   border-radius: 50%;
-  // line-height: 3;
   padding: 0;
-  margin: 2px;
 
-  // h1 {
-  //   margin-top: 10px;
-  // }
 
   span {
-    min-width: 55px;
+    min-width: 35px;
     border-radius: 50%;
-    min-height: 55px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
+
+
+
+    display: inline-block;
+    padding: 1px 1px;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 2;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    font-size: 14px;
+
+  }
+
+  .success {
+    background-color: #7ba53c;
+    border-radius: 50% 50% 0 50%;
+  }
+
+  .warning {
+    background-color: #f0f487;
+    border-radius: 50%;
+    color: black;
+  }
+
+  .danger {
+    background-color: #dc5028;
+    border-radius: 50% 50% 50% 0;
+
   }
 }
 
 .countWrite {
   @media screen and (max-width:950px) {
-    position: absolute;
-    top: 129px;
-    left: 0px;
+    // position: absolute;
+    // top: 129px;
+    // left: 0px;
     scale: 0.5;
   }
 }
@@ -382,6 +443,12 @@
 
 }
 
+.timemenu {
+
+  display: flex;
+
+
+}
 
 
 .cardSize {
@@ -400,23 +467,14 @@
     width: auto;
     font-size: 20vw;
   }
-}
 
-.actionBtns {
-  display: flex;
-  // flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  width: 50%;
+  @media screen and (min-width:1200px) {
 
-  @media screen and (max-width:950px) {
-
-    // position: absolute;
-    // top: 129px;
-    // left: 0px;
-    // scale: 0.5;
+    width: 50%;
   }
 }
+
+
 
 .hint {
   position: absolute;
@@ -525,8 +583,8 @@
 
 .probListWrap {
   position: absolute;
-  top: 6rem;
-  right: 0;
+  top: 0rem;
+  right: 10px;
   width: fit-content;
   font-size: 25px;
   height: fit-content;
@@ -536,7 +594,11 @@
   text-align: end;
 
   @media screen and (max-width:900px) {
-    top: 9rem;
+    // top: 9rem;
+    // position: relative;
+    // top: -10px;
+    // right: unset;
+    // left: 40%;
   }
 
   .probList {
@@ -582,9 +644,16 @@
 .topEndless {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   @media screen and (max-width:900px) {
     flex-direction: column-reverse;
+  }
+
+  @media screen and (max-height:500px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -616,33 +685,33 @@
 }
 
 .writeBox {
-  //d-flex align-items-center flex-wrap justify-content-center w-50 m-auto position-relative mt-5
   display: flex;
-  flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
   justify-content: center;
-  width: 50%;
+  width: 90%;
   margin: auto;
   position: relative;
-  margin-top: 2.5rem;
-}
+  margin-bottom: 2rem;
 
-.writeEndless {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 50%;
-  margin: auto;
-  position: relative;
-  margin-top: 3rem;
 
-  @media screen and (max-width:900px) {
-    margin-top: 3rem;
-    width: 90%;
+  @media screen and (min-width: 1700px) and (max-height: 600px) {
+    width: 30%;
+    margin: 0;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
   }
+
+  @media screen and (max-height: 400px) {
+    width: 40%;
+    margin: 0;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+  }
+
+
 }
+
 
 .container_galleryEndless {
   width: 100rem;

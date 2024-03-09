@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
-import Button from "react-bootstrap/esm/Button";
 import OneCardG from "./OneCardG";
 import cl from "./Games.module.scss";
 import GameCount from "./GameCount";
@@ -18,7 +17,6 @@ const WriteCardBody = ({ items, setItems }) => {
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);
   const mode = useParams().mode;
-  // const countLeft = () => items && num + 1 + "/" + items.length;
 
   const hintT = () => {
     let ra = onlyLetters(
@@ -59,6 +57,18 @@ const WriteCardBody = ({ items, setItems }) => {
     setFlip(!flip);
   };
   const isResult = items.length === count[0] + count[1] && !flip;
+
+  const leftBtn = {
+    onClick: hintT,
+    name: "HELP",
+    disabled: flip,
+    fontstyle: "fs-14",
+  };
+  const rightBtn = {
+    onClick: check,
+    name: flip ? "NEXT" : "CHECK",
+    fontstyle: "fs-14",
+  };
   return (
     <>
       {items[num].note ? <Hint text={items[num].note} /> : <></>}
@@ -70,61 +80,43 @@ const WriteCardBody = ({ items, setItems }) => {
         />
       ) : (
         <CSSTransition appear={true} in={true} timeout={500} classNames="game">
-          <div className={cl["game-field"]}>
+          <>
             {!isResult && (
-              <div className={cl["countWrite"]}>
-                <GameCount
-                  count={count}
-                  all={items.length - count[0] - count[1]}
-                  // left={countLeft()}
+              <GameCount
+                count={count}
+                all={items.length - count[0] - count[1]}
+              />
+            )}
+            <div className={cl["game-field"]}>
+              <div className={cl.cardSize}>
+                <OneCardG
+                  anim={anim}
+                  item={items[num]}
+                  flip={flip}
+                  clickable={false}
+                  leftBtn={leftBtn}
+                  rightBtn={rightBtn}
                 />
               </div>
-            )}
-            <div className={cl.cardSize}>
-              <OneCardG
-                anim={anim}
-                item={items[num]}
-                flip={flip}
-                clickable={false}
-              />
-              <button
-                onClick={hintT}
-                size="lg"
-                disabled={flip}
-                className={cl.writeHint1}>
-                HINT
-              </button>
+              <div className={cl.writeBox}>
+                <textarea
+                  type={"text"}
+                  id="answerArea"
+                  value={answer}
+                  className={cl.writeAnswer}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      check();
+                    }
+                  }}
+                  onChange={(e) => {
+                    setAnswer(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-            <div className={cl.writeBox}>
-              <div className={cl.actionBtns}>
-                <button
-                  onClick={hintT}
-                  size="lg"
-                  disabled={flip}
-                  className={cl.writeHint}>
-                  HINT
-                </button>
-                <Button onClick={check} size="lg" disabled={!answer}>
-                  {flip ? "NEXT" : "CHECK"}
-                </Button>{" "}
-              </div>{" "}
-              <textarea
-                type={"text"}
-                id="answerArea"
-                value={answer}
-                className={cl.writeAnswer}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    check();
-                  }
-                }}
-                onChange={(e) => {
-                  setAnswer(e.target.value);
-                }}
-              />
-            </div>
-          </div>
+          </>
         </CSSTransition>
       )}
     </>

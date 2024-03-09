@@ -233,6 +233,7 @@
 .playmenuShow {
     position: absolute;
     background-color: var(--background-switch);
+    z-index: 901;
 
     span {
         height: 100%;
@@ -266,6 +267,7 @@
         top: -16px;
         padding-top: 30px;
         font-size: 14px;
+
 
         &::before {
             content: "";

@@ -76,9 +76,11 @@ const Pairs = () => {
   };
 
   return (
-    <>
+    <div className="mainField">
       {note ? <Hint text={note} /> : <></>}
-      <BackBtn />
+      <div className="menuField">
+        <BackBtn />
+      </div>
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
@@ -108,7 +110,7 @@ const Pairs = () => {
           </div>
         </CSSTransition>
       )}
-    </>
+    </div>
   );
 };
 

@@ -40,7 +40,25 @@
   } */
 
 
+.fade-enter {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
 
+.fade-enter-done {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
+
+.fade-exit {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
+
+.pfadeair-exit-done {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
 
 
 .expression-exit {

@@ -79,11 +79,7 @@ const PartBody = ({ items, setItems }) => {
               key={num}
               classNames="cardChange">
               <div className={cl["game-field"]}>
-                <OneCardG
-                  direction={true}
-                  item={items[num].item}
-                  clickable={false}
-                />{" "}
+                <OneCardG item={items[num].item} clickable={false} />{" "}
                 <div className={cl.pazlbox}>
                   <PartAnswer
                     item={items[num]}

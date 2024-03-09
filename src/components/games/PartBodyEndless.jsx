@@ -5,7 +5,6 @@ import Hint from "./Hint";
 import OneCardG from "./OneCardG";
 import Parts from "./Parts";
 import PartAnswer from "./PartAnswer";
-import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
 import {
   addProbabilities,
@@ -73,7 +72,7 @@ const PartBodyEndless = ({ items }) => {
   return (
     <>
       {!!allItems.length && (
-        <div>
+        <>
           {allItems[num].item.note ? (
             <Hint text={allItems[num].item.note} />
           ) : (
@@ -87,45 +86,37 @@ const PartBodyEndless = ({ items }) => {
               key={anim}
               classNames="cardChange">
               <div className={cl["game-field"]}>
-                <div className={cl.topEndlessParts}>
-                  <div className="d-flex flex-column">
-                    <OneCardG
-                      direction={true}
-                      item={allItems[num].item}
-                      clickable={false}
-                      clgal={cl.container_galleryEndless}
-                    />{" "}
-                  </div>{" "}
-                  <Balancer
-                    current={
-                      allItems[num].probability === 1
-                        ? 100
-                        : 100 - allItems[num].probability * 5
+                <OneCardG
+                  item={allItems[num].item}
+                  clickable={false}
+                  progr={
+                    allItems[num].probability === 1
+                      ? 100
+                      : 100 - allItems[num].probability * 5
+                  }
+                />
+                <div className={cl.pazlbox}>
+                  <PartAnswer
+                    item={allItems[num]}
+                    onClick={undo}
+                    activeVAL={activeVAL}
+                  />
+                  <Parts
+                    items={allItems[num].parts}
+                    onClick={(e) => clickPart(e, allItems[num].answ)}
+                    active={activeIDs}
+                    lastOk={
+                      allItems[num].answ[activeIDs.length - 1] ===
+                      activeVAL[activeIDs.length - 1]
+                        ? ""
+                        : activeIDs[activeIDs.length - 1]
                     }
                   />
-                  <div className="d-flex flex-column">
-                    <Parts
-                      items={allItems[num].parts}
-                      onClick={(e) => clickPart(e, allItems[num].answ)}
-                      active={activeIDs}
-                      lastOk={
-                        allItems[num].answ[activeIDs.length - 1] ===
-                        activeVAL[activeIDs.length - 1]
-                          ? ""
-                          : activeIDs[activeIDs.length - 1]
-                      }
-                    />
-                    <PartAnswer
-                      item={allItems[num]}
-                      onClick={undo}
-                      activeVAL={activeVAL}
-                    />
-                  </div>
                 </div>
               </div>
             </CSSTransition>
           </SwitchTransition>
-        </div>
+        </>
       )}
     </>
   );

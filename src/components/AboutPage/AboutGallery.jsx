@@ -84,6 +84,7 @@ const AboutGallery = () => {
               <OneCardG
                 anim={anim}
                 direction={direction}
+                twoDir={true}
                 item={items[itemNum]}
                 clgal={cl.container_galleryAbout}
               />{" "}

@@ -9,6 +9,8 @@ import cl from "../UI/CARDS/MyCard.module.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import SwitchModeBtn from "../UI/BlackBtn/SwitchModeBtn";
 import { useParams } from "react-router-dom";
+import { TiArrowBackOutline, TiArrowForwardOutline } from "react-icons/ti";
+import GameCountBage from "./GameCountBage";
 
 const CardsGallery = () => {
   const [items, setItems] = useState();
@@ -18,11 +20,6 @@ const CardsGallery = () => {
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useGame(setItems, shuffle);
   const param = useParams().mode;
-  useEffect(() => {
-    getContent();
-    if (error) setPopup.error(error);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
@@ -39,42 +36,45 @@ const CardsGallery = () => {
     setShowAnim(!anim);
     setItemNum(Math.max(itemNum - 1, 0));
   };
-
+  const leftBtn = {
+    onClick: prew,
+    name: <TiArrowBackOutline />,
+    disabled: itemNum === 0,
+    fontstyle: "fs-arr",
+  };
+  const rightBtn = {
+    onClick: next,
+    // name: "❱",
+    name: <TiArrowForwardOutline />,
+    fontstyle: "fs-arr",
+  };
   return (
-    <div style={{ overflow: "hidden" }}>
-      <BackBtn />
-      <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
+    <div className="mainField">
+      <div className="menuField d-flex justify-content-between w-100">
+        <div className="flexstandart">
+          <BackBtn />
+          <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
+        </div>
+        {!isLoading && items && (
+          <GameCountBage
+            value={items && itemNum + 1 + "/" + items.length}
+            bg="warning"
+            text="dark"
+          />
+        )}
+      </div>
       {!isLoading && items ? (
-        <CSSTransition appear={true} in={true} timeout={500} classNames="game">
-          <div>
-            <p className="contrastColor">
-              {items && itemNum + 1 + "/" + items.length}
-            </p>
-
-            <div className={cl["card-and-arrow"]}>
-              <button
-                type="button"
-                className={cl.collect_button}
-                disabled={itemNum === 0}
-                onClick={prew}>
-                <span className={cl.collect_button_text}>❰</span>
-              </button>
-              <div className="d-flex   justify-content-end">
-                <OneCardG
-                  clgal={cl.container_gallery_view}
-                  anim={anim}
-                  direction={direction}
-                  item={items[itemNum]}
-                />
-              </div>
-              <button
-                type="button"
-                className={cl.collect_button}
-                disabled={items.length - 1 === itemNum}
-                onClick={next}>
-                <span className={cl.collect_button_text}>❱</span>
-              </button>
-            </div>
+        <CSSTransition appear={true} in={true} timeout={1000} classNames="game">
+          <div className={cl["card-and-arrow"]}>
+            <OneCardG
+              clgal={cl.container_gallery_view}
+              anim={anim}
+              direction={direction}
+              twoDir={true}
+              item={items[itemNum]}
+              leftBtn={leftBtn}
+              rightBtn={rightBtn}
+            />
           </div>
         </CSSTransition>
       ) : (

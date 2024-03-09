@@ -45,9 +45,12 @@ const WriteCard = () => {
   }, [window.location.pathname, window.location.hash]);
 
   return (
-    <div style={{ overflow: "hidden" }}>
-      <BackBtn /> <SwitchEndlessBtn endless={endless} setEndless={setEndless} />{" "}
-      <SwitchModeBtn modes={["WRITE ANSWER", " WRITE QUESTION"]} />
+    <div className="mainField">
+      <div className="menuField">
+        <BackBtn />{" "}
+        <SwitchEndlessBtn endless={endless} setEndless={setEndless} />{" "}
+        <SwitchModeBtn modes={["WRITE ANSWER", " WRITE QUESTION"]} />
+      </div>
       {!isLoading && items ? (
         endless ? (
           <WriteCardBodyEndless items={items} key={key} />

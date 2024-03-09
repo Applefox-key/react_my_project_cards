@@ -1,3 +1,13 @@
+.balancerLine-wrap {
+    width: 100%;
+    border-radius: 15px 25px 25px 25px;
+    height: 7px;
+    border: 1px solid black;
+    display: flex;
+    margin: auto;
+
+}
+
 .balancer-wrap {
     width: 100rem;
     border-radius: 5px;
@@ -48,7 +58,7 @@
 }
 
 .balancer-leftWrap {
-    background-color: ghostwhite;
+    background-color: #efcfd2;
     width: 50%;
     border-radius: 5px 0 0 5px;
     display: flex;
@@ -57,7 +67,7 @@
 }
 
 .balancer-rightWrap {
-    background-color: ghostwhite;
+    background-color: #b7f1bb;
     width: 50%;
     border-radius: 0 5px 5px 0;
     height: 5px;
@@ -79,12 +89,15 @@
 
 .balancer-left {
     background-color: #ee3143;
+    background-color: #dc5028;
     width: 10%;
     border-radius: 5px 0 0 5px;
 }
 
 .balancer-right {
     background-color: #39e628;
+    background-color: #7ba53c;
+    ;
     width: 100%;
     border-radius: 0 5px 5px 0;
 }

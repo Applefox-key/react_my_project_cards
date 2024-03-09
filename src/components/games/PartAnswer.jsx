@@ -9,19 +9,17 @@ const PartAnswer = ({ item, onClick, activeVAL }) => {
     ].join(" ");
   };
   return (
-    <div>
-      <div className={cl["part-answer"]}>
-        {activeVAL.map((el, i) => (
-          <button
-            key={i}
-            id={i}
-            onClick={onClick}
-            disabled={item.answ[i] === activeVAL[i]}
-            className={generateClassName(el, i)}>
-            {el}
-          </button>
-        ))}
-      </div>
+    <div className={cl["part-answer"]}>
+      {activeVAL.map((el, i) => (
+        <button
+          key={i}
+          id={i}
+          onClick={onClick}
+          disabled={item.answ[i] === activeVAL[i]}
+          className={generateClassName(el, i)}>
+          {el}
+        </button>
+      ))}
     </div>
   );
 };

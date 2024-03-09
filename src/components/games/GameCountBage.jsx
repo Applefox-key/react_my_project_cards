@@ -1,6 +1,5 @@
 import React from "react";
 import cl from "./Games.module.scss";
-import { Badge } from "react-bootstrap";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 const GameCountBage = ({ value, lable, bg, text }) => {
@@ -8,10 +7,10 @@ const GameCountBage = ({ value, lable, bg, text }) => {
     <SwitchTransition>
       <CSSTransition key={value} timeout={200} classNames={"count"}>
         <button size="lg" variant="light" className={cl.countBtn}>
-          <Badge text={text} bg={bg}>
+          <span text={text} className={cl[bg]}>
             {lable}
             {value}
-          </Badge>
+          </span>
         </button>
       </CSSTransition>
     </SwitchTransition>
@@ -19,3 +18,4 @@ const GameCountBage = ({ value, lable, bg, text }) => {
 };
 
 export default GameCountBage;
+// bg={bg}

@@ -89,8 +89,18 @@ export const contentFromText = async (
 };
 
 export const onlyLetters = (text) => {
-  let res = text.replace(/\W/g, "");
-  res = res.replace(/[0-9]/g, "");
+  // let res = text.replace(/\W/g, "");
+  // let res = text.replace(/[^\wа-яё]/gi, "");cyrilic only
+  let res = text.replace(/[^\wа-яёa-z]/gi, "");
+  // res = res.replace(/[0-9]/g, "");
+  res = res.replace(/\s/g, "");
+  return res.toLowerCase();
+};
+export const onlyLettersNumbers = (text) => {
+  // let res = text.replace(/\W/g, "");
+  // let res = text.replace(/[^\wа-яё]/gi, "");cyrilic only
+  let res = text.replace(/[^\wа-яёa-z]/gi, "");
+  // res = res.replace(/[0-9]/g, "");
   res = res.replace(/\s/g, "");
   return res.toLowerCase();
 };

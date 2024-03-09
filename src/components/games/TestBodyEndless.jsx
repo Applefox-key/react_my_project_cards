@@ -6,7 +6,6 @@ import { testAnswerCheck } from "../../utils/games";
 import Hint from "./Hint";
 import { useParams } from "react-router-dom";
 import OneCardG from "./OneCardG";
-import Balancer from "../UI/Balancer/Balancer";
 import ProbabilityList from "./ProbabilityList";
 import {
   addProbabilities,
@@ -53,37 +52,31 @@ const TestBodyEndless = ({ items }) => {
   }, []);
   return (
     <>
-      <div>
-        {!!allItems.length && (
-          <>
-            {allItems[num].item.note ? (
-              <Hint text={items[num].item.note} />
-            ) : (
-              <></>
-            )}{" "}
-            <ProbabilityList arr={allItems} />
-            <SwitchTransition mode="out-in">
-              <CSSTransition
-                appear={false}
-                timeout={500}
-                key={anim}
-                classNames="cardChange">
+      {!!allItems.length && (
+        <>
+          {allItems[num].item.note ? (
+            <Hint text={items[num].item.note} />
+          ) : (
+            <></>
+          )}{" "}
+          <ProbabilityList arr={allItems} />{" "}
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              appear={false}
+              timeout={500}
+              key={anim}
+              classNames="cardChange">
+              <>
                 <div className={cl["game-field"]}>
-                  <div className="d-flex flex-column">
-                    {" "}
-                    <Balancer
-                      current={
-                        allItems[num].probability === 1
-                          ? 100
-                          : 100 - allItems[num].probability * 5
-                      }
-                    />{" "}
-                    <OneCardG
-                      direction={true}
-                      item={allItems[num].item}
-                      clickable={false}
-                    />
-                  </div>
+                  <OneCardG
+                    item={allItems[num].item}
+                    clickable={false}
+                    progr={
+                      allItems[num].probability === 1
+                        ? 100
+                        : 100 - allItems[num].probability * 5
+                    }
+                  />
 
                   <TestOptions
                     items={allItems[num].answ}
@@ -93,11 +86,11 @@ const TestBodyEndless = ({ items }) => {
                     mode={parseInt(mode)}
                   />
                 </div>
-              </CSSTransition>
-            </SwitchTransition>
-          </>
-        )}
-      </div>
+              </>
+            </CSSTransition>
+          </SwitchTransition>
+        </>
+      )}
     </>
   );
 };

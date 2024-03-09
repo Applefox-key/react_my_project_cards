@@ -46,10 +46,12 @@ const PartCard = () => {
   }, [window.location.pathname, window.location.hash]);
 
   return (
-    <div>
-      <BackBtn />
-      <SwitchEndlessBtn endless={endless} setEndless={setEndless} />{" "}
-      <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
+    <div className="mainField">
+      <div className="menuField">
+        <BackBtn />
+        <SwitchEndlessBtn endless={endless} setEndless={setEndless} />{" "}
+        <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />
+      </div>
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (

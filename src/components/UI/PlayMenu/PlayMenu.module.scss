@@ -14,7 +14,7 @@
     &:hover {
         background-color: #e8eaed;
         background-color: var(--background-switch);
-
+        z-index: 905;
         color: white;
 
         &::before {
@@ -37,6 +37,7 @@
 
 .btnGames-wrap {
     position: relative;
+
 }
 
 .btnShow {
@@ -45,6 +46,7 @@
     opacity: 0.9;
     color: yellow;
     rotate: 360deg;
+    z-index: 902;
 
     &:hover {
         color: yellow;
