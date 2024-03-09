@@ -63,9 +63,15 @@ const PartBody = ({ items, setItems }) => {
     let ra = items[num].answ;
     let alength = activeVAL.length;
     if (alength < ra.length) {
-      let val = ra[alength];
       let nID = [...activeIDs];
       let nV = [...activeVAL];
+
+      if (ra[nV.length - 1] !== nV[nV.length - 1]) {
+        nID.pop();
+        nV.pop();
+      }
+      alength = nV.length;
+      let val = ra[alength];
       // П convert the ids array into a set for a quick search
       const set2 = new Set(nID);
       //  look for the first element in parts array that is not in Ids array
