@@ -16,6 +16,7 @@
 
     .onePlaylist-wrap {
         background-color: var(--background-wrap);
+        color: var(--color-bg-wrap);
         margin: 20px;
         width: 260px;
         min-width: 260px;
@@ -226,24 +227,21 @@
     margin: auto;
 
     .onePlaylist-wrap {
-        // display: table-column;
         width: 98%;
         position: relative;
         padding-left: 15px;
         padding: 0 35px;
         display: flex;
-        // width: 80vw;
-        // width: max-content;
         transition: all 0.3s ease-in-out;
         z-index: 0;
         height: 1.5em;
         line-height: 1.5em;
         background-color: var(--background-wrap);
-        margin: auto;
+        color: var(--color-bg-wrap);
 
 
         &:nth-child(even) {
-            background-color: rgb(247, 246, 246);
+            background-color: var(--background-even);
         }
 
         @media screen and (max-width:900px) {

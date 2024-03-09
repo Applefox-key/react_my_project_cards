@@ -25,7 +25,7 @@ const PublicContentCardInfo = () => {
     <>
       <div className="text-center mx-5 my-5">
         {/* <div className={cl.container_gallery}> */}
-        <BackBtn size="lg" variant="primary" />
+        <BackBtn size="lg" variant="dark" />
       </div>
       <div className={cl.container_gallery + " m-auto"}>
         {item && <MyCard item={item} />}

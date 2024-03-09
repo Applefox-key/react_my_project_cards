@@ -28,7 +28,7 @@
         padding: 0 2px 0px 2px;
         background-color: var(--background-wrap);
         border-radius: 3px 3px 0 0;
-        color: #343A40;
+        color: var(--color-bg-wrap);
         font-family: Roboto, Helvetica, Arial, sans-serif;
         font-weight: 400;
         font-size: 0.8rem;
@@ -244,6 +244,7 @@
 
     .list-wrap {
         background-color: var(--background-wrap);
+        color: var(--color-bg-wrap);
         margin: 20px;
         width: 260px;
         min-width: 260px;

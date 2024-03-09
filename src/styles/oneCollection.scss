@@ -40,6 +40,7 @@
     margin: auto;
     border-radius: 35px;
     background-color: rgb(var(--background-wrap-rgb), var(--wrap-opacity));
+    color: var(--color-bg-wrap);
 }
 
 .sideBar-wrap {
@@ -90,6 +91,7 @@
     justify-content: flex-start;
     align-items: center;
     background-color: var(--background-wrap);
+    color: var(--color-bg-wrap);
     padding: 1rem;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
     border: 1px solid #646464;
@@ -119,7 +121,7 @@
         border: 2px solid var(--background-header);
         border-radius: 35px;
         background-color: var(--background-wrap);
-
+        color: var(--color-bg-wrap);
 
 
         .menuPart {
@@ -448,6 +450,7 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     position: relative;
     padding-top: 6px;
+    color: var(--color-bg-wrap);
 
     h3 {
         text-align: initial;
@@ -598,6 +601,7 @@
 
         .img_choice {
             background-color: var(--background-wrap);
+            color: var(--color-bg-wrap);
             position: relative;
             width: 200px;
             height: 185px;

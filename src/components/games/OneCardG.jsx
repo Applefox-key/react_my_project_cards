@@ -11,7 +11,10 @@ const OneCardG = ({ anim, direction = true, ...props }) => {
         className={props.clgal ? props.clgal : cl.container_gallery}
         style={{ display: direction ? "block" : "none" }}>
         <SwitchTransition mode="out-in">
-          <CSSTransition key={!anim} timeout={500} classNames="card">
+          <CSSTransition
+            key={!anim}
+            timeout={500}
+            classNames={props.animClass ? props.animClass : "card"}>
             <MyCard mode={mode} {...props} />
           </CSSTransition>
         </SwitchTransition>
@@ -21,7 +24,10 @@ const OneCardG = ({ anim, direction = true, ...props }) => {
           className={props.clgal ? props.clgal : cl.container_gallery}
           style={{ display: !direction ? "block" : "none" }}>
           <SwitchTransition mode="out-in">
-            <CSSTransition key={anim} timeout={500} classNames="card_left">
+            <CSSTransition
+              key={anim}
+              timeout={500}
+              classNames={props.animClassL ? props.animClassL : "card_left"}>
               <MyCard mode={mode} {...props} />
             </CSSTransition>
           </SwitchTransition>

@@ -4,8 +4,7 @@ import cl from "../UI/CARDS/MyCard.module.scss";
 import clA from "./aboutPage.module.scss";
 import OneCardG from "../games/OneCardG";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import { MdOutlineNavigateNext } from "react-icons/md";
-
+import { HiDotsHorizontal } from "react-icons/hi";
 const AboutGallery = () => {
   const arr = [
     {
@@ -65,6 +64,11 @@ const AboutGallery = () => {
     const nextNum = itemNum + 1 === items.length ? 0 : itemNum + 1;
     setItemNum(nextNum);
   };
+  const rightBtn = {
+    onClick: prew,
+    name: <HiDotsHorizontal />,
+    fontstyle: "fs-arr",
+  };
 
   return (
     <div className={clA["cardbox"]}>
@@ -78,16 +82,18 @@ const AboutGallery = () => {
           <div>
             <div className=" me-5 position-relative">
               {/* <AnimatedArrowBtn onClick={prew} />{" "} */}
-              <button onClick={prew} className={clA["collect_button"]}>
+              {/* <button onClick={prew} className={clA["collect_button"]}>
                 <MdOutlineNavigateNext />
-              </button>
+              </button> */}
               <OneCardG
                 anim={anim}
                 direction={direction}
                 twoDir={true}
                 item={items[itemNum]}
                 clgal={cl.container_galleryAbout}
-              />{" "}
+                rightBtn={rightBtn}
+                animClassL="fadeinout"
+              />
             </div>
           </div>
         </CSSTransition>

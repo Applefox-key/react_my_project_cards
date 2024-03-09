@@ -1,15 +1,20 @@
 :root {
   --color-back: white;
+  --color-bg-wrap: #343A40;
+  // --color-bg-wrap: #ffd1d1;
   --contrast-text: black;
   --wrap-opacity: 1;
   --vertical-font: 1.8rem;
   --card-color: "#fffff0";
   --background-wrap-rgb: 248, 248, 255;
   --background-wrap: #ffffff;
-  --background-header: #6da4cb;
+  // --background-wrap: #170f38;
+  // --background-header: #6da4cb;
   --background-header: #f7f6f6;
   --background-first: #fcfbf7;
+  color: var(--color-bg-wrap);
   --background-second: #ededed;
+  --background-even: rgb(247, 246, 246);
   --background-third: #add8e6;
   --background-switch: #313236;
   --background-intense: #0A58CA;
@@ -672,6 +677,7 @@ input {
   width: fit-content;
   transition: all 0.2s ease-in-out;
   background-color: var(--background-wrap);
+  color: var(--color-bg-wrap);
   // ms-3 fs-2 mt-2 fst-italic
   margin-left: 1.5rem;
   font-size: 14px;

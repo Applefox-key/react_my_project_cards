@@ -39,9 +39,23 @@
     animation: fadeOut;
   } */
 
+.fadeinout-enter {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
+
+.fadeinout-enter-done {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
+
+.fadeinout-exit {
+  animation: fadeOut;
+  animation-duration: 800ms;
+}
 
 .fade-enter {
-  animation: fadeIn;
+  animation: fadeOut;
   animation-duration: 800ms;
 }
 
