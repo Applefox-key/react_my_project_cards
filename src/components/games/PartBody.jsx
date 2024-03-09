@@ -58,6 +58,42 @@ const PartBody = ({ items, setItems }) => {
     setActiveVAL(nr);
     setActiveIDs(na);
   };
+
+  const hintT = () => {
+    let ra = items[num].answ;
+    let alength = activeVAL.length;
+    if (alength < ra.length) {
+      let val = ra[alength];
+      let nID = [...activeIDs];
+      let nV = [...activeVAL];
+      // П convert the ids array into a set for a quick search
+      const set2 = new Set(nID);
+      //  look for the first element in parts array that is not in Ids array
+      for (let i = 0; i < items[num].parts.length; i++) {
+        if (!set2.has(i.toString()) && items[num].parts[i] === val) {
+          nID.push(i.toString());
+          break;
+        }
+      }
+      nV.push(val);
+      setActiveVAL(nV);
+      setActiveIDs(nID);
+
+      if (ra.length === nV.length) {
+        setCount([count[0] + 1, count[1]]);
+        setTimeout(() => {
+          setActiveVAL([]);
+          setActiveIDs([]);
+          setNum(num + 1);
+        }, 500);
+      }
+    }
+  };
+  const rightBtn = {
+    onClick: hintT,
+    name: "HELP",
+    fontstyle: "fs-14",
+  };
   return (
     <div>
       {items.length === num ? (
@@ -79,7 +115,11 @@ const PartBody = ({ items, setItems }) => {
               key={num}
               classNames="cardChange">
               <div className={cl["game-field"]}>
-                <OneCardG item={items[num].item} clickable={false} />{" "}
+                <OneCardG
+                  item={items[num].item}
+                  clickable={false}
+                  rightBtn={rightBtn}
+                />
                 <div className={cl.pazlbox}>
                   <PartAnswer
                     item={items[num]}
