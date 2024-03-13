@@ -1,19 +1,17 @@
 .view-settings {
   position: absolute;
-  bottom: -25px;
   bottom: 0px;
-  right: 14px;
-  right: 0px;
+  right: 1px;
   display: flex;
-  // border: 1px solid grey;
-  border-radius: 15px 0 0 0;
+  border-radius: 15px 15px 0 0;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  padding-left: 8px;
+  margin-right: 10px;
 
   button {
     background-color: transparent;
-    color: grey;
-    color: black;
     color: var(--color-bg-wrap);
+    margin-right: 0;
   }
 }
 
@@ -22,7 +20,6 @@
   justify-content: flex-end;
 
   button {
-    // height: 3rem;
     font-size: 1.5rem;
     margin-right: 1rem;
     border-color: var(--background-header);
@@ -79,11 +76,6 @@
   margin-bottom: 2rem;
 
 
-  // &:hover {
-  //     color: var(--background-second);
-  //     background-color: var(--color-bg-wrap);
-  // }
-
   .lable {
     padding: 0 5px;
     margin: 0;
@@ -100,11 +92,8 @@
     color: var(--color-bg-wrap);
 
     &:focus {
-      // outline: none;
-      // outline:
       outline-color: var(--color-checked);
       border-bottom: 2px solid var(--background-header);
-      // background-color:
     }
   }
 }
@@ -299,12 +288,9 @@
 
 
   h1 {
-    background: #f7f6f6;
     background: var(--background-header);
-
     padding: 2px 5px;
     border-radius: 9px;
-    color: black;
     color: var(--color-bg-wrap);
 
     @media screen and (max-width:900px) {
@@ -317,8 +303,6 @@
 
   .findWidth {
     width: 25%;
-
-
 
     input {
       background-color: var(--background-second);
@@ -352,9 +336,7 @@
   }
 
   @media screen and (max-width: 900px) {
-    // width: 50%;
     margin: auto;
-
   }
 
 
@@ -372,7 +354,6 @@
 
     @media screen and (max-width: 900px) {
       font-size: 10px;
-
     }
   }
 
@@ -540,37 +521,4 @@
     justify-content: flex-start;
     max-width: 21rem;
   }
-}
-
-.sideBar-wide {
-  padding-left: 5px;
-  z-index: 600;
-  height: 100vh;
-  width: 25rem;
-  // background-color: var(--background-wrap);
-  color: black;
-  transition: all 0.4s ease-in-out;
-  border-radius: 0 35px 35px 0;
-  background: #f7f6f6;
-
-  @media screen and ((max-width: 600px)) {
-    position: absolute;
-    width: 100%;
-  }
-
-  .addingLink {
-    font-size: 14px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--background-header);
-    }
-  }
-
-  h3 {
-    margin: 0;
-    font-size: 16px;
-  }
-
-
 }

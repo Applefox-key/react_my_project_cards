@@ -13,8 +13,8 @@ const Hint = ({ text }) => {
     <Draggable
       cancel="#cbtn"
       defaultPosition={{
-        x: window.visualViewport.width * 0.2,
-        y: window.visualViewport.height * 0,
+        x: window.visualViewport.width * 0,
+        y: -window.visualViewport.height * 0.05,
       }}>
       <div className={cl.hint}>
         <div>{<FcIdea />}</div>
@@ -27,7 +27,7 @@ const Hint = ({ text }) => {
           NOTE
           {/* {show ? <FcIdea className={cl.hintOn} /> : <FcIdea />} */}
         </Button>
-        {show ? <div className={cl.hintText}>{text}</div> : <></>}
+        {!!show && <div className={cl.hintText}>{text}</div>}
       </div>
     </Draggable>
   );

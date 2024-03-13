@@ -483,14 +483,14 @@
         width: 260px;
         height: 180px;
         position: relative;
-        padding: 10px;
+
         border-radius: 5px;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         transition: all 0.2s ease-in-out;
         cursor: help;
         text-wrap: nowrap;
         text-overflow: ellipsis;
-        padding: 0 5px;
+        padding: 0;
         overflow: hidden;
 
         @media screen and (max-width: 600px) {

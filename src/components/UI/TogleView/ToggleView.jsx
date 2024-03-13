@@ -6,8 +6,8 @@ import { PiCards } from "react-icons/pi";
 const ToggleView = ({ checked, onChange, ...props }) => {
   return (
     <div onClick={onChange} {...props}>
-      <button data-title=" list view" className={cl.toggleBtn}>
-        view {checked ? <IoList /> : <PiCards />}
+      <button data-title=" list or card view" className={cl.toggleBtn}>
+        {checked ? <IoList /> : <PiCards />}
       </button>
     </div>
   );

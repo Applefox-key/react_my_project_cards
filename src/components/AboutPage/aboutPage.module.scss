@@ -16,7 +16,7 @@
 	border-radius: 50%;
 	background-color: #FDDC58;
 	rotate: 10deg;
-	top: 50px;
+	top: 10%;
 	// left: -20px;
 	height: 150px;
 	width: 150px;
@@ -41,13 +41,30 @@
 		height: 70px;
 		width: 70px;
 		font-size: 1rem;
-		left: 0;
-
+		left: 10px;
+		top: 130px;
 	}
 
 	@media screen and (max-height: 600px) {
 		left: 20%;
-		top: 0;
+		top: 180px;
+	}
+
+	@media screen and (max-width:1200px) {
+		// height: 70px;
+		// width: 70px;
+		// font-size: 1rem;
+		left: 10px;
+		top: 130px;
+	}
+
+	@media screen and (max-height:500px) {
+		// height: 70px;
+		// width: 70px;
+		// font-size: 1rem;
+		right: 10px;
+		left: unset;
+		top: 10%;
 	}
 
 	&:hover {

@@ -1,18 +1,16 @@
 .dropdown-toggle {
     position: relative;
     border: none;
-    // background-color: white;
     width: 8rem;
     display: flex;
     justify-content: flex-start;
 
     &:hover {
-        // outline: 3px solid rgb(134, 181, 251);
         color: var(--color-nav);
     }
 
     svg {
-        margin-right: 1rem;
+        margin-right: 1px;
         padding: 2px;
         font-size: 14px;
 

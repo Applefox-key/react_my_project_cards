@@ -1,12 +1,44 @@
 .toggleBtn {
+
     border: none;
     width: 6rem;
+    width: fit-content;
     padding: 1px 0;
     // background-color: white;
 
+    // &:hover {
+    //     // outline: 3px solid rgb(134, 181, 251);
+    //     color: var(--color-nav);
+    // }
     &:hover {
-        // outline: 3px solid rgb(134, 181, 251);
         color: var(--color-nav);
+
+        &::before {
+            content: attr(data-title);
+            width: fit-content;
+            white-space: nowrap;
+            padding: 2px 5px;
+            background-color: var(--background-second);
+            opacity: 1;
+            color: var(--color-text);
+            border-radius: 5px;
+            font-size: 9px;
+            position: absolute;
+            // left: 50%;
+            bottom: -15px;
+            // top: -9px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            animation: fadeOut 4s forwards;
+            z-index: 2000;
+
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+        }
     }
 
     margin-right: 1rem;

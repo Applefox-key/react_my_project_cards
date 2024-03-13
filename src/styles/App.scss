@@ -29,8 +29,7 @@
   --background-note: #ed666d;
   --border-note: red;
   --color-checked: #FF4500;
-
-  // //-----------------------------------
+  --color-about: #5d8fd0; // //-----------------------------------
   // --background-wrap: #1d1b1b;
   // --background-header: #252c2f;
   // --background-first: #1d2225;
@@ -65,6 +64,7 @@
 .App {
   text-align: center;
   caret-color: transparent;
+  position: relative;
 
   textarea {
     caret-color: auto;
@@ -182,7 +182,6 @@
 
     span {
       font-weight: 500;
-      color: balck;
       font-size: 1.5rem;
     }
   }
@@ -583,6 +582,7 @@ input {
   overflow: hidden;
   padding-top: 3rem;
   position: relative;
+  min-height: 100vh;
 
   .menuField {
     position: relative;
