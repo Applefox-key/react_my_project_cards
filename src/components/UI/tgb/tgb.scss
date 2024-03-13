@@ -137,6 +137,7 @@
     border: none;
     font-size: 18px;
     color: #5f6368;
+    color: var(--color-bg-wrap);
     z-index: 900;
     transition: all 0.2s ease-in-out;
 
@@ -146,8 +147,7 @@
     }
 
     &:hover {
-        // background-color: #e8eaed;
-        // color: #193b70;
+
         box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
         box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     }
@@ -158,25 +158,17 @@
     margin-bottom: 20px;
     position: relative;
 
-    // @media screen and (max-width:900px) {
-    //     margin-bottom: 0px;
-    //     width: 35px;
-    //     height: 35px;
-    // }
 
     &:hover {
-        // background-color: var(--background-header);
-
 
         &::before {
             content: attr(data-title);
             width: fit-content;
             white-space: nowrap;
             padding: 2px 5px;
-            // background-color: var(--background-header);
             background-color: var(--background-second);
             opacity: 1;
-            color: black;
+            color: var(--color-text);
             border-radius: 5px;
             font-size: 9px;
             position: absolute;
@@ -241,23 +233,6 @@
     }
 
     &:hover {
-        // &::before {
-        //     content: attr(data-title);
-        //     width: fit-content;
-        //     white-space: nowrap;
-        //     padding: 2px 5px;
-        //     background-color: var(--background-header);
-        //     background-color: var(--background-second);
-        //     opacity: 1;
-        //     color: black;
-        //     border-radius: 5px;
-        //     font-size: 12px;
-        //     position: absolute;
-        //     // left: 50%;
-        //     top: -1.5rem;
-        //     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-        // }
-
         .buttonBox {
             display: flex;
             z-index: 900;
@@ -336,9 +311,7 @@
         color: rgb(77, 77, 99);
         color: white;
         font-weight: 600;
-        // border: outset #fde2fe;
         border: outset white;
-        // border: 1px solid white;
 
 
     }
@@ -350,4 +323,69 @@
 
 
     }
+}
+
+
+
+
+
+/* The switch - the box around the slider */
+
+
+.themeSwitch {
+    font-size: 17px;
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+    z-index: 1000;
+    bottom: unset;
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        --background: #28096b;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--background);
+        transition: .5s;
+        border-radius: 30px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 1.4em;
+        width: 1.4em;
+        border-radius: 50%;
+        left: 10%;
+        bottom: 15%;
+        box-shadow: inset 8px -4px 0px 0px #fff000;
+        background: var(--background);
+        transition: .5s;
+    }
+
+    input:checked+.slider {
+        background-color: #2196f3;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(100%);
+        box-shadow: inset 15px -4px 0px 15px #fff000;
+    }
+}
+
+.game {
+    bottom: 0;
 }

@@ -70,6 +70,7 @@
       border-radius: 5px;
       border-color: transparent;
       background-color: var(--background-header);
+      color: var(--color-bg-wrap);
       margin-left: 5px;
 
       &:hover {
@@ -97,6 +98,11 @@
       border: none;
       margin-bottom: 2rem;
 
+      input {
+        background-color: var(--background-first);
+        color: var(--color-bg-wrap);
+      }
+
       @media screen and (max-width: 600px) {
         margin-bottom: 1rem;
       }
@@ -119,7 +125,7 @@
     height: 3rem;
     background-color: var(--background-header);
     border-color: var(--background-second);
-    color: black;
+    color: var(--color-bg-wrap);
 
     &:hover {
       background-color: var(--background-intense);

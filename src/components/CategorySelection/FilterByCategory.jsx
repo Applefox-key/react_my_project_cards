@@ -53,13 +53,14 @@ const FilterByCategory = ({
       <Form.Select
         // size="sm"
         onChange={onSelectItem}
-        aria-label="Default select example"
+        aria-label="category select"
         className="wsort m-auto">
         {" "}
         <option value={-1}>{firstItem}</option>
         {!isLoadingCat &&
           categories.map((el, i) => (
             <option
+              key={i}
               selected={
                 isPublic ? selected.name === el.name : selected.id === el.id
               }

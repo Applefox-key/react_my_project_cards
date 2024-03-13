@@ -5,6 +5,7 @@ import cl from "./mainNavbar.module.scss";
 import { useAuth } from "../../hooks/useAuth";
 import UserAvatar from "../users/Profile/UserAvatar";
 import Popup from "../UI/popup/Popup";
+import ThemeSwitch from "../UI/tgb/ThemeSwitch";
 
 const MyNavbar = () => {
   const router = useNavigate();
@@ -21,6 +22,7 @@ const MyNavbar = () => {
   const isPlay = window.location.pathname.includes("/play_");
   return (
     <>
+      {<ThemeSwitch isPlay={isPlay} />}
       {!isPlay && (
         <>
           <div className={headerBig ? cl.headerNav : cl.headerNavSmall}>

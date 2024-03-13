@@ -8,7 +8,7 @@
 
     &:hover {
         // outline: 3px solid rgb(134, 181, 251);
-        color: #193b70;
+        color: var(--color-nav);
     }
 
     svg {
@@ -18,7 +18,7 @@
 
         &:hover {
             outline: 3px solid rgb(134, 181, 251);
-            color: #193b70;
+            color: var(--color-nav);
         }
     }
 }

@@ -18,6 +18,8 @@
     div {
         position: absolute;
         top: -4px;
+
+
     }
 
     span {
@@ -33,6 +35,7 @@
         font-weight: 400;
         font-size: 0.8rem;
     }
+
 
 
 }
@@ -78,40 +81,41 @@
     font-size: 1.5rem;
 }
 
-.filter_input {
-    border-bottom: 1px solid #0d6af5; // var(--background-header);
-    display: flex;
+// .filter_input {
+//     // border-bottom: 1px solid #0d6af5; // var(--background-header);
+//     border-bottom: 1px solid var(--color-nav); // var(--background-header);
+//     display: flex;
 
 
-    input {
-        border: none;
-        height: 3rem;
-        font-size: x-small;
-        width: 90%;
-        background: transparent;
+//     input {
+//         border: none;
+//         height: 3rem;
+//         font-size: x-small;
+//         width: 90%;
+//         background: transparent;
 
-        padding-left: 10px;
+//         padding-left: 10px;
 
-        color: #0d6af5;
+//         color: #0d6af5;
 
-        &:focus {
-            outline: #0d6af5;
-        }
-    }
+//         &:focus {
+//             outline: #0d6af5;
+//         }
+//     }
 
-    .filter_btn {
-        border: none;
-        height: 100%;
-        background-color: transparent;
-        line-height: 2;
-        font-size: 1.4rem;
-        transition: all 0.3s ease-in-out;
+//     .filter_btn {
+//         border: none;
+//         height: 100%;
+//         background-color: transparent;
+//         line-height: 2;
+//         font-size: 1.4rem;
+//         transition: all 0.3s ease-in-out;
 
-        &:hover {
-            transform: scale(1.4);
-        }
-    }
-}
+//         &:hover {
+//             transform: scale(1.4);
+//         }
+//     }
+// }
 
 .setting_btn {
     @extend .drop-item;
@@ -205,22 +209,28 @@
     .listRow {
         display: flex;
         cursor: pointer;
+        transition: all 0.4s ease-in-out;
+        padding: 5px;
 
         &:nth-child(even) {
-            background-color: rgb(247, 246, 246);
+            background-color: var(--background-even);
         }
 
         &:nth-child(odd) {
-            color: var(--contrast-text);
+            color: var(--background-note);
+            // color: var(--background-third);
+            background-color: var(--background-second);
             // background-color: rgb(247, 246, 246);
         }
 
         .rowHeader {
             font-weight: 600;
+
         }
 
         &:hover {
-            color: red;
+            color: var(--color-checked);
+            transform: translateX(10px);
 
         }
     }
@@ -258,7 +268,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        overflow: hidden;
+
 
         button {
             height: 2.5rem;
@@ -267,11 +277,13 @@
             border-radius: 10px;
             transition: all 0.4s ease-in-out;
             background-color: var(--background-first);
+            color: var(--color-bg-wrap);
             cursor: pointer;
             font-size: 12px;
             width: 2rem;
             height: 2rem;
             padding: 0;
+            // display: none;
 
             &:hover {
                 scale: 1.2;
@@ -292,7 +304,7 @@
             text-overflow: ellipsis;
             font-weight: 500;
 
-            color: black;
+            color: var(--color-text);
         }
 
         .listBody {
@@ -303,11 +315,13 @@
             justify-content: flex-start;
             align-items: flex-start;
             height: 80%;
-            overflow: auto;
+            overflow-x: hidden;
+            scrollbar-color: var(--color-bg-wrap) var(--background-header);
 
             .listItem {
                 width: 100%;
                 background-color: var(--background-first);
+                color: var(--color-bg-wrap);
                 padding: 1px;
                 text-align: start;
                 display: flex;
@@ -315,7 +329,7 @@
                 transition: all 0.4s ease-in-out;
 
                 span {
-                    color: black;
+                    color: var(--color-bg-wrap);
                     text-align: start;
                     margin: unset;
                     white-space: nowrap;
@@ -395,10 +409,11 @@
                 border-radius: 5px;
                 cursor: pointer;
                 background-color: var(--background-first);
-                color: grey;
+                color: var(--color-bg-wrap);
 
                 &:hover {
                     background-color: var(--background-second);
+                    color: var(--color-bg-wrap);
                 }
             }
         }

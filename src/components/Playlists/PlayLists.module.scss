@@ -103,7 +103,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 500;
-            color: black;
+            color: var(--color-text);
 
         }
 
@@ -121,7 +121,8 @@
                 width: 100%;
                 background-color: var(--background-first);
 
-                padding: 1px;
+                // padding: 1px;
+                font-size: 9px;
                 text-align: start;
                 display: flex;
                 justify-content: space-between;
@@ -139,6 +140,8 @@
 
                     button {
                         border: none;
+                        background-color: var(--color-bg-wrap);
+                        color: var(--background-first);
                     }
                 }
 
@@ -242,6 +245,7 @@
 
         &:nth-child(even) {
             background-color: var(--background-even);
+            color: var(--color-bg-wrap);
         }
 
         @media screen and (max-width:900px) {
@@ -302,7 +306,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 600;
-            color: black;
+            color: var(--color-bg-wrap);
 
         }
 
@@ -423,11 +427,13 @@
 
         &:hover {
             transform: translateX(10px);
-            background-color: mistyrose;
+            // background-color: mistyrose;
+            border: 1px solid var(--color-bg-wrap);
+
 
             .listHeader {
 
-                color: #FF4500;
+                color: var(--background-note);
             }
 
             .btn {
@@ -468,8 +474,13 @@
         border: 1px solid grey;
         border-radius: 5px;
         padding: 4px;
+        background-color: var(--background-second);
+        color: var(--color-bg-wrap);
 
-
+        &:hover {
+            color: var(--background-second);
+            background-color: var(--color-bg-wrap);
+        }
     }
 }
 
@@ -609,6 +620,7 @@
     @extend .tblCollections;
     font-size: 10px;
     height: 155px;
+    scrollbar-color: var(--color-bg-wrap) var(--background-header);
 
 }
 

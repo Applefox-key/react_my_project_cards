@@ -511,13 +511,16 @@
             height: 4rem;
             font-weight: 800;
             background-color: var(--background-header);
+            color: black;
+            color: var(--color-bg-wrap);
+
             padding-top: 12px;
             padding-left: 10px;
             padding-left: 10px;
             padding: 12px;
             position: relative;
             border-radius: 5px;
-            color: black;
+
             text-wrap: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -531,12 +534,13 @@
             position: absolute;
             bottom: -5px;
             right: -20px;
-            color: black;
+            color: var(--color-bg-wrap);
             font-size: 1.2rem;
             border: 2px solid var(--background-header);
             background-color: var(--background-header);
             width: 6rem;
             height: 3rem;
+
             transform: rotate(-45deg);
         }
 
@@ -567,6 +571,7 @@
         padding-left: 15px;
         padding-right: 15px;
         color: black;
+        color: var(--color-bg-wrap);
         text-align: start;
         border-radius: 10px;
         text-shadow: 2px 0px 6px rgb(146, 146, 168);
@@ -584,10 +589,12 @@
         right: -13px;
         opacity: 0.9;
         height: fit-content;
-        background-color: #f7f6f6;
+        // background-color: #f7f6f6;
+        background-color: var(--background-header);
         margin: 3px 10px;
         padding: 0 5px;
         color: black;
+        color: var(--color-bg-wrap);
         text-align: start;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         border-radius: 10px;
@@ -782,7 +789,8 @@
 
     &:hover {
         .collectBody {
-            color: #c7cfd1;
+            // color: #c7cfd1;
+            color: var(--color-bg-wrap);
         }
 
         .play-button {
@@ -848,6 +856,7 @@
         span {
             border: 1px solid var(--color-checked);
             z-index: 4;
+            color: var(--color-checked);
         }
 
         // .cat_tag {
@@ -904,7 +913,7 @@
         justify-content: flex-end;
 
         &:nth-child(even) {
-            background-color: rgb(247, 246, 246);
+            background-color: var(--background-even);
         }
 
         &::before,
@@ -948,7 +957,7 @@
                 border-radius: 0px;
                 text-align: left;
                 margin-right: 1rem;
-                color: black;
+                color: var(--background-note);
                 text-wrap: nowrap;
                 padding-top: 0;
                 min-width: fit-content;
@@ -980,6 +989,10 @@
                 // &::before {
                 //     content: "/";
                 // }
+                width: 20px;
+                height: 20px;
+                font-size: 9px;
+
             }
 
             .collectBody {
@@ -1017,6 +1030,7 @@
             padding: 0;
             border-radius: 0;
             color: black;
+            color: var(--color-bg-wrap);
             box-shadow: none;
             height: 1.5em;
             font-size: 10px;
@@ -1134,7 +1148,7 @@
             .heartSymb {
                 color: #f92f60;
                 position: absolute;
-                left: -10px;
+                left: -7px;
                 top: -1px;
             }
 
@@ -1221,8 +1235,12 @@
             height: 1.5em;
             line-height: 1.5em;
 
+            color: var(--color-checked);
+            z-index: 3;
+            transform: translateX(5px);
+
             .header {
-                color: #FF4500;
+                color: var(--color-checked);
                 height: 1.5em;
             }
 

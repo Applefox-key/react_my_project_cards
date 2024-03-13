@@ -36,6 +36,7 @@ export const restoreSettings = (isPublic = false) => {
     shared: false,
     favorite: false,
     viewmode: 0,
+    theme: "day",
   };
 
   let settingsSet = JSON.parse(localStorage.getItem("cards_settings"));

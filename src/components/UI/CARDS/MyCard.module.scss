@@ -273,11 +273,14 @@
         overflow: hidden;
         font-family: Arial;
         line-height: 2;
-        background: #337AB7;
+
+        background: var(--background-third);
+        // color: var(--background-wrap);
         color: white;
 
         &:disabled {
             background: grey;
+            opacity: 0;
         }
 
         &:hover {
@@ -430,7 +433,8 @@
     padding-left: 2vw;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
     overflow: auto;
-
+    scrollbar-color: var(--color-bg-wrap) var(--background-header);
+    color: var(--color--card);
 
     .div-note {
         width: 100%;
@@ -498,6 +502,7 @@
                 top: 0;
                 left: 0;
                 color: white;
+                color: var(--background-second);
                 font-size: 18px;
                 border-radius: 0 0 15px 15px;
                 background-color: var(--color-checked);

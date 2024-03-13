@@ -1,7 +1,10 @@
 import {
   defaultSettings,
   defaultStyleValue,
+  nightTheme,
+  dayTheme,
 } from "../constants/defaultSettings";
+import { restoreSettings, saveSet } from "./pageSettings";
 
 const getContrastColor = (color) => {
   // to RGB
@@ -18,8 +21,10 @@ const getContrastColor = (color) => {
   }
 };
 export const applyUserSettings = (set, prop = "") => {
-  if (set.hasOwnProperty("colorBack") && (prop === "colorBack" || !prop)) {
-    document.body.style.backgroundColor = set.colorBack;
+  const { theme } = restoreSettings();
+  const propName = theme !== "day" ? "colorBackN" : "colorBack";
+  if (set.hasOwnProperty(propName) && (prop === "colorBack" || !prop)) {
+    document.body.style.backgroundColor = set[propName];
     document.documentElement.style.setProperty("--color-back", set.colorBack);
     document.documentElement.style.setProperty(
       "--contrast-text",
@@ -62,5 +67,14 @@ export const setVerticalCardFonrSize = (prop = "") => {
 export const setCardColor = (prop = "") => {
   if (prop) {
     document.documentElement.style.setProperty("--card-color", prop);
+  }
+};
+
+export const changeTheme = (isCheckedDay) => {
+  saveSet({ "theme": isCheckedDay ? "day" : "night" });
+  let colors = isCheckedDay ? { ...dayTheme } : { ...nightTheme };
+  document.body.style.backgroundColor = colors["--color-back"];
+  for (let key in colors) {
+    document.documentElement.style.setProperty(key, colors[key]);
   }
 };

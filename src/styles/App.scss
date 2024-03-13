@@ -1,27 +1,52 @@
 :root {
+  //#e5edf9;
+  --vertical-font: 1.8rem;
+  --card-color: #fffff0;
+  --color-text: black;
   --color-back: white;
-  --color-bg-wrap: #343A40;
-  // --color-bg-wrap: #ffd1d1;
+  --color-bg-wrap: #5f6368; // #343A40;
+  // --color-bg-wrap: #5f6368;
+
+  // color: #5f6368;
   --contrast-text: black;
   --wrap-opacity: 1;
-  --vertical-font: 1.8rem;
-  --card-color: "#fffff0";
+  // color:#337AB7;
   --background-wrap-rgb: 248, 248, 255;
   --background-wrap: #ffffff;
-  // --background-wrap: #170f38;
+  --background-nav: #193B70;
+  --color-nav: #193B70;
   // --background-header: #6da4cb;
   --background-header: #f7f6f6;
   --background-first: #fcfbf7;
-  color: var(--color-bg-wrap);
+  // color: var(--color-bg-wrap);
   --background-second: #ededed;
   --background-even: rgb(247, 246, 246);
-  --background-third: #add8e6;
-  --background-switch: #313236;
+  // --background-third: #add8e6;
+  --background-third: #337AB7;
+  --background-switch: #020202;
   --background-intense: #0A58CA;
   --color-intense: #4461F2;
   --background-note: #ed666d;
   --border-note: red;
   --color-checked: #FF4500;
+
+  // //-----------------------------------
+  // --background-wrap: #1d1b1b;
+  // --background-header: #252c2f;
+  // --background-first: #1d2225;
+  // --background-second: #252c2f;
+  // --color-bg-wrap: #86909b;
+  // --background-nav: #011e16;
+  // --color-nav: #0f9393b3;
+  // --color---text: #b5a68a;
+  // --background-wrap-rgb: 29, 27, 27;
+  // --color-checked: #b1838e;
+  // --background-note: #152a0a;
+  // --border-note: #0f9393b3;
+  // --background-intense: grey;
+  // --color-intense: #0ca673;
+  // --background-even: #3c4c56;
+  ;
 }
 
 .contrastColor {
@@ -54,12 +79,10 @@
   width: fit-content;
   font-weight: bold;
   line-height: 1;
-  // width: fit-content;
   height: fit-content;
-  // max-width: 100%;
-  // max-height: 100%;
   padding: 0;
   margin: 0;
+  color: var(--color-text);
 }
 
 .w-unset {
@@ -163,6 +186,14 @@
       font-size: 1.5rem;
     }
   }
+}
+
+.modalBack,
+.modal-content {
+  background-color: var(--background-wrap);
+  // background-color: var(--background-first);
+  // background-color: var(--background-second);
+  color: var(--color-bg-wrap);
 }
 
 .color-boxes {
@@ -311,6 +342,7 @@
 //elements
 input {
   caret-color: black;
+
 }
 
 //div
@@ -369,6 +401,16 @@ input {
 
 .wsort {
   width: 100px;
+
+
+  background-color: var(--background-wrap);
+  color: var(--color-bg-wrap);
+
+
+
+
+
+
 }
 
 .span_wrap {
@@ -682,6 +724,11 @@ input {
   margin-left: 1.5rem;
   font-size: 14px;
 
+  span {
+    color: var(--color-intense);
+    // color: red;
+  }
+
   @media screen and (max-width: 900px) {
     font-size: 10px;
     height: 2rem;
@@ -695,19 +742,21 @@ input {
 
 .searchResult {
   font-size: 14px;
-  color: gray;
+
+  color: var(--color-bg-wrap);
 
   @media screen and (max-width: 900px) {
     font-size: 10px;
   }
 }
 
-.serch_result_box {
+.search_result_box {
   font-style: italic;
   font-size: 0.5rem;
   margin: auto;
   width: fit-content;
   background: #e5edf9;
+  background: var(--background-second);
   padding: 5px;
   border-radius: 10px;
   margin-top: 0;
@@ -744,7 +793,7 @@ input {
   width: 50px;
   transition: 0.5s ease;
   border-radius: 0 0% 100% 0;
-  background: #337AB7;
+  background: var(--background-third);
   top: 0;
   left: 0;
   position: absolute;
@@ -799,4 +848,16 @@ input {
 
 .corner-textbox-5 {
   text-align: center;
+}
+
+.btn-close {
+  background-color: var(--background-wrap);
+  color: var(--color-bg-wrap);
+  background: none;
+
+  &::after {
+    content: "✖️";
+    background-color: var(--background-wrap);
+    color: var(--color-bg-wrap);
+  }
 }

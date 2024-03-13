@@ -93,7 +93,7 @@ const UsersCollections = ({
   }, [
     privateSettings.isNew,
     commonSettings.selectedCategorymy,
-    commonSettings.filter,
+    // commonSettings.filter,
     privateSettings.shared,
     privateSettings.favorite,
   ]);

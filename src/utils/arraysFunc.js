@@ -46,7 +46,14 @@ export const sortByFieldC = (content, field, descending = false) => {
   };
   return content.slice().sort(compareFn);
 };
-
+// sorting an array of categories and collections
+export const sortByFieldCat = (content) => {
+  content.sort((a, b) => a.name.localeCompare(b.name));
+  content.forEach((obj) => {
+    obj.collections.sort((a, b) => a.name.localeCompare(b.name));
+  });
+  return content;
+};
 //checking if Object with field id === value in the array
 export const isObjInArray = (arr, attr, value) => {
   return arr.some((obj) => obj[attr] === value);
