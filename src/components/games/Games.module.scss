@@ -386,7 +386,12 @@
 
 /* pairs */
 .answer {
-  background-color: blanchedalmond;
+  background-color: var(--background-parts-answ);
+
+  .cardText {
+
+    color: #5f6064;
+  }
 }
 
 .active {

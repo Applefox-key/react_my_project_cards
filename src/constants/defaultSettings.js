@@ -10,6 +10,7 @@ export const nightTheme = {
   "--background-second": "#252c2f",
   "--background-third": "#053c29",
   // "--background-third": "#0f9393b3",
+
   "--color-bg-wrap": "#86909b",
   "--background-nav": "#011e16",
   "--color-nav": "#0f9393b3",
@@ -22,6 +23,7 @@ export const nightTheme = {
   "--color-intense": "#0ca673",
   "--background-even": "#1e282e",
   "-color-about": "#147170;",
+  "--background-parts-answ": "#0f9393b3",
 };
 //"--color-checked": "#b1838e", "--border-note": "#0f9393b3",  "--background-note": "#152a0a",
 // "--color--text": "#b5a68a", "--background-even": "#3c4c56",
@@ -73,6 +75,7 @@ export const dayTheme = {
   "--color-intense": "#4461F2",
   "--background-even": "#F7F6F6",
   "-color-about": "#5d8fd0",
+  "--background-parts-answ": "blanchedalmond",
 };
 export const defaultColorBack = "white";
 export const defaultStyleValue = {

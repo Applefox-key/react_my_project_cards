@@ -42,11 +42,13 @@ const CardsGallery = () => {
     disabled: itemNum === 0,
     fontstyle: "fs-arr",
   };
-  const rightBtn = {
-    onClick: next,
-    // name: "❱",
-    name: <TiArrowForwardOutline />,
-    fontstyle: "fs-arr",
+  const rightBtn = () => {
+    return {
+      onClick: next,
+      disabled: itemNum === items.length - 1,
+      name: <TiArrowForwardOutline />,
+      fontstyle: "fs-arr",
+    };
   };
   return (
     <div className="mainField">
@@ -73,7 +75,7 @@ const CardsGallery = () => {
               twoDir={true}
               item={items[itemNum]}
               leftBtn={leftBtn}
-              rightBtn={rightBtn}
+              rightBtn={rightBtn()}
             />
           </div>
         </CSSTransition>
