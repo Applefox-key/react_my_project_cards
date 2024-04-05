@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BaseAPI from "../../API/BaseAPI";
 import cl from "./mainNavbar.module.scss";
 import { useAuth } from "../../hooks/useAuth";
-import UserAvatar from "../users/Profile/UserAvatar";
 import Popup from "../UI/popup/Popup";
 import ThemeSwitch from "../UI/tgb/ThemeSwitch";
+import MyNavSubmenu from "./MyNavSubmenu";
+import MyNavUserImg from "./MyNavUserImg";
 
 const MyNavbar = () => {
   const router = useNavigate();
@@ -20,6 +21,30 @@ const MyNavbar = () => {
     window.location.pathname.includes("about") ||
     window.location.pathname.includes("login");
   const isPlay = window.location.pathname.includes("/play_");
+
+  const navArr = useMemo(
+    () => {
+      const newArr = [];
+      let gr = "";
+      //
+      userRoutes.forEach((element) => {
+        if (element.nameNav)
+          if (element.hasOwnProperty("group") && element.group) {
+            if (gr !== element.group) {
+              newArr.push({ groupMenu: [element], title: element.group });
+              gr = element.group;
+            } else newArr[newArr.length - 1].groupMenu.push(element);
+          } else {
+            newArr.push(element);
+            gr = "";
+          }
+      });
+
+      return newArr;
+    }, // eslint-disable-next-line
+    [userAuth]
+  );
+
   return (
     <>
       {<ThemeSwitch isPlay={isPlay} />}
@@ -30,39 +55,34 @@ const MyNavbar = () => {
             {headerBig && <span> Master Your Knowledge with Flashcards</span>}
           </div>
           <div className={[cl.navWrap].join(" ")}>
-            {" "}
             <Popup />
-            {userRoutes
-              .filter((el) => el.nameNav)
-              .map((item, i) => (
-                <Link
-                  to={item.path}
-                  key={i}
-                  id={"path" + item.nameNav.trim()}
-                  className={
-                    window.location.pathname.includes(item.path)
-                      ? cl.active
-                      : ""
-                  }>
-                  {item.nameNav.toUpperCase()}
-                </Link>
-              ))}
+
+            <div className="d-flex">
+              {navArr.map((item, i) =>
+                item.hasOwnProperty("groupMenu") ? (
+                  <MyNavSubmenu
+                    navArr={item.groupMenu}
+                    group={item.title.toUpperCase()}
+                  />
+                ) : (
+                  <Link
+                    to={item.path}
+                    key={i}
+                    id={"path" + item.nameNav.trim()}
+                    className={
+                      window.location.pathname.includes(item.path)
+                        ? cl.active
+                        : ""
+                    }>
+                    {item.nameNav.toUpperCase()}
+                  </Link>
+                )
+              )}
+            </div>
+
             {userAuth.isAuth && (
               <div>
-                <UserAvatar
-                  style={{ width: "30px", height: "30px", marginLeft: "-1rem" }}
-                />{" "}
-                <Link to={""} onClick={logout}>
-                  LOGOUT
-                </Link>
-                {/* <Button
-                variant="outline-dark"
-                size="lg"
-                className={cl.logout}
-                style={{ height: "3.65rem" }}
-                onClick={logout}>
-                LOGOUT
-              </Button> */}
+                <MyNavUserImg logout={logout} />{" "}
               </div>
             )}
           </div>

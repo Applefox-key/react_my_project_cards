@@ -399,10 +399,12 @@ input {
   width: 45%;
 }
 
-.wsort {
+.catdropdown {
   width: 100px;
 
-
+  border: none;
+  font-size: 11px;
+  padding-bottom: 0;
   background-color: var(--background-wrap);
   color: var(--color-bg-wrap);
 
@@ -498,7 +500,7 @@ input {
   height: 587.16px;
   left: 381.43px;
   top: 326.68px;
-  background: var(--color-intense);
+  background: var(--color-nav);
   opacity: 0.45;
   filter: blur(158.5px);
 }
@@ -860,5 +862,51 @@ input {
     content: "✖️";
     background-color: var(--background-wrap);
     color: var(--color-bg-wrap);
+  }
+}
+
+.navDrop {
+  .dropdown {
+    padding: 0;
+    font-size: inherit;
+    height: auto;
+
+    div {
+      font-size: 1.1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--color-nav);
+      font-weight: 500;
+      margin-right: 13px;
+    }
+  }
+}
+
+.menuAvatar {
+  width: 8%;
+  height: 8%;
+  width: 40px;
+  height: 40px;
+  margin-left: -1rem;
+  border-radius: 50%;
+}
+
+.menuAvatarsub {
+  height: 70px;
+  width: 100px;
+  position: absolute;
+  left: -50px;
+  top: 50px;
+  z-index: 5;
+  background-color: var(--color-back);
+  // background-color: red;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+
+  div {
+    padding: 5px;
   }
 }

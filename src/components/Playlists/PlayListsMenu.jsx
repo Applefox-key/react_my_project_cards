@@ -12,7 +12,7 @@ const PlayListsMenu = (props) => {
   return (
     <div className="string_menu">
       <div className="menufind">
-        <h1>My playlists</h1>
+        <h1>My library / Playlists</h1>
         <MyFilter
           filter={props.commonSettings.filter}
           setFilter={(val) => props.setSettingsCommon("filter", val)}

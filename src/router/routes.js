@@ -48,23 +48,40 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   { path: "/home", element: <HomePage />, nameNav: "Home" },
-  { path: "/about", element: <AboutPage />, nameNav: "About" },
-  { path: "/*", element: <Collections />, nameNav: "" },
+  { path: "/about", element: <AboutPage />, nameNav: "FAQ" },
+  {
+    path: "/*",
+    element: <Collections />,
+    nameNav: "",
+  },
 
   {
     path: "/collections/my",
     element: <Collections />,
-    nameNav: "My library",
+    nameNav: "Collections",
+    group: "My library",
+  },
+  {
+    path: "/playlist",
+    element: <PlayLists />,
+    nameNav: "Playlists",
+    group: "My library",
+  },
+  {
+    path: "/categories",
+    element: <CategoriesManager />,
+    nameNav: "Categories",
+    group: "My library",
   },
   {
     path: "/collections/pub",
     element: <Collections />,
-    nameNav: "Public collections",
+    nameNav: "Public library",
   },
-  { path: "/playlist", element: <PlayLists />, nameNav: "Playlists" },
+
   { path: "/collections/:tab/print/:id/:name", element: <PrintingForm /> },
-  { path: "/profile", element: <Profile />, nameNav: "Profile" },
-  { path: "/categories", element: <CategoriesManager />, nameNav: "" },
+  { path: "/profile", element: <Profile />, nameNav: "" },
+
   { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
   { path: "/collections/my/:id/:name/:item", element: <ContentCardInfo /> },

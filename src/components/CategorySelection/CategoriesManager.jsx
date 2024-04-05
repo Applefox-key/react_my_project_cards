@@ -5,7 +5,7 @@ import { usePopup } from "../../hooks/usePopup";
 import MyTable from "../UI/table/MyTable";
 import BaseAPI from "../../API/BaseAPI";
 
-const CategoriesManager = () => {
+const CategoriesManager = ({ isModal = false }) => {
   const [categoriesTbl, setCategoriesTbl] = useState();
   const [editMode, setEditMode] = useState(null);
   const setPopup = usePopup();
@@ -77,6 +77,11 @@ const CategoriesManager = () => {
 
   return (
     <div>
+      {!isModal && (
+        <div className="menufind mt-4">
+          <h1>My library / Categories manager</h1>
+        </div>
+      )}
       {categoriesTbl && (
         <MyTable
           onRowClick={editOn}

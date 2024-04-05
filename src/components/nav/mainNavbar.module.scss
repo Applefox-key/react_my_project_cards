@@ -95,16 +95,18 @@
   right: 0;
   left: 0;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
   font-family: Inter;
   margin: auto;
-  padding: 10px 40px;
+  padding: 5px 10px;
+  padding-right: 0;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   background-color: var(--background-first);
   flex-wrap: wrap;
+  justify-content: space-between;
 
   @media print {
     display: none;
@@ -119,6 +121,11 @@
     text-decoration: none;
     color: var(--color-nav);
     font-weight: 500;
+    margin-right: 13px;
+    margin-right: 25px;
+
+
+
 
     @media screen and (max-width: 900px) {
       margin-right: 12px;
@@ -155,6 +162,88 @@
     // }
   }
 }
+
+.dropdown {
+  padding: 0;
+  font-size: inherit;
+  height: auto;
+  margin-right: 25px;
+  color: var(--color-nav);
+  position: relative;
+
+  @media screen and (max-width: 900px) {
+    margin-right: 12px;
+    margin-right: 3px;
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-right: 12px;
+    margin-right: 3px;
+    font-size: 8px;
+  }
+
+  img {
+    width: 8%;
+    height: 8%;
+    width: 35px;
+    height: 35px;
+    margin-left: -1rem;
+    border-radius: 50%;
+  }
+
+  div {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 0px;
+    // top: 0px;
+    z-index: 5;
+
+    // background-color: red;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    padding: 5px 15px;
+    background-color: var(--background-first);
+  }
+
+  &:hover {
+    div {
+      display: flex;
+    }
+  }
+
+
+
+  a {
+    text-decoration: none;
+    color: var(--color-nav);
+    font-weight: 500;
+    margin: 5px;
+  }
+}
+
+// .menuAvatarsub {
+//   height: 70px;
+//   width: 100px;
+//   position: absolute;
+//   left: -50px;
+//   top: 50px;
+//   z-index: 5;
+//   background-color: var(--color-back);
+//   // background-color: red;
+//   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//   border-radius: 10px;
+//   font-size: 1.1rem;
+
+//   div {
+//     padding: 5px;
+//   }
+// }
 
 .logout {
   font-size: large;

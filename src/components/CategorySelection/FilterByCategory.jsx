@@ -54,14 +54,14 @@ const FilterByCategory = ({
         // size="sm"
         onChange={onSelectItem}
         aria-label="category select"
-        className="wsort m-auto">
+        className="catdropdown m-auto">
         {" "}
         <option value={-1}>{firstItem}</option>
         {!isLoadingCat &&
           categories.map((el, i) => (
             <option
               key={i}
-              selected={
+              defaultValue={
                 isPublic ? selected.name === el.name : selected.id === el.id
               }
               value={i}>
