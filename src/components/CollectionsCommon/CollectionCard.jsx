@@ -14,14 +14,12 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
   };
 
   return (
-    <div className="oneCollect-wrap ">
-      <div
-        className="oneCollect"
-        onClick={(e) => {
-          router(
-            `${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`
-          );
-        }}>
+    <div
+      className="oneCollect-wrap "
+      onClick={(e) => {
+        router(`${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`);
+      }}>
+      <div className="oneCollect">
         <div className="header">{oneSet.collection.name}</div>{" "}
         <span>{oneSet.content.length}</span>{" "}
         {oneSet.collection.category && (

@@ -9,7 +9,7 @@ import { BsFiletypeTxt } from "react-icons/bs";
 import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
 import { HiPrinter, HiShare } from "react-icons/hi";
-import ModalCommand from "../../PrivateCollections/OneCollectionActions/ModalCommand";
+import ModalCommand from "../../CollectionsPrivate/OneCollectionActions/ModalCommand";
 import { VscClearAll } from "react-icons/vsc";
 import { CiFolderOff, CiShare2, CiSquarePlus } from "react-icons/ci";
 import { favorite, share } from "../../../utils/contentRequests";
@@ -102,7 +102,7 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
         </div>
       </div>
       <div data-title="Delete" className="drop-down-menuBtn">
-        <span>
+        <span className="iconDrRot">
           <IoMdRemove />
         </span>
         <div className="buttonBox">
@@ -123,11 +123,6 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
             </span>
           </button>{" "}
         </div>
-        {/* <button data-title="Delete" className="viewBtn" onClick={deleteAll}>
-          <span>
-            <VscClearAll />
-          </span>
-        </button>{" "} */}
       </div>
       <button
         data-title="Print"

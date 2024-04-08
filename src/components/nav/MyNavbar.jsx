@@ -21,7 +21,9 @@ const MyNavbar = () => {
     window.location.pathname.includes("home") ||
     window.location.pathname.includes("about") ||
     window.location.pathname.includes("login");
-  const isPlay = window.location.pathname.includes("/play_");
+  const isPlay =
+    window.location.pathname.includes("/play_") ||
+    window.location.pathname.includes("/print/");
 
   const navArr = useMemo(
     () => {

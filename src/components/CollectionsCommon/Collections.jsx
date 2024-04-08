@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/collectionList.scss";
 import "../../styles/oneCollection.scss";
 import CollectionsMenu from "./CollectionsMenu";
-import UsersCollections from "../PrivateCollections/CollectionsList/UsersCollections";
-import CollectionEditModal from "../PrivateCollections/OneCollectionActions/CollectionEditModal";
-import PublicCollectionsList from "../PublicCollections/PublicCollectionsList";
+import UsersCollections from "../CollectionsPrivate/CollectionsList/UsersCollections";
+import CollectionEditModal from "../CollectionsPrivate/OneCollectionActions/CollectionEditModal";
+import PublicCollectionsList from "../CollectionsPublic/PublicCollectionsList";
 import { GO_TO } from "../../router/routes";
 
 import {

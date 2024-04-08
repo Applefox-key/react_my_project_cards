@@ -282,18 +282,33 @@
   &:hover {
     .colname {
       &::before {
-        content: "click to edit collection's settings";
-        position: absolute;
-        // top: -35px;\
-        bottom: -20px;
-        right: 10px;
+        content: "click to edit";
         width: fit-content;
         white-space: nowrap;
-        background-color: var(--background-header);
-        padding: 0 5px;
-        font-size: 14px;
-        border-radius: 10px;
+        padding: 2px 5px;
+        background-color: var(--background-second);
+        opacity: 1;
+        color: var(--color-text);
+        border-radius: 5px;
+        font-size: 9px;
+        position: absolute;
+        // left: 50%;
+        bottom: -20px;
+        // top: -9px;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        animation: fadeOut 4s forwards;
+        z-index: 2000;
+        // position: absolute;
+        // // top: -35px;\
+        // bottom: -20px;
+        // right: 10px;
+        // width: fit-content;
+        // white-space: nowrap;
+        // background-color: var(--background-header);
+        // padding: 0 5px;
+        // font-size: 14px;
+        // border-radius: 10px;
+        // box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
       }
     }
