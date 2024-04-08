@@ -104,15 +104,17 @@ const UsersCollections = ({
     commonSettings.filter,
     commonSettings.sorting
   );
+
   return (
     <>
-      {isLoading && error ? (
+      {isLoading || !!error ? (
         <SpinnerLg className="span_wrap" />
       ) : (
         <CollectionCardsList
           filtredList={filtredList}
           listFn={listFn}
           routeOne={GO_TO.myCollect}
+          sort={commonSettings.sorting.field}
         />
       )}
     </>

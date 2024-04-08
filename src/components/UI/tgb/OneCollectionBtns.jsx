@@ -73,8 +73,7 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
         <span>{collPar.isPublic ? <HiShare /> : <CiShare2 />}</span>
       </button>
       <div data-title="Add" className="drop-down-menuBtn">
-        {" "}
-        <span>
+        <span className="iconDr">
           <AiOutlinePlus />
         </span>
         <div className="buttonBox">

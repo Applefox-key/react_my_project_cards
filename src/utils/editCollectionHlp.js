@@ -22,7 +22,7 @@ export const editCollectionHlp = async (
   } else {
     //edit collection's params
     if (categoryel.id !== collection.categoryid)
-      newParam.categoryid = categoryel.id;
+      newParam.categoryid = categoryel.id ? categoryel.id : null;
     await BaseAPI.editColParam(newParam, collection.id);
   }
 

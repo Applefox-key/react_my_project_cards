@@ -8,7 +8,6 @@ import "../../../styles/oneCollection.scss";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import OneCollectionMenu from "./OneCollectionMenu";
 import CardContentList from "./CardContentList";
-import { GO_TO } from "../../../router/routes";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
@@ -50,11 +49,11 @@ const UserOneCollection = () => {
                 content: content,
               }}
             />{" "}
-            <p
+            {/* <p
               className="backBtnText"
               onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
               My library
-            </p>{" "}
+            </p>{" "} */}
           </div>
         )}
 

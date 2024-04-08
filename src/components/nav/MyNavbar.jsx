@@ -7,6 +7,7 @@ import Popup from "../UI/popup/Popup";
 import ThemeSwitch from "../UI/tgb/ThemeSwitch";
 import MyNavSubmenu from "./MyNavSubmenu";
 import MyNavUserImg from "./MyNavUserImg";
+import FilterLS from "../UI/MyFilter/FilterLS";
 
 const MyNavbar = () => {
   const router = useNavigate();
@@ -81,7 +82,8 @@ const MyNavbar = () => {
             </div>
 
             {userAuth.isAuth && (
-              <div>
+              <div className="d-flex">
+                <FilterLS filter="" setFilter={() => {}} />
                 <MyNavUserImg logout={logout} />{" "}
               </div>
             )}

@@ -54,7 +54,8 @@
 
 .headerNavSmall {
   @extend .headerNav;
-  height: 50px;
+  height: 25px;
+  padding: 5px;
   display: flex;
 
   align-content: center;
@@ -65,7 +66,7 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 1.1rem;
     margin-right: 1rem;
     margin-bottom: 0rem;
 
@@ -97,7 +98,7 @@
   display: flex;
   // justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: .9rem;
   font-family: Inter;
   margin: auto;
   padding: 5px 10px;
@@ -174,7 +175,7 @@
   @media screen and (max-width: 900px) {
     margin-right: 12px;
     margin-right: 3px;
-    font-size: 12px;
+    font-size: 0.9rem;
   }
 
   @media screen and (max-width: 900px) {
@@ -186,8 +187,8 @@
   img {
     width: 8%;
     height: 8%;
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     margin-left: -1rem;
     border-radius: 50%;
   }
@@ -206,7 +207,7 @@
     // background-color: red;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
-    font-size: 1.1rem;
+    font-size: .9rem;
     padding: 5px 15px;
     background-color: var(--background-first);
   }

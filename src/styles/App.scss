@@ -5,6 +5,8 @@
   --color-text: black;
   --color-back: white;
   --color-bg-wrap: #5f6368; // #343A40;
+  // --color-bg-wrap: #cdcdcd;
+  ; // #343A40;
   // --color-bg-wrap: #5f6368;
 
   // color: #5f6368;
@@ -30,7 +32,11 @@
   --background-note: #ed666d;
   --border-note: red;
   --color-checked: #FF4500;
-  --color-about: #5d8fd0; // //-----------------------------------
+  --color-about: #5d8fd0;
+  --color-fill: #EDEFF4;
+  --border-fill: #DADEE8;
+
+  // //-----------------------------------
   // --background-wrap: #1d1b1b;
   // --background-header: #252c2f;
   // --background-first: #1d2225;
@@ -371,12 +377,7 @@ input {
   align-items: center;
 }
 
-#pathProfile {
-  @media screen and (max-width:900px) {
-    display: none;
 
-  }
-}
 
 .position-relative {
   position: relative;
@@ -400,19 +401,18 @@ input {
 }
 
 .catdropdown {
-  width: 100px;
+  width: 110px;
 
   border: none;
   font-size: 11px;
   padding-bottom: 0;
+  padding-right: 0;
   background-color: var(--background-wrap);
   color: var(--color-bg-wrap);
 
-
-
-
-
-
+  select {
+    border: none;
+  }
 }
 
 .span_wrap {
@@ -446,6 +446,16 @@ input {
 
 .border_r15 {
   border-radius: 15px;
+  background-color: var(--background-first);
+  color: var(--color-text);
+
+  tr {
+
+
+    &:hover {
+      color: var(--color-nav);
+    }
+  }
 }
 
 //width height
@@ -725,7 +735,18 @@ input {
   color: var(--color-bg-wrap);
   // ms-3 fs-2 mt-2 fst-italic
   margin-left: 1.5rem;
-  font-size: 14px;
+  font-size: 11px;
+  position: relative;
+
+  &::after {
+    content: " x";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transform: skewY(15deg);
+    font-weight: 700;
+
+  }
 
   span {
     color: var(--color-intense);
@@ -739,12 +760,19 @@ input {
 
 
   &:hover {
-    transform: scale(1.2);
+    // transform: scale(1.2);
+    z-index: 901;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    &::after {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    }
   }
 }
 
 .searchResult {
-  font-size: 14px;
+  font-size: 11px;
 
   color: var(--color-bg-wrap);
 
@@ -758,11 +786,12 @@ input {
   font-size: 0.5rem;
   margin: auto;
   width: fit-content;
-  background: #e5edf9;
-  background: var(--background-second);
+  // background: #e5edf9;
+  // background: var(--background-second);
   padding: 5px;
   border-radius: 10px;
   margin-top: 0;
+  position: relative;
 
   @media screen and (max-width: 900px) {
     font-size: 10px;

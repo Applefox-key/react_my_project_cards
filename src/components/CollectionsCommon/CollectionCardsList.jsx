@@ -2,31 +2,66 @@ import React from "react";
 import CollectionCard from "./CollectionCard";
 import "./collectionList.scss";
 
-const CollectionCardsList = ({ filtredList, routeOne, listFn }) => {
+const CollectionCardsList = ({ filtredList, routeOne, listFn, sort }) => {
+  const isNumb = (str) => /^[0-9]/.test(str);
+
+  const titleRow = (item, i) => {
+    if (!sort) return <></>;
+    if (sort === "category") {
+      const cur = item.collection.category
+        ? item.collection.category
+        : "no category";
+      const prew =
+        i === 0
+          ? ""
+          : filtredList[i - 1].collection.category
+          ? filtredList[i - 1].collection.category
+          : "no category";
+      if (cur !== prew) return <p className="categoryChapter">{cur}</p>;
+    }
+    if (sort === "name") {
+      const cur = isNumb(item.collection.name[0])
+        ? "0-9"
+        : item.collection.name[0].toUpperCase();
+      const prew =
+        i === 0
+          ? ""
+          : isNumb(filtredList[i - 1].collection.name[0])
+          ? "0-9"
+          : filtredList[i - 1].collection.name[0].toUpperCase();
+      // debugger;
+      if (cur !== prew) return <div className="letterChapter">{cur}</div>;
+    }
+    return <></>;
+  };
   return (
     <>
       <div
         className={
-          window.location.hash === "#1" ? "tbl_wrap mt-5" : "all_wrap m-auto"
+          window.location.hash === "#1" ? "tbl_wrap " : "all_wrap m-auto"
         }>
         {!filtredList || !filtredList.length ? (
           <>
             {listFn ? (
               <div className="oneCollect-wrap" onClick={listFn.addNew}>
-                <div className="oneCollect display-2">ADD NEW SET OF CARDS</div>
+                <div className="oneCollect addNew">ADD NEW SET OF CARDS</div>
               </div>
             ) : (
               <h2>No collections</h2>
             )}
           </>
         ) : (
-          filtredList.map((item) => (
-            <CollectionCard
-              oneSet={item}
-              key={item.collection.id}
-              routeOne={routeOne}
-              listFn={listFn}
-            />
+          filtredList.map((item, i) => (
+            <>
+              {titleRow(item, i)}
+
+              <CollectionCard
+                oneSet={item}
+                key={item.collection.id}
+                routeOne={routeOne}
+                listFn={listFn}
+              />
+            </>
           ))
         )}
       </div>

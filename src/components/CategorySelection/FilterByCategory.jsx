@@ -3,14 +3,13 @@ import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import { Form } from "react-bootstrap";
 import cl from "./CategorySelection.module.scss";
-import CategoryManagerBtn from "./CategoryManagerBtn";
 
 const FilterByCategory = ({
   onSelect,
   colCat = "",
   colCatPub = "",
   isPb = null,
-  firstItem = "Category....all",
+  firstItem = "all category",
 }) => {
   const isPublic =
     isPb === null ? window.location.pathname.includes("pub") : isPb;
@@ -46,22 +45,16 @@ const FilterByCategory = ({
 
   return (
     <div className={cl.catSelect}>
-      {!!selected.name && <span>category</span>}
-
-      {!selected.name && <CategoryManagerBtn icon={true} />}
-
       <Form.Select
-        // size="sm"
         onChange={onSelectItem}
         aria-label="category select"
         className="catdropdown m-auto">
-        {" "}
         <option value={-1}>{firstItem}</option>
         {!isLoadingCat &&
           categories.map((el, i) => (
             <option
               key={i}
-              defaultValue={
+              selected={
                 isPublic ? selected.name === el.name : selected.id === el.id
               }
               value={i}>

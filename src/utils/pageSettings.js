@@ -11,11 +11,12 @@ export const collectionPageSettings = (
   }
   if (field.includes("selectedCategory")) {
     newVal.byCategory = false;
-    newVal.filter = "";
+    // newVal.filter = "";
     newVal.sideBar = "";
   }
   return newVal;
 };
+
 export const saveSet = (obj) => {
   let settingsSet = JSON.parse(localStorage.getItem("cards_settings"));
 
@@ -42,4 +43,9 @@ export const restoreSettings = (isPublic = false) => {
   let settingsSet = JSON.parse(localStorage.getItem("cards_settings"));
   if (!settingsSet) return defaultValue;
   return settingsSet;
+};
+export const saveOneSetting = (field, value) => {
+  const oldValue = restoreSettings();
+  const newValue = { ...oldValue, [field]: value };
+  saveSet(newValue);
 };

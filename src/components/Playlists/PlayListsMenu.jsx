@@ -1,5 +1,5 @@
 import React from "react";
-import MyFilter from "../UI/MyFilter/MyFilter";
+
 import "../../styles/collectMenu.scss";
 import { fragment_SearchingTips } from "../../utils/pagesFragments";
 import { HiPlus } from "react-icons/hi2";
@@ -13,10 +13,16 @@ const PlayListsMenu = (props) => {
     <div className="string_menu">
       <div className="menufind">
         <h1>My library / Playlists</h1>
-        <MyFilter
+        {/* <MyFilter
           filter={props.commonSettings.filter}
           setFilter={(val) => props.setSettingsCommon("filter", val)}
-        />
+        /> */}{" "}
+        <div className="view-settings">
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={props.viewmodeChange}
+          />
+        </div>
         <div className="d-flex">
           <button
             className="viewBtn"
@@ -33,12 +39,6 @@ const PlayListsMenu = (props) => {
             <AiOutlineRollback />
           </button>
         </div>{" "}
-        <div className="view-settings">
-          <ToggleView
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={props.viewmodeChange}
-          />
-        </div>
       </div>
       {fragment_SearchingTips(
         props.commonSettings,

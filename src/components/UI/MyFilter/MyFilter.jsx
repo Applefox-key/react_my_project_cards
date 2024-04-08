@@ -1,51 +1,44 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
-import MyInputGroup from "../MyInput/MyInputGroup";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-
+import cl from "./MyFilter.module.scss";
 import "../../../styles/collectMenu.scss";
+
 const MyFilter = ({ filter, setFilter }) => {
   const [value, setValue] = useState(filter);
+  const [show, setShow] = useState(false);
   useEffect(() => {
-    if (!filter && value) setValue("");
+    if (!filter && !!value) {
+      setValue("");
+      setShow(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
+
   return (
-    <div className="findWidth">
-      <MyInputGroup
-        classgroup={"h-100 mb-0 collect-find"}
-        label=<HiOutlineMagnifyingGlass />
-        value={value}
-        size="lg"
-        type="text"
-        onKeyPress={(e) => {
-          if (e.key === "Enter") setFilter(e.target.value);
-        }}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}>
-        {value && (
-          <>
-            <Button
-              className="ms-1"
-              variant="light"
-              onClick={(e) => {
-                setFilter(value);
-              }}>
-              OK
-            </Button>
-            <Button
-              variant="light"
-              onClick={(e) => {
-                setValue("");
-                setFilter("");
-              }}>
-              X
-            </Button>
-          </>
-        )}
-      </MyInputGroup>
+    <div
+      className={show ? cl.show : "position-relative"}
+      onClick={() => {
+        setShow(!show);
+      }}>
+      <div className={cl.mainbox}>
+        <div className={cl.icon}>
+          <HiOutlineMagnifyingGlass />
+        </div>
+        <input
+          type="text"
+          value={value}
+          onClick={(e) => e.stopPropagation()}
+          onChange={(e) => {
+            e.stopPropagation();
+            setValue(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            e.stopPropagation();
+            if (e.key === "Enter") setFilter(e.target.value);
+          }}
+        />
+      </div>
     </div>
   );
 };

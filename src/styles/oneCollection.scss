@@ -360,6 +360,7 @@
                 // width: 50%;
                 padding-bottom: 5px;
                 padding-top: 5px;
+                box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
                 @media screen and (max-width: 600px) {
                     font-size: 10px;
@@ -404,7 +405,7 @@
                 width: max-content;
                 padding-left: 15px;
                 border-radius: 10px 0 0 10px;
-                border: 1px solid;
+                // border: 1px solid;
 
                 @media screen and (max-width: 900px) {
                     border: none;
@@ -418,7 +419,7 @@
                 width: max-content;
                 max-width: 50%;
                 border-radius: 0 10px 10px 0;
-                border: 1px solid;
+                // border: 1px solid;
                 padding: 0 5px;
 
                 @media screen and (max-width: 900px) {

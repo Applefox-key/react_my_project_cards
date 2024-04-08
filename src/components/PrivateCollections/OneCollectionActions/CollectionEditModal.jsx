@@ -49,6 +49,7 @@ const CollectionEditModal = ({
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
       if (category.id !== collection.categoryid) changeCat(category);
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
+      else route(`/collections/my/${collection.id}/${newName.trim()}`);
       setIsEdit(false);
     } catch (error) {
       setPopup.error(error.message);
@@ -56,8 +57,8 @@ const CollectionEditModal = ({
   };
   const setCateg = async (cat = "") => {
     setCategory({
-      id: cat.id,
-      name: cat.name,
+      id: cat === "" ? "" : cat.id,
+      name: cat === "" ? "" : cat.name,
     });
   };
   const inputFileName = useRef();

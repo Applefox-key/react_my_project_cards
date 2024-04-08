@@ -23,7 +23,19 @@ const MenuPublicCollection = (props) => {
             </div>
           </div>
         </div>
-
+        <div className="view-settings width150">
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={props.setMode}
+          />{" "}
+          <SortMenu
+            fields={[
+              { value: "question", label: "Questions" },
+              { value: "answer", label: "Answers" },
+            ]}
+            onSelect={props.sortContent}
+          />
+        </div>
         <div className="d-flex">
           <OnePbCollectionBtns
             collection={props.collection}
@@ -34,19 +46,6 @@ const MenuPublicCollection = (props) => {
       {props.collection.note
         ? "About collection: " + props.collection.note
         : ""}
-      <div className="view-settings">
-        <ToggleView
-          checked={window.location.hash === "#1" ? 1 : 0}
-          onChange={props.setMode}
-        />{" "}
-        <SortMenu
-          fields={[
-            { value: "question", label: "Questions" },
-            { value: "answer", label: "Answers" },
-          ]}
-          onSelect={props.sortContent}
-        />
-      </div>
     </div>
   );
 };

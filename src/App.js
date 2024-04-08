@@ -16,9 +16,9 @@ function App({ props }) {
     role: null,
     token: "",
     settings: defaultSettings,
+    filterG: "",
   });
   const [popupSettings, setPopupSettings] = useState([false, "", "success"]);
-
   const checkUserAuth = async () => {
     try {
       const user = await BaseAPI.getUser();
@@ -30,6 +30,7 @@ function App({ props }) {
           role: user.role,
           token: token,
           settings: user.settings,
+          filterG: "",
         });
         applyUserSettings(user.settings);
       }

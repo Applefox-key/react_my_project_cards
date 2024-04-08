@@ -30,11 +30,16 @@
   left: 0;
   width: 100%;
   font-style: italic;
-  color: violet;
+  color: var(white);
 }
 
 .btnGame {
   position: relative;
   margin: 0 5px;
   border: 1px solid var(--contrast-text);
+  background-color: var(--background-third);
+
+  &:hover {
+    background-color: var(--color-nav);
+  }
 }

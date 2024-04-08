@@ -42,17 +42,30 @@ const OneCollectionMenu = (props) => {
           <BtnPlayMenu collection={props.colObj.collection} />
 
           <div className="d-flex">
-            <div className="collectionNoteText">
-              {props.colObj.collection.category && (
-                <div className="cat"> {props.colObj.collection.category}</div>
-              )}
-            </div>
             <div className="name-collect" onClick={() => setRenameMode(true)}>
-              <h1 className="pointer">{props.colObj.collection.name}</h1>{" "}
+              <h1 className="pointer">
+                My library /
+                {props.colObj.collection.category
+                  ? props.colObj.collection.category + " / "
+                  : ""}
+                {props.colObj.collection.name}
+              </h1>{" "}
             </div>
           </div>
         </div>
-
+        <div className="view-settings width150">
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={props.setMode}
+          />{" "}
+          <SortMenu
+            fields={[
+              { value: "question", label: "Questions" },
+              { value: "answer", label: "Answers" },
+            ]}
+            onSelect={sortContent}
+          />
+        </div>
         <div className="d-flex position-relative">
           <OneCollectionBtns
             colObj={props.colObj}
@@ -66,19 +79,6 @@ const OneCollectionMenu = (props) => {
             {"About collection: " + props.colObj.collection.note}{" "}
           </div>
         )}
-      </div>
-      <div className="view-settings">
-        <ToggleView
-          checked={window.location.hash === "#1" ? 1 : 0}
-          onChange={props.setMode}
-        />{" "}
-        <SortMenu
-          fields={[
-            { value: "question", label: "Questions" },
-            { value: "answer", label: "Answers" },
-          ]}
-          onSelect={sortContent}
-        />
       </div>
     </div>
   );

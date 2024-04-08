@@ -33,7 +33,7 @@ const MyNavUserImg = ({ logout, ...props }) => {
   return isLoading ? (
     <MySpinner />
   ) : (
-    <div className={cl.dropdown}>
+    <div className={[cl.dropdown, "ms-4"].join(" ")}>
       <Image src={av} {...props} /> <IoMdArrowDropdown />
       {
         <div>

@@ -20,13 +20,16 @@ const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
   const router = useNavigate();
   const latestStateRef = useRef();
-  const { userAuth } = useAuth(true);
+  const { userAuth, updateFilterG } = useAuth(true);
   const pageSet = restoreSettings(isPublic);
-  const [viewmode, setViewmode] = useState(userAuth.settings.listView ? 1 : 0);
+
+  const [viewmode, setViewmode] = useState(
+    !!userAuth.settings.listView ? 1 : 0
+  );
   const [commonSettings, setCommonSettings] = useState({
     selectedCategorypub: pageSet.selectedCategorypub,
     selectedCategorymy: pageSet.selectedCategorymy,
-    filter: pageSet.filter,
+    filter: userAuth.filterG,
     byCategory: pageSet.byCategory,
     sideBar: false,
     sorting: 0,
@@ -54,6 +57,7 @@ const Collections = () => {
   const setSettingsCommon = (field, val) => {
     let newVal = collectionPageSettings(commonSettings, field, val, isPublic);
     setCommonSettings(newVal);
+    if (field === "filter" && val !== userAuth.filterG) updateFilterG(val);
   };
 
   const viewmodeChange = () => {
@@ -75,6 +79,11 @@ const Collections = () => {
       router(window.location.pathname + "#" + viewmode, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.hash]);
+  useEffect(() => {
+    if (userAuth.filterG !== commonSettings.filter)
+      setSettingsCommon("filter", userAuth.filterG);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userAuth.filterG]);
 
   useEffect(() => {
     updateRef([]);
@@ -119,26 +128,29 @@ const Collections = () => {
         />
         {/* </div>{" "} */}
         <div className="allcollect">
-          {commonSettings.byCategory ? (
-            <CategoriesFoldersView
-              setSettingsCommon={setSettingsCommon}
-              filterTxt={commonSettings.filter}
-              viewmode={viewmode}
-            />
-          ) : !isPublic ? (
-            <UsersCollections
-              viewmode={viewmode}
-              commonSettings={commonSettings}
-              setSettingsCommon={setSettingsCommon}
-              privateSettings={privateSettings}
-              setSettingsPrivat={setSettingsPrivat}
-            />
-          ) : (
-            <PublicCollectionsList
-              commonSettings={commonSettings}
-              viewmode={viewmode}
-            />
-          )}
+          <div className="mainBox">
+            {commonSettings.byCategory ? (
+              <CategoriesFoldersView
+                setSettingsCommon={setSettingsCommon}
+                filterTxt={commonSettings.filter}
+                viewmode={viewmode}
+              />
+            ) : !isPublic ? (
+              <UsersCollections
+                viewmode={viewmode}
+                commonSettings={commonSettings}
+                setSettingsCommon={setSettingsCommon}
+                privateSettings={privateSettings}
+                setSettingsPrivat={setSettingsPrivat}
+              />
+            ) : (
+              <PublicCollectionsList
+                commonSettings={commonSettings}
+                viewmode={viewmode}
+              />
+            )}
+          </div>
+          {/* <div className="sideBox">adv</div> */}
         </div>
       </div>
     </div>

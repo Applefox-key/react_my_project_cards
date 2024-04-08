@@ -126,8 +126,7 @@
 .viewBtn,
 .btnBar,
 .drop-down-menuBtn {
-    width: 44px;
-    height: 44px;
+
     width: 35px;
     height: 35px;
 
@@ -136,7 +135,7 @@
     border-radius: 50%;
     border: none;
     font-size: 18px;
-    color: #5f6368;
+
     color: var(--color-bg-wrap);
     z-index: 900;
     transition: all 0.2s ease-in-out;
@@ -147,16 +146,17 @@
     }
 
     &:hover {
-
-        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        background-color: var(--color-fill);
+        border: 1px solid var(--border-fill); // box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     }
 
 }
 
 .viewBtn {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     position: relative;
+    margin-right: 10px;
+
 
 
     &:hover {
@@ -196,10 +196,15 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    transition: all 0.4s ease-in-out;
+
+
 
     &:hover {
         font-size: 12px;
         align-items: flex-start;
+
+
     }
 
     .buttonBox {
@@ -207,19 +212,21 @@
         border-radius: 25px;
         background-color: var(--background-wrap);
         color: var(--color-bg-wrap);
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
         display: none;
         position: absolute;
-        top: 20px;
+        top: 0px;
         // left: 0px;
         animation: zoomIn 1s forwards;
         // opacity: 0;
-        box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-
+        // box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+        border: 1px solid var(--border-fill);
+        text-align: center;
 
         .viewBtn {
             margin-bottom: 0;
             margin-top: 0;
+            margin-right: 0px;
 
             &:hover {
                 &::before {
@@ -341,6 +348,7 @@
     height: 2em;
     z-index: 1000;
     bottom: unset;
+    scale: 0.8;
 
     /* Hide default HTML checkbox */
     .switch input {

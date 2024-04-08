@@ -7,7 +7,7 @@ const ToggleView = ({ checked, onChange, ...props }) => {
   return (
     <div onClick={onChange} {...props}>
       <button data-title=" list or card view" className={cl.toggleBtn}>
-        {checked ? <IoList /> : <PiCards />}
+        View {checked ? <IoList /> : <PiCards />}
       </button>
     </div>
   );

@@ -34,6 +34,7 @@ const PublicCollectionsList = ({ commonSettings }) => {
             selectedCategory={commonSettings.selectedCategorypub}
             filtredList={filtredList}
             routeOne={GO_TO.pubCollect}
+            sort={commonSettings.sorting.field}
           />
         </div>
       )}
