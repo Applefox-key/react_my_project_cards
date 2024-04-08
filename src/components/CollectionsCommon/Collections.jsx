@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./collectionList.scss";
+import "../../styles/collectionList.scss";
 import "../../styles/oneCollection.scss";
 import CollectionsMenu from "./CollectionsMenu";
 import UsersCollections from "../PrivateCollections/CollectionsList/UsersCollections";
@@ -97,8 +97,8 @@ const Collections = () => {
     commonSettings.sorting,
     privateSettings.favorite,
     privateSettings.shared,
-    // viewmode,
   ]);
+
   return (
     <div className="wrap_box">
       {privateSettings.isNew && (

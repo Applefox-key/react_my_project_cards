@@ -1,5 +1,5 @@
 import React from "react";
-import "../CollectionsCommon/collectionList.scss";
+import "../../styles/collectionList.scss";
 import { FiUserCheck } from "react-icons/fi";
 import cl from "./CategorySelection.module.scss";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi2";

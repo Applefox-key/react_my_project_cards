@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
-import MyCard from "../UI/CARDS/MyCard";
+import MyCard from "../../UI/CARDS/MyCard";
 import { useState } from "react";
-import BaseAPI from "../../API/BaseAPI";
-import { useQuery } from "../../hooks/useQuery";
+import BaseAPI from "../../../API/BaseAPI";
+import { useQuery } from "../../../hooks/useQuery";
 import { useParams } from "react-router-dom";
-import BackBtn from "../UI/BlackBtn/BackBtn";
-import cl from "../UI/CARDS/MyCard.module.scss";
+import BackBtn from "../../UI/BlackBtn/BackBtn";
+import cl from "../../UI/CARDS/MyCard.module.scss";
 
-const PublicContentCardInfo = () => {
+const UserItemCardView = () => {
   const [item, setitem] = useState();
   const pageParam = useParams();
   const [getContent, ,] = useQuery(async () => {
-    const content = await BaseAPI.getPublicContentItem(pageParam.item);
+    const content = await BaseAPI.getContentItem(pageParam.item);
     setitem(content);
   });
 
@@ -24,8 +24,7 @@ const PublicContentCardInfo = () => {
   return (
     <>
       <div className="text-center mx-5 my-5">
-        {/* <div className={cl.container_gallery}> */}
-        <BackBtn size="lg" variant="dark" />
+        <BackBtn variant="dark" />
       </div>
       <div className={cl.container_gallery + " m-auto"}>
         {item && <MyCard item={item} />}
@@ -34,4 +33,4 @@ const PublicContentCardInfo = () => {
   );
 };
 
-export default PublicContentCardInfo;
+export default UserItemCardView;

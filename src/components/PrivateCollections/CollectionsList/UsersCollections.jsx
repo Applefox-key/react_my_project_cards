@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
 import { useQuery } from "../../../hooks/useQuery";
-import CollectionCardsList from "../../CollectionsCommon/CollectionCardsList";
+import CollectionsList from "../../CollectionsCommon/CollectionsList";
 import { GO_TO } from "../../../router/routes";
 import { favorite, share } from "../../../utils/contentRequests";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
@@ -110,7 +110,7 @@ const UsersCollections = ({
       {isLoading || !!error ? (
         <SpinnerLg className="span_wrap" />
       ) : (
-        <CollectionCardsList
+        <CollectionsList
           filtredList={filtredList}
           listFn={listFn}
           routeOne={GO_TO.myCollect}

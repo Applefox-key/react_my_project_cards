@@ -7,7 +7,7 @@ import "../../../styles/oneCollection.scss";
 import { onePartLittle } from "../../../utils/cardFragment";
 import { GO_TO } from "../../../router/routes";
 
-const CardContentList = ({ content, setContent, pageParam }) => {
+const ContentList = ({ content, setContent, pageParam }) => {
   const setPopup = usePopup();
   const route = useNavigate();
   const [editMode, setEditMode] = useState(null);
@@ -103,15 +103,6 @@ const CardContentList = ({ content, setContent, pageParam }) => {
                   }}>
                   ❌
                 </button>
-                {/* <button
-                  title="Edit row"
-                  onClick={(e) => rowsActons.editCard(el, e)}>
-                  <AiOutlineEdit />
-                </button> */}
-                {/* <button
-                  title="view card"
-                  onClick={() => rowsActons.openCard(el)}>
-                  <BsSearch />                </button> */}
               </div>
               {onePartLittle(el, "question")}
               {onePartLittle(el, "answer")}
@@ -123,4 +114,4 @@ const CardContentList = ({ content, setContent, pageParam }) => {
   );
 };
 
-export default CardContentList;
+export default ContentList;

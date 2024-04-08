@@ -1,5 +1,5 @@
 import React from "react";
-import "./collectionList.scss";
+import "../../styles/collectionList.scss";
 import { HiShare } from "react-icons/hi2";
 import { HiOutlineHeart, HiHeart } from "react-icons/hi";
 import { usePopup } from "../../hooks/usePopup";

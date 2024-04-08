@@ -6,6 +6,9 @@ import BtnPlayMenu from "../../UI/PlayMenu/BtnPlayMenu";
 import { sortByField } from "../../../utils/arraysFunc";
 import SortMenu from "../../UI/SortMenu/SortMenu";
 import ToggleView from "../../UI/TogleView/ToggleView";
+import { useNavigate } from "react-router-dom";
+import { GO_TO } from "../../../router/routes";
+import { saveSet } from "../../../utils/pageSettings";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
@@ -24,7 +27,19 @@ const OneCollectionMenu = (props) => {
 
     props.setContent(newVal);
   };
-
+  const router = useNavigate();
+  const ToCollections = () => {
+    router(GO_TO.myCollect);
+  };
+  const toCat = () => {
+    saveSet({
+      "selectedCategorymy": {
+        name: props.colObj.collection.category,
+        id: props.colObj.collection.categoryid,
+      },
+    });
+    router(GO_TO.myCollect);
+  };
   return (
     <div className="string_menu">
       {renameMode && (
@@ -45,10 +60,15 @@ const OneCollectionMenu = (props) => {
             <div className="name-collect" onClick={() => setRenameMode(true)}>
               <h1 className="pointer">
                 My library /
-                {props.colObj.collection.category
-                  ? props.colObj.collection.category + " / "
-                  : ""}
-                {props.colObj.collection.name}
+                <span className="pointer" onClick={ToCollections}>
+                  Collections /
+                </span>
+                {props.colObj.collection.category && (
+                  <span className="pointer" onClick={toCat}>
+                    {props.colObj.collection.category} /
+                  </span>
+                )}
+                <span className="colname">{props.colObj.collection.name}</span>
               </h1>{" "}
             </div>
           </div>
@@ -76,7 +96,7 @@ const OneCollectionMenu = (props) => {
       <div>
         {props.colObj.collection.note && (
           <div className="note">
-            {"About collection: " + props.colObj.collection.note}{" "}
+            {"About collection: " + props.colObj.collection.note}
           </div>
         )}
       </div>

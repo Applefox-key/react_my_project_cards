@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../CollectionsCommon/collectionList.scss";
+import "../../styles/collectionList.scss";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";

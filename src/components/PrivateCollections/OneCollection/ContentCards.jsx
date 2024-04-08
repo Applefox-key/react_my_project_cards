@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { GO_TO } from "../../../router/routes";
 import { onePartLittle } from "../../../utils/cardFragment";
 
-const CardContent = ({ content, setContent, pageParam }) => {
+const ContentCards = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
   const viewCard = (item) => {
     let mainRoute = window.location.pathname.includes("pub")
@@ -84,4 +84,4 @@ const CardContent = ({ content, setContent, pageParam }) => {
   );
 };
 
-export default CardContent;
+export default ContentCards;

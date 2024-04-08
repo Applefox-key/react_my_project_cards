@@ -3,11 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
 import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
-import CardContent from "./CardContent";
+import ContentCards from "./ContentCards";
 import "../../../styles/oneCollection.scss";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import OneCollectionMenu from "./OneCollectionMenu";
-import CardContentList from "./CardContentList";
+import ContentList from "./ContentList";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
@@ -60,13 +60,13 @@ const UserOneCollection = () => {
         <div className="m-auto d-flex">
           {!isLoading && content ? (
             mode === 0 ? (
-              <CardContent
+              <ContentCards
                 setContent={setContent}
                 content={content}
                 pageParam={pageParam}
               />
             ) : (
-              <CardContentList
+              <ContentList
                 setContent={setContent}
                 content={content}
                 pageParam={pageParam}

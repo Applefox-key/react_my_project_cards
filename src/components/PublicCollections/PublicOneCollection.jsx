@@ -3,11 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import { usePopup } from "../../hooks/usePopup";
-import CardContent from "../PrivateCollections/OneCollection/CardContent";
-import MenuPublicCollection from "./MenuPublicCollection";
+import ContentCards from "../PrivateCollections/OneCollection/ContentCards";
+import PublicCollectionMenu from "./PublicCollectionMenu";
 import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import { GO_TO } from "../../router/routes";
 import { onePartLittle } from "../../utils/cardFragment";
 import { sortByField } from "../../utils/arraysFunc";
 // import { useAuth } from "../../hooks/useAuth";
@@ -54,12 +53,7 @@ const PublicOneCollection = () => {
     <div className="d-flex">
       {!isLoading ? (
         <div className="wrap_box width90">
-          <p
-            className="backBtnText"
-            onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
-            Public collections
-          </p>{" "}
-          <MenuPublicCollection
+          <PublicCollectionMenu
             collection={collection ? collection : PageParam}
             viewMode={mode}
             setMode={modeChange}
@@ -69,7 +63,7 @@ const PublicOneCollection = () => {
           <div className="m-auto d-flex align-items-start">
             {content &&
               (mode === 0 ? (
-                <CardContent
+                <ContentCards
                   setContent={setContent}
                   content={content}
                   pageParam={PageParam}

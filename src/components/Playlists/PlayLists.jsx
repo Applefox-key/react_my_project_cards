@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../CollectionsCommon/collectionList.scss";
+import "../../styles/collectionList.scss";
 import "../../styles/oneCollection.scss";
 import {
   collectionPageSettings,

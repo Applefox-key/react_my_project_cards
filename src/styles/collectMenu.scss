@@ -27,7 +27,7 @@
 }
 
 .width150 {
-  width: 150px;
+  min-width: 150px;
 }
 
 .dropdownbtn {
@@ -264,7 +264,7 @@
 .name-collect {
   display: flex;
   position: relative;
-  cursor: pointer;
+  // cursor: pointer;
   transition: all 0.4s ease-in-out;
 
   h1 {
@@ -272,28 +272,30 @@
   }
 
   span {
-    position: absolute;
-    bottom: -15px;
-    font-size: 10px;
-    left: 40%;
-    color: var(--background-note);
+    margin-left: 5px;
+  }
+
+  .colname {
+    margin-left: 5px;
   }
 
   &:hover {
-    &::before {
-      content: "click to edit collection's settings";
-      position: absolute;
-      // top: -35px;\
-      bottom: -20px;
-      right: 10px;
-      width: fit-content;
-      white-space: nowrap;
-      background-color: var(--background-header);
-      padding: 0 5px;
-      font-size: 14px;
-      border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    .colname {
+      &::before {
+        content: "click to edit collection's settings";
+        position: absolute;
+        // top: -35px;\
+        bottom: -20px;
+        right: 10px;
+        width: fit-content;
+        white-space: nowrap;
+        background-color: var(--background-header);
+        padding: 0 5px;
+        font-size: 14px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
+      }
     }
   }
 }

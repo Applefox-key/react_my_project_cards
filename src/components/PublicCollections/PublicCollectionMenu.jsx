@@ -4,8 +4,21 @@ import OnePbCollectionBtns from "../UI/tgb/OnePbCollectionBtns";
 import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
 import ToggleView from "../UI/TogleView/ToggleView";
 import SortMenu from "../UI/SortMenu/SortMenu";
+import { useNavigate } from "react-router-dom";
+import { GO_TO } from "../../router/routes";
+import { saveSet } from "../../utils/pageSettings";
 
-const MenuPublicCollection = (props) => {
+const PublicCollectionMenu = (props) => {
+  const router = useNavigate();
+  const toCat = () => {
+    saveSet({
+      "selectedCategorypub": {
+        name: props.collection.category,
+        id: props.collection.categoryid,
+      },
+    });
+    router(GO_TO.myCollect);
+  };
   return (
     <div className="string_menu">
       <div className="d-flex align-items-center"></div>{" "}
@@ -13,13 +26,22 @@ const MenuPublicCollection = (props) => {
         <div className="d-flex align-items-center">
           <BtnPlayMenu collection={props.collection} />
           <div className="d-flex">
-            <div className="collectionNoteText">
-              {props.collection.category && (
-                <div className="cat"> {props.collection.category}</div>
-              )}
-            </div>
             <div className="name-collect">
-              <h1 className="pointer">{props.collection.name}</h1>{" "}
+              <span>Public library /</span>
+              <span
+                className="pointer"
+                onClick={(e) =>
+                  router(GO_TO.pubCollect + window.location.hash)
+                }>
+                Colections /
+              </span>
+
+              {props.collection.category && (
+                <span className="pointer" onClick={toCat}>
+                  {props.collection.category} /{" "}
+                </span>
+              )}
+              <span> {props.collection.name}</span>
             </div>
           </div>
         </div>
@@ -50,4 +72,4 @@ const MenuPublicCollection = (props) => {
   );
 };
 
-export default MenuPublicCollection;
+export default PublicCollectionMenu;

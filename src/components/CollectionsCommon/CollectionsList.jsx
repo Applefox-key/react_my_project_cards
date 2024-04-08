@@ -1,8 +1,7 @@
 import React from "react";
 import CollectionCard from "./CollectionCard";
-import "./collectionList.scss";
-
-const CollectionCardsList = ({ filtredList, routeOne, listFn, sort }) => {
+import "../../styles/collectionList.scss";
+const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
   const isNumb = (str) => /^[0-9]/.test(str);
 
   const titleRow = (item, i) => {
@@ -52,7 +51,7 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn, sort }) => {
           </>
         ) : (
           filtredList.map((item, i) => (
-            <>
+            <div key={i}>
               {titleRow(item, i)}
 
               <CollectionCard
@@ -61,7 +60,7 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn, sort }) => {
                 routeOne={routeOne}
                 listFn={listFn}
               />
-            </>
+            </div>
           ))
         )}
       </div>
@@ -69,4 +68,4 @@ const CollectionCardsList = ({ filtredList, routeOne, listFn, sort }) => {
   );
 };
 
-export default CollectionCardsList;
+export default CollectionsList;

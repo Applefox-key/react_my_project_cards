@@ -1,13 +1,13 @@
 import Profile from "../components/users/Profile/Profile";
 import PublicOneCollection from "../components/PublicCollections/PublicOneCollection";
 import CardsGallery from "../components/games/CardsGallery";
-import ContentCardInfo from "../components/PrivateCollections/OneCollection/ContentCardInfo";
+import UserItemCardView from "../components/PrivateCollections/OneCollection/UserItemCardView";
 import Pairs from "../components/games/Pairs";
 import TestCard from "../components/games/TestCard";
 import TimeCard from "../components/games/TimeCard";
 import WriteCard from "../components/games/WriteCard";
 import CategoriesManager from "../components/CategorySelection/CategoriesManager";
-import PublicContentCardInfo from "../components/PublicCollections/PublicContentCardInfo";
+import PublicItemCardView from "../components/PublicCollections/PublicItemCardView";
 import MainPage from "../components/users/Login/MainPage";
 import Login from "../components/users/Login/Login";
 import AboutPage from "../components/AboutPage/AboutPage";
@@ -84,11 +84,11 @@ export const privateRoutes = [
 
   { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
-  { path: "/collections/my/:id/:name/:item", element: <ContentCardInfo /> },
+  { path: "/collections/my/:id/:name/:item", element: <UserItemCardView /> },
 
   {
     path: "/collections/pub/:id/:name/:item",
-    element: <PublicContentCardInfo />,
+    element: <PublicItemCardView />,
   },
   { path: "/collections/pub/:id/:name", element: <PublicOneCollection /> },
   { path: "/collections/:tab", element: <Collections /> },

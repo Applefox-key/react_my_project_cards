@@ -3,7 +3,7 @@ import BaseAPI from "../../API/BaseAPI";
 import { useCollectSelection } from "../../hooks/useCollectSelection";
 import { useQuery } from "../../hooks/useQuery";
 import { GO_TO } from "../../router/routes";
-import CollectionCardsList from "../CollectionsCommon/CollectionCardsList";
+import CollectionsList from "../CollectionsCommon/CollectionsList";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
 const PublicCollectionsList = ({ commonSettings }) => {
@@ -30,7 +30,7 @@ const PublicCollectionsList = ({ commonSettings }) => {
         <SpinnerLg className="span_wrap" />
       ) : (
         <div className="d-flex flex-wrap justify-content-center">
-          <CollectionCardsList
+          <CollectionsList
             selectedCategory={commonSettings.selectedCategorypub}
             filtredList={filtredList}
             routeOne={GO_TO.pubCollect}

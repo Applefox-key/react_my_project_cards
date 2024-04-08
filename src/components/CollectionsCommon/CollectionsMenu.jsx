@@ -13,7 +13,20 @@ const CollectionsMenu = (props) => {
   const sortContent = (field, isDec) => {
     props.setSettingsCommon("sorting", { field, isDec });
   };
-
+  const ToCollections = () => {
+    if (props.commonSettings.byCategory) {
+      props.setSettingsCommon("byCategory");
+      return;
+    }
+    if (!isPublic && !!props.commonSettings.selectedCategorymy) {
+      props.setSettingsCommon("selectedCategorymy", "");
+      return;
+    }
+    if (isPublic && !!props.commonSettings.selectedCategorypub) {
+      props.setSettingsCommon("selectedCategorypub", "");
+      return;
+    }
+  };
   return (
     <div>
       <div className="string_menu">
@@ -22,11 +35,10 @@ const CollectionsMenu = (props) => {
           <div className="d-flex align-items-center">
             <h1>
               {isPublic ? "Public library" : "My library"}
-              <span>
-                {props.commonSettings.byCategory
-                  ? " / Collections/ Categories"
-                  : " / Collections"}
+              <span className="pointer" onClick={ToCollections}>
+                / Collections
               </span>
+              {props.commonSettings.byCategory && <span> / Categories </span>}
               <span>
                 {!isPublic && !!props.commonSettings.selectedCategorymy
                   ? " / " + props.commonSettings.selectedCategorymy.name
@@ -71,9 +83,6 @@ const CollectionsMenu = (props) => {
           </div>
           <div>
             <div className="d-flex lign-items-center">
-              {/* <span>
-                  <BiSolidFilterAlt />
-                </span> */}
               <div className="buttonBox">
                 {!isPublic && !props.commonSettings.byCategory && (
                   <>
