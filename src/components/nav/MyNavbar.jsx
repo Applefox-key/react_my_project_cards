@@ -60,7 +60,7 @@ const MyNavbar = () => {
           <div className={[cl.navWrap].join(" ")}>
             <Popup />
 
-            <div className="d-flex">
+            <div className={cl.leftnav}>
               {navArr.map((item, i) =>
                 item.hasOwnProperty("groupMenu") ? (
                   <MyNavSubmenu

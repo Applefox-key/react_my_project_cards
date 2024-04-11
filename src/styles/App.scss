@@ -580,6 +580,12 @@ input {
 
   @media screen and (max-width: 400px) {
     position: unset;
+    margin-right: 0.5rem;
+  }
+
+  @media screen and (max-width: 900px) {
+
+    margin-right: 2px;
   }
 }
 
@@ -686,7 +692,6 @@ input {
   transition: all 0.2s ease-in-out;
   background-color: var(--background-wrap);
   color: var(--color-bg-wrap);
-  // ms-3 fs-2 mt-2 fst-italic
   margin-left: 1.5rem;
   font-size: 11px;
   position: relative;
@@ -707,21 +712,19 @@ input {
   }
 
   @media screen and (max-width: 900px) {
-    font-size: 10px;
-    height: 2rem;
+    font-size: 13px;
+    height: 3rem;
+    width: fit-content;
+    padding: 0px 15px;
   }
 
 
   &:hover {
-    // transform: scale(1.2);
     z-index: 901;
-
     box-shadow: var(--color-nav) 0px 3px 8px;
 
-
-
     &::after {
-      // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
       animation: swing 0.8s forwards;
     }
   }

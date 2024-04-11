@@ -263,8 +263,9 @@
         font-family: Arial;
         line-height: 2;
 
-        background: var(--background-third);
-        color: white;
+
+        background: var(--color-fill);
+        color: var(--color-intense);
 
         &:disabled {
             background: grey;

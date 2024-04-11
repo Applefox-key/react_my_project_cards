@@ -45,7 +45,6 @@ const CollectionEditModal = ({
         isNew,
         collection
       );
-      debugger;
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
       if (category.id !== collection.categoryid) changeCat(category);
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
@@ -79,7 +78,7 @@ const CollectionEditModal = ({
       showmodal={isEdit}
       setshowmodal={setIsEdit}
       size="lg"
-      fullscreen={fromFile}
+      fullscreen={!!inputFileName.current}
       dialogClassName="modal-h100"
       title={"Collection's properties"}>
       <div className="d-flex flex-column justify-content-center  w-100">
@@ -114,7 +113,6 @@ const CollectionEditModal = ({
           className={
             isNew ? "header_modal" : "header_modal justify-content-end"
           }>
-          {" "}
           <div className="select_wrap">
             <FilterByCategory
               isForFilter={false}
@@ -158,11 +156,13 @@ const CollectionEditModal = ({
             <ModalFileContentBtns
               inputFileName={inputFileName}
               FileChange={FileChange}
-            />{" "}
-            <ContentFromFile
-              fileContent={content}
-              addToColection={saveChanges}
             />
+            {!!inputFileName.current && (
+              <ContentFromFile
+                fileContent={content}
+                addToColection={saveChanges}
+              />
+            )}
           </div>
         )}
       </div>

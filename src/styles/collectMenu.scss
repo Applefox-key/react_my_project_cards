@@ -60,6 +60,8 @@
 
     @media screen and (max-width:900px) {
       font-size: 1rem;
+      margin-bottom: 0;
+      margin-top: 2rem;
     }
 
     &:hover {
@@ -123,7 +125,7 @@
     text-align: center;
 
     &:focus {
-      outline-color: var(--color-checked);
+      outline-color: var(--color-intense);
       border-bottom: 2px solid var(--background-header);
       text-align: start;
     }
@@ -284,6 +286,7 @@
 
   .colname {
     margin-left: 5px;
+    color: var(--color-intense);
   }
 
   &:hover {
@@ -471,6 +474,11 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media screen and (max-width:900px) {
+    flex-wrap: wrap;
+    align-items: stretch
+  }
 }
 
 .menuCollection {

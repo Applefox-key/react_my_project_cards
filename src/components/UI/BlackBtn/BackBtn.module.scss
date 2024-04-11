@@ -26,8 +26,8 @@
 
 .endlesName {
   position: absolute;
-  top: 12px;
-  left: 0;
+  top: 20px;
+  left: 24px;
   width: 100%;
   font-style: italic;
   color: var(white);
@@ -36,10 +36,24 @@
 .btnGame {
   position: relative;
   margin: 0 5px;
-  border: 1px solid var(--contrast-text);
-  background-color: var(--background-third);
+  border: none;
+  // border: 1px solid var(--contrast-text);
+  background: var(--color-fill);
+  color: var(--color-intense);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  min-width: 9rem;
+  min-height: 4rem;
+
+  svg {
+    margin-right: 5px;
+  }
+
 
   &:hover {
     background-color: var(--color-nav);
+    color: white;
+
+
   }
 }

@@ -22,25 +22,6 @@ const CategoryManagerBtn = ({ getList, icon }) => {
         </p>
       </div>
 
-      {/* {icon ? (
-        <span
-          onClick={(e) => {
-            e.stopPropagation();
-            setVisible(true);
-          }}>
-          <IoIosSettings />
-        </span>
-      ) : (
-        <div
-          className={cl["setting_btn"]}
-          title="Categories manager"
-          onClick={(e) => {
-            e.stopPropagation();
-            setVisible(true);
-          }}>
-          manager <IoIosSettings />
-        </div>
-      )} */}
       {visible && (
         <MyModal
           onHide={(e) => {

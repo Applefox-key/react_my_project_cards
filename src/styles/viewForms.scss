@@ -534,7 +534,7 @@
 
 
             @media screen and (max-width: 900px) {
-                margin: auto;
+                // margin: auto;
                 justify-content: flex-start;
             }
 
@@ -559,7 +559,7 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    font-size: 11px;
+                    // font-size: 11px;
                     width: 80%;
                 }
             }
@@ -628,15 +628,6 @@
             color: var(--color-bg-wrap);
             font-size: 10px;
 
-
-            &::before {
-                content: "(";
-            }
-
-            &::after {
-                content: ")";
-            }
-
             @media screen and (max-width:900px) {
                 min-width: 50px;
                 width: 50px;
@@ -647,7 +638,7 @@
                 left: unset;
                 right: 30px;
                 top: unset;
-                bottom: 0;
+                bottom: 10px;
             }
         }
 

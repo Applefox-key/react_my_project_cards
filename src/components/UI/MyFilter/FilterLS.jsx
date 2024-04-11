@@ -9,7 +9,7 @@ import { useFilter } from "../../../hooks/useFilter";
 const FilterLS = () => {
   const { filterG, setFilterG } = useFilter();
   const [value, setValue] = useState(filterG);
-  const [hide, setHide] = useState(true);
+  const [ishide, setIsHide] = useState(true);
   useEffect(() => {
     setValue(filterG);
   }, [filterG]);
@@ -18,18 +18,24 @@ const FilterLS = () => {
     setValue(val);
     setFilterG(val);
   };
+  const showHide = (e) => {
+    e.stopPropagation();
+    if (ishide) {
+      setValue("");
+    }
 
+    if (ishide && window.screen.availWidth <= 900) {
+      const textInp = prompt("what do you want ti find?", "");
+      if (textInp) setFilterG(textInp);
+      return;
+    }
+
+    setIsHide(!ishide);
+  };
   return (
-    <div
-      className={hide ? cl.show : "position-relative"}
-      onClick={() => {
-        if (hide) {
-          setValue("");
-        }
-        setHide(!hide);
-      }}>
+    <div className={ishide ? cl.show : "position-relative"}>
       <div className={cl.mainbox}>
-        <div className={cl.icon}>
+        <div className={cl.icon} onClick={showHide}>
           <HiOutlineMagnifyingGlass />
         </div>
         <input

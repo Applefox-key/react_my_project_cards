@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
 const CategoryNameInput = ({ el, edit, isInput, setIsInput }) => {
-  //   const [isInput, setIsInput] = useState(editOn);
   const [name, setName] = useState(el.name);
-
+  const cancel = (e) => {
+    e.stopPropagation();
+    edit(el.id === "new" ? "newCancel" : null);
+  };
   return (
     <>
       {isInput ? (
@@ -11,6 +13,9 @@ const CategoryNameInput = ({ el, edit, isInput, setIsInput }) => {
           <input
             value={name}
             autoFocus
+            onKeyUp={(e) => {
+              if (e.key === "Escape") cancel(e);
+            }}
             onBlur={(e) => {
               //   setIsInput(null);
             }}
@@ -26,13 +31,7 @@ const CategoryNameInput = ({ el, edit, isInput, setIsInput }) => {
             }}>
             ok
           </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              edit(el.id === "new" ? "newCancel" : null);
-            }}>
-            cancel
-          </button>
+          <button onClick={cancel}>cancel</button>
         </>
       ) : (
         <>

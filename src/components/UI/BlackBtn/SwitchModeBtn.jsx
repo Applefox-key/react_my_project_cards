@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsPhoneFlip } from "react-icons/bs";
 import cl from "./BackBtn.module.scss";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-
+import "animate.css";
 const SwitchModeBtn = ({ ...props }) => {
   const router = useNavigate();
   const curPuth = useLocation().pathname;
@@ -28,7 +28,7 @@ const SwitchModeBtn = ({ ...props }) => {
             timeout={200}
             classNames={"endl"}>
             <Button
-              className={cl.btnGame}
+              className={[cl.btnGame, "animSvg"].join(" ")}
               size="lg"
               variant="dark"
               onClick={change}

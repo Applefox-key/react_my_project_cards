@@ -385,7 +385,7 @@
         .listHeader {
             background-color: transparent;
             width: 100%;
-            font-size: 12px;
+            font-size: 14px;
             border-radius: 10px 10px 0 0;
             height: -webkit-fill-available;
             white-space: nowrap;
@@ -397,6 +397,7 @@
 
             span {
                 padding-left: 10px;
+
             }
         }
 
@@ -546,6 +547,12 @@
     @media screen and (max-width:900px) {
         flex-direction: column-reverse;
         margin-bottom: 20px;
+        background-color: var(--color-nav);
+        color: white;
+
+        input {
+            color: white;
+        }
     }
 }
 
@@ -618,7 +625,6 @@
         margin: 0;
 
         @media screen and (max-width:900px) {
-
             font-size: 10px;
         }
     }
