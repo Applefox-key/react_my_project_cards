@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/collectionList.scss";
+import "../../styles/viewForms.scss";
 import "../../styles/oneCollection.scss";
 import CollectionsMenu from "./CollectionsMenu";
 import UsersCollections from "../CollectionsPrivate/CollectionsList/UsersCollections";
@@ -13,8 +13,9 @@ import {
   restoreSettings,
   saveSet,
 } from "../../utils/pageSettings";
-import CategoriesFoldersView from "../CategorySelection/CategoriesFoldersView";
+
 import { useAuth } from "../../hooks/useAuth";
+import CategoriesFoldersView from "./CategoriesFoldersView";
 
 const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -150,7 +151,6 @@ const Collections = () => {
               />
             )}
           </div>
-          {/* <div className="sideBox">adv</div> */}
         </div>
       </div>
     </div>

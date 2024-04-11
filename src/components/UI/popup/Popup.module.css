@@ -2,9 +2,8 @@
     height: 1.8rem;
     opacity: 0;    
     position:  absolute;
-    /* top:5.8rem; */
     top:3.2rem;
-    z-index: 1000;    
+    z-index: 1300;    
     background-color: var(--background-wrap);
     display: none;
    width: 100%;

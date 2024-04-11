@@ -110,12 +110,23 @@ const UsersCollections = ({
       {isLoading || !!error ? (
         <SpinnerLg className="span_wrap" />
       ) : (
-        <CollectionsList
-          filtredList={filtredList}
-          listFn={listFn}
-          routeOne={GO_TO.myCollect}
-          sort={commonSettings.sorting.field}
-        />
+        <>
+          {commonSettings.selectedCategorymy && (
+            <p className="categoryLine">
+              {commonSettings.selectedCategorymy.name}{" "}
+            </p>
+          )}
+          <CollectionsList
+            filtredList={filtredList}
+            listFn={listFn}
+            routeOne={GO_TO.myCollect}
+            sort={
+              commonSettings.selectedCategorymy
+                ? ""
+                : commonSettings.sorting.field
+            }
+          />
+        </>
       )}
     </>
   );

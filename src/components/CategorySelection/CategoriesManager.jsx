@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-
+import "../../styles/viewForms.scss";
 import { usePopup } from "../../hooks/usePopup";
-import MyTable from "../UI/table/MyTable";
 import BaseAPI from "../../API/BaseAPI";
-
+import { FaLayerGroup } from "react-icons/fa";
+import BackMenuBtn from "../UI/tgb/BackMenuBtn";
+import { HiPlus } from "react-icons/hi";
+import cl from "./CategorySelection.module.scss";
+import CategoryNameInput from "./CategoryNameInput";
 const CategoriesManager = ({ isModal = false }) => {
-  const [categoriesTbl, setCategoriesTbl] = useState();
+  const [categoriesTbl, setCategoriesTbl] = useState([]);
   const [editMode, setEditMode] = useState(null);
   const setPopup = usePopup();
 
@@ -22,15 +25,17 @@ const CategoriesManager = ({ isModal = false }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const editOn = (content) => {
-    setEditMode({
-      content: content,
-      names: ["name"],
-      edit: rowsActons.edit,
-    });
+  const hh = (el) => {
+    return editMode === null ? false : editMode.id === el.id;
   };
-
   const rowsActons = {
+    changelEdit(val) {
+      if (val === null)
+        if (editMode.id === "new") {
+          setCategoriesTbl(categoriesTbl.filter((el) => el.id !== "new"));
+        }
+      setEditMode(val);
+    },
     async addRow() {
       if (editMode) return;
       const newEl = {
@@ -38,7 +43,8 @@ const CategoriesManager = ({ isModal = false }) => {
         name: "",
       };
       setCategoriesTbl([newEl, ...categoriesTbl]);
-      editOn(newEl);
+      setEditMode(newEl);
+      // editOn(newEl);
     },
     async add(newC) {
       if (!newC.name) {
@@ -80,20 +86,72 @@ const CategoriesManager = ({ isModal = false }) => {
       {!isModal && (
         <div className="menufind mt-4">
           <h1>My library / Categories manager</h1>
+          <div>
+            <button
+              className="viewBtn"
+              data-title="Add new category"
+              onClick={(e) => {
+                e.stopPropagation();
+                rowsActons.addRow();
+              }}>
+              <HiPlus />
+            </button>
+            <BackMenuBtn />
+          </div>
         </div>
       )}
-      {categoriesTbl && (
-        <MyTable
-          onRowClick={editOn}
-          edit={editMode}
-          dataArray={categoriesTbl}
-          namesArray={["name"]}
-          btnsArray={[
-            { nameMain: "Add row", callback: rowsActons.addRow },
-            { nameMain: "Delete all", callback: rowsActons.deleteAll },
-            { name: "Delete", callback: rowsActons.deleteOne },
-          ]}
-        />
+      {categoriesTbl.length && (
+        <div className={cl["cat-wrap"]}>
+          {categoriesTbl.map((el) => (
+            <div
+              key={el.id}
+              className={cl["cat-row"]}
+              // onClick={() => rowsActons.changelEdit(el)}
+            >
+              <div className={cl["cat-header"]}>
+                {" "}
+                <FaLayerGroup />
+                {/* <FaLayerGroup className="mt-2" /> */}
+                <div className={cl["cat-name"]}>
+                  <CategoryNameInput
+                    el={el}
+                    edit={rowsActons.edit}
+                    isInput={hh(el)}
+                    setIsInput={rowsActons.changelEdit}
+                  />
+                </div>
+                {editMode === null && (
+                  <div className="d-flex">
+                    <button
+                      className={cl.hidenBtn}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        rowsActons.changelEdit(el);
+                      }}>
+                      edit name
+                    </button>{" "}
+                    <button
+                      className={cl.hidenBtn}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        rowsActons.edit(el.id === "new" ? "newCancel" : null);
+                      }}>
+                      delete
+                    </button>
+                    <span>{el.collection_count}</span>
+                  </div>
+                )}
+              </div>
+              {/* <div className="listBody">
+                {el.collections.map((col) => (
+                  <div className="listItem" key={col.id}>
+                    <span>{col.name}</span>
+                  </div>
+                ))}
+              </div> */}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

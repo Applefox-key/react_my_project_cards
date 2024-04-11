@@ -72,7 +72,7 @@ const CardsGallery = () => {
               clgal={cl.container_gallery_view}
               anim={anim}
               direction={direction}
-              twoDir={true}
+              twoDir
               item={items[itemNum]}
               leftBtn={leftBtn}
               rightBtn={rightBtn()}

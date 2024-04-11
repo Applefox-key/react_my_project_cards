@@ -1,6 +1,7 @@
 import React from "react";
 import "./tgb.scss";
-import { RiFoldersFill } from "react-icons/ri";
+
+import { FaLayerGroup } from "react-icons/fa";
 const ByCategoryBtn = ({ ...props }) => {
   return (
     <button
@@ -11,7 +12,8 @@ const ByCategoryBtn = ({ ...props }) => {
       onClick={() =>
         props.setSettingsCommon("byCategory", !props.commonSettings.byCategory)
       }>
-      <RiFoldersFill />
+      <FaLayerGroup />
+      {/* <RiFoldersFill /> */}
     </button>
   );
 };

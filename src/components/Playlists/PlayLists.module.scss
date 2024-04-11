@@ -1,3 +1,11 @@
+.playmenu {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: none;
+    transition: all 0.4s ease-in-out;
+}
+
 .wrapCard {
     display: flex;
     flex-wrap: wrap;
@@ -12,6 +20,7 @@
         align-items: center;
 
 
+
     }
 
     .onePlaylist-wrap {
@@ -20,19 +29,16 @@
         margin: 20px;
         width: 260px;
         min-width: 260px;
-        height: 207px;
+        height: 175px;
         position: relative;
         padding: 10px;
         border-radius: 10px;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         transition: all 0.4s ease-in-out;
         cursor: help;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        overflow: hidden;
-
-
+        justify-content: flex-start;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 
         .btn {
             padding: 5px;
@@ -43,6 +49,8 @@
             background-color: transparent;
             border-radius: 10px;
             display: none;
+            position: absolute;
+            right: 10px;
 
             &:hover {
                 scale: 1.2;
@@ -58,13 +66,13 @@
             border-radius: 50%;
             border: none;
             font-size: 18px;
-            color: #5f6368;
+            color: white;
             z-index: 5;
-            position: relative;
+            position: absolute;
 
             &:hover {
                 background-color: #e8eaed;
-                background-color: var(--background-switch);
+                background-color: var(--background-nav);
 
                 &::before {
                     content: attr(data-title);
@@ -85,53 +93,119 @@
         }
 
         .btnGames {
-            position: relative;
+            position: absolute;
+            bottom: 0;
+            left: 15px;
             display: none;
+
+            .play-menu {
+                width: 16rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .oneP {
+
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    margin: 0 5px;
+
+                    background-color: transparent;
+                    border-radius: 50%;
+                    border: none;
+                    font-size: 18px;
+                    color: #5f6368;
+                    padding: 2px 0;
+
+                    .sub {
+                        width: fit-content;
+                        display: none;
+                        position: absolute;
+                        background-color: var(--background-nav);
+
+                        div {
+                            font-size: 16px;
+                        }
+                    }
+
+                    &:hover {
+                        transform: translateY(-5px);
+
+                        .sub {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
         }
 
         .btnShow {
             @extend .btnP;
-            background-color: var(--background-switch);
+            background-color: var(--color-nav);
             opacity: 0.9;
         }
 
         .listHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5px;
             width: 100%;
-            font-size: 18px;
-            border-radius: 10px;
+            font-size: 14px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 500;
-            color: var(--color-text);
+            border-bottom: 0.5px solid var(--border-fill);
+            BACKGROUND: var(--color-intense);
+            COLOR: WHITE;
+            opacity: 0.8;
+            padding-left: 25px;
+            text-transform: uppercase;
+
+            span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 90%;
+            }
+
+            svg {
+                position: absolute;
+                font-size: 14px;
+                left: 15px;
+            }
 
         }
 
         .listBody {
-            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
             width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            height: 80%;
-            overflow: auto;
+            height: 65%;
+            overflow-x: hidden;
+            scrollbar-color: var(--color-bg-wrap) var(--background-header);
 
             .listItem {
                 width: 100%;
-                background-color: var(--background-first);
-
-                // padding: 1px;
-                font-size: 9px;
+                position: relative;
+                color: var(--color-bg-wrap);
+                padding: 1px;
+                padding-left: 5px;
                 text-align: start;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 transition: all 0.4s ease-in-out;
 
                 .item-btns {
                     display: none;
                     border: none;
                     transition: all 0.4s ease-in-out;
+                    position: absolute;
+                    right: 0;
 
                     @media screen and (max-width:900px) {
                         position: relative;
@@ -181,6 +255,9 @@
                 box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
                 border-radius: 50%;
 
+
+                left: 0;
+
                 &:hover {
                     background-color: var(--background-second);
                 }
@@ -206,6 +283,11 @@
 
         &:hover {
             transform: translateY(-5px);
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+
+            .playmenu {
+                display: block;
+            }
 
             .btn {
                 display: block;
@@ -228,25 +310,29 @@
     border-radius: 5px;
     width: max-content;
     margin: auto;
+    width: 90%;
+    background-color: var(--background-wrap);
 
     .onePlaylist-wrap {
-        width: 98%;
-        position: relative;
-        padding-left: 15px;
-        padding: 0 35px;
         display: flex;
-        transition: all 0.3s ease-in-out;
-        z-index: 0;
-        height: 1.5em;
-        line-height: 1.5em;
-        background-color: var(--background-wrap);
-        color: var(--color-bg-wrap);
-
-
-        &:nth-child(even) {
-            background-color: var(--background-even);
-            color: var(--color-bg-wrap);
-        }
+        justify-content: flex-start;
+        padding: 0 15px;
+        width: 90%;
+        font-size: 14px;
+        border-radius: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+        border-bottom: 0.5px solid var(--border-fill);
+        BACKGROUND: var(--background-first);
+        COLOR: var(--color-bg-wrap);
+        opacity: 0.8;
+        margin: auto;
+        margin-bottom: 5px;
+        padding: 5px 5px;
+        transition: all 0.4s ease-in-out;
+        position: relative;
 
         @media screen and (max-width:900px) {
             flex-direction: column-reverse;
@@ -275,7 +361,7 @@
         .btn {
             display: none;
             padding: 5px;
-            font-size: 12px;
+            font-size: 11px;
             border: none;
             cursor: pointer;
             transition: all 0.2s;
@@ -291,12 +377,12 @@
         }
 
         .firstRow {
+
             display: flex;
             align-items: center;
         }
 
         .listHeader {
-            // background-color: var(--background-header);
             background-color: transparent;
             width: 100%;
             font-size: 12px;
@@ -307,8 +393,14 @@
             text-overflow: ellipsis;
             font-weight: 600;
             color: var(--color-bg-wrap);
+            text-transform: uppercase;
 
+            span {
+                padding-left: 10px;
+            }
         }
+
+
 
         .listBody {
             display: none;
@@ -426,14 +518,11 @@
         }
 
         &:hover {
-            transform: translateX(10px);
-            // background-color: mistyrose;
-            border: 1px solid var(--color-bg-wrap);
-
+            transform: translateX(-10px);
+            background-color: var(--color-fill);
 
             .listHeader {
-
-                color: var(--background-note);
+                color: var(--color-nav);
             }
 
             .btn {
@@ -449,25 +538,54 @@
     }
 }
 
-.chooseList {
-    border: 1px solid grey;
-    border-radius: 15px;
-    margin-left: 1rem;
-    padding: 5px;
-    width: 55%;
+.titleWrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @media screen and (max-width:900px) {
+        flex-direction: column-reverse;
+        margin-bottom: 20px;
+    }
+}
+
+.body-edit-wrap {
+    display: flex;
+    align-items: flex-start;
 
 }
 
-.choosedList {
-    border: 1px solid grey;
+.chooseList {
     border-radius: 15px;
     margin-left: 1rem;
     padding: 5px;
-    width: 45%;
-    // min-height: 186px;
-    // max-height: 186px;
-    height: 195px;
+    width: 25%;
+    height: 100%;
+    background-color: var(--background-even);
 
+    @media screen and (max-width:900px) {
+        width: 33%;
+        margin-right: 0;
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+.choosedList {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    @media screen and (max-width:900px) {
+
+        width: 70%;
+    }
+
+    .choosedItems {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
     button {
         font-size: 9px;
@@ -488,26 +606,32 @@
 .tabBox {
     margin-top: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
     font-size: 14px;
     position: relative;
 
     p {
-        font-size: 9px;
-        margin-right: 5px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+
+        @media screen and (max-width:900px) {
+
+            font-size: 10px;
+        }
     }
 
     span {
-        font-size: 8px;
-        width: 50%;
+        font-size: 14px;
+        width: 190px;
         text-wrap: nowrap;
-        position: absolute;
-        // font-size: 10px;
         top: 12px;
 
-        // left: 32px;
         @media screen and (max-width:900px) {
             top: -10px;
+            font-size: 10px;
         }
     }
 
@@ -539,24 +663,37 @@
 }
 
 .selectionButtons {
+    border-radius: 15px 15px 0 0;
+
+    @media screen and (max-width:900px) {
+        padding-top: 5px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
+}
+
+.filterButtons {
     text-align: end;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-top: 5px;
 
     @media screen and (max-width:900px) {
         flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--border-fill);
 
     }
 
     .filter {
-        scale: 0.8;
+        margin: auto;
+        margin-top: 5px;
         width: -webkit-fill-available;
 
         @media screen and (max-width:900px) {
-            width: 50%;
-
+            position: relative;
+            left: -21px;
+            scale: 0.6;
         }
 
     }
@@ -578,7 +715,6 @@
     font-size: 12px;
     border-bottom: 1px solid grey;
     position: relative;
-    // margin-bottom: 1rem;
     border-collapse: collapse;
     min-width: 100%;
 
@@ -619,19 +755,54 @@
 .chooseTbl {
     @extend .tblCollections;
     font-size: 10px;
-    height: 155px;
+    height: 70vh;
     scrollbar-color: var(--color-bg-wrap) var(--background-header);
 
+    @media screen and (max-width:900px) {
+        font-size: 9px;
+        width: 40%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
 }
 
 .selectedEl {
     @extend .isNotSelected;
     position: relative;
+    background-color: var(--background-wrap);
+    color: white;
+    overflow: hidden;
+    margin: 20px;
+
+    width: 200px;
+    height: 100px;
+    position: relative;
+    border-radius: 5px;
+    transition: all 0.6s ease-in-out;
+    cursor: help;
+    text-overflow: ellipsis;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-intense);
 
     &:hover {
-        color: var(--color-checked);
         text-decoration: line-through;
-
-
+        color: cyan;
     }
+
+    @media screen and (max-width:900px) {
+        width: 120px;
+        height: 70px;
+        margin: 5px;
+    }
+}
+
+.empty {
+    @extend .selectedEl;
+    background-color: var(--color-fill);
 }

@@ -14,7 +14,7 @@ const AboutPage = () => {
         <br />
         <div className="main_container position-relative">
           <Image rounded src={choice} className={cl.imgabout} />
-          <TextBlock isAboutLink={false} aboutPage={true} />
+          <TextBlock isAboutLink={false} aboutPage />
           <div className={cl.cardabout}>
             <AboutGallery />
           </div>{" "}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/collectionList.scss";
+import "../../styles/viewForms.scss";
 import { getFirstEl } from "../../utils/arraysFunc";
-import PlayMenu from "../UI/PlayMenu/PlayMenu";
 import CollectionCardBtns from "./CollectionCardBtns";
+import GamesMenu from "../UI/GamesMenu/GamesMenu";
 
 const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
   const router = useNavigate();
@@ -26,7 +26,9 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
           <div className="cat_tag">{oneSet.collection.category}</div>
         )}{" "}
         {!!oneSet.content.length && window.location.hash !== "#1" && (
-          <PlayMenu collection={oneSet.collection} />
+          <div className="playmenu">
+            <GamesMenu cardSet={oneSet.collection} />
+          </div>
         )}
         <div className="collectBody">
           {getFirstEl(oneSet.content, 5).map((el, i) => (

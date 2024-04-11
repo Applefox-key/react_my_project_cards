@@ -27,7 +27,11 @@ const UserOneCollection = () => {
     setMode(newVal);
     router(window.location.pathname + "#" + newVal);
   };
-
+  // useEffect(() => {
+  //   debugger;
+  //   if (collect.hasOwnProperty("collection")) setCollect(collect.collecttion);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // });
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);

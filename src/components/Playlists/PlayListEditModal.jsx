@@ -3,12 +3,12 @@ import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/collectMenu.scss";
-
+import cl from "./PlayLists.module.scss";
 import { usePopup } from "../../hooks/usePopup";
 import MyModal from "../UI/MyModal";
 import AllCollectionsList from "./AllCollectionsList";
 import { editPlaylistHlp } from "../../utils/editCollectionHlp";
-import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
+import GamesMenu from "../UI/GamesMenu/GamesMenu";
 
 const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
   const route = useNavigate();
@@ -31,13 +31,28 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
       setPopup.error(error.message);
     }
   };
-  const titleWin = () => {
-    return (
-      <div className="d-flex align-items-center w-100">
-        <BtnPlayMenu collection={list} playlist={true} verticals={false} />
+
+  const handleClearSelection = () => {
+    setSelectedIds([]);
+    setSelectedItems([]);
+  };
+  return (
+    <MyModal
+      onHide={onHide ? onHide : (e) => setIsEdit(false)}
+      showmodal={isEdit}
+      setshowmodal={setIsEdit}
+      // size="lg"
+      title={"My library / Playlists"}
+      fullscreen
+      // dialogClassName="modal-h100"
+    >
+      <div className={cl.titleWrap}>
+        <div>
+          <GamesMenu cardSet={list} isPlaylist />
+        </div>
         <div className="input_with_lable mb-0">
           <label htmlFor="i_name" className="lable">
-            Title:
+            title:
           </label>
           <input
             autoFocus
@@ -47,25 +62,14 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
             onChange={(e) => setNewName(e.target.value)}
           />
         </div>
-      </div>
-    );
-  };
-  return (
-    <MyModal
-      onHide={onHide ? onHide : (e) => setIsEdit(false)}
-      showmodal={isEdit}
-      setshowmodal={setIsEdit}
-      // size="lg"
-      title={titleWin()}
-      dialogClassName="modal-h100">
-      <AllCollectionsList
-        selectedIds={selectedIds}
-        setSelectedIds={setSelectedIds}
-        selectedItems={selectedItems}
-        setSelectedItems={setSelectedItems}
-      />
-      <div className="editBtnAbs">
         <div className="edit_btn_menu ">
+          <Button
+            className="mb-0"
+            size="lg"
+            variant="light"
+            onClick={handleClearSelection}>
+            Clear Selection
+          </Button>
           <Button
             className="mb-0"
             size="lg"
@@ -85,6 +89,12 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
           </Button>
         </div>
       </div>
+      <AllCollectionsList
+        selectedIds={selectedIds}
+        setSelectedIds={setSelectedIds}
+        selectedItems={selectedItems}
+        setSelectedItems={setSelectedItems}
+      />
     </MyModal>
   );
 };

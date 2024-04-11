@@ -40,7 +40,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
       title="Download the collection"
       setshowmodal={setVisible}
       size="lg"
-      showmodal={true}
+      showmodal
       dialogClassName="width100wv">
       <div className="w-100">
         <div className="d-flex w-100">

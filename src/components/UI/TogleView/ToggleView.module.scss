@@ -12,7 +12,8 @@
     //     color: var(--color-nav);
     // }
     &:hover {
-        color: var(--color-nav);
+        background-color: var(--color-fill);
+        border: 0.5px solid var(--border-fill);
 
         &::before {
             content: attr(data-title);

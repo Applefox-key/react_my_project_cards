@@ -130,11 +130,6 @@
     margin-left: auto;
     margin-bottom: 1rem;
 
-    // @media screen and (max-width: 1600px) and (max-height: 700px) {
-    //     width: 75rem;
-    //     height: 35rem;
-
-    // }
     @media screen and (max-width: 1600px) and (max-height: 700px) {
         margin-bottom: 1rem;
 
@@ -160,13 +155,9 @@
     }
 
     @media screen and (min-width: 600px) and (max-height: 600px) {
-        // max-width: 80vw;
-        // max-height: 90vh;
         max-width: 80vw;
         max-height: 70vh;
-        /* margin-top: -1rem; */
         margin-bottom: 3rem;
-        // margin-left: 2rem;
 
     }
 
@@ -257,7 +248,6 @@
     .rightBtn {
         z-index: 3;
         transition: 0.8s ease;
-        // padding: 10px 16px;
         font-weight: bold;
         position: absolute;
         bottom: 0;
@@ -267,7 +257,6 @@
         font-size: 4rem;
         border-radius: 0 70% 0 0;
         border: none;
-        // padding: 0px 12px;
         text-decoration: none;
         cursor: pointer;
         overflow: hidden;
@@ -275,7 +264,6 @@
         line-height: 2;
 
         background: var(--background-third);
-        // color: var(--background-wrap);
         color: white;
 
         &:disabled {
@@ -284,11 +272,9 @@
         }
 
         &:hover {
-            // height: 70px;
-            // width: 70px;
+
             transform: translate(-5px, 5px);
             border-radius: 0 17% 0 17%;
-            // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
 
         @media screen and (min-width:1700px) and (max-height: 600px) {
@@ -306,11 +292,8 @@
         border-radius: 70% 0 0 0;
 
         &:hover {
-            // height: 70px;
-            // width: 70px;
             border-radius: 17% 0 0 17%;
             transform: translate(5px, 5px);
-            // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
     }
 }
@@ -427,7 +410,6 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    // overflow: auto;
     border-radius: 15px;
     padding-right: 2vw;
     padding-left: 2vw;
@@ -452,38 +434,19 @@
         top: 0;
         font-size: 16px;
         left: 0;
-        // top: -10px;
         transition: all 0.2s ease-in-out;
         text-wrap: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        color: var(--color-checked); // position: relative;
+        color: var(--color-checked);
         width: 100%;
         text-align: left;
-        // background-color: var(--color-checked);
         width: 100%;
         height: 30px;
-        // background-color: red;
-
-
-        // &:before {
-        //     content: "💡";
-        // }
-
-        // span {
-        //     transition: all 0.4s ease-in-out;
-        //     white-space: nowrap;
-        //     overflow: hidden;
-        //     text-overflow: ellipsis;
-        //     max-width: 100%;
-
-        // }
         transition: all 0.2s ease-in-out;
 
         &::before {
-            // transition: all 0.1s ease-in-out;
             content: "";
-            // display: none;
         }
 
         &:hover {
@@ -497,7 +460,6 @@
                 position: absolute;
                 height: fit-content;
                 padding: 10px;
-                // display: block;
                 width: 100%;
                 top: 0;
                 left: 0;
@@ -506,24 +468,7 @@
                 font-size: 18px;
                 border-radius: 0 0 15px 15px;
                 background-color: var(--color-checked);
-                // height: fit-content;
             }
-
-
-            // height: fit-content;
-
-
-
-
-
-            // background-color: var(--background-note);
-            // border-radius: 10px;
-            // font-size: 3rem;
-            // text-align: center;
-            // text-wrap: wrap;
-            // text-overflow: inherit;
-            // overflow: inherit;
-            // width: 90%;
         }
     }
 
@@ -531,26 +476,7 @@
         max-width: 100%;
         height: fit-content;
         max-height: 100%;
-        // max-height: 100%;
     }
-
-    // img {
-    //     max-width: 50%;
-    //     max-height: 100%;
-
-    //     @media screen and (min-width: 600px) and (max-height: 600px) {
-    //         max-width: 25%;
-    //         max-height: 50%;
-    //     }
-
-    //     @media screen and (max-width: 600px) and (min-height: 600px) {
-    //         max-width: 100%;
-    //         max-height: 50%;
-    //     }
-    // }
-
-
-
 }
 
 .card-front {
@@ -587,7 +513,6 @@
     top: -8px;
     z-index: 901;
     width: 100%;
-    // background-color: red;
 }
 
 @media screen and (min-width: 800px) and (max-height: 391px) {

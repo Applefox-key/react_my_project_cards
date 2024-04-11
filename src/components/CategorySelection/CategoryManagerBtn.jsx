@@ -52,7 +52,7 @@ const CategoryManagerBtn = ({ getList, icon }) => {
           size="md"
           dialogClassName="modal-h100"
           title={"Categories manager"}>
-          <CategoriesManager isModal={true} />
+          <CategoriesManager isModal />
         </MyModal>
       )}
     </>

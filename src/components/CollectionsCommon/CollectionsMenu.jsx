@@ -7,6 +7,9 @@ import { HiHeart, HiPlus, HiShare } from "react-icons/hi";
 import FilterByCategory from "../CategorySelection/FilterByCategory";
 import ToggleView from "../UI/TogleView/ToggleView";
 import SortMenu from "../UI/SortMenu/SortMenu";
+import { useNavigate } from "react-router-dom";
+import { GO_TO } from "../../router/routes";
+import { FiSettings } from "react-icons/fi";
 
 const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
@@ -27,6 +30,7 @@ const CollectionsMenu = (props) => {
       return;
     }
   };
+  const router = useNavigate();
   return (
     <div>
       <div className="string_menu">
@@ -119,6 +123,16 @@ const CollectionsMenu = (props) => {
                     <HiPlus />
                   </button>
                 </>
+              )}
+              {!isPublic && props.commonSettings.byCategory && (
+                <button
+                  data-title="Categories manager"
+                  className="viewBtn"
+                  onClick={() => router(GO_TO.categoriesManager)}>
+                  <span>
+                    <FiSettings />
+                  </span>
+                </button>
               )}
               <BackMenuBtn />
             </div>

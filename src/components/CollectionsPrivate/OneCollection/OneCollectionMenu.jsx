@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../../../styles/collectMenu.scss";
 import CollectionEditModal from "../OneCollectionActions/CollectionEditModal";
 import OneCollectionBtns from "../../UI/tgb/OneCollectionBtns";
-import BtnPlayMenu from "../../UI/PlayMenu/BtnPlayMenu";
 import { sortByField } from "../../../utils/arraysFunc";
 import SortMenu from "../../UI/SortMenu/SortMenu";
 import ToggleView from "../../UI/TogleView/ToggleView";
@@ -10,17 +9,15 @@ import { useNavigate } from "react-router-dom";
 import { GO_TO } from "../../../router/routes";
 import { saveSet } from "../../../utils/pageSettings";
 import { FiSettings } from "react-icons/fi";
+import GamesMenu from "../../UI/GamesMenu/GamesMenu";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
   const changeCat = (cat) => {
     props.setCollect({
-      ...props.colObj,
-      collection: {
-        ...props.colObj.collection,
-        categoryid: cat.id ? cat.id : "",
-        category: cat.name ? cat.name : "",
-      },
+      ...props.colObj.collection,
+      categoryid: cat.id ? cat.id : "",
+      category: cat.name ? cat.name : "",
     });
   };
   const sortContent = (val, isDec) => {
@@ -41,6 +38,7 @@ const OneCollectionMenu = (props) => {
     });
     router(GO_TO.myCollect);
   };
+
   return (
     <div className="string_menu">
       {renameMode && (
@@ -55,7 +53,9 @@ const OneCollectionMenu = (props) => {
 
       <div className="menufind">
         <div className="d-flex align-items-center">
-          <BtnPlayMenu collection={props.colObj.collection} />
+          <div className="playmenu">
+            <GamesMenu cardSet={props.colObj.collection} isBtnForm isVertical />
+          </div>
 
           <div className="d-flex">
             <div className="name-collect">

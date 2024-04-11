@@ -8,7 +8,9 @@
     height: 100%;
 
     &:hover {
-        color: var(--color-nav);
+
+        background-color: var(--color-fill);
+        border: 0.5px solid var(--border-fill);
     }
 
     svg {
@@ -17,8 +19,8 @@
         font-size: 14px;
 
         &:hover {
-            outline: 3px solid rgb(134, 181, 251);
-            color: var(--color-nav);
+            background-color: var(--color-fill);
+            border: 0.5px solid var(--border-fill);
         }
     }
 }
@@ -28,6 +30,13 @@
     list-style: none;
     text-align: left;
     cursor: pointer;
-    background-color: white;
+    background-color: var(--color-fill);
     width: 8rem;
+    z-index: 1100;
+
+    @media screen and (max-width:900px) {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+
 }

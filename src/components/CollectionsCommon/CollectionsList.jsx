@@ -1,6 +1,6 @@
 import React from "react";
 import CollectionCard from "./CollectionCard";
-import "../../styles/collectionList.scss";
+import "../../styles/viewForms.scss";
 const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
   const isNumb = (str) => /^[0-9]/.test(str);
 
@@ -37,7 +37,7 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
     <>
       <div
         className={
-          window.location.hash === "#1" ? "tbl_wrap " : "all_wrap m-auto"
+          window.location.hash === "#1" ? "tbl_view " : "card-view m-auto"
         }>
         {!filtredList || !filtredList.length ? (
           <>
@@ -51,9 +51,8 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
           </>
         ) : (
           filtredList.map((item, i) => (
-            <div key={i}>
+            <div className="chapterWrap" key={i}>
               {titleRow(item, i)}
-
               <CollectionCard
                 oneSet={item}
                 key={item.collection.id}

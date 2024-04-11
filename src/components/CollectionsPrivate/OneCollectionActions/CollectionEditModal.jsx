@@ -45,7 +45,7 @@ const CollectionEditModal = ({
         isNew,
         collection
       );
-
+      debugger;
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
       if (category.id !== collection.categoryid) changeCat(category);
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
@@ -117,7 +117,7 @@ const CollectionEditModal = ({
           {" "}
           <div className="select_wrap">
             <FilterByCategory
-              firstItem="no category"
+              isForFilter={false}
               onSelect={setCateg}
               colCat={{
                 id: category.id,

@@ -8,7 +8,7 @@ import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
-
+import { SlPicture } from "react-icons/sl";
 const EditCard = () => {
   const [item, setItem] = useState();
   const pageParam = useParams();
@@ -55,7 +55,9 @@ const EditCard = () => {
     try {
       if (item.id === "new") await BaseAPI.createContent(item, pageParam.id);
       else await BaseAPI.editContent(item);
-      route(`/collections/my/${pageParam.id}/${pageParam.name}`);
+      route(`/collections/my/${pageParam.id}/${pageParam.name}`, {
+        replace: true,
+      });
     } catch (error) {
       setPopup.error(error.message);
     }
@@ -88,14 +90,14 @@ const EditCard = () => {
           <div className="questDiv">
             <h3>QUESTION</h3>{" "}
             <div className="oneSide quest">
-              <div className={item.imgQ ? "img_choice" : "img_choice img_back"}>
+              <div className="img_choice">
                 <input
                   type="file"
                   id="imgQ"
                   value={item.imgQFile ? item.imgQFile : ""}
                   onChange={fromFile}
                 />
-                {item.imgQ && (
+                {item.imgQ ? (
                   <div className="img">
                     <button
                       variant="outline-secondary"
@@ -106,6 +108,8 @@ const EditCard = () => {
                     </button>
                     <img src={getImgQ(item)} alt="" />
                   </div>
+                ) : (
+                  <SlPicture className="img" />
                 )}
               </div>
               <textarea
@@ -120,14 +124,14 @@ const EditCard = () => {
           <div className="answtDiv">
             <h3>ANSWER</h3>
             <div className="oneSide ">
-              <div className={item.imgA ? "img_choice" : "img_choice img_back"}>
+              <div className="img_choice">
                 <input
                   type="file"
                   id="imgA"
                   value={item.imgAFile ? item.imgAFile : ""}
                   onChange={fromFile}
                 />
-                {item.imgA && (
+                {item.imgA ? (
                   <div className="img">
                     {" "}
                     <button
@@ -138,6 +142,8 @@ const EditCard = () => {
                     </button>
                     <img src={getImgA(item)} alt="" />
                   </div>
+                ) : (
+                  <SlPicture className="img" />
                 )}
               </div>
               <textarea

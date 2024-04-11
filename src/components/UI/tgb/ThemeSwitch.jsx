@@ -5,9 +5,6 @@ import { restoreSettings } from "../../../utils/pageSettings";
 
 const ThemeSwitch = ({ isPlay }) => {
   const [isCheckedDay, setIsCheckedDay] = useState(true);
-  //   const [isPlay, setIsPlay] = useState(
-  //     window.location.pathname.includes("/play_")
-  //   );
   useEffect(() => {
     let { theme } = restoreSettings();
     if (theme !== "day") {

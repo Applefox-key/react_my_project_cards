@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/collectionList.scss";
+import "../../styles/viewForms.scss";
 import "../../styles/oneCollection.scss";
 import {
   collectionPageSettings,
@@ -84,7 +84,7 @@ const Playlists = () => {
           commonSettings={commonSettings}
           setSettingsCommon={setSettingsCommon}
         />
-      </div>{" "}
+      </div>
     </div>
   );
 };

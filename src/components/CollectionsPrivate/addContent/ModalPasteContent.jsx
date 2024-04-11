@@ -47,7 +47,7 @@ const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
 
   return (
     <MyModal
-      showmodal={true}
+      showmodal
       setshowmodal={setVisible}
       fullscreen
       size="md"

@@ -60,10 +60,10 @@ const AllCollectionsList = ({
     setSelectedItems([...filtredList]);
   };
 
-  const handleClearSelection = () => {
-    setSelectedIds([]);
-    setSelectedItems([]);
-  };
+  // const handleClearSelection = () => {
+  //   setSelectedIds([]);
+  //   setSelectedItems([]);
+  // };
 
   const isPubChange = () => {
     let newVal = !isPub;
@@ -71,29 +71,34 @@ const AllCollectionsList = ({
   };
   return (
     <>
-      <div className="d-flex align-items-start">
+      <div className={cl["body-edit-wrap"]}>
         <div id="choosed-list" className={cl.choosedList}>
           <div className={cl.tabBox}>
             <span className="text-secondary text-center mb-0">
               Choose up to 10 collections
             </span>
             <p className="text-danger">{selectedIds.length}/10</p>{" "}
-            <div>
-              <button onClick={handleClearSelection}>Clear Selection</button>
-            </div>
           </div>
-
-          {/* {filtredList
-          .filter((elem) => selectedIds.includes(elem.id)) */}
-          {selectedItems.map((el) => (
-            <div
-              key={el.id}
-              className={cl.selectedEl}
-              onClick={() => handleItemClick(el)}>
-              {el.name}
-              {el.isMy && <span></span>}
-            </div>
-          ))}
+          <div className={cl.choosedItems}>
+            {selectedItems.map((el) => (
+              <div
+                key={el.id}
+                className={cl.selectedEl}
+                onClick={() => handleItemClick(el)}>
+                {el.name}
+                {el.isMy && <span></span>}
+              </div>
+            ))}{" "}
+            {selectedItems.length < 10 &&
+              Array.from(
+                { length: 10 - selectedItems.length },
+                (_, i) => i++
+              ).map((el) => (
+                <div key={el.id} className={cl.empty}>
+                  {/* empty */}
+                </div>
+              ))}
+          </div>
         </div>{" "}
         {limit - selectedIds.length >= filtredList.length && (
           <button onClick={handleSelectAll}>
@@ -102,11 +107,19 @@ const AllCollectionsList = ({
         )}
         <div id="choose-list" className={cl.chooseList}>
           <div className={cl.selectionButtons}>
-            <div className={cl.filter}>
-              <MyFilter filter={filter} setFilter={setFilter} />
+            <MySwitch
+              checked={isPub}
+              onChange={isPubChange}
+              leftEl="My library"
+              rightEl="Public library"
+            />
+            <div className={cl.filterButtons}>
+              <div className={cl.filter}>
+                <MyFilter filter={filter} setFilter={setFilter} />
+              </div>
+              <FilterByCategory isPb={isPub} onSelect={setCat} />
             </div>
-            <FilterByCategory isPb={isPub} onSelect={setCat} />
-          </div>{" "}
+          </div>
           <div className={cl.chooseTbl}>
             {isLoading ? (
               <SpinnerLg className="span_wrap" />
@@ -134,14 +147,6 @@ const AllCollectionsList = ({
               </>
             )}{" "}
           </div>{" "}
-          <div className="mt-2">
-            <MySwitch
-              checked={isPub}
-              onChange={isPubChange}
-              leftEl="My library"
-              rightEl="Public collections"
-            />
-          </div>
         </div>
       </div>
     </>

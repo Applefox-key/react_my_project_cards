@@ -5,11 +5,11 @@ import BaseAPI from "../../API/BaseAPI";
 import { usePopup } from "../../hooks/usePopup";
 import { useQuery } from "../../hooks/useQuery";
 import cl from "./PlayLists.module.scss";
-import { FaMinus } from "react-icons/fa";
 import { editPlaylistHlp } from "../../utils/editCollectionHlp";
 import { useTextFilter } from "../../hooks/useCollectSelection";
 import { useNavigate } from "react-router-dom";
-import BtnPlayMenu from "../UI/PlayMenu/BtnPlayMenu";
+import GamesMenu from "../UI/GamesMenu/GamesMenu";
+import { BsCollectionPlay } from "react-icons/bs";
 
 const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
   const [list, setList] = useState([]);
@@ -82,19 +82,16 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
               onClick={() => listFn.editMode(el)}>
               <div className={cl.firstRow}>
                 {window.location.hash !== "#1" && (
-                  <div className={cl.btnGames}>
-                    <BtnPlayMenu
-                      collection={el}
-                      playlist={true}
-                      small={window.location.hash !== "#1"}
-                      verticals={window.location.hash !== "#1"}
-                    />
+                  <div className={cl.playmenu}>
+                    <GamesMenu cardSet={el} isPlaylist />
                   </div>
-                )}
+                )}{" "}
                 <div
                   className={cl.listHeader}
                   onClick={() => listFn.editMode(el)}>
-                  {el.name}
+                  {" "}
+                  <BsCollectionPlay />
+                  <span>{el.name}</span>
                 </div>
                 <button
                   onClick={(e) => {
@@ -119,15 +116,6 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                       );
                     }}>
                     {col.name}
-                    <div className={cl["item-btns"]}>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          listFn.delColl(el, col.id);
-                        }}>
-                        <FaMinus />
-                      </button>
-                    </div>
                   </div>
                 ))}
               </div>

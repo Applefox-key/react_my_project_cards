@@ -40,13 +40,12 @@ const ModalFileContent = ({ setVisible, setContent, colId }) => {
 
   return (
     <MyModal
-      showmodal={true}
+      showmodal
       setshowmodal={setVisible}
       fullscreen
       size="md"
       dialogClassName="h100"
       title={"Add new content from .txt file"}>
-      {" "}
       <div>
         <Popup />{" "}
       </div>

@@ -30,6 +30,7 @@ export const GO_TO = {
   editCard: "/collections/my/edit",
   profile: "/profile",
   print: "/print",
+  categoriesManager: "/categories",
 };
 
 export const publicRoutes = [

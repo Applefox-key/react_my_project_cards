@@ -32,7 +32,7 @@ const Result = ({ text, count, mist }) => {
             <div className={[cl["card-front"], cl["card-result"]].join(" ")}>
               <div>
                 <h1 className="display-1">{text}</h1>
-                {count && <GameCount count={count} result={true} />}
+                {count && <GameCount count={count} result />}
                 <div>
                   <h1 className={cl["result-again"]} onClick={againFn}>
                     Play again
