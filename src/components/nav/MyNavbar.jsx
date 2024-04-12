@@ -64,6 +64,7 @@ const MyNavbar = () => {
               {navArr.map((item, i) =>
                 item.hasOwnProperty("groupMenu") ? (
                   <MyNavSubmenu
+                    key={i}
                     navArr={item.groupMenu}
                     group={item.title.toUpperCase()}
                   />

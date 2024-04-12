@@ -555,6 +555,11 @@ input {
     left: 0;
     top: -2rem;
     width: fit-content;
+
+
+    @media screen and (max-width: 500px) {
+      width: unset;
+    }
   }
 }
 
@@ -571,21 +576,27 @@ input {
 .count {
   display: flex;
   justify-content: center;
-  margin-right: 1rem;
   transition: all 0.8s ease-in-out;
   position: absolute;
   right: 0;
   top: 0rem;
   z-index: 901;
+  margin-right: 2rem;
 
   @media screen and (max-width: 400px) {
     position: unset;
     margin-right: 0.5rem;
   }
 
+  @media screen and (max-width: 500px) {
+    position: unset;
+    margin-right: 0.5rem;
+    margin-top: -25px;
+  }
+
   @media screen and (max-width: 900px) {
 
-    margin-right: 2px;
+    margin-right: 5px;
   }
 }
 
@@ -910,4 +921,8 @@ input {
 
 #i_name {
   background-color: transparent;
+}
+
+.arrhide {
+  opacity: 0;
 }

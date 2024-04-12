@@ -31,15 +31,8 @@ const ForgotBox = ({ setLoginMode }) => {
   return (
     <div className={cl.containerlogin}>
       <div className={cl["login-box"]}>
-        {" "}
-        <div className={cl["box-header"]}>
-          <h2 className={cl.h2login}>Password restore</h2>
-        </div>{" "}
         <div className="mb-2">
-          {" "}
-          <Link className={cl.links} onClick={() => setLoginMode(1)}>
-            Back to login form
-          </Link>
+          <h2 className={cl.h2login}>Password restore</h2>
         </div>
         <p
           style={{
@@ -50,11 +43,10 @@ const ForgotBox = ({ setLoginMode }) => {
           enter your email and click SUBMIT, you will receive an email with a
           link to change your password
         </p>
-        <label htmlFor="username">Email</label>
-        <br />
         <input
           value={email}
           type="email"
+          placeholder="email"
           id="email"
           onChange={(e) => {
             if (err) setErr("");
@@ -70,6 +62,9 @@ const ForgotBox = ({ setLoginMode }) => {
             SUBMIT
           </button>
         )}
+        <Link className={cl.links} onClick={() => setLoginMode(1)}>
+          Back to login form
+        </Link>
       </div>{" "}
     </div>
   );

@@ -353,6 +353,66 @@
 
 
 
+// .cardCArrow-enter-done {
+//   animation: flip;
+//   animation-duration: 1000ms;
+// }
+
+// .cardCArrow-exit {
+//   animation: flip;
+//   animation-duration: 1000ms;
+// }
+
+// .cardCArrow-exit-done {
+//   animation: flip;
+//   animation-duration: 1000ms;
+// }
+
+// .cardCArrow-enter-done {
+//   overflow: visible;
+//   animation: flipInY;
+//   animation-duration: 1000ms;
+// }
+.cardCArrow-enter {
+  overflow: visible;
+  animation: headShake;
+  animation-duration: 1000ms;
+}
+
+.cardCArrow-exit {
+  overflow: visible;
+  animation: headShake;
+  animation-duration: 500ms;
+}
+
+.cardCArrow-exit-active {
+  overflow: visible;
+  animation-duration: 500ms;
+}
+
+// .cardCArrowL-enter {
+//   overflow: visible;
+//   animation: pulse;
+//   animation-duration: 1000ms;
+// }
+
+// .cardCArrowL-exit {
+//   overflow: visible;
+//   animation: pulse;
+//   animation-duration: 500ms;
+// }
+
+// .cardCArrowL-exit-active {
+//   overflow: visible;
+//   animation-duration: 500ms;
+// }
+
+// .cardCArrow-exit-done {
+//   overflow: visible;
+//   animation: flipOutY;
+//   animation-duration: 1000ms;
+// }
+
 .sideb-enter {
   animation: slideInDown;
   animation-duration: 500ms;

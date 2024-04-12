@@ -23,10 +23,10 @@ const Collections = () => {
   const latestStateRef = useRef();
   const { userAuth, updateFilterG } = useAuth(true);
   const pageSet = restoreSettings(isPublic);
-
   const [viewmode, setViewmode] = useState(
-    !!userAuth.settings.listView ? 1 : 0
+    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
   );
+
   const [commonSettings, setCommonSettings] = useState({
     selectedCategorypub: pageSet.selectedCategorypub,
     selectedCategorymy: pageSet.selectedCategorymy,
@@ -69,7 +69,9 @@ const Collections = () => {
 
   useEffect(() => {
     if (window.location.hash === "")
-      setViewmode(userAuth.settings.listView ? 1 : 0);
+      setViewmode(
+        userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
+      );
     else setViewmode(window.location.hash === "#1" ? "1" : "0");
     return () => saveSet(latestStateRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -47,33 +47,25 @@ const LoginBox = ({ setLoginMode }) => {
   return (
     <div className={cl.containerlogin}>
       <div className={cl["login-box"]}>
-        {" "}
         <div className="mb-2">
-          <div className={cl["box-header"]}>
-            <h2 className={cl.h2login}>Log In</h2>
-          </div>{" "}
-          <h4>or</h4>
-          <Link className={cl.links} onClick={() => setLoginMode(2)}>
-            Create Your Account
-          </Link>
+          <h2>Login</h2>
         </div>
-        <label htmlFor="username">Email</label>
         <input
           value={email}
           type="email"
+          placeholder="Email"
           id="email"
           onChange={(e) => {
             if (err) setErr("");
             setEmail(e.target.value);
           }}
         />
-        <br />
-        <label htmlFor="password">Password</label>
         <input
           value={password}
           onKeyDown={onKeyPress}
           type="password"
           id="password"
+          placeholder="password"
           onChange={(e) => {
             if (err) setErr("");
             setPassword(e.target.value);
@@ -83,11 +75,14 @@ const LoginBox = ({ setLoginMode }) => {
         <Link className={cl.links} onClick={() => setLoginMode(3)}>
           Forgot My Password
         </Link>
-        <br />
-        <br />
-        <button type="submit" className={cl.btnlogin} onClick={login}>
-          Sign In
-        </button>
+        <p>
+          <button type="submit" className={cl.btnlogin} onClick={login}>
+            LOGIN
+          </button>
+        </p>
+        <Link className={cl.links} onClick={() => setLoginMode(2)}>
+          Create Your Account
+        </Link>
       </div>{" "}
     </div>
   );

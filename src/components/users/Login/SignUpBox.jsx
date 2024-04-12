@@ -49,16 +49,11 @@ const SignUpBox = ({ setLoginMode }) => {
   return (
     <div className={cl.containerlogin}>
       <div className={cl["login-box"]}>
-        <div className={cl["box-header"]}>
-          <h2 className={cl.h2login}>Register</h2>
-        </div>{" "}
         <div className="mb-2">
-          <h4>or</h4>
-          <Link className={cl.links} onClick={() => setLoginMode(1)}>
-            Back to login form
-          </Link>
+          <p>
+            <h2>Register</h2>
+          </p>
         </div>
-        <label htmlFor="username">Email</label>
         <input
           style={{ borderColor: isEmailValid(email) ? "green" : "red" }}
           value={email}
@@ -71,7 +66,6 @@ const SignUpBox = ({ setLoginMode }) => {
           }}
         />
         <br />
-        <label htmlFor="password">Password</label>
         <input
           style={{ borderColor: password ? "green" : "red" }}
           value={password}
@@ -83,7 +77,7 @@ const SignUpBox = ({ setLoginMode }) => {
             setPassword(e.target.value);
           }}
         />
-        <label htmlFor="username">Name</label>
+
         <input
           value={name}
           type="string"
@@ -96,6 +90,9 @@ const SignUpBox = ({ setLoginMode }) => {
         <button type="submit" className={cl.btnlogin} onClick={newUser}>
           Сreate an account
         </button>
+        <Link className={cl.links} onClick={() => setLoginMode(1)}>
+          Back to login form
+        </Link>
       </div>
     </div>
   );

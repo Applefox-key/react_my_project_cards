@@ -13,9 +13,7 @@ import { sortByField } from "../../utils/arraysFunc";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
-  // const [sideBar, setSideBar] = useState();
   const [content, setContent] = useState();
-  // const { userAuth } = useAuth(true);
   const [mode, setMode] = useState(0);
   const [collection, setCollection] = useState(PageParam);
   const setPopup = usePopup();

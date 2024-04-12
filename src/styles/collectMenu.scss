@@ -20,6 +20,7 @@
     margin-right: 0;
 
 
+
   }
 
   .viewBtn {
@@ -36,7 +37,7 @@
 }
 
 .width150 {
-  min-width: 150px;
+  min-width: 160px;
 }
 
 .dropdownbtn {
@@ -137,7 +138,7 @@
   margin: 0 auto;
   min-height: 2vw;
   border: none;
-  font-size: 10px;
+  font-size: 14px;
   display: flex;
   padding-left: 1rem;
   padding-top: 1rem;
@@ -520,5 +521,13 @@
 
   @media screen and ((max-width: 600px)) {
     display: none;
+  }
+}
+
+#sortBtn {
+  &:hover {
+    svg {
+      animation: swing 0.8s forwards;
+    }
   }
 }

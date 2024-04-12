@@ -18,7 +18,9 @@ const Playlists = () => {
   const latestStateRef = useRef();
   const pageSet = restoreSettings(isPublic);
   const { userAuth } = useAuth(true);
-  const [viewmode, setViewmode] = useState(userAuth.settings.listView ? 1 : 0);
+  const [viewmode, setViewmode] = useState(
+    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
+  );
   const [commonSettings, setCommonSettings] = useState({
     filter: pageSet.filter,
     editEl: "",
@@ -45,7 +47,9 @@ const Playlists = () => {
 
   useEffect(() => {
     if (window.location.hash === "")
-      setViewmode(userAuth.settings.listView ? 1 : 0);
+      setViewmode(
+        userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
+      );
     else setViewmode(window.location.hash === "#1" ? "1" : "0");
     return () => saveSet(latestStateRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps

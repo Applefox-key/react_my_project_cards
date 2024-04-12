@@ -1,27 +1,30 @@
+@import 'animate.css';
+
 .dropdown-toggle {
     position: relative;
     border: none;
-    width: 8rem;
+    width: 10rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
 
+
     &:hover {
 
         background-color: var(--color-fill);
         border: 0.5px solid var(--border-fill);
+
+
     }
 
     svg {
-        margin-right: 1px;
-        padding: 2px;
+        margin-right: 5px;
+        // padding: 2px;
         font-size: 14px;
 
-        &:hover {
-            background-color: var(--color-fill);
-            border: 0.5px solid var(--border-fill);
-        }
+
+
     }
 }
 
@@ -31,7 +34,7 @@
     text-align: left;
     cursor: pointer;
     background-color: var(--color-fill);
-    width: 8rem;
+    width: 10rem;
     z-index: 1100;
 
     @media screen and (max-width:900px) {

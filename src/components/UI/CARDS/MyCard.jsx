@@ -28,16 +28,18 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
           </div>
         )}
         {props.leftBtn && (
-          <button className={cl.leftbtn} {...props.leftBtn}>
-            <div
-              className={
-                props.leftBtn.fontstyle
-                  ? props.leftBtn.fontstyle
-                  : "cardangle pe-2"
-              }>
-              {props.leftBtn.name}
-            </div>
-          </button>
+          <CSSTransition in={flipped} timeout={800} classNames="cardCArrow">
+            <button className={cl.leftbtn} {...props.leftBtn}>
+              <div
+                className={
+                  props.leftBtn.fontstyle
+                    ? props.leftBtn.fontstyle
+                    : "cardangle pe-2"
+                }>
+                {props.leftBtn.name}
+              </div>
+            </button>
+          </CSSTransition>
         )}
         <button
           className={cl["card-button"]}
@@ -52,16 +54,22 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
           </CSSTransition>{" "}
         </button>
         {props.rightBtn && (
-          <button className={cl.rightBtn} {...props.rightBtn}>
-            <div
-              className={
-                props.rightBtn.fontstyle
-                  ? props.rightBtn.fontstyle
-                  : "cardangle pe-2"
-              }>
-              {props.rightBtn.name}
-            </div>
-          </button>
+          <CSSTransition
+            // key={flipped ? "flipped" : "notFlipped"}
+            in={flipped}
+            timeout={800}
+            classNames="cardCArrow">
+            <button className={cl.rightBtn} {...props.rightBtn}>
+              <div
+                className={
+                  props.rightBtn.fontstyle
+                    ? props.rightBtn.fontstyle
+                    : "cardangle pe-2"
+                }>
+                {props.rightBtn.name}
+              </div>
+            </button>
+          </CSSTransition>
         )}
       </div>
     </>
