@@ -70,7 +70,7 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
         maxHeight = Math.floor(boxElement.clientHeight);
 
         if (element.clientHeight > maxHeight || element.clientWidth > maxWidth)
-          element["style"].overflow = `auto`;
+          element["style"].overflow = `visible`;
       });
     }
     // }

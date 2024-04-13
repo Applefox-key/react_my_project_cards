@@ -59,7 +59,10 @@ const GamesMenu = ({
                 onClick={
                   item.type === "item" && item.onClick
                     ? item.onClick
-                    : () => router(item.href)
+                    : (e) => {
+                        e.stopPropagation();
+                        router(item.href);
+                      }
                 }>
                 {item.symb}
               </div>

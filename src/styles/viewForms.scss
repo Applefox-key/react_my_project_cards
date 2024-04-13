@@ -37,6 +37,7 @@
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
+    // transition: all 8s ease;
 
     @media screen and (max-width: 900px) {
         justify-content: center;
@@ -55,12 +56,21 @@
     .oneCollect-wrap {
         position: relative;
         padding: 5px;
+        // transition: all 8s ease;
+
+        transition: all 0.4s ease-in-out;
 
         @media screen and (max-width: 600px) {
             margin-bottom: 10px;
         }
 
 
+        .look {
+            position: absolute;
+            top: 28px;
+            right: 32px;
+            z-index: 1;
+        }
 
         .oneCollect {
             background-color: var(--background-wrap);
@@ -72,12 +82,13 @@
             position: relative;
             padding: 10px;
             border-radius: 10px;
-            transition: all 0.4s ease-in-out;
+            // transition: all 0.4s ease-in-out;
             cursor: help;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            transition: inherit;
 
             @media screen and (max-width: 600px) {
                 margin: 5px;
@@ -88,6 +99,8 @@
                 bottom: -10px;
                 left: 0;
                 display: none;
+                transition: inherit;
+
             }
 
             .header {
@@ -106,7 +119,8 @@
                 opacity: 0.8;
                 color: var(--color-nav);
                 align-items: center;
-                transition: all 0.4s ease-in-out;
+                transition: inherit;
+                // transition: all 0.4s ease-in-out;
                 margin-top: 5px;
 
                 @media screen and (max-width: 900px) {
@@ -128,6 +142,8 @@
 
             .collectBody {
                 display: none;
+                transition: inherit;
+
             }
 
             .content-row {
@@ -162,7 +178,7 @@
         }
 
         .btns-div {
-            transition: all 0.4s ease-in-out;
+            transition: inherit;
 
 
 
@@ -222,7 +238,8 @@
                 left: unset;
                 right: 1px;
 
-                &:hover {
+                &:hover,
+                .hov {
                     background-color: var(--background-header);
                     transform: scale(1.2);
                     opacity: 1;
@@ -296,7 +313,16 @@
             }
         }
 
+        // &:active,
+        // &:focus-within {
+        //     background-color: red;
+        // }
+
+
+
         &:hover {
+
+
             .header {
 
                 white-space: nowrap;

@@ -56,7 +56,7 @@ const HomePage = () => {
             Let's get to know each other better!
           </div>
         </div>
-      </div>
+      </div>{" "}
       <div className="w-10">{/* <Logo /> */}</div>
     </div>
   );

@@ -118,14 +118,16 @@
     color: var(--color-bg-wrap);
     z-index: 900;
     transition: all 0.2s ease-in-out;
+    background: var(--color-fill);
+    border: 1px solid var(--border-fill);
 
     @media screen and (max-width:900px) {
         margin-bottom: 0px;
     }
 
     &:hover {
-        background-color: var(--color-fill);
-        border: 1px solid var(--border-fill);
+        background-color: var(--border-fill);
+        border: 1px solid var(--color-fill);
     }
 
 }
@@ -316,7 +318,7 @@
     position: absolute;
     right: 0;
     display: inline-block;
-    width: 3.5em;
+    width: 2.5em;
     height: 2em;
     z-index: 1000;
     bottom: unset;
@@ -349,7 +351,7 @@
         height: 1.4em;
         width: 1.4em;
         border-radius: 50%;
-        left: 10%;
+        left: 22%;
         bottom: 15%;
         box-shadow: inset 8px -4px 0px 0px #fff000;
         background: var(--background);
@@ -361,7 +363,7 @@
     }
 
     input:checked+.slider:before {
-        transform: translateX(100%);
+        // transform: translateX(100%);
         box-shadow: inset 15px -4px 0px 15px #fff000;
     }
 }

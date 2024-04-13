@@ -20,11 +20,11 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
         router(`${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`);
       }}>
       <div className="oneCollect">
-        <div className="header">{oneSet.collection.name}</div>{" "}
-        <span>{oneSet.content.length}</span>{" "}
+        <div className="header">{oneSet.collection.name}</div>
+        <span>{oneSet.content.length}</span>
         {oneSet.collection.category && (
           <div className="cat_tag">{oneSet.collection.category}</div>
-        )}{" "}
+        )}
         {!!oneSet.content.length && window.location.hash !== "#1" && (
           <div className="playmenu">
             <GamesMenu cardSet={oneSet.collection} />
