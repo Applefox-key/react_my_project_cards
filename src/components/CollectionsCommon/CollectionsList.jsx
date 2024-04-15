@@ -16,7 +16,19 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
           : filtredList[i - 1].collection.category
           ? filtredList[i - 1].collection.category
           : "no category";
-      if (cur !== prew) return <p className="categoryChapter">{cur}</p>;
+      if (cur !== prew)
+        return (
+          <p
+            className="categoryChapter"
+            onClick={() =>
+              listFn.toCategory({
+                name: item.collection.category,
+                id: item.collection.categoryid,
+              })
+            }>
+            {cur}
+          </p>
+        );
     }
     if (sort === "name") {
       const cur = isNumb(item.collection.name[0])
@@ -41,7 +53,7 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
         }>
         {!filtredList || !filtredList.length ? (
           <>
-            {listFn ? (
+            {routeOne === "/collections/my" ? (
               <div className="oneCollect-wrap" onClick={listFn.addNew}>
                 <div className="oneCollect addNew">ADD NEW SET OF CARDS</div>
               </div>

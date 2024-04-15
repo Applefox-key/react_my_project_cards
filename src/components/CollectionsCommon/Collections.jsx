@@ -150,6 +150,7 @@ const Collections = () => {
               <PublicCollectionsList
                 commonSettings={commonSettings}
                 viewmode={viewmode}
+                setSettingsCommon={setSettingsCommon}
               />
             )}
           </div>

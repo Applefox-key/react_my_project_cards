@@ -8,7 +8,11 @@ export const fragment_SearchingTips = (
   const selectedCategory = isPublic
     ? commonSet.selectedCategorypub
     : commonSet.selectedCategorymy;
-  const selectedCategoryName = selectedCategory ? selectedCategory.name : "";
+  const selectedCategoryName = selectedCategory
+    ? selectedCategory.name === null
+      ? "no category"
+      : selectedCategory.name
+    : "";
   const categoryField = isPublic ? "selectedCategorypub" : "selectedCategorymy";
 
   const isSh = !isPublic && privateSet.shared;

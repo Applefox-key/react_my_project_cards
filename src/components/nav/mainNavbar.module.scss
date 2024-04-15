@@ -4,8 +4,8 @@
 .headerNav {
   width: 100%;
   background-color: var(--background-nav);
-  padding: 20px;
-  height: 120px;
+  // padding: 5px;
+  height: 49px;
   color: white;
   text-align: start;
   display: flex;
@@ -19,28 +19,28 @@
   }
 
   @media screen and (max-width:900px) {
-    height: 100px;
+    height: 60px;
   }
 
   h1 {
-    font-size: 8rem;
+    font-size: 4rem;
     margin-right: 2rem;
     margin-bottom: -2.5rem;
 
     @media screen and (max-width:600px) {
-      font-size: 36px;
+      font-size: 26px;
     }
 
     @media screen and (max-width:900px) {
-      font-size: 36px;
+      font-size: 26px;
     }
   }
 
   span {
     font-family: 'Kurale', serif;
     text-align: end;
-    font-size: 40px;
-    font-style: italic;
+    font-size: 24px;
+    // font-style: italic;
 
     @media screen and (max-width:600px) {
       font-size: 16px;
@@ -128,7 +128,6 @@
 
     @media screen and (max-width: 900px) {
       margin-right: 12px;
-      margin-right: 3px;
       font-size: 12px;
     }
 
@@ -148,7 +147,7 @@
   display: flex;
 
   @media screen and (max-width: 900px) {
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 75%;
   }
 }
@@ -165,6 +164,10 @@
     margin-right: 12px;
     margin-right: 3px;
     font-size: 11px;
+
+    svg {
+      width: auto;
+    }
   }
 
 

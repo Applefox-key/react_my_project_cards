@@ -317,10 +317,19 @@
         // &:focus-within {
         //     background-color: red;
         // }
+        // .look {
+        //     display: none;
+        //     position: absolute;
+        // }
 
+        // &:hover {
+        //     .look {
+        //         display: block;
+        //     }
+        // }
 
-
-        &:hover {
+        &:hover,
+        .isHover {
 
 
             .header {
@@ -382,6 +391,70 @@
         }
     }
 
+    // .isHover {
+
+    //     .oneCollect {
+    //         .header {
+
+    //             white-space: nowrap;
+    //             BACKGROUND: var(--color-intense);
+    //             COLOR: WHITE;
+    //             border-bottom: 0.5px solid var(--border-fill);
+    //             font-size: 14px;
+    //             justify-content: space-between;
+    //             height: auto;
+
+    //             @media screen and (max-width: 600px) {
+    //                 padding-left: 25px;
+    //             }
+    //         }
+
+    //         .collectBody {
+    //             display: block;
+    //         }
+
+    //         .playmenu {
+    //             display: block;
+    //         }
+
+    //         .btns-div {
+
+
+    //             .sharebtn,
+    //             .favoritebtn {
+    //                 display: block;
+    //             }
+
+    //             .shareSymb,
+    //             .favoriteSymb {
+    //                 display: none;
+    //             }
+
+    //             .delbtn {
+    //                 display: block;
+    //             }
+
+    //             .mypbbtn {
+    //                 display: block;
+    //             }
+    //         }
+
+    //         span {
+    //             display: none;
+    //             border: 1px solid var(--color-checked);
+    //             z-index: 4;
+    //             color: var(--color-checked);
+    //         }
+
+
+    //         transform: translateY(-5px);
+    //         box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    //     }
+    // }
+
+
+
+
     .categoryChapter,
     .letterChapter {
         font-size: 13px;
@@ -419,6 +492,11 @@
         text-align: center;
         transform: rotate(180deg)skewY(10deg);
         box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            transform: rotate(180deg)skewY(10deg) translateY(5px);
+        }
 
         @media screen and (max-width: 900px) {
             writing-mode: inherit;
@@ -427,6 +505,10 @@
             text-align: center;
             align-items: center;
             justify-content: center;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
         }
     }
 
@@ -509,9 +591,15 @@
         text-transform: uppercase;
         writing-mode: inherit;
         text-orientation: inherit;
-
+        transition: all 0.4s ease-in-out;
     }
 
+    .categoryChapter {
+        &:hover {
+            transform: translateX(-5px);
+        }
+
+    }
 
     @media screen and (max-width: 900px) {
 

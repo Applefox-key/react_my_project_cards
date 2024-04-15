@@ -6,20 +6,30 @@ import CollectionCardBtns from "./CollectionCardBtns";
 import GamesMenu from "../UI/GamesMenu/GamesMenu";
 
 const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
+  // const [isHover, setIsHover] = useState(false);
   const router = useNavigate();
   const generateContent = (el) => {
     if (el.question) return el.question;
     if (el.answer) return el.answer;
     return "picture cards";
   };
-
+  const toSet = (e) => {
+    e.stopPropagation();
+    router(`${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`);
+  };
+  // const viewSet = (e) => {
+  //   e.stopPropagation();
+  //   setIsHover(!isHover);
+  // };
   return (
     <div
-      className="oneCollect-wrap "
-      onClick={(e) => {
-        router(`${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`);
-      }}>
+      // className={isHover ? "oneCollect-wrap isHover" : "oneCollect-wrap"}
+      className={"oneCollect-wrap"}
+      onClick={toSet}>
       <div className="oneCollect">
+        {/* <div className="look" onClick={viewSet}>
+          look
+        </div> */}
         <div className="header">{oneSet.collection.name}</div>
         <span>{oneSet.content.length}</span>
         {oneSet.collection.category && (
@@ -37,7 +47,7 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
             </div>
           ))}
         </div>
-      </div>{" "}
+      </div>
       <CollectionCardBtns {...{ oneSet, routeOne, listFn }} />
     </div>
   );

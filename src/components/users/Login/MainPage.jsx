@@ -5,7 +5,6 @@ import AboutBox from "../../AboutPage/AboutBox";
 const MainPage = () => {
   return (
     <div>
-      {" "}
       <br />
       <div className="main_container">
         <AboutBox />

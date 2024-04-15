@@ -12,7 +12,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
   const setPopup = usePopup();
   return (
     <div className="btns-div">
-      {!listFn ? (
+      {routeOne !== "/collections/my" ? (
         oneSet.isMy ? (
           <div className="mypbbtn" title={"my library"}>
             <FiUserCheck />

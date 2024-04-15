@@ -10,7 +10,7 @@ import CategoriesManager from "../components/CategorySelection/CategoriesManager
 import PublicItemCardView from "../components/CollectionsPublic/PublicItemCardView";
 import MainPage from "../components/users/Login/MainPage";
 import Login from "../components/users/Login/Login";
-import AboutPage from "../components/AboutPage/AboutPage";
+import FAQPage from "../components/AboutPage/FAQPage";
 import ForgotPassword from "../components/users/Login/ForgotPassword";
 import Collections from "../components/CollectionsCommon/Collections";
 import UserOneCollection from "../components/CollectionsPrivate/OneCollection/UserOneCollection";
@@ -19,7 +19,8 @@ import EditCard from "../components/CollectionsPrivate/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
 import PlayLists from "../components/Playlists/PlayLists";
 import PartCard from "../components/games/PartCard";
-import HomePage from "../components/HomePage";
+
+import Home from "../components/HomePage/Home";
 
 export const GO_TO = {
   about: "/about",
@@ -34,11 +35,11 @@ export const GO_TO = {
 };
 
 export const publicRoutes = [
-  { path: "/home", element: <HomePage />, nameNav: "Home" },
+  { path: "/home", element: <Home />, nameNav: "Home" },
   { path: "/about", element: <MainPage />, nameNav: "About" },
   { path: "/login/:email", element: <Login />, nameNav: "" },
-  { path: "/home", element: <Login />, nameNav: "" },
-  { path: "/login", element: <Login />, nameNav: "Login" },
+  // { path: "/home", element: <Login />, nameNav: "" },
+  { path: "/login", element: <Login />, nameNav: "" },
   { path: "/*", element: <Login />, nameNav: "" },
   {
     path: "/resetpassword/:resetToken",
@@ -48,8 +49,8 @@ export const publicRoutes = [
 ];
 
 export const privateRoutes = [
-  { path: "/home", element: <HomePage />, nameNav: "Home" },
-  { path: "/about", element: <AboutPage />, nameNav: "FAQ" },
+  { path: "/home", element: <Home />, nameNav: "Home" },
+  { path: "/about", element: <FAQPage />, nameNav: "FAQ" },
   {
     path: "/*",
     element: <Collections />,

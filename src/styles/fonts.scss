@@ -17,6 +17,16 @@
 
 .fs-arr {
     font-size: 26px;
+
+    @media screen and (max-width:900px) {
+
+        font-size: 14px;
+
+        svg {
+            width: 100%;
+            margin-left: 5px;
+        }
+    }
 }
 
 .fontSize_vw {

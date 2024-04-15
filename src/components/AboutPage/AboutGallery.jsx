@@ -72,29 +72,26 @@ const AboutGallery = () => {
 
   return (
     <div className={clA["cardbox"]}>
-      <div className={clA.yellow}>Let's get to know each other better!</div>{" "}
       {items ? (
         <CSSTransition
           appear={true}
           in={true}
           timeout={500}
           classNames="result">
-          <div>
-            <div className=" me-5 position-relative">
-              {/* <AnimatedArrowBtn onClick={prew} />{" "} */}
-              {/* <button onClick={prew} className={clA["collect_button"]}>
+          <div className="position-relative">
+            {/* <AnimatedArrowBtn onClick={prew} />{" "} */}
+            {/* <button onClick={prew} className={clA["collect_button"]}>
                 <MdOutlineNavigateNext />
               </button> */}
-              <OneCardG
-                anim={anim}
-                direction={direction}
-                twoDir
-                item={items[itemNum]}
-                clgal={cl.container_galleryAbout}
-                rightBtn={rightBtn}
-                animClassL="fadeinout"
-              />
-            </div>
+            <OneCardG
+              anim={anim}
+              direction={direction}
+              twoDir
+              item={items[itemNum]}
+              clgal={cl.container_galleryAbout}
+              rightBtn={rightBtn}
+              animClassL="fadeinout"
+            />
           </div>
         </CSSTransition>
       ) : (

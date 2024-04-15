@@ -36,10 +36,17 @@
     background-color: var(--color-fill);
     width: 10rem;
     z-index: 1100;
+    margin-top: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    li {
+        margin: 3px 0;
+    }
 
     @media screen and (max-width:900px) {
         font-size: 14px;
-        padding-left: 10px;
+
     }
 
 }

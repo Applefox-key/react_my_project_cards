@@ -12,6 +12,7 @@ const UsersCollections = ({
   commonSettings,
   privateSettings,
   setSettingsPrivat,
+  setSettingsCommon,
 }) => {
   const [collectionList, setCollectionList] = useState([]);
   const [getCollections, isLoading, error] = useQuery(async () => {
@@ -28,6 +29,9 @@ const UsersCollections = ({
   const setPopup = usePopup();
 
   const listFn = {
+    toCategory: (cat) => {
+      setSettingsCommon("selectedCategorymy", cat);
+    },
     delColl: async (element) => {
       if (!window.confirm("Delete this collection?")) return;
       try {

@@ -19,8 +19,8 @@ const MyNavbar = () => {
   };
   const headerBig =
     window.location.pathname.includes("home") ||
-    window.location.pathname.includes("about") ||
-    window.location.pathname.includes("login");
+    window.location.pathname.includes("about");
+  //  ||    window.location.pathname.includes("login")
   const isPlay =
     window.location.pathname.includes("/play_") ||
     window.location.pathname.includes("/print/");
@@ -84,11 +84,20 @@ const MyNavbar = () => {
               )}
             </div>
 
-            {userAuth.isAuth && (
+            {userAuth.isAuth ? (
               <div className="d-flex">
                 <FilterLS filter="" setFilter={() => {}} />
                 <MyNavUserImg logout={logout} />{" "}
               </div>
+            ) : (
+              <Link
+                to={"./login"}
+                id={"path./login"}
+                className={
+                  window.location.pathname.includes("login") ? cl.active : ""
+                }>
+                LOGIN
+              </Link>
             )}
           </div>
         </>

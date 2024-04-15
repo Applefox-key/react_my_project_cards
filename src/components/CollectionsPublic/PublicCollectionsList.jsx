@@ -6,13 +6,17 @@ import { GO_TO } from "../../router/routes";
 import CollectionsList from "../CollectionsCommon/CollectionsList";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 
-const PublicCollectionsList = ({ commonSettings }) => {
+const PublicCollectionsList = ({ commonSettings, setSettingsCommon }) => {
   const [list, setlist] = useState([]);
   const [getPbCollWithCont, isLoading] = useQuery(async () => {
     const col = await BaseAPI.getPublicCollectionsAndContent();
     setlist(col);
   });
-
+  const listFn = {
+    toCategory: (cat) => {
+      setSettingsCommon("selectedCategorypub", cat);
+    },
+  };
   useEffect(() => {
     getPbCollWithCont();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,7 +35,7 @@ const PublicCollectionsList = ({ commonSettings }) => {
       ) : (
         <div className="d-flex flex-wrap justify-content-center">
           <CollectionsList
-            selectedCategory={commonSettings.selectedCategorypub}
+            listFn={listFn}
             filtredList={filtredList}
             routeOne={GO_TO.pubCollect}
             sort={commonSettings.sorting.field}
