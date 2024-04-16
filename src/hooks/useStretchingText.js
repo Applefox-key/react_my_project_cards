@@ -18,7 +18,6 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
         let maxFontSize = fontSize;
 
         element["style"].fontSize = `${fontSize}px`;
-        console.log(element.innerText);
 
         while (fontSize !== minFontSize) {
           element["style"].fontSize = `${fontSize}px`;

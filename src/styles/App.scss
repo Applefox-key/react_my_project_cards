@@ -95,6 +95,9 @@
     flex-direction: column-reverse;
   }
 
+  @media screen and (min-width: 1400px) {
+    justify-content: center;
+  }
 }
 
 .home-page {
