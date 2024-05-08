@@ -41,7 +41,7 @@ const BaseAPI = {
 
     try {
       let result = await axios(axiosConfig);
-      if ((method = "get")) return result.data;
+      if (method === "get") return result.data;
       return { status: true, message: "success" };
     } catch (error) {
       if (error.code === "ERR_NETWORK") return { error: error.message };
