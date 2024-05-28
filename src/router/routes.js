@@ -21,6 +21,7 @@ import PlayLists from "../components/Playlists/PlayLists";
 import PartCard from "../components/games/PartCard";
 
 import Home from "../components/HomePage/Home";
+import UserLibrary from "../components/users/UserLibrary";
 
 export const GO_TO = {
   about: "/about",
@@ -31,7 +32,9 @@ export const GO_TO = {
   editCard: "/collections/my/edit",
   profile: "/profile",
   print: "/print",
+  playlists: "/playlist",
   categoriesManager: "/categories",
+  library: "/myLibrary",
 };
 
 export const publicRoutes = [
@@ -62,18 +65,21 @@ export const privateRoutes = [
     element: <Collections />,
     nameNav: "Collections",
     group: "My library",
+    groupPath: "/MyLibrary",
   },
   {
     path: "/playlist",
     element: <PlayLists />,
     nameNav: "Playlists",
     group: "My library",
+    groupPath: "/MyLibrary",
   },
   {
     path: "/categories",
     element: <CategoriesManager />,
     nameNav: "Categories",
     group: "My library",
+    groupPath: "/MyLibrary",
   },
   {
     path: "/collections/pub",
@@ -94,6 +100,7 @@ export const privateRoutes = [
   },
   { path: "/collections/pub/:id/:name", element: <PublicOneCollection /> },
   { path: "/collections/:tab", element: <Collections /> },
+  { path: "/mylibrary", element: <UserLibrary /> },
 
   { path: "/play_timecard/:tab/:id/:name", element: <TimeCard /> },
   { path: "/play_cards/:tab/:mode/:id/:name", element: <CardsGallery /> },

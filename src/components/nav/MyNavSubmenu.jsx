@@ -5,14 +5,14 @@ import cl from "./mainNavbar.module.scss";
 
 import { IoMdArrowDropdown } from "react-icons/io";
 
-const MyNavSubmenu = ({ navArr, group }) => {
+const MyNavSubmenu = ({ navArr, group, groupPath }) => {
   const clName = () => {
     return navArr.some((el) => window.location.pathname.includes(el.path))
       ? [cl.dropdown, cl.active].join(" ")
       : cl.dropdown;
   };
   return (
-    <div className={clName()}>
+    <Link className={clName()} to={groupPath}>
       {group}
       <IoMdArrowDropdown />
       <div>
@@ -28,7 +28,7 @@ const MyNavSubmenu = ({ navArr, group }) => {
           </Link>
         ))}
       </div>
-    </div>
+    </Link>
   );
 };
 

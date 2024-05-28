@@ -53,11 +53,6 @@ const UserOneCollection = () => {
                 content: content,
               }}
             />{" "}
-            {/* <p
-              className="backBtnText"
-              onClick={(e) => router(GO_TO.myCollect + window.location.hash)}>
-              My library
-            </p>{" "} */}
           </div>
         )}
 

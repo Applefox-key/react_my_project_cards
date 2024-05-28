@@ -293,7 +293,7 @@
                 background: transparent;
                 border: none;
                 box-shadow: none;
-                top: 25px;
+                top: 20px;
                 left: unset;
                 right: 30px;
                 font-size: 10px;
@@ -441,6 +441,7 @@
                 font-size: 14px;
                 justify-content: space-between;
                 height: auto;
+                border-radius: 5px;
 
                 @media screen and (max-width: 600px) {
                     padding-left: 25px;

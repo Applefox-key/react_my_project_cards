@@ -52,9 +52,11 @@
     font-size: 18px;
     color: #5f6368;
     padding: 2px 0;
+    transition: all 0.4s ease-in-out;
 
     &:hover {
         transform: translateY(-5px);
+        color: var(--color-intense);
     }
 }
 
@@ -120,7 +122,12 @@
     width: 260px;
     background-color: var(--background-header);
     color: var(--color-bg-wrap);
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding-bottom: 1px;
+    // border-radius: ;
 }
+
 
 .body-after-btn-horizontal {
     z-index: 3;

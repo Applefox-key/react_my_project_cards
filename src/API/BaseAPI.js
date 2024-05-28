@@ -41,7 +41,9 @@ const BaseAPI = {
 
     try {
       let result = await axios(axiosConfig);
-      if (method === "get") return result.data;
+      if (method === "get" || url === "/users/login") return result.data;
+      if (!!result.data && Object.keys(result.data).length !== 0)
+        return result.data;
       return { status: true, message: "success" };
     } catch (error) {
       if (error.code === "ERR_NETWORK") return { error: error.message };
@@ -407,6 +409,7 @@ const BaseAPI = {
     };
     let result = await this.serverReq("post", "/users/login", false, reqData);
     if (result.error) throw new Error(result.error);
+    if (!result.token) throw new Error("no new session");
 
     let token = result.token;
     localStorage.setItem("Auth", "true");

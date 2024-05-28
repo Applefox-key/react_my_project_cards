@@ -38,7 +38,13 @@ const CollectionsMenu = (props) => {
         <div className="menufind">
           <div className="d-flex align-items-center">
             <h1>
-              {isPublic ? "Public library" : "My library"}
+              {isPublic ? (
+                "Public library"
+              ) : (
+                <span className="pointer" onClick={() => router("/myLibrary")}>
+                  My library
+                </span>
+              )}
               <span className="pointer" onClick={ToCollections}>
                 / Collections
               </span>

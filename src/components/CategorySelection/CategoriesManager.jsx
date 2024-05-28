@@ -134,7 +134,7 @@ const CategoriesManager = ({ isModal = false }) => {
                       className={cl.hidenBtn}
                       onClick={(e) => {
                         e.stopPropagation();
-                        rowsActons.edit(el.id === "new" ? "newCancel" : null);
+                        rowsActons.deleteOne(el);
                       }}>
                       delete
                     </button>

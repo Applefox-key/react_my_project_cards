@@ -26,8 +26,11 @@ const OneCollectionMenu = (props) => {
     props.setContent(newVal);
   };
   const router = useNavigate();
-  const ToCollections = () => {
+  const toCollections = () => {
     router(GO_TO.myCollect);
+  };
+  const toLibrary = () => {
+    router(GO_TO.library);
   };
   const toCat = () => {
     saveSet({
@@ -60,8 +63,11 @@ const OneCollectionMenu = (props) => {
           <div className="d-flex">
             <div className="name-collect">
               <h1 className="pointer">
-                My library /
-                <span className="pointer" onClick={ToCollections}>
+                <span className="pointer" onClick={toLibrary}>
+                  My library /
+                </span>
+
+                <span className="pointer" onClick={toCollections}>
                   Collections /
                 </span>
                 {props.colObj.collection.category && (

@@ -12,7 +12,12 @@ const PlayListsMenu = (props) => {
   return (
     <div className="string_menu">
       <div className="menufind">
-        <h1>My library / Playlists</h1>
+        <h1>
+          <span className="pointer" onClick={() => router("/myLibrary")}>
+            My library
+          </span>
+          / Playlists
+        </h1>
         <div className="view-settings">
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}

@@ -46,7 +46,7 @@ const CollectionEditModal = ({
         collection
       );
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
-      if (category.id !== collection.categoryid) changeCat(category);
+      if (!isNew && category.id !== collection.categoryid) changeCat(category);
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
       else route(`/collections/my/${collection.id}/${newName.trim()}`);
       setIsEdit(false);

@@ -34,7 +34,11 @@ const MyNavbar = () => {
         if (element.nameNav)
           if (element.hasOwnProperty("group") && element.group) {
             if (gr !== element.group) {
-              newArr.push({ groupMenu: [element], title: element.group });
+              newArr.push({
+                groupMenu: [element],
+                title: element.group,
+                groupPath: element.groupPath,
+              });
               gr = element.group;
             } else newArr[newArr.length - 1].groupMenu.push(element);
           } else {
@@ -67,6 +71,7 @@ const MyNavbar = () => {
                     key={i}
                     navArr={item.groupMenu}
                     group={item.title.toUpperCase()}
+                    groupPath={item.groupPath}
                   />
                 ) : (
                   <Link

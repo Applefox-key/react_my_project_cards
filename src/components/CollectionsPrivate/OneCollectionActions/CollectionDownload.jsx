@@ -34,7 +34,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
     }
     settextFile(window.URL.createObjectURL(data));
   };
-
+  debugger;
   return (
     <MyModal
       title="Download the collection"
@@ -78,7 +78,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
                 onChange={(e) => columnCheck(0)}
                 id="scales"
                 name="question"
-                checked={setColumnsArr[0]}
+                checked={!!columnsArr[0]}
               />
               <label for="question">question</label>
             </div>
@@ -88,7 +88,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
                 onChange={(e) => columnCheck(1)}
                 id="scales"
                 name="answer"
-                checked={setColumnsArr[1]}
+                checked={!!columnsArr[1]}
               />
               <label for="answer">answer</label>
             </div>
@@ -98,7 +98,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
                 onChange={(e) => columnCheck(2)}
                 id="scales"
                 name="note"
-                checked={setColumnsArr[2]}
+                checked={!!columnsArr[2]}
               />
               <label for="note">note</label>
             </div>
