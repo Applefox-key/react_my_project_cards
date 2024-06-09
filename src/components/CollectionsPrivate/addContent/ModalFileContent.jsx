@@ -45,7 +45,7 @@ const ModalFileContent = ({ setVisible, setContent, colId }) => {
       fullscreen
       size="md"
       dialogClassName="h100"
-      title={"Add new content from .txt file"}>
+      title={"Add new content from .txt or .xls file"}>
       <div>
         <Popup />{" "}
       </div>

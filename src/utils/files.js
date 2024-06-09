@@ -1,5 +1,19 @@
+import { parseExcel } from "./readXls";
+
 export const contentFromTxtFile = async (file, callbackForResult) => {
   if (!file) throw new Error("no file selected");
+
+  if (
+    file.type ===
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  ) {
+    try {
+      let data = await parseExcel(file);
+      callbackForResult(data);
+      // return data;
+    } catch (error) {}
+  }
+
   if (file.type !== "text/plain") throw new Error("wrong file type");
   const text = await file.text();
   const contArr = text.split(/[\r\n]/).filter((item) => item.trim());
@@ -19,6 +33,7 @@ export const contentFromTxtFile = async (file, callbackForResult) => {
 
 export const expressionsFromTxtFile = async (file, callbackForResult) => {
   if (!file) throw new Error("no file selected");
+
   if (file.type !== "text/plain") throw new Error("wrong file type");
 
   const text = await file.text();
