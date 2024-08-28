@@ -3,7 +3,6 @@ import { useState } from "react";
 import { TbSettingsAutomation } from "react-icons/tb";
 import BtnFontSize from "./BtnFontSize";
 import BtnColor from "./BtnColor";
-import { AiOutlineRollback } from "react-icons/ai";
 import {
   BsCardHeading,
   BsPhoneFlip,
@@ -12,6 +11,7 @@ import {
   BsWindowStack,
 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { RiArrowGoBackLine } from "react-icons/ri";
 const PrintingMenu = ({ refresh, mode, setMode }) => {
   const [viewOptions, setViewOptions] = useState(false);
   const router = useNavigate();
@@ -83,7 +83,7 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
           <BsPrinter />
         </button>{" "}
         <button className="backBtn" title="back" onClick={() => router(-1)}>
-          <AiOutlineRollback />
+          <RiArrowGoBackLine />
         </button>
       </div>
     </div>

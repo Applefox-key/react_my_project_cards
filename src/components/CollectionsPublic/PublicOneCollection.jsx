@@ -9,6 +9,7 @@ import "../../styles/oneCollection.scss";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import { onePartLittle } from "../../utils/cardFragment";
 import { sortByField } from "../../utils/arraysFunc";
+import { CSSTransition } from "react-transition-group";
 // import { useAuth } from "../../hooks/useAuth";
 
 const PublicOneCollection = () => {
@@ -58,29 +59,36 @@ const PublicOneCollection = () => {
             addToMyCollection={addToMyCollection}
             sortContent={sortContent}
           />
-          <div className="m-auto d-flex align-items-start">
-            {content &&
-              (mode === 0 ? (
-                <ContentCards
-                  setContent={setContent}
-                  content={content}
-                  pageParam={PageParam}
-                />
-              ) : (
-                <div className="listContent-wrap">
-                  {content && (
-                    <div className="listContent">
-                      {content.map((el, i) => (
-                        <div className="one-row" onClick={() => openCard(el)}>
-                          {onePartLittle(el, "question")}
-                          {onePartLittle(el, "answer")}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-          </div>
+          <CSSTransition
+            appear={true}
+            in={true}
+            timeout={1000}
+            classNames="game"
+            unmountOnExit>
+            <div className="m-auto d-flex align-items-start">
+              {content &&
+                (mode === 0 ? (
+                  <ContentCards
+                    setContent={setContent}
+                    content={content}
+                    pageParam={PageParam}
+                  />
+                ) : (
+                  <div className="listContent-wrap">
+                    {content && (
+                      <div className="listContent">
+                        {content.map((el, i) => (
+                          <div className="one-row" onClick={() => openCard(el)}>
+                            {onePartLittle(el, "question")}
+                            {onePartLittle(el, "answer")}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </CSSTransition>
         </div>
       ) : (
         <SpinnerLg className="span_wrap" />

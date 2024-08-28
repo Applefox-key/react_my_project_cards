@@ -3,9 +3,9 @@ import React from "react";
 import "../../styles/collectMenu.scss";
 import { fragment_SearchingTips } from "../../utils/pagesFragments";
 import { HiPlus } from "react-icons/hi2";
-import { AiOutlineRollback } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import ToggleView from "../UI/TogleView/ToggleView";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const PlayListsMenu = (props) => {
   const router = useNavigate();
@@ -37,7 +37,7 @@ const PlayListsMenu = (props) => {
               router(-1);
             }}
             className="viewBtn">
-            <AiOutlineRollback />
+            <RiArrowGoBackLine />
           </button>
         </div>{" "}
       </div>

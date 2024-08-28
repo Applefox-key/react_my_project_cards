@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import cl from "./mainNavbar.module.scss";
 
@@ -11,24 +11,34 @@ const MyNavSubmenu = ({ navArr, group, groupPath }) => {
       ? [cl.dropdown, cl.active].join(" ")
       : cl.dropdown;
   };
+  const router = useNavigate();
+  const handleClick = (e, p) => {
+    e.stopPropagation();
+    router(p);
+  };
   return (
-    <Link className={clName()} to={groupPath}>
+    // <span className={clName()} onClick={(e) => handleClick(e, groupPath)}>
+    <div
+      className={clName()}
+      onClick={(e) => handleClick(e, groupPath)}
+      to={groupPath}>
       {group}
       <IoMdArrowDropdown />
-      <div>
+      <div className={cl.subbox}>
         {navArr.map((item, i) => (
-          <Link
+          <span
             to={item.path}
             key={i}
+            onClick={(e) => handleClick(e, item.path)}
             id={"path" + item.nameNav.trim()}
             className={
               window.location.pathname.includes(item.path) ? cl.active : ""
             }>
             {item.nameNav.toUpperCase()}
-          </Link>
+          </span>
         ))}
       </div>
-    </Link>
+    </div>
   );
 };
 

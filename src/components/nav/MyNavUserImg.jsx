@@ -36,7 +36,7 @@ const MyNavUserImg = ({ logout, ...props }) => {
     <div className={[cl.dropdown, "ms-4"].join(" ")}>
       <Image src={av} {...props} /> <IoMdArrowDropdown />
       {
-        <div>
+        <div className={cl.subbox}>
           <Link to={GO_TO.profile} id={"pathProfile"}>
             PROFILE
           </Link>

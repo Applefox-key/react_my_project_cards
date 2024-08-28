@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineRollback } from "react-icons/ai";
 import { LuCopyPlus } from "react-icons/lu";
 import { GO_TO } from "../../../router/routes";
 import { HiPrinter } from "react-icons/hi";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const OnePbCollectionBtns = ({ collection, addToMyCollection }) => {
   const router = useNavigate();
@@ -37,7 +37,7 @@ const OnePbCollectionBtns = ({ collection, addToMyCollection }) => {
         onClick={() => router(GO_TO.pubCollect)}>
         <span>
           {" "}
-          <AiOutlineRollback />{" "}
+          <RiArrowGoBackLine />{" "}
         </span>
       </button>{" "}
     </>

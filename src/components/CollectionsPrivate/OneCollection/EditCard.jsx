@@ -9,6 +9,8 @@ import { usePopup } from "../../../hooks/usePopup";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import { SlPicture } from "react-icons/sl";
+import { addRates, updRates } from "../../../utils/gamesResults";
+import Rate from "../../games/Rate";
 const EditCard = () => {
   const [item, setItem] = useState();
   const pageParam = useParams();
@@ -26,8 +28,14 @@ const EditCard = () => {
             note: "",
           }
         : await BaseAPI.getContentItem(pageParam.item);
-    setItem({ ...content, note: content.note === null ? "" : content.note });
+    if (pageParam.item === "new") {
+      setItem(content);
+      return;
+    }
+    const rate = await addRates([content]);
+    setItem({ ...rate[0], note: content.note === null ? "" : content.note });
   });
+
   const route = useNavigate();
 
   const fromFile = (e) => {
@@ -71,10 +79,19 @@ const EditCard = () => {
   return (
     <form className="big_card_wrap">
       <div className="menuRow">
-        <BackBtn variant="light" />
-        <Button size="lg" onClick={save} variant="light">
-          SAVE CHANGES
-        </Button>
+        {!!item && !!item.hasOwnProperty("rate") && (
+          <Rate
+            initialValue={item.rate}
+            isEditable
+            action={(newRate) => updRates(item, newRate)}
+          />
+        )}
+        <div className="menuRow">
+          <BackBtn variant="light" />
+          <Button size="lg" onClick={save} variant="light">
+            SAVE CHANGES
+          </Button>
+        </div>
       </div>
       <div className="note">
         <h3>NOTE:</h3>{" "}
@@ -88,7 +105,7 @@ const EditCard = () => {
       {item ? (
         <div className="editCard">
           <div className="questDiv">
-            <h3>QUESTION</h3>{" "}
+            <h3>QUESTION</h3>
             <div className="oneSide quest">
               <div className="img_choice">
                 <input
@@ -119,6 +136,7 @@ const EditCard = () => {
                 value={item.question}
                 onChange={(e) => setItem({ ...item, question: e.target.value })}
               />
+              <span>write a question</span>
             </div>
           </div>
           <div className="answtDiv">
@@ -152,7 +170,8 @@ const EditCard = () => {
                 placeholder="write an answer..."
                 value={item.answer}
                 onChange={(e) => setItem({ ...item, answer: e.target.value })}
-              />
+              />{" "}
+              <span>write an answer</span>
             </div>
           </div>
         </div>

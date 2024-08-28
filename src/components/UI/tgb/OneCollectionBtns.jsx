@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IoMdRemove } from "react-icons/io";
 import { BiListPlus } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { AiOutlinePlus, AiOutlineRollback } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import { BsFiletypeTxt } from "react-icons/bs";
 import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
@@ -15,6 +15,7 @@ import { CiFolderOff, CiShare2, CiSquarePlus } from "react-icons/ci";
 import { favorite, share } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
@@ -150,7 +151,7 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
         onClick={() => router(GO_TO.myCollect)}>
         <span>
           {" "}
-          <AiOutlineRollback />{" "}
+          <RiArrowGoBackLine />{" "}
         </span>
       </button>{" "}
     </>

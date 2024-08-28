@@ -705,3 +705,58 @@
 
   }
 }
+
+
+.rateB,
+.rateS {
+  color: var(--contrast-text);
+  font-size: 28px;
+  background: var(--color-fill);
+  color: var(--color-intense);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 0 5px;
+  color: var(--color-rate);
+  background-color: transparent;
+
+  div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  svg {
+    &:hover {
+      scale: 1.1;
+      // color: yellow;
+    }
+  }
+}
+
+.rateS {
+  font-size: 14px;
+  // border: 1px solid var(--border-note);
+  color: var(--color-rate);
+  background-color: transparent;
+  // color: white;
+  border-radius: 10px;
+}
+
+.rateB {
+  position: relative;
+
+  &:hover {
+    &::after {
+      content: "how good do you remember this card";
+      font-size: 10px;
+      position: absolute;
+      bottom: -15px;
+      width: 240px
+    }
+  }
+}

@@ -415,10 +415,12 @@
 
     }
 
-    .oneCollect-wrap:hover+.look0 {
-        opacity: 1;
-        animation: tada 2s forwards;
+    .oneCollect-wrap:hover {
+        .look0 {
+            opacity: 1;
+            animation: tada 2s forwards;
 
+        }
     }
 
     .isHover+.look0 {

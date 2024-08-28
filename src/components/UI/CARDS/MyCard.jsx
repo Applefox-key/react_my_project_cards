@@ -32,8 +32,8 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
             <button className={cl.leftbtn} {...props.leftBtn}>
               <div
                 className={
-                  props.leftBtn.fontstyle
-                    ? props.leftBtn.fontstyle
+                  props.leftBtn.fontstyleb
+                    ? props.leftBtn.fontstyleb
                     : "cardangle pe-2"
                 }>
                 {props.leftBtn.name}
@@ -62,8 +62,8 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
             <button className={cl.rightBtn} {...props.rightBtn}>
               <div
                 className={
-                  props.rightBtn.fontstyle
-                    ? props.rightBtn.fontstyle
+                  props.rightBtn.fontstyleb
+                    ? props.rightBtn.fontstyleb
                     : "cardangle pe-2"
                 }>
                 {props.rightBtn.name}

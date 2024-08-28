@@ -26,7 +26,6 @@ const getResults = async (items, game, mode) => {
   });
   try {
     let res = await BaseAPI.getGameResults(lid, game + mode);
-
     let lidarr = items.map((el) => {
       let pr = res.data[isitem ? el.item.id : el.id];
       return { ...el, probability: pr ? pr : 10 };
@@ -37,13 +36,47 @@ const getResults = async (items, game, mode) => {
     return [];
   }
 };
-
 export const addProbabilities = async (items, game, mode, setAllItems) => {
   try {
     let lidarr = await getResults(items, game, mode);
     setAllItems(lidarr);
   } catch (error) {}
 };
+//RATEs
+const getRates = async (items) => {
+  let iscontent = items[0].hasOwnProperty("content");
+  let tmpArr = iscontent ? items[0].content : items;
+  let lid = tmpArr.map((el) => {
+    return el.id;
+  });
+  try {
+    let res = await BaseAPI.getGameResults(lid, "cardr");
+    let lidarr = tmpArr.map((el) => {
+      let pr = res.data[el.id];
+      return { ...el, rate: pr ? pr - 10 : 0 };
+    });
+    const mainResult = iscontent ? [{ ...items[0], content: lidarr }] : lidarr;
+    return mainResult;
+  } catch (error) {
+    return [];
+  }
+};
+export const addRates = async (items) => {
+  try {
+    let lidarr = await getRates(items);
+    return lidarr;
+  } catch (error) {}
+};
+
+//update rate
+export const updRates = async (item, newRate) => {
+  try {
+    BaseAPI.saveGameResults(
+      JSON.stringify({ [item.id]: { "cardr": newRate + 10 } })
+    );
+  } catch (error) {}
+};
+
 //update probability of the element and get new random num based on the probabilities
 export const recount = (isRight, arr, num, shuffleField = "") => {
   const delta = isRight ? -1 : 1;

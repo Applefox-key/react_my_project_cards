@@ -15,7 +15,15 @@ export const useGame = (setCallback = null, changeContent = null) => {
         : pageParam.tab === "my"
         ? await BaseAPI.getContent(pageParam.id)
         : await BaseAPI.getContentPlaylist(pageParam.id); //playlist
-    const newContent = changeContent ? changeContent(content) : content;
+    let newContent;
+    if (changeContent) {
+      const isAsync = changeContent.constructor.name === "AsyncFunction";
+
+      if (isAsync) newContent = await changeContent(content);
+      else newContent = changeContent(content);
+    } else newContent = content;
+
+    // const newContent = changeContent ? changeContent(content) : content;
     if (setCallback) setCallback(newContent);
   };
   const getContent = async () => {

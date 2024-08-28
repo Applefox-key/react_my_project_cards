@@ -1,6 +1,7 @@
 import React from "react";
 import CollectionCard from "./CollectionCard";
 import "../../styles/viewForms.scss";
+import { CSSTransition } from "react-transition-group";
 const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
   const isNumb = (str) => /^[0-9]/.test(str);
 
@@ -40,13 +41,17 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
           : isNumb(filtredList[i - 1].collection.name[0])
           ? "0-9"
           : filtredList[i - 1].collection.name[0].toUpperCase();
-      // debugger;
       if (cur !== prew) return <div className="letterChapter">{cur}</div>;
     }
     return <></>;
   };
   return (
-    <>
+    <CSSTransition
+      appear={true}
+      in={true}
+      timeout={1000}
+      classNames="game"
+      unmountOnExit>
       <div
         className={
           window.location.hash === "#1" ? "tbl_view " : "card-view m-auto"
@@ -75,7 +80,7 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
           ))
         )}
       </div>
-    </>
+    </CSSTransition>
   );
 };
 

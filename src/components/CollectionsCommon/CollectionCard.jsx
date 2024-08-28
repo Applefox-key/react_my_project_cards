@@ -63,16 +63,16 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
             ))}
           </div>
         </div>
-        {isHover && <CollectionCardBtns {...{ oneSet, routeOne, listFn }} />}
+        {isHover && <CollectionCardBtns {...{ oneSet, routeOne, listFn }} />}{" "}
+        {!isHover && (
+          <div
+            className="look0"
+            onMouseEnter={handleLookHover}
+            onClick={handleLookHover}>
+            <FaArrowsToEye />
+          </div>
+        )}
       </div>
-      {!isHover && (
-        <div
-          className="look0"
-          onMouseEnter={handleLookHover}
-          onClick={handleLookHover}>
-          <FaArrowsToEye />
-        </div>
-      )}
     </>
   );
 };

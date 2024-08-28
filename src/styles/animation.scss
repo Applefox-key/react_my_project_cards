@@ -24,20 +24,22 @@
   transform-style: preserve-3d;
 }
 
-/*   
-  .expression-exit{
-    animation: fadeOut;    animation-duration: 500ms;
-  }
-  .expression-exit-active{ 
-    animation-duration: 500ms;
-    animation: fadeOut;
-  } */
-/* .expression-enter{
-    animation: fadeOut;    animation-duration: 500ms;
-  }
-  .expression-enter-active{
-    animation: fadeOut;
-  } */
+.fadeG-appear {
+  animation: fadeInDown;
+  animation-duration: 600ms;
+}
+
+
+/* Исчезновение блока */
+.fadeG-exit {
+  animation: fadeOutUp;
+  animation-duration: 600ms;
+}
+
+.fadeG-exit-active {
+  animation: fadeOutUp;
+  animation-duration: 600ms;
+}
 
 .fadeinout-enter {
   animation: fadeIn;
@@ -60,6 +62,11 @@
 }
 
 .fade-enter-done {
+  animation: fadeIn;
+  animation-duration: 800ms;
+}
+
+.fade-appear-done {
   animation: fadeIn;
   animation-duration: 800ms;
 }

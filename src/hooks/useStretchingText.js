@@ -12,7 +12,6 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
         const boxElement = element.parentElement;
         let maxWidth = Math.floor(boxElement.clientWidth);
         let maxHeight = Math.floor(boxElement.clientHeight);
-        // debugger;
         fontSize = maxHeight;
         let minFontSize = initialMinFontSize;
         let maxFontSize = fontSize;
@@ -23,19 +22,6 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
           element["style"].fontSize = `${fontSize}px`;
           maxWidth = Math.floor(boxElement.clientWidth);
           maxHeight = Math.floor(boxElement.clientHeight);
-
-          // console.log({
-          //   maxCycles: 101 - maxCycles,
-          //   fontSize,
-          //   scrollHeight: element.scrollHeight,
-          //   maxHeight,
-          //   maxWidth,
-          //   eW: element.clientWidth,
-          //   eH: element.clientHeight,
-          //   isS: element.scrollHeight > maxHeight,
-          //   minFontSize,
-          // });
-
           if (
             element.clientWidth <= maxWidth &&
             element.scrollHeight * 1.1 <= maxHeight
@@ -54,7 +40,6 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
           --maxCycles;
 
           fontSize = Math.floor((minFontSize + maxFontSize) / 2);
-          // console.log({ fontSize, minFontSize, maxFontSize });
 
           if (minFontSize === maxFontSize) {
             break;

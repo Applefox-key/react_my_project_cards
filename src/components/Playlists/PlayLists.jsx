@@ -11,6 +11,7 @@ import PlayListsMenu from "./PlayListsMenu";
 import UsersPlayLists from "./UsersPlayLists";
 import PlayListEditModal from "./PlayListEditModal";
 import { useAuth } from "../../hooks/useAuth";
+import { CSSTransition } from "react-transition-group";
 
 const Playlists = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -81,14 +82,21 @@ const Playlists = () => {
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}
         setSettingsCommon={setSettingsCommon}
-      />
-      <div className="allcollect">
-        <UsersPlayLists
-          viewmode={viewmode}
-          commonSettings={commonSettings}
-          setSettingsCommon={setSettingsCommon}
-        />
-      </div>
+      />{" "}
+      <CSSTransition
+        appear={true}
+        in={true}
+        timeout={1000}
+        classNames="game"
+        unmountOnExit>
+        <div className="allcollect">
+          <UsersPlayLists
+            viewmode={viewmode}
+            commonSettings={commonSettings}
+            setSettingsCommon={setSettingsCommon}
+          />
+        </div>
+      </CSSTransition>
     </div>
   );
 };

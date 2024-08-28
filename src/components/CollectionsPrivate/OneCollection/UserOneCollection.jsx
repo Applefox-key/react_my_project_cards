@@ -8,6 +8,7 @@ import "../../../styles/oneCollection.scss";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import OneCollectionMenu from "./OneCollectionMenu";
 import ContentList from "./ContentList";
+import { addRates } from "../../../utils/gamesResults";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
@@ -17,7 +18,9 @@ const UserOneCollection = () => {
   const setPopup = usePopup();
   const router = useNavigate();
   const [getContent, isLoading, error] = useQuery(async () => {
-    const colContent = await BaseAPI.getCollectionsAndContent(pageParam.id);
+    const result = await BaseAPI.getCollectionsAndContent(pageParam.id);
+
+    const colContent = await addRates(result);
     setCollect(colContent[0].collection);
     setContent(colContent[0].content);
   });
@@ -27,11 +30,7 @@ const UserOneCollection = () => {
     setMode(newVal);
     router(window.location.pathname + "#" + newVal);
   };
-  // useEffect(() => {
-  //   debugger;
-  //   if (collect.hasOwnProperty("collection")) setCollect(collect.collecttion);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // });
+
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);

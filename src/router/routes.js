@@ -1,11 +1,11 @@
 import Profile from "../components/users/Profile/Profile";
 import PublicOneCollection from "../components/CollectionsPublic/PublicOneCollection";
-import CardsGallery from "../components/games/CardsGallery";
+import CardsGallery from "../components/games/Gallery/CardsGallery";
 import UserItemCardView from "../components/CollectionsPrivate/OneCollection/UserItemCardView";
-import Pairs from "../components/games/Pairs";
-import TestCard from "../components/games/TestCard";
-import TimeCard from "../components/games/TimeCard";
-import WriteCard from "../components/games/WriteCard";
+import Pairs from "../components/games/Pairs/Pairs";
+import TestCard from "../components/games/TestOpt/TestCard";
+import TimeCard from "../components/games/Time/TimeCard";
+import WriteCard from "../components/games/Write/WriteCard";
 import CategoriesManager from "../components/CategorySelection/CategoriesManager";
 import PublicItemCardView from "../components/CollectionsPublic/PublicItemCardView";
 import MainPage from "../components/users/Login/MainPage";
@@ -18,7 +18,7 @@ import PublicCollectionsView from "../components/CollectionsPublic/PublicOneColl
 import EditCard from "../components/CollectionsPrivate/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
 import PlayLists from "../components/Playlists/PlayLists";
-import PartCard from "../components/games/PartCard";
+import PartCard from "../components/games/Parts/PartCard";
 
 import Home from "../components/HomePage/Home";
 import UserLibrary from "../components/users/UserLibrary";
@@ -93,7 +93,7 @@ export const privateRoutes = [
   { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
   { path: "/collections/my/:id/:name/:item", element: <UserItemCardView /> },
-
+  { path: "/collections/my/:categoryid", element: <Collections /> },
   {
     path: "/collections/pub/:id/:name/:item",
     element: <PublicItemCardView />,

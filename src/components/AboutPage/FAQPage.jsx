@@ -9,8 +9,12 @@ import Logo from "../Logo";
 const FAQPage = () => {
   return (
     <>
-      <div>
-        {" "}
+      <div
+        appear={true}
+        in={true}
+        timeout={1000}
+        classNames="game"
+        unmountOnExit>
         <br />
         <div className="main_container position-relative">
           <div className={cl["wrap-img-about"]}>

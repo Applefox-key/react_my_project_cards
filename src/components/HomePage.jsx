@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 const HomePage = () => {
   const router = useNavigate();
@@ -7,9 +8,8 @@ const HomePage = () => {
     router("/login");
   };
   return (
-    <div>
-      {" "}
-      <br />
+    <>
+      <br />{" "}
       <div className="main_container home-page">
         {" "}
         <div className="home-text">
@@ -58,7 +58,7 @@ const HomePage = () => {
         </div>
       </div>{" "}
       <div className="w-10">{/* <Logo /> */}</div>
-    </div>
+    </>
   );
 };
 

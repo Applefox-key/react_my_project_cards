@@ -8,7 +8,8 @@ import "../../../styles/collectMenu.scss";
 import { useFilter } from "../../../hooks/useFilter";
 const FilterLS = () => {
   const { filterG, setFilterG } = useFilter();
-  const [value, setValue] = useState(filterG);
+  // const [value, setValue] = useState(filterG);
+  const [value, setValue] = useState(filterG || "");
   const [ishide, setIsHide] = useState(true);
   useEffect(() => {
     setValue(filterG);
@@ -25,7 +26,7 @@ const FilterLS = () => {
     }
 
     if (ishide && window.screen.availWidth <= 900) {
-      const textInp = prompt("what do you want ti find?", "");
+      const textInp = prompt("what do you want to find?", "");
       if (textInp) setFilterG(textInp);
       return;
     }

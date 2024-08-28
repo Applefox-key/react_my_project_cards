@@ -34,7 +34,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
     }
     settextFile(window.URL.createObjectURL(data));
   };
-  debugger;
+
   return (
     <MyModal
       title="Download the collection"
@@ -114,12 +114,10 @@ const CollectionDownload = ({ colObj, setVisible }) => {
           }}>
           💾Create file for download
         </Button>{" "}
-        {textFile ? (
+        {!!textFile && (
           <a download={name} href={textFile} className="fs-4 position-absolute">
             🡇 Download
           </a>
-        ) : (
-          <></>
         )}
         <MyTable
           dataArray={contentList}

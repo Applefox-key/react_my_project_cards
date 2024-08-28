@@ -9,7 +9,6 @@ const AppRouter = () => {
   return (
     <>
       <MyNavbar />
-      <div className="color_container"></div>
       <div className="main_page">
         <Routes>
           {routesArr.map((item, i) => (

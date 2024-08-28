@@ -3,26 +3,34 @@
     min-height: 44px;
     min-width: 44px;
 
+
+}
+
+.games-menu-wrap-vert {
+    position: relative;
+    min-height: 44px;
+    min-width: 44px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    border-radius: 50%;
 }
 
 .games-menu-btn {
-    width: 44px;
-    height: 44px;
+    width: 45px;
+    height: 45px;
     background-color: transparent;
     border-radius: 50%;
     border: none;
     font-size: 30px;
     line-height: 0.7;
-    color: var(--color-nav);
+    color: var(--color-menuG);
     z-index: 1101;
     position: absolute;
     transition: all 0.4s ease-in-out;
-    top: 0;
+    top: 0px;
     left: 0;
 
-
     &:hover {
-        background-color: var(--background-nav);
+        background-color: var(--back-menu);
         z-index: 1101;
         color: white;
     }
@@ -30,11 +38,11 @@
 
 .games-menu-btn-show {
     @extend .games-menu-btn;
-    background-color: var(--background-nav);
+    background-color: var(--back-menu);
     opacity: 0.9;
     color: yellow;
     rotate: 360deg;
-
+    border: 1px solid var(--color-intense);
     z-index: 1101;
 
     &:hover {
@@ -69,7 +77,8 @@
     left: -10px;
     height: -moz-fit-content;
     height: fit-content;
-    background-color: var(--color-nav);
+    // background-color: var(--color-nav);
+    background-color: var(--back-menu);
     color: white;
     margin: 3px 10px;
     padding: 0 5px;
@@ -82,34 +91,42 @@
     z-index: 1100;
 }
 
+.overflow-vert {
+    position: absolute;
+    overflow: hidden;
+    height: 230px;
+    width: 45px;
+    border-radius: 23px 23px 15px 15px;
+}
+
 .body-after-btn {
     @extend .games-menu-body;
     position: absolute;
-
+    border-radius: 18px 18px 15px 15px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    width: 44px;
+    width: 45px;
     height: fit-content;
     padding-top: 40px;
     padding-bottom: 5px;
-    top: 5px;
+    top: -5px;
     align-items: center;
 
     .games-menu-item {
         color: white;
     }
 
-    &::before {
-        content: "";
-        position: absolute;
-        left: -0.5px;
-        top: -5px;
-        width: 44px;
-        height: 44px;
-        border: 20px solid #fff;
-        box-sizing: border-box;
-        border-radius: 50%;
-        z-index: 1;
-    }
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     left: -0.5px;
+    //     top: -5px;
+    //     width: 44px;
+    //     height: 44px;
+    //     border: 20px solid #fff;
+    //     box-sizing: border-box;
+    //     border-radius: 50%;
+    //     z-index: 1;
+    // }
 }
 
 .games-menu-body-horizontal {

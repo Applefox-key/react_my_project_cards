@@ -5,6 +5,7 @@ import BaseAPI from "../../../API/BaseAPI";
 import { useNavigate } from "react-router-dom";
 import { GO_TO } from "../../../router/routes";
 import { onePartLittle } from "../../../utils/cardFragment";
+import Rate from "../../games/Rate";
 
 const ContentCards = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
@@ -78,6 +79,11 @@ const ContentCards = ({ content, setContent, pageParam }) => {
           </div>
           {onePartLittle(el, "question")}
           {onePartLittle(el, "answer")}
+          {el.hasOwnProperty("rate") && (
+            <div className="rate">
+              <Rate initialValue={el.rate} />
+            </div>
+          )}
         </div>
       ))}
     </div>

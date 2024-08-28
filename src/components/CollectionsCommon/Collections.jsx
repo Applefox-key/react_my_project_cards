@@ -7,15 +7,14 @@ import UsersCollections from "../CollectionsPrivate/CollectionsList/UsersCollect
 import CollectionEditModal from "../CollectionsPrivate/OneCollectionActions/CollectionEditModal";
 import PublicCollectionsList from "../CollectionsPublic/PublicCollectionsList";
 import { GO_TO } from "../../router/routes";
-
 import {
   collectionPageSettings,
   restoreSettings,
   saveSet,
 } from "../../utils/pageSettings";
-
 import { useAuth } from "../../hooks/useAuth";
 import CategoriesFoldersView from "./CategoriesFoldersView";
+import { CSSTransition } from "react-transition-group";
 
 const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -103,60 +102,66 @@ const Collections = () => {
   ]);
 
   return (
-    <div className="wrap_box">
-      {privateSettings.isNew && (
-        <CollectionEditModal
-          isEdit={privateSettings.isNew}
-          setIsEdit={(val) =>
-            setPrivateSettings({ ...privateSettings, isNew: val })
-          }
-          isNew={privateSettings.isNew}
-          onHide={() => {
-            setPrivateSettings({
-              ...privateSettings,
-              isNew: false,
-            });
-            router(`${GO_TO.myCollect}#${viewmode}`);
-          }}
-        />
-      )}
-      <div className="w-100">
-        {/* <div className="d-flex align-items-center position-relative"> */}
-        <CollectionsMenu
-          viewmodeChange={viewmodeChange}
-          commonSettings={commonSettings}
-          privateSettings={privateSettings}
-          setSettingsCommon={setSettingsCommon}
-          setSettingsPrivat={setSettingsPrivat}
-        />
-        {/* </div>{" "} */}
-        <div className="allcollect">
-          <div className="mainBox">
-            {commonSettings.byCategory ? (
-              <CategoriesFoldersView
-                setSettingsCommon={setSettingsCommon}
-                filterTxt={commonSettings.filter}
-                viewmode={viewmode}
-              />
-            ) : !isPublic ? (
-              <UsersCollections
-                viewmode={viewmode}
-                commonSettings={commonSettings}
-                setSettingsCommon={setSettingsCommon}
-                privateSettings={privateSettings}
-                setSettingsPrivat={setSettingsPrivat}
-              />
-            ) : (
-              <PublicCollectionsList
-                commonSettings={commonSettings}
-                viewmode={viewmode}
-                setSettingsCommon={setSettingsCommon}
-              />
-            )}
+    <CSSTransition
+      appear={true}
+      in={true}
+      timeout={1000}
+      classNames="game"
+      unmountOnExit>
+      <div className="wrap_box">
+        {privateSettings.isNew && (
+          <CollectionEditModal
+            isEdit={privateSettings.isNew}
+            setIsEdit={(val) =>
+              setPrivateSettings({ ...privateSettings, isNew: val })
+            }
+            isNew={privateSettings.isNew}
+            onHide={() => {
+              setPrivateSettings({
+                ...privateSettings,
+                isNew: false,
+              });
+              router(`${GO_TO.myCollect}#${viewmode}`);
+            }}
+          />
+        )}
+        <div className="w-100">
+          {/* <div className="d-flex align-items-center position-relative"> */}
+          <CollectionsMenu
+            viewmodeChange={viewmodeChange}
+            commonSettings={commonSettings}
+            privateSettings={privateSettings}
+            setSettingsCommon={setSettingsCommon}
+            setSettingsPrivat={setSettingsPrivat}
+          />
+          <div className="allcollect">
+            <div className="mainBox">
+              {commonSettings.byCategory ? (
+                <CategoriesFoldersView
+                  setSettingsCommon={setSettingsCommon}
+                  filterTxt={commonSettings.filter}
+                  viewmode={viewmode}
+                />
+              ) : !isPublic ? (
+                <UsersCollections
+                  viewmode={viewmode}
+                  commonSettings={commonSettings}
+                  setSettingsCommon={setSettingsCommon}
+                  privateSettings={privateSettings}
+                  setSettingsPrivat={setSettingsPrivat}
+                />
+              ) : (
+                <PublicCollectionsList
+                  commonSettings={commonSettings}
+                  viewmode={viewmode}
+                  setSettingsCommon={setSettingsCommon}
+                />
+              )}
+            </div>
           </div>
-        </div>
+        </div>{" "}
       </div>
-    </div>
+    </CSSTransition>
   );
 };
 

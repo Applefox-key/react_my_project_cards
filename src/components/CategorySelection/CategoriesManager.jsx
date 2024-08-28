@@ -3,11 +3,10 @@ import { useEffect } from "react";
 import "../../styles/viewForms.scss";
 import { usePopup } from "../../hooks/usePopup";
 import BaseAPI from "../../API/BaseAPI";
-import { FaLayerGroup } from "react-icons/fa";
 import BackMenuBtn from "../UI/tgb/BackMenuBtn";
 import { HiPlus } from "react-icons/hi";
-import cl from "./CategorySelection.module.scss";
-import CategoryNameInput from "./CategoryNameInput";
+import CategoryManagerContent from "./CategoryManagerContent";
+
 const CategoriesManager = ({ isModal = false }) => {
   const [categoriesTbl, setCategoriesTbl] = useState([]);
   const [editMode, setEditMode] = useState(null);
@@ -20,14 +19,12 @@ const CategoriesManager = ({ isModal = false }) => {
       setPopup.error("something goes wrong");
     }
   };
+
   useEffect(() => {
     updateCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const hh = (el) => {
-    return editMode === null ? false : editMode.id === el.id;
-  };
   const rowsActons = {
     changelEdit(val) {
       if (val === null)
@@ -44,7 +41,6 @@ const CategoriesManager = ({ isModal = false }) => {
       };
       setCategoriesTbl([newEl, ...categoriesTbl]);
       setEditMode(newEl);
-      // editOn(newEl);
     },
     async add(newC) {
       if (!newC.name) {
@@ -100,59 +96,11 @@ const CategoriesManager = ({ isModal = false }) => {
           </div>
         </div>
       )}
-      {categoriesTbl.length && (
-        <div className={cl["cat-wrap"]}>
-          {categoriesTbl.map((el) => (
-            <div
-              key={el.id}
-              className={cl["cat-row"]}
-              // onClick={() => rowsActons.changelEdit(el)}
-            >
-              <div className={cl["cat-header"]}>
-                {" "}
-                <FaLayerGroup />
-                {/* <FaLayerGroup className="mt-2" /> */}
-                <div className={cl["cat-name"]}>
-                  <CategoryNameInput
-                    el={el}
-                    edit={rowsActons.edit}
-                    isInput={hh(el)}
-                    setIsInput={rowsActons.changelEdit}
-                  />
-                </div>
-                {editMode === null && (
-                  <div className="d-flex">
-                    <button
-                      className={cl.hidenBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        rowsActons.changelEdit(el);
-                      }}>
-                      edit name
-                    </button>{" "}
-                    <button
-                      className={cl.hidenBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        rowsActons.deleteOne(el);
-                      }}>
-                      delete
-                    </button>
-                    <span>{el.collection_count}</span>
-                  </div>
-                )}
-              </div>
-              {/* <div className="listBody">
-                {el.collections.map((col) => (
-                  <div className="listItem" key={col.id}>
-                    <span>{col.name}</span>
-                  </div>
-                ))}
-              </div> */}
-            </div>
-          ))}
-        </div>
-      )}
+      <CategoryManagerContent
+        rowsActons={rowsActons}
+        categoriesTbl={categoriesTbl}
+        editMode={editMode}
+      />
     </div>
   );
 };

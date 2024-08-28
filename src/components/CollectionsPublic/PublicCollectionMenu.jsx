@@ -49,7 +49,7 @@ const PublicCollectionMenu = (props) => {
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={props.setMode}
-          />{" "}
+          />
           <SortMenu
             fields={[
               { value: "question", label: "Questions" },

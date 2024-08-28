@@ -32,7 +32,6 @@ const cardContent = (item, part, cl) => {
 //main card back and front
 export const mainAndImg = (side, mode, item, cl) => {
   let variant = side + mode;
-  // debugger;
   let note = item.note ? item.note.trim() : "";
   let isFlex =
     variant === "front0" || variant === "back1" ? !item.question : !item.answer;
@@ -47,7 +46,6 @@ export const mainAndImg = (side, mode, item, cl) => {
               {item.note && (
                 <p className={cl["card-note"]} data-title={item.note}>
                   {item.note}
-                  {/* <span>{item.note}</span> */}
                 </p>
               )}
               <div className={cl["card-text-sibl"]}>

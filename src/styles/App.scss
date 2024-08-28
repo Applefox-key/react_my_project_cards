@@ -6,11 +6,12 @@
   --color-bg-wrap: #5f6368;
   --contrast-text: black;
   --wrap-opacity: 1;
-
-  --background-wrap-rgb: 248, 248, 255;
-  // --background-wrap-rgb: 215, 230, 255;
-  --background-wrap: #ffffff;
-  // --background-wrap: #d7e6ff;
+  --back-menu: #2a313e;
+  --color-menuG: #5f6368;
+  // --background-wrap-rgb: 248, 248, 255;
+  --background-wrap-rgb: 252, 252, 252;
+  --background-wrap: #fcfcfc;
+  // --background-wrap: #fcfbf7;
   --background-nav: #193B70;
   --color-nav: #193B70;
 
@@ -26,6 +27,7 @@
   --background-intense: #0A58CA;
   --color-intense: #597db4;
   --background-note: #ed666d;
+  --color-rate: #ed666d;
   --border-note: red;
   --color-checked: #FF4500;
   --color-about: #5d8fd0;
@@ -50,6 +52,10 @@
   text-align: center;
   caret-color: transparent;
   position: relative;
+  height: 100vh;
+  caret-color: transparent;
+  position: relative;
+  background-color: var(--color-back);
 
   textarea {
     caret-color: auto;
@@ -68,6 +74,7 @@
   padding: 0;
   margin: 0;
   color: var(--color-text);
+  white-space: break-spaces;
 }
 
 .w-unset {
@@ -900,13 +907,14 @@ input {
   font-style: italic;
   font-size: 0.5rem;
   margin: auto;
-  width: fit-content;
+  width: 100%;
   // background: #e5edf9;
   // background: var(--background-second);
   padding: 5px;
-  border-radius: 10px;
+  // border-radius: 10px;
   margin-top: 0;
   position: relative;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
   @media screen and (max-width: 900px) {
     font-size: 10px;
@@ -1070,4 +1078,9 @@ input {
 
 .arrhide {
   opacity: 0;
+}
+
+.flexstandart {
+  display: flex;
+  justify-content: space-between;
 }

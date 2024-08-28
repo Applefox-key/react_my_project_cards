@@ -5,12 +5,18 @@
     width: fit-content;
     padding: 1px 0;
     height: 100%;
+    transition: all 0.4 ease-in-out;
+
     // background-color: white;
 
     // &:hover {
     //     // outline: 3px solid rgb(134, 181, 251);
     //     color: var(--color-nav);
     // }
+    &::after {
+        content: "View";
+    }
+
     &:hover {
         background-color: var(--color-fill);
         border: 0.5px solid var(--border-fill);

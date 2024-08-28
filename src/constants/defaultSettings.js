@@ -2,7 +2,9 @@ import imgProfile from "../img/profile.ico";
 
 export const nightTheme = {
   "--color-back": "black",
-  "--contrast-text": "white",
+  "--contrast-text": "#ffffff",
+  "--back-menu": "#0f9393b3",
+  "--color-menuG": "#1db3b3",
   "--wrap-opacity": "0",
   "--background-wrap": "#1d1b1b",
   "--background-header": "#252c2f",
@@ -10,7 +12,6 @@ export const nightTheme = {
   "--background-second": "#252c2f",
   "--background-third": "#053c29",
   // "--background-third": "#0f9393b3",
-
   "--color-bg-wrap": "#86909b",
   "--background-nav": "#011e16",
   "--color-nav": "#0f9393b3",
@@ -18,6 +19,7 @@ export const nightTheme = {
   "--background-wrap-rgb": "rgb(29, 27, 27, 0)",
   "--color-checked": "#0f9393b3",
   "--background-note": "#1f4f5c",
+  "--color-rate": "#1db3b3",
   "--border-note": "#0f9393b3",
   "--background-intense": "grey",
   "--color-intense": "#1db3b3",
@@ -27,39 +29,11 @@ export const nightTheme = {
   "--color-fill": "#0e4949",
   "--border-fill": "#DADEE8",
 };
-//#0e4949
-//"--color-checked": "#b1838e", "--border-note": "#0f9393b3",  "--background-note": "#152a0a",
-// "--color--text": "#b5a68a", "--background-even": "#3c4c56",
-//===============
-//   --card-color: #fffff0;
-//   --color--text: black;
-//   --color-back: white;
-//   --color-bg-wrap: #5f6368; // #343A40;
-//   // --color-bg-wrap: #5f6368;
 
-//   // color: #5f6368;
-//   --contrast-text: black;
-//   --wrap-opacity: 1;
-
-//   --background-wrap-rgb: 248, 248, 255;
-//   --background-wrap: #ffffff;
-//   --background-nav: #193B70;
-//   --color-nav: #193B70;
-//   // --background-header: #6da4cb;
-//   --background-header: #f7f6f6;
-//   --background-first: #fcfbf7;
-//   // color: var(--color-bg-wrap);
-//   --background-second: #ededed;
-//   --background-even: rgb(247, 246, 246);
-//   --background-third: #add8e6;
-//   --background-switch: #313236;
-//   --background-intense: #0A58CA;
-//   --color-intense: #4461F2;
-//   --background-note: #ed666d;
-//   --border-note: red;
-//   --color-checked: #FF4500;
 export const dayTheme = {
-  "--color-back": "white",
+  "--color-back": "#e9e8e6",
+  "--back-menu": "#2a313e",
+  "--color-menuG": "#5f6368",
   "--contrast-text": "black",
   "--background-wrap": "#ffffff",
   "--background-header": "#f7f6f6",
@@ -73,6 +47,7 @@ export const dayTheme = {
   "--background-wrap-rgb": "rgb(247, 246, 246)",
   "--color-checked": "#FF4500",
   "--background-note": "#ed666d",
+  "--color-rate": "#ed666d",
   "--border-note": "red",
   "--background-intense": "#0A58CA",
   "--color-intense": "#597db4",

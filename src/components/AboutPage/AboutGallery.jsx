@@ -67,7 +67,7 @@ const AboutGallery = () => {
   const rightBtn = {
     onClick: prew,
     name: <HiDotsHorizontal />,
-    fontstyle: "fs-arr",
+    fontStyle: "fs-arr",
   };
 
   return (
@@ -79,10 +79,6 @@ const AboutGallery = () => {
           timeout={500}
           classNames="result">
           <div className="position-relative">
-            {/* <AnimatedArrowBtn onClick={prew} />{" "} */}
-            {/* <button onClick={prew} className={clA["collect_button"]}>
-                <MdOutlineNavigateNext />
-              </button> */}
             <OneCardG
               anim={anim}
               direction={direction}
