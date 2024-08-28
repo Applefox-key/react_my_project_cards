@@ -798,9 +798,19 @@
     background-color: var(--color-intense);
 
     &:hover {
-        text-decoration: line-through;
-        color: cyan;
+        // text-decoration: line-through;
+        color: rgb(125, 118, 136);
+        background-color: var(--color-fill);
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
+        &::before {
+            content: "❌";
+            position: absolute;
+            font-size: 48px;
+        }
     }
+
+
 
     @media screen and (max-width:900px) {
         width: 120px;
@@ -812,4 +822,25 @@
 .empty {
     @extend .selectedEl;
     background-color: var(--color-fill);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
+    &:hover {
+        text-decoration: none;
+
+        // color: cyan;
+        &::before {
+            content: unset;
+            position: absolute;
+            font-size: 48px;
+        }
+    }
+
+    &:after {
+        content: "add collection";
+        color: rgb(125, 118, 136);
+        // text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        ;
+    }
 }
