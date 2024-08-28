@@ -60,6 +60,7 @@ const CardsGallery = () => {
       fontstyleb: "fs-arr",
     };
   };
+
   return (
     <div className="mainField">
       <div className="menuField d-flex justify-content-between w-100">
@@ -68,14 +69,14 @@ const CardsGallery = () => {
           <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
         </div>
 
-        {!!items && !!items[itemNum].hasOwnProperty("rate") && (
+        {/* {!!items && !!items[itemNum].hasOwnProperty("rate") && (
           <Rate
             key={itemNum}
             initialValue={items[itemNum].rate}
             isEditable
             action={(newRate) => updRates(items[itemNum], newRate)}
           />
-        )}
+        )} */}
 
         {!isLoading && items && (
           <GameCountBage

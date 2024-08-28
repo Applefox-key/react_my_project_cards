@@ -93,11 +93,7 @@ const AllCollectionsList = ({
               Array.from(
                 { length: 10 - selectedItems.length },
                 (_, i) => i++
-              ).map((el) => (
-                <div key={el.id} className={cl.empty}>
-                  {/* empty */}
-                </div>
-              ))}
+              ).map((el) => <div key={el.id} className={cl.empty} />)}
           </div>
         </div>{" "}
         {limit - selectedIds.length >= filtredList.length && (
@@ -110,8 +106,8 @@ const AllCollectionsList = ({
             <MySwitch
               checked={isPub}
               onChange={isPubChange}
-              leftEl="My library"
-              rightEl="Public library"
+              leftel="My library"
+              rightel="Public library"
             />
             <div className={cl.filterButtons}>
               <div className={cl.filter}>
