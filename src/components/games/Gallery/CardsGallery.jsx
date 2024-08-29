@@ -20,6 +20,7 @@ const CardsGallery = () => {
   const [itemNum, setItemNum] = useState(0);
   const [anim, setShowAnim] = useState(false);
   const setPopup = usePopup();
+
   const changeContent = async (initVal) => {
     let res = await addRates(initVal);
     return shuffle(res);
@@ -27,11 +28,11 @@ const CardsGallery = () => {
   const param = useParams().mode;
   const [getContent, isLoading, error] = useGame(
     setItems,
-    useParams().tab === "my" ? changeContent : shuffle
+    useParams().tab === "my" ? changeContent : shuffle,
+    useParams().tab === "my"
   );
   useEffect(() => {
     getContent();
-
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [param]);
@@ -69,14 +70,16 @@ const CardsGallery = () => {
           <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
         </div>
 
-        {!!items && !!items[itemNum].hasOwnProperty("rate") && (
-          <Rate
-            key={itemNum}
-            initialValue={items[itemNum].rate}
-            isEditable
-            action={(newRate) => updRates(items[itemNum], newRate)}
-          />
-        )}
+        {!!items &&
+          !!items[itemNum] &&
+          !!items[itemNum].hasOwnProperty("rate") && (
+            <Rate
+              key={itemNum}
+              initialValue={items[itemNum].rate}
+              isEditable
+              action={(newRate) => updRates(items[itemNum], newRate)}
+            />
+          )}
 
         {!isLoading && items && (
           <GameCountBage

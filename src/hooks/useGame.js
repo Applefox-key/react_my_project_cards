@@ -3,7 +3,11 @@ import { useParams } from "react-router-dom";
 
 import BaseAPI from "../API/BaseAPI";
 
-export const useGame = (setCallback = null, changeContent = null) => {
+export const useGame = (
+  setCallback = null,
+  changeContent = null,
+  isFnAsync = false
+) => {
   const pageParam = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -19,7 +23,7 @@ export const useGame = (setCallback = null, changeContent = null) => {
     if (changeContent) {
       const isAsync = changeContent.constructor.name === "AsyncFunction";
 
-      if (isAsync) newContent = await changeContent(content);
+      if (isAsync || isFnAsync) newContent = await changeContent(content);
       else newContent = changeContent(content);
     } else newContent = content;
 
