@@ -15,7 +15,7 @@ import Rate from "../Rate";
 import { addRates, updRates } from "../../../utils/gamesResults";
 
 const CardsGallery = () => {
-  const [items, setItems] = useState();
+  const [items, setItems] = useState(null);
   const [direction, setDirection] = useState(true);
   const [itemNum, setItemNum] = useState(0);
   const [anim, setShowAnim] = useState(false);
@@ -69,14 +69,14 @@ const CardsGallery = () => {
           <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
         </div>
 
-        {/* {!!items && !!items[itemNum].hasOwnProperty("rate") && (
+        {!!items && !!items[itemNum].hasOwnProperty("rate") && (
           <Rate
             key={itemNum}
             initialValue={items[itemNum].rate}
             isEditable
             action={(newRate) => updRates(items[itemNum], newRate)}
           />
-        )} */}
+        )}
 
         {!isLoading && items && (
           <GameCountBage
