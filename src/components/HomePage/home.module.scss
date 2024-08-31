@@ -177,8 +177,7 @@
             font-family: 'Inter';
 
             @media screen and (max-width:900px) {
-                // padding-right: 5px;
-                font-size: 11px;
+                font-size: 16px;
                 width: 100%;
                 display: flex;
                 text-align: end;
@@ -198,7 +197,7 @@
 
             @media screen and (max-width:900px) {
 
-                font-size: 16px;
+                font-size: 20px;
             }
         }
     }
