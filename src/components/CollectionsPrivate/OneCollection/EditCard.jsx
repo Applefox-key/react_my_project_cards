@@ -8,11 +8,9 @@ import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
-import { SlPicture } from "react-icons/sl";
 import { addRates, updRates } from "../../../utils/gamesResults";
 import Rate from "../../games/Rate";
 import { IoMdClose } from "react-icons/io";
-import { LuImagePlus } from "react-icons/lu";
 import { BiImageAdd } from "react-icons/bi";
 const EditCard = () => {
   const [item, setItem] = useState();

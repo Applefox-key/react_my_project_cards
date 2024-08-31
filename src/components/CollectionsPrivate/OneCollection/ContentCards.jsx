@@ -7,11 +7,7 @@ import { GO_TO } from "../../../router/routes";
 import { onePartLittle } from "../../../utils/cardFragment";
 import Rate from "../../games/Rate";
 import { FiEdit2 } from "react-icons/fi";
-import { TbInputSearch, TbSearch } from "react-icons/tb";
-import { LiaSearchSolid } from "react-icons/lia";
-import { FcFrame, FcSearch, FcViewDetails } from "react-icons/fc";
-import { GrClose } from "react-icons/gr";
-import { BsPostcard } from "react-icons/bs";
+import { FcFrame } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 const ContentCards = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
@@ -36,7 +32,6 @@ const ContentCards = ({ content, setContent, pageParam }) => {
     },
     {
       private: true,
-      // symb: "❌",
       symb: <IoMdClose />,
       callback: async (element) => {
         if (!window.confirm("Delete?")) return;

@@ -1,15 +1,8 @@
-// import BaseAPI from "../API/BaseAPI";
 import { BsCardHeading, BsUiChecksGrid } from "react-icons/bs";
 import { shuffle } from "./arraysFunc";
-import {
-  PiPlugsConnectedFill,
-  PiPuzzlePiece,
-  PiPuzzlePieceLight,
-} from "react-icons/pi";
+import { PiPlugsConnectedFill, PiPuzzlePiece } from "react-icons/pi";
 import { TfiTimer } from "react-icons/tfi";
-import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { FaRegKeyboard } from "react-icons/fa";
-import { RiPuzzle2Line } from "react-icons/ri";
 
 export const pairAnswerCheck = (id1, id2, itemsV) => {
   let arr1 = [...itemsV[0]];
