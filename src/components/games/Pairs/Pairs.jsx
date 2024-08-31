@@ -13,14 +13,18 @@ import Hint from "../Hint";
 import PairPart from "./PairPart";
 
 const Pairs = () => {
-  const [items, setItems] = useState();
+  const [items, setItems] = useState(null);
   const [itemsV, setItemsV] = useState([]);
   const [active, setActive] = useState();
   const [note, setNote] = useState();
   const [count, setCount] = useState([0, 0]);
 
   const contentParts = (arr = null) => {
-    let newArr = arr ? shuffle([...arr]) : [...items];
+    // if (items === null && arr !== null) setItems(arr);
+
+    let newArr = arr !== null ? shuffle([...arr]) : [...items];
+    console.log("contentParts");
+    console.log(arr);
     if (!newArr.length) {
       setItemsV([[], []]);
       return;
@@ -28,8 +32,10 @@ const Pairs = () => {
     let leng = newArr.length === 7 ? 7 : Math.min(6, newArr.length);
     let part = newArr.splice(0, leng);
     setItems(newArr);
+    console.log(newArr);
     let a1 = shuffle([...part]);
     let a2 = shuffle([...part]);
+    console.log(a1, a2);
     setItemsV([a1, a2]);
   };
   const [getContent, isLoading] = useGame(contentParts);
@@ -68,7 +74,10 @@ const Pairs = () => {
     }
     let [res, arr1, arr2] = pairAnswerCheck(id1, id2, itemsV);
     if (res) {
-      if (arr1.length === 0) setItemsV(contentParts());
+      console.log("pairs");
+      console.log(arr1);
+      console.log(arr2);
+      if (arr1.length === 0) contentParts();
       else setItemsV([arr1, arr2]);
       setCount([count[0] + 1, count[1]]);
       setActive("");

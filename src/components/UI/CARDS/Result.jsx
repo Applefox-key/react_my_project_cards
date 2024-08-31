@@ -28,7 +28,7 @@ const Result = ({ text, count, mist }) => {
           count ? "mt-5" : "m-auto",
         ].join(" ")}>
         <div id="gameresult" className={cl["card-container"]}>
-          <button className={cl["card-button"]} onClick={back}>
+          <div className={cl["card-button"]} onClick={back}>
             <div className={[cl["card-front"], cl["card-result"]].join(" ")}>
               <div>
                 <h1 className="display-1">{text}</h1>
@@ -45,7 +45,7 @@ const Result = ({ text, count, mist }) => {
                 </div>
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
     </CSSTransition>

@@ -16,6 +16,7 @@ export const useGame = (callback, isFnAsync = false) => {
         : await BaseAPI.getContentPlaylist(pageParam.id); //playlist
     if (callback) {
       const isAsync = callback.constructor.name === "AsyncFunction";
+
       if (isAsync || isFnAsync) await callback(content);
       else callback(content);
     }

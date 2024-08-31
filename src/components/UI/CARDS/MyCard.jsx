@@ -42,7 +42,7 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
               </button>
             </CSSTransition>
           )}
-          <button
+          <div
             className={cl["card-button"]}
             onClick={() => {
               if (clickable) setFlipped(!flipped);
@@ -53,7 +53,7 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
             <CSSTransition in={flipped} timeout={1000} classNames="cardBack">
               {mainAndImg("back", mode, props.item, cl)}
             </CSSTransition>{" "}
-          </button>
+          </div>
           {props.rightBtn && (
             <CSSTransition
               // key={flipped ? "flipped" : "notFlipped"}
