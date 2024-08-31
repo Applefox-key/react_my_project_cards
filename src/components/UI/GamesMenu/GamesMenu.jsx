@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
 import cl from "./GamesMenu.module.scss";
@@ -40,7 +40,17 @@ const GamesMenu = ({
     if (!isVertical) classes += "-horizontal";
     return cl[classes];
   })();
-
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (event.target.id !== "gamesBtn") {
+        setInProp(false);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
   return (
     <div
       className={
