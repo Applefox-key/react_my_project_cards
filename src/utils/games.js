@@ -1,10 +1,15 @@
 // import BaseAPI from "../API/BaseAPI";
 import { BsCardHeading, BsUiChecksGrid } from "react-icons/bs";
 import { shuffle } from "./arraysFunc";
-import { PiPlugsConnectedFill } from "react-icons/pi";
+import {
+  PiPlugsConnectedFill,
+  PiPuzzlePiece,
+  PiPuzzlePieceLight,
+} from "react-icons/pi";
 import { TfiTimer } from "react-icons/tfi";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { FaRegKeyboard } from "react-icons/fa";
+import { RiPuzzle2Line } from "react-icons/ri";
 
 export const pairAnswerCheck = (id1, id2, itemsV) => {
   let arr1 = [...itemsV[0]];
@@ -129,50 +134,8 @@ export const gameMenuArr = (pageParam, isPublic = false, playlist = false) => {
     {
       type: "item",
       name: "Parts...",
-      symb: <IoExtensionPuzzleOutline />,
+      symb: <PiPuzzlePiece />,
       href: `/play_parts/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
     },
-    // {
-    //   type: "item",
-    //   name: "Cards: gallery",
-    //   symb: "⏹️",
-    //   href: `/play_cards/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-    // },
-
-    // {
-    //   type: "item",
-    //   name: "Cards: time",
-    //   symb: "⌛",
-    //   href: `/play_timecard/${urlPart}/${pageParam.id}/${pageParam.name}`,
-    // },
-
-    // {
-    //   type: "item",
-    //   name: "Find pairs",
-    //   symb: "🎭",
-    //   href: `/play_pairs/${urlPart}/${pageParam.id}/${pageParam.name}`,
-    // }, //🎏
-    // { type: "Divider", name: "Divider", symb: "|", href: "" },
-
-    // {
-    //   type: "item",
-    //   name: "Test",
-    //   symb: "🔠",
-    //   href: `/play_test/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-    // },
-
-    // {
-    //   type: "item",
-    //   name: "Write...",
-    //   symb: "🖋️",
-    //   href: `/play_write/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-    // },
-
-    // {
-    //   type: "item",
-    //   name: "Parts...",
-    //   symb: "🧩",
-    //   href: `/play_parts/${urlPart}/0/${pageParam.id}/${pageParam.name}`,
-    // },
   ];
 };

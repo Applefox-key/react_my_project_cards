@@ -3,6 +3,8 @@
   --card-color: #fffff0;
   --color-text: black;
   --color-back: white;
+  --color-back: #e9e8e4;
+  --white-black: #5f6368;
   --color-bg-wrap: #5f6368;
   --contrast-text: black;
   --wrap-opacity: 1;
@@ -12,8 +14,10 @@
   --background-wrap-rgb: 252, 252, 252;
   --background-wrap: #fcfcfc;
   // --background-wrap: #fcfbf7;
-  --background-nav: #193B70;
-  --color-nav: #193B70;
+  // --background-nav: #193B70;
+  --background-nav: #5c8ece;
+  // --color-nav: #193B70;
+  --color-nav: #5c8ece;
 
   --background-header: #f7f6f6;
   --background-first: #fcfbf7;
@@ -26,10 +30,15 @@
   --background-switch: #020202;
   --background-intense: #0A58CA;
   --color-intense: #597db4;
-  --background-note: #ed666d;
-  --color-rate: #ed666d;
-  --border-note: red;
-  --color-checked: #FF4500;
+  // --background-note: #ed666d;
+  --background-note: #5c8ece;
+  // border: 1px solid #64b5f6;
+  // background-color: #5c8ece;
+  // --color-rate: #ed666d;
+  --color-rate: #64b5f6;
+  // --border-note: red;
+  --border-note: #64b5f6;
+  --color-checked: #ed666d;
   --color-about: #5d8fd0;
   --color-fill: #EDEFF4;
   --border-fill: #DADEE8;
@@ -845,7 +854,7 @@ input {
 }
 
 .btn-x {
-  border-radius: 20px;
+  border-radius: 20px 0 20px 0;
   width: 3rem;
   height: 3rem;
   line-height: 0;
@@ -870,7 +879,8 @@ input {
   }
 
   span {
-    color: var(--color-nav);
+    // color: var(--color-nav);
+    color: #FF4500;
     font-weight: 700;
   }
 
@@ -884,7 +894,9 @@ input {
 
   &:hover {
     z-index: 901;
-    box-shadow: var(--color-nav) 0px 3px 8px;
+    // box-shadow: var(--color-nav) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    scale: 1.1;
 
     &::after {
 
@@ -914,7 +926,7 @@ input {
   // border-radius: 10px;
   margin-top: 0;
   position: relative;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   @media screen and (max-width: 900px) {
     font-size: 10px;
@@ -1084,3 +1096,30 @@ input {
   display: flex;
   justify-content: space-between;
 }
+
+.max-width-u {
+  max-width: unset;
+}
+
+// .simpleBtn,
+// .simpleDiv,
+// .simpleCheck {
+//   border-radius: 5px;
+//   padding: 5px 15px;
+//   font-family: 'Lato', sans-serif;
+//   font-weight: 500;
+//   cursor: pointer;
+//   transition: all 0.3s ease;
+//   position: relative;
+//   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+//     7px 7px 20px 0px rgba(0, 0, 0, .1),
+//     4px 4px 5px 0px rgba(0, 0, 0, .1);
+//   outline: none;
+//   font-size: 14px;
+//   border: none;
+//   color: #fff;
+//   background: linear-gradient(0deg, var(--color-rate) 0%, var(--color-rate) 100%);
+//   text-decoration: none;
+//   text-wrap: nowrap;
+//   height: fit-content;
+// }

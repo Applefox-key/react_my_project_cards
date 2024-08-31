@@ -6,7 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { GO_TO } from "../../../router/routes";
 import { onePartLittle } from "../../../utils/cardFragment";
 import Rate from "../../games/Rate";
-
+import { FiEdit2 } from "react-icons/fi";
+import { TbInputSearch, TbSearch } from "react-icons/tb";
+import { LiaSearchSolid } from "react-icons/lia";
+import { FcFrame, FcSearch, FcViewDetails } from "react-icons/fc";
+import { GrClose } from "react-icons/gr";
+import { BsPostcard } from "react-icons/bs";
+import { IoMdClose } from "react-icons/io";
 const ContentCards = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
   const viewCard = (item) => {
@@ -18,19 +24,20 @@ const ContentCards = ({ content, setContent, pageParam }) => {
   const btns = [
     {
       private: true,
-      symb: "🖊",
+      symb: <FiEdit2 />,
       callback: (item) => {
         route(`${GO_TO.editCard}/${pageParam.id}/${pageParam.name}/${item.id}`);
       },
     },
     {
       private: false,
-      symb: "🔎",
+      symb: <FcFrame />,
       callback: viewCard,
     },
     {
       private: true,
-      symb: "❌",
+      // symb: "❌",
+      symb: <IoMdClose />,
       callback: async (element) => {
         if (!window.confirm("Delete?")) return;
         await BaseAPI.deleteContent(element.id);

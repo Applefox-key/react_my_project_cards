@@ -12,12 +12,7 @@ const GamesMenu = ({
   isVertical = false,
 }) => {
   const [show, setShow] = useState(!isBtnForm);
-  const [inProp, setInProp] = useState(true);
-  // const onClick = (e) => {
-  //   e.stopPropagation();
-  //   setShow(!show);
-  // };
-
+  const [inProp, setInProp] = useState(!isBtnForm);
   const onClick = (e) => {
     e.stopPropagation();
     if (show) {
@@ -51,7 +46,14 @@ const GamesMenu = ({
       className={
         isVertical ? cl["games-menu-wrap-vert"] : cl["games-menu-wrap"]
       }>
-      <div className={isVertical ? cl["overflow-vert"] : ""}>
+      <div
+        className={
+          isVertical
+            ? show
+              ? cl["overflow-vert-show"]
+              : cl["overflow-vert"]
+            : ""
+        }>
         {!(!show && isBtnForm) && (
           <CSSTransition
             in={inProp}
@@ -78,21 +80,26 @@ const GamesMenu = ({
                           router(item.href);
                         }
                   }>
-                  {item.symb}
+                  {item.symb} {isVertical ? item.name : ""}
                 </div>
               ))}
             </div>
           </CSSTransition>
         )}
         {isBtnForm && (
-          <button
-            className={
-              inProp ? cl["games-menu-btn-show"] : cl["games-menu-btn"]
-            }
-            data-title={"Games"}
-            onClick={onClick}>
-            <MdOutlineModelTraining />
-          </button>
+          <>
+            <button
+              id="gamesBtn"
+              className={
+                inProp ? cl["games-menu-btn-show"] : cl["games-menu-btn"]
+              }
+              data-title={"Games"}
+              onClick={onClick}>
+              <MdOutlineModelTraining className={cl.ico} />
+              Learn
+            </button>
+            {/* <span>Learn</span> */}
+          </>
         )}
       </div>
     </div>

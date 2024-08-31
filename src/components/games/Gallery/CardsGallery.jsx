@@ -21,14 +21,19 @@ const CardsGallery = () => {
   const [anim, setShowAnim] = useState(false);
   const setPopup = usePopup();
 
-  const changeContent = async (initVal) => {
+  const changeContentAsync = async (initVal) => {
     let res = await addRates(initVal);
-    return shuffle(res);
+    let res1 = shuffle(res);
+    setItems(res1);
   };
+  const changeContent = async (initVal) => {
+    let res = shuffle(initVal);
+    setItems(res);
+  };
+
   const param = useParams().mode;
   const [getContent, isLoading, error] = useGame(
-    setItems,
-    useParams().tab === "my" ? changeContent : shuffle,
+    useParams().tab === "my" ? changeContentAsync : changeContent,
     useParams().tab === "my"
   );
   useEffect(() => {

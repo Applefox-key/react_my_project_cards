@@ -44,8 +44,9 @@ export const addProbabilities = async (items, game, mode, setAllItems) => {
 };
 //RATEs
 const getRates = async (items) => {
-  let iscontent = items[0].hasOwnProperty("content");
-  let tmpArr = iscontent ? items[0].content : items;
+  let isArr = Array.isArray(items);
+  let iscontent = isArr && items[0].hasOwnProperty("content");
+  let tmpArr = iscontent ? items[0].content : isArr ? items : [items];
   let lid = tmpArr.map((el) => {
     return el.id;
   });
@@ -56,9 +57,9 @@ const getRates = async (items) => {
       return { ...el, rate: pr ? pr - 10 : 0 };
     });
     const mainResult = iscontent ? [{ ...items[0], content: lidarr }] : lidarr;
-    return mainResult;
+    return isArr ? mainResult : mainResult[0];
   } catch (error) {
-    return [];
+    return items;
   }
 };
 export const addRates = async (items) => {

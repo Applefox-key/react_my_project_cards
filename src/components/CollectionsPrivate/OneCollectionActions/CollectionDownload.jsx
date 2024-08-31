@@ -80,7 +80,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
                 name="question"
                 checked={!!columnsArr[0]}
               />
-              <label for="question">question</label>
+              <label htmlFor="question">question</label>
             </div>
             <div>
               <input
@@ -90,7 +90,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
                 name="answer"
                 checked={!!columnsArr[1]}
               />
-              <label for="answer">answer</label>
+              <label htmlFor="answer">answer</label>
             </div>
             <div>
               <input

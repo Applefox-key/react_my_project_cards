@@ -727,7 +727,8 @@
 
     position: relative;
 
-    span {
+    span,
+    svg {
         position: absolute;
         left: -0px;
         font-size: 6px;

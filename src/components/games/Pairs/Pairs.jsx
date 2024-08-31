@@ -21,15 +21,18 @@ const Pairs = () => {
 
   const contentParts = (arr = null) => {
     let newArr = arr ? shuffle([...arr]) : [...items];
-    if (!newArr.length) return [[], []];
+    if (!newArr.length) {
+      setItemsV([[], []]);
+      return;
+    }
     let leng = newArr.length === 7 ? 7 : Math.min(6, newArr.length);
     let part = newArr.splice(0, leng);
     setItems(newArr);
     let a1 = shuffle([...part]);
     let a2 = shuffle([...part]);
-    return [a1, a2];
+    setItemsV([a1, a2]);
   };
-  const [getContent, isLoading] = useGame(setItemsV, contentParts);
+  const [getContent, isLoading] = useGame(contentParts);
 
   useEffect(() => {
     getContent();

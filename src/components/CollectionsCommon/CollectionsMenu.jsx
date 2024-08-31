@@ -10,12 +10,16 @@ import SortMenu from "../UI/SortMenu/SortMenu";
 import { useNavigate } from "react-router-dom";
 import { GO_TO } from "../../router/routes";
 import { FiSettings } from "react-icons/fi";
+import CollectionPagePath from "../UI/CollectionPagePath";
 
 const CollectionsMenu = (props) => {
   const isPublic = window.location.pathname.includes("pub");
+
   const sortContent = (field, isDec) => {
     props.setSettingsCommon("sorting", { field, isDec });
   };
+  const router = useNavigate();
+
   const ToCollections = () => {
     if (props.commonSettings.byCategory) {
       props.setSettingsCommon("byCategory");
@@ -30,37 +34,32 @@ const CollectionsMenu = (props) => {
       return;
     }
   };
-  const router = useNavigate();
+  const arrPath = (() => {
+    const res = [];
+    if (isPublic) res.push({ name: "Public library", action: null });
+    else res.push({ name: "My library", action: () => router("/myLibrary") });
+    res.push({ name: "Collections", action: ToCollections });
+    if (props.commonSettings.byCategory)
+      res.push({ name: "Categories", action: ToCollections });
+    if (!isPublic && !!props.commonSettings.selectedCategorymy)
+      res.push({
+        name: props.commonSettings.selectedCategorymy.name,
+        action: null,
+      });
+    if (isPublic && !!props.commonSettings.selectedCategorypub)
+      res.push({
+        name: props.commonSettings.selectedCategorypub.name,
+        action: null,
+      });
+    return res;
+  })();
   return (
     <div>
       <div className="string_menu">
-        {/* <div className="d-flex align-items-center"></div>{" "} */}
         <div className="menufind">
           <div className="d-flex align-items-center">
-            <h1>
-              {isPublic ? (
-                "Public library"
-              ) : (
-                <span className="pointer" onClick={() => router("/myLibrary")}>
-                  My library
-                </span>
-              )}
-              <span className="pointer" onClick={ToCollections}>
-                / Collections
-              </span>
-              {props.commonSettings.byCategory && <span> / Categories </span>}
-              <span>
-                {!isPublic && !!props.commonSettings.selectedCategorymy
-                  ? " / " + props.commonSettings.selectedCategorymy.name
-                  : ""}
-              </span>
-              <span>
-                {isPublic && !!props.commonSettings.selectedCategorypub
-                  ? " / " + props.commonSettings.selectedCategorypub.name
-                  : ""}
-              </span>
-            </h1>
-          </div>{" "}
+            <CollectionPagePath list={arrPath} />
+          </div>
           <div className="view-settings">
             <ToggleView
               checked={window.location.hash === "#1" ? 1 : 0}
@@ -80,16 +79,24 @@ const CollectionsMenu = (props) => {
                 setSettingsCommon={props.setSettingsCommon}
               />{" "}
             </div>
-            <FilterByCategory
-              onSelect={(val) =>
-                props.setSettingsCommon(
-                  isPublic ? "selectedCategorypub" : "selectedCategorymy",
-                  val
-                )
-              }
-              colCatPub={props.commonSettings.selectedCategorypub}
-              colCat={props.commonSettings.selectedCategorymy}
-            />{" "}
+            <div
+              className={
+                (isPublic && !!props.commonSettings.selectedCategorypub) ||
+                (!isPublic && !!props.commonSettings.selectedCategorymy)
+                  ? "active-border"
+                  : ""
+              }>
+              <FilterByCategory
+                onSelect={(val) =>
+                  props.setSettingsCommon(
+                    isPublic ? "selectedCategorypub" : "selectedCategorymy",
+                    val
+                  )
+                }
+                colCatPub={props.commonSettings.selectedCategorypub}
+                colCat={props.commonSettings.selectedCategorymy}
+              />
+            </div>
           </div>
           <div>
             <div className="d-flex lign-items-center">

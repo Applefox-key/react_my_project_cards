@@ -11,6 +11,9 @@ import BackBtn from "../../UI/BlackBtn/BackBtn";
 import { SlPicture } from "react-icons/sl";
 import { addRates, updRates } from "../../../utils/gamesResults";
 import Rate from "../../games/Rate";
+import { IoMdClose } from "react-icons/io";
+import { LuImagePlus } from "react-icons/lu";
+import { BiImageAdd } from "react-icons/bi";
 const EditCard = () => {
   const [item, setItem] = useState();
   const pageParam = useParams();
@@ -121,12 +124,12 @@ const EditCard = () => {
                       onClick={() =>
                         setItem({ ...item, imgQ: "", imgQFile: "" })
                       }>
-                      ❌
+                      <IoMdClose />
                     </button>
                     <img src={getImgQ(item)} alt="" />
                   </div>
                 ) : (
-                  <SlPicture className="img" />
+                  <BiImageAdd className="imgEmpty" />
                 )}
               </div>
               <textarea
@@ -156,12 +159,12 @@ const EditCard = () => {
                       onClick={() =>
                         setItem({ ...item, imgA: "", imgAFile: "" })
                       }>
-                      ❌
+                      <IoMdClose />
                     </button>
                     <img src={getImgA(item)} alt="" />
                   </div>
                 ) : (
-                  <SlPicture className="img" />
+                  <BiImageAdd className="imgEmpty" />
                 )}
               </div>
               <textarea

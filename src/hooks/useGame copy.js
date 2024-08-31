@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import BaseAPI from "../API/BaseAPI";
 
-export const useGame = (callback, isFnAsync = false) => {
+export const useGame = (
+  setCallback = null,
+  changeContent = null,
+  isFnAsync = false
+) => {
   const pageParam = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -14,13 +18,16 @@ export const useGame = (callback, isFnAsync = false) => {
         : pageParam.tab === "my"
         ? await BaseAPI.getContent(pageParam.id)
         : await BaseAPI.getContentPlaylist(pageParam.id); //playlist
-    if (callback) {
-      const isAsync = callback.constructor.name === "AsyncFunction";
-      if (isAsync || isFnAsync) await callback(content);
-      else callback(content);
-    }
-  };
+    let newContent;
+    if (changeContent) {
+      const isAsync = changeContent.constructor.name === "AsyncFunction";
 
+      if (isAsync || isFnAsync) newContent = await changeContent(content);
+      else newContent = changeContent(content);
+    } else newContent = content;
+
+    if (setCallback) setCallback(newContent);
+  };
   const getContent = async () => {
     try {
       setIsLoading(true);

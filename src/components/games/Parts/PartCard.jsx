@@ -19,9 +19,10 @@ const PartCard = () => {
   const [key, setKey] = useState(Date.now());
   const mode = useParams().mode;
   const contentParts = (arr) => {
-    return formatContentParts(arr, parseInt(mode));
+    let res = formatContentParts(arr, parseInt(mode));
+    setItems(res);
   };
-  const [getContent, isLoading, error] = useGame(setItems, contentParts);
+  const [getContent, isLoading, error] = useGame(contentParts);
   const changeItems = (newVal) => {
     setItems([...newVal]);
     setKey(Date.now());

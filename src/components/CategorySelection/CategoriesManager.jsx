@@ -6,6 +6,9 @@ import BaseAPI from "../../API/BaseAPI";
 import BackMenuBtn from "../UI/tgb/BackMenuBtn";
 import { HiPlus } from "react-icons/hi";
 import CategoryManagerContent from "./CategoryManagerContent";
+import { GO_TO } from "../../router/routes";
+import { useNavigate } from "react-router-dom";
+import CollectionPagePath from "../UI/CollectionPagePath";
 
 const CategoriesManager = ({ isModal = false }) => {
   const [categoriesTbl, setCategoriesTbl] = useState([]);
@@ -76,23 +79,32 @@ const CategoriesManager = ({ isModal = false }) => {
       setEditMode(null);
     },
   };
-
+  const router = useNavigate();
+  const toLibrary = () => {
+    router(GO_TO.library);
+  };
+  const arrPath = [
+    { name: "My library", action: toLibrary },
+    { name: "Categories manager", action: null },
+  ];
   return (
     <div>
       {!isModal && (
-        <div className="menufind mt-4">
-          <h1>My library / Categories manager</h1>
-          <div>
-            <button
-              className="viewBtn"
-              data-title="Add new category"
-              onClick={(e) => {
-                e.stopPropagation();
-                rowsActons.addRow();
-              }}>
-              <HiPlus />
-            </button>
-            <BackMenuBtn />
+        <div className="string_menu">
+          <div className="menufind mt-4">
+            <CollectionPagePath list={arrPath} />
+            <div>
+              <button
+                className="viewBtn"
+                data-title="Add new category"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  rowsActons.addRow();
+                }}>
+                <HiPlus />
+              </button>
+              <BackMenuBtn />
+            </div>
           </div>
         </div>
       )}

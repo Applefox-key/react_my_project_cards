@@ -21,24 +21,31 @@ const UserLibrary = () => {
       timeout={1000}
       classNames="game"
       unmountOnExit>
-      <div className="tbl_view">
-        <h1 className="mt-4">MY LIBRARY</h1>
-        <div className="oneCollect-wrap">
-          <h1 className="pointer oneCollect" onClick={toCollections}>
-            Collections
-          </h1>
+      <>
+        <div className="string_menu">
+          {" "}
+          <div className="menufind">
+            <h1 className="mt-4">MY LIBRARY</h1>{" "}
+          </div>
         </div>
-        <div className="oneCollect-wrap">
-          <h1 className="pointer oneCollect" onClick={toPlaylists}>
-            Playlists
-          </h1>
+        <div className="tbl_view mt-2">
+          <div className="oneCollect-wrap">
+            <h1 className="pointer oneCollect" onClick={toCollections}>
+              Collections
+            </h1>
+          </div>
+          <div className="oneCollect-wrap">
+            <h1 className="pointer oneCollect" onClick={toPlaylists}>
+              Playlists
+            </h1>
+          </div>
+          <div className="oneCollect-wrap">
+            <h1 className="pointer oneCollect" onClick={toCat}>
+              Categories
+            </h1>
+          </div>
         </div>
-        <div className="oneCollect-wrap">
-          <h1 className="pointer oneCollect" onClick={toCat}>
-            Categories
-          </h1>
-        </div>
-      </div>
+      </>
     </CSSTransition>
   );
 };

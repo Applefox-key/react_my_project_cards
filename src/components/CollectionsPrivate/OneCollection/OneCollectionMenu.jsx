@@ -10,6 +10,7 @@ import { GO_TO } from "../../../router/routes";
 import { saveSet } from "../../../utils/pageSettings";
 import { FiSettings } from "react-icons/fi";
 import GamesMenu from "../../UI/GamesMenu/GamesMenu";
+import CollectionPagePath from "../../UI/CollectionPagePath";
 
 const OneCollectionMenu = (props) => {
   const [renameMode, setRenameMode] = useState(false);
@@ -41,7 +42,23 @@ const OneCollectionMenu = (props) => {
     });
     router(GO_TO.myCollect);
   };
+  const arrPath = (() => {
+    const res = [
+      { name: "My library ", action: toLibrary },
+      { name: "Collections", action: toCollections },
+    ];
 
+    if (props.colObj.collection.category)
+      res.push({ name: "Categories", action: toCat });
+
+    res.push({
+      name: props.colObj.collection.name,
+      action: null,
+      cl: "colname",
+    });
+
+    return res;
+  })();
   return (
     <div className="string_menu">
       {renameMode && (
@@ -55,34 +72,13 @@ const OneCollectionMenu = (props) => {
       )}
 
       <div className="menufind">
-        <div className="d-flex align-items-center">
+        <div className="name-collect">
+          <CollectionPagePath list={arrPath} />
+        </div>
+        <div className="view-settings width150">
           <div className="playmenu">
             <GamesMenu cardSet={props.colObj.collection} isBtnForm isVertical />
           </div>
-
-          <div className="d-flex">
-            <div className="name-collect">
-              <h1 className="pointer">
-                <span className="pointer" onClick={toLibrary}>
-                  My library /
-                </span>
-
-                <span className="pointer" onClick={toCollections}>
-                  Collections /
-                </span>
-                {props.colObj.collection.category && (
-                  <span className="pointer" onClick={toCat}>
-                    {props.colObj.collection.category} /
-                  </span>
-                )}
-                <span className="colname" onClick={() => setRenameMode(true)}>
-                  {props.colObj.collection.name}
-                </span>
-              </h1>{" "}
-            </div>
-          </div>
-        </div>
-        <div className="view-settings width150">
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={props.setMode}

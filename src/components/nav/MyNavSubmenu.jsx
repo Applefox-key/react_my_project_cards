@@ -7,7 +7,10 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 const MyNavSubmenu = ({ navArr, group, groupPath }) => {
   const clName = () => {
-    return navArr.some((el) => window.location.pathname.includes(el.path))
+    return navArr.some((el) =>
+      window.location.pathname.toLowerCase().includes(el.path.toLowerCase())
+    ) ||
+      window.location.pathname.toLowerCase().includes(groupPath.toLowerCase())
       ? [cl.dropdown, cl.active].join(" ")
       : cl.dropdown;
   };
@@ -32,7 +35,11 @@ const MyNavSubmenu = ({ navArr, group, groupPath }) => {
             onClick={(e) => handleClick(e, item.path)}
             id={"path" + item.nameNav.trim()}
             className={
-              window.location.pathname.includes(item.path) ? cl.active : ""
+              window.location.pathname
+                .toLowerCase()
+                .includes(item.path.toLowerCase())
+                ? cl.active
+                : ""
             }>
             {item.nameNav.toUpperCase()}
           </span>

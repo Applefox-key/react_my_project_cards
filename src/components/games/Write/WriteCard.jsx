@@ -17,7 +17,9 @@ const WriteCard = () => {
   const [key, setKey] = useState(Date.now());
   const [endless, setEndless] = useState(false);
   const setPopup = usePopup();
-  const [getContent, isLoading, error] = useGame(setItems, shuffle);
+  const [getContent, isLoading, error] = useGame((arr) => {
+    setItems(shuffle(arr));
+  });
   const mode = useParams().mode;
   const changeItems = (newVal) => {
     setItems([...newVal]);

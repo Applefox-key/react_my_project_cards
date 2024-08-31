@@ -427,7 +427,9 @@
 
   display: flex;
 
-
+  input {
+    max-width: 6rem;
+  }
 }
 
 
@@ -722,6 +724,13 @@
   color: var(--color-rate);
   background-color: transparent;
 
+  svg {
+    // fill: aquamarine;
+    stroke: var(--color-bg-wrap);
+    stroke-width: 8px;
+    stroke-opacity: 1;
+  }
+
   div {
     display: flex;
     flex-wrap: nowrap;
@@ -733,17 +742,14 @@
   svg {
     &:hover {
       scale: 1.1;
-      // color: yellow;
     }
   }
 }
 
 .rateS {
   font-size: 14px;
-  // border: 1px solid var(--border-note);
   color: var(--color-rate);
   background-color: transparent;
-  // color: white;
   border-radius: 10px;
 }
 
@@ -759,4 +765,35 @@
       width: 240px
     }
   }
+}
+
+.circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 50%;
+  animation: fadeOut forwards;
+
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+
+}
+
+.startP {
+  border-radius: 50%;
+  z-index: 5000;
+  width: 6rem;
+  height: 4rem;
 }

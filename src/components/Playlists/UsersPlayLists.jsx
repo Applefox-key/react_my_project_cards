@@ -10,6 +10,7 @@ import { useTextFilter } from "../../hooks/useCollectSelection";
 import { useNavigate } from "react-router-dom";
 import GamesMenu from "../UI/GamesMenu/GamesMenu";
 import { BsCollectionPlay } from "react-icons/bs";
+import { IoMdClose } from "react-icons/io";
 
 const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
   const [list, setList] = useState([]);
@@ -99,7 +100,7 @@ const UsersPlayLists = ({ commonSettings, setSettingsCommon }) => {
                     listFn.delPlaylist(el);
                   }}
                   className={cl.btn}>
-                  ❌
+                  <IoMdClose />
                 </button>
               </div>
               <div className={cl.listBody}>

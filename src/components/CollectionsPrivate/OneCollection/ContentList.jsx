@@ -88,6 +88,7 @@ const ContentList = ({ content, setContent, pageParam }) => {
         <div className="listContent">
           {content.map((el, i) => (
             <div
+              key={el.id}
               className="one-row"
               onClick={(e) => {
                 e.stopPropagation();

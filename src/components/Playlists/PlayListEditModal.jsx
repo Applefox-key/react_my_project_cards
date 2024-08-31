@@ -42,7 +42,7 @@ const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
       showmodal={isEdit}
       setshowmodal={setIsEdit}
       // size="lg"
-      title={"My library / Playlists"}
+      title={"My library: Playlists"}
       fullscreen
       // dialogClassName="modal-h100"
     >

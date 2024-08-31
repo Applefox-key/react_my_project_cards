@@ -339,8 +339,6 @@
 }
 
 .card-button {
-    /* border: 1px solid green; */
-
     padding: 0;
     margin: 0;
     border: none;
@@ -392,7 +390,9 @@
     }
 
     &:hover {
-        background-color: var(--background-third);
+        // background-color: var(--background-third);
+        background-color: var(--color-nav);
+        color: white;
         transform: scale(1.2);
         box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
     }
@@ -445,7 +445,8 @@
         text-wrap: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        color: var(--color-checked);
+        color: var(--color-intense);
+        // color: var(--background-note);
         width: 100%;
         text-align: left;
         width: 100%;
@@ -471,10 +472,11 @@
                 top: 0;
                 left: 0;
                 color: white;
-                color: var(--background-second);
                 font-size: 18px;
                 border-radius: 0 0 15px 15px;
-                background-color: var(--color-checked);
+                // background-color: var(--color-checked);
+                background-color: var(--background-note);
+                ;
             }
         }
     }

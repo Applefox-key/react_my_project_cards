@@ -29,14 +29,14 @@ const TestCard = () => {
       shuffle(answ);
       return { item: el, answ: answ };
     });
-    return res;
+    setItems(res);
   };
 
   const changeItems = (newVal) => {
     setItems([...newVal]);
     setKey(Date.now());
   };
-  const [getContent, isLoading, error] = useGame(setItems, contentParts);
+  const [getContent, isLoading, error] = useGame(contentParts);
 
   useEffect(() => {
     if (!endless) return;

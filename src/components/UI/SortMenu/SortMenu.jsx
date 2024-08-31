@@ -50,14 +50,12 @@ const SortMenu = ({ fields, onSelect }) => {
       {isOpen && (
         <ul className={cl["dropdown-menu"]}>
           {fields.map((field, i) => (
-            <>
-              <li
-                key={field.value}
-                dataF="field"
-                onClick={(e) => handleOptionClick(e, field)}>
-                {field.label}
-              </li>
-            </>
+            <li
+              key={field.value}
+              dataf="field"
+              onClick={(e) => handleOptionClick(e, field)}>
+              {field.label}
+            </li>
           ))}
         </ul>
       )}

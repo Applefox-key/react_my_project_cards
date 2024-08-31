@@ -7,6 +7,7 @@ import BaseAPI from "../../API/BaseAPI";
 import { FiUserCheck } from "react-icons/fi";
 import { CiShare2 } from "react-icons/ci";
 import { LuCopyPlus } from "react-icons/lu";
+import { IoMdClose } from "react-icons/io";
 
 const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
   const setPopup = usePopup();
@@ -40,7 +41,7 @@ const CollectionCardBtns = ({ oneSet, routeOne, listFn = "" }) => {
               e.stopPropagation();
               listFn.delColl(oneSet.collection);
             }}>
-            ❌
+            <IoMdClose />
           </div>
           {!!oneSet.collection.isPublic && (
             <div className="shareSymb">

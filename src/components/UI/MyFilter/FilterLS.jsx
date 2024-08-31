@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import cl from "./MyFilter.module.scss";
 
 import "../../../styles/collectMenu.scss";
 
 import { useFilter } from "../../../hooks/useFilter";
+import { FcSearch } from "react-icons/fc";
 const FilterLS = () => {
   const { filterG, setFilterG } = useFilter();
   // const [value, setValue] = useState(filterG);
@@ -37,7 +37,7 @@ const FilterLS = () => {
     <div className={ishide ? cl.show : "position-relative"}>
       <div className={cl.mainbox}>
         <div className={cl.icon} onClick={showHide}>
-          <HiOutlineMagnifyingGlass />
+          <FcSearch />
         </div>
         <input
           type="text"

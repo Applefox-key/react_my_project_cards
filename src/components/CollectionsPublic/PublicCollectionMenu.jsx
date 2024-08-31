@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { GO_TO } from "../../router/routes";
 import { saveSet } from "../../utils/pageSettings";
 import GamesMenu from "../UI/GamesMenu/GamesMenu";
+import CollectionPagePath from "../UI/CollectionPagePath";
 
 const PublicCollectionMenu = (props) => {
   const router = useNavigate();
@@ -17,35 +18,29 @@ const PublicCollectionMenu = (props) => {
         id: props.collection.categoryid,
       },
     });
-    router(GO_TO.myCollect);
+    router(GO_TO.pubCollect);
   };
+  const arrPath = (() => {
+    const res = [
+      { name: " Public library ", action: null },
+      {
+        name: "Colections",
+        action: (e) => router(GO_TO.pubCollect + window.location.hash),
+      },
+    ];
+    if (props.collection.category)
+      res.push({ name: props.collection.category, action: toCat });
+    res.push({ name: props.collection.name, action: null });
+    return res;
+  })();
   return (
     <div className="string_menu">
-      <div className="d-flex align-items-center"></div>{" "}
       <div className="menufind">
-        <div className="d-flex align-items-center">
-          <GamesMenu cardSet={props.collection} isBtnForm isVertical />
-          <div className="d-flex">
-            <div className="name-collect">
-              <span>Public library /</span>
-              <span
-                className="pointer"
-                onClick={(e) =>
-                  router(GO_TO.pubCollect + window.location.hash)
-                }>
-                Colections /
-              </span>
-
-              {props.collection.category && (
-                <span className="pointer" onClick={toCat}>
-                  {props.collection.category} /{" "}
-                </span>
-              )}
-              <span> {props.collection.name}</span>
-            </div>
-          </div>
+        <div className="name-collect">
+          <CollectionPagePath list={arrPath} />
         </div>
         <div className="view-settings width150">
+          <GamesMenu cardSet={props.collection} isBtnForm isVertical />
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={props.setMode}

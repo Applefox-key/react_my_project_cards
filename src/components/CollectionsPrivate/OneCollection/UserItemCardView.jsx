@@ -6,12 +6,15 @@ import { useQuery } from "../../../hooks/useQuery";
 import { useParams } from "react-router-dom";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import cl from "../../UI/CARDS/MyCard.module.scss";
+import Rate from "../../games/Rate";
+import { addRates, updRates } from "../../../utils/gamesResults";
 
 const UserItemCardView = () => {
   const [item, setitem] = useState();
   const pageParam = useParams();
   const [getContent, ,] = useQuery(async () => {
-    const content = await BaseAPI.getContentItem(pageParam.item);
+    const initVal = await BaseAPI.getContentItem(pageParam.item);
+    let content = await addRates(initVal);
     setitem(content);
   });
 
@@ -23,9 +26,19 @@ const UserItemCardView = () => {
 
   return (
     <>
-      <div className="text-center mx-5 my-5">
+      <div className="text-center mx-5 my-5 flex-standart">
+        {!!item && item.hasOwnProperty("rate") && (
+          <div>
+            <Rate
+              initialValue={item.rate}
+              isEditable
+              action={(newRate) => updRates(item, newRate)}
+            />
+          </div>
+        )}{" "}
         <BackBtn variant="dark" />
       </div>
+
       <div className={cl.container_gallery + " m-auto"}>
         {item && <MyCard item={item} />}
       </div>

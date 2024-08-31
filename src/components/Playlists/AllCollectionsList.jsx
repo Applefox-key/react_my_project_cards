@@ -122,27 +122,21 @@ const AllCollectionsList = ({
             ) : !filtredList ? (
               <h2>No collections</h2>
             ) : (
-              <>
-                {filtredList.map((el) => (
-                  <div
-                    key={el.id}
-                    className={
-                      selectedIds.includes(el.id)
-                        ? cl.isSelected
-                        : cl.isNotSelected
-                    }
-                    onClick={() => handleItemClick(el)}>
-                    {el.name}
-                    {el.isMy && (
-                      <span>
-                        <IoHomeOutline />
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </>
-            )}{" "}
-          </div>{" "}
+              filtredList.map((el) => (
+                <div
+                  key={el.id}
+                  className={
+                    selectedIds.includes(el.id)
+                      ? cl.isSelected
+                      : cl.isNotSelected
+                  }
+                  onClick={() => handleItemClick(el)}>
+                  {el.name}
+                  {el.isMy && <IoHomeOutline />}
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </>

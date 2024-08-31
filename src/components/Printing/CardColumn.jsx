@@ -1,6 +1,7 @@
 import React from "react";
 import { oneElemHorizontal } from "../../utils/cardFragment";
 import { useStretchingText } from "../../hooks/useStretchingText";
+import { IoMdClose } from "react-icons/io";
 
 const CardColumn = ({ el, i, drugDrop, del, part }) => {
   useStretchingText("print_text");
@@ -11,7 +12,9 @@ const CardColumn = ({ el, i, drugDrop, del, part }) => {
       className="horizontal_card me-4"
       {...drugDrop(i)}>
       <>{oneElemHorizontal(el, part)}</>
-      <button onClick={() => del(el)}>❌</button>
+      <button onClick={() => del(el)}>
+        <IoMdClose />
+      </button>
     </div>
   );
 };

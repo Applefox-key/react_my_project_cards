@@ -78,7 +78,10 @@ const PublicOneCollection = () => {
                     {content && (
                       <div className="listContent">
                         {content.map((el, i) => (
-                          <div className="one-row" onClick={() => openCard(el)}>
+                          <div
+                            key={el.id}
+                            className="one-row"
+                            onClick={() => openCard(el)}>
                             {onePartLittle(el, "question")}
                             {onePartLittle(el, "answer")}
                           </div>
