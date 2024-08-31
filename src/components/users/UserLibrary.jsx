@@ -23,10 +23,7 @@ const UserLibrary = () => {
       unmountOnExit>
       <>
         <div className="string_menu">
-          {" "}
-          <div className="menufind">
-            <h1 className="mt-4">MY LIBRARY</h1>{" "}
-          </div>
+          <div className="menufind">My library</div>
         </div>
         <div className="tbl_view mt-2">
           <div className="oneCollect-wrap">
