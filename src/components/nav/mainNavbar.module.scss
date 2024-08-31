@@ -130,6 +130,7 @@
     @media screen and (max-width: 900px) {
       margin-right: 12px;
       font-size: 12px;
+      text-wrap: nowrap;
     }
 
 
@@ -165,6 +166,7 @@
     margin-right: 12px;
     margin-right: 3px;
     font-size: 11px;
+    text-wrap: nowrap;
 
     svg {
       width: auto;
