@@ -127,6 +127,12 @@ const BaseAPI = {
       reqData
     );
   },
+  async transferContentBetweenColections(arr, newColId) {
+    if (!Array.isArray(arr) || !newColId)
+      return { error: "invalid input data" };
+    let reqData = { contentIds: arr, newCollectionId: newColId };
+    return await this.serverReq("post", "/content/move", true, reqData);
+  },
   async createContent(content, colId) {
     if (
       !content.id ||

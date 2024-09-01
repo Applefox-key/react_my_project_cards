@@ -19,6 +19,7 @@ const CollectionEditModal = ({
   setIsEdit,
   onHide,
   changeCat,
+  setReorgMode = null,
 }) => {
   const route = useNavigate();
   const [content, setContent] = useState();
@@ -34,17 +35,17 @@ const CollectionEditModal = ({
         }
       : ""
   );
-
   const saveChanges = async () => {
     try {
-      const res = await editCollectionHlp(
-        newName,
-        newNote,
-        category,
-        content,
+      const collectionData = {
+        name: newName,
+        note: newNote,
+        categoryel: category,
+        content: content,
         isNew,
-        collection
-      );
+        collection: collection,
+      };
+      const res = await editCollectionHlp(collectionData);
       if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
       if (!isNew && category.id !== collection.categoryid) changeCat(category);
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
@@ -83,7 +84,7 @@ const CollectionEditModal = ({
       title={"Collection's properties"}>
       <div className="d-flex flex-column justify-content-center  w-100">
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
-          <div className="input_with_lable">
+          <div className="input_with_lable mt-4">
             <label htmlFor="i_name" className="lable">
               title:
             </label>
@@ -132,6 +133,18 @@ const CollectionEditModal = ({
             )}
             {!fromFile && (
               <div className="edit_btn_menu">
+                {!isNew && setReorgMode !== null && (
+                  <Button
+                    size="lg"
+                    variant="light"
+                    disabled={!newName && isNew}
+                    onClick={() => {
+                      setReorgMode(true);
+                      setIsEdit(false);
+                    }}>
+                    Organize
+                  </Button>
+                )}
                 <Button
                   size="lg"
                   variant="light"

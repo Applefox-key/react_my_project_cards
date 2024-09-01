@@ -11,20 +11,23 @@ import { saveSet } from "../../../utils/pageSettings";
 import { FiSettings } from "react-icons/fi";
 import GamesMenu from "../../UI/GamesMenu/GamesMenu";
 import CollectionPagePath from "../../UI/CollectionPagePath";
+import { GiCardExchange } from "react-icons/gi";
 
-const OneCollectionMenu = (props) => {
+const OneCollectionMenu = ({ modes, collectionData }) => {
+  const { reorgMode, setMode, setReorgMode } = modes;
+  const { collection, content, setContent } = collectionData;
   const [renameMode, setRenameMode] = useState(false);
   const changeCat = (cat) => {
-    props.setCollect({
-      ...props.colObj.collection,
+    collectionData.setCollect({
+      ...collection,
       categoryid: cat.id ? cat.id : "",
       category: cat.name ? cat.name : "",
     });
   };
   const sortContent = (val, isDec) => {
-    const newVal = sortByField([...props.colObj.content], val, isDec);
+    const newVal = sortByField([...content], val, isDec);
 
-    props.setContent(newVal);
+    collectionData.setContent(newVal);
   };
   const router = useNavigate();
   const toCollections = () => {
@@ -36,8 +39,8 @@ const OneCollectionMenu = (props) => {
   const toCat = () => {
     saveSet({
       "selectedCategorymy": {
-        name: props.colObj.collection.category,
-        id: props.colObj.collection.categoryid,
+        name: collection.category,
+        id: collection.categoryid,
       },
     });
     router(GO_TO.myCollect);
@@ -48,12 +51,11 @@ const OneCollectionMenu = (props) => {
       { name: "Collections", action: toCollections },
     ];
 
-    if (props.colObj.collection.category)
-      res.push({ name: "Categories", action: toCat });
+    if (collection.category) res.push({ name: "Categories", action: toCat });
 
     res.push({
-      name: props.colObj.collection.name,
-      action: null,
+      name: collection.name,
+      action: () => setRenameMode(true),
       cl: "colname",
     });
 
@@ -65,9 +67,10 @@ const OneCollectionMenu = (props) => {
         <CollectionEditModal
           isEdit={renameMode}
           setIsEdit={setRenameMode}
-          collection={props.colObj.collection}
+          collection={collection}
           cancel={setRenameMode}
           changeCat={changeCat}
+          setReorgMode={setReorgMode}
         />
       )}
 
@@ -77,11 +80,11 @@ const OneCollectionMenu = (props) => {
         </div>
         <div className="view-settings width150">
           <div className="playmenu">
-            <GamesMenu cardSet={props.colObj.collection} isBtnForm isVertical />
+            <GamesMenu cardSet={collection} isBtnForm isVertical />
           </div>
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={props.setMode}
+            onChange={setMode}
           />{" "}
           <SortMenu
             fields={[
@@ -99,18 +102,16 @@ const OneCollectionMenu = (props) => {
             <span>
               <FiSettings />
             </span>
-          </button>{" "}
+          </button>
           <OneCollectionBtns
-            colObj={props.colObj}
-            setContent={props.setContent}
+            colObj={{ collection: collection, content: content }}
+            setContent={setContent}
           />
         </div>
       </div>
       <div>
-        {props.colObj.collection.note && (
-          <div className="note">
-            {"About collection: " + props.colObj.collection.note}
-          </div>
+        {collection.note && (
+          <div className="note">{"About collection: " + collection.note}</div>
         )}
       </div>
     </div>

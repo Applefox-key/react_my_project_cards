@@ -16,6 +16,7 @@ import { favorite, share } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import { GiCardExchange } from "react-icons/gi";
 
 const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
@@ -144,13 +145,12 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
         <span>
           <MdOutlineFileDownload />
         </span>
-      </button>{" "}
+      </button>
       <button
         data-title="Back"
         className="viewBtn"
         onClick={() => router(GO_TO.myCollect)}>
         <span>
-          {" "}
           <RiArrowGoBackLine />{" "}
         </span>
       </button>{" "}

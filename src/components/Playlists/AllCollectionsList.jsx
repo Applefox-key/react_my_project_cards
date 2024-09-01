@@ -60,11 +60,6 @@ const AllCollectionsList = ({
     setSelectedItems([...filtredList]);
   };
 
-  // const handleClearSelection = () => {
-  //   setSelectedIds([]);
-  //   setSelectedItems([]);
-  // };
-
   const isPubChange = () => {
     let newVal = !isPub;
     setisPub(newVal);

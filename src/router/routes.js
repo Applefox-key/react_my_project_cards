@@ -19,7 +19,6 @@ import EditCard from "../components/CollectionsPrivate/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
 import PlayLists from "../components/Playlists/PlayLists";
 import PartCard from "../components/games/Parts/PartCard";
-
 import Home from "../components/HomePage/Home";
 import UserLibrary from "../components/users/UserLibrary";
 
@@ -28,6 +27,7 @@ export const GO_TO = {
   login: "/login",
   shareManager: "/collections/shared",
   myCollect: "/collections/my",
+  organizer: "/collections/my/organizer",
   pubCollect: "/collections/pub",
   editCard: "/collections/my/edit",
   profile: "/profile",
@@ -41,7 +41,6 @@ export const publicRoutes = [
   { path: "/home", element: <Home />, nameNav: "Home" },
   { path: "/about", element: <MainPage />, nameNav: "About" },
   { path: "/login/:email", element: <Login />, nameNav: "" },
-  // { path: "/home", element: <Login />, nameNav: "" },
   { path: "/login", element: <Login />, nameNav: "" },
   { path: "/*", element: <Login />, nameNav: "" },
   {

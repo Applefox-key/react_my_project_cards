@@ -544,4 +544,32 @@
 .active-border {
   border: 2px solid #FF4500;
   border-radius: 5px;
+  // padding: 5px 10px;
+}
+
+.organiser-box {
+  border: 2px solid #FF4500;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and ((max-width: 900px)) {
+    width: 100%;
+    flex-direction: row;
+  }
+}
+
+.organiser-wrap {
+  border: 3px solid var(--color-intense);
+  padding: 5px 10px;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+
+    &:hover {
+      color: var(--color-nav);
+    }
+  }
 }

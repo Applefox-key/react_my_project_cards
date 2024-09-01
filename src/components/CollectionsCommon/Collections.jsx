@@ -25,7 +25,6 @@ const Collections = () => {
   const [viewmode, setViewmode] = useState(
     userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
   );
-
   const [commonSettings, setCommonSettings] = useState({
     selectedCategorypub: pageSet.selectedCategorypub,
     selectedCategorymy: pageSet.selectedCategorymy,

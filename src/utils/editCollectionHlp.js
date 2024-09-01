@@ -1,19 +1,14 @@
 import BaseAPI from "../API/BaseAPI";
 
-export const editCollectionHlp = async (
-  name,
-  note,
-  categoryel,
-  content,
-  isNew,
-  collection
-) => {
+export const editCollectionHlp = async (colllectionData) => {
+  const { name, note, categoryel, content, isNew, collection } =
+    colllectionData;
   let res = "";
   let newParam = {};
   if (name) newParam.name = name.trim();
   if (note) newParam.note = note;
   if (isNew) {
-    if (categoryel.id) newParam.categoryid = categoryel.id;
+    if (categoryel && categoryel.id) newParam.categoryid = categoryel.id;
     //new from file with content
     if (content)
       res = await BaseAPI.CreateCollectionWithContent(newParam, content);
@@ -21,7 +16,7 @@ export const editCollectionHlp = async (
     else res = await BaseAPI.createCollection(newParam);
   } else {
     //edit collection's params
-    if (categoryel.id !== collection.categoryid)
+    if (categoryel && collection && categoryel.id !== collection.categoryid)
       newParam.categoryid = categoryel.id ? categoryel.id : null;
     await BaseAPI.editColParam(newParam, collection.id);
   }
@@ -62,4 +57,31 @@ export const getImportMenu = (cb) => {
       },
     },
   ];
+};
+
+export const transferContent = async (contentsIds, collectionId = null) => {
+  let newID = collectionId;
+  if (newID === null) {
+    let userInput = prompt("please write the name of new collection", "");
+    if (userInput) {
+      const collectionData = {
+        name: userInput,
+        isNew: true,
+      };
+      newID = await editCollectionHlp(collectionData);
+      if (newID.error) {
+        return newID;
+      }
+    } else
+      return {
+        error:
+          "you need to choose a collection or write a new collections name",
+      };
+  }
+  let res = (newID = await BaseAPI.transferContentBetweenColections(
+    contentsIds,
+    newID
+  ));
+  return res;
+  //already have the newID
 };
