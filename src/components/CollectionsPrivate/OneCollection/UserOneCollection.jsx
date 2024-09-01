@@ -55,7 +55,6 @@ const UserOneCollection = () => {
           <>
             <OneCollectionMenu
               modes={{
-                reorgMode,
                 setMode: modeChange,
                 setReorgMode,
               }}

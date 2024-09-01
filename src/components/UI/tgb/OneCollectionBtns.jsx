@@ -16,7 +16,6 @@ import { favorite, share } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 import { RiArrowGoBackLine } from "react-icons/ri";
-import { GiCardExchange } from "react-icons/gi";
 
 const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);

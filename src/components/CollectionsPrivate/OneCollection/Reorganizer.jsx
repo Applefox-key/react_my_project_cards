@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BaseAPI from "../../../API/BaseAPI";
 import { useQuery } from "../../../hooks/useQuery";
 import { Button, Form } from "react-bootstrap";
-import { GiCardExchange } from "react-icons/gi";
 import { onePartLittle } from "../../../utils/cardFragment";
-import {
-  editCollectionHlp,
-  transferContent,
-} from "../../../utils/editCollectionHlp";
+import { transferContent } from "../../../utils/editCollectionHlp";
 import { usePopup } from "../../../hooks/usePopup";
 import {
   MdOutlineCheckBox,
@@ -18,6 +14,8 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
   const [collectList, setCollectList] = useState(null);
   const [selected, setSelected] = useState(null);
   const [selectedCards, setSelectedCards] = useState([]);
+
+  // eslint-disable-next-line no-unused-vars
   const [getContent, isLoading, error] = useQuery(async () => {
     const resultColl = await BaseAPI.getCollectionsList();
 

@@ -11,10 +11,9 @@ import { saveSet } from "../../../utils/pageSettings";
 import { FiSettings } from "react-icons/fi";
 import GamesMenu from "../../UI/GamesMenu/GamesMenu";
 import CollectionPagePath from "../../UI/CollectionPagePath";
-import { GiCardExchange } from "react-icons/gi";
 
 const OneCollectionMenu = ({ modes, collectionData }) => {
-  const { reorgMode, setMode, setReorgMode } = modes;
+  const { setMode, setReorgMode } = modes;
   const { collection, content, setContent } = collectionData;
   const [renameMode, setRenameMode] = useState(false);
   const changeCat = (cat) => {
@@ -68,7 +67,6 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
           isEdit={renameMode}
           setIsEdit={setRenameMode}
           collection={collection}
-          cancel={setRenameMode}
           changeCat={changeCat}
           setReorgMode={setReorgMode}
         />
