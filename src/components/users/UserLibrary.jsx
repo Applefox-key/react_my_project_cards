@@ -25,7 +25,7 @@ const UserLibrary = () => {
         <div className="string_menu">
           <div className="menufind">My library</div>
         </div>
-        <div className="tbl_view mt-2">
+        <div className="tbl_view">
           <div className="oneCollect-wrap">
             <h1 className="pointer oneCollect" onClick={toCollections}>
               Collections

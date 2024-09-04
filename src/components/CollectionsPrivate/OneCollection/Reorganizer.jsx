@@ -64,6 +64,7 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
         </div>
         <div className="organiser-box">
           1. Choose cards to transfer
+          <span>{selectedCards.length}</span>
           <div>
             <MdOutlineCheckBox onClick={() => check(1)} />
             <MdOutlineCheckBoxOutlineBlank onClick={() => check(0)} />
