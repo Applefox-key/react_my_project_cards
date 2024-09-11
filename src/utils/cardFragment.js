@@ -17,7 +17,8 @@ const cardContent = (item, part, cl) => {
             alt=""
           />
           {tx && (
-            <div className={cl["wh-75"]}>
+            <div className={cl["textContentImg"]}>
+              {/* <div className={cl["wh-75"]}> */}
               <p className="cardText">{tx}</p>
             </div>
           )}

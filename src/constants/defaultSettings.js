@@ -1,7 +1,7 @@
 import imgProfile from "../img/profile.ico";
 
 export const nightTheme = {
-  "--color-back": "black",
+  "--color-back": "#000000",
   "--white-black": "#e9e8e6",
   "--contrast-text": "#ffffff",
   "--back-menu": "#0f9393b3",
@@ -35,7 +35,7 @@ export const dayTheme = {
   "--white-black": "#5f6368",
   "--back-menu": "#2a313e",
   "--color-menuG": "#5f6368",
-  "--contrast-text": "black",
+  "--contrast-text": "#000000",
   "--background-wrap": "#ffffff",
   "--background-header": "#f7f6f6",
   "--background-first": "#fcfbf7",
@@ -44,7 +44,7 @@ export const dayTheme = {
   "--color-bg-wrap": "#5f6368",
   "--background-nav": "#5c8ece",
   "--color-nav": "#5c8ece",
-  "--color-text": "black",
+  "--color-text": "#000000",
   "--background-wrap-rgb": "rgb(252, 252, 252)",
   "--color-checked": "#ed666d",
   "--background-note": "#5c8ece",
@@ -58,7 +58,7 @@ export const dayTheme = {
   "--color-fill": "#EDEFF4",
   "--border-fill": "#DADEE8",
 };
-export const defaultColorBack = "white";
+export const defaultColorBack = "#ffffff";
 export const defaultStyleValue = {
   colorBack: dayTheme["--color-back"],
   colorBackN: nightTheme["--color-back"],

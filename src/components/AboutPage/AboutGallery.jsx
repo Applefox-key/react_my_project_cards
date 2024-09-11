@@ -75,7 +75,7 @@ const AboutGallery = () => {
       {items ? (
         <CSSTransition
           appear={true}
-          in={true}
+          in={"true"}
           timeout={500}
           classNames="result">
           <div className="position-relative">

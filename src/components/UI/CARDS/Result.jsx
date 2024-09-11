@@ -21,7 +21,7 @@ const Result = ({ text, count, mist }) => {
     mist();
   };
   return (
-    <CSSTransition appear={true} in={true} timeout={500} classNames="result">
+    <CSSTransition appear={true} in={"true"} timeout={500} classNames="result">
       <div
         className={[
           cl.container_gallery_result,

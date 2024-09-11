@@ -49,7 +49,7 @@ const UserProfile = ({ userData, onClick, btnName }) => {
             <div className={cl.wrap_listview}>
               default view:
               <InputGroup
-                className=" ms-2 align-items-center justify-content-center w-50"
+                className=" ms-2 align-items-center justify-content-center w-50 flex-nowrap"
                 id="view">
                 <Form.Check
                   inline
@@ -78,7 +78,7 @@ const UserProfile = ({ userData, onClick, btnName }) => {
                 onChange={updateSettings}
                 value={userDataForm.settings.colorBack}
                 title="Choose your background color"
-              />{" "}
+              />
               <button
                 onClick={updateSettings}
                 id="toDefault"

@@ -1,7 +1,6 @@
 import React from "react";
 import "./tgb.scss";
-
-import { FaLayerGroup } from "react-icons/fa";
+import { MdLabel } from "react-icons/md";
 const ByCategoryBtn = ({ ...props }) => {
   return (
     <button
@@ -12,8 +11,7 @@ const ByCategoryBtn = ({ ...props }) => {
       onClick={() =>
         props.setSettingsCommon("byCategory", !props.commonSettings.byCategory)
       }>
-      <FaLayerGroup />
-      {/* <RiFoldersFill /> */}
+      <MdLabel />
     </button>
   );
 };

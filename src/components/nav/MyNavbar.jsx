@@ -53,7 +53,7 @@ const MyNavbar = () => {
   );
 
   return (
-    <>
+    <div className={[cl.topNav]}>
       {<ThemeSwitch isPlay={isPlay} />}
       {!isPlay && (
         <>
@@ -107,7 +107,7 @@ const MyNavbar = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

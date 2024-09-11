@@ -8,6 +8,7 @@ import { useQuery } from "../../../hooks/useQuery";
 import { usePopup } from "../../../hooks/usePopup";
 import { useAuth } from "../../../hooks/useAuth";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+import { CSSTransition } from "react-transition-group";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -31,22 +32,30 @@ const Profile = () => {
     }
     updateSettings(data.settings);
     setPopup.success("The changes have been saved");
-
     setUserData({ ...userData, ...data });
   };
 
   return (
-    <div className="mt-4">
-      {isLoading || !userData ? (
-        <SpinnerLg className="span_wrap" />
-      ) : (
-        <UserProfile
-          userData={userData}
-          btnName="Save changes"
-          onClick={updateUser}
-        />
-      )}
-    </div>
+    <>
+      <CSSTransition
+        appear={true}
+        in={"true"}
+        timeout={1000}
+        classNames="game"
+        unmountOnExit>
+        <div className="mt-4">
+          {isLoading || !userData ? (
+            <SpinnerLg className="span_wrap" />
+          ) : (
+            <UserProfile
+              userData={userData}
+              btnName="Save changes"
+              onClick={updateUser}
+            />
+          )}
+        </div>
+      </CSSTransition>
+    </>
   );
 };
 

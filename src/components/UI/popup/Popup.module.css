@@ -7,7 +7,7 @@
     background-color: var(--background-wrap);
     display: none;
    width: 100%;
-   margin-left: -40px;
+   /* margin-left: -40px; */
   }
   .success{
     background-color: rgb(72, 255, 121); 

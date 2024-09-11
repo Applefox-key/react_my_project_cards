@@ -6,7 +6,7 @@ import { MdOutlineModelTraining } from "react-icons/md";
 import { CSSTransition } from "react-transition-group";
 
 const GamesMenu = ({
-  isBtnForm,
+  isBtnForm = false,
   cardSet,
   isPlaylist = false,
   isVertical = false,
@@ -41,16 +41,20 @@ const GamesMenu = ({
     return cl[classes];
   })();
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (event.target.id !== "gamesBtn") {
-        setInProp(false);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
+    if (isBtnForm) {
+      const handleOutsideClick = (event) => {
+        if (event.target.id !== "gamesBtn") {
+          setInProp(false);
+        }
+      };
+      document.addEventListener("click", handleOutsideClick);
+      return () => {
+        document.removeEventListener("click", handleOutsideClick);
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div
       className={
@@ -64,7 +68,7 @@ const GamesMenu = ({
               : cl["overflow-vert"]
             : ""
         }>
-        {!(!show && isBtnForm) && (
+        {!(isBtnForm && !show) && (
           <CSSTransition
             in={inProp}
             appear
@@ -108,7 +112,6 @@ const GamesMenu = ({
               <MdOutlineModelTraining className={cl.ico} />
               Learn
             </button>
-            {/* <span>Learn</span> */}
           </>
         )}
       </div>

@@ -38,8 +38,8 @@ const MyNavSubmenu = ({ navArr, group, groupPath }) => {
               window.location.pathname
                 .toLowerCase()
                 .includes(item.path.toLowerCase())
-                ? cl.active
-                : ""
+                ? [cl.activesubrow]
+                : cl.subrow
             }>
             {item.nameNav.toUpperCase()}
           </span>

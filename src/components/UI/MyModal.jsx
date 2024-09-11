@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 
-const MyModal = ({
+const MyModal1 = ({
   children,
   showmodal,
   setshowmodal,
@@ -23,4 +23,4 @@ const MyModal = ({
   );
 };
 
-export default MyModal;
+export default MyModal1;

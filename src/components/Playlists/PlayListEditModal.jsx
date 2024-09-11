@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/collectMenu.scss";
 import cl from "./PlayLists.module.scss";
 import { usePopup } from "../../hooks/usePopup";
-import MyModal from "../UI/MyModal";
 import AllCollectionsList from "./AllCollectionsList";
 import { editPlaylistHlp } from "../../utils/editCollectionHlp";
 import GamesMenu from "../UI/GamesMenu/GamesMenu";
+import MyModal from "../UI/MyModal";
 
 const PlayListEditModal = ({ list, isEdit, setIsEdit, onHide }) => {
   const route = useNavigate();

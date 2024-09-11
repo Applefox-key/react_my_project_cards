@@ -79,7 +79,11 @@ const WriteCardBody = ({ items, setItems }) => {
           mist={mistakes.length ? workWithErrors : null}
         />
       ) : (
-        <CSSTransition appear={true} in={true} timeout={500} classNames="game">
+        <CSSTransition
+          appear={true}
+          in={"true"}
+          timeout={500}
+          classNames="game">
           <>
             {!isResult && (
               <GameCount

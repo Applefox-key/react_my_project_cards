@@ -95,7 +95,7 @@ const WriteCardBodyEndless = ({ items }) => {
           <ProbabilityList arr={allItems} />
           <CSSTransition
             appear={true}
-            in={true}
+            in={"true"}
             timeout={500}
             classNames="result">
             <div className={cl["game-field"]}>

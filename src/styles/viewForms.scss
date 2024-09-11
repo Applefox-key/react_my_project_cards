@@ -216,7 +216,7 @@
                 align-items: center;
                 transition: inherit;
                 // transition: all 0.4s ease-in-out;
-                margin-top: 5px;
+                margin-top: 15px;
 
                 @media screen and (max-width: 900px) {
                     padding-left: 25px;
@@ -262,7 +262,7 @@
             min-width: 50%;
             width: fit-content;
             height: fit-content;
-            padding-top: 0px;
+            padding-top: 10px;
             padding-left: 15px;
             padding-right: 15px;
             color: var(--color-bg-wrap);

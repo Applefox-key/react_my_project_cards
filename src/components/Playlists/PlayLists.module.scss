@@ -543,7 +543,9 @@
 .titleWrap {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 99%;
+    border-bottom: 1px solid var(--color-fill);
+    background-color: var(--background-header);
 
     @media screen and (max-width:900px) {
         flex-direction: column-reverse;
@@ -564,7 +566,7 @@
 }
 
 .chooseList {
-    border-radius: 15px;
+    // border-radius: 15px;
     margin-left: 1rem;
     padding: 5px;
     width: 25%;
@@ -679,10 +681,11 @@
 }
 
 .filterButtons {
-    text-align: end;
+    // text-align: end;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     @media screen and (max-width:900px) {
         flex-wrap: wrap;
@@ -695,7 +698,7 @@
     .filter {
         margin: auto;
         margin-top: 5px;
-        width: -webkit-fill-available;
+
 
         @media screen and (max-width:900px) {
             position: relative;

@@ -140,7 +140,8 @@
   }
 }
 
-.string_menu {
+.string_menu,
+.string_menu_play {
   width: 100%;
   margin: 0 auto;
   min-height: 2vw;
@@ -169,9 +170,10 @@
       position: initial;
     }
   }
+}
 
-
-
+.string_menu_play {
+  position: relative;
 }
 
 .box_menu {
@@ -296,6 +298,7 @@
   .colname {
     margin-left: 5px;
     color: var(--color-intense);
+    cursor: pointer;
   }
 
   &:hover {
@@ -581,5 +584,11 @@
     &:hover {
       color: var(--color-nav);
     }
+  }
+}
+
+.collection-path {
+  span {
+    cursor: pointer;
   }
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
-import { Form } from "react-bootstrap";
 import cl from "./CategorySelection.module.scss";
+import { BiSolidRightArrow } from "react-icons/bi";
 
 const FilterByCategory = ({
   onSelect,
@@ -11,6 +11,7 @@ const FilterByCategory = ({
   isPb = null,
   isForFilter = true,
 }) => {
+  const [isShow, setIsShow] = useState(false);
   const isPublic =
     isPb === null ? window.location.pathname.includes("pub") : isPb;
   const [categories, setCategories] = useState([]);
@@ -34,22 +35,21 @@ const FilterByCategory = ({
     }
   };
 
-  const onSelectItem = async (e) => {
-    if (parseInt(e.target.value) === -2) {
+  const onSelectItem = (valC) => {
+    if (parseInt(valC) === -2) {
       addNewCategory();
       return;
     }
     const val =
-      parseInt(e.target.value) === -1
+      parseInt(valC) === -1
         ? ""
         : categories.filter((el) =>
-            isPublic
-              ? el.name + "val" === e.target.value
-              : el.id === parseInt(e.target.value)
+            isPublic ? el.name + "val" === valC : el.id === parseInt(valC)
           )[0];
 
     setSelected(val);
     onSelect(val);
+    setIsShow(!isShow);
   };
 
   useEffect(() => {
@@ -66,28 +66,67 @@ const FilterByCategory = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colCat, colCatPub, isPublic]);
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (event.target.id !== "filterCat") {
+        setIsShow(false);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div className={cl.catSelect}>
-      <Form.Select
-        onChange={onSelectItem}
-        value={!selected ? -1 : isPublic ? selected.name + "val" : selected.id}
-        aria-label="category select"
-        className="catdropdown m-auto">
-        <option value={-1} className={cl.firstSelect}>
-          {isForFilter ? "all categories" : "no category"}
-        </option>
-        {!isForFilter && (
-          <option className={cl.firstSelect} value={-2}>
-            ADD NEW
-          </option>
-        )}
-        {!isLoadingCat &&
-          categories.map((el, i) => (
-            <option key={i} value={isPublic ? el.name + "val" : el.id}>
-              {el.name}
-            </option>
-          ))}
-      </Form.Select>
+      <div
+        className="catdropdown m-auto"
+        onClick={() => setIsShow(!isShow)}
+        id="filterCat">
+        {!!selected && !!selected.id
+          ? selected.name
+          : isForFilter
+          ? "all categories"
+          : "no category"}
+
+        <BiSolidRightArrow
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsShow(!isShow);
+          }}
+          className={isShow ? "svgactive" : ""}
+        />
+      </div>
+      {isShow && (
+        <div className={cl.catSelectList}>
+          <div
+            // value={-1}
+            className={cl.firstSelect}
+            onClick={() => onSelectItem(-1)}>
+            {isForFilter ? "all categories" : "no category"}
+          </div>
+          {!isForFilter && (
+            <div
+              className={cl.firstSelect}
+              value={-2}
+              onClick={() => onSelectItem(-2)}>
+              ADD NEW
+            </div>
+          )}
+          {!isLoadingCat &&
+            categories.map((el, i) => (
+              <div
+                key={i}
+                value={isPublic ? el.name + "val" : el.id}
+                onClick={() =>
+                  onSelectItem(isPublic ? el.name + "val" : el.id)
+                }>
+                {el.name}
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

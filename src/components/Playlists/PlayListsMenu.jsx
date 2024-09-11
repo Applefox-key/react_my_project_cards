@@ -15,7 +15,7 @@ const PlayListsMenu = (props) => {
     { name: "Playlists", action: null },
   ];
   return (
-    <div className="string_menu">
+    <div className="string_menu_play">
       <div className="menufind">
         <CollectionPagePath list={arrPath} />
         <div className="view-settings">

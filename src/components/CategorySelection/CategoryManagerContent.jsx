@@ -1,11 +1,11 @@
 import React from "react";
-import { FaLayerGroup } from "react-icons/fa";
 import CategoryNameInput from "./CategoryNameInput";
 import cl from "./CategorySelection.module.scss";
 import { GO_TO } from "../../router/routes";
 import { useNavigate } from "react-router-dom";
 import { saveOneSetting } from "../../utils/pageSettings";
 import { CSSTransition } from "react-transition-group";
+import { BiLabel } from "react-icons/bi";
 const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
   const router = useNavigate();
   const hh = (el) => {
@@ -14,7 +14,7 @@ const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
   return (
     <CSSTransition
       appear={true}
-      in={true}
+      in={"true"}
       timeout={1000}
       classNames="game"
       unmountOnExit>
@@ -31,9 +31,7 @@ const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
                   router(GO_TO.myCollect);
                 }}>
                 <div className={cl["cat-header"]}>
-                  {" "}
-                  <FaLayerGroup />
-                  {/* <FaLayerGroup className="mt-2" /> */}
+                  <BiLabel />
                   <div className={cl["cat-name"]}>
                     <CategoryNameInput
                       el={el}

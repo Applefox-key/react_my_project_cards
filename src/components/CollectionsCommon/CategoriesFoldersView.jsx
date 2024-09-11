@@ -3,11 +3,9 @@ import "../../styles/viewForms.scss";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-
 import { useNavigate } from "react-router-dom";
-
 import { sortByFieldCat } from "../../utils/arraysFunc";
-import { FaLayerGroup } from "react-icons/fa";
+import { BiLabel } from "react-icons/bi";
 
 const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
   const [categories, setCategories] = useState([]);
@@ -53,8 +51,7 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
           {filtredList().map((el) => (
             <div key={el.id} className="list-wrap">
               <div className="listHeader" onClick={() => categoryFilter(el)}>
-                {/* <FiFolder className="mt-2" /> */}
-                <FaLayerGroup className="mt-2" />
+                <BiLabel className="mt-2" />
                 <div>
                   {el.name.toUpperCase()} <span>{el.collections.length}</span>
                 </div>

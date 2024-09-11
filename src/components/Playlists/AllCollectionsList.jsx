@@ -64,6 +64,8 @@ const AllCollectionsList = ({
     let newVal = !isPub;
     setisPub(newVal);
   };
+  console.log(selectedItems);
+
   return (
     <>
       <div className={cl["body-edit-wrap"]}>
@@ -105,10 +107,10 @@ const AllCollectionsList = ({
               rightel="Public library"
             />
             <div className={cl.filterButtons}>
+              <FilterByCategory isPb={isPub} onSelect={setCat} />
               <div className={cl.filter}>
                 <MyFilter filter={filter} setFilter={setFilter} />
               </div>
-              <FilterByCategory isPb={isPub} onSelect={setCat} />
             </div>
           </div>
           <div className={cl.chooseTbl}>

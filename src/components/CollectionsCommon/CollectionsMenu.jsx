@@ -95,7 +95,7 @@ const CollectionsMenu = (props) => {
                 }
                 colCatPub={props.commonSettings.selectedCategorypub}
                 colCat={props.commonSettings.selectedCategorymy}
-              />
+              />{" "}
             </div>
           </div>
           <div>

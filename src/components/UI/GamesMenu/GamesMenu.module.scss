@@ -109,13 +109,14 @@
     transition: all 0.4s ease-in-out;
     width: 100%;
 
+
     svg {
         stroke: black;
         stroke-width: 0.3px;
     }
 
     &:hover {
-        transform: translateX(-5px);
+        // transform: translateX(-5px);
         color: var(--color-intense);
         color: var(--color-rate);
         border-bottom: 1px solid var(--color-nav);
@@ -191,6 +192,30 @@
     padding-bottom: 1px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+
+    .games-menu-item {
+        text-align: center;
+        font-size: 20px;
+        border-radius: 50%;
+        // color: var(--color-fill);
+
+        svg {
+            stroke: unset;
+        }
+
+        &:hover {
+            transform: scale(0.8);
+            color: var(--color-bg-wrap);
+
+            padding: 1px;
+            border-bottom: none;
+            box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5),
+                inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+                inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+
+        }
+    }
 }
 
 

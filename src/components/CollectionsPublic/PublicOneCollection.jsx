@@ -61,7 +61,7 @@ const PublicOneCollection = () => {
           />
           <CSSTransition
             appear={true}
-            in={true}
+            in={"true"}
             timeout={1000}
             classNames="game"
             unmountOnExit>

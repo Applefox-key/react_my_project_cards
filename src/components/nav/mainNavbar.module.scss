@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
 
+.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2500;
+}
+
 .headerNav {
   width: 100%;
   background-color: var(--background-nav);
@@ -140,6 +148,7 @@
     color: var(--color-intense);
     // text-decoration: underline;
     position: relative;
+    cursor: pointer;
     font-weight: 800;
     text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
   }
@@ -161,6 +170,7 @@
   margin-right: 25px;
   color: var(--color-nav);
   position: relative;
+  cursor: pointer;
 
   @media screen and (max-width: 900px) {
     margin-right: 12px;
@@ -198,19 +208,15 @@
     position: absolute;
     right: 0px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 1.2rem;
-    padding: 5px 15px;
+    padding: 5px 0px;
     background-color: var(--background-first);
-  }
+    text-align: left;
+    color: var(--color-nav);
 
-  &:hover {
-    div {
-      display: flex;
-      z-index: 1105;
-    }
-  }
 
+  }
 
 
   a,
@@ -219,6 +225,41 @@
     color: var(--color-nav);
     font-weight: 500;
     margin: 5px;
+  }
+
+  .subrow,
+  .activesubrow,
+  span,
+  a {
+    padding: 5px 30px;
+    text-align: start;
+    width: 100%;
+    margin: 0;
+
+    &:hover {
+      background-color: var(--color-fill);
+      color: var(--color-nav);
+    }
+  }
+
+  .activesubrow {
+    // background-color: var(--color-nav);
+    position: relative;
+    cursor: pointer;
+    text-align: start;
+    padding: 5px 30px;
+    margin: 0;
+    font-weight: 800;
+    text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+  }
+
+  &:hover {
+
+    div {
+      display: flex;
+      z-index: 1105;
+
+    }
   }
 }
 

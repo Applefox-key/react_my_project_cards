@@ -50,7 +50,8 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
       { name: "Collections", action: toCollections },
     ];
 
-    if (collection.category) res.push({ name: "Categories", action: toCat });
+    if (collection.category)
+      res.push({ name: collection.category, action: toCat });
 
     res.push({
       name: collection.name,
