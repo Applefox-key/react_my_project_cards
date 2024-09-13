@@ -47,6 +47,8 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
   };
 
   const check = (ischecked) => {
+    console.log("jjj");
+
     if (ischecked) {
       const val = content.map((el) => el.id);
       setSelectedCards(val);
@@ -59,20 +61,26 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
     <>
       <div className="string_menu organiser-wrap">
         <div className="organiser-box">
-          REORGANIZATION MODE
-          <div>you can transfer some cards to another collection</div>
-        </div>
-        <div className="organiser-box">
-          1. Choose cards to transfer
-          <span>{selectedCards.length}</span>
+          <h3 className="spanCount">{selectedCards.length}</h3>
+          <p>
+            <span>1</span> Choose cards to transfer
+          </p>
           <div>
-            <MdOutlineCheckBox onClick={() => check(1)} />
-            <MdOutlineCheckBoxOutlineBlank onClick={() => check(0)} />
+            {selectedCards.length === content.length ? (
+              <MdOutlineCheckBox onClick={() => check(0)} title="check all" />
+            ) : (
+              <MdOutlineCheckBoxOutlineBlank
+                onClick={() => check(1)}
+                title="uncheck all"
+              />
+            )}
           </div>
         </div>
         {!isLoading && !!collectList && (
           <div className="organiser-box ">
-            2. Choose collection to transfer cards
+            <p>
+              <span>2</span> Choose collection to transfer cards
+            </p>
             <Form.Select
               onChange={(e) => setSelected(e.target.value)}
               value={!selected ? -1 : selected.id}
@@ -90,22 +98,20 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
           </div>
         )}
         <div className="organiser-box ">
-          3. LAST STEP
-          <div>
-            <Button
-              size="lg"
-              variant="light"
-              onClick={transfer}
-              className="me-2">
-              Transfer
-            </Button>
-            <Button
-              size="lg"
-              variant="light"
-              onClick={() => setReorgMode(false)}>
-              Cansel
-            </Button>
-          </div>
+          <p>
+            <span>3</span> LAST STEP
+          </p>
+
+          <Button size="lg" variant="light" onClick={transfer} className="me-2">
+            Transfer
+          </Button>
+        </div>{" "}
+        <div className="organiser-box-title">
+          <h4 className="me-1">REORGANIZATION MODE</h4> you can transfer some
+          cards to another collection{" "}
+          <Button size="lg" variant="light" onClick={() => setReorgMode(false)}>
+            Cansel
+          </Button>
         </div>
       </div>{" "}
       REORGANIZATION MODE

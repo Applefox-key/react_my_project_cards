@@ -669,12 +669,13 @@
             &:focus {
                 position: absolute;
                 z-index: 2000;
-                top: 0;
+                top: 43px;
                 left: 0;
                 width: 100%;
-                height: 100%;
+                height: 87%;
                 font-size: 2rem;
                 outline: none;
+                border: 5px solid var(--color-intense);
 
                 @media screen and (max-width: 900) {
                     width: 100vw;
@@ -735,14 +736,15 @@
             &:focus {
                 position: absolute;
                 z-index: 2000;
-                top: 3px;
+                top: 43px;
                 left: 0;
                 width: 100%;
-                height: 100%;
+                height: 87%;
                 font-size: 2rem;
                 border: none;
                 box-shadow: 0 6px 5px rgba(0, 0, 0, 0.2);
                 outline: none;
+                border: 5px solid var(--color-intense);
 
                 @media screen and (max-width: 900) {
                     width: 100vw;
@@ -794,7 +796,7 @@
         span {
             font-size: 20px;
             position: absolute;
-            top: -42px;
+            top: 0px;
             left: 0;
             width: 100%;
             background-color: #f0f0f0;
@@ -821,7 +823,7 @@
             height: 100%;
             font-size: 1rem;
             width: 70%;
-            min-height: 180px;
+            min-height: 150px;
             border: 1px dashed grey;
             font-weight: 600;
             color: var(--color-bg-wrap);
@@ -945,10 +947,6 @@
         }
     }
 }
-
-
-
-
 
 .print_menu {
     position: relative;
@@ -1464,4 +1462,31 @@
         }
     }
 
+}
+
+
+.addcontent-wrap {
+    display: flex;
+    justify-content: space-between;
+
+    .separator-box {
+        // d-flex fs-4 justify-content-end
+        display: flex;
+        justify-content: flex-end;
+        font-size: 14px;
+        align-items: center;
+
+        @media screen and (max-width:900px) {
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+
+    #separatorInp {
+        margin: 0 5px;
+    }
+
+    @media screen and (max-width:900px) {
+        flex-direction: column;
+    }
 }

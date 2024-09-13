@@ -60,8 +60,8 @@ const PublicOneCollection = () => {
             sortContent={sortContent}
           />
           <CSSTransition
-            appear={true}
-            in={"true"}
+            appear
+            in
             timeout={1000}
             classNames="game"
             unmountOnExit>

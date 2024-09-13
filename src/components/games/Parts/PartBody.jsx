@@ -116,22 +116,25 @@ const PartBody = ({ items, setItems }) => {
           )}
           <SwitchTransition mode="out-in">
             <CSSTransition
-              appear={false}
+              // appear={false}
               timeout={500}
               key={num}
               classNames="cardChange">
-              <div className={cl["game-field"]}>
-                <OneCardG
-                  item={items[num].item}
-                  clickable={false}
-                  rightBtn={rightBtn}
-                />
-                <div className={cl.pazlbox}>
+              <div className={cl["game-field-parts"]}>
+                <div className={cl.puzlcard}>
+                  <OneCardG
+                    item={items[num].item}
+                    nonclickable
+                    onlyFront
+                    rightBtn={rightBtn}
+                  />
                   <PartAnswer
                     item={items[num]}
                     onClick={undo}
                     activeVAL={activeVAL}
                   />
+                </div>
+                <div className={cl.pazlbox}>
                   <Parts
                     items={items[num].parts}
                     onClick={(e) => clickPart(e, items[num].answ)}
@@ -142,7 +145,7 @@ const PartBody = ({ items, setItems }) => {
                         ? ""
                         : activeIDs[activeIDs.length - 1]
                     }
-                  />{" "}
+                  />
                 </div>
               </div>
             </CSSTransition>

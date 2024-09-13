@@ -7,7 +7,7 @@ import { mainAndImg } from "../../../utils/cardFragment";
 import { useStretchingText } from "../../../hooks/useStretchingText";
 import BalancerLine from "../Balancer/BalancerLine";
 
-const MyCard = ({ mode = "0", clickable = true, ...props }) => {
+const MyCard = ({ mode = "0", ...props }) => {
   const [flipped, setFlipped] = useState(false);
   useEffect(() => {
     if (props.flip !== flipped && props.flip !== undefined)
@@ -45,21 +45,19 @@ const MyCard = ({ mode = "0", clickable = true, ...props }) => {
           <div
             className={cl["card-button"]}
             onClick={() => {
-              if (clickable) setFlipped(!flipped);
+              if (!props.nonclickable) setFlipped(!flipped);
             }}>
             <CSSTransition in={!flipped} timeout={1000} classNames="cardFront">
               {mainAndImg("front", mode, props.item, cl)}
             </CSSTransition>
-            <CSSTransition in={flipped} timeout={1000} classNames="cardBack">
-              {mainAndImg("back", mode, props.item, cl)}
-            </CSSTransition>{" "}
+            {!props.onlyFront && (
+              <CSSTransition in={flipped} timeout={1000} classNames="cardBack">
+                {mainAndImg("back", mode, props.item, cl)}
+              </CSSTransition>
+            )}
           </div>
           {props.rightBtn && (
-            <CSSTransition
-              // key={flipped ? "flipped" : "notFlipped"}
-              in={flipped}
-              timeout={800}
-              classNames="cardCArrow">
+            <CSSTransition in={flipped} timeout={800} classNames="cardCArrow">
               <button className={cl.rightBtn} {...props.rightBtn}>
                 <div
                   className={

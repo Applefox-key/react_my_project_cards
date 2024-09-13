@@ -6,6 +6,7 @@ import "../../../styles/collectMenu.scss";
 
 import { useFilter } from "../../../hooks/useFilter";
 import { FcSearch } from "react-icons/fc";
+
 const FilterLS = () => {
   const { filterG, setFilterG } = useFilter();
   // const [value, setValue] = useState(filterG);
@@ -33,8 +34,9 @@ const FilterLS = () => {
 
     setIsHide(!ishide);
   };
+
   return (
-    <div className={ishide ? cl.show : "position-relative"}>
+    <div className={ishide ? cl.short : "position-relative"}>
       <div className={cl.mainbox}>
         <div className={cl.icon} onClick={showHide}>
           <FcSearch />

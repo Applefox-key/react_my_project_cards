@@ -79,11 +79,7 @@ const WriteCardBody = ({ items, setItems }) => {
           mist={mistakes.length ? workWithErrors : null}
         />
       ) : (
-        <CSSTransition
-          appear={true}
-          in={"true"}
-          timeout={500}
-          classNames="game">
+        <CSSTransition appear in timeout={500} classNames="game">
           <>
             {!isResult && (
               <GameCount
@@ -97,7 +93,7 @@ const WriteCardBody = ({ items, setItems }) => {
                   anim={anim}
                   item={items[num]}
                   flip={flip}
-                  clickable={false}
+                  nonclickable
                   leftBtn={leftBtn}
                   rightBtn={rightBtn}
                 />

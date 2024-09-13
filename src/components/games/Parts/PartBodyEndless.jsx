@@ -88,7 +88,7 @@ const PartBodyEndless = ({ items }) => {
               <div className={cl["game-field"]}>
                 <OneCardG
                   item={allItems[num].item}
-                  clickable={false}
+                  nonclickable
                   progr={
                     allItems[num].probability === 1
                       ? 100

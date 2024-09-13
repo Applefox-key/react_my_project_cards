@@ -46,12 +46,7 @@ const CollectionsList = ({ filtredList, routeOne, listFn, sort }) => {
     return <></>;
   };
   return (
-    <CSSTransition
-      appear={true}
-      in={"true"}
-      timeout={1000}
-      classNames="game"
-      unmountOnExit>
+    <CSSTransition appear in timeout={1000} classNames="game" unmountOnExit>
       <div
         className={
           window.location.hash === "#1" ? "tbl_view " : "card-view m-auto"

@@ -87,11 +87,7 @@ const Pairs = () => {
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
-        <CSSTransition
-          in={"true"}
-          appear={true}
-          timeout={500}
-          classNames="game">
+        <CSSTransition in appear timeout={500} classNames="game">
           <div>
             {items.length + itemsV[0].length !== 0 && (
               <GameCount count={count} all={items.length + itemsV[0].length} />

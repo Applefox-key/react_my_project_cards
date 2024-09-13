@@ -4,7 +4,7 @@ import React from "react";
 import Image from "react-bootstrap/Image";
 import { useState, useEffect } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import cl from "./mainNavbar.module.scss";
 import BaseAPI from "../../API/BaseAPI";
@@ -15,7 +15,7 @@ import MySpinner from "../UI/MySpinner";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 const MyNavUserImg = ({ logout, ...props }) => {
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const [av, setAv] = useState();
 
   // const router = useNavigate();
@@ -27,24 +27,46 @@ const MyNavUserImg = ({ logout, ...props }) => {
 
   useEffect(() => {
     getData();
+    const handleOutsideClick = (event) => {
+      if (event.target.id !== "pronav") {
+        setShow(false);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setShow(!show);
+  };
 
   return isLoading ? (
     <MySpinner />
   ) : (
-    <div className={[cl.dropdown, "ms-4"].join(" ")}>
+    <div
+      id="pronav"
+      className={[cl.dropdown, "ms-4"].join(" ")}
+      onClick={handleClick}>
       <Image src={av} {...props} /> <IoMdArrowDropdown />
-      {
-        <div className={cl.subbox}>
+      {show && (
+        <div className={cl.subboxOnBtn}>
           <Link to={GO_TO.profile} id={"pathProfile"}>
             PROFILE
           </Link>
-          <Link onClick={() => logout()} id={"LOGOUT"}>
+          <Link
+            onClick={(e) => {
+              e.stopPropagation();
+              logout();
+            }}
+            id={"LOGOUT"}>
             LOGOUT
           </Link>
         </div>
-      }
+      )}
     </div>
   );
 };

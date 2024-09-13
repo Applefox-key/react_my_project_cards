@@ -1,5 +1,5 @@
 import imgProfile from "../img/profile.ico";
-
+export const playlistSetMax = 10;
 export const nightTheme = {
   "--color-back": "#000000",
   "--white-black": "#e9e8e6",

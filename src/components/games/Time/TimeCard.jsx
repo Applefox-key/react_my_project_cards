@@ -25,11 +25,7 @@ const TimeCard = () => {
   return (
     <div className="mainField">
       {!isLoading && items ? (
-        <CSSTransition
-          appear={true}
-          in={"true"}
-          timeout={500}
-          classNames="game">
+        <CSSTransition appear in timeout={500} classNames="game">
           <TimeCardBody items={items} />
         </CSSTransition>
       ) : (

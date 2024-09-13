@@ -58,12 +58,12 @@ const TestBody = ({ items, setItems }) => {
           )}
           <SwitchTransition mode="out-in">
             <CSSTransition
-              appear={false}
+              // appear={false}
               timeout={500}
               key={num}
               classNames="cardChange">
               <div className={cl["game-field"]}>
-                <OneCardG item={items[num].item} clickable={false} />
+                <OneCardG item={items[num].item} nonclickable onlyFront />
                 <TestOptions
                   items={items[num].answ}
                   onClick={choose}

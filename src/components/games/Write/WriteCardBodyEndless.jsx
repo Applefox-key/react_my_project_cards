@@ -93,18 +93,14 @@ const WriteCardBodyEndless = ({ items }) => {
         <>
           {allItems[num].note ? <Hint text={allItems[num].note} /> : <></>}
           <ProbabilityList arr={allItems} />
-          <CSSTransition
-            appear={true}
-            in={"true"}
-            timeout={500}
-            classNames="result">
+          <CSSTransition appear in timeout={500} classNames="result">
             <div className={cl["game-field"]}>
               <div className={cl.cardSize}>
                 <OneCardG
                   anim={anim}
                   item={allItems[num]}
                   flip={flip}
-                  clickable={false}
+                  nonclickable
                   leftBtn={leftBtn}
                   rightBtn={rightBtn}
                   progr={valProgress()}

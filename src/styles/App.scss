@@ -136,76 +136,7 @@
   }
 }
 
-.module-wrap {
-  width: 100vw;
-  height: 100vh;
-  z-index: 3000;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(6, 6, 6, 0.522);
-  // opacity: 0.5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  // z-index: var(--bs-backdrop-zindex);
-  width: 100vw;
-  height: 100vh;
 
-  .modalbox-wrap {
-    width: 90vw;
-    height: 90vh;
-    background-color: var(--background-wrap);
-    color: var(--color-bg-wrap);
-    width: 900px;
-    height: fit-content;
-    max-height: 500px;
-    margin-top: 60px;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  .modal-content {
-    display: flex;
-    flex-direction: column;
-    outline: 0;
-    pointer-events: auto;
-    position: relative;
-    width: 100%;
-  }
-
-  .modal-fullscreen {
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-  }
-
-  .btn-back {
-    box-sizing: content-box;
-    width: 1em;
-    height: 1em;
-    color: var(--color-bg-wrap);
-    background: none;
-    border: 0;
-    border-radius: .375rem;
-    opacity: .5;
-  }
-
-  .modal-header {
-    background: var(--background-nav);
-    color: white;
-    min-height: 3rem;
-    font-size: 14px;
-    padding: 0 15px;
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-}
 
 
 .home-text {
@@ -308,7 +239,7 @@
   margin-top: 60px;
 
   @media screen and (max-width:900px) {
-    width: 90vw;
+    width: 100vw;
   }
 
 }
@@ -826,6 +757,7 @@ input {
   padding-top: 3rem;
   position: relative;
   min-height: 100vh;
+  margin-top: -60px;
 
   .menuField {
     position: relative;
@@ -1260,6 +1192,17 @@ input {
     font-size: 12px;
 
   }
+
+  @media screen and (max-width:900px) {
+    .ulb-box {
+      margin: 5px;
+    }
+  }
+}
+
+#pronav.div {
+  display: flex;
+  z-index: 1105;
 }
 
 // .simpleBtn,

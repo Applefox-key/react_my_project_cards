@@ -4,12 +4,7 @@ import AboutBox from "../../AboutPage/AboutBox";
 
 const MainPage = () => {
   return (
-    <div
-      appear={true}
-      in={"true"}
-      timeout={1000}
-      classNames="game"
-      unmountOnExit>
+    <div appear in timeout={1000} classNames="game" unmountOnExit>
       <br />
       <div className="main_container">
         <AboutBox />

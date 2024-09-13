@@ -13,21 +13,16 @@ const Parts = ({ items, onClick, active, lastOk }) => {
   };
   return (
     <div className={cl["part-options"]}>
-      {items.map(
-        (el, i) =>
-          (!active.includes(i.toString()) ||
-            lastOk === i.toString() ||
-            window.screen.availWidth < 700) && (
-            <button
-              key={i}
-              id={i}
-              onClick={onClick}
-              disabled={active.includes(i.toString())}
-              className={generateClassName(el, i)}>
-              {el}
-            </button>
-          )
-      )}
+      {items.map((el, i) => (
+        <button
+          key={i}
+          id={i}
+          onClick={onClick}
+          disabled={active.includes(i.toString())}
+          className={generateClassName(el, i)}>
+          {el}
+        </button>
+      ))}
     </div>
   );
 };

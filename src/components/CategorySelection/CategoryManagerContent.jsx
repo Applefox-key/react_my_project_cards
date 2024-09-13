@@ -12,12 +12,7 @@ const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
     return editMode === null ? false : editMode.id === el.id;
   };
   return (
-    <CSSTransition
-      appear={true}
-      in={"true"}
-      timeout={1000}
-      classNames="game"
-      unmountOnExit>
+    <CSSTransition appear in timeout={1000} classNames="game" unmountOnExit>
       <div>
         {categoriesTbl.length && (
           <div className={cl["cat-wrap"]}>

@@ -51,6 +51,7 @@
             display: none;
             position: absolute;
             right: 10px;
+            top: 3px;
 
             &:hover {
                 scale: 1.2;
@@ -89,6 +90,28 @@
                     bottom: -1.5rem;
                     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
                 }
+            }
+        }
+
+        .editBtn {
+            opacity: 0;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 5px 15px 15px 5px;
+            height: 21px;
+            z-index: 500;
+            background-color: var(--background-header);
+            border-color: var(--color-fill);
+            color: var(--color-bg-wrap);
+            background-color: var(--color-intense);
+            color: white;
+            transition: all 0.4s ease-in-out;
+            line-height: 1;
+            border: none;
+
+            &:hover {
+                background-color: var(--background-nav);
             }
         }
 
@@ -220,8 +243,17 @@
                     }
                 }
 
+                svg {
+                    display: none;
+                    font-size: large;
+                }
+
                 &:hover {
                     background-color: var(--background-second);
+
+                    svg {
+                        display: block;
+                    }
 
                     .item-btns {
                         display: block;
@@ -285,6 +317,11 @@
         &:hover {
             transform: translateY(-5px);
             box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+
+            .editBtn {
+                display: block;
+                opacity: 1;
+            }
 
             .playmenu {
                 display: block;
@@ -547,54 +584,127 @@
     border-bottom: 1px solid var(--color-fill);
     background-color: var(--background-header);
 
+
+    .titleP {
+        // padding-bottom: 5px;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            max-width: 90%;
+            width: fit-content;
+            font-style: italic;
+            border-bottom: 1px solid var(--color-nav);
+        }
+
+        label {
+            font-style: italic;
+            font-size: 11px;
+        }
+    }
+
     @media screen and (max-width:900px) {
         flex-direction: column-reverse;
         margin-bottom: 20px;
-        background-color: var(--color-nav);
-        color: white;
 
-        input {
-            color: white;
+        .titleP input {
+            width: 90%;
+
         }
     }
+
 }
 
 .body-edit-wrap {
     display: flex;
     align-items: flex-start;
 
+    .addBtn {
+        height: 335px;
+        border-radius: 10px 0 0 10px;
+        background-color: var(--background-header);
+        color: var(--color-nav);
+        border: none;
+
+        &:hover {
+            background-color: var(--background-nav);
+            color: white;
+        }
+    }
 }
 
 .chooseList {
     // border-radius: 15px;
     margin-left: 1rem;
     padding: 5px;
-    width: 25%;
+    width: 50%;
     height: 100%;
     background-color: var(--background-even);
+    width: 0;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
 
     @media screen and (max-width:900px) {
-        width: 33%;
+        width: 50%;
         margin-right: 0;
         margin-left: 0;
         padding: 0;
     }
 }
 
+.chooseList,
+.chooseListShow {
+    // border-radius: 15px;
+    margin-left: 1rem;
+    padding: 5px;
+    width: 50%;
+    height: 100%;
+    background-color: var(--background-even);
+    width: 0;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    transition: opacity 0.3s ease-in;
+
+    @media screen and (max-width:900px) {
+        width: 50%;
+        margin-right: 0;
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+.chooseListShow {
+    width: 50%;
+    opacity: 1;
+}
+
 .choosedList {
-    width: 80%;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    width: -webkit-fill-available;
+    padding: 0 5px;
 
     @media screen and (max-width:900px) {
 
-        width: 70%;
+        // width: 70%;
     }
 
-    .choosedItems {
+    .choosedItems,
+    .choosedItemsShow {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
+        flex-direction: column;
+        max-width: 90vw;
+    }
+
+    .choosedItemsShow {
+        width: 90vw;
     }
 
     button {
@@ -629,6 +739,8 @@
 
         @media screen and (max-width:900px) {
             font-size: 10px;
+            position: absolute;
+            top: -10px;
         }
     }
 
@@ -669,6 +781,10 @@
         border-radius: 10px 0 0 0;
         background-color: var(--background-header);
     }
+
+    @media screen and (max-width:900px) {
+        max-width: 150px;
+    }
 }
 
 .selectionButtons {
@@ -702,8 +818,8 @@
 
         @media screen and (max-width:900px) {
             position: relative;
-            left: -21px;
-            scale: 0.6;
+            // left: -21px;
+            // scale: 0.6;
         }
 
     }
@@ -720,7 +836,7 @@
     padding-top: 1rem;
     padding-left: 7px;
     height: 189px;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     font-size: 12px;
     border-bottom: 1px solid grey;
@@ -736,6 +852,7 @@
         left: -0px;
         font-size: 6px;
         color: grey;
+        cursor: pointer;
     }
 
     .isNotSelected {
@@ -747,8 +864,9 @@
 
 
         &:hover {
-            border: 0.5px solid grey;
-
+            // border: 0.5px solid grey;
+            background-color: var(--color-fill);
+            color: var(--color-nav);
         }
     }
 
@@ -760,17 +878,23 @@
         width: 100%;
         background-color: var(--background-first);
         color: var(--color-checked);
+
+        &:hover {
+            // border: 0.5px solid grey;
+            background-color: var(--color-fill);
+            // color: var(--color-nav);
+        }
     }
 }
 
 .chooseTbl {
     @extend .tblCollections;
-    font-size: 10px;
-    height: 70vh;
+    // font-size: 10px;
+    height: 60vh;
     scrollbar-color: var(--color-bg-wrap) var(--background-header);
 
     @media screen and (max-width:900px) {
-        font-size: 9px;
+        font-size: 14px;
         width: 40%;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
@@ -780,57 +904,62 @@
     @extend .isNotSelected;
     position: relative;
     background-color: var(--background-wrap);
-    color: white;
-    overflow: hidden;
-    margin: 20px;
-
-    width: 200px;
-    height: 100px;
-    position: relative;
+    margin: 5px;
+    padding: 0;
+    width: 100%;
+    height: 24px;
     border-radius: 5px;
     transition: all 0.6s ease-in-out;
     cursor: help;
-    text-overflow: ellipsis;
-    padding: 0;
-    overflow: hidden;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     text-align: center;
-    background-color: var(--color-intense);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    // background-color: var(--color-intense);
+    // color: white;
+    background: var(--background-even);
+    color: var(--back-menu);
 
     &:hover {
         // text-decoration: line-through;
         color: rgb(125, 118, 136);
         background-color: var(--color-fill);
         box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        opacity: 0.5;
+
+        color: var(--color-checked);
 
         &::before {
             content: "❌";
             position: absolute;
-            font-size: 48px;
+            font-size: 18px;
         }
     }
 
 
 
     @media screen and (max-width:900px) {
-        width: 120px;
-        height: 70px;
-        margin: 5px;
+        width: 90%;
+
+
+
     }
 }
 
 .empty {
     @extend .selectedEl;
     background-color: var(--color-fill);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    transition: all 0.4s ease-in-out;
 
     &:hover {
         text-decoration: none;
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 
         // color: cyan;
         &::before {

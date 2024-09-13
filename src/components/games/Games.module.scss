@@ -1,4 +1,5 @@
-.game-field {
+.game-field,
+.game-field-parts {
   display: block;
   text-align: center;
   margin-top: 0.5rem;
@@ -51,19 +52,27 @@
     }
   }
 
+  .puzlcard {
+    @media screen and (max-width: 900px) {
+      display: flex;
+      flex-direction: column-reverse;
+      flex-wrap: nowrap;
+    }
+  }
+
   .pazlbox {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    // @media screen and (max-width: 900px) {
+    //   flex-direction: column-reverse;
 
-    @media screen and (max-width: 900px) {
-      flex-direction: column-reverse;
+    // }
 
-    }
-
-    @media screen and (min-width: 900px)and (max-height:600px) {
-      display: block;
-      width: -webkit-fill-available;
-    }
+    // @media screen and (min-width: 900px)and (max-height:600px) {
+    //   display: block;
+    //   width: -webkit-fill-available;
+    // }
   }
 
   .part-answer {
@@ -138,6 +147,56 @@
       text-align: center;
       margin-bottom: 1rem;
     }
+  }
+}
+
+.game-field-parts {
+  @media screen and (min-width: 1500px) {
+    display: flex;
+    justify-content: center;
+
+    .part-answer {
+      max-width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+
+      button {
+        font-size: 4rem;
+      }
+    }
+
+    .part-options {
+      width: 350px;
+    }
+  }
+
+  .puzlcard {
+    @media screen and (min-width: 1500px) {
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px; // flex-wrap: nowrap;
+    }
+
+    @media screen and (max-width: 900px) {
+      display: flex;
+      flex-direction: column-reverse;
+      // flex-wrap: nowrap;
+    }
+  }
+
+  .pazlbox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    // @media screen and (max-width: 900px) {
+    //   flex-direction: column-reverse;
+
+    // }
+
+    // @media screen and (min-width: 900px)and (max-height:600px) {
+    //   display: block;
+    //   width: -webkit-fill-available;
+    // }
   }
 }
 

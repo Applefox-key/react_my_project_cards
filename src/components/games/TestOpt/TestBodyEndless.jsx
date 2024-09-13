@@ -62,7 +62,7 @@ const TestBodyEndless = ({ items }) => {
           <ProbabilityList arr={allItems} />{" "}
           <SwitchTransition mode="out-in">
             <CSSTransition
-              appear={false}
+              // appear={false}
               timeout={500}
               key={anim}
               classNames="cardChange">
@@ -70,7 +70,8 @@ const TestBodyEndless = ({ items }) => {
                 <div className={cl["game-field"]}>
                   <OneCardG
                     item={allItems[num].item}
-                    clickable={false}
+                    nonclickable
+                    onlyFront
                     progr={
                       allItems[num].probability === 1
                         ? 100

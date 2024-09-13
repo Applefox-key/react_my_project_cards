@@ -19,12 +19,7 @@ const UserLibrary = () => {
   };
   return (
     <>
-      <CSSTransition
-        appear={true}
-        in={"true"}
-        timeout={1000}
-        classNames="game"
-        unmountOnExit>
+      <CSSTransition appear in timeout={1000} classNames="game" unmountOnExit>
         <div>
           <div className="string_menu">
             <div className="menufind">My library</div>
@@ -42,7 +37,7 @@ const UserLibrary = () => {
             <div className="ulb-box" onClick={toPlaylists}>
               <BsCollectionPlay /> <span>PLAYLISTS</span>
               <div>
-                A playlist is a set of up to 10 flashcard collection grouped
+                A playlist is a set of up to 10 flashcard collections grouped
                 together for comprehensive practice. You can use it to train
                 across various topics or themes. Dive into your playlist and
                 challenge yourself with questions from multiple sets at once!

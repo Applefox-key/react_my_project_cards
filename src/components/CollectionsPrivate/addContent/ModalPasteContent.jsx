@@ -53,36 +53,37 @@ const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
       size="md"
       dialogClassName="h100"
       title={"Adding"}>
-      <div className="flex-standart">
-        {" "}
+      <div className="addcontent-wrap">
         <PasteBtns
           dataArray={dataArray}
           actions={{ read: read, add: add, back: back }}
         />{" "}
         {!dataArray && tab === "tab1" && (
-          <PasteOneList
-            options={{
-              check: check,
-              setCheck: setCheck,
-            }}
-            separator={separator}
-            setSeparator={setSeparator}
-          />
+          <>
+            <PasteOneList
+              options={{
+                check: check,
+                setCheck: setCheck,
+              }}
+              separator={separator}
+              setSeparator={setSeparator}
+            />
+            <Form.Select
+              size="lg"
+              className="w-auto fs-4"
+              value={tab}
+              onChange={(e) => setTab(e.target.value)}>
+              <option value="tab1">From the list with a separator</option>
+              <option value="tab2">
+                From the two list (questions and answers)
+              </option>
+              <option value="tab3">
+                From the row-list (questions upon the answers)
+              </option>
+            </Form.Select>
+          </>
         )}
-        <Form.Select
-          size="lg"
-          className="w-auto fs-4"
-          value={tab}
-          onChange={(e) => setTab(e.target.value)}>
-          <option value="tab1">From the list with a separator</option>
-          <option value="tab2">
-            From the two list (questions and answers)
-          </option>
-          <option value="tab3">
-            From the row-list (questions upon the answers)
-          </option>
-        </Form.Select>
-      </div>{" "}
+      </div>
       <div className="modal-h50 mt-2">
         <ModalPasteContentBody
           dataArr={dataArray}

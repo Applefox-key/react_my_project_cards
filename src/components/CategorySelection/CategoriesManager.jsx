@@ -91,7 +91,7 @@ const CategoriesManager = ({ isModal = false }) => {
     <div>
       {!isModal && (
         <div className="string_menu">
-          <div className="menufind mt-4">
+          <div className="menufind">
             <CollectionPagePath list={arrPath} />
             <div>
               <button

@@ -95,11 +95,7 @@ const CardsGallery = () => {
         )}
       </div>
       {!isLoading && items ? (
-        <CSSTransition
-          appear={true}
-          in={"true"}
-          timeout={1000}
-          classNames="game">
+        <CSSTransition appear in timeout={1000} classNames="game">
           <div className={cl["card-and-arrow"]}>
             <OneCardG
               clgal={cl.container_gallery_view}

@@ -41,6 +41,23 @@
   animation-duration: 600ms;
 }
 
+.fadeB-appear {
+  animation: fadeInTopRight;
+  animation-duration: 600ms;
+}
+
+
+/* Исчезновение блока */
+.fadeB-exit {
+  animation: fadeOutTopRight;
+  animation-duration: 600ms;
+}
+
+.fadeB-exit-active {
+  animation: fadeOutTopRight;
+  animation-duration: 600ms;
+}
+
 .fadeinout-enter {
   animation: fadeIn;
   animation-duration: 800ms;
@@ -290,6 +307,26 @@
 
 .result-appear-done {
   animation: jackInTheBox;
+  animation-duration: 1000ms;
+}
+
+.slide-exit {
+  animation: fadeOutRight;
+  animation-duration: 1000ms;
+}
+
+.slide-exit-done {
+  animation: fadeOutRight;
+  animation-duration: 1000ms;
+}
+
+.slide-appear {
+  animation: fadeInRight;
+  animation-duration: 1000ms;
+}
+
+.slide-appear-done {
+  animation: fadeInRight;
   animation-duration: 1000ms;
 }
 

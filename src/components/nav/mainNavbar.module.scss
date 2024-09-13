@@ -199,8 +199,9 @@
 
   }
 
-  .subbox {
-    display: none;
+  .subbox,
+  .subboxOnBtn {
+    // display: none;
     flex-direction: column;
     align-items: flex-start;
     height: fit-content;
@@ -218,6 +219,19 @@
 
   }
 
+  .subbox {
+    // display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s 3s;
+  }
+
+  .subboxOnBtn {
+
+    display: flex;
+    z-index: 1105;
+
+  }
 
   a,
   span {
@@ -258,10 +272,15 @@
     div {
       display: flex;
       z-index: 1105;
-
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0.8s;
     }
+
   }
 }
+
+
 
 .logout {
   font-size: large;

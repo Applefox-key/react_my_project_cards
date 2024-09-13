@@ -1,0 +1,132 @@
+@import 'animate.css';
+
+
+
+.spinning-btn-wrap {
+    position: relative;
+    font-size: 20rem;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    font-size: 10px;
+    z-index: 900;
+    margin-right: 10px;
+    transition: all 0.4s ease-in-out;
+
+    button {
+        max-width: 145px;
+        justify-content: flex-start;
+    }
+
+    .spinning-menu-btn {
+        z-index: 1101;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        padding: 0;
+
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 18px;
+        color: var(--color-bg-wrap);
+        z-index: 900;
+        transition: all 0.2s ease-in-out;
+        background: var(--color-fill);
+        border: 1px solid var(--border-fill);
+
+
+        .ico {
+            font-size: 18px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            z-index: 1101;
+            background-color: var(--border-fill);
+            border: 1px solid var(--color-fill);
+        }
+    }
+
+    .spinning-menu-btn-show {
+        @extend .spinning-menu-btn;
+        width: 35px;
+        max-width: 35px;
+        border-radius: 50%;
+        border: 0px solid var(--color-intense);
+        z-index: 1101;
+        justify-content: flex-start;
+
+        .ico {
+            color: white;
+            background-color: var(--color-nav);
+            rotate: 360deg;
+            stroke: black;
+            stroke-width: 0.4px;
+            border: 1px solid black;
+
+        }
+
+        &:hover {
+
+            z-index: 1101;
+            background-color: unset;
+            border: 0px solid var(--color-fill);
+        }
+    }
+
+    &:has(:first-child.overflow-box-show) {
+        z-index: 1500;
+    }
+}
+
+.overflow-box {
+    position: absolute;
+    overflow: hidden;
+    height: 230px;
+    border-radius: 5px;
+    width: 0px;
+    top: 20px;
+    right: 13px;
+
+}
+
+.overflow-box-show {
+    @extend .overflow-box;
+    width: 200px;
+    padding: 0 15px;
+
+}
+
+.body-after-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: 13px;
+    margin: 3px 10px;
+    padding: 0 5px;
+    text-align: start;
+    border: 1px solid var(--color-intense);
+    transition: all 0.4s ease-in-out;
+    z-index: 1200;
+
+    background-color: var(--color-fill);
+    color: var(--white-black);
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    height: fit-content;
+    padding-bottom: 5px;
+    align-items: flex-start;
+    width: 160px;
+
+
+
+
+}

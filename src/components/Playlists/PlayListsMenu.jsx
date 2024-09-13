@@ -8,7 +8,7 @@ import ToggleView from "../UI/TogleView/ToggleView";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import CollectionPagePath from "../UI/CollectionPagePath";
 
-const PlayListsMenu = (props) => {
+const PlaylistsMenu = (props) => {
   const router = useNavigate();
   const arrPath = [
     { name: "My library", action: () => router("/myLibrary") },
@@ -50,4 +50,4 @@ const PlayListsMenu = (props) => {
   );
 };
 
-export default PlayListsMenu;
+export default PlaylistsMenu;

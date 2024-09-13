@@ -6,25 +6,35 @@ import "../../../styles/collectMenu.scss";
 
 const MyFilter = ({ filter, setFilter }) => {
   const [value, setValue] = useState(filter);
-  const [show, setShow] = useState(false);
+  const [ishide, setIsHide] = useState(true);
   useEffect(() => {
-    if (!filter && !!value) {
-      setValue("");
-      setShow(false);
-    }
+    if (filter !== value && !filter) setValue("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
+  const handleClick = (e) => {
+    e.stopPropagation();
+    if (ishide) setIsHide(false);
+    //old filter -- just closo search field
+    else if (value === filter) {
+      setFilter("");
+      setValue("");
+      setIsHide(true);
+    } else if (!!value) {
+      setFilter(value);
+    }
+  };
 
   return (
     <div
-      className={show ? cl.show : "position-relative"}
+      className={ishide ? cl.short : "position-relative"}
       onClick={() => {
-        setShow(!show);
+        setIsHide(!ishide);
       }}>
-      <div className={cl.mainbox}>
-        <div className={cl.icon}>
-          <HiOutlineMagnifyingGlass />
+      <div className={cl.secondarybox}>
+        <div className={cl.icon} onClick={handleClick}>
+          <HiOutlineMagnifyingGlass className={cl.icon} />
         </div>
+
         <input
           type="text"
           value={value}

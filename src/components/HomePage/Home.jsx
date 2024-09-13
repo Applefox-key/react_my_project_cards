@@ -13,12 +13,7 @@ const Home = () => {
   };
   return (
     <>
-      <CSSTransition
-        appear={true}
-        in={"true"}
-        timeout={1000}
-        classNames="game"
-        unmountOnExit>
+      <CSSTransition appear in timeout={1000} classNames="game" unmountOnExit>
         <>
           <div className={cl["home-wrap"]}>
             <div className={cl["greeting"]}>

@@ -10,12 +10,12 @@ import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
 import { HiPrinter, HiShare } from "react-icons/hi";
 import ModalCommand from "../../CollectionsPrivate/OneCollectionActions/ModalCommand";
-import { VscClearAll } from "react-icons/vsc";
 import { CiFolderOff, CiShare2, CiSquarePlus } from "react-icons/ci";
 import { favorite, share } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import SpinningBtn from "../SpinningBtn/SpinningBtn";
 
 const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);
@@ -50,7 +50,51 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
     await favorite(collPar, setPopup);
     setCollPar(newVal);
   };
-
+  const goBack = () => {
+    if (window.history.length > 1) {
+      router(-1);
+    } else {
+      router(GO_TO.myCollect);
+    }
+  };
+  const buttonAdd = (
+    <div className="spin-btn-child">
+      <div data-title="Add card" onClick={addRow}>
+        <span>
+          <CiSquarePlus />
+        </span>
+        Add card
+      </div>{" "}
+      <div data-title="Add from the file" onClick={() => setMod("file")}>
+        <span>
+          <BsFiletypeTxt />
+        </span>
+        Add from the file
+      </div>
+      <div data-title="Add from the list" onClick={() => setMod("list")}>
+        <span>
+          <BiListPlus />
+        </span>
+        Add from the list
+      </div>
+    </div>
+  );
+  const buttonDel = (
+    <div className="spin-btn-child">
+      <div data-title="Add card" onClick={removeCollection}>
+        <span>
+          <CiFolderOff />
+        </span>
+        Remove collection
+      </div>{" "}
+      <div data-title="Add from the file" onClick={deleteAll}>
+        <span>
+          <BsFiletypeTxt />
+        </span>
+        Delete all content
+      </div>
+    </div>
+  );
   return (
     <>
       {mod && (
@@ -73,58 +117,12 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
         onClick={shareColl}>
         <span>{collPar.isPublic ? <HiShare /> : <CiShare2 />}</span>
       </button>
-      <div data-title="Add" className="drop-down-menuBtn">
-        <span className="iconDr">
-          <AiOutlinePlus />
-        </span>
-        <div className="buttonBox">
-          {" "}
-          <button data-title="Add card" className="viewBtn" onClick={addRow}>
-            <span>
-              <CiSquarePlus />
-            </span>
-          </button>{" "}
-          <button
-            data-title="Add from the file"
-            className="viewBtn"
-            onClick={() => setMod("file")}>
-            <span>
-              <BsFiletypeTxt />
-            </span>
-          </button>
-          <button
-            data-title="Add from the list"
-            className="viewBtn"
-            onClick={() => setMod("list")}>
-            <span>
-              <BiListPlus />
-            </span>
-          </button>{" "}
-        </div>
-      </div>
-      <div data-title="Delete" className="drop-down-menuBtn">
-        <span className="iconDrRot">
-          <IoMdRemove />
-        </span>
-        <div className="buttonBox">
-          <button
-            data-title="Remove collection"
-            className="viewBtn"
-            onClick={removeCollection}>
-            <span>
-              <CiFolderOff />
-            </span>
-          </button>{" "}
-          <button
-            data-title="Delete all content"
-            className="viewBtn"
-            onClick={deleteAll}>
-            <span>
-              <VscClearAll />
-            </span>
-          </button>{" "}
-        </div>
-      </div>
+      <SpinningBtn
+        child={buttonAdd}
+        ico={<AiOutlinePlus />}
+        elemId="idAddBtn"
+      />{" "}
+      <SpinningBtn child={buttonDel} ico={<IoMdRemove />} elemId="idDelBtn" />
       <button
         data-title="Print"
         className="viewBtn"
@@ -145,10 +143,7 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
           <MdOutlineFileDownload />
         </span>
       </button>
-      <button
-        data-title="Back"
-        className="viewBtn"
-        onClick={() => router(GO_TO.myCollect)}>
+      <button data-title="Back" className="viewBtn" onClick={goBack}>
         <span>
           <RiArrowGoBackLine />{" "}
         </span>

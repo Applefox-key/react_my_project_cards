@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0;
   }
 
   button {
@@ -70,7 +70,9 @@
       font-size: 1rem;
       margin-bottom: 0;
       margin-top: 2rem;
+
     }
+
 
     &:hover {
       background-color: var(--color-bg-wrap);
@@ -82,6 +84,12 @@
       color: #ddd1c2;
 
     }
+
+
+  }
+
+  @media screen and (max-width:900px) {
+    width: 100%;
   }
 }
 
@@ -115,7 +123,6 @@
   font-size: 18px;
   margin-bottom: 2rem;
 
-
   .lable {
     padding: 0 5px;
     margin: 0;
@@ -137,6 +144,12 @@
       border-bottom: 2px solid var(--background-header);
       text-align: start;
     }
+
+
+  }
+
+  @media screen and (max-width:900px) {
+    font-size: 12px;
   }
 }
 
@@ -174,6 +187,7 @@
 
 .string_menu_play {
   position: relative;
+  top: unset;
 }
 
 .box_menu {
@@ -365,7 +379,7 @@
   @media screen and (max-width:900px) {
     justify-content: center;
     flex-direction: column;
-
+    margin-top: 1rem;
   }
 }
 
@@ -469,18 +483,7 @@
   }
 }
 
-.header_modal {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--background-header);
-  padding: 9px 10px;
-  border-radius: 12px;
-  width: 100%;
 
-
-
-}
 
 .select_wrap {
   width: fit-content;
@@ -550,15 +553,18 @@
   // padding: 5px 10px;
 }
 
-.organiser-box {
-  border: 2px solid #FF4500;
+.organiser-box,
+.organiser-box-title {
+  // border: 2px solid #FF4500;
   border-radius: 5px;
   padding: 5px 10px;
   display: flex;
   flex-direction: column;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  justify-content: center;
 
-  span {
+  h3 {
     color: var(--color-checked);
     position: absolute;
     font-size: 20px;
@@ -567,10 +573,33 @@
     bottom: 5px;
   }
 
+  p {
+    text-align: left;
+  }
+
+  span {
+    background-color: var(--color-checked);
+    padding: 0 6px 2px 6px;
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+  }
+
   @media screen and ((max-width: 900px)) {
     width: 100%;
     flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: flex-start;
+
+    .btn {
+      width: 100%;
+    }
   }
+}
+
+.organiser-box-title {
+  background-color: var(--background-second);
 }
 
 .organiser-wrap {
@@ -585,10 +614,32 @@
       color: var(--color-nav);
     }
   }
+
+  @media screen and (max-width:900px) {
+    font-size: 12px;
+  }
 }
 
 .collection-path {
   span {
     cursor: pointer;
+  }
+}
+
+.spin-btn-child {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    font-size: 15px;
+    text-wrap: nowrap;
+
+    svg {
+      margin-right: 5px;
+    }
+
+    &:hover {
+      color: var(--color-nav);
+    }
   }
 }

@@ -70,11 +70,7 @@ const TestCard = () => {
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
       ) : (
-        <CSSTransition
-          appear={"true"}
-          in={"true"}
-          timeout={500}
-          classNames="game">
+        <CSSTransition appear in timeout={500} classNames="game">
           {endless ? (
             <TestBodyEndless items={items} key={key} />
           ) : (

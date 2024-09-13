@@ -4,13 +4,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "../../../styles/collectMenu.scss";
+
 import { usePopup } from "../../../hooks/usePopup";
 import { contentFromTxtFile } from "../../../utils/files";
 import { editCollectionHlp } from "../../../utils/editCollectionHlp";
 import ModalFileContentBtns from "../addContent/ModalFileContentBtns";
 import ContentFromFile from "../addContent/ContentFromFile";
-import MyModal from "../../UI/MyModal";
 import FilterByCategory from "../../CategorySelection/FilterByCategory";
+import ModalCustom from "../../UI/ModalCustom/ModalCustom";
 
 const CollectionEditModal = ({
   collection = {},
@@ -74,7 +75,7 @@ const CollectionEditModal = ({
     }
   };
   return (
-    <MyModal
+    <ModalCustom
       onHide={onHide ? onHide : (e) => setIsEdit(false)}
       showmodal={isEdit}
       setshowmodal={setIsEdit}
@@ -110,10 +111,7 @@ const CollectionEditModal = ({
             />
           </div>
         </div>{" "}
-        <div
-          className={
-            isNew ? "header_modal" : "header_modal justify-content-end"
-          }>
+        <div className={isNew ? "" : "justify-content-end"}>
           <div className="select_wrap">
             <FilterByCategory
               isForFilter={false}
@@ -142,7 +140,7 @@ const CollectionEditModal = ({
                       setReorgMode(true);
                       setIsEdit(false);
                     }}>
-                    Organize
+                    ORGANIZE
                   </Button>
                 )}
                 <Button
@@ -179,7 +177,7 @@ const CollectionEditModal = ({
           </div>
         )}
       </div>
-    </MyModal>
+    </ModalCustom>
   );
 };
 

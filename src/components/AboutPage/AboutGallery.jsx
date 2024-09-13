@@ -73,11 +73,7 @@ const AboutGallery = () => {
   return (
     <div className={clA["cardbox"]}>
       {items ? (
-        <CSSTransition
-          appear={true}
-          in={"true"}
-          timeout={500}
-          classNames="result">
+        <CSSTransition appear in timeout={500} classNames="result">
           <div className="position-relative">
             <OneCardG
               anim={anim}

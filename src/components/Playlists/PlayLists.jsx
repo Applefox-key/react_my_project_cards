@@ -1,103 +1,82 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../../styles/viewForms.scss";
-import "../../styles/oneCollection.scss";
-import {
-  collectionPageSettings,
-  restoreSettings,
-  saveSet,
-} from "../../utils/pageSettings";
-import PlayListsMenu from "./PlayListsMenu";
-import UsersPlayLists from "./UsersPlayLists";
-import PlayListEditModal from "./PlayListEditModal";
-import { useAuth } from "../../hooks/useAuth";
-import { CSSTransition } from "react-transition-group";
+import React, { useEffect, useState } from "react";
+import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
+import BaseAPI from "../../API/BaseAPI";
+import { usePopup } from "../../hooks/usePopup";
+import { useQuery } from "../../hooks/useQuery";
+import cl from "./PlayLists.module.scss";
+import { editPlaylistHlp } from "../../utils/editCollectionHlp";
+import { useTextFilter } from "../../hooks/useCollectSelection";
+import OnePlaylist from "./OnePlaylist";
 
-const Playlists = () => {
-  const isPublic = window.location.pathname.includes("pub");
-  const router = useNavigate();
-  const latestStateRef = useRef();
-  const pageSet = restoreSettings(isPublic);
-  const { userAuth } = useAuth(true);
-  const [viewmode, setViewmode] = useState(
-    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
-  );
-  const [commonSettings, setCommonSettings] = useState({
-    filter: pageSet.filter,
-    editEl: "",
+const Playlists = ({ commonSettings, setSettingsCommon }) => {
+  const [list, setList] = useState([]);
+  const [getCollections, isLoading, error] = useQuery(async () => {
+    setList(await BaseAPI.getPlaylists());
   });
-
-  const updateRef = () => {
-    latestStateRef.current = {
-      ...commonSettings,
-      ...viewmode,
-      viewmode,
-    };
+  const setPopup = usePopup();
+  const listFn = {
+    delColl: async (element, colid = "") => {
+      if (
+        !window.confirm(
+          colid
+            ? "remove this collection from playlist?"
+            : "clear this playlist?"
+        )
+      )
+        return;
+      try {
+        let newCol = colid
+          ? element.collections.filter((elem) => elem.id !== colid)
+          : [];
+        await editPlaylistHlp(
+          "",
+          colid ? newCol.map((el) => el.id) : [],
+          element.id
+        );
+        setList(
+          list.map((elem) =>
+            elem.id !== element.id ? elem : { ...elem, collections: newCol }
+          )
+        );
+      } catch (error) {
+        setPopup.error("something goes wrong");
+      }
+    },
+    delPlaylist: async (element) => {
+      if (!window.confirm("remove the playlist?")) return;
+      try {
+        await BaseAPI.deletePlaylist(element.id);
+        setList(list.filter((elem) => elem.id !== element.id));
+      } catch (error) {
+        setPopup.error("something goes wrong");
+      }
+    },
+    editMode: async (el) => {
+      setSettingsCommon("editEl", el);
+    },
   };
-
-  const setSettingsCommon = (field, val) => {
-    let newVal = collectionPageSettings(commonSettings, field, val, isPublic);
-    setCommonSettings(newVal);
-  };
-
-  const viewmodeChange = () => {
-    let newVal = 1 - viewmode;
-    setViewmode(newVal);
-    router(window.location.pathname + "#" + newVal, { replace: true });
-  };
-
   useEffect(() => {
-    if (window.location.hash === "")
-      setViewmode(
-        userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
-      );
-    else setViewmode(window.location.hash === "#1" ? "1" : "0");
-    return () => saveSet(latestStateRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (commonSettings.editEl) return;
+    getCollections();
 
-  useEffect(() => {
-    if (window.location.hash === "")
-      router(window.location.pathname + "#" + viewmode, { replace: true });
+    if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.hash]);
+  }, [commonSettings.editEl, commonSettings.filter]);
+  const filtredList = useTextFilter(list, commonSettings.filter);
 
-  useEffect(() => {
-    updateRef([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [commonSettings.filter]);
   return (
-    <div className="wrap_box">
-      {commonSettings.editEl && (
-        <PlayListEditModal
-          isEdit={commonSettings.editEl}
-          setIsEdit={(val) => setSettingsCommon("editEl", val)}
-          list={commonSettings.editEl}
-          onHide={() => {
-            setSettingsCommon("editEl", "");
-          }}
-        />
-      )}
-      <PlayListsMenu
-        viewmodeChange={viewmodeChange}
-        commonSettings={commonSettings}
-        setSettingsCommon={setSettingsCommon}
-      />{" "}
-      <CSSTransition
-        appear={true}
-        in={"true"}
-        timeout={1000}
-        classNames="game"
-        unmountOnExit>
-        <div className="allcollect">
-          <UsersPlayLists
-            viewmode={viewmode}
-            commonSettings={commonSettings}
-            setSettingsCommon={setSettingsCommon}
-          />
+    <>
+      {isLoading ? (
+        <SpinnerLg className="span_wrap" />
+      ) : (
+        <div
+          className={window.location.hash !== "#1" ? cl.wrapCard : cl.wrapTbl}>
+          {filtredList.map((el) => (
+            <OnePlaylist playlist={el} listFn={listFn} />
+          ))}
         </div>
-      </CSSTransition>
-    </div>
+      )}
+    </>
   );
 };
 

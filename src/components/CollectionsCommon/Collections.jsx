@@ -101,12 +101,7 @@ const Collections = () => {
   ]);
 
   return (
-    <CSSTransition
-      appear={true}
-      in={"true"}
-      timeout={1000}
-      classNames="game"
-      unmountOnExit>
+    <CSSTransition appear in timeout={1000} classNames="game" unmountOnExit>
       <div className="wrap_box">
         {privateSettings.isNew && (
           <CollectionEditModal

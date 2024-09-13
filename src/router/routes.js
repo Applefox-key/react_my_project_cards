@@ -17,7 +17,7 @@ import UserOneCollection from "../components/CollectionsPrivate/OneCollection/Us
 import PublicCollectionsView from "../components/CollectionsPublic/PublicOneCollection";
 import EditCard from "../components/CollectionsPrivate/OneCollection/EditCard";
 import PrintingForm from "../components/Printing/PrintingForm";
-import PlayLists from "../components/Playlists/PlayLists";
+import PlaylistsPage from "../components/Playlists/PlaylistsPage";
 import PartCard from "../components/games/Parts/PartCard";
 import Home from "../components/HomePage/Home";
 import UserLibrary from "../components/users/UserLibrary";
@@ -68,7 +68,7 @@ export const privateRoutes = [
   },
   {
     path: "/playlist",
-    element: <PlayLists />,
+    element: <PlaylistsPage />,
     nameNav: "Playlists",
     group: "My library",
     groupPath: "/MyLibrary",
