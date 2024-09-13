@@ -14,10 +14,10 @@ import CollectionPagePath from "../../UI/CollectionPagePath";
 
 const OneCollectionMenu = ({ modes, collectionData }) => {
   const { setMode, setReorgMode } = modes;
-  const { collection, content, setContent } = collectionData;
+  const { collection, content, setContent, setCollect } = collectionData;
   const [renameMode, setRenameMode] = useState(false);
   const changeCat = (cat) => {
-    collectionData.setCollect({
+    setCollect({
       ...collection,
       categoryid: cat.id ? cat.id : "",
       category: cat.name ? cat.name : "",

@@ -60,8 +60,9 @@ const UserOneCollection = () => {
               }}
               collectionData={{
                 collection: collect,
-                content: content,
+                content,
                 setContent,
+                setCollect,
               }}
             />
 
