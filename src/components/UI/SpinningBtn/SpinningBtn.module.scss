@@ -13,7 +13,7 @@
     font-size: 10px;
     z-index: 900;
     margin-right: 10px;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
 
     button {
         max-width: 145px;
@@ -26,24 +26,39 @@
         top: 0px;
         left: 0;
         padding: 0;
-
+        overflow: hidden;
         width: 35px;
         height: 35px;
         border-radius: 50%;
         font-size: 18px;
         color: var(--color-bg-wrap);
         z-index: 900;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.5s ease-in-out;
         background: var(--color-fill);
         border: 1px solid var(--border-fill);
 
+        .ico-wrap {
+            transition: all 0.5s ease-in-out;
+            width: 35px;
+        }
 
         .ico {
             font-size: 18px;
             border-radius: 50%;
             width: 35px;
             height: 35px;
-            transition: all 0.4s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+        span {
+            font-size: 12px;
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            visibility: hidden;
+            width: 0;
+            text-wrap: nowrap;
+            transition: all 0.5s ease-in-out;
         }
 
         &:hover {
@@ -56,11 +71,22 @@
     .spinning-menu-btn-show {
         @extend .spinning-menu-btn;
         width: 35px;
-        max-width: 35px;
-        border-radius: 50%;
-        border: 0px solid var(--color-intense);
+        border-radius: 0px 20px 0px 0px;
+        border: 1px solid var(--color-intense);
         z-index: 1101;
         justify-content: flex-start;
+        width: 170px;
+        max-width: unset;
+
+        span {
+            visibility: visible;
+
+            width: fit-content;
+        }
+
+        .ico-wrap {
+            transform: translateX(134px);
+        }
 
         .ico {
             color: white;
@@ -68,15 +94,14 @@
             rotate: 360deg;
             stroke: black;
             stroke-width: 0.4px;
-            border: 1px solid black;
-
+            width: 33px;
+            height: 33px;
         }
 
         &:hover {
-
             z-index: 1101;
-            background-color: unset;
-            border: 0px solid var(--color-fill);
+            background-color: var(--color-fill);
+            border: 1px solid var(--color-intense);
         }
     }
 
@@ -91,8 +116,9 @@
     height: 230px;
     border-radius: 5px;
     width: 0px;
-    top: 20px;
-    right: 13px;
+    top: 32px;
+    left: -23px;
+    // right: 13px;
 
 }
 
@@ -113,18 +139,18 @@
     padding: 0 5px;
     text-align: start;
     border: 1px solid var(--color-intense);
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
     z-index: 1200;
 
     background-color: var(--color-fill);
     color: var(--white-black);
     position: absolute;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     height: fit-content;
     padding-bottom: 5px;
     align-items: flex-start;
-    width: 160px;
+    width: 170px;
 
 
 

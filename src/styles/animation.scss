@@ -42,19 +42,20 @@
 }
 
 .fadeB-appear {
-  animation: fadeInTopRight;
+  animation: fadeInDown;
   animation-duration: 600ms;
+  // animation-delay: 0.2s;
 }
 
 
 /* Исчезновение блока */
 .fadeB-exit {
-  animation: fadeOutTopRight;
+  animation: fadeOutUp;
   animation-duration: 600ms;
 }
 
 .fadeB-exit-active {
-  animation: fadeOutTopRight;
+  animation: fadeOutUp;
   animation-duration: 600ms;
 }
 

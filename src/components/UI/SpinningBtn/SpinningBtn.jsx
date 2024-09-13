@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cl from "./SpinningBtn.module.scss";
 import { CSSTransition } from "react-transition-group";
 
-const SpinningBtn = ({ child, ico, elemId }) => {
+const SpinningBtn = ({ child, ico, elemId, title }) => {
   const [show, setShow] = useState(false);
   const [inProp, setInProp] = useState(false);
   const onClick = (e) => {
@@ -51,7 +51,7 @@ const SpinningBtn = ({ child, ico, elemId }) => {
             <div className={cl["body-after-btn"]}>{child}</div>
           </CSSTransition>
         )}
-      </div>{" "}
+      </div>
       <div>
         <button
           id={elemId}
@@ -59,7 +59,10 @@ const SpinningBtn = ({ child, ico, elemId }) => {
             inProp ? cl["spinning-menu-btn-show"] : cl["spinning-menu-btn"]
           }
           onClick={onClick}>
-          <div className={cl.ico}>{ico}</div>
+          {!!title && <span>{title}</span>}
+          <div className={cl["ico-wrap"]}>
+            <div className={cl.ico}>{ico}</div>
+          </div>
         </button>
         <div />
       </div>

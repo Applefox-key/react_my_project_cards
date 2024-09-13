@@ -121,8 +121,14 @@ const OneCollectionBtns = ({ colObj, setContent }) => {
         child={buttonAdd}
         ico={<AiOutlinePlus />}
         elemId="idAddBtn"
+        title="ADD CONTENT"
       />{" "}
-      <SpinningBtn child={buttonDel} ico={<IoMdRemove />} elemId="idDelBtn" />
+      <SpinningBtn
+        child={buttonDel}
+        ico={<IoMdRemove />}
+        elemId="idDelBtn"
+        title="DELETE CONTENT"
+      />
       <button
         data-title="Print"
         className="viewBtn"

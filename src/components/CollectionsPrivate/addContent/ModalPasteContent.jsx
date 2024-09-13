@@ -68,20 +68,22 @@ const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
               separator={separator}
               setSeparator={setSeparator}
             />
-            <Form.Select
-              size="lg"
-              className="w-auto fs-4"
-              value={tab}
-              onChange={(e) => setTab(e.target.value)}>
-              <option value="tab1">From the list with a separator</option>
-              <option value="tab2">
-                From the two list (questions and answers)
-              </option>
-              <option value="tab3">
-                From the row-list (questions upon the answers)
-              </option>
-            </Form.Select>
           </>
+        )}{" "}
+        {!dataArray && (
+          <Form.Select
+            size="lg"
+            className="w-auto fs-4"
+            value={tab}
+            onChange={(e) => setTab(e.target.value)}>
+            <option value="tab1">From the list with a separator</option>
+            <option value="tab2">
+              From the two list (questions and answers)
+            </option>
+            <option value="tab3">
+              From the row-list (questions upon the answers)
+            </option>
+          </Form.Select>
         )}
       </div>
       <div className="modal-h50 mt-2">
