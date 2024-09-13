@@ -24,7 +24,9 @@ const OnePlaylist = ({ playlist, listFn }) => {
           className={cl.listHeader}
           onClick={() => listFn.editMode(playlist)}>
           {" "}
-          <button className={cl.editBtn}>Edit</button>
+          {window.location.hash !== "#1" && (
+            <button className={cl.editBtn}>Edit</button>
+          )}
           <BsCollectionPlay />
           <span>{playlist.name}</span>
         </div>
