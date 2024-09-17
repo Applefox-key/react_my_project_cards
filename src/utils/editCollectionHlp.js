@@ -1,43 +1,46 @@
 import BaseAPI from "../API/BaseAPI";
 
 export const editCollectionHlp = async (colllectionData) => {
-  const { name, note, categoryel, content, isNew, collection } =
+  const { newName, newNote, category, content, isNew, collection } =
     colllectionData;
   let res = "";
-  let newParam = {};
-  if (name) newParam.name = name.trim();
-  if (note) newParam.note = note;
+  let newParam = {
+    ...(isNew && {
+      name: newName?.trim || "",
+      note: newNote || "",
+      category: category?.id || null,
+    }),
+    ...(!isNew &&
+      collection && {
+        ...(newName !== collection.name && { name: newName.trim() }),
+        ...(newNote !== collection.note && { note: newNote }),
+        ...(category?.id !== collection.categoryid && {
+          categoryid: category?.id || null,
+        }),
+      }),
+  };
+
   if (isNew) {
-    if (categoryel && categoryel.id) newParam.categoryid = categoryel.id;
-    //new from file with content
-    if (content)
-      res = await BaseAPI.CreateCollectionWithContent(newParam, content);
-    //new without content
-    else res = await BaseAPI.createCollection(newParam);
-  } else {
-    //edit collection's params
-    if (categoryel && collection && categoryel.id !== collection.categoryid)
-      newParam.categoryid = categoryel.id ? categoryel.id : null;
+    res = content
+      ? await BaseAPI.CreateCollectionWithContent(newParam, content)
+      : await BaseAPI.createCollection(newParam);
+  } else if (collection) {
     await BaseAPI.editColParam(newParam, collection.id);
   }
-
   if (!res.error && res.hasOwnProperty("id")) return res.id.id;
 };
 
 export const editPlaylistHlp = async (name, listIds, playlistid) => {
   let res = "";
-  let newParam = {};
+  let newParam = {
+    ...(name && { name: name.trim() }),
+    listIds: (listIds.length && listIds.join(",").trim()) || "",
+  };
 
-  newParam.listIds = listIds.length ? listIds.join(",").trim() : "";
-  if (name) newParam.name = name.trim();
-
-  //new
-  if (playlistid === "new") {
-    res = await BaseAPI.createPlaylist(newParam);
-  } else {
-    //edit collection's params
-    await BaseAPI.editPlaylist(newParam, playlistid);
-  }
+  res =
+    playlistid === "new"
+      ? await BaseAPI.createPlaylist(newParam) //new
+      : await BaseAPI.editPlaylist(newParam, playlistid); //edit collection's params
 
   if (!res.error && res.hasOwnProperty("id")) return res.id.id;
 };

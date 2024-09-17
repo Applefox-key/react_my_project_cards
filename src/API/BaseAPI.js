@@ -100,10 +100,9 @@ const BaseAPI = {
       colId: collectionFrom.id,
       categoryid: collectionFrom.categoryid,
       fromPub: fromPub,
+      ...(fromPub && { categoryName: collectionFrom.category }),
     };
 
-    if (fromPub) reqData.categoryName = collectionFrom.category;
-    else reqData.categoryid = collectionFrom.categoryid;
     return await this.serverReq("post", "/collections/content", true, reqData);
   },
   async copySharedCollection(collectionFrom) {
@@ -156,11 +155,10 @@ const BaseAPI = {
       email: ud.email,
       password: ud.password,
       name: ud.name,
-      img: ud.img,
+      img: ud.img || "/static/media/profile.dd82cd98f5e2825724fb.ico",
       settings: defaultSettings,
     };
-    if ((reqData.img = ""))
-      reqData.img = "/static/media/profile.dd82cd98f5e2825724fb.ico";
+
     return await this.serverReq("post", "/users", false, reqData);
   },
   async deleteCategory(catid) {
@@ -191,8 +189,12 @@ const BaseAPI = {
     return await this.serverReq("delete", "/playlists/" + id, true);
   },
   async editCategory(newParam, catId) {
-    if (!newParam || !catId) return { message: "nothing has changed" };
-
+    if (
+      !catId ||
+      (typeof newParam === "object" && Object.keys(newParam).length === 0)
+    ) {
+      return { message: "nothing has changed" };
+    }
     return await this.serverReq(
       "patch",
       "/categories/" + catId,
@@ -201,7 +203,12 @@ const BaseAPI = {
     );
   },
   async editColParam(newParam, colId) {
-    if (!newParam || !colId) return { message: "nothing has changed" };
+    if (
+      !colId ||
+      (typeof newParam === "object" && Object.keys(newParam).length === 0)
+    ) {
+      return { message: "nothing has changed" };
+    }
     return await this.serverReq(
       "patch",
       "/collections/" + colId,
@@ -210,7 +217,12 @@ const BaseAPI = {
     );
   },
   async switchIsPublic(newParam, colId) {
-    if (!newParam || !colId) return { message: "nothing has changed" };
+    if (
+      !colId ||
+      (typeof newParam === "object" && Object.keys(newParam).length === 0)
+    ) {
+      return { message: "nothing has changed" };
+    }
     return await this.serverReq(
       "patch",
       "/collections/share/" + colId,
@@ -219,6 +231,12 @@ const BaseAPI = {
     );
   },
   async editPlaylist(newParam, id) {
+    if (
+      !id ||
+      (typeof newParam === "object" && Object.keys(newParam).length === 0)
+    ) {
+      return { message: "nothing has changed" };
+    }
     if (!newParam || !id) return { message: "nothing has changed" };
     return await this.serverReq("patch", "/playlists/" + id, true, newParam);
   },

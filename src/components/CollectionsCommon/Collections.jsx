@@ -122,11 +122,9 @@ const Collections = () => {
         <div className="w-100">
           {/* <div className="d-flex align-items-center position-relative"> */}
           <CollectionsMenu
+            common={{ commonSettings, setSettingsCommon }}
+            privat={{ privateSettings, setSettingsPrivat }}
             viewmodeChange={viewmodeChange}
-            commonSettings={commonSettings}
-            privateSettings={privateSettings}
-            setSettingsCommon={setSettingsCommon}
-            setSettingsPrivat={setSettingsPrivat}
           />
           <div className="allcollect">
             <div className="mainBox">

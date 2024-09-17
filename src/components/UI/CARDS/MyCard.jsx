@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { mainAndImg } from "../../../utils/cardFragment";
 import { useStretchingText } from "../../../hooks/useStretchingText";
 import BalancerLine from "../Balancer/BalancerLine";
+import CardBtn from "./CardBtn";
 
 const MyCard = ({ mode = "0", ...props }) => {
   const [flipped, setFlipped] = useState(false);
@@ -17,8 +18,6 @@ const MyCard = ({ mode = "0", ...props }) => {
 
   useStretchingText("cardText");
 
-  useStretchingText("cardangle");
-
   return (
     <>
       {!!props.item && (
@@ -29,18 +28,7 @@ const MyCard = ({ mode = "0", ...props }) => {
             </div>
           )}
           {props.leftBtn && (
-            <CSSTransition in={flipped} timeout={800} classNames="cardCArrow">
-              <button className={cl.leftbtn} {...props.leftBtn}>
-                <div
-                  className={
-                    props.leftBtn.fontstyleb
-                      ? props.leftBtn.fontstyleb
-                      : "cardangle pe-2"
-                  }>
-                  {props.leftBtn.name}
-                </div>
-              </button>
-            </CSSTransition>
+            <CardBtn btnSide="leftbtn" {...{ ...props.leftBtn, flipped }} />
           )}
           <div
             className={cl["card-button"]}
@@ -56,19 +44,9 @@ const MyCard = ({ mode = "0", ...props }) => {
               </CSSTransition>
             )}
           </div>
+
           {props.rightBtn && (
-            <CSSTransition in={flipped} timeout={800} classNames="cardCArrow">
-              <button className={cl.rightBtn} {...props.rightBtn}>
-                <div
-                  className={
-                    props.rightBtn.fontstyleb
-                      ? props.rightBtn.fontstyleb
-                      : "cardangle pe-2"
-                  }>
-                  {props.rightBtn.name}
-                </div>
-              </button>
-            </CSSTransition>
+            <CardBtn btnSide="rightBtn" {...{ ...props.rightBtn, flipped }} />
           )}
         </div>
       )}

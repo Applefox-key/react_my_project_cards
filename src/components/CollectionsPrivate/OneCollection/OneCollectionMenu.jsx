@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import "../../../styles/collectMenu.scss";
 import CollectionEditModal from "../OneCollectionActions/CollectionEditModal";
 import OneCollectionBtns from "../../UI/tgb/OneCollectionBtns";
@@ -16,12 +16,17 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
   const { setMode, setReorgMode } = modes;
   const { collection, content, setContent, setCollect } = collectionData;
   const [renameMode, setRenameMode] = useState(false);
-  const changeCat = (cat) => {
-    setCollect({
-      ...collection,
-      categoryid: cat.id ? cat.id : "",
-      category: cat.name ? cat.name : "",
-    });
+
+  const changeAttr = (atrKeyVal) => {
+    let changes = {};
+    if (atrKeyVal.category) {
+      changes = {
+        categoryid: atrKeyVal.category.id || "",
+        category: atrKeyVal.category.name || "",
+      };
+    }
+    if ("note" in atrKeyVal) changes.note = atrKeyVal.note;
+    setCollect((prev) => ({ ...prev, ...changes }));
   };
   const sortContent = (val, isDec) => {
     const newVal = sortByField([...content], val, isDec);
@@ -29,13 +34,17 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
     collectionData.setContent(newVal);
   };
   const router = useNavigate();
-  const toCollections = () => {
+
+  // Callback functions to prevent re-creation on each render
+  const toCollections = useCallback(() => {
     router(GO_TO.myCollect);
-  };
-  const toLibrary = () => {
+  }, [router]);
+
+  const toLibrary = useCallback(() => {
     router(GO_TO.library);
-  };
-  const toCat = () => {
+  }, [router]);
+
+  const toCat = useCallback(() => {
     saveSet({
       "selectedCategorymy": {
         name: collection.category,
@@ -43,33 +52,32 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
       },
     });
     router(GO_TO.myCollect);
-  };
-  const arrPath = (() => {
+  }, [collection.category, collection.categoryid, router]);
+
+  const arrPath = useMemo(() => {
     const res = [
-      { name: "My library ", action: toLibrary },
+      { name: "My library", action: toLibrary },
       { name: "Collections", action: toCollections },
     ];
 
-    if (collection.category)
+    if (collection.category) {
       res.push({ name: collection.category, action: toCat });
+    }
 
     res.push({
-      name: collection.name,
+      name: `${collection.name} (${content.length})`,
       action: () => setRenameMode(true),
       cl: "colname",
     });
-
     return res;
-  })();
+  }, [collection, content.length, toLibrary, toCollections, toCat]);
+
   return (
     <div className="string_menu">
       {renameMode && (
         <CollectionEditModal
-          isEdit={renameMode}
           setIsEdit={setRenameMode}
-          collection={collection}
-          changeCat={changeCat}
-          setReorgMode={setReorgMode}
+          {...{ collection, changeAttr, setReorgMode }}
         />
       )}
 

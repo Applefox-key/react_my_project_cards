@@ -16,18 +16,15 @@ import ModalCustom from "../../UI/ModalCustom/ModalCustom";
 const CollectionEditModal = ({
   collection = {},
   isNew,
-  isEdit,
   setIsEdit,
   onHide,
-  changeCat,
+  changeAttr,
   setReorgMode = null,
 }) => {
-  const route = useNavigate();
   const [content, setContent] = useState();
-  const [newName, setNewName] = useState(collection ? collection.name : "");
   const [fromFile, setFromFile] = useState(false);
+  const [newName, setNewName] = useState(collection ? collection.name : "");
   const [newNote, setNote] = useState(collection ? collection.note : "");
-  const setPopup = usePopup();
   const [category, setCategory] = useState(
     collection
       ? {
@@ -36,19 +33,25 @@ const CollectionEditModal = ({
         }
       : ""
   );
+  const route = useNavigate();
+  const setPopup = usePopup();
   const saveChanges = async () => {
     try {
-      const collectionData = {
-        name: newName,
-        note: newNote,
-        categoryel: category,
-        content: content,
+      const res = await editCollectionHlp({
+        newName,
+        newNote,
+        category,
+        content,
         isNew,
-        collection: collection,
-      };
-      const res = await editCollectionHlp(collectionData);
-      if (!isNew) route(`/collections/my/${collection.id}/${newName.trim()}`);
-      if (!isNew && category.id !== collection.categoryid) changeCat(category);
+        collection,
+      });
+      if (!isNew) {
+        let newV = category.id !== collection.categoryid ? { category } : {};
+        if (newNote !== collection.note) newV.note = newNote;
+        changeAttr(newV);
+        route(`/collections/my/${collection.id}/${newName.trim()}`);
+      }
+
       if (res) route(`/collections/my/${res}/${newName.trim()}`);
       else route(`/collections/my/${collection.id}/${newName.trim()}`);
       setIsEdit(false);
@@ -77,7 +80,7 @@ const CollectionEditModal = ({
   return (
     <ModalCustom
       onHide={onHide ? onHide : (e) => setIsEdit(false)}
-      showmodal={isEdit}
+      showmodal
       setshowmodal={setIsEdit}
       size="lg"
       fullscreen={!!inputFileName.current}
