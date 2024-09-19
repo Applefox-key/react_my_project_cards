@@ -1,0 +1,51 @@
+.back {
+  margin: auto;
+  width: 10rem;
+  height: 3rem;
+  color: aliceblue;
+  background-color: rgb(0, 0, 0);
+  /* z-index: 550; */
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.back::before {
+  content: "";
+  background-color: red;
+  width: 5rem;
+  position: relative;
+  left: -10rem;
+}
+
+.endlesTitle {
+  position: relative;
+  top: -5px;
+  left: 0;
+  width: 100%;
+}
+
+.endlesName {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  width: 100%;
+  font-style: italic;
+  color: var(white);
+}
+
+.btnGame {
+  position: relative;
+  margin: 0 5px;
+  border: none;
+  background: var(--color-fill);
+  color: var(--color-intense);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  min-width: 9rem;
+  min-height: 4rem;
+}
+.btnGame svg {
+  margin-right: 5px;
+}
+.btnGame:hover {
+  background-color: var(--color-nav);
+  color: white;
+}/*# sourceMappingURL=BackBtn.module.css.map */

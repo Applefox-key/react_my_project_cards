@@ -11,9 +11,7 @@ const ModalCustom = ({
   subtitle = "",
   ...props
 }) => {
-  console.log(props);
   const { fullscreen } = props;
-  console.log(fullscreen);
   const content = (
     <div className={fullscreen ? cl["modalbox-fullscreen"] : cl["modalbox"]}>
       <div className={cl.contentbox} onClick={(e) => e.stopPropagation()}>

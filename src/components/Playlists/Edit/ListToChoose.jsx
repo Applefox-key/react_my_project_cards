@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import cl from "../PlayLists.module.scss";
 import { IoHomeOutline } from "react-icons/io5";
 import MySwitch from "../../UI/tgb/MySwitch";
@@ -42,10 +42,16 @@ const ListToChoose = ({ selectedIds, show, onClickFns }) => {
     if (isReload) getColl();
   };
   const filtredList = useCollectSelection(list, cat, filter);
+  const countPosibleSelect = useMemo(
+    () => filtredList.filter((el) => !selectedIds.includes(el.id)).length,
+    [filtredList, selectedIds]
+  );
+
   return (
     <>
-      {playlistSetMax - selectedIds.length >= filtredList.length &&
-        !!filtredList.length && (
+      {!!countPosibleSelect &&
+        playlistSetMax - selectedIds.length >= countPosibleSelect &&
+        show && (
           <button
             className={cl.addBtn}
             onClick={() => onClickFns.handleSelectAll(filtredList)}>

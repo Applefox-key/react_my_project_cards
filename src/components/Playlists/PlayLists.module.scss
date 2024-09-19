@@ -627,7 +627,31 @@
         border-radius: 10px 0 0 10px;
         background-color: var(--background-header);
         color: var(--color-nav);
-        border: none;
+        border: 1px solid;
+        animation: bounce_513 1s 2;
+        position: relative;
+        left: -5px;
+        transition: all 0.2s ease-in-out;
+
+        svg {
+            animation: bounce_513 1s infinite;
+        }
+
+        @keyframes bounce_513 {
+
+            0%,
+            100% {
+                transform: translateX(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+
+            }
+
+            50% {
+                transform: translateX(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+            }
+        }
 
         &:hover {
             background-color: var(--background-nav);
@@ -871,7 +895,7 @@
     }
 
     .isSelected {
-
+        opacity: 0.3;
         text-wrap: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -929,7 +953,7 @@
         // text-decoration: line-through;
         color: rgb(125, 118, 136);
         background-color: var(--color-fill);
-        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px var(--shadow-size) 1px inset;
         opacity: 0.5;
 
         color: var(--color-checked);
@@ -938,6 +962,7 @@
             content: "❌";
             position: absolute;
             font-size: 18px;
+            left: 48%;
         }
     }
 
@@ -954,7 +979,7 @@
 .empty {
     @extend .selectedEl;
     background-color: var(--color-fill);
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px var(--shadow-size) 1px inset;
     transition: all 0.4s ease-in-out;
 
     &:hover {

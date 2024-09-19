@@ -10,9 +10,17 @@ const EditBody = ({ items, ids }) => {
   const { selectedIds, setSelectedIds } = ids;
 
   const handleSelectAll = (filtredList) => {
-    const allIds = filtredList.map((el) => el.id);
-    setSelectedIds(allIds);
-    setSelectedItems([...filtredList]);
+    const allItems = filtredList.filter(
+      (el) => el.id && !selectedIds.includes(el.id)
+    );
+    const allIds = allItems.map((item) => item.id);
+    if (selectedIds.length + allIds.length === playlistSetMax) setShow(false);
+
+    setSelectedIds([...allIds, ...(selectedIds.length ? selectedIds : [])]);
+    setSelectedItems([
+      ...allItems,
+      ...(selectedItems.length ? selectedItems : []),
+    ]);
   };
   const handleClick = () => {
     setShow(!show);
@@ -24,14 +32,14 @@ const EditBody = ({ items, ids }) => {
     setSelectedItems(
       isExist
         ? selectedItems.filter((item) => item.id !== elem.id)
-        : [...selectedItems, elem]
+        : [elem, ...selectedItems]
     );
 
     setSelectedIds((prevIds) => {
       if (prevIds.includes(elem.id)) {
         return prevIds.filter((prevId) => prevId !== elem.id);
       } else {
-        return [...prevIds, elem.id];
+        return [elem.id, ...prevIds];
       }
     });
 

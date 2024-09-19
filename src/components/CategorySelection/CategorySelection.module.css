@@ -1,0 +1,237 @@
+.div_width {
+  width: 100%;
+}
+.div_width button {
+  padding-left: 3rem;
+}
+
+.max_content {
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 21rem;
+}
+
+.catSelect {
+  position: relative;
+  font-size: 14px;
+  cursor: pointer;
+}
+.catSelect .catSelectList {
+  position: absolute;
+  top: 34px;
+  width: 200px;
+  border: 1px solid var(--border-fill);
+  text-align: left;
+  background-color: var(--background-first);
+  padding: 10px 0;
+  z-index: 2000;
+  color: var(--color-nav);
+  height: 300px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+.catSelect .catSelectList svg {
+  position: absolute;
+  right: -3px;
+  top: 3px;
+}
+.catSelect .catSelectList .svgactive {
+  transform: rotate(90deg);
+}
+.catSelect .catSelectList div {
+  padding: 5px 10px;
+}
+.catSelect .catSelectList div:hover {
+  background-color: var(--color-fill);
+  color: var(--color-nav);
+}
+.catSelect span {
+  position: absolute;
+  top: -6px;
+  left: 5px;
+  font-size: 8px;
+  padding: 0 2px 0px 2px;
+  background-color: var(--background-wrap);
+  border-radius: 3px 3px 0 0;
+  color: var(--color-bg-wrap);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.catSelect option :hover {
+  background-color: var(--color-fill);
+}
+
+.setting_btn {
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+  width: 100%;
+  height: 3rem;
+  border: none;
+  position: relative;
+  top: -10px;
+  left: -5px;
+  width: 100%;
+  font-size: 2rem;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-second);
+  border-radius: 4px;
+}
+.setting_btn:hover {
+  background-color: lavender;
+  border-radius: 5px;
+  transform: translateX(5px);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.firstSelect {
+  background-color: var(--color-nav);
+  color: white;
+}
+
+.cat-wrap {
+  max-width: 90%;
+  margin: auto;
+  margin-top: 3rem;
+}
+.cat-wrap button {
+  border-radius: 20px;
+  width: 3rem;
+  line-height: 0;
+  border: none;
+  margin-left: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
+  background-color: var(--background-wrap);
+  color: var(--color-bg-wrap);
+  margin-left: 1.5rem;
+  font-size: 11px;
+  position: relative;
+  border: 1px solid var(--border-fill);
+}
+.cat-wrap .cat-row {
+  background-color: var(--background-wrap);
+  color: var(--color-bg-wrap);
+  width: 100%;
+  min-width: 260px;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+  cursor: help;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cat-wrap .cat-row .cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  border-bottom: 0.5px solid var(--border-fill);
+  BACKGROUND: var(--background-first);
+  COLOR: var(--color-bg-wrap);
+  opacity: 0.8;
+  margin-bottom: 5px;
+  padding: 5px 5px;
+}
+.cat-wrap .cat-row .cat-header .cat-name {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.cat-wrap .cat-row .cat-header .hidenBtn {
+  display: none;
+  margin-right: 5px;
+}
+.cat-wrap .cat-row .cat-header svg {
+  margin-right: 5px;
+}
+.cat-wrap .cat-row input {
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--color-checked);
+  background-color: var(--color-fill);
+}
+.cat-wrap .cat-row input:focus {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: --background-intense;
+}
+.cat-wrap .cat-row:hover .cat-header {
+  background-color: var(--color-fill);
+}
+.cat-wrap .cat-row:hover .hidenBtn {
+  display: block;
+}
+.cat-wrap .cat-row .listBody {
+  display: none;
+}
+.cat-wrap .cat-row .list-btns {
+  display: none;
+  transition: all 0.4s ease-in-out;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+@media screen and (max-width: 900px) {
+  .cat-wrap .cat-row .list-btns {
+    display: flex;
+  }
+}
+.cat-wrap .cat-row .list-btns button {
+  border: none;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  width: 3rem;
+  height: 3rem;
+  font-size: 16px;
+  margin-top: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--background-first);
+  color: var(--color-bg-wrap);
+}
+.cat-wrap .cat-row .list-btns button:hover {
+  background-color: var(--background-second);
+  color: var(--color-bg-wrap);
+}
+.cat-wrap .cat-row .listFooter {
+  background-color: var(--background-header);
+  width: 100%;
+  font-size: 17px;
+  height: 3.2rem;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+}
+.cat-wrap .cat-row .listFooter .fff {
+  position: relative;
+  width: 3rem;
+  z-index: 700;
+  top: -32rem;
+  left: 15px;
+}
+.cat-wrap .cat-row:hover {
+  transform: translateX(-10px);
+}
+.cat-wrap .cat-row:hover .list-btns {
+  display: flex;
+}
+@media screen and (max-width: 600px) {
+  .cat-wrap {
+    justify-content: center;
+  }
+}/*# sourceMappingURL=CategorySelection.module.css.map */

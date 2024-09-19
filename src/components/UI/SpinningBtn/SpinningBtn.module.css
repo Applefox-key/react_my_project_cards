@@ -1,0 +1,134 @@
+@import 'animate.css';
+.spinning-btn-wrap {
+  position: relative;
+  font-size: 20rem;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  font-size: 10px;
+  z-index: 900;
+  margin-right: 10px;
+  transition: all 0.5s ease-in-out;
+}
+.spinning-btn-wrap button {
+  max-width: 145px;
+  justify-content: flex-start;
+}
+.spinning-btn-wrap .spinning-menu-btn, .spinning-btn-wrap .spinning-menu-btn-show {
+  z-index: 1101;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--color-bg-wrap);
+  z-index: 900;
+  transition: all 0.5s ease-in-out;
+  background: var(--color-fill);
+  border: 1px solid var(--border-fill);
+}
+.spinning-btn-wrap .spinning-menu-btn .ico-wrap, .spinning-btn-wrap .spinning-menu-btn-show .ico-wrap {
+  transition: all 0.5s ease-in-out;
+  width: 35px;
+}
+.spinning-btn-wrap .spinning-menu-btn .ico, .spinning-btn-wrap .spinning-menu-btn-show .ico {
+  font-size: 18px;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  transition: all 0.5s ease-in-out;
+}
+.spinning-btn-wrap .spinning-menu-btn span, .spinning-btn-wrap .spinning-menu-btn-show span {
+  font-size: 12px;
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  visibility: hidden;
+  width: 0;
+  text-wrap: nowrap;
+  transition: all 0.5s ease-in-out;
+}
+.spinning-btn-wrap .spinning-menu-btn:hover, .spinning-btn-wrap .spinning-menu-btn-show:hover {
+  z-index: 1101;
+  background-color: var(--border-fill);
+  border: 1px solid var(--color-fill);
+}
+.spinning-btn-wrap .spinning-menu-btn-show {
+  width: 35px;
+  border-radius: 0px 20px 0px 0px;
+  border: 1px solid var(--color-intense);
+  z-index: 1101;
+  justify-content: flex-start;
+  width: 170px;
+  max-width: unset;
+}
+.spinning-btn-wrap .spinning-menu-btn-show span {
+  visibility: visible;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.spinning-btn-wrap .spinning-menu-btn-show .ico-wrap {
+  transform: translateX(135px);
+}
+.spinning-btn-wrap .spinning-menu-btn-show .ico {
+  color: white;
+  background-color: var(--color-nav);
+  rotate: 360deg;
+  stroke: black;
+  stroke-width: 0.4px;
+  width: 33px;
+  height: 33px;
+}
+.spinning-btn-wrap .spinning-menu-btn-show:hover {
+  z-index: 1101;
+  background-color: var(--color-fill);
+  border: 1px solid var(--color-intense);
+}
+.spinning-btn-wrap:has(:first-child.overflow-box-show) {
+  z-index: 1500;
+}
+
+.overflow-box, .overflow-box-show {
+  position: absolute;
+  overflow: hidden;
+  height: 230px;
+  border-radius: 5px;
+  width: 0px;
+  top: 32px;
+  left: -23px;
+}
+
+.overflow-box-show {
+  width: 200px;
+  padding: 0 15px;
+}
+
+.body-after-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  left: 13px;
+  margin: 3px 10px;
+  padding: 0 5px;
+  text-align: start;
+  border: 1px solid var(--color-intense);
+  transition: all 0.5s ease-in-out;
+  z-index: 1200;
+  background-color: var(--color-fill);
+  color: var(--white-black);
+  position: absolute;
+  border-radius: 0 0 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 5px;
+  align-items: flex-start;
+  width: 170px;
+}/*# sourceMappingURL=SpinningBtn.module.css.map */

@@ -1,0 +1,596 @@
+.font16 {
+  font-size: 16px;
+}
+@media print {
+  .font16 {
+    font-size: 11rem;
+  }
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+@media screen and (min-width: 1700px) and (max-height: 600px) {
+  .fs-14 {
+    font-size: 12px;
+  }
+}
+
+.fs-arr {
+  font-size: 26px;
+}
+@media screen and (max-width: 900px) {
+  .fs-arr {
+    font-size: 14px;
+  }
+  .fs-arr svg {
+    width: 100%;
+    margin-left: 5px;
+  }
+}
+
+.fontSize_vw {
+  font-size: 10vw;
+}
+
+.fontSize_length5 {
+  font-size: 33rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length5 {
+    font-size: 10rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length5 {
+    font-size: 12rem;
+  }
+}
+
+.fontSize_length10 {
+  font-size: 16rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length10 {
+    font-size: 6.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length10 {
+    font-size: 6.8rem;
+  }
+}
+
+.fontSize_length20 {
+  font-size: 12rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length20 {
+    font-size: 4.8rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length20 {
+    font-size: 4.8rem;
+  }
+}
+
+.fontSize_length30 {
+  font-size: 12.1rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length30 {
+    font-size: 5.6rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length30 {
+    font-size: 5.6rem;
+  }
+}
+
+.fontSize_length40 {
+  font-size: 9rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length40 {
+    font-size: 4.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length40 {
+    font-size: 4.3rem;
+  }
+}
+
+.fontSize_length50 {
+  font-size: 9rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length50 {
+    font-size: 4.5rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length50 {
+    font-size: 4.5rem;
+  }
+}
+
+.fontSize_length100 {
+  font-size: 6.5rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length100 {
+    font-size: 4.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length100 {
+    font-size: 4.3rem;
+  }
+}
+
+.fontSize_length150 {
+  font-size: 5.4rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length150 {
+    font-size: 3.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length150 {
+    font-size: 3.3rem;
+  }
+}
+
+.fontSize_length200 {
+  font-size: 4.7rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length200 {
+    font-size: 2.9rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length200 {
+    font-size: 2.9rem;
+  }
+}
+
+.fontSize_length250 {
+  font-size: 4.1rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length250 {
+    font-size: 2.8rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length250 {
+    font-size: 2.8rem;
+  }
+}
+
+.fontSize_length300 {
+  font-size: 3.8rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length300 {
+    font-size: 2.6rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length300 {
+    font-size: 2.6rem;
+  }
+}
+
+.fontSize_length350 {
+  font-size: 3.6rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_length350 {
+    font-size: 2.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_length350 {
+    font-size: 2.3rem;
+  }
+}
+
+.fontSize_lengthLG {
+  font-size: 3rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthLG {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthLG {
+    font-size: 2rem;
+  }
+}
+
+.fontSize_lengthImg5 {
+  font-size: 21rem;
+}
+
+.fontSize_lengthImg10 {
+  font-size: 16rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg10 {
+    font-size: 6rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg10 {
+    font-size: 6rem;
+  }
+}
+
+.fontSize_lengthImg20 {
+  font-size: 8.1rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg20 {
+    font-size: 5.9rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg20 {
+    font-size: 5.9rem;
+  }
+}
+
+.fontSize_lengthImg30 {
+  font-size: 8rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg30 {
+    font-size: 5.6rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg30 {
+    font-size: 5.6rem;
+  }
+}
+
+.fontSize_lengthImg40 {
+  font-size: 7.2rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg40 {
+    font-size: 5.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg40 {
+    font-size: 5.3rem;
+  }
+}
+
+.fontSize_lengthImg50 {
+  font-size: 7.3rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg50 {
+    font-size: 4.6rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg50 {
+    font-size: 4.6rem;
+  }
+}
+
+.fontSize_lengthImg100 {
+  font-size: 5.3rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg100 {
+    font-size: 3.3rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg100 {
+    font-size: 3.3rem;
+  }
+}
+
+.fontSize_lengthImg150 {
+  font-size: 4.3rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg150 {
+    font-size: 2.7rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg150 {
+    font-size: 2.7rem;
+  }
+}
+
+.fontSize_lengthImg200 {
+  font-size: 4rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg200 {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg200 {
+    font-size: 2.4rem;
+  }
+}
+
+.fontSize_lengthImg250 {
+  font-size: 3.6rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg250 {
+    font-size: 2.1rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg250 {
+    font-size: 2.1rem;
+  }
+}
+
+.fontSize_lengthImg300 {
+  font-size: 3.3rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg300 {
+    font-size: 1.9rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg300 {
+    font-size: 1.9rem;
+  }
+}
+
+.fontSize_lengthImg350 {
+  font-size: 3.4rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImg350 {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImg350 {
+    font-size: 1.8rem;
+  }
+}
+
+.fontSize_lengthImgLG {
+  font-size: 2.6rem;
+}
+@media screen and (max-width: 600px) and (min-height: 600px) {
+  .fontSize_lengthImgLG {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 600px) and (max-height: 600px) {
+  .fontSize_lengthImgLG {
+    font-size: 1.4rem;
+  }
+}
+
+.fontSize_printImg5 {
+  font-size: 11rem;
+}
+
+.fontSize_printImg10 {
+  font-size: 8rem;
+}
+
+.fontSize_printImg20 {
+  font-size: 6.6rem;
+}
+
+.fontSize_printImg30 {
+  font-size: 5rem;
+}
+
+.fontSize_printImg40 {
+  font-size: 5rem;
+}
+
+.fontSize_printImg50 {
+  font-size: 4rem;
+}
+
+.fontSize_printImg100 {
+  font-size: 2.9rem;
+}
+
+.fontSize_printImg150 {
+  font-size: 2.4rem;
+}
+
+.fontSize_printImg200 {
+  font-size: 2.1rem;
+}
+
+.fontSize_printImg250 {
+  font-size: 1.9rem;
+}
+
+.fontSize_printImg300 {
+  font-size: 1.8rem;
+}
+
+.fontSize_printImg350 {
+  font-size: 1.7rem;
+}
+
+.fontSize_printImgLG {
+  font-size: 1.2rem;
+}
+
+.fontSize_print5 {
+  font-size: 14rem;
+}
+
+.fontSize_print10 {
+  font-size: 7rem;
+}
+
+.fontSize_print20 {
+  font-size: 6.6rem;
+}
+
+.fontSize_print30 {
+  font-size: 5rem;
+}
+
+.fontSize_print40 {
+  font-size: 4.6rem;
+}
+
+.fontSize_print50 {
+  font-size: 4.5rem;
+}
+
+.fontSize_print100 {
+  font-size: 3.4rem;
+}
+
+.fontSize_print150 {
+  font-size: 2.4rem;
+}
+
+.fontSize_print200 {
+  font-size: 2.3rem;
+}
+
+.fontSize_print250 {
+  font-size: 2rem;
+}
+
+.fontSize_print300 {
+  font-size: 1.8rem;
+}
+
+.fontSize_print350 {
+  font-size: 1.7rem;
+}
+
+.fontSize_printLG {
+  font-size: 1.3rem;
+}
+
+.fontSize_littleImg5 {
+  font-size: 11rem;
+}
+
+.fontSize_littleImg10 {
+  font-size: 8rem;
+}
+
+.fontSize_littleImg20 {
+  font-size: 6.6rem;
+}
+
+.fontSize_littleImg30 {
+  font-size: 5rem;
+}
+
+.fontSize_littleImg40 {
+  font-size: 5rem;
+}
+
+.fontSize_littleImg50 {
+  font-size: 4rem;
+}
+
+.fontSize_littleImg100 {
+  font-size: 2.9rem;
+}
+
+.fontSize_littleImg150 {
+  font-size: 2.4rem;
+}
+
+.fontSize_littleImg200 {
+  font-size: 2.1rem;
+}
+
+.fontSize_littleImg250 {
+  font-size: 1.9rem;
+}
+
+.fontSize_littleImg300 {
+  font-size: 1.8rem;
+}
+
+.fontSize_littleImg350 {
+  font-size: 1.7rem;
+}
+
+.fontSize_littleImgLG {
+  font-size: 1.2rem;
+}
+
+.fontSize_little5 {
+  font-size: 4rem;
+}
+
+.fontSize_little10 {
+  font-size: 3rem;
+}
+
+.fontSize_little20 {
+  font-size: 2.5rem;
+}
+
+.fontSize_little30 {
+  font-size: 2.5rem;
+}
+
+.fontSize_little40 {
+  font-size: 2.5rem;
+}
+
+.fontSize_little50 {
+  font-size: 2.4rem;
+}
+
+.fontSize_little100 {
+  font-size: 2.1rem;
+}
+
+.fontSize_little150 {
+  font-size: 2.2rem;
+}
+
+.fontSize_little200 {
+  font-size: 2rem;
+}
+
+.fontSize_little250 {
+  font-size: 1.9rem;
+}
+
+.fontSize_little300 {
+  font-size: 1.7rem;
+}
+
+.fontSize_little350 {
+  font-size: 1.7rem;
+}
+
+.fontSize_littleLG {
+  font-size: 1.4rem;
+}/*# sourceMappingURL=fonts.css.map */

@@ -1,0 +1,120 @@
+.mainbox {
+  box-sizing: border-box;
+  position: relative;
+  width: 200px;
+  height: 25px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  border-radius: 160px;
+  transition: all 0.3s ease;
+  border: 1px solid rgb(216, 216, 218);
+  justify-content: center;
+}
+.mainbox .icon {
+  box-sizing: border-box;
+  padding-top: 0px;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 0.3s ease;
+  color: var(--color-nav);
+}
+.mainbox .icon svg {
+  box-sizing: border-box;
+  fill: white;
+  font-size: 1.3em;
+}
+.mainbox input {
+  box-sizing: border-box;
+  height: 100%;
+  width: 170px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  font-size: 1em;
+  color: var(--color-nav);
+  transition: all 0.3s ease;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+@media screen and (max-width: 900px) {
+  .mainbox {
+    width: 170px;
+  }
+}
+
+.secondarybox {
+  box-sizing: border-box;
+  position: relative;
+  width: 200px;
+  height: 25px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  border-radius: 160px;
+  transition: all 0.3s ease;
+  border: 1px solid rgb(216, 216, 218);
+  justify-content: center;
+}
+.secondarybox span {
+  position: absolute;
+}
+.secondarybox .icon {
+  box-sizing: border-box;
+  padding-top: 0px;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 0.3s ease;
+  color: var(--color-nav);
+  padding-right: 5px;
+}
+.secondarybox .icon svg {
+  box-sizing: border-box;
+  fill: var(--color-fill);
+  font-size: 1.3em;
+}
+.secondarybox input {
+  box-sizing: border-box;
+  height: 100%;
+  width: 170px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  font-size: 1em;
+  color: var(--color-nav);
+  transition: all 0.3s ease;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+@media screen and (max-width: 900px) {
+  .secondarybox {
+    width: 170px;
+  }
+}
+
+.short {
+  position: relative;
+}
+.short .mainbox,
+.short .secondarybox {
+  width: 25px;
+  justify-content: space-around;
+}
+.short .mainbox .icon,
+.short .secondarybox .icon {
+  padding-right: 6px;
+}
+.short .mainbox input,
+.short .secondarybox input {
+  width: 0;
+  height: 0px;
+}
+.short .secondarybox .icon {
+  padding: 0;
+  position: relative;
+  right: 2px;
+}/*# sourceMappingURL=MyFilter.module.css.map */
