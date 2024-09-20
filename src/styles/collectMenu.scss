@@ -554,6 +554,7 @@
 }
 
 .organiser-box,
+.organiser-box-btn,
 .organiser-box-title {
   // border: 2px solid #FF4500;
   border-radius: 5px;
@@ -563,6 +564,7 @@
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   justify-content: flex-start;
+  justify-content: space-between;
 
   h3 {
     color: var(--color-checked);
@@ -599,6 +601,23 @@
 
     .btn {
       width: 100%;
+    }
+  }
+}
+
+.organiser-box-btn {
+
+  .btn {
+    border: 1px solid var(--border-fill);
+  }
+
+  @media screen and ((max-width: 900px)) {
+
+
+    justify-content: space-between;
+
+    .btn {
+      width: fit-content;
     }
   }
 }

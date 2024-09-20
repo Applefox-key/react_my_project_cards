@@ -1153,9 +1153,9 @@ input {
   background-color: var(--background-wrap);
   color: var(--color-bg-wrap);
   margin: 20px;
-  width: 260px;
+  width: 350px;
   min-width: 260px;
-  height: 175px;
+  height: 260px;
   position: relative;
   padding: 10px;
   border-radius: 10px;
@@ -1179,13 +1179,16 @@ input {
   }
 
   div {
-    font-size: 12px;
-
+    font-size: 18px;
   }
 
   @media screen and (max-width:900px) {
-    .ulb-box {
-      margin: 5px;
+    margin: 5px;
+    width: 260px;
+    height: 175px;
+
+    div {
+      font-size: 12px;
     }
   }
 }
@@ -1194,26 +1197,3 @@ input {
   display: flex;
   z-index: 1105;
 }
-
-// .simpleBtn,
-// .simpleDiv,
-// .simpleCheck {
-//   border-radius: 5px;
-//   padding: 5px 15px;
-//   font-family: 'Lato', sans-serif;
-//   font-weight: 500;
-//   cursor: pointer;
-//   transition: all 0.3s ease;
-//   position: relative;
-//   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-//     7px 7px 20px 0px rgba(0, 0, 0, .1),
-//     4px 4px 5px 0px rgba(0, 0, 0, .1);
-//   outline: none;
-//   font-size: 14px;
-//   border: none;
-//   color: #fff;
-//   background: linear-gradient(0deg, var(--color-rate) 0%, var(--color-rate) 100%);
-//   text-decoration: none;
-//   text-wrap: nowrap;
-//   height: fit-content;
-// }

@@ -99,12 +99,6 @@ const EditCard = () => {
           </div>
           <div className="questDiv">
             <div className="img_choice">
-              <input
-                type="file"
-                id="imgQ"
-                value={item.imgQFile ? item.imgQFile : ""}
-                onChange={fromFile}
-              />
               {item.imgQ ? (
                 <div className="img">
                   <button
@@ -117,7 +111,15 @@ const EditCard = () => {
                   <img src={getImgQ(item)} alt="" />
                 </div>
               ) : (
-                <BiImageAdd className="imgEmpty" />
+                <>
+                  <input
+                    type="file"
+                    id="imgQ"
+                    value={item.imgQFile ? item.imgQFile : ""}
+                    onChange={fromFile}
+                  />
+                  <BiImageAdd className="imgEmpty" />
+                </>
               )}
             </div>
             <textarea

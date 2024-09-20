@@ -1065,9 +1065,9 @@ input {
   background-color: var(--background-wrap);
   color: var(--color-bg-wrap);
   margin: 20px;
-  width: 260px;
+  width: 350px;
   min-width: 260px;
-  height: 175px;
+  height: 260px;
   position: relative;
   padding: 10px;
   border-radius: 10px;
@@ -1089,11 +1089,16 @@ input {
   transform: translateY(-5px);
 }
 .ulb-box div {
-  font-size: 12px;
+  font-size: 18px;
 }
 @media screen and (max-width: 900px) {
-  .ulb-box .ulb-box {
+  .ulb-box {
     margin: 5px;
+    width: 260px;
+    height: 175px;
+  }
+  .ulb-box div {
+    font-size: 12px;
   }
 }
 

@@ -488,6 +488,7 @@
 }
 
 .organiser-box,
+.organiser-box-btn,
 .organiser-box-title {
   border-radius: 5px;
   padding: 5px 10px;
@@ -496,8 +497,10 @@
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   justify-content: flex-start;
+  justify-content: space-between;
 }
 .organiser-box h3,
+.organiser-box-btn h3,
 .organiser-box-title h3 {
   color: var(--color-checked);
   position: absolute;
@@ -507,11 +510,13 @@
   bottom: 5px;
 }
 .organiser-box p,
+.organiser-box-btn p,
 .organiser-box-title p {
   text-align: left;
   padding-left: 15px;
 }
 .organiser-box span,
+.organiser-box-btn span,
 .organiser-box-title span {
   background-color: var(--color-checked);
   padding: 0 6px 2px 6px;
@@ -524,6 +529,7 @@
 }
 @media screen and ((max-width: 900px)) {
   .organiser-box,
+  .organiser-box-btn,
   .organiser-box-title {
     width: 100%;
     flex-direction: row;
@@ -531,8 +537,22 @@
     justify-content: flex-start;
   }
   .organiser-box .btn,
+  .organiser-box-btn .btn,
   .organiser-box-title .btn {
     width: 100%;
+  }
+}
+
+.organiser-box-btn .btn {
+  border: 1px solid var(--border-fill);
+}
+@media screen and ((max-width: 900px)) {
+  .organiser-box-btn {
+    justify-content: space-between;
+  }
+  .organiser-box-btn .btn {
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 

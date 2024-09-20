@@ -97,7 +97,7 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
             </Form.Select>
           </div>
         )}
-        <div className="organiser-box ">
+        <div className="organiser-box-btn">
           <p>
             <span>3</span> LAST STEP
           </p>

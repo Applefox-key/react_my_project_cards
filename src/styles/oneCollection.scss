@@ -326,7 +326,7 @@
                 font-size: 14px;
                 color: #5f6368;
                 display: none;
-                transition: all 0.4s ease-in-out;
+                transition: all 0.2s ease-in-out;
 
                 &:hover {
                     scale: 1.5;
@@ -343,7 +343,7 @@
             .onePart {
 
                 text-align: left;
-                transition: all 0.4s ease-in-out;
+                transition: all 0.2s ease-in-out;
                 display: flex;
                 justify-content: flex-start;
                 padding: 0 15px;
@@ -430,19 +430,16 @@
                 color: var(--color-nav);
                 z-index: 3;
                 // background-color: var(--color-fill);
+                color: white;
 
                 button {
                     display: block;
                 }
 
-                .quest {
-                    transform: translateX(-5px);
-                }
-
+                .quest,
                 .answ {
-                    transform: translateX(5px);
-                    color: var(--color-nav);
-                    // background-color: var(--color-fill);
+                    color: white;
+                    background-color: var(--color-rate);
                 }
             }
         }
@@ -450,30 +447,10 @@
         .one-row-organizer,
         .one-row-organizer-active {
             @extend .one-row;
+            transition: all 0.2s ease-in-out;
 
-            .onePart {
-                .imgOnly {
-                    width: 50px;
-                }
-            }
-
-            &:hover {
-                // transform: none;
-                color: black;
-
-                .quest,
-                .answ {
-                    color: white;
-                    background-color: var(--color-checked);
-                    margin-bottom: 0;
-
-                    // &:hover {
-                    //     color: white;
-                    //     background-color: unset;
-                    // }
-                }
-
-                // background-color: var(--color-checked);
+            .onePart .imgOnly {
+                width: 50px;
             }
 
             @media screen and ((max-width: 900px)) {
@@ -483,10 +460,20 @@
             }
         }
 
-        .one-row-organizer-active {
-            // background-color: var(--color-checked);
-            border: 1px solid var(--color-checked);
+        .one-row-organizer {
+            &:hover {
 
+                .quest,
+                .answ {
+                    color: white;
+                    background-color: var(--color-checked);
+                    margin-bottom: 0;
+                    transform: translateX(0px);
+                }
+            }
+        }
+
+        .one-row-organizer-active {
             &::after {
                 content: "✓";
                 position: absolute;
@@ -501,12 +488,15 @@
 
             }
 
+            @media screen and (max-width:900px) {
+                border: none;
+            }
+
             .onePart {
                 background-color: var(--color-checked);
                 color: white;
 
                 &:hover {
-
                     background-color: var(--color-checked);
 
                     .quest,
@@ -515,16 +505,32 @@
                     }
                 }
             }
-        }
-    }
 
-    .organizer {
-        margin-top: 2rem;
+            &:hover {
+                opacity: 0.8;
+
+                .quest,
+                .answ {
+                    color: white;
+                    transform: translateX(0px);
+                    background-color: var(--color-checked);
+                }
+            }
+        }
     }
 
     @media screen and (max-width: 600px) {
         width: 95%;
     }
+
+    .organizer {
+        margin-top: 2rem;
+
+        @media screen and (max-width: 600px) {
+            // width: 75%;
+        }
+    }
+
 }
 
 .firstSelect {
@@ -863,9 +869,16 @@
         .imgEmpty {
             opacity: 0.5;
             scale: 0.3;
+            transition: all 0.4s ease-in-out;
 
             @media screen and (max-width: 900px) {
                 scale: 1;
+            }
+        }
+
+        &:hover {
+            .imgEmpty {
+                scale: 0.9;
             }
         }
     }
