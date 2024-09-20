@@ -10,7 +10,6 @@ import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import { onePartLittle } from "../../utils/cardFragment";
 import { sortByField } from "../../utils/arraysFunc";
 import { CSSTransition } from "react-transition-group";
-// import { useAuth } from "../../hooks/useAuth";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
@@ -65,7 +64,7 @@ const PublicOneCollection = () => {
             timeout={1000}
             classNames="game"
             unmountOnExit>
-            <div className="m-auto d-flex align-items-start">
+            <div className="m-auto d-flex align-items-start mt-4">
               {content &&
                 (mode === 0 ? (
                   <ContentCards

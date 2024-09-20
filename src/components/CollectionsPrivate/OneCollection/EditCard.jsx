@@ -78,102 +78,96 @@ const EditCard = () => {
   }, [pageParam.id, pageParam.name, pageParam.item]);
 
   return (
-    <form className="big_card_wrap">
-      <div className="menuRow">
-        {!!item && !!item.hasOwnProperty("rate") && (
-          <Rate
-            initialValue={item.rate}
-            isEditable
-            action={(newRate) => updRates(item, newRate)}
-          />
-        )}
-        <div className="menuRow">
-          <BackBtn variant="light" />
-          <Button size="lg" onClick={save} variant="light">
-            SAVE CHANGES
-          </Button>
-        </div>
-      </div>
-      <div className="note">
-        <h3>NOTE:</h3>{" "}
-        <input
-          type="text"
-          placeholder="write a note..."
-          value={item ? item.note : ""}
-          onChange={(e) => setItem({ ...item, note: e.target.value })}
-        />
-      </div>
+    <form className="edit_card_wrap">
       {item ? (
         <div className="editCard">
-          <div className="questDiv">
-            <h3>QUESTION</h3>
-            <div className="oneSide quest">
-              <div className="img_choice">
-                <input
-                  type="file"
-                  id="imgQ"
-                  value={item.imgQFile ? item.imgQFile : ""}
-                  onChange={fromFile}
-                />
-                {item.imgQ ? (
-                  <div className="img">
-                    <button
-                      variant="outline-secondary"
-                      onClick={() =>
-                        setItem({ ...item, imgQ: "", imgQFile: "" })
-                      }>
-                      <IoMdClose />
-                    </button>
-                    <img src={getImgQ(item)} alt="" />
-                  </div>
-                ) : (
-                  <BiImageAdd className="imgEmpty" />
-                )}
-              </div>
-              <textarea
-                className="quest"
-                type="text"
-                placeholder="write a question....."
-                value={item.question}
-                onChange={(e) => setItem({ ...item, question: e.target.value })}
+          <div className="menuRow menu-border ">
+            {!!item && !!item.hasOwnProperty("rate") && (
+              <Rate
+                initialValue={item.rate}
+                isEditable
+                action={(newRate) => updRates(item, newRate)}
               />
-              <span>write a question</span>
+            )}
+
+            <div className="menuRow">
+              <Button size="lg" onClick={save} variant="light">
+                SAVE CHANGES
+              </Button>{" "}
+              <BackBtn variant="light" />
             </div>
           </div>
-          <div className="answtDiv">
-            <h3>ANSWER</h3>
-            <div className="oneSide ">
-              <div className="img_choice">
-                <input
-                  type="file"
-                  id="imgA"
-                  value={item.imgAFile ? item.imgAFile : ""}
-                  onChange={fromFile}
-                />
-                {item.imgA ? (
-                  <div className="img">
-                    {" "}
-                    <button
-                      onClick={() =>
-                        setItem({ ...item, imgA: "", imgAFile: "" })
-                      }>
-                      <IoMdClose />
-                    </button>
-                    <img src={getImgA(item)} alt="" />
-                  </div>
-                ) : (
-                  <BiImageAdd className="imgEmpty" />
-                )}
-              </div>
-              <textarea
-                className="answ"
-                type="text"
-                placeholder="write an answer..."
-                value={item.answer}
-                onChange={(e) => setItem({ ...item, answer: e.target.value })}
-              />{" "}
-              <span>write an answer</span>
+          <div className="questDiv">
+            <div className="img_choice">
+              <input
+                type="file"
+                id="imgQ"
+                value={item.imgQFile ? item.imgQFile : ""}
+                onChange={fromFile}
+              />
+              {item.imgQ ? (
+                <div className="img">
+                  <button
+                    variant="outline-secondary"
+                    onClick={() =>
+                      setItem({ ...item, imgQ: "", imgQFile: "" })
+                    }>
+                    <IoMdClose />
+                  </button>
+                  <img src={getImgQ(item)} alt="" />
+                </div>
+              ) : (
+                <BiImageAdd className="imgEmpty" />
+              )}
             </div>
+            <textarea
+              className="quest"
+              type="text"
+              placeholder="write a question....."
+              value={item.question}
+              onChange={(e) => setItem({ ...item, question: e.target.value })}
+            />
+            <span>write a question and click here</span>
+          </div>
+          <div className="answtDiv">
+            <div className="img_choice">
+              <input
+                type="file"
+                id="imgA"
+                value={item.imgAFile ? item.imgAFile : ""}
+                onChange={fromFile}
+              />
+              {item.imgA ? (
+                <div className="img">
+                  {" "}
+                  <button
+                    onClick={() =>
+                      setItem({ ...item, imgA: "", imgAFile: "" })
+                    }>
+                    <IoMdClose />
+                  </button>
+                  <img src={getImgA(item)} alt="" />
+                </div>
+              ) : (
+                <BiImageAdd className="imgEmpty" />
+              )}
+            </div>
+            <textarea
+              className="answ"
+              type="text"
+              placeholder="write an answer..."
+              value={item.answer}
+              onChange={(e) => setItem({ ...item, answer: e.target.value })}
+            />{" "}
+            <span>write an answer and click here</span>
+          </div>
+          <div className="note">
+            <input
+              type="text"
+              placeholder="write a note..."
+              value={item ? item.note : ""}
+              onChange={(e) => setItem({ ...item, note: e.target.value })}
+            />
           </div>
         </div>
       ) : (

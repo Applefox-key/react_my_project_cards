@@ -66,7 +66,7 @@ const UserOneCollection = () => {
               }}
             />
 
-            <div className="m-auto d-flex">
+            <div className="m-auto d-flex mt-4">
               {!isLoading && content ? (
                 mode === 0 ? (
                   <ContentCards
