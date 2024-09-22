@@ -61,6 +61,16 @@
     color: var(--color-intense);
   }
 
+  .wrongBack {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .rightBack {
+    background-color: forestgreen;
+    color: white;
+  }
+
   input {
     caret-color: auto;
   }
@@ -668,15 +678,7 @@ input {
   filter: blur(158.5px);
 }
 
-.wrongBack {
-  background-color: #dc3545;
-  color: white;
-}
 
-.rightBack {
-  background-color: forestgreen;
-  color: white;
-}
 
 //tbl
 .imgTbl {
