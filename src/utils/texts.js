@@ -89,96 +89,49 @@ export const contentFromText = async (
 };
 
 export const onlyLetters = (text) => {
-  // let res = text.replace(/\W/g, "");
-  // let res = text.replace(/[^\wа-яё]/gi, "");cyrilic only
   let res = text.replace(/[^\wа-яёa-z]/gi, "");
-  // res = res.replace(/[0-9]/g, "");
   res = res.replace(/\s/g, "");
   return res.toLowerCase();
 };
 export const onlyLettersNumbers = (text) => {
-  // let res = text.replace(/\W/g, "");
-  // let res = text.replace(/[^\wа-яё]/gi, "");cyrilic only
   let res = text.replace(/[^\wа-яёa-z]/gi, "");
-  // res = res.replace(/[0-9]/g, "");
   res = res.replace(/\s/g, "");
   return res.toLowerCase();
 };
-//font for the cards
-// export const fontS = ([tx, ti]) => {
-//   const tl = tx.length;
 
-//   if (ti || ti === "null") {
-//     if (tl <= 5) return "fontSize_lengthImg5";
-//     if (tl <= 10) return "fontSize_lengthImg10";
-//     if (tl <= 20) return "fontSize_lengthImg20";
-//     if (tl <= 30) return "fontSize_lengthImg30";
-//     if (tl <= 40) return "fontSize_lengthImg40";
-//     if (tl <= 50) return "fontSize_lengthImg50";
-//     if (tl <= 100) return "fontSize_lengthImg100";
-//     if (tl <= 150) return "fontSize_lengthImg150";
-//     if (tl <= 200) return "fontSize_lengthImg200";
-//     if (tl <= 250) return "fontSize_lengthImg250";
-//     if (tl <= 300) return "fontSize_lengthImg300";
-//     if (tl <= 350) return "fontSize_lengthImg350";
-//     else return "fontSize_lengthImgLG";
-//   } else {
-//     // return "fontSize_vw";
-//     if (tl <= 5) return "fontSize_length5";
-//     if (tl <= 10) return "fontSize_length10";
-//     if (tl <= 20) return "fontSize_length20";
-//     if (tl <= 30) return "fontSize_length30";
-//     if (tl <= 40) return "fontSize_length40";
-//     if (tl <= 50) return "fontSize_length50";
-//     if (tl <= 100) return "fontSize_length100";
-//     if (tl <= 150) return "fontSize_length150";
-//     if (tl <= 200) return "fontSize_length200";
-//     if (tl <= 250) return "fontSize_length250";
-//     if (tl <= 300) return "fontSize_length300";
-//     if (tl <= 350) return "fontSize_length350";
-//     else return "fontSize_lengthLG";
-//   }
-// };
-//font for the  cards printing
-// export const fontPrint = ([tx, ti]) => {
-//   const tl = tx.length;
+export const getDifferences = (str1, str2) => {
+  const cleanString = (str) => {
+    return (
+      str
+        .toLowerCase()
+        // .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+        .replace(/[.,/#!$%&;:{}=_`~()]/g, "")
+        .replace(/\s{2,}/g, " ")
+        .trim()
+    );
+  };
 
-//   if (ti) {
-//     if (tl <= 5) return "fontSize_printImg5";
-//     if (tl <= 10) return "fontSize_printImg10";
-//     if (tl <= 20) return "fontSize_printImg20";
-//     if (tl <= 30) return "fontSize_printImg30";
-//     if (tl <= 40) return "fontSize_printImg40";
-//     if (tl <= 50) return "fontSize_printImg50";
-//     if (tl <= 100) return "fontSize_printImg100";
-//     if (tl <= 150) return "fontSize_printImg150";
-//     if (tl <= 200) return "fontSize_printImg200";
-//     if (tl <= 250) return "fontSize_printImg250";
-//     if (tl <= 300) return "fontSize_printImg300";
-//     if (tl <= 350) return "fontSize_printImg350";
-//     return "fontSize_printImgLG";
-//   } else {
-//     if (tl <= 5) return "fontSize_print5";
-//     if (tl <= 10) return "fontSize_print10";
-//     if (tl <= 20) return "fontSize_print20";
-//     if (tl <= 30) return "fontSize_print30";
-//     if (tl <= 40) return "fontSize_print40";
-//     if (tl <= 50) return "fontSize_print50";
-//     if (tl <= 100) return "fontSize_print100";
-//     if (tl <= 150) return "fontSize_print150";
-//     if (tl <= 200) return "fontSize_print200";
-//     if (tl <= 250) return "fontSize_print250";
-//     if (tl <= 300) return "fontSize_print300";
-//     if (tl <= 350) return "fontSize_print350";
-//     return "fontSize_printLG";
-//   }
-// };
+  const cleanStr1 = cleanString(str1);
+  const cleanStr2 = cleanString(str2);
+
+  const words1 = cleanStr1.split(" ");
+  const words2 = cleanStr2.split(" ");
+  const differences1 = words1.map((word) => ({
+    word,
+    isDifferent: !words2.includes(word),
+  }));
+
+  const differences2 = words2.map((word) => ({
+    word,
+    isDifferent: !words1.includes(word),
+  }));
+
+  return { differences1, differences2 };
+};
 
 //font for the  cards printing
 export const fontLittle = ([tx, ti]) => {
   const tl = tx.length;
-  // const isSpace = tx.includes(" ");
-
   if (ti) {
     if (tl === 0) return "fontSize_little5 ";
     if (tl <= 5) return "fontSize_little5 d-block";

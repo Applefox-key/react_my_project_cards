@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
 import cl from "./GamesMenu.module.scss";
 import { MdOutlineModelTraining } from "react-icons/md";
 import { CSSTransition } from "react-transition-group";
+import { useOutsideClick } from "../../../hooks/useOutSideClick";
 
 const GamesMenu = ({
   isBtnForm = false,
@@ -40,20 +41,7 @@ const GamesMenu = ({
     if (!isVertical) classes += "-horizontal";
     return cl[classes];
   })();
-  useEffect(() => {
-    if (isBtnForm) {
-      const handleOutsideClick = (event) => {
-        if (event.target.id !== "gamesBtn") {
-          setInProp(false);
-        }
-      };
-      document.addEventListener("click", handleOutsideClick);
-      return () => {
-        document.removeEventListener("click", handleOutsideClick);
-      };
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useOutsideClick("gamesBtn", () => setInProp(false), isBtnForm);
 
   return (
     <div

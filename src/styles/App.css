@@ -61,8 +61,34 @@
   background: var(--background-second);
   color: var(--color-intense);
 }
+.App .wrongBack {
+  background-color: #dc3545;
+  color: white;
+}
+.App .rightBack {
+  background-color: forestgreen;
+  color: white;
+}
 .App input {
   caret-color: auto;
+}
+
+#start-record-btn,
+#stop-record-btn {
+  position: relative;
+  margin: 0 5px;
+  border: none;
+  background: var(--color-fill);
+  color: var(--color-intense);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  min-width: 4rem;
+  min-height: 4rem;
+  border-radius: 50%;
+}
+#start-record-btn:hover,
+#stop-record-btn:hover {
+  background-color: var(--color-nav);
+  color: white;
 }
 
 .cardText {
@@ -618,16 +644,6 @@ input {
   background: var(--color-nav);
   opacity: 0.45;
   filter: blur(158.5px);
-}
-
-.wrongBack {
-  background-color: #dc3545;
-  color: white;
-}
-
-.rightBack {
-  background-color: forestgreen;
-  color: white;
 }
 
 .imgTbl {

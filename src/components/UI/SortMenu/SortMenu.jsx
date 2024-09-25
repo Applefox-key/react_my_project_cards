@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cl from "./SortMenu.module.scss";
 import { FaSortAlphaDown, FaSortAlphaUp } from "react-icons/fa";
+import { useOutsideClick } from "../../../hooks/useOutSideClick";
 
 const SortMenu = ({ fields, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,17 +23,8 @@ const SortMenu = ({ fields, onSelect }) => {
     onSelect(field.value, descending);
     setIsOpen(false);
   };
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (event.target.id !== "sortBtn") {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+  useOutsideClick("sortBtn", () => setIsOpen(false));
+
   return (
     // <div className={cl.dropdown}>
     <div className={cl.dropdown}>

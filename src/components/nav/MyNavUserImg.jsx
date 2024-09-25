@@ -13,6 +13,7 @@ import { GO_TO } from "../../router/routes";
 import { generateAvatarLink } from "../../utils/userRequest";
 import MySpinner from "../UI/MySpinner";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useOutsideClick } from "../../hooks/useOutSideClick";
 
 const MyNavUserImg = ({ logout, ...props }) => {
   const [show, setShow] = useState(false);
@@ -27,18 +28,11 @@ const MyNavUserImg = ({ logout, ...props }) => {
 
   useEffect(() => {
     getData();
-    const handleOutsideClick = (event) => {
-      if (event.target.id !== "pronav") {
-        setShow(false);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useOutsideClick("pronav", () => setShow(false));
+
   const handleClick = (e) => {
     e.stopPropagation();
     setShow(!show);

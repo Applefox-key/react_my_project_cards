@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cl from "./GamesMenu.module.scss";
 import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineModelTraining } from "react-icons/md";
+import { useOutsideClick } from "../../../hooks/useOutSideClick";
 
 const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,17 +16,8 @@ const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
     isPlaylist
   ).filter((el) => el.type !== "Divider");
 
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (event.target.id !== "learnBtn") {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+  useOutsideClick("learnBtn", () => setIsOpen(false));
+
   const router = useNavigate();
   return (
     <div className={cl.dropdown}>

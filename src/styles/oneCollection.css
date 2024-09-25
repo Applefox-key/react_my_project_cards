@@ -229,7 +229,7 @@
 }
 
 .listContent-wrap {
-  width: 80vw;
+  width: 90vw;
   margin: auto;
 }
 .listContent-wrap .listContent {
@@ -319,7 +319,7 @@
   display: flex;
   justify-content: flex-start;
   padding: 0 15px;
-  width: 100%;
+  max-width: 100%;
   font-size: 14px;
   border-radius: 5px;
   white-space: nowrap;
@@ -371,7 +371,7 @@
   border-radius: 0px;
   margin-right: 1rem;
   display: table-cell;
-  max-width: 50%;
+  max-width: 45vw;
   width: -moz-max-content;
   width: max-content;
   padding-left: 15px;
@@ -383,7 +383,8 @@
   .listContent-wrap .listContent .one-row-organizer-active .quest {
     width: -moz-fit-content;
     width: fit-content;
-    min-width: 50%;
+    min-width: 50vw;
+    max-width: 50vw;
   }
 }
 .listContent-wrap .listContent .one-row .answ, .listContent-wrap .listContent .one-row-organizer .answ,
@@ -392,7 +393,7 @@
   display: table-cell;
   width: -moz-max-content;
   width: max-content;
-  max-width: 50vw;
+  max-width: 45vw;
   border-radius: 0 10px 10px 0;
   padding: 0 5px;
   overflow: hidden;
@@ -402,7 +403,8 @@
   .listContent-wrap .listContent .one-row-organizer-active .answ {
     width: -moz-fit-content;
     width: fit-content;
-    min-width: 50%;
+    min-width: 50vw;
+    max-width: 50vw;
   }
 }
 .listContent-wrap .listContent .one-row:hover, .listContent-wrap .listContent .one-row-organizer:hover,

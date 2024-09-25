@@ -259,7 +259,7 @@
 
 
 .listContent-wrap {
-    width: 80vw;
+    width: 90vw;
     margin: auto;
 
 
@@ -347,7 +347,7 @@
                 display: flex;
                 justify-content: flex-start;
                 padding: 0 15px;
-                width: 100%;
+                max-width: 100%;
                 font-size: 14px;
                 border-radius: 5px;
                 white-space: nowrap;
@@ -399,7 +399,7 @@
                 border-radius: 0px;
                 margin-right: 1rem;
                 display: table-cell;
-                max-width: 50%;
+                max-width: 45vw;
                 width: max-content;
                 padding-left: 15px;
                 border-radius: 10px 0 0 10px;
@@ -407,7 +407,8 @@
 
                 @media screen and (max-width: 900px) {
                     width: fit-content;
-                    min-width: 50%;
+                    min-width: 50vw;
+                    max-width: 50vw;
                 }
             }
 
@@ -415,14 +416,15 @@
                 color: grey;
                 display: table-cell;
                 width: max-content;
-                max-width: 50vw;
+                max-width: 45vw;
                 border-radius: 0 10px 10px 0;
                 padding: 0 5px;
                 overflow: hidden;
 
                 @media screen and (max-width: 900px) {
                     width: fit-content;
-                    min-width: 50%;
+                    min-width: 50vw;
+                    max-width: 50vw;
                 }
             }
 

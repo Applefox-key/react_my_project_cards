@@ -3,6 +3,7 @@ import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import cl from "./CategorySelection.module.scss";
 import { BiSolidRightArrow } from "react-icons/bi";
+import { useOutsideClick } from "../../hooks/useOutSideClick";
 
 const FilterByCategory = ({
   onSelect,
@@ -66,17 +67,7 @@ const FilterByCategory = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colCat, colCatPub, isPublic]);
 
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (event.target.id !== "filterCat") {
-        setIsShow(false);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+  useOutsideClick("filterCat", () => setIsShow(false));
 
   return (
     <div className={cl.catSelect}>

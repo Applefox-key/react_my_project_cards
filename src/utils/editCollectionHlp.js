@@ -6,9 +6,9 @@ export const editCollectionHlp = async (colllectionData) => {
   let res = "";
   let newParam = {
     ...(isNew && {
-      name: newName?.trim || "",
+      name: newName?.trim() || "",
       note: newNote || "",
-      category: category?.id || null,
+      categoryid: category?.id || null,
     }),
     ...(!isNew &&
       collection && {
