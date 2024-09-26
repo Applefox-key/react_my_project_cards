@@ -76,7 +76,6 @@ const EditCard = () => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name, pageParam.item]);
-  console.log(textRef);
 
   return (
     <div className="edit_card_wrap">

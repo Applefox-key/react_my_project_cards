@@ -47,8 +47,6 @@ const Reorganizer = ({ setReorgMode, content, setContent }) => {
   };
 
   const check = (ischecked) => {
-    console.log("jjj");
-
     if (ischecked) {
       const val = content.map((el) => el.id);
       setSelectedCards(val);

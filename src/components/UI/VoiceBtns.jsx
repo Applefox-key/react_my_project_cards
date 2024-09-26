@@ -6,7 +6,7 @@ import { stopV, startV } from "../../utils/voice";
 
 const VoiceBtns = ({ textRef }) => {
   const [lang, setLang] = useState(0);
-  const langArr = useMemo(() => ["en", "ru", "pl"], [textRef]);
+  const langArr = useMemo(() => ["en", "ru", "pl"], []);
   const btnRef = useRef(null);
   const stopBtn = useRef(null);
   const startBtn = useRef(null);
