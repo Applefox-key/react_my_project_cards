@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useRef } from "react";
 import cl from "../Games.module.scss";
-import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 
-const WriteCardAnswer = ({ answer, setAnswer, check, isVoice, voiceClick }) => {
+import VoiceBtns from "../../UI/VoiceBtns";
+
+const WriteCardAnswer = ({ answer, setAnswer, check }) => {
+  const textRef = useRef(null);
   return (
     <div className={cl.writeBox}>
       <textarea
         type={"text"}
         id="answerArea"
+        ref={textRef}
         value={answer}
         className={cl.writeAnswer}
-        onMouseDown={(e) => {
-          if (e.button === 1) {
-            e.preventDefault();
-            e.stopPropagation();
-            voiceClick();
-          }
-        }}
+        // onMouseDown={(e) => {
+        //   if (e.button === 1) {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     voiceClick();
+        //   }
+        // }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             e.preventDefault();
@@ -26,8 +29,9 @@ const WriteCardAnswer = ({ answer, setAnswer, check, isVoice, voiceClick }) => {
         onChange={(e) => {
           setAnswer(e.target.value);
         }}
-      />{" "}
-      {isVoice ? (
+      />
+      <VoiceBtns textRef={textRef} setAnswer={setAnswer} />
+      {/* {isVoice ? (
         <button
           id="stop-record-btn"
           title="Stop Dictation"
@@ -41,7 +45,7 @@ const WriteCardAnswer = ({ answer, setAnswer, check, isVoice, voiceClick }) => {
           title="Start Dictation">
           <FaMicrophone />
         </button>
-      )}
+      )} */}
     </div>
   );
 };

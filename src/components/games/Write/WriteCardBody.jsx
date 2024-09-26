@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import OneCardG from "../OneCardG";
 import cl from "../Games.module.scss";
 import GameCount from "../GameCount";
@@ -9,12 +9,9 @@ import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
 import Hint from "../Hint";
 import WriteCardErrors from "./WriteCardErrors";
-import WriteCardAnswer from "./WriteCardAnswer";
-import { startV, stopV } from "../../../utils/speech";
+import VoiceBtns from "../../UI/VoiceBtns";
 
 const WriteCardBody = ({ items, setItems }) => {
-  const [answer, setAnswer] = useState("");
-  const [isVoice, setIsVoice] = useState(false);
   const [mistakes, setMistackes] = useState([]);
   const [count, setCount] = useState([0, 0]);
   const [num, setNum] = useState(0);
@@ -27,35 +24,29 @@ const WriteCardBody = ({ items, setItems }) => {
     let ra = onlyLetters(
       mode === "0" ? items[num].answer : items[num].question
     );
-    let a = onlyLetters(answer);
-    if (a.length < ra.length) setAnswer(answer + ra[a.length]);
+    let a = onlyLetters(textRef.current.value);
+    if (a.length < ra.length)
+      textRef.current.value = textRef.current.value + ra[a.length];
   };
   const workWithErrors = useCallback(() => {
     setItems(mistakes);
   });
-  const voiceClick = useCallback(() => {
-    if (isVoice) stopV(setAnswer);
-    else startV();
-    setIsVoice(!isVoice);
-  });
+
   const check = useCallback(() => {
     if (flip) {
       document
         .getElementById("answerArea")
         .classList.remove("rightBack", "wrongBack");
       setNum(Math.min(num + 1, items.length - 1));
-      setAnswer("");
+
+      textRef.current.value = "";
       setShowAnim(!anim);
     } else {
-      let voicea = null;
-      if (isVoice) {
-        setIsVoice(false);
-        voicea = stopV(setAnswer);
-      }
+      const currentAnswer = textRef.current.value;
       let ra = onlyLetters(
         mode === "0" ? items[num].answer : items[num].question
       );
-      let a = onlyLetters(voicea === null ? answer : voicea);
+      let a = onlyLetters(currentAnswer);
       const isCorrect = ra === a;
 
       if (!isCorrect) {
@@ -93,6 +84,7 @@ const WriteCardBody = ({ items, setItems }) => {
     name: flip ? "NEXT" : "CHECK",
     fontstyleb: "fs-14",
   };
+  const textRef = useRef(null);
   return (
     <>
       {items[num].note ? <Hint text={items[num].note} /> : <></>}
@@ -116,7 +108,7 @@ const WriteCardBody = ({ items, setItems }) => {
                 <WriteCardErrors
                   setShowErrors={setShowErr}
                   right={mode === "0" ? items[num].answer : items[num].question}
-                  useranswer={answer}
+                  useranswer={textRef.current.value}
                 />
               )}
               <div className={cl.cardSize}>
@@ -131,13 +123,21 @@ const WriteCardBody = ({ items, setItems }) => {
                   rightBtn={rightBtn}
                 />
               </div>
-              <WriteCardAnswer
-                answer={answer}
-                setAnswer={setAnswer}
-                check={check}
-                isVoice={isVoice}
-                voiceClick={voiceClick}
-              />
+              <div className={cl.writeBox}>
+                <textarea
+                  type={"text"}
+                  id="answerArea"
+                  ref={textRef}
+                  className={cl.writeAnswer}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      check();
+                    }
+                  }}
+                />
+                <VoiceBtns textRef={textRef} />
+              </div>
             </div>
           </>
         </CSSTransition>

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useRef } from "react";
 
 import Image from "react-bootstrap/Image";
 import { useState, useEffect } from "react";
@@ -30,8 +30,8 @@ const MyNavUserImg = ({ logout, ...props }) => {
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useOutsideClick("pronav", () => setShow(false));
+  const wrapRef = useRef(null);
+  useOutsideClick(wrapRef, () => setShow(false));
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -43,6 +43,7 @@ const MyNavUserImg = ({ logout, ...props }) => {
   ) : (
     <div
       id="pronav"
+      ref={wrapRef}
       className={[cl.dropdown, "ms-4"].join(" ")}
       onClick={handleClick}>
       <Image src={av} {...props} /> <IoMdArrowDropdown />

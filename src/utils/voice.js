@@ -1,0 +1,58 @@
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.lang = "en-US";
+let isRecording = false;
+
+export const startV = (textarea, lang = "") => {
+  if (!textarea || !textarea.current) {
+    console.error("Textarea reference is not valid.");
+    return;
+  }
+  if (isRecording) {
+    console.warn("Speech recognition is already running.");
+    return;
+  }
+  recognition.lang = lang ? lang : "en-US";
+  recognition.onresult = (event) => {
+    let interimTranscript = "";
+    let finalTranscript = "";
+
+    for (let i = 0; i < event.results.length; i++) {
+      const transcript = event.results[i][0].transcript;
+      if (event.results[i].isFinal) {
+        finalTranscript += transcript;
+      } else {
+        interimTranscript += transcript;
+      }
+    }
+    if (textarea) textarea.current.value = finalTranscript + interimTranscript;
+  };
+
+  try {
+    recognition.start();
+    isRecording = true;
+  } catch (error) {
+    console.error("Failed to start recognition: ", error);
+  }
+};
+
+export const stopV = (textarea, onchange = null) => {
+  if (!isRecording) {
+    console.warn("Speech recognition is not running.");
+    return;
+  }
+
+  recognition.stop();
+  isRecording = false;
+  if (textarea && textarea.current.value) {
+    if (onchange) onchange(textarea.current.value);
+  }
+};
+
+recognition.onerror = (event) => {
+  console.error("Speech recognition error detected: " + event.error);
+  recognition.stop();
+};

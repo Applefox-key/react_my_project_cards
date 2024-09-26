@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
 import cl from "./GamesMenu.module.scss";
@@ -41,7 +41,8 @@ const GamesMenu = ({
     if (!isVertical) classes += "-horizontal";
     return cl[classes];
   })();
-  useOutsideClick("gamesBtn", () => setInProp(false), isBtnForm);
+  const wrapRef = useRef(null);
+  useOutsideClick(wrapRef, () => setInProp(false), isBtnForm);
 
   return (
     <div
@@ -91,7 +92,7 @@ const GamesMenu = ({
         {isBtnForm && (
           <>
             <button
-              id="gamesBtn"
+              ref={wrapRef}
               className={
                 inProp ? cl["games-menu-btn-show"] : cl["games-menu-btn"]
               }

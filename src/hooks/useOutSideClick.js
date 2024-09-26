@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-export const useOutsideClick = (boxId, callback, isAddListener = true) => {
+export const useOutsideClick = (ref, callback, isAddListener = true) => {
   useEffect(() => {
-    if (!boxId || !callback || !isAddListener) return;
+    if (!ref || !callback || !isAddListener) return;
     const handleOutsideClick = (event) => {
-      if (event.target.id !== boxId) {
+      if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }
     };

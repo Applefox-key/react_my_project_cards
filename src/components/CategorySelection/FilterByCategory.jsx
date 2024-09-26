@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import cl from "./CategorySelection.module.scss";
@@ -66,15 +66,15 @@ const FilterByCategory = ({
     setSelected(col);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colCat, colCatPub, isPublic]);
-
-  useOutsideClick("filterCat", () => setIsShow(false));
+  const wrapRef = useRef(null);
+  useOutsideClick(wrapRef, () => setIsShow(false));
 
   return (
     <div className={cl.catSelect}>
       <div
         className="catdropdown m-auto"
         onClick={() => setIsShow(!isShow)}
-        id="filterCat">
+        ref={wrapRef}>
         {!!selected && !!selected.id
           ? selected.name
           : isForFilter

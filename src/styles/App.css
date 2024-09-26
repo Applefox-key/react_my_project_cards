@@ -73,8 +73,39 @@
   caret-color: auto;
 }
 
-#start-record-btn,
-#stop-record-btn {
+.voice-wrap {
+  position: relative;
+}
+.voice-wrap .lang {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  background: var(--color-fill);
+  color: var(--color-intense);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.voice-wrap .lang p {
+  display: inline;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+}
+.voice-wrap .lang:hover {
+  background-color: var(--color-nav);
+  color: white;
+}
+.voice-wrap .start-record-btn,
+.voice-wrap .stop-record-btn,
+.voice-wrap #start-record-btn,
+.voice-wrap #stop-record-btn {
   position: relative;
   margin: 0 5px;
   border: none;
@@ -83,12 +114,18 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   min-width: 4rem;
   min-height: 4rem;
+  width: 4rem;
   border-radius: 50%;
 }
-#start-record-btn:hover,
-#stop-record-btn:hover {
+.voice-wrap .start-record-btn:hover,
+.voice-wrap .stop-record-btn:hover,
+.voice-wrap #start-record-btn:hover,
+.voice-wrap #stop-record-btn:hover {
   background-color: var(--color-nav);
   color: white;
+}
+.voice-wrap:hover .lang {
+  display: flex;
 }
 
 .cardText {

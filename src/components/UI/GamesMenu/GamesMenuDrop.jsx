@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import cl from "./GamesMenu.module.scss";
 import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
@@ -15,8 +15,8 @@ const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
     window.location.pathname.includes("pub"),
     isPlaylist
   ).filter((el) => el.type !== "Divider");
-
-  useOutsideClick("learnBtn", () => setIsOpen(false));
+  const wrapRef = useRef(null);
+  useOutsideClick(wrapRef, () => setIsOpen(false));
 
   const router = useNavigate();
   return (
@@ -24,7 +24,7 @@ const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
       <button
         className={cl["dropdown-toggle"]}
         onClick={toggleMenu}
-        id="learnBtn">
+        ref={wrapRef}>
         <MdOutlineModelTraining /> Learn
       </button>
       {isOpen && gameMenu && (

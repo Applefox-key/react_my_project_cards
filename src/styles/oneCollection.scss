@@ -592,7 +592,25 @@
             width: 100%;
         }
 
+        .voiceEdit {
+            position: relative;
 
+
+            &::after {
+                content: attr(dataTitle);
+                color: var(--color-nav);
+                position: absolute;
+                top: 3px;
+                left: 17%;
+                font-size: 8px;
+                transform: skew(-11deg, -14deg);
+            }
+
+            &:hover::after {
+                // background-color: var(--color-nav);
+                color: white;
+            }
+        }
     }
 
 
@@ -626,6 +644,10 @@
                 // height: 35px
             }
         }
+    }
+
+    .flex-end {
+        justify-content: flex-end;
     }
 
     .note {
@@ -671,6 +693,45 @@
         display: flex;
         border-left: 1px solid var(--color-rate);
         border-right: 1px solid var(--color-rate);
+
+        .btnPlus {
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            right: 10px;
+            border-radius: 50%;
+            border: none;
+            display: none;
+            background: var(--color-fill);
+            color: var(--color-intense);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            cursor: auto;
+
+            &:hover {
+                background-color: var(--color-nav);
+                color: white;
+            }
+        }
+
+        // .voiceEdit {
+        //     position: absolute;
+        //     right: 0;
+        //     display: none;
+
+
+        // }
+
+        &:hover {
+            .btnPlus {
+                display: block;
+            }
+
+            // .voiceEdit {
+            //     position: absolute;
+            //     display: block;
+
+            // }
+        }
     }
 
     .questDiv {
@@ -686,10 +747,45 @@
         border-radius: 5px;
 
         &::placeholder {
-            color: var(--color-fill);
+            color: var(--color-nav);
+            opacity: 0.3;
+            font-weight: 300;
+            font-style: italic;
         }
 
         &:focus {
+            outline: none;
+        }
+
+        // &:focus {
+
+        //     position: absolute;
+        //     z-index: 2000;
+        //     top: 43px;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 92%;
+        //     font-size: 2rem;
+        //     outline: none;
+        //     border-top: 5px solid var(--color-intense);
+
+        //     @media screen and (max-width: 900) {
+        //         width: 100vw;
+        //         height: 100vh;
+        //         max-width: 100vw;
+        //         max-height: 100vh;
+        //     }
+        // }
+
+        // &:focus+span {
+        //     opacity: 1;
+        //     visibility: visible;
+        // }
+    }
+
+    .plusTextArea {
+        &:focus {
+
             position: absolute;
             z-index: 2000;
             top: 43px;

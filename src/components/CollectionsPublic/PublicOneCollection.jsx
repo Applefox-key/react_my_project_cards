@@ -10,11 +10,15 @@ import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
 import { onePartLittle } from "../../utils/cardFragment";
 import { sortByField } from "../../utils/arraysFunc";
 import { CSSTransition } from "react-transition-group";
+import { useAuth } from "../../hooks/useAuth";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
   const [content, setContent] = useState();
-  const [mode, setMode] = useState(0);
+  const { userAuth } = useAuth(true);
+  const [mode, setMode] = useState(
+    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
+  );
   const [collection, setCollection] = useState(PageParam);
   const setPopup = usePopup();
   const [getContent, isLoading] = useQuery(async () => {

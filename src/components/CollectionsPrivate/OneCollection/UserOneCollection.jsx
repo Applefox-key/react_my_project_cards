@@ -10,12 +10,17 @@ import OneCollectionMenu from "./OneCollectionMenu";
 import ContentList from "./ContentList";
 import { addRates } from "../../../utils/gamesResults";
 import Reorganizer from "./Reorganizer";
+import { useAuth } from "../../../hooks/useAuth";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
   const [collect, setCollect] = useState();
   const [reorgMode, setReorgMode] = useState(false);
-  const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
+  const { userAuth } = useAuth(true);
+  // const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
+  const [mode, setMode] = useState(
+    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
+  );
   const pageParam = useParams();
   const setPopup = usePopup();
   const router = useNavigate();

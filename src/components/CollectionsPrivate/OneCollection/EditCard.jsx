@@ -4,16 +4,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
 import BaseAPI from "../../../API/BaseAPI";
 import Button from "react-bootstrap/Button";
-import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { usePopup } from "../../../hooks/usePopup";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import { addRates, updRates } from "../../../utils/gamesResults";
 import Rate from "../../games/Rate";
-import { IoMdClose } from "react-icons/io";
-import { BiImageAdd } from "react-icons/bi";
+import EditCardPart from "./EditCardPart";
+import VoiceBtns from "../../UI/VoiceBtns";
+
 const EditCard = () => {
   const [item, setItem] = useState();
+  let isItem = !!item && !!item.hasOwnProperty("rate");
+  const [textRef, setTextRef] = useState(null);
   const pageParam = useParams();
   const setPopup = usePopup();
   const [getContent, ,] = useQuery(async () => {
@@ -39,34 +41,32 @@ const EditCard = () => {
 
   const route = useNavigate();
 
-  const fromFile = (e) => {
-    let img = e.target;
-    let column = e.target.id;
-    const [file] = img.files;
-
-    if (file) {
-      let urlim = URL.createObjectURL(file);
-      let newval = { ...item };
-      newval[column] = urlim;
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        let blob = file;
-        newval[column + "file"] = blob;
-      };
-      reader.readAsArrayBuffer(file);
-
-      setItem(newval);
+  const setNewRef = (ref) => {
+    if (textRef) {
+      const field = textRef.current.id;
+      const val = textRef.current.value;
+      setItem({ ...item, [field]: val });
     }
+    setTextRef(ref);
   };
+
   const save = async () => {
     if (!item) return;
+    const saveItem = { ...item };
+    //save voice value
+    if (textRef) {
+      const field = textRef.current.id;
+      const val = textRef.current.value;
+      saveItem[field] = val;
+    }
     try {
-      if (item.id === "new") await BaseAPI.createContent(item, pageParam.id);
-      else await BaseAPI.editContent(item);
-      route(`/collections/my/${pageParam.id}/${pageParam.name}`, {
-        replace: true,
-      });
+      if (saveItem.id === "new")
+        await BaseAPI.createContent(saveItem, pageParam.id);
+      else await BaseAPI.editContent(saveItem);
+      route(-1);
+      // route(`/collections/my/${pageParam.id}/${pageParam.name}`, {
+      //   replace: true,
+      // });
     } catch (error) {
       setPopup.error(error.message);
     }
@@ -76,13 +76,14 @@ const EditCard = () => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name, pageParam.item]);
+  console.log(textRef);
 
   return (
-    <form className="edit_card_wrap">
+    <div className="edit_card_wrap">
       {item ? (
         <div className="editCard">
-          <div className="menuRow menu-border ">
-            {!!item && !!item.hasOwnProperty("rate") && (
+          <div className={`menuRow menu-border ${isItem ? "" : "flex-end"}`}>
+            {isItem && (
               <Rate
                 initialValue={item.rate}
                 isEditable
@@ -91,78 +92,31 @@ const EditCard = () => {
             )}
 
             <div className="menuRow">
+              {!!textRef && (
+                <div dataTitle={textRef.current.id} className="voiceEdit">
+                  <VoiceBtns textRef={textRef} />
+                </div>
+              )}
               <Button size="lg" onClick={save} variant="light">
                 SAVE CHANGES
               </Button>{" "}
               <BackBtn variant="light" />
             </div>
           </div>
-          <div className="questDiv">
-            <div className="img_choice">
-              {item.imgQ ? (
-                <div className="img">
-                  <button
-                    variant="outline-secondary"
-                    onClick={() =>
-                      setItem({ ...item, imgQ: "", imgQFile: "" })
-                    }>
-                    <IoMdClose />
-                  </button>
-                  <img src={getImgQ(item)} alt="" />
-                </div>
-              ) : (
-                <>
-                  <input
-                    type="file"
-                    id="imgQ"
-                    value={item.imgQFile ? item.imgQFile : ""}
-                    onChange={fromFile}
-                  />
-                  <BiImageAdd className="imgEmpty" />
-                </>
-              )}
-            </div>
-            <textarea
-              className="quest"
-              type="text"
-              placeholder="write a question....."
-              value={item.question}
-              onChange={(e) => setItem({ ...item, question: e.target.value })}
-            />
-            <span>write a question and click here</span>
-          </div>
-          <div className="answtDiv">
-            <div className="img_choice">
-              <input
-                type="file"
-                id="imgA"
-                value={item.imgAFile ? item.imgAFile : ""}
-                onChange={fromFile}
-              />
-              {item.imgA ? (
-                <div className="img">
-                  {" "}
-                  <button
-                    onClick={() =>
-                      setItem({ ...item, imgA: "", imgAFile: "" })
-                    }>
-                    <IoMdClose />
-                  </button>
-                  <img src={getImgA(item)} alt="" />
-                </div>
-              ) : (
-                <BiImageAdd className="imgEmpty" />
-              )}
-            </div>
-            <textarea
-              className="answ"
-              type="text"
-              placeholder="write an answer..."
-              value={item.answer}
-              onChange={(e) => setItem({ ...item, answer: e.target.value })}
-            />{" "}
-            <span>write an answer and click here</span>
-          </div>
+
+          <EditCardPart
+            fieldName={"imgQ"}
+            item={item}
+            setItem={setItem}
+            setTextRef={setNewRef}
+          />
+          <EditCardPart
+            fieldName={"imgA"}
+            item={item}
+            setItem={setItem}
+            setTextRef={setNewRef}
+          />
+
           <div className="note">
             <input
               type="text"
@@ -175,7 +129,7 @@ const EditCard = () => {
       ) : (
         <SpinnerLg className="span_wrap" />
       )}
-    </form>
+    </div>
   );
 };
 
