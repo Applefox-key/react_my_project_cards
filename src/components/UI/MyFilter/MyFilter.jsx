@@ -14,7 +14,7 @@ const MyFilter = ({ filter, setFilter }) => {
   const handleClick = (e) => {
     e.stopPropagation();
     if (ishide) setIsHide(false);
-    //old filter -- just closo search field
+    //old filter -- just close search field
     else if (value === filter) {
       setFilter("");
       setValue("");

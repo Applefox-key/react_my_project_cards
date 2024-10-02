@@ -15,11 +15,14 @@ export const startV = (textarea, lang = "") => {
     console.warn("Speech recognition is already running.");
     return;
   }
+  let interimTranscript = "";
+  let finalTranscript = "";
+  // textarea.current.value = "";
   recognition.lang = lang ? lang : "en-US";
-  recognition.onresult = (event) => {
-    let interimTranscript = "";
-    let finalTranscript = "";
 
+  recognition.onresult = (event) => {
+    interimTranscript = "";
+    finalTranscript = "";
     for (let i = 0; i < event.results.length; i++) {
       const transcript = event.results[i][0].transcript;
       if (event.results[i].isFinal) {
@@ -33,6 +36,7 @@ export const startV = (textarea, lang = "") => {
 
   try {
     recognition.start();
+    console.warn("Start speech recognition");
     isRecording = true;
   } catch (error) {
     console.error("Failed to start recognition: ", error);
@@ -46,6 +50,7 @@ export const stopV = (textarea, onchange = null) => {
   }
 
   recognition.stop();
+  console.warn("Stop speech recognition");
   isRecording = false;
   if (textarea && textarea.current.value) {
     if (onchange) onchange(textarea.current.value);

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import OneCardG from "../OneCardG";
 import MyInputGroup from "../../UI/MyInput/MyInputGroup";
@@ -52,6 +52,11 @@ const TimeCardBody = ({ items }) => {
     setIsPaused(false);
     start();
   };
+  useEffect(() => {
+    return () => {
+      clearAllTimeouts();
+    };
+  }, []);
   return (
     <>
       {items.length === num ? (
@@ -74,7 +79,8 @@ const TimeCardBody = ({ items }) => {
                 classgroup="mb-0"
                 step={0.5}
                 onChange={(e) => {
-                  setOneDelay(e.target.value);
+                  const value = parseFloat(e.target.value);
+                  if (value > 0) setOneDelay(value);
                 }}
               />
               <Button

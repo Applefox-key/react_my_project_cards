@@ -20,10 +20,11 @@ const MyNavbar = () => {
   const headerBig =
     window.location.pathname.includes("home") ||
     window.location.pathname.includes("about");
-  //  ||    window.location.pathname.includes("login")
+
   const isPlay =
     window.location.pathname.includes("/play_") ||
     window.location.pathname.includes("/print/");
+  const isPlaylist = window.location.pathname.includes("/playlist");
 
   const navArr = useMemo(
     () => {
@@ -91,7 +92,7 @@ const MyNavbar = () => {
 
             {userAuth.isAuth ? (
               <div className="d-flex">
-                <FilterLS filter="" setFilter={() => {}} />
+                {!isPlaylist && <FilterLS filter="" setFilter={() => {}} />}
                 <MyNavUserImg logout={logout} />{" "}
               </div>
             ) : (

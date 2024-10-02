@@ -18,10 +18,6 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
     e.stopPropagation();
     router(`${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`);
   };
-  // const viewSet = (e) => {
-  //   e.stopPropagation();
-  //   setIsHover(!isHover);
-  // };
 
   const handleLookHover = (e) => {
     e.stopPropagation();

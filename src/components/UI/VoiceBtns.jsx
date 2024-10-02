@@ -4,13 +4,12 @@ import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import { useOutsideClick } from "../../hooks/useOutSideClick";
 import { stopV, startV } from "../../utils/voice";
 
-const VoiceBtns = ({ textRef }) => {
+const VoiceBtns = ({ textRef, disable }) => {
   const [lang, setLang] = useState(0);
   const langArr = useMemo(() => ["en", "ru", "pl"], []);
   const btnRef = useRef(null);
   const stopBtn = useRef(null);
   const startBtn = useRef(null);
-
   const onClick = () => {
     if (stopBtn.current.style.display === "none") {
       startV(textRef, lang ? langArr[lang] : "");
@@ -38,7 +37,9 @@ const VoiceBtns = ({ textRef }) => {
     setLang(lang === 2 ? 0 : lang + 1);
   };
   return (
-    <div ref={btnRef} className="voice-wrap">
+    <div
+      ref={btnRef}
+      className={disable ? "voice-wrap voice-hide" : "voice-wrap"}>
       <div className="lang" onClick={nextLang}>
         <p>{langArr[lang]}</p>
       </div>
@@ -46,7 +47,10 @@ const VoiceBtns = ({ textRef }) => {
         ref={stopBtn}
         id="stop-record-btn"
         title="Stop Dictation"
-        onClick={onClick}>
+        onClick={onClick}
+        onMouseDown={(e) => {
+          if (e.button === 1) nextLang();
+        }}>
         <FaMicrophoneSlash />
       </button>
       <button

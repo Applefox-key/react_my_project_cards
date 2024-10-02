@@ -11,13 +11,13 @@ import ContentList from "./ContentList";
 import { addRates } from "../../../utils/gamesResults";
 import Reorganizer from "./Reorganizer";
 import { useAuth } from "../../../hooks/useAuth";
+import { useTextContentFilter } from "../../../hooks/useCollectSelection";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
   const [collect, setCollect] = useState();
   const [reorgMode, setReorgMode] = useState(false);
-  const { userAuth } = useAuth(true);
-  // const [mode, setMode] = useState(window.location.hash === "#1" ? 1 : 0);
+  const { updateFilterG, userAuth } = useAuth(true);
   const [mode, setMode] = useState(
     userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
   );
@@ -42,9 +42,10 @@ const UserOneCollection = () => {
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name]);
-
+  const filtredList = useTextContentFilter(content, userAuth.filterG);
   return (
-    <div className="d-flex">
+    <div className="">
+      {" "}
       <div className="wrap_box tableContainer">
         {reorgMode && (
           <div>
@@ -70,19 +71,27 @@ const UserOneCollection = () => {
                 setCollect,
               }}
             />
-
+            {!!userAuth.filterG && (
+              <div className="search_result_box">
+                <span className="searchResult">results for... </span>{" "}
+                <button className="btn-x" onClick={() => updateFilterG("")}>
+                  text....
+                  <span> {userAuth.filterG.toString()}</span>
+                </button>
+              </div>
+            )}
             <div className="m-auto d-flex mt-4">
               {!isLoading && content ? (
                 mode === 0 ? (
                   <ContentCards
                     setContent={setContent}
-                    content={content}
+                    content={filtredList}
                     pageParam={pageParam}
                   />
                 ) : (
                   <ContentList
                     setContent={setContent}
-                    content={content}
+                    content={filtredList}
                     pageParam={pageParam}
                   />
                 )

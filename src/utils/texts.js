@@ -98,17 +98,13 @@ export const onlyLettersNumbers = (text) => {
   res = res.replace(/\s/g, "");
   return res.toLowerCase();
 };
-
 export const getDifferences = (str1, str2) => {
   const cleanString = (str) => {
-    return (
-      str
-        .toLowerCase()
-        // .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
-        .replace(/[.,/#!$%&;:{}=_`~()]/g, "")
-        .replace(/\s{2,}/g, " ")
-        .trim()
-    );
+    return str
+      .toLowerCase()
+      .replace(/[.,/#?!$%&;:{}=_`~()]/g, "")
+      .replace(/\s{2,}/g, " ")
+      .trim();
   };
 
   const cleanStr1 = cleanString(str1);
@@ -116,19 +112,66 @@ export const getDifferences = (str1, str2) => {
 
   const words1 = cleanStr1.split(" ");
   const words2 = cleanStr2.split(" ");
-  const differences1 = words1.map((word) => ({
-    word,
-    isDifferent: !words2.includes(word),
-  }));
+  //create a matrix
+  const lcsMatrix = Array(words1.length + 1)
+    .fill(null)
+    .map(() => Array(words2.length + 1).fill(0));
 
-  const differences2 = words2.map((word) => ({
-    word,
-    isDifferent: !words1.includes(word),
-  }));
+  // filling the matrix
+  for (let i = 1; i <= words1.length; i++) {
+    for (let j = 1; j <= words2.length; j++) {
+      if (words1[i - 1] === words2[j - 1]) {
+        lcsMatrix[i][j] = lcsMatrix[i - 1][j - 1] + 1; // words are the same
+      } else {
+        lcsMatrix[i][j] = Math.max(lcsMatrix[i - 1][j], lcsMatrix[i][j - 1]); // word are different - get the max from up or left
+      }
+    }
+  }
+
+  // get the lcs
+  let i = words1.length;
+  let j = words2.length;
+  const lcs = [];
+  const indexes1 = [];
+  const indexes2 = [];
+
+  while (i > 0 && j > 0) {
+    if (words1[i - 1] === words2[j - 1]) {
+      lcs.unshift(words1[i - 1]); //words are the same -- add to the LCS
+      indexes1.unshift(i - 1); //save OK index for the first string
+      indexes2.unshift(j - 1); //save OK index for the second string
+      i--;
+      j--;
+    } else if (lcsMatrix[i - 1][j] > lcsMatrix[i][j - 1]) {
+      i--; // words are different - go to the max (this is up)
+    } else {
+      j--; // words are different - go to the max (this is left)
+    }
+  }
+
+  // if word is not in lcs then it is different
+
+  const differences1 = words1.map((word, i) => {
+    return { word, isDifferent: !indexes1.includes(i) };
+  });
+  const differences2 = words2.map((word, i) => {
+    return { word, isDifferent: !indexes2.includes(i) };
+  });
 
   return { differences1, differences2 };
 };
+export const formatString = (input) => {
+  if (!input) return input;
+  let trimmed = input.trim().replace(/\s+/g, " ");
 
+  let capitalized = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+  const wordCount = capitalized.split(" ").length;
+  if (wordCount >= 4 && !capitalized.endsWith(".")) {
+    capitalized += ".";
+  }
+
+  return capitalized;
+};
 //font for the  cards printing
 export const fontLittle = ([tx, ti]) => {
   const tl = tx.length;

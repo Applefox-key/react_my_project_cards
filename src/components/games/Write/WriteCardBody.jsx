@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import Hint from "../Hint";
 import WriteCardErrors from "./WriteCardErrors";
 import VoiceBtns from "../../UI/VoiceBtns";
+import WriteCardAnswer from "./WriteCardAnswer";
 
 const WriteCardBody = ({ items, setItems }) => {
   const [mistakes, setMistackes] = useState([]);
@@ -18,7 +19,9 @@ const WriteCardBody = ({ items, setItems }) => {
   const [showErr, setShowErr] = useState(false);
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);
+  const [isError, setIsError] = useState(false);
   const mode = useParams().mode;
+  const textRef = useRef(null);
 
   const hintT = () => {
     let ra = onlyLetters(
@@ -34,12 +37,9 @@ const WriteCardBody = ({ items, setItems }) => {
 
   const check = useCallback(() => {
     if (flip) {
-      document
-        .getElementById("answerArea")
-        .classList.remove("rightBack", "wrongBack");
-      setNum(Math.min(num + 1, items.length - 1));
-
       textRef.current.value = "";
+      setIsError(false);
+      setNum(Math.min(num + 1, items.length - 1));
       setShowAnim(!anim);
     } else {
       const currentAnswer = textRef.current.value;
@@ -48,46 +48,50 @@ const WriteCardBody = ({ items, setItems }) => {
       );
       let a = onlyLetters(currentAnswer);
       const isCorrect = ra === a;
-
-      if (!isCorrect) {
+      setIsError(!isCorrect);
+      if (!isCorrect && !mistakes.includes(items[num])) {
         let nm = [...mistakes];
         nm.push(items[num]);
         setMistackes(nm);
         setCount([count[0], count[1] + 1]);
-      } else setCount([count[0] + 1, count[1]]);
-
-      document
-        .getElementById("answerArea")
-        .classList.add(isCorrect ? "rightBack" : "wrongBack");
+      } else {
+        setCount([count[0] + 1, count[1]]);
+      }
     }
-
     setFlip(!flip);
   });
   const isResult = items.length === count[0] + count[1] && !flip;
   const errorsShow = () => {
     setShowErr(!showErr);
   };
-  const leftBtn = {
-    onClick: hintT,
-    name: "HELP",
-    disabled: flip,
-    fontstyleb: "fs-14",
+  const tryAgain = () => {
+    textRef.current.value = "";
+    setIsError(false);
+    setFlip(!flip);
   };
-  const leftBtnErr = {
-    onClick: errorsShow,
-    name: "Info",
-    disabled: !mistakes.includes(items[num]),
-    fontstyleb: "fs-14",
+  const buttons = {
+    leftBtn: {
+      onClick: hintT,
+      name: "HELP",
+      disabled: flip,
+      fontstyleb: "fs-14",
+    },
+    leftBtnErr: {
+      onClick: errorsShow,
+      name: "Info",
+      disabled: !mistakes.includes(items[num]),
+      fontstyleb: "fs-14",
+    },
+    rightBtn: {
+      onClick: check,
+      name: flip ? "NEXT" : "CHECK",
+      fontstyleb: "fs-14",
+    },
   };
-  const rightBtn = {
-    onClick: check,
-    name: flip ? "NEXT" : "CHECK",
-    fontstyleb: "fs-14",
-  };
-  const textRef = useRef(null);
+
   return (
     <>
-      {items[num].note ? <Hint text={items[num].note} /> : <></>}
+      {items[num].note && <Hint text={items[num].note} />}
       {isResult ? (
         <Result
           text="Job is done!"
@@ -109,6 +113,7 @@ const WriteCardBody = ({ items, setItems }) => {
                   setShowErrors={setShowErr}
                   right={mode === "0" ? items[num].answer : items[num].question}
                   useranswer={textRef.current.value}
+                  quest={mode === "0" ? items[num].question : items[num].answer}
                 />
               )}
               <div className={cl.cardSize}>
@@ -118,26 +123,25 @@ const WriteCardBody = ({ items, setItems }) => {
                   flip={flip}
                   nonclickable
                   leftBtn={
-                    flip ? mistakes.includes(items[num]) && leftBtnErr : leftBtn
+                    flip ? isError && buttons.leftBtnErr : buttons.leftBtn
                   }
-                  rightBtn={rightBtn}
+                  rightBtn={buttons.rightBtn}
                 />
               </div>
-              <div className={cl.writeBox}>
-                <textarea
-                  type={"text"}
-                  id="answerArea"
-                  ref={textRef}
-                  className={cl.writeAnswer}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      check();
-                    }
-                  }}
-                />
-                <VoiceBtns textRef={textRef} />
-              </div>
+              <WriteCardAnswer
+                textRef={textRef}
+                onEnter={check}
+                clAnsw={
+                  cl.writeAnswer +
+                  (flip ? (isError ? " wrongBack" : " rightBack") : "")
+                }>
+                <VoiceBtns textRef={textRef} disable={flip} />
+                {isError && (
+                  <button onClick={tryAgain} className={"roundBtn"}>
+                    Again
+                  </button>
+                )}
+              </WriteCardAnswer>
             </div>
           </>
         </CSSTransition>

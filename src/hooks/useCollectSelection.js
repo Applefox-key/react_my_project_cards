@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import {
   filterByCategory,
   getFiltredCollections,
+  getFiltredContent,
 } from "../utils/collectFilter";
 import { sortByFieldC } from "../utils/arraysFunc";
 
@@ -30,7 +31,13 @@ export const useTextFilter = (list, textFilter) => {
   }, [list, textFilter]);
   return filtred;
 };
-
+export const useTextContentFilter = (content, textFilter) => {
+  const filtred = useMemo(() => {
+    if (textFilter) return getFiltredContent(content, textFilter);
+    else return content;
+  }, [content, textFilter]);
+  return filtred;
+};
 export const useCollectSelection = (list, category, filter = "", sort = "") => {
   const filtredByCategory = useCategoryFilter(list, category);
   const filtredByTextFiler = useTextFilter(filtredByCategory, filter);

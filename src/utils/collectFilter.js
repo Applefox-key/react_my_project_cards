@@ -24,6 +24,19 @@ export const getFiltredCollections = (collectionsList, filter) => {
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
 };
+export const getFiltredContent = (content, filter) => {
+  if (!filter.trim()) return content;
+  if (!content) return content;
+  if (!content.length) return content;
+  let filterVal = filter.toLowerCase();
+  return content.filter(
+    (item) =>
+      (item.question && item.question.toLowerCase().includes(filterVal)) ||
+      (item.answer && item.answer.toLowerCase().includes(filterVal)) ||
+      (item.note && item.note.toLowerCase().includes(filterVal))
+  );
+};
+
 //for public collections list
 export const filterByCategory = (list, category) => {
   if (category) {

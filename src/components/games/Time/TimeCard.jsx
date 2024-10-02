@@ -18,10 +18,7 @@ const TimeCard = () => {
     getContent();
     if (error) setPopup.error(error);
   }, []);
-  useEffect(() => {
-    getContent();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.pathname, window.location.hash]);
+
   return (
     <div className="mainField">
       {!isLoading && items ? (

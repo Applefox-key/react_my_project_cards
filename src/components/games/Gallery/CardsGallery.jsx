@@ -13,6 +13,7 @@ import { TiArrowBackOutline, TiArrowForwardOutline } from "react-icons/ti";
 import GameCountBage from "../GameCountBage";
 import Rate from "../Rate";
 import { addRates, updRates } from "../../../utils/gamesResults";
+import GameBtn from "../../UI/BlackBtn/GameBtn";
 
 const CardsGallery = () => {
   const [items, setItems] = useState(null);
@@ -23,14 +24,17 @@ const CardsGallery = () => {
 
   const changeContentAsync = async (initVal) => {
     let res = await addRates(initVal);
-    let res1 = shuffle(res);
-    setItems(res1);
-  };
-  const changeContent = async (initVal) => {
-    let res = shuffle(initVal);
+    // let res1 = shuffle(res);
     setItems(res);
   };
-
+  const changeContent = async (initVal) => {
+    // let res = shuffle(initVal);
+    setItems(initVal);
+  };
+  const shuffleCards = () => {
+    let res = shuffle([...items]);
+    setItems(res);
+  };
   const param = useParams().mode;
   const [getContent, isLoading, error] = useGame(
     useParams().tab === "my" ? changeContentAsync : changeContent,
@@ -73,6 +77,7 @@ const CardsGallery = () => {
         <div>
           <BackBtn />
           <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
+          <GameBtn title="SHUFFLE" onClick={shuffleCards} />
         </div>
 
         {!!items &&

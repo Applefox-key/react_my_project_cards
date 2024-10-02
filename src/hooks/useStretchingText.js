@@ -8,7 +8,7 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
     const textElements = document.querySelectorAll(`.${textClassName}`);
     if (textElements.length) {
       textElements.forEach((element) => {
-        let maxCycles = 100;
+        let maxCycles = 50;
         const boxElement = element.parentElement;
         let maxWidth = Math.floor(boxElement.clientWidth);
         let maxHeight = Math.floor(boxElement.clientHeight);
@@ -41,11 +41,7 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
 
           fontSize = Math.floor((minFontSize + maxFontSize) / 2);
 
-          if (minFontSize === maxFontSize) {
-            break;
-          }
-          if (maxCycles <= 0) {
-            // console.error("The maximum cycle exceeded");
+          if (minFontSize === maxFontSize || maxCycles <= 0) {
             break;
           }
         }
@@ -54,7 +50,7 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
         maxHeight = Math.floor(boxElement.clientHeight);
 
         if (element.clientHeight > maxHeight || element.clientWidth > maxWidth)
-          element["style"].overflow = `visible`;
+          element["style"].overflow = `auto`;
       });
     }
     // }
@@ -63,10 +59,23 @@ export const useStretchingText = (textClassName, initialMinFontSize = 10) => {
   const debouncedFunction = throttle(stretchingText, 1000);
 
   useEffect(() => {
+    const observer = new MutationObserver(() => {
+      debouncedFunction();
+    });
+
+    const textElements = document.querySelectorAll(`.${textClassName}`);
+    textElements.forEach((element) => {
+      observer.observe(element, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+    });
     window.addEventListener("resize", debouncedFunction);
     debouncedFunction();
 
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", debouncedFunction);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

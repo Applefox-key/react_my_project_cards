@@ -62,13 +62,13 @@
   }
 
   .wrongBack {
-    background-color: #dc3545;
-    color: white;
+    color: var(--color-text);
+    border: 8px solid #ed666d;
   }
 
   .rightBack {
-    background-color: forestgreen;
-    color: white;
+    color: var(--color-text);
+    border: 8px solid forestgreen;
   }
 
   input {
@@ -81,20 +81,21 @@
 .voice-wrap {
   position: relative;
 
+
   .lang {
     position: absolute;
     right: -15px;
     top: -15px;
     border-radius: 50%;
-    height: 25px;
-    width: 25px;
+    border: 2px solid var(--color-intense);
+    height: 30px;
+    width: 30px;
     background: var(--color-fill);
-    color: var(--color-intense);
-
+    color: var(--color-nav);
+    transition: all 0.2s ease-in-out;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: none;
     align-items: center;
-
     justify-content: center;
 
     p {
@@ -104,17 +105,17 @@
       white-space: nowrap;
       padding: 0;
       margin: 0;
-
     }
 
     &:hover {
-      background-color: var(--color-nav);
-      color: white;
+      color: var(--color-bg-wrap);
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
     }
 
 
   }
 
+  .roundBtn,
   .start-record-btn,
   .stop-record-btn,
   #start-record-btn,
@@ -129,6 +130,7 @@
     min-height: 4rem;
     width: 4rem;
     border-radius: 50%;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
       background-color: var(--color-nav);
@@ -143,15 +145,20 @@
   }
 }
 
+.voice-hide {
+  visibility: hidden;
+  width: 0;
+}
+
 .cardText {
   width: fit-content;
-  // font-weight: bold;
   line-height: 1;
   height: fit-content;
   padding: 0;
   margin: 0;
   color: var(--color-text);
   white-space: break-spaces;
+  max-height: 95%;
 }
 
 .w-unset {
@@ -847,6 +854,7 @@ input {
   transition: all 0.8s ease-in-out;
   position: absolute;
   right: 0;
+  // right: 30px;
   top: 0rem;
   z-index: 901;
   margin-right: 2rem;
@@ -863,8 +871,8 @@ input {
   }
 
   @media screen and (max-width: 900px) {
-
-    margin-right: 5px;
+    right: 10px;
+    // margin-right: 5px;
   }
 }
 
@@ -1265,4 +1273,24 @@ input {
 #pronav.div {
   display: flex;
   z-index: 1105;
+}
+
+.roundBtn {
+  position: relative;
+  margin: 0 5px;
+  border: none;
+  background: var(--color-fill);
+  color: var(--color-intense);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  min-width: 4rem;
+  max-width: 4rem;
+  min-height: 4rem;
+  max-height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--color-nav);
+    color: white;
+  }
 }

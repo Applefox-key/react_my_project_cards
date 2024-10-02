@@ -3,6 +3,8 @@ import { BiImageAdd } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { TfiZoomIn } from "react-icons/tfi";
+import { formatString } from "../../../utils/texts";
+import { AiOutlineFontSize } from "react-icons/ai";
 
 const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
   const isQuestion = fieldName === "imgQ";
@@ -54,6 +56,15 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setItem, fieldName]);
   const ref = useRef(null);
+  const format = () => {
+    if (ref) {
+      const val = ref.current.value;
+      let formattedStr = formatString(val);
+      if (formattedStr || val) {
+        ref.current.value = formattedStr;
+      }
+    }
+  };
   return (
     <div className={isQuestion ? "questDiv" : "answtDiv"}>
       <div className="img_choice">
@@ -83,9 +94,14 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
         onChange={onHandleChange}
       />
       <span onClick={() => changeClass(false)}>{spanText}</span>{" "}
-      <button className="btnPlus" onClick={changeClass}>
-        <TfiZoomIn />
-      </button>
+      <div className="txteditBtns">
+        <button className="btnPlus" onClick={changeClass}>
+          <TfiZoomIn />
+        </button>{" "}
+        <button className="btnPlus" onClick={format}>
+          <AiOutlineFontSize />
+        </button>
+      </div>
     </div>
   );
 };

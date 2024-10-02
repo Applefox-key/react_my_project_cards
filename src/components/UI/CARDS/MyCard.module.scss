@@ -365,6 +365,7 @@
     perspective: 5000px;
     border-radius: 15px;
 
+
     @media screen and (max-width: 600px) {
         height: auto;
         height: inherit;
@@ -435,9 +436,9 @@
     padding-right: 2vw;
     padding-left: 2vw;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-    // overflow: auto;
     scrollbar-color: var(--color-bg-wrap) var(--background-header);
     color: var(--color--card);
+    overflow: hidden;
 
     .div-note {
         width: 100%;
@@ -460,7 +461,6 @@
         text-overflow: ellipsis;
         overflow: hidden;
         color: var(--color-intense);
-        // color: var(--background-note);
         width: 100%;
         text-align: left;
         width: 100%;

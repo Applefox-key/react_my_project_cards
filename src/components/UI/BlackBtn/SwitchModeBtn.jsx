@@ -5,6 +5,7 @@ import { BsPhoneFlip } from "react-icons/bs";
 import cl from "./BackBtn.module.scss";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "animate.css";
+
 const SwitchModeBtn = ({ ...props }) => {
   const router = useNavigate();
   const curPuth = useLocation().pathname;

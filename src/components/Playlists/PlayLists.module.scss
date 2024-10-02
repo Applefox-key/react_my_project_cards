@@ -981,6 +981,7 @@
     background-color: var(--color-fill);
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px var(--shadow-size) 1px inset;
     transition: all 0.4s ease-in-out;
+    opacity: 0.5;
 
     &:hover {
         text-decoration: none;

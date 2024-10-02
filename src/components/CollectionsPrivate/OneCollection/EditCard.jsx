@@ -64,9 +64,6 @@ const EditCard = () => {
         await BaseAPI.createContent(saveItem, pageParam.id);
       else await BaseAPI.editContent(saveItem);
       route(-1);
-      // route(`/collections/my/${pageParam.id}/${pageParam.name}`, {
-      //   replace: true,
-      // });
     } catch (error) {
       setPopup.error(error.message);
     }
@@ -92,7 +89,13 @@ const EditCard = () => {
 
             <div className="menuRow">
               {!!textRef && (
-                <div dataTitle={textRef.current.id} className="voiceEdit">
+                <div
+                  // datatitle={textRef.current.id}
+                  className={
+                    textRef.current.id === "question"
+                      ? "voiceEdit qv"
+                      : "voiceEdit av"
+                  }>
                   <VoiceBtns textRef={textRef} />
                 </div>
               )}

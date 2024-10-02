@@ -3,7 +3,7 @@ import cl from "../Games.module.scss";
 import ModalCustom from "../../UI/ModalCustom/ModalCustom";
 import { getDifferences } from "../../../utils/texts";
 
-const WriteCardErrors = ({ setShowErrors, right, useranswer }) => {
+const WriteCardErrors = ({ setShowErrors, right, useranswer, quest }) => {
   const [dif, setDif] = useState(null);
   useEffect(() => {
     const res = getDifferences(right, useranswer);
@@ -13,22 +13,29 @@ const WriteCardErrors = ({ setShowErrors, right, useranswer }) => {
   return (
     <ModalCustom setshowmodal={setShowErrors} title="Mismatched">
       {dif && (
-        <div className={cl.writeErr}>
-          <div>
-            <h4>CARD</h4>
-            {dif.differences1.map((el, index) => (
-              <span key={index} className={el.isDifferent ? cl.highlight : ""}>
-                {el.word}{" "}
-              </span>
-            ))}
-          </div>
-          <div>
-            <h4>YOU ANSWER</h4>
-            {dif.differences2.map((el, index) => (
-              <span key={index} className={el.isDifferent ? cl.highlight2 : ""}>
-                {el.word}{" "}
-              </span>
-            ))}
+        <div>
+          <h2>{quest}</h2>
+          <div className={cl.writeErr}>
+            <div>
+              <h3>CARD </h3>
+              {dif.differences1.map((el, index) => (
+                <span
+                  key={index}
+                  className={el.isDifferent ? cl.highlight : ""}>
+                  {el.word}{" "}
+                </span>
+              ))}
+            </div>
+            <div>
+              <h3>YOU ANSWER</h3>
+              {dif.differences2.map((el, index) => (
+                <span
+                  key={index}
+                  className={el.isDifferent ? cl.highlight2 : ""}>
+                  {el.word}{" "}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       )}

@@ -1,7 +1,6 @@
 import React from "react";
 
 import "../../styles/collectMenu.scss";
-import { fragment_SearchingTips } from "../../utils/pagesFragments";
 import { HiPlus } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import ToggleView from "../UI/TogleView/ToggleView";
@@ -41,11 +40,6 @@ const PlaylistsMenu = (props) => {
           </button>
         </div>{" "}
       </div>
-      {fragment_SearchingTips(
-        props.commonSettings,
-        "",
-        props.setSettingsCommon
-      )}
     </div>
   );
 };

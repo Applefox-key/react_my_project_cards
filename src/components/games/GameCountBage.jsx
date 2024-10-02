@@ -6,7 +6,7 @@ const GameCountBage = ({ value, lable, bg, text }) => {
   return (
     <SwitchTransition>
       <CSSTransition key={value} timeout={200} classNames={"count"}>
-        <button size="lg" variant="light" className={cl.countBtn}>
+        <button size="lg" variant="light" className={cl.countBtnOne}>
           <span text={text} className={cl[bg]}>
             {lable}
             {value}
