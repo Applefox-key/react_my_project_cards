@@ -6,7 +6,7 @@ import { stopV, startV } from "../../utils/voice";
 
 const VoiceBtns = ({ textRef, disable }) => {
   const [lang, setLang] = useState(0);
-  const langArr = useMemo(() => ["en", "ru", "pl"], []);
+  const langArr = useMemo(() => ["en", "ru", "pl", "ua"], []);
   const btnRef = useRef(null);
   const stopBtn = useRef(null);
   const startBtn = useRef(null);
@@ -40,8 +40,10 @@ const VoiceBtns = ({ textRef, disable }) => {
     <div
       ref={btnRef}
       className={disable ? "voice-wrap voice-hide" : "voice-wrap"}>
-      <div className="lang" onClick={nextLang}>
-        <p>{langArr[lang]}</p>
+      <div className="langs" onClick={nextLang}>
+        {langArr.map((el) => (
+          <p className={"langEl" + (langArr[lang] === el)}>{el}</p>
+        ))}
       </div>
       <button
         ref={stopBtn}

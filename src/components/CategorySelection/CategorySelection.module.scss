@@ -26,12 +26,48 @@
         text-align: left;
         background-color: var(--background-first);
         padding: 10px 0;
+        padding-top: 0;
         z-index: 2000;
         color: var(--color-nav);
         height: 300px;
         overflow-y: auto;
         border-radius: 5px;
 
+        .searchInput {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            position: relative;
+
+            input {
+                width: 90%;
+                outline: none;
+                border: none;
+                background: transparent;
+                margin: 0;
+                color: var(--color-bg-wrap);
+                font-size: 10px;
+                color: var(--background-intense);
+            }
+
+            svg {
+                // background-color: 0;
+                border: none;
+                width: 2rem;
+                font-size: 23px;
+
+
+                &:hover {
+                    color: var(--background-intense)
+                }
+            }
+
+            &:hover {
+                background-color: transparent;
+                color: var(--background-intense)
+            }
+
+        }
 
         svg {
             position: absolute;

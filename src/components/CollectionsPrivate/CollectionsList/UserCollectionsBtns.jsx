@@ -2,13 +2,14 @@ import React from "react";
 import { FiSettings } from "react-icons/fi";
 import { HiHeart, HiPlus, HiShare } from "react-icons/hi2";
 import { GO_TO } from "../../../router/routes";
+import { useNavigate } from "react-router-dom";
 
 const UsersCollectionsBtn = ({
   commonSettings,
   privateSettings,
   setSettingsPrivat,
-  router,
 }) => {
+  const router = useNavigate();
   return (
     <>
       {!commonSettings.byCategory && (

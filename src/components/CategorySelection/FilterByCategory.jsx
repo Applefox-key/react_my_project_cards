@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "../../hooks/useQuery";
 import BaseAPI from "../../API/BaseAPI";
 import cl from "./CategorySelection.module.scss";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { useOutsideClick } from "../../hooks/useOutSideClick";
+import { IoCloseOutline } from "react-icons/io5";
 
 const FilterByCategory = ({
   onSelect,
@@ -13,6 +14,7 @@ const FilterByCategory = ({
   isForFilter = true,
 }) => {
   const [isShow, setIsShow] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const isPublic =
     isPb === null ? window.location.pathname.includes("pub") : isPb;
   const [categories, setCategories] = useState([]);
@@ -68,7 +70,18 @@ const FilterByCategory = ({
   }, [colCat, colCatPub, isPublic]);
   const wrapRef = useRef(null);
   useOutsideClick(wrapRef, () => setIsShow(false));
-
+  const handleSearch = (e) => {
+    e.stopPropagation();
+    const searchVal = e.target.value.toLowerCase();
+    setSearchTerm(searchVal);
+  };
+  const filtered = useMemo(
+    () =>
+      categories.filter((category) =>
+        category.name.toLowerCase().includes(searchTerm)
+      ),
+    [searchTerm, categories]
+  );
   return (
     <div className={cl.catSelect}>
       <div
@@ -91,10 +104,7 @@ const FilterByCategory = ({
       </div>
       {isShow && (
         <div className={cl.catSelectList}>
-          <div
-            // value={-1}
-            className={cl.firstSelect}
-            onClick={() => onSelectItem(-1)}>
+          <div className={cl.firstSelect} onClick={() => onSelectItem(-1)}>
             {isForFilter ? "all categories" : "no category"}
           </div>
           {!isForFilter && (
@@ -104,9 +114,18 @@ const FilterByCategory = ({
               onClick={() => onSelectItem(-2)}>
               ADD NEW
             </div>
-          )}
+          )}{" "}
+          <div className={cl.searchInput} onClick={(e) => e.stopPropagation()}>
+            <input
+              type="text"
+              placeholder="Search category..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            {searchTerm && <IoCloseOutline onClick={() => setSearchTerm("")} />}
+          </div>
           {!isLoadingCat &&
-            categories.map((el, i) => (
+            filtered.map((el, i) => (
               <div
                 key={i}
                 value={isPublic ? el.name + "val" : el.id}

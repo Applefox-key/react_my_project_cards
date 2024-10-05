@@ -509,7 +509,7 @@
   font-size: 4rem;
   text-align: center;
   width: 70%;
-  height: 6rem;
+  min-height: 6rem;
   border: 0.5px solid var(--border-fill);
   border: none;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -517,13 +517,13 @@
 
   @media screen and (min-width: 600px) and (max-height: 600px) {
     font-size: 2rem;
-    height: 6rem;
+    min-height: 6rem;
     width: 100%;
   }
 
   @media screen and (min-height: 600px) and (max-width: 600px) {
     font-size: 2rem;
-    height: 35px;
+    // height: 35px;
     width: 100%;
   }
 

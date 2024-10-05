@@ -81,22 +81,32 @@
 .voice-wrap {
   position: relative;
 
-
-  .lang {
+  .langs {
     position: absolute;
     right: -15px;
     top: -15px;
-    border-radius: 50%;
-    border: 2px solid var(--color-intense);
-    height: 30px;
-    width: 30px;
-    background: var(--color-fill);
-    color: var(--color-nav);
-    transition: all 0.2s ease-in-out;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: none;
     align-items: center;
     justify-content: center;
+
+    .lang,
+    .langElfalse,
+    .langEltrue {
+      position: absolute;
+      right: -15px;
+      top: -15px;
+      border-radius: 50%;
+      border: 2px solid var(--color-intense);
+      height: 30px;
+      width: 30px;
+      background: var(--color-fill);
+      color: var(--color-nav);
+      transition: all 0.2s ease-in-out;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
 
     p {
       display: inline;
@@ -138,8 +148,24 @@
     }
   }
 
+  .langs {
+    .langElfalse {
+      display: none;
+    }
+
+    .langEltrue {
+      display: flex;
+    }
+
+    &:hover {
+      .langElfalse {
+        display: flex;
+      }
+    }
+  }
+
   &:hover {
-    .lang {
+    .langs {
       display: flex;
     }
   }
