@@ -11,14 +11,15 @@ import { onePartLittle } from "../../utils/cardFragment";
 import { sortByField } from "../../utils/arraysFunc";
 import { CSSTransition } from "react-transition-group";
 import { useAuth } from "../../hooks/useAuth";
+import { saveModeAndScroll } from "../../utils/scrollFn";
+import { useLastScroll } from "../../hooks/useLastScroll";
+import { useLastMode } from "../../hooks/useLastMode";
 
 const PublicOneCollection = () => {
   const PageParam = useParams();
   const [content, setContent] = useState();
   const { userAuth } = useAuth(true);
-  const [mode, setMode] = useState(
-    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
-  );
+  const [mode, modeChange] = useLastMode(userAuth);
   const [collection, setCollection] = useState(PageParam);
   const setPopup = usePopup();
   const [getContent, isLoading] = useQuery(async () => {
@@ -27,12 +28,6 @@ const PublicOneCollection = () => {
     setCollection(cont[0].collection);
   });
   const router = useNavigate();
-
-  const modeChange = () => {
-    let newVal = 1 - mode;
-    setMode(newVal);
-    router(window.location.pathname + "#" + newVal);
-  };
   useEffect(() => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,12 +40,16 @@ const PublicOneCollection = () => {
     setPopup.success(res.message);
   };
   const openCard = (item) => {
-    router(`/collections/pub/${collection.id}/${collection.name}/${item.id}`);
+    saveModeAndScroll();
+    router(
+      `/collections/pub/card/${collection.id}/${collection.name}/${item.id}`
+    );
   };
   const sortContent = (val, isDec) => {
     const newVal = sortByField([...content], val, isDec);
     setContent(newVal);
   };
+  useLastScroll(content);
   return (
     <div className="d-flex">
       {!isLoading ? (
@@ -84,7 +83,9 @@ const PublicOneCollection = () => {
                           <div
                             key={el.id}
                             className="one-row"
-                            onClick={() => openCard(el)}>
+                            onClick={() => {
+                              openCard(el);
+                            }}>
                             {onePartLittle(el, "question")}
                             {onePartLittle(el, "answer")}
                           </div>

@@ -1,20 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+
 import "../../styles/viewForms.scss";
 import "../../styles/oneCollection.scss";
+
 import CollectionsMenu from "./CollectionsMenu";
 import UsersCollections from "../CollectionsPrivate/CollectionsList/UsersCollections";
 import CollectionEditModal from "../CollectionsPrivate/OneCollectionActions/CollectionEditModal";
 import PublicCollectionsList from "../CollectionsPublic/PublicCollectionsList";
+import CategoriesFoldersView from "./CategoriesFoldersView";
+
 import { GO_TO } from "../../router/routes";
+import { useAuth } from "../../hooks/useAuth";
+import { useLastMode } from "../../hooks/useLastMode";
 import {
   collectionPageSettings,
   restoreSettings,
   saveSet,
 } from "../../utils/pageSettings";
-import { useAuth } from "../../hooks/useAuth";
-import CategoriesFoldersView from "./CategoriesFoldersView";
-import { CSSTransition } from "react-transition-group";
 
 const Collections = () => {
   const isPublic = window.location.pathname.includes("pub");
@@ -22,9 +26,6 @@ const Collections = () => {
   const latestStateRef = useRef();
   const { userAuth, updateFilterG } = useAuth(true);
   const pageSet = restoreSettings(isPublic);
-  const [viewmode, setViewmode] = useState(
-    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
-  );
   const [commonSettings, setCommonSettings] = useState({
     selectedCategorypub: pageSet.selectedCategorypub,
     selectedCategorymy: pageSet.selectedCategorymy,
@@ -39,7 +40,7 @@ const Collections = () => {
     shared: pageSet.shared,
     favorite: pageSet.favorite,
   });
-
+  const [viewmode, viewmodeChange] = useLastMode(useAuth);
   const updateRef = () => {
     latestStateRef.current = {
       ...commonSettings,
@@ -59,27 +60,11 @@ const Collections = () => {
     if (field === "filter" && val !== userAuth.filterG) updateFilterG(val);
   };
 
-  const viewmodeChange = () => {
-    let newVal = 1 - viewmode;
-    setViewmode(newVal);
-    router(window.location.pathname + "#" + newVal, { replace: true });
-  };
-
   useEffect(() => {
-    if (window.location.hash === "")
-      setViewmode(
-        userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
-      );
-    else setViewmode(window.location.hash === "#1" ? "1" : "0");
     return () => saveSet(latestStateRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (window.location.hash === "")
-      router(window.location.pathname + "#" + viewmode, { replace: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.hash]);
   useEffect(() => {
     if (userAuth.filterG !== commonSettings.filter)
       setSettingsCommon("filter", userAuth.filterG);

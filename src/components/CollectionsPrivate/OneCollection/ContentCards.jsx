@@ -9,19 +9,22 @@ import Rate from "../../games/Rate";
 import { FiEdit2 } from "react-icons/fi";
 import { FcFrame } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
+import { saveModeAndScroll } from "../../../utils/scrollFn";
 const ContentCards = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
   const viewCard = (item) => {
+    saveModeAndScroll();
     let mainRoute = window.location.pathname.includes("pub")
       ? GO_TO.pubCollect
       : GO_TO.myCollect;
-    route(`${mainRoute}/${pageParam.id}/${pageParam.name}/${item.id}`);
+    route(`${mainRoute}/card/${pageParam.id}/${pageParam.name}/${item.id}`);
   };
   const btns = [
     {
       private: true,
       symb: <FiEdit2 />,
       callback: (item) => {
+        saveModeAndScroll();
         route(`${GO_TO.editCard}/${pageParam.id}/${pageParam.name}/${item.id}`);
       },
     },
@@ -49,6 +52,7 @@ const ContentCards = ({ content, setContent, pageParam }) => {
           key={el.id}
           className="little_card"
           onClick={(e) => {
+            saveModeAndScroll();
             if (window.location.pathname.includes("pub")) viewCard(el);
             else
               route(

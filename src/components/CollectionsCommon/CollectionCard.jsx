@@ -32,15 +32,9 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
     <>
       <div
         className={isHover ? "oneCollect-wrap isHover" : "oneCollect-wrap"}
-        // className={"oneCollect-wrap"}
         onMouseLeave={handleBtnsMouseLeave}
         onClick={toSet}>
         <div className="oneCollect">
-          {" "}
-          {/* <div className="look" onMouseEnter={handleLookHover}></div> */}
-          {/* <div className="look" onClick={viewSet}>
-            look
-          </div> */}
           <div className="header">{oneSet.collection.name}</div>
           <span>{oneSet.content.length}</span>
           {oneSet.collection.category && (

@@ -91,10 +91,13 @@ export const privateRoutes = [
 
   { path: "/collections/my/edit/:id/:name/:item", element: <EditCard /> },
   { path: "/collections/my/:id/:name", element: <UserOneCollection /> },
-  { path: "/collections/my/:id/:name/:item", element: <UserItemCardView /> },
+  {
+    path: "/collections/my/card/:id/:name/:item",
+    element: <UserItemCardView />,
+  },
   { path: "/collections/my/:categoryid", element: <Collections /> },
   {
-    path: "/collections/pub/:id/:name/:item",
+    path: "/collections/pub/card/:id/:name/:item",
     element: <PublicItemCardView />,
   },
   { path: "/collections/pub/:id/:name", element: <PublicOneCollection /> },

@@ -5,14 +5,14 @@ import { useOutsideClick } from "../../hooks/useOutSideClick";
 import { stopV, startV } from "../../utils/voice";
 
 const VoiceBtns = ({ textRef, disable }) => {
-  const [lang, setLang] = useState(0);
   const langArr = useMemo(() => ["en", "ru", "pl", "ua"], []);
+  const [lang, setLang] = useState("en");
   const btnRef = useRef(null);
   const stopBtn = useRef(null);
   const startBtn = useRef(null);
   const onClick = () => {
     if (stopBtn.current.style.display === "none") {
-      startV(textRef, lang ? langArr[lang] : "");
+      startV(textRef, lang || "");
       stopBtn.current.style.display = "inline";
       startBtn.current.style.display = "none";
     } else if (startBtn.current.style.display === "none") {
@@ -37,31 +37,33 @@ const VoiceBtns = ({ textRef, disable }) => {
     setLang(lang === 2 ? 0 : lang + 1);
   };
   return (
-    <div
-      ref={btnRef}
-      className={disable ? "voice-wrap voice-hide" : "voice-wrap"}>
-      <div className="langs" onClick={nextLang}>
-        {langArr.map((el) => (
-          <p className={"langEl" + (langArr[lang] === el)}>{el}</p>
-        ))}
+    <div className={disable ? "voice-main voice-hide" : "voice-main"}>
+      <div ref={btnRef} className={"voice-wrap"}>
+        <div className="langs">
+          {langArr.map((el) => (
+            <p onClick={() => setLang(el)} className={"langEl" + (lang === el)}>
+              {el}
+            </p>
+          ))}
+        </div>
+        <button
+          ref={stopBtn}
+          id="stop-record-btn"
+          title="Stop Dictation"
+          onClick={onClick}
+          onMouseDown={(e) => {
+            if (e.button === 1) nextLang();
+          }}>
+          <FaMicrophoneSlash />
+        </button>
+        <button
+          ref={startBtn}
+          id="start-record-btn"
+          onClick={onClick}
+          title="Start Dictation">
+          <FaMicrophone />
+        </button>
       </div>
-      <button
-        ref={stopBtn}
-        id="stop-record-btn"
-        title="Stop Dictation"
-        onClick={onClick}
-        onMouseDown={(e) => {
-          if (e.button === 1) nextLang();
-        }}>
-        <FaMicrophoneSlash />
-      </button>
-      <button
-        ref={startBtn}
-        id="start-record-btn"
-        onClick={onClick}
-        title="Start Dictation">
-        <FaMicrophone />
-      </button>
     </div>
   );
 };

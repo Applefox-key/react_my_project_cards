@@ -6,8 +6,10 @@ import cl from "./BackBtn.module.scss";
 const BackBtn = ({ path, onClick, ...props }) => {
   const router = useNavigate();
   const back = () => {
-    if (path) router(path);
-    else if (onClick) onClick();
+    if (path) {
+      if (onClick) onClick();
+      router(path);
+    } else if (onClick) onClick();
     else router(-1);
   };
   return (

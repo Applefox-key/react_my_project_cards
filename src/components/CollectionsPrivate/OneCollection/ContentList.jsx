@@ -6,6 +6,7 @@ import { usePopup } from "../../../hooks/usePopup";
 import "../../../styles/oneCollection.scss";
 import { onePartLittle } from "../../../utils/cardFragment";
 import { GO_TO } from "../../../router/routes";
+import { saveModeAndScroll } from "../../../utils/scrollFn";
 
 const ContentList = ({ content, setContent, pageParam }) => {
   const setPopup = usePopup();
@@ -91,6 +92,7 @@ const ContentList = ({ content, setContent, pageParam }) => {
               key={el.id}
               className="one-row"
               onClick={(e) => {
+                saveModeAndScroll();
                 e.stopPropagation();
                 rowsActons.editCard(el, e);
               }}>

@@ -4,7 +4,7 @@ import { getImgA, getImgQ } from "./contentRequests";
 //mode 0 - question is on the front
 //mode 1 - question is on the back
 const cardContent = (item, part, cl) => {
-  let tx = part === "answer" ? item.answer : item.question;
+  let tx = part === "answer" ? item.answer.trim() : item.question.trim();
   let im = part === "answer" ? item.imgA : item.imgQ;
 
   return (
@@ -44,9 +44,9 @@ export const mainAndImg = (side, mode, item, cl) => {
         <div className={mainDivClass}>
           {note && side === "back" ? (
             <div className={cl["div-note"]}>
-              {item.note && (
-                <p className={cl["card-note"]} data-title={item.note}>
-                  {item.note}
+              {note && (
+                <p className={cl["card-note"]} data-title={note}>
+                  {note}
                 </p>
               )}
               <div className={cl["card-text-sibl"]}>

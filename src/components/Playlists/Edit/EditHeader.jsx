@@ -13,9 +13,6 @@ const EditHeader = ({ list, fns }) => {
         <GamesMenu cardSet={list} isPlaylist />
       </div>
       <div className={["input_with_lable mb-0", cl.titleP].join(" ")}>
-        <label htmlFor="i_name" className="lable">
-          title
-        </label>
         <input
           autoFocus
           id="i_name"

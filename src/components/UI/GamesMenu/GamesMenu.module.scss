@@ -149,17 +149,16 @@
 .overflow-vert {
     position: absolute;
     overflow: hidden;
-    height: 230px;
+    height: 30px;
     border-radius: 5px;
     width: 70px;
-
-
+    transition: all 0.4s ease-in-out
 }
 
 .overflow-vert-show {
     @extend .overflow-vert;
     width: 145px;
-
+    height: 230px;
 }
 
 .body-after-btn {

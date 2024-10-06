@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "../../../hooks/useQuery";
 import BaseAPI from "../../../API/BaseAPI";
 import { usePopup } from "../../../hooks/usePopup";
@@ -12,18 +12,16 @@ import { addRates } from "../../../utils/gamesResults";
 import Reorganizer from "./Reorganizer";
 import { useAuth } from "../../../hooks/useAuth";
 import { useTextContentFilter } from "../../../hooks/useCollectSelection";
+import { useLastScroll } from "../../../hooks/useLastScroll";
+import { useLastMode } from "../../../hooks/useLastMode";
 
 const UserOneCollection = () => {
   const [content, setContent] = useState();
   const [collect, setCollect] = useState();
   const [reorgMode, setReorgMode] = useState(false);
   const { updateFilterG, userAuth } = useAuth(true);
-  const [mode, setMode] = useState(
-    userAuth && userAuth.settings ? (userAuth.settings.listView ? 1 : 0) : 0
-  );
   const pageParam = useParams();
   const setPopup = usePopup();
-  const router = useNavigate();
   const [getContent, isLoading, error] = useQuery(async () => {
     const result = await BaseAPI.getCollectionsAndContent(pageParam.id);
     const colContent = await addRates(result);
@@ -31,21 +29,18 @@ const UserOneCollection = () => {
     setContent(colContent[0].content);
   });
 
-  const modeChange = () => {
-    let newVal = 1 - mode;
-    setMode(newVal);
-    router(window.location.pathname + "#" + newVal);
-  };
-
   useEffect(() => {
     getContent();
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name]);
+
+  useLastScroll(content);
+  const [mode, modeChange] = useLastMode(userAuth);
   const filtredList = useTextContentFilter(content, userAuth.filterG);
+
   return (
     <div className="">
-      {" "}
       <div className="wrap_box tableContainer">
         {reorgMode && (
           <div>

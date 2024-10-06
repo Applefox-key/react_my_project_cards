@@ -21,9 +21,11 @@ const MyNavbar = () => {
     window.location.pathname.includes("home") ||
     window.location.pathname.includes("about");
 
-  const isPlay =
+  const isHideNav =
     window.location.pathname.includes("/play_") ||
-    window.location.pathname.includes("/print/");
+    window.location.pathname.includes("/print/") ||
+    window.location.pathname.includes("/card/") ||
+    window.location.pathname.includes("/edit/");
   const isPlaylist = window.location.pathname.includes("/playlist");
 
   const navArr = useMemo(
@@ -55,8 +57,8 @@ const MyNavbar = () => {
 
   return (
     <div className={[cl.topNav]}>
-      {<ThemeSwitch isPlay={isPlay} />}
-      {!isPlay && (
+      {<ThemeSwitch isPlay={isHideNav} />}
+      {!isHideNav && (
         <>
           <div className={headerBig ? cl.headerNav : cl.headerNavSmall}>
             <h1>FlashMinds </h1>

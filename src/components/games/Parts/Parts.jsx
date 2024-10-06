@@ -2,7 +2,7 @@ import React from "react";
 import cl from "../Games.module.scss";
 
 const Parts = ({ items, onClick, active, lastOk }) => {
-  const generateClassName = (el, i) => {
+  const generateClassName = (i) => {
     return [
       cl.list_btn,
       active.includes(i.toString()) ? cl.wrong_answer : "",
@@ -19,7 +19,7 @@ const Parts = ({ items, onClick, active, lastOk }) => {
           id={i}
           onClick={onClick}
           disabled={active.includes(i.toString())}
-          className={generateClassName(el, i)}>
+          className={generateClassName(i)}>
           {el}
         </button>
       ))}

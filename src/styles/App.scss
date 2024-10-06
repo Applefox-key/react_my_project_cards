@@ -78,95 +78,117 @@
 
 
 
-.voice-wrap {
+.voice-main {
   position: relative;
 
-  .langs {
+  .voice-wrap {
     position: absolute;
-    right: -15px;
-    top: -15px;
-    display: none;
-    align-items: center;
-    justify-content: center;
+    padding-right: 25px;
 
-    .lang,
-    .langElfalse,
-    .langEltrue {
+    .langs {
       position: absolute;
-      right: -15px;
+      right: 0px;
       top: -15px;
-      border-radius: 50%;
-      border: 2px solid var(--color-intense);
-      height: 30px;
-      width: 30px;
-      background: var(--color-fill);
-      color: var(--color-nav);
-      transition: all 0.2s ease-in-out;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
       display: none;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      border-radius: 15px;
+      transition: all 0.2s ease-in-out;
+      height: 30px;
+
+      .lang,
+      .langElfalse,
+      .langEltrue {
+        // position: absolute;
+        // right: -15px;
+        // top: -15px;
+        border-radius: 50%;
+        border: 2px solid var(--color-intense);
+        height: 30px;
+        width: 30px;
+        background: var(--color-fill);
+        color: var(--color-nav);
+        transition: all 0.2s ease-in-out;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      p {
+        display: inline;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+      }
+
+      &:hover {
+        color: var(--color-bg-wrap);
+        box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
+      }
+
+
     }
 
-    p {
-      display: inline;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 0;
-      margin: 0;
-    }
+    .roundBtn,
+    .start-record-btn,
+    .stop-record-btn,
+    #start-record-btn,
+    #stop-record-btn {
+      position: relative;
+      margin: 0 5px;
+      border: none;
+      background: var(--color-fill);
+      color: var(--color-intense);
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      min-width: 4rem;
+      min-height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      transition: all 0.2s ease-in-out;
 
-    &:hover {
-      color: var(--color-bg-wrap);
-      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
-    }
-
-
-  }
-
-  .roundBtn,
-  .start-record-btn,
-  .stop-record-btn,
-  #start-record-btn,
-  #stop-record-btn {
-    position: relative;
-    margin: 0 5px;
-    border: none;
-    background: var(--color-fill);
-    color: var(--color-intense);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    min-width: 4rem;
-    min-height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: var(--color-nav);
-      color: white;
-    }
-  }
-
-  .langs {
-    .langElfalse {
-      display: none;
-    }
-
-    .langEltrue {
-      display: flex;
-    }
-
-    &:hover {
-      .langElfalse {
-        display: flex;
+      &:hover {
+        background-color: var(--color-nav);
+        color: white;
       }
     }
+
+    .langs {
+      .langElfalse {
+        // display: none;
+        visibility: hidden;
+        display: flex;
+        height: 0;
+        scale: 0;
+        transition: all 0.7s ease-in-out;
+      }
+
+      .langEltrue {
+        display: flex;
+        background-color: var(--background-note);
+        color: var(--color-back);
+      }
+
+      &:hover {
+        .langElfalse {
+          scale: 1;
+          // display: flex;
+          visibility: visible;
+          height: 30px;
+        }
+      }
+    }
+
+
   }
 
   &:hover {
-    .langs {
+    .voice-wrap .langs {
       display: flex;
+      height: fit-content;
     }
   }
 }
@@ -193,7 +215,7 @@
 
 .main_page {
   text-align: center;
-  z-index: 600;
+  // z-index: 600;
   margin-top: 60px;
 }
 
@@ -1227,6 +1249,8 @@ input {
 
 #i_name {
   background-color: transparent;
+  color: var(--color-nav);
+  font-weight: 700;
 }
 
 .arrhide {
@@ -1282,7 +1306,8 @@ input {
   }
 
   div {
-    font-size: 18px;
+    font-size: 17px;
+    padding-top: 25px;
   }
 
   @media screen and (max-width:900px) {

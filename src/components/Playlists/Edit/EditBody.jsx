@@ -48,7 +48,7 @@ const EditBody = ({ items, ids }) => {
 
   return (
     <>
-      <div className={cl["body-edit-wrap"]}>
+      <div className={cl["body-edit-wrap"] + (!show ? " m-auto" : "")}>
         <SetOfTen
           onClickFns={{ handleItemClick, handleClick }}
           selectedItems={selectedItems}

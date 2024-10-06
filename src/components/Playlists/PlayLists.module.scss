@@ -181,7 +181,7 @@
             text-overflow: ellipsis;
             font-weight: 500;
             border-bottom: 0.5px solid var(--border-fill);
-            BACKGROUND: var(--color-intense);
+            BACKGROUND: var(--color-nav);
             COLOR: WHITE;
             opacity: 0.8;
             padding-left: 25px;
@@ -583,7 +583,7 @@
     width: 99%;
     border-bottom: 1px solid var(--color-fill);
     background-color: var(--background-header);
-
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
     .titleP {
         // padding-bottom: 5px;
@@ -621,6 +621,8 @@
 .body-edit-wrap {
     display: flex;
     align-items: flex-start;
+    padding-top: 10px;
+    margin: auto;
 
     .addBtn {
         height: 335px;
