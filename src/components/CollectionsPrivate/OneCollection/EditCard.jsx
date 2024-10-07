@@ -86,11 +86,9 @@ const EditCard = () => {
                 action={(newRate) => updRates(item, newRate)}
               />
             )}
-
             <div className="menuRow">
               {!!textRef && (
                 <div
-                  // datatitle={textRef.current.id}
                   className={
                     textRef.current.id === "question"
                       ? "voiceEdit qv"
@@ -105,7 +103,14 @@ const EditCard = () => {
               <BackBtn variant="light" />
             </div>
           </div>
-
+          <div className="note">
+            <input
+              type="text"
+              placeholder="write a note..."
+              value={item ? item.note : ""}
+              onChange={(e) => setItem({ ...item, note: e.target.value })}
+            />
+          </div>
           <EditCardPart
             fieldName={"imgQ"}
             item={item}
@@ -118,15 +123,6 @@ const EditCard = () => {
             setItem={setItem}
             setTextRef={setNewRef}
           />
-
-          <div className="note">
-            <input
-              type="text"
-              placeholder="write a note..."
-              value={item ? item.note : ""}
-              onChange={(e) => setItem({ ...item, note: e.target.value })}
-            />
-          </div>
         </div>
       ) : (
         <SpinnerLg className="span_wrap" />

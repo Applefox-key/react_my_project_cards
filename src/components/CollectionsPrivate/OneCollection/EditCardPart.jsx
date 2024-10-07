@@ -41,30 +41,32 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
     [item, setItem]
   );
   const onHandleChange = (e) => {
-    if (fieldName === "imgQ") setItem({ ...item, question: e.target.value });
-    else setItem({ ...item, answer: e.target.value });
+    setItem({ ...item, [isQuestion ? "question" : "answer"]: e.target.value });
   };
   const changeClass = (IsToAdd = true) => {
     if (IsToAdd) {
       ref.current.classList.add("plusTextArea");
+      refSpan.current.classList.add("showSpan");
       ref.current.focus();
-    } else ref.current.classList.remove("plusTextArea");
+    } else {
+      ref.current.classList.remove("plusTextArea");
+      refSpan.current.classList.remove("showSpan");
+    }
   };
   const onHandleClick = useCallback(() => {
-    if (fieldName === "imgQ") setItem({ ...item, imgQ: "", imgQFile: "" });
-    else setItem({ ...item, imgA: "", imgAFile: "" });
+    setItem({ ...item, [fieldName]: "", [fieldName + "File"]: "" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setItem, fieldName]);
   const ref = useRef(null);
+  const refSpan = useRef(null);
+
   const format = () => {
-    if (ref) {
-      const val = ref.current.value;
-      let formattedStr = formatString(val);
-      if (formattedStr || val) {
-        ref.current.value = formattedStr;
-      }
+    if (ref && ref.current?.value) {
+      let formattedStr = formatString(ref.current.value);
+      if (formattedStr) ref.current.value = formattedStr;
     }
   };
+
   return (
     <div className={isQuestion ? "questDiv" : "answtDiv"}>
       <div className="img_choice">
@@ -73,7 +75,7 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
             <button variant="outline-secondary" onClick={onHandleClick}>
               <IoMdClose />
             </button>
-            <img src={currentImage} alt="" />
+            <img src={currentImage} alt={fieldName} />
           </div>
         ) : (
           <>
@@ -93,7 +95,9 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
         value={currentText}
         onChange={onHandleChange}
       />
-      <span onClick={() => changeClass(false)}>{spanText}</span>{" "}
+      <span ref={refSpan} onClick={() => changeClass(false)}>
+        {spanText}
+      </span>{" "}
       <div className="txteditBtns">
         <button className="btnPlus" onClick={changeClass}>
           <TfiZoomIn />
