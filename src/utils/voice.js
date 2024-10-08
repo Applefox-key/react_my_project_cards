@@ -5,6 +5,10 @@ recognition.continuous = true;
 recognition.interimResults = true;
 recognition.lang = "en-US";
 let isRecording = false;
+const isMobileDevice =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+    navigator.userAgent
+  );
 
 export const startV = (textarea, lang = "") => {
   if (!textarea || !textarea.current) {
@@ -26,9 +30,11 @@ export const startV = (textarea, lang = "") => {
     for (let i = 0; i < event.results.length; i++) {
       const transcript = event.results[i][0].transcript;
       if (event.results[i].isFinal) {
-        finalTranscript += transcript;
+        if (isMobileDevice) finalTranscript = transcript;
+        else finalTranscript += transcript;
       } else {
-        interimTranscript += transcript;
+        if (isMobileDevice) interimTranscript = transcript;
+        else interimTranscript += transcript;
       }
     }
     if (textarea) textarea.current.value = finalTranscript + interimTranscript;
