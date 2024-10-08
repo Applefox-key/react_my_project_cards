@@ -1,4 +1,5 @@
 import React from "react";
+
 import ColumnHeadWithBtns from "./ColumnHeadWithBtns";
 
 const MyTableHeader = ({ namesArray, btnsArray = [] }) => {

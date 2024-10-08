@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import Result from "../../UI/CARDS/Result";
-import GameCount from "../GameCount";
+
 import cl from "../Games.module.scss";
-import Hint from "../Hint";
-import OneCardG from "../OneCardG";
-import Parts from "./Parts";
+
+import Result from "../../UI/CARDS/Result";
 import PartAnswer from "./PartAnswer";
+import GameCount from "../GameCount";
+import OneCardG from "../OneCardG";
+import Hint from "../Hint";
+import Parts from "./Parts";
 
 const PartBody = ({ items, setItems }) => {
   const [num, setNum] = useState(0);

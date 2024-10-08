@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+
 import cl from "../Games.module.scss";
-import Hint from "../Hint";
+
+import ProbabilityList from "../ProbabilityList";
+import PartAnswer from "./PartAnswer";
 import OneCardG from "../OneCardG";
 import Parts from "./Parts";
-import PartAnswer from "./PartAnswer";
-import ProbabilityList from "../ProbabilityList";
+import Hint from "../Hint";
+
 import {
   addProbabilities,
   recount,
   saveTempResults,
 } from "../../../utils/gamesResults";
-import { useParams } from "react-router-dom";
 
 const PartBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);

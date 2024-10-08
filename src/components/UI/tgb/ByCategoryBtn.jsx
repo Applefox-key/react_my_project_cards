@@ -1,6 +1,8 @@
 import React from "react";
-import "./tgb.scss";
 import { MdLabel } from "react-icons/md";
+
+import "./tgb.scss";
+
 const ByCategoryBtn = ({ ...props }) => {
   return (
     <button

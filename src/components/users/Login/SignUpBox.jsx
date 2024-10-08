@@ -1,12 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { useContext } from "react";
-import BaseAPI from "../../../API/BaseAPI";
-import { AuthContext } from "../../../context";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+
 import cl from "./login.module.scss";
-import { usePopup } from "../../../hooks/usePopup";
+
 import { isEmailValid } from "../../../utils/validation";
+import { usePopup } from "../../../hooks/usePopup";
+import { AuthContext } from "../../../context";
+import BaseAPI from "../../../API/BaseAPI";
 
 const SignUpBox = ({ setLoginMode }) => {
   const router = useNavigate();

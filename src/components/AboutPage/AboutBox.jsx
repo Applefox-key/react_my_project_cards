@@ -1,10 +1,13 @@
 import React from "react";
-import cl from "./aboutPage.module.scss";
-import choice3 from "../../img/FAQ.png";
 import { Image } from "react-bootstrap";
-import AboutGallery from "./AboutGallery";
 import { useNavigate } from "react-router-dom";
+
+import cl from "./aboutPage.module.scss";
+
 import TextBlock from "./TextBlock";
+import AboutGallery from "./AboutGallery";
+
+import choice3 from "../../img/FAQ.png";
 
 const AboutBox = () => {
   const router = useNavigate();

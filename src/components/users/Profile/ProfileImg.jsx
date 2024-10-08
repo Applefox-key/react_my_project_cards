@@ -1,7 +1,9 @@
 import React from "react";
 import AvatarGalery from "./AvatarGalery";
 import Image from "react-bootstrap/Image";
+
 import cl from "./users.module.scss";
+
 import { defaultAvatar } from "../../../constants/defaultSettings";
 import { generateAvatarLink } from "../../../utils/userRequest";
 

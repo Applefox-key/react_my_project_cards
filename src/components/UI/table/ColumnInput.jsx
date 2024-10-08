@@ -1,6 +1,6 @@
 import React from "react";
-import { onBlurCheck } from "../../../utils/domeElemFunc";
 import MyInput from "../MyInput/MyInput";
+import { onBlurCheck } from "../../../utils/domeElemFunc";
 
 const ColumnInput = ({
   edit,

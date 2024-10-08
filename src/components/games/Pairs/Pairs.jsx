@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useGame } from "../../../hooks/useGame";
+import React, { useState, useEffect } from "react";
+import { CSSTransition } from "react-transition-group";
+
 import cl from "../Games.module.scss";
-import { shuffle } from "../../../utils/arraysFunc";
+
 import GameCount from "../GameCount";
+import Hint from "../Hint";
 import Result from "../../UI/CARDS/Result";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
-import { CSSTransition } from "react-transition-group";
-import { pairAnswerCheck } from "../../../utils/games";
-import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
-import Hint from "../Hint";
 import PairPart from "./PairPart";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+
+import { useGame } from "../../../hooks/useGame";
+
+import { shuffle } from "../../../utils/arraysFunc";
+import { pairAnswerCheck } from "../../../utils/games";
 
 const Pairs = () => {
   const [items, setItems] = useState(null);

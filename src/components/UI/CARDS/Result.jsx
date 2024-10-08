@@ -1,10 +1,11 @@
 import React from "react";
+import { CSSTransition } from "react-transition-group";
+import { useNavigate } from "react-router-dom";
+
 import cl from "./MyCard.module.scss";
 import "./MyCard.module.scss";
-import { CSSTransition } from "react-transition-group";
-
 import "animate.css";
-import { useNavigate } from "react-router-dom";
+
 import GameCount from "../../games/GameCount";
 
 const Result = ({ text, count, mist }) => {

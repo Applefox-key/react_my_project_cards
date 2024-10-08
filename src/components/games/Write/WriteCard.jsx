@@ -1,16 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { useGame } from "../../../hooks/useGame";
-import { shuffle } from "../../../utils/arraysFunc";
+import { useParams } from "react-router-dom";
+
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import WriteCardBody from "./WriteCardBody";
-import { usePopup } from "../../../hooks/usePopup";
-import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import WriteCardBodyEndless from "./WriteCardBodyEndless";
 import SwitchEndlessBtn from "../../UI/BlackBtn/SwitchEndlessBtn";
 import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+
+import { useGame } from "../../../hooks/useGame";
+import { usePopup } from "../../../hooks/usePopup";
+import { shuffle } from "../../../utils/arraysFunc";
 import { saveResults } from "../../../utils/gamesResults";
-import { useParams } from "react-router-dom";
 
 const WriteCard = () => {
   const [items, setItems] = useState();

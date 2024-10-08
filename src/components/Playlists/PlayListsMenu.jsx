@@ -15,9 +15,9 @@ const PlaylistsMenu = (props) => {
   ];
   return (
     <div className="string_menu_play">
-      <div className="menufind">
+      <div className="menufind playlists-menu-btn">
         <CollectionPagePath list={arrPath} />
-        <div className="view-settings">
+        <div className="view-settings responsive-margin">
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={props.viewmodeChange}

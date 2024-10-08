@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
+
+import cl from "../Games.module.scss";
+
 import OneCardG from "../OneCardG";
 import MyInputGroup from "../../UI/MyInput/MyInputGroup";
-import cl from "../Games.module.scss";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import GameCountBage from "../GameCountBage";
 import Result from "../../UI/CARDS/Result";

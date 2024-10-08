@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import cl from "./MyFilter.module.scss";
+import React, { useEffect, useState } from "react";
+import { FcSearch } from "react-icons/fc";
 
+import cl from "./MyFilter.module.scss";
 import "../../../styles/collectMenu.scss";
 
 import { useFilter } from "../../../hooks/useFilter";
-import { FcSearch } from "react-icons/fc";
 
 const FilterLS = () => {
   const { filterG, setFilterG } = useFilter();

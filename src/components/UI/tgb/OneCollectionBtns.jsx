@@ -1,21 +1,23 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IoMdRemove } from "react-icons/io";
-import { BiListPlus } from "react-icons/bi";
+
+import { CiFolderOff, CiShare2, CiSquarePlus } from "react-icons/ci";
+import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { HiPrinter, HiShare } from "react-icons/hi";
+import { RiArrowGoBackLine } from "react-icons/ri";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsFiletypeTxt } from "react-icons/bs";
-import BaseAPI from "../../../API/BaseAPI";
-import { GO_TO } from "../../../router/routes";
-import { HiPrinter, HiShare } from "react-icons/hi";
-import ModalCommand from "../../CollectionsPrivate/OneCollectionActions/ModalCommand";
-import { CiFolderOff, CiShare2, CiSquarePlus } from "react-icons/ci";
-import { favorite, share } from "../../../utils/contentRequests";
-import { usePopup } from "../../../hooks/usePopup";
-import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
-import { RiArrowGoBackLine } from "react-icons/ri";
+import { IoMdRemove } from "react-icons/io";
+import { BiListPlus } from "react-icons/bi";
+
+import ModalCommand from "../../Collections/UserCollectionActions/ModalCommand";
 import SpinningBtn from "../SpinningBtn/SpinningBtn";
+
+import { usePopup } from "../../../hooks/usePopup";
+import { favorite, share } from "../../../utils/contentRequests";
+import { GO_TO } from "../../../router/routes";
+import BaseAPI from "../../../API/BaseAPI";
 
 const OneCollectionBtns = ({ colObj, setContent }) => {
   const [mod, setMod] = useState(false);

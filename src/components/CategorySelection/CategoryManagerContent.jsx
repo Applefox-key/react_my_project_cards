@@ -1,11 +1,15 @@
 import React from "react";
-import CategoryNameInput from "./CategoryNameInput";
-import cl from "./CategorySelection.module.scss";
-import { GO_TO } from "../../router/routes";
-import { useNavigate } from "react-router-dom";
-import { saveOneSetting } from "../../utils/pageSettings";
-import { CSSTransition } from "react-transition-group";
 import { BiLabel } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+
+import cl from "./CategorySelection.module.scss";
+
+import CategoryNameInput from "./CategoryNameInput";
+
+import { GO_TO } from "../../router/routes";
+import { saveOneSetting } from "../../utils/pageSettings";
+
 const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
   const router = useNavigate();
   const hh = (el) => {

@@ -1,6 +1,8 @@
 import React from "react";
-import cl from "../Games.module.scss";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+import cl from "../Games.module.scss";
+
 import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { fontLittle } from "../../../utils/texts";
 

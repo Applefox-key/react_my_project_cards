@@ -1,17 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { useGame } from "../../../hooks/useGame";
-import { usePopup } from "../../../hooks/usePopup";
-import { shuffle } from "../../../utils/arraysFunc";
+import { useParams } from "react-router-dom";
+
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import SwitchEndlessBtn from "../../UI/BlackBtn/SwitchEndlessBtn";
 import TestBodyEndless from "./TestBodyEndless";
 import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
-import { saveResults } from "../../../utils/gamesResults";
-import { useParams } from "react-router-dom";
 import TestBody from "./TestBody";
+
+import { useGame } from "../../../hooks/useGame";
+import { usePopup } from "../../../hooks/usePopup";
+import { shuffle } from "../../../utils/arraysFunc";
+import { saveResults } from "../../../utils/gamesResults";
 
 const TestCard = () => {
   const setPopup = usePopup();

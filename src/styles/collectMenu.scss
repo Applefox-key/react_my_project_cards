@@ -3,7 +3,7 @@
   right: 1px;
   display: flex;
   padding-left: 8px;
-  min-width: 250px;
+  // min-width: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +14,8 @@
     align-items: center;
     font-size: 14px;
     margin: 1.5rem 0;
+    margin-bottom: 0;
+    // margin-bottom: 0;
   }
 
   button {
@@ -42,6 +44,55 @@
 
 
 }
+
+.collect-path-box {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width:900px) {
+    position: relative;
+    left: -100px;
+    // max-width: 230px;
+  }
+
+  @media screen and (max-width:600px) {
+
+    max-width: 230px;
+  }
+}
+
+.collect-btn-box {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width:900px) {
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+}
+
+.one-collect-btn-box {
+  display: flex;
+  position: relative;
+
+  @media screen and (max-width:900px) {
+    margin-top: 1.5rem;
+    // position: absolute;
+    // top: 5px;
+    // right: 0;
+  }
+}
+
+
+.responsive-margin {
+  @media screen and (max-width:900px) {
+    margin-top: 0;
+
+  }
+}
+
+
 
 .width150 {
   min-width: 160px;
@@ -379,7 +430,8 @@
   @media screen and (max-width:900px) {
     justify-content: center;
     flex-direction: column;
-    margin-top: 1rem;
+    margin-right: 0;
+    // margin-top: 1rem;
   }
 }
 
@@ -665,5 +717,15 @@
     &:hover {
       color: var(--color-nav);
     }
+  }
+}
+
+.playlists-menu-btn {
+  @media screen and (max-width:900px) {
+    // align-items: baseline;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
   }
 }

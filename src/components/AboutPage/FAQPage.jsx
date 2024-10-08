@@ -1,11 +1,14 @@
 import React from "react";
+import { CSSTransition } from "react-transition-group";
+
 import cl from "./aboutPage.module.scss";
-import choice3 from "../../img/FAQ.png";
-import { Image } from "react-bootstrap";
+
 import AboutGallery from "./AboutGallery";
 import TextBlock from "./TextBlock";
-import Logo from "../Logo";
-import { CSSTransition } from "react-transition-group";
+import Logo from "../UI/Logo";
+
+import { Image } from "react-bootstrap";
+import choice3 from "../../img/FAQ.png";
 
 const FAQPage = () => {
   return (

@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { GO_TO } from "../../router/routes";
 import { CSSTransition } from "react-transition-group";
+
 import { BsCollectionPlay } from "react-icons/bs";
 import { HiOutlineRectangleStack } from "react-icons/hi2";
 import { BiLabel } from "react-icons/bi";
+
+import { GO_TO } from "../../router/routes";
 
 const UserLibrary = () => {
   const router = useNavigate();

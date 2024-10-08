@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { HiDotsHorizontal } from "react-icons/hi";
+
 import cl from "../UI/CARDS/MyCard.module.scss";
 import clA from "./aboutPage.module.scss";
+
 import OneCardG from "../games/OneCardG";
 import SpinnerLg from "../UI/SpinnerLg/SpinnerLg";
-import { HiDotsHorizontal } from "react-icons/hi";
+
 const AboutGallery = () => {
   const arr = [
     {

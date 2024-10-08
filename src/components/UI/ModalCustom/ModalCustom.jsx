@@ -1,6 +1,7 @@
 import React from "react";
 import Draggable from "react-draggable";
 import { IoIosClose } from "react-icons/io";
+
 import cl from "./ModalCustom.module.scss";
 
 const ModalCustom = ({

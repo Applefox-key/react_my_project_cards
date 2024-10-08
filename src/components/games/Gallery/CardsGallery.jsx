@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useGame } from "../../../hooks/useGame";
-import OneCardG from "../OneCardG";
-import { shuffle } from "../../../utils/arraysFunc";
-import BackBtn from "../../UI/BlackBtn/BackBtn";
-import { CSSTransition } from "react-transition-group";
-import { usePopup } from "../../../hooks/usePopup";
-import cl from "../../UI/CARDS/MyCard.module.scss";
-import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
-import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
 import { useParams } from "react-router-dom";
 import { TiArrowBackOutline, TiArrowForwardOutline } from "react-icons/ti";
-import GameCountBage from "../GameCountBage";
-import Rate from "../Rate";
+import { CSSTransition } from "react-transition-group";
+
+import { useGame } from "../../../hooks/useGame";
+import { usePopup } from "../../../hooks/usePopup";
+
+import { shuffle } from "../../../utils/arraysFunc";
 import { addRates, updRates } from "../../../utils/gamesResults";
+
+import cl from "../../UI/CARDS/MyCard.module.scss";
+
+import BackBtn from "../../UI/BlackBtn/BackBtn";
 import GameBtn from "../../UI/BlackBtn/GameBtn";
+import GameCountBage from "../GameCountBage";
+import OneCardG from "../OneCardG";
+import Rate from "../Rate";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
 
 const CardsGallery = () => {
   const [items, setItems] = useState(null);

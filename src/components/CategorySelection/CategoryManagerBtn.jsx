@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { IoIosSettings } from "react-icons/io";
+
+import cl from "./CategorySelection.module.scss";
 
 import CategoriesManager from "./CategoriesManager";
-import cl from "./CategorySelection.module.scss";
 import MyModal from "../UI/MyModal";
-import { IoIosSettings } from "react-icons/io";
 
 const CategoryManagerBtn = ({ getList, icon }) => {
   const [visible, setVisible] = useState(false);

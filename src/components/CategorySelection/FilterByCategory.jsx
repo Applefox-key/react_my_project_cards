@@ -1,10 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useQuery } from "../../hooks/useQuery";
-import BaseAPI from "../../API/BaseAPI";
-import cl from "./CategorySelection.module.scss";
 import { BiSolidRightArrow } from "react-icons/bi";
-import { useOutsideClick } from "../../hooks/useOutSideClick";
 import { IoCloseOutline } from "react-icons/io5";
+
+import cl from "./CategorySelection.module.scss";
+
+import { useOutsideClick } from "../../hooks/useOutSideClick";
+import { useQuery } from "../../hooks/useQuery";
+
+import BaseAPI from "../../API/BaseAPI";
 
 const FilterByCategory = ({
   onSelect,

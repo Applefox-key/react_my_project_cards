@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+
 import cl from "./MyFilter.module.scss";
 import "../../../styles/collectMenu.scss";
 

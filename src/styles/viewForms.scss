@@ -1263,3 +1263,15 @@
     align-items: center;
     justify-content: center;
 }
+
+.manager-menu {
+    @media screen and (max-width:900px) {
+        // align-items: baseline;
+        flex-direction: row;
+        justify-content: space-between;
+
+
+    }
+
+
+}

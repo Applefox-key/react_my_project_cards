@@ -1,19 +1,18 @@
 /* eslint-disable no-unused-vars */
-import React, { useRef } from "react";
-
-import Image from "react-bootstrap/Image";
-import { useState, useEffect } from "react";
-
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import cl from "./mainNavbar.module.scss";
-import BaseAPI from "../../API/BaseAPI";
-import { useQuery } from "../../hooks/useQuery";
-import { GO_TO } from "../../router/routes";
-import { generateAvatarLink } from "../../utils/userRequest";
+
 import MySpinner from "../UI/MySpinner";
 import { IoMdArrowDropdown } from "react-icons/io";
+import Image from "react-bootstrap/Image";
+
 import { useOutsideClick } from "../../hooks/useOutSideClick";
+import { useQuery } from "../../hooks/useQuery";
+import { generateAvatarLink } from "../../utils/userRequest";
+import { GO_TO } from "../../router/routes";
+import BaseAPI from "../../API/BaseAPI";
 
 const MyNavUserImg = ({ logout, ...props }) => {
   const [show, setShow] = useState(false);

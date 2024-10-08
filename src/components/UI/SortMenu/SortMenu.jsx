@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
-import cl from "./SortMenu.module.scss";
 import { FaSortAlphaDown, FaSortAlphaUp } from "react-icons/fa";
+
+import cl from "./SortMenu.module.scss";
+
 import { useOutsideClick } from "../../../hooks/useOutSideClick";
 
 const SortMenu = ({ fields, onSelect }) => {
@@ -27,8 +29,7 @@ const SortMenu = ({ fields, onSelect }) => {
   useOutsideClick(wrapRef, () => setIsOpen(false));
 
   return (
-    // <div className={cl.dropdown}>
-    <div className={cl.dropdown}>
+    <div>
       <button
         className={cl["dropdown-toggle"]}
         onClick={toggleMenu}

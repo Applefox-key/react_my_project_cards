@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import cl from "../Games.module.scss";
+
 import ModalCustom from "../../UI/ModalCustom/ModalCustom";
+
 import { getDifferences } from "../../../utils/texts";
 
 const WriteCardErrors = ({ setShowErrors, right, useranswer, quest }) => {

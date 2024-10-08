@@ -1,22 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
-
-import OneCardG from "../OneCardG";
-import cl from "../Games.module.scss";
-import { onlyLetters } from "../../../utils/texts";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
+
+import cl from "../Games.module.scss";
+
+import WriteCardAnswer from "./WriteCardAnswer";
+import WriteCardErrors from "./WriteCardErrors";
+import VoiceBtns from "../../UI/VoiceBtns";
+import OneCardG from "../OneCardG";
 import Hint from "../Hint";
 
+import { onlyLetters } from "../../../utils/texts";
 import ProbabilityList from "../ProbabilityList";
 import {
   addProbabilities,
   recount,
   saveTempResults,
 } from "../../../utils/gamesResults";
-import WriteCardAnswer from "./WriteCardAnswer";
-import VoiceBtns from "../../UI/VoiceBtns";
-import WriteCardErrors from "./WriteCardErrors";
 
 const WriteCardBodyEndless = ({ items }) => {
   const [num, setNum] = useState(0);

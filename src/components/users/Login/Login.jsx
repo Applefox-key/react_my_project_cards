@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import Logo from "../../Logo";
+
 import cl from "./login.module.scss";
+
+import Logo from "../../UI/Logo";
 import LoginBox from "./LoginBox";
 import SignUpBox from "./SignUpBox";
 import TextBlock from "../../AboutPage/TextBlock";
 import ForgotBox from "./ForgotBox";
+
 const Login = () => {
   const [loginMode, setLoginMode] = useState(1);
   return (

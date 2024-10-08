@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import BaseAPI from "../../../API/BaseAPI";
+import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
+
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import UserProfile from "./UserProfile";
+
 import { useQuery } from "../../../hooks/useQuery";
 import { usePopup } from "../../../hooks/usePopup";
 import { useAuth } from "../../../hooks/useAuth";
-import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
-import { CSSTransition } from "react-transition-group";
+import BaseAPI from "../../../API/BaseAPI";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);

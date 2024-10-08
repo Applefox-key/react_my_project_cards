@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { useGame } from "../../../hooks/useGame";
-import { usePopup } from "../../../hooks/usePopup";
-import BackBtn from "../../UI/BlackBtn/BackBtn";
-import PartBody from "./PartBody";
-import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import { useParams } from "react-router-dom";
-import { formatContentParts } from "../../../utils/games";
+
 import PartBodyEndless from "./PartBodyEndless";
 import SwitchEndlessBtn from "../../UI/BlackBtn/SwitchEndlessBtn";
 import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
+import BackBtn from "../../UI/BlackBtn/BackBtn";
+import PartBody from "./PartBody";
+import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
+
+import { useGame } from "../../../hooks/useGame";
+import { usePopup } from "../../../hooks/usePopup";
 import { saveResults } from "../../../utils/gamesResults";
+import { formatContentParts } from "../../../utils/games";
 
 const PartCard = () => {
   const setPopup = usePopup();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import cl from "./SpinningBtn.module.scss";
 import { CSSTransition } from "react-transition-group";
+import cl from "./SpinningBtn.module.scss";
 
 const SpinningBtn = ({ child, ico, elemId, title }) => {
   const [show, setShow] = useState(false);

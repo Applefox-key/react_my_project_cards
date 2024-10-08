@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import cl from "./aboutPage.module.scss";
+
 const TextBlock = ({ regBtn, isAuth = false, isLoginPage = false }) => {
   return (
     <div className={cl.text_container}>

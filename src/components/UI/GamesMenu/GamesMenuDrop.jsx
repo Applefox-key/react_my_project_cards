@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
-import cl from "./GamesMenu.module.scss";
-import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineModelTraining } from "react-icons/md";
+
+import cl from "./GamesMenu.module.scss";
+
 import { useOutsideClick } from "../../../hooks/useOutSideClick";
+import { gameMenuArr } from "../../../utils/games";
 
 const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,16 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useRef, useState } from "react";
-import OneCardG from "../OneCardG";
-import cl from "../Games.module.scss";
-import GameCount from "../GameCount";
-import { onlyLetters } from "../../../utils/texts";
-import Result from "../../UI/CARDS/Result";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
+
+import cl from "../Games.module.scss";
+
+import GameCount from "../GameCount";
+import OneCardG from "../OneCardG";
+import WriteCardAnswer from "./WriteCardAnswer";
+import Result from "../../UI/CARDS/Result";
 import Hint from "../Hint";
 import WriteCardErrors from "./WriteCardErrors";
 import VoiceBtns from "../../UI/VoiceBtns";
-import WriteCardAnswer from "./WriteCardAnswer";
+
+import { onlyLetters } from "../../../utils/texts";
 
 const WriteCardBody = ({ items, setItems }) => {
   const [mistakes, setMistackes] = useState([]);
@@ -135,12 +138,14 @@ const WriteCardBody = ({ items, setItems }) => {
                   cl.writeAnswer +
                   (flip ? (isError ? " wrongBack" : " rightBack") : "")
                 }>
-                <VoiceBtns textRef={textRef} disable={flip} />
-                {isError && (
-                  <button onClick={tryAgain} className={"roundBtn"}>
-                    Again
-                  </button>
-                )}
+                <div className={cl.voiceInputWrap}>
+                  <VoiceBtns textRef={textRef} disable={flip} />
+                  {isError && (
+                    <button onClick={tryAgain} className={"roundBtn"}>
+                      Again
+                    </button>
+                  )}
+                </div>
               </WriteCardAnswer>
             </div>
           </>

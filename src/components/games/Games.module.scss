@@ -532,6 +532,14 @@
   }
 }
 
+.voiceInputWrap {
+  @media screen and (max-width:900px) {
+    position: absolute;
+    top: -40px;
+    right: 60px;
+  }
+}
+
 .timemenu {
 
   display: flex;

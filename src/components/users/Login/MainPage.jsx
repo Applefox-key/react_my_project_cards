@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../Logo";
+import Logo from "../../UI/Logo";
 import AboutBox from "../../AboutPage/AboutBox";
 
 const MainPage = () => {

@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { LuCopyPlus } from "react-icons/lu";
-import { GO_TO } from "../../../router/routes";
 import { HiPrinter } from "react-icons/hi";
 import { RiArrowGoBackLine } from "react-icons/ri";
+
+import { GO_TO } from "../../../router/routes";
 
 const OnePbCollectionBtns = ({ collection, addToMyCollection }) => {
   const router = useNavigate();

@@ -1,9 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import BaseAPI from "../../../API/BaseAPI";
-import cl from "./login.module.scss";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+
+import cl from "./login.module.scss";
+
 import { isEmailValid } from "../../../utils/validation";
+import BaseAPI from "../../../API/BaseAPI";
 
 const ForgotBox = ({ setLoginMode }) => {
   const pageParam = useParams();

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import TestOptions from "./TestOptions";
+
 import cl from "../Games.module.scss";
-import { testAnswerCheck } from "../../../utils/games";
+
+import TestOptions from "./TestOptions";
 import Hint from "../Hint";
-import { useParams } from "react-router-dom";
 import OneCardG from "../OneCardG";
 import ProbabilityList from "../ProbabilityList";
+
+import { testAnswerCheck } from "../../../utils/games";
+import { useParams } from "react-router-dom";
 import {
   addProbabilities,
   recount,

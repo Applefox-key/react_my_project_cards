@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
+import { InputGroup } from "react-bootstrap";
+
+import cl from "./users.module.scss";
+
 import ProfileImg from "./ProfileImg";
 import ProfileText from "./ProfileText";
-import cl from "./users.module.scss";
+
 import { DEFAUL_USER_DATA } from "../../../constants/defaultSettings";
 import { updateStyles } from "../../../utils/userSettings";
-import { InputGroup } from "react-bootstrap";
 
 const UserProfile = ({ userData, onClick, btnName }) => {
   const [visible, setVisible] = useState(false);

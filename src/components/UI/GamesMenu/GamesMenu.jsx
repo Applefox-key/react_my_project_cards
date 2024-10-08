@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
-import { gameMenuArr } from "../../../utils/games";
 import { useNavigate } from "react-router-dom";
-import cl from "./GamesMenu.module.scss";
-import { MdOutlineModelTraining } from "react-icons/md";
 import { CSSTransition } from "react-transition-group";
+import { MdOutlineModelTraining } from "react-icons/md";
+
+import cl from "./GamesMenu.module.scss";
+
 import { useOutsideClick } from "../../../hooks/useOutSideClick";
+import { gameMenuArr } from "../../../utils/games";
 
 const GamesMenu = ({
   isBtnForm = false,

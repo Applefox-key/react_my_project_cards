@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import "../../styles/viewForms.scss";
-import { usePopup } from "../../hooks/usePopup";
-import BaseAPI from "../../API/BaseAPI";
-import BackMenuBtn from "../UI/tgb/BackMenuBtn";
-import { HiPlus } from "react-icons/hi";
-import CategoryManagerContent from "./CategoryManagerContent";
-import { GO_TO } from "../../router/routes";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { HiPlus } from "react-icons/hi";
+
+import "../../styles/viewForms.scss";
+
+import BackMenuBtn from "../UI/tgb/BackMenuBtn";
+import CategoryManagerContent from "./CategoryManagerContent";
 import CollectionPagePath from "../UI/CollectionPagePath";
+
+import { usePopup } from "../../hooks/usePopup";
+
+import BaseAPI from "../../API/BaseAPI";
+import { GO_TO } from "../../router/routes";
 
 const CategoriesManager = ({ isModal = false }) => {
   const [categoriesTbl, setCategoriesTbl] = useState([]);
@@ -91,7 +94,7 @@ const CategoriesManager = ({ isModal = false }) => {
     <div>
       {!isModal && (
         <div className="string_menu">
-          <div className="menufind">
+          <div className="menufind manager-menu">
             <CollectionPagePath list={arrPath} />
             <div>
               <button
