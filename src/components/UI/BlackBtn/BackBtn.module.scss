@@ -61,3 +61,149 @@
     margin-top: 2px;
   }
 }
+
+.btnVoice {
+  // position: absolute;
+  background-color: red;
+  // z-index: 4000;
+  height: 30px;
+  width: 4px;
+  min-width: 30px;
+
+
+  transition: 0.8s ease;
+  font-weight: bold;
+  // position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 40px;
+  z-index: 5;
+  font-size: 2rem;
+  border-radius: 50%;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Arial;
+  line-height: 2;
+  transition: all 0.5s ease;
+  background: var(--color-fill);
+  background-color: transparent;
+}
+
+.voice-mainBox {
+  position: relative;
+  width: 4rem;
+  z-index: 4000;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  top: -40px;
+  // left: 45%;
+
+
+  .voice-wrap {
+    position: absolute;
+    padding-right: 25px;
+
+    .langs {
+      z-index: 3500;
+      position: absolute;
+      right: 0px;
+      top: 5px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 15px;
+      transition: all 0.2s ease-in-out;
+      height: 30px;
+      background-color: var(--color-fill);
+
+      .lang,
+      .langElfalse,
+      .langEltrue {
+        z-index: 500;
+        // position: absolute;
+        // right: -15px;
+        // top: -15px;
+        border-radius: 50%;
+        border: 2px solid var(--color-fill);
+        height: 30px;
+        width: 30px;
+        background: var(--color-accent);
+        color: var(--color-nav);
+        transition: all 0.2s ease-in-out;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      p {
+        display: inline;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+      }
+
+      &:hover {
+        color: var(--color-bg-wrap);
+        box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
+      }
+
+
+    }
+
+
+    .btnVoice {
+
+      color: black;
+      color: var(--main-color);
+      color: var(--color-intense);
+
+      &:hover {
+        box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
+        // box-shadow: none;
+      }
+    }
+
+    .langs {
+      .langElfalse {
+        // display: none;
+        visibility: hidden;
+        display: flex;
+        height: 0;
+        scale: 0;
+        background-color: var(--back-first);
+        transition: all 0.4s ease-in-out;
+      }
+
+      .langEltrue {
+        display: flex;
+        background-color: var(--color-nav);
+        color: var(--color-fill);
+      }
+
+      &:hover {
+        .langElfalse {
+          scale: 1;
+          // display: flex;
+          visibility: visible;
+          height: 30px;
+        }
+      }
+    }
+
+
+  }
+
+  &:hover {
+    .voice-wrap .langs {
+      display: flex;
+      height: fit-content;
+    }
+  }
+}
