@@ -92,24 +92,17 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
                 setSettingsCommon={setSettingsCommon}
               />
             </div>
-            <div
-              className={
-                (isPublic && !!commonSettings.selectedCategorypub) ||
-                (!isPublic && !!commonSettings.selectedCategorymy)
-                  ? "active-border"
-                  : ""
-              }>
-              <FilterByCategory
-                onSelect={(val) =>
-                  setSettingsCommon(
-                    isPublic ? "selectedCategorypub" : "selectedCategorymy",
-                    val
-                  )
-                }
-                colCatPub={commonSettings.selectedCategorypub}
-                colCat={commonSettings.selectedCategorymy}
-              />
-            </div>
+
+            <FilterByCategory
+              onSelect={(val) =>
+                setSettingsCommon(
+                  isPublic ? "selectedCategorypub" : "selectedCategorymy",
+                  val
+                )
+              }
+              colCatPub={commonSettings.selectedCategorypub}
+              colCat={commonSettings.selectedCategorymy}
+            />
           </div>
 
           <div className="collect-btn-box">

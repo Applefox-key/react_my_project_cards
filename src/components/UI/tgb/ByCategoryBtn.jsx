@@ -7,7 +7,9 @@ const ByCategoryBtn = ({ ...props }) => {
   return (
     <button
       className={
-        !!props.commonSettings.byCategory ? "viewBtn checked" : "viewBtn"
+        !!props.commonSettings.byCategory
+          ? "viewBtn checked byCatBtn"
+          : "viewBtn byCatBtn"
       }
       data-title=" show by categories"
       onClick={() =>

@@ -14,7 +14,7 @@ const FilterByCategory = ({
   colCat = "",
   colCatPub = "",
   isPb = null,
-  isForFilter = true,
+  notFilter = false,
 }) => {
   const [isShow, setIsShow] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -85,15 +85,19 @@ const FilterByCategory = ({
       ),
     [searchTerm, categories]
   );
+
   return (
     <div className={cl.catSelect}>
       <div
-        className="catdropdown m-auto"
+        className={
+          "catdropdown m-auto" +
+          (!!selected && !notFilter ? " active-border" : "")
+        }
         onClick={() => setIsShow(!isShow)}
         ref={wrapRef}>
         {!!selected && !!selected.id
           ? selected.name
-          : isForFilter
+          : !notFilter
           ? "all categories"
           : "no category"}
 
@@ -108,9 +112,9 @@ const FilterByCategory = ({
       {isShow && (
         <div className={cl.catSelectList}>
           <div className={cl.firstSelect} onClick={() => onSelectItem(-1)}>
-            {isForFilter ? "all categories" : "no category"}
+            {!notFilter ? "all categories" : "no category"}
           </div>
-          {!isForFilter && (
+          {notFilter && (
             <div
               className={cl.firstSelect}
               value={-2}
@@ -121,7 +125,7 @@ const FilterByCategory = ({
           <div className={cl.searchInput} onClick={(e) => e.stopPropagation()}>
             <input
               type="text"
-              placeholder="Search category..."
+              placeholder="🔎 Search category..."
               value={searchTerm}
               onChange={handleSearch}
             />

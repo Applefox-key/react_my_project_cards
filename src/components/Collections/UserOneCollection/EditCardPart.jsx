@@ -104,7 +104,10 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
         <button className="btnPlus" onClick={changeClass}>
           <TfiZoomIn />
         </button>{" "}
-        <button className="btnPlus" onClick={format}>
+        <button
+          className="btnPlus"
+          onClick={format}
+          title="remove spaces, add dots and capital letters">
           <AiOutlineFontSize />
         </button>
       </div>

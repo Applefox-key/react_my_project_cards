@@ -139,6 +139,12 @@
     transition: all 0.4s ease-in-out;
     color: var(--white-black);
 
+    svg {
+        position: relative;
+        top: -2px;
+        left: 0px;
+    }
+
     &:hover {
         &::before {
             content: attr(data-title);

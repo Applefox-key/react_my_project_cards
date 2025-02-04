@@ -670,11 +670,14 @@ input {
   text-wrap: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  border: 1px solid var(--color-fill);
+  border-radius: 10px;
+  text-align: left;
 
   svg {
     position: absolute;
     right: 0px;
-    top: 3px;
+    top: 5px;
     transition: all 0.4s ease-in-out;
   }
 

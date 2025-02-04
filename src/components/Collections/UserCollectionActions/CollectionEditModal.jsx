@@ -78,13 +78,14 @@ const CollectionEditModal = ({
       return;
     }
   };
+
   return (
     <ModalCustom
       onHide={onHide ? onHide : (e) => setIsEdit(false)}
       showmodal
       setshowmodal={setIsEdit}
       size="lg"
-      fullscreen={!!inputFileName.current}
+      fullscreen={!!inputFileName.current && !!inputFileName.current.value}
       dialogClassName="modal-h100"
       title={"Collection's properties"}>
       <div className="d-flex flex-column justify-content-center  w-100">
@@ -118,7 +119,7 @@ const CollectionEditModal = ({
         <div className={isNew ? "" : "justify-content-end"}>
           <div className="select_wrap">
             <FilterByCategory
-              isForFilter={false}
+              notFilter
               onSelect={setCateg}
               colCat={{
                 id: category.id,
@@ -127,6 +128,7 @@ const CollectionEditModal = ({
             />{" "}
             {isNew && (
               <Form.Check
+                checked={fromFile}
                 className="fs-4"
                 id={`isfile`}
                 onChange={() => setFromFile(!fromFile)}
@@ -164,7 +166,7 @@ const CollectionEditModal = ({
                 </Button>
               </div>
             )}
-          </div>{" "}
+          </div>
         </div>
         {fromFile && (
           <div>

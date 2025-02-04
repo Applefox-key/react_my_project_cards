@@ -36,6 +36,18 @@
     margin-bottom: 3px;
   }
 
+  .byCatBtn {
+    border: none;
+    height: 25px;
+    margin: 0;
+
+    svg {
+
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+  }
 
   .checked {
     color: #ed666d;

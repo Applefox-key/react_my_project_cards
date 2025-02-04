@@ -38,9 +38,10 @@
             display: flex;
             flex-wrap: nowrap;
             position: relative;
+            padding: 0;
 
             input {
-                width: 90%;
+                width: 100%;
                 outline: none;
                 border: none;
                 background: transparent;
@@ -48,6 +49,10 @@
                 color: var(--color-bg-wrap);
                 font-size: 10px;
                 color: var(--background-intense);
+                background-color: var(--border-fill);
+                // &::placeholder {
+                //     font-style: italic;
+                // }
             }
 
             svg {

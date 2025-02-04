@@ -10,7 +10,6 @@ const VoiceBtns = ({ text }) => {
     voices.forEach((voice) => {
       if (!arrV.includes(voice.lang)) arrV.push(voice.lang);
     });
-    console.log(arrV);
 
     return arrV;
   }, []);
