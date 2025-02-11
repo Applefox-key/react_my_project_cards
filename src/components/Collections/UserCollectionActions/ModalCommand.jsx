@@ -9,14 +9,14 @@ const ModalCommand = ({ mod, setMod, colObj, setContent }) => {
     <div>
       {mod === "share" && (
         <CollectionDownload setVisible={setMod} colObj={colObj} />
-      )}{" "}
+      )}
       {mod === "list" && (
         <ModalPasteContent
           setVisible={setMod}
           setContent={setContent}
           pageParam={colObj}
         />
-      )}{" "}
+      )}
       {mod === "file" && (
         <ModalFileContent
           setVisible={setMod}

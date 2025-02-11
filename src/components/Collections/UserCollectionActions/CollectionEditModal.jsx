@@ -1,18 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
 
 import "../../../styles/collectMenu.scss";
-
-import ModalFileContentBtns from "../addContent/ModalFileContentBtns";
-import ContentFromFile from "../addContent/ContentFromFile";
 import FilterByCategory from "../../CategorySelection/FilterByCategory";
 import ModalCustom from "../../UI/ModalCustom/ModalCustom";
-
 import { usePopup } from "../../../hooks/usePopup";
-import { contentFromTxtFile } from "../../../utils/files";
 import { editCollectionHlp } from "../../../utils/editCollectionHlp";
+import FromFile from "../addContent/FromFile";
+import Popup from "../../UI/popup/Popup";
 
 const CollectionEditModal = ({
   collection = {},
@@ -22,7 +19,7 @@ const CollectionEditModal = ({
   changeAttr,
   setReorgMode = null,
 }) => {
-  const [content, setContent] = useState();
+  const [content, setContent] = useState(null);
   const [fromFile, setFromFile] = useState(false);
   const [newName, setNewName] = useState(collection ? collection.name : "");
   const [newNote, setNote] = useState(collection ? collection.note : "");
@@ -66,18 +63,6 @@ const CollectionEditModal = ({
       name: cat === "" ? "" : cat.name,
     });
   };
-  const inputFileName = useRef();
-
-  const FileChange = async (e) => {
-    try {
-      await contentFromTxtFile(e.target.files[0], setContent);
-      setNewName(e.target.files[0].name.replace(".txt", ""));
-    } catch (error) {
-      inputFileName.current.value = "";
-      setPopup.error(error.message);
-      return;
-    }
-  };
 
   return (
     <ModalCustom
@@ -85,11 +70,12 @@ const CollectionEditModal = ({
       showmodal
       setshowmodal={setIsEdit}
       size="lg"
-      fullscreen={!!inputFileName.current && !!inputFileName.current.value}
+      fullscreen={fromFile}
       dialogClassName="modal-h100"
       title={"Collection's properties"}>
       <div className="d-flex flex-column justify-content-center  w-100">
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
+          <Popup />
           <div className="input_with_lable mt-4">
             <label htmlFor="i_name" className="lable">
               title:
@@ -117,7 +103,7 @@ const CollectionEditModal = ({
           </div>
         </div>{" "}
         <div className={isNew ? "" : "justify-content-end"}>
-          <div className="select_wrap">
+          <div className="select_wrap pe-3 ps-3">
             <FilterByCategory
               notFilter
               onSelect={setCateg}
@@ -131,56 +117,58 @@ const CollectionEditModal = ({
                 checked={fromFile}
                 className="fs-4"
                 id={`isfile`}
-                onChange={() => setFromFile(!fromFile)}
+                onChange={() => {
+                  if (fromFile) setContent(null);
+                  setFromFile(!fromFile);
+                }}
                 label={`import from file`}
               />
             )}
-            {!fromFile && (
-              <div className="edit_btn_menu">
-                {!isNew && setReorgMode !== null && (
-                  <Button
-                    size="lg"
-                    variant="light"
-                    disabled={!newName && isNew}
-                    onClick={() => {
-                      setReorgMode(true);
-                      setIsEdit(false);
-                    }}>
-                    ORGANIZE
-                  </Button>
-                )}
+            {/* {!fromFile && ( */}
+            <div className="edit_btn_menu">
+              {!fromFile && !isNew && setReorgMode !== null && (
                 <Button
                   size="lg"
                   variant="light"
                   disabled={!newName && isNew}
-                  onClick={saveChanges}>
-                  SAVE CHANGES
-                </Button>
-                <Button
-                  size="lg"
-                  variant="light"
-                  onClick={(e) => {
+                  onClick={() => {
+                    setReorgMode(true);
                     setIsEdit(false);
                   }}>
-                  CANCEL
+                  ORGANIZE
                 </Button>
-              </div>
-            )}
+              )}
+              <Button
+                size="lg"
+                variant="light"
+                disabled={fromFile && !newName && isNew}
+                onClick={saveChanges}>
+                SAVE CHANGES
+              </Button>
+              <Button
+                size="lg"
+                // disabled={fromFile}
+                variant="light"
+                onClick={(e) => {
+                  setIsEdit(false);
+                }}>
+                CLOSE
+              </Button>
+            </div>
+            {/* )} */}
           </div>
         </div>
         {fromFile && (
-          <div>
-            <ModalFileContentBtns
-              inputFileName={inputFileName}
-              FileChange={FileChange}
-            />
-            {!!inputFileName.current && (
-              <ContentFromFile
-                fileContent={content}
-                addToColection={saveChanges}
-              />
-            )}
-          </div>
+          <FromFile
+            content={content}
+            setContent={setContent}
+            saveChanges={saveChanges}
+            setNewName={setNewName}
+            cancel={() => {
+              setContent(null);
+              setFromFile(false);
+            }}
+          />
         )}
       </div>
     </ModalCustom>

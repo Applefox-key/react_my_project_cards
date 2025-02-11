@@ -1,6 +1,7 @@
 @import 'animate.css';
 
-.dropdown-toggle {
+.dropdown-toggle,
+.dropdown-toggle-menu {
     position: relative;
     border: none;
     width: 10rem;
@@ -14,8 +15,7 @@
 
         background-color: var(--color-fill);
         border: 0.5px solid var(--border-fill);
-
-
+        // color: var(--border-fill)
     }
 
     svg {
@@ -25,6 +25,23 @@
 
 
 
+    }
+}
+
+.dropdown-toggle-menu {
+
+
+    text-transform: uppercase;
+    border: 0.5px solid var(--border-fill);
+    background-color: var(--color-fill);
+    color: var(--color-menuG);
+    font-weight: 700;
+
+    &:hover {
+        background: var(--background-nav);
+        color: white;
+
+        border: 0.5px solid var(--border-fill);
     }
 }
 

@@ -1,49 +1,43 @@
 import { parseExcel } from "./readXls";
 
-export const contentFromTxtFile = async (file, callbackForResult) => {
-  if (!file) throw new Error("no file selected");
-
-  if (
-    file.type ===
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-  ) {
-    try {
-      let data = await parseExcel(file);
-      callbackForResult(data);
-      // return data;
-    } catch (error) {}
-  }
-
-  if (file.type !== "text/plain") throw new Error("wrong file type");
-  const text = await file.text();
+const parseCSV = (csvText) => {
+  const rows = csvText.split("\n");
+  return rows.map((row) => row.replace(/^"|"$/g, "").split('","'));
+};
+const parseTxt = (text) => {
   const contArr = text.split(/[\r\n]/).filter((item) => item.trim());
-  const expressionArr = contArr.map((row) => {
-    let [s1, s2, t] = row.replace("  ", " ").split(";");
-    return {
-      question: s1 ? s1 : "",
-      answer: s2 ? s2 : "",
-      note: t ? t : "",
-      imgA: "",
-      imgQ: "",
-    };
-  });
 
-  callbackForResult(expressionArr);
+  return contArr.map((row) => {
+    let [s1, s2, t] = row.replace("  ", " ").split(";");
+    return [s1, s2, t];
+  });
 };
 
-export const expressionsFromTxtFile = async (file, callbackForResult) => {
+export const contentFromFile = async (file) => {
   if (!file) throw new Error("no file selected");
+  let parsedData;
+  switch (file.type) {
+    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+      try {
+        parsedData = await parseExcel(file);
+      } catch (error) {
+        throw new Error("Error parsing Excel file");
+      }
+      break;
+    case "text/csv":
+      parsedData = parseCSV(await file.text());
+      break;
+    case "text/plain":
+      parsedData = parseTxt(await file.text());
+      break;
 
-  if (file.type !== "text/plain") throw new Error("wrong file type");
-
-  const text = await file.text();
-  const contArr = text.split(/\r/).filter((item) => item.trim());
-  const expressionArr = contArr.map((row) => {
-    let [w, s] = row.replace("  ", " ").split(";");
-    return { expression: w ? w : "", phrase: s ? s : "" };
-  });
-
-  callbackForResult(expressionArr);
+    default:
+      throw new Error("wrong file type");
+  }
+  parsedData = parsedData.filter(
+    (item) => item.filter((value) => value !== "").length >= 2
+  );
+  return parsedData;
 };
 
 const valueOrEmpty = (val) => (val ? val + ";" : "");
