@@ -36,13 +36,15 @@ const MyCard = ({ mode = "0", ...props }) => {
             onClick={() => {
               if (!props.nonclickable) setFlipped(!flipped);
             }}>
-            <VoiceBtns
-              text={
-                flipped + mode === "false0" || flipped + mode === "true1"
-                  ? props.item.question
-                  : props.item.answer
-              }
-            />
+            {!props.noSound && (
+              <VoiceBtns
+                text={
+                  flipped + mode === "false0" || flipped + mode === "true1"
+                    ? props.item.question
+                    : props.item.answer
+                }
+              />
+            )}
             <CSSTransition in={!flipped} timeout={1000} classNames="cardFront">
               {mainAndImg("front", mode, props.item, cl)}
             </CSSTransition>

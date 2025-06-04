@@ -122,6 +122,7 @@ const WriteCardBody = ({ items, setItems }) => {
               <div className={cl.cardSize}>
                 <OneCardG
                   anim={anim}
+                  noSound
                   item={items[num]}
                   flip={flip}
                   nonclickable

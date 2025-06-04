@@ -129,6 +129,7 @@ const PartBody = ({ items, setItems }) => {
                     nonclickable
                     onlyFront
                     rightBtn={rightBtn}
+                    noSound
                   />
                   <PartAnswer
                     item={items[num]}

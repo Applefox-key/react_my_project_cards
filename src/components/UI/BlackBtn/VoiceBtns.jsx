@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import cl from "./BackBtn.module.scss";
+
 const VoiceBtns = ({ text }) => {
   const [lang, setLang] = useState("en-US");
   const langArr = useMemo(() => {

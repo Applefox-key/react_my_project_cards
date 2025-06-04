@@ -92,6 +92,7 @@ const PartBodyEndless = ({ items }) => {
                 <OneCardG
                   item={allItems[num].item}
                   nonclickable
+                  noSound
                   progr={
                     allItems[num].probability === 1
                       ? 100

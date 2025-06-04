@@ -101,7 +101,7 @@ const TimeCardBody = ({ items }) => {
             />
           </div>
           <div className="m-auto ">
-            <OneCardG anim={anim} item={items[num]} flip={flip} />
+            <OneCardG noSound anim={anim} item={items[num]} flip={flip} />
           </div>
         </>
       )}

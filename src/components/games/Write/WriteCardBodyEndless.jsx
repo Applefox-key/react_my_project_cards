@@ -125,6 +125,7 @@ const WriteCardBodyEndless = ({ items }) => {
             <div className={cl["game-field"]}>
               <div className={cl.cardSize}>
                 <OneCardG
+                  noSound
                   anim={anim}
                   item={allItems[num]}
                   flip={flip}
