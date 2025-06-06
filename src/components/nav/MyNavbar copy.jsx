@@ -20,7 +20,9 @@ const MyNavbar = () => {
     setUserAuth({ isAuth: false, role: null });
     router("/login");
   };
-
+  const headerBig =
+    window.location.pathname.includes("home") ||
+    window.location.pathname.includes("about");
   const isHideNav =
     window.location.pathname.includes("/play_") ||
     window.location.pathname.includes("/print/") ||
@@ -30,15 +32,23 @@ const MyNavbar = () => {
 
   return (
     <div className={[cl.topNav]}>
+      {<ThemeSwitch isPlay={isHideNav} />}
+
       {!isHideNav && (
         <>
-          <div className={cl.line1}>
-            <div className={cl.headerLogo}>
-              <Link to="/home">{<h1>FlashMinds </h1>}</Link>
-            </div>
+          <div className={headerBig ? cl.headerNav : cl.headerNavSmall}>
+            <h1>FlashMinds </h1>
+            {headerBig && <span> Master Your Knowledge with Flashcards</span>}
+          </div>
+          <div className={[cl.navWrap].join(" ")}>
+            <Popup />
+            <NavMenu userRoutes={userRoutes} userAuth={userAuth} />
 
             {userAuth.isAuth ? (
-              <MyNavUserImg logout={logout} />
+              <div className="d-flex">
+                {!isPlaylist && <FilterLS filter="" setFilter={() => {}} />}
+                <MyNavUserImg logout={logout} />{" "}
+              </div>
             ) : (
               <Link
                 to={"./login"}
@@ -49,29 +59,9 @@ const MyNavbar = () => {
                 LOGIN
               </Link>
             )}
-            {<ThemeSwitch isPlay={isHideNav} />}
-          </div>
-
-          <div className={[cl.navWrap].join(" ")}>
-            <Popup />
-            <NavMenu userRoutes={userRoutes} userAuth={userAuth} />
-            {/* className={cl.leftnav} */}
-            <div className={cl.rightB}>
-              <Link
-                to={"./about"}
-                className={
-                  window.location.pathname.includes("about") ? cl.active : ""
-                }>
-                FAQ
-              </Link>{" "}
-              {userAuth.isAuth && !isPlaylist && (
-                <FilterLS filter="" setFilter={() => {}} />
-              )}
-            </div>
           </div>
         </>
       )}
-      {isHideNav && <ThemeSwitch isPlay={isHideNav} />}
     </div>
   );
 };

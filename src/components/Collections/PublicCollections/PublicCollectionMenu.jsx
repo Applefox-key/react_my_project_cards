@@ -37,35 +37,39 @@ const PublicCollectionMenu = (props) => {
     return res;
   })();
   return (
-    <div className="string_menu">
-      <div className="menufind">
+    <div className="sticky-top">
+      <div className="string_menu string-bread">
         <div className="name-collect">
           <CollectionPagePath list={arrPath} />
         </div>
-        <div className="view-settings width150">
-          <GamesMenu cardSet={props.collection} isBtnForm isVertical />
-          <ToggleView
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={props.setMode}
-          />
-          <SortMenu
-            fields={[
-              { value: "question", label: "Questions" },
-              { value: "answer", label: "Answers" },
-            ]}
-            onSelect={props.sortContent}
-          />
-        </div>
-        <div className="one-collect-btn-box">
-          <OnePbCollectionBtns
-            collection={props.collection}
-            addToMyCollection={props.addToMyCollection}
-          />
+        {props.collection.note
+          ? "About collection: " + props.collection.note
+          : ""}
+      </div>
+      <div className="string_menu">
+        <div className="menufind">
+          <div className="one-collect-btn-box">
+            <OnePbCollectionBtns
+              collection={props.collection}
+              addToMyCollection={props.addToMyCollection}
+            />
+          </div>{" "}
+          <div className="view-settings width150">
+            <GamesMenu cardSet={props.collection} isBtnForm isVertical />
+            <ToggleView
+              checked={window.location.hash === "#1" ? 1 : 0}
+              onChange={props.setMode}
+            />
+            <SortMenu
+              fields={[
+                { value: "question", label: "Questions" },
+                { value: "answer", label: "Answers" },
+              ]}
+              onSelect={props.sortContent}
+            />
+          </div>
         </div>
       </div>
-      {props.collection.note
-        ? "About collection: " + props.collection.note
-        : ""}
     </div>
   );
 };

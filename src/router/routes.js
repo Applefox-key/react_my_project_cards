@@ -51,8 +51,9 @@ export const publicRoutes = [
 ];
 
 export const privateRoutes = [
-  { path: "/home", element: <Home />, nameNav: "Home" },
-  { path: "/about", element: <FAQPage />, nameNav: "FAQ" },
+  // { path: "/home", element: <Home />, nameNav: "Home" },
+  { path: "/home", element: <Home /> },
+  { path: "/about", element: <FAQPage /> },
   {
     path: "/*",
     element: <Collections />,

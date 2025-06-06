@@ -431,6 +431,7 @@ const BaseAPI = {
       email: login,
       password: passw.toString(),
     };
+
     let result = await this.serverReq("post", "/users/login", false, reqData);
     if (result.error) throw new Error(result.error);
     if (!result.token) throw new Error("no new session");
@@ -454,7 +455,7 @@ const BaseAPI = {
       let img = await fbHelpers.setImgToStorage(ud.id, ud.file);
       reqData = { ...ud, img: img };
     }
-    let formData = userRequestData(ud);
+    let formData = userRequestData(reqData);
     return await this.serverReq("patch", "/users", true, reqData, "", formData);
   },
   async sendMailResetToken(login) {

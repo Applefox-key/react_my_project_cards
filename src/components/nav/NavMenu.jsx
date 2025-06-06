@@ -33,7 +33,7 @@ const NavMenu = ({ userRoutes, userAuth }) => {
     [userAuth]
   );
   return (
-    <div className={cl.leftnav}>
+    <>
       {navArr.map((item, i) =>
         item.hasOwnProperty("groupMenu") ? (
           <MyNavSubmenu
@@ -54,7 +54,7 @@ const NavMenu = ({ userRoutes, userAuth }) => {
           </Link>
         )
       )}
-    </div>
+    </>
   );
 };
 

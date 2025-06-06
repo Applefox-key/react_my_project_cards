@@ -10,7 +10,7 @@ const FilterLS = () => {
   const { filterG, setFilterG } = useFilter();
   // const [value, setValue] = useState(filterG);
   const [value, setValue] = useState(filterG || "");
-  const [ishide, setIsHide] = useState(true);
+  // const [ishide, setIsHide] = useState(defaultHide);
   useEffect(() => {
     setValue(filterG);
   }, [filterG]);
@@ -21,21 +21,21 @@ const FilterLS = () => {
   };
   const showHide = (e) => {
     e.stopPropagation();
-    if (ishide) {
-      setValue("");
-    }
+    // if (ishide) {
+    //   setValue("");
+    // }
 
-    if (ishide && window.screen.availWidth <= 900) {
+    if (window.screen.availWidth <= 600) {
       const textInp = prompt("what do you want to find?", "");
       if (textInp) setFilterG(textInp);
       return;
     }
 
-    setIsHide(!ishide);
+    // setIsHide(!ishide);
   };
 
   return (
-    <div className={ishide ? cl.short : "position-relative"}>
+    <div className={cl.short}>
       <div className={cl.mainbox}>
         <div className={cl.icon} onClick={showHide}>
           <FcSearch />

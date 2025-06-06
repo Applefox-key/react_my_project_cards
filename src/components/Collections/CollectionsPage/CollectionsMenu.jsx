@@ -66,8 +66,68 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
   ]);
 
   return (
-    <>
+    <div className="sticky-top">
+      {" "}
+      <div className="string_menu string-bread">
+        {" "}
+        <div className="collect-path-box">
+          <CollectionPagePath list={arrPath} />
+        </div>
+        <div>
+          {" "}
+          {fragment_SearchingTips(
+            commonSettings,
+            privateSettings,
+            setSettingsCommon,
+            setSettingsPrivat
+          )}
+        </div>
+      </div>
       <div className="string_menu">
+        <div className="collect-btn-box">
+          {!isPublic && (
+            <UsersCollectionsBtn
+              commonSettings={commonSettings}
+              privateSettings={privateSettings}
+              setSettingsPrivat={setSettingsPrivat}
+            />
+          )}
+          <BackMenuBtn />
+        </div>
+        <div className="view-settings">
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={viewmodeChange}
+          />
+
+          <SortMenu
+            fields={[
+              { value: "name", label: "Name" },
+              { value: "category", label: "Category" },
+            ]}
+            onSelect={sortContent}
+          />
+          <div className="buttonBox">
+            <ByCategoryBtn
+              className="viewBtn"
+              commonSettings={commonSettings}
+              setSettingsCommon={setSettingsCommon}
+            />
+          </div>
+
+          <FilterByCategory
+            onSelect={(val) =>
+              setSettingsCommon(
+                isPublic ? "selectedCategorypub" : "selectedCategorymy",
+                val
+              )
+            }
+            colCatPub={commonSettings.selectedCategorypub}
+            colCat={commonSettings.selectedCategorymy}
+          />
+        </div>
+      </div>{" "}
+      {/* <div className="string_menu">
         <div className="menufind">
           <div className="collect-path-box">
             <CollectionPagePath list={arrPath} />
@@ -116,14 +176,14 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
             <BackMenuBtn />
           </div>
         </div>
-      </div>{" "}
-      {fragment_SearchingTips(
+      </div> */}
+      {/* {fragment_SearchingTips(
         commonSettings,
         privateSettings,
         setSettingsCommon,
         setSettingsPrivat
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 

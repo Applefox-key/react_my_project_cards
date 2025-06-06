@@ -40,6 +40,10 @@
         padding: 0;
         justify-content: flex-start;
         max-width: unset;
+        color: white;
+        background-color: var(--color-rate);
+        padding: 0 2px;
+        border: 1px solid var(--background-nav);
 
         .ico {
             font-size: 14px;
@@ -50,12 +54,17 @@
         }
 
         &:hover {
-            background-color: var(--back-menu);
-            background-color: var(--color-fill);
+
+            // background-color: var(--color-fill);
             border: 0.5px solid var(--border-fill);
             z-index: 1101;
             // color: white;
             border-radius: 5px;
+
+            // color: var(--color-bg-wrap);
+            .ico {
+                color: yellow
+            }
         }
     }
 
@@ -63,7 +72,7 @@
         @extend .games-menu-btn;
         width: 145px;
         max-width: 145px;
-        background-color: var(--back-menu);
+
         background-color: var(--color-fill);
         border-radius: 5px;
         border: 1px solid var(--color-intense);
@@ -72,7 +81,7 @@
         justify-content: flex-start;
         // color: white;
 
-
+        color: var(--color-menuG);
 
         .ico {
             color: yellow;

@@ -138,6 +138,7 @@
     margin-right: 10px;
     transition: all 0.4s ease-in-out;
     color: var(--white-black);
+    z-index: inherit;
 
     svg {
         position: relative;
@@ -146,7 +147,7 @@
     }
 
     &:hover {
-        &::before {
+        &::after {
             content: attr(data-title);
             width: fit-content;
             white-space: nowrap;
@@ -157,7 +158,7 @@
             border-radius: 5px;
             font-size: 9px;
             position: absolute;
-            bottom: -20px;
+            bottom: -10px;
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             animation: fadeOut 4s forwards;
             z-index: 2000;

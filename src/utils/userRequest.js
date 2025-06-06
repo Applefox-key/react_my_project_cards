@@ -11,6 +11,7 @@ export const userRequestData = (userData) => {
       formData.append(`data[${key}]`, JSON.stringify(userData[key]));
     else formData.append(`data[${key}]`, userData[key]);
   });
+
   return formData;
 };
 

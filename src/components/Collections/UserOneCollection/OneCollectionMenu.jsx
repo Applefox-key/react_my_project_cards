@@ -77,53 +77,56 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
   }, [collection, content.length, toLibrary, toCollections, toCat]);
 
   return (
-    <div className="string_menu">
-      {renameMode && (
-        <CollectionEditModal
-          setIsEdit={setRenameMode}
-          {...{ collection, changeAttr, setReorgMode }}
-        />
-      )}
-
-      <div className="menufind">
+    <div className="sticky-top">
+      <div className="string_menu string-bread">
         <div className="name-collect">
           <CollectionPagePath list={arrPath} />
-        </div>
-        <div className="view-settings width150">
-          <div className="playmenu">
-            <GamesMenu cardSet={collection} isBtnForm isVertical />
-          </div>
-          <ToggleView
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={setMode}
-          />
-          <SortMenu
-            fields={[
-              { value: "question", label: "Questions" },
-              { value: "answer", label: "Answers" },
-            ]}
-            onSelect={sortContent}
-          />
-        </div>
-        <div className="one-collect-btn-box">
-          <button
-            data-title="Collections settings"
-            className="viewBtn"
-            onClick={() => setRenameMode(true)}>
-            <span>
-              <FiSettings />
-            </span>
-          </button>
-          <OneCollectionBtns
-            colObj={{ collection: collection, content: content }}
-            setContent={setContent}
-          />
+        </div>{" "}
+        <div>
+          {collection.note && (
+            <div className="note">{"About collection: " + collection.note}</div>
+          )}
         </div>
       </div>
-      <div>
-        {collection.note && (
-          <div className="note">{"About collection: " + collection.note}</div>
+      <div className="string_menu">
+        {renameMode && (
+          <CollectionEditModal
+            setIsEdit={setRenameMode}
+            {...{ collection, changeAttr, setReorgMode }}
+          />
         )}
+        <div className="menufind">
+          <div className="one-collect-btn-box">
+            <button
+              data-title="Collections settings"
+              className="viewBtn"
+              onClick={() => setRenameMode(true)}>
+              <span>
+                <FiSettings />
+              </span>
+            </button>
+            <OneCollectionBtns
+              colObj={{ collection: collection, content: content }}
+              setContent={setContent}
+            />
+          </div>{" "}
+          <div className="view-settings width150">
+            <div className="playmenu">
+              <GamesMenu cardSet={collection} isBtnForm isVertical />
+            </div>
+            <ToggleView
+              checked={window.location.hash === "#1" ? 1 : 0}
+              onChange={setMode}
+            />
+            <SortMenu
+              fields={[
+                { value: "question", label: "Questions" },
+                { value: "answer", label: "Answers" },
+              ]}
+              onSelect={sortContent}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

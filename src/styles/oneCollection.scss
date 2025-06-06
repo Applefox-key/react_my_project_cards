@@ -813,9 +813,9 @@
         font-weight: 600;
         color: var(--color-bg-wrap);
 
-        &:hover {
-            cursor: pointer
-        }
+        // &:hover {
+        //     cursor: pointer
+        // }
 
         &::placeholder {
             color: var(--color-fill);
