@@ -3,3 +3,5 @@
 # dependencies
 /node_modules
 /trash
+/android
+/capacitor.config.ts

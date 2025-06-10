@@ -33,7 +33,6 @@ const UserItemCardView = () => {
           <div>
             <Rate
               initialValue={item.rate}
-              isEditable
               action={(newRate) => updRates(item, newRate)}
             />
           </div>

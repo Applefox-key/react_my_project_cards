@@ -92,7 +92,7 @@ const ContentCards = ({ content, setContent, pageParam }) => {
           {onePartLittle(el, "answer")}
           {el.hasOwnProperty("rate") && (
             <div className="rate">
-              <Rate initialValue={el.rate} />
+              <Rate initialValue={el.rate} isSmall />
             </div>
           )}
         </div>

@@ -455,6 +455,8 @@ const BaseAPI = {
       let img = await fbHelpers.setImgToStorage(ud.id, ud.file);
       reqData = { ...ud, img: img };
     }
+    delete reqData.file;
+
     let formData = userRequestData(reqData);
     return await this.serverReq("patch", "/users", true, reqData, "", formData);
   },

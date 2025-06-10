@@ -90,7 +90,6 @@ const CardsGallery = () => {
             <Rate
               key={itemNum}
               initialValue={items[itemNum].rate}
-              isEditable
               action={(newRate) => updRates(items[itemNum], newRate)}
             />
           )}
