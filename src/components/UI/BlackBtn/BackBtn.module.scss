@@ -37,9 +37,9 @@
   position: relative;
   margin: 0 5px;
   border: none;
-  // border: 1px solid var(--contrast-text);
-  background: var(--color-fill);
-  color: var(--color-intense);
+
+  background: var(--background-second);
+  color: var(--main-color-int);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   min-width: 9rem;
@@ -51,7 +51,7 @@
 
 
   &:hover {
-    background-color: var(--color-nav);
+    background-color: var(--wrap-color);
     color: white;
 
 
@@ -87,7 +87,7 @@
   font-family: Arial;
   line-height: 2;
   transition: all 0.5s ease;
-  background: var(--color-fill);
+  background: var(--background-second);
   background-color: transparent;
 }
 
@@ -111,8 +111,8 @@
 
       .langEltrue {
         scale: 0.8;
-        background-color: var(--color-fill);
-        color: var(--color-nav);
+        background-color: var(--background-second);
+        color: var(--wrap-color);
       }
     }
   }
@@ -138,7 +138,7 @@
     background-attachment: fixed;
     // box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     opacity: 0.95;
-    background-color: var(--color-fill);
+    background-color: var(--background-second);
     background: transparent;
 
     // background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0) 100%);
@@ -152,11 +152,11 @@
       // right: -15px;
       // top: -15px;
       border-radius: 50%;
-      border: 2px solid var(--color-fill);
+      border: 2px solid var(--background-second);
       height: 30px;
       width: 40px;
       background: var(--color-accent);
-      color: var(--color-nav);
+      color: var(--wrap-color);
       transition: all 0.2s ease-in-out;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
       display: none;
@@ -176,8 +176,8 @@
 
     .langEltrue {
       display: flex;
-      background-color: var(--color-nav);
-      color: var(--color-fill);
+      background-color: var(--wrap-color);
+      color: var(--background-second);
     }
 
     p {
@@ -190,7 +190,7 @@
     }
 
     &:hover {
-      color: var(--color-bg-wrap);
+      color: var(--wrap-color);
       box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
 
 
@@ -204,7 +204,7 @@
       width: 150px;
       padding: 5px;
       overflow-y: auto;
-      background-color: var(--color-fill);
+      background-color: var(--background-second);
       opacity: 1;
 
       .langElfalse {
@@ -216,8 +216,8 @@
         transition: all 0.1s ease-in-out;
 
         &:hover {
-          background-color: var(--color-nav);
-          color: var(--color-fill);
+          background-color: var(--wrap-color);
+          color: var(--background-second);
           opacity: 0.7;
 
         }
@@ -225,8 +225,8 @@
 
       .langEltrue {
         scale: 1;
-        background-color: var(--color-nav);
-        color: var(--color-fill);
+        background-color: var(--wrap-color);
+        color: var(--background-second);
       }
     }
 
@@ -238,55 +238,11 @@
 
     color: black;
     color: var(--main-color);
-    color: var(--color-intense);
+    color: var(--main-color-int);
 
     &:hover {
       box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5), -4px -4px 6px 0 rgba(116, 125, 136, 0.5), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
       // box-shadow: none;
     }
   }
-
-  // .langs {
-  //   flex-wrap: wrap;
-
-
-  //   .langElfalse {
-  //     display: none;
-  //     visibility: hidden;
-  //     // display: flex;
-  //     height: 0;
-  //     scale: 0;
-  //     background-color: var(--back-first);
-  //     transition: all 0.4s ease-in-out;
-  //   }
-
-  //   .langEltrue {
-  //     display: flex;
-  //     background-color: var(--color-nav);
-  //     color: var(--color-fill);
-  //   }
-
-  //   &:hover {
-  //     .langElfalse {
-  //       scale: 1;
-  //       // display: flex;
-  //       visibility: visible;
-  //       height: 30px;
-  //       display: flex;
-  //       transition: all 0.1s ease-in-out;
-
-  //       &:hover {
-  //         background-color: var(--color-nav);
-  //         color: var(--color-fill);
-  //         opacity: 0.7;
-
-  //       }
-  //     }
-  //   }
-  // }
-
-
-  // }
-
-
 }

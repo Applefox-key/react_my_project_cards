@@ -28,7 +28,7 @@
         padding: 10px 0;
         padding-top: 0;
         z-index: 2000;
-        color: var(--color-nav);
+        color: var(--wrap-color);
         height: 300px;
         overflow-y: auto;
         border-radius: 5px;
@@ -46,9 +46,8 @@
                 border: none;
                 background: transparent;
                 margin: 0;
-                color: var(--color-bg-wrap);
                 font-size: 10px;
-                color: var(--background-intense);
+                color: var(--wrap-color-int);
                 background-color: var(--border-fill);
                 // &::placeholder {
                 //     font-style: italic;
@@ -63,13 +62,13 @@
                 top: -2px;
 
                 &:hover {
-                    color: var(--background-intense)
+                    color: var(--wrap-color-int)
                 }
             }
 
             &:hover {
                 background-color: transparent;
-                color: var(--background-intense)
+                color: var(--wrap-color-int)
             }
 
         }
@@ -88,8 +87,8 @@
             padding: 5px 10px;
 
             &:hover {
-                background-color: var(--color-fill);
-                color: var(--color-nav);
+                background-color: var(--background-second);
+                color: var(--wrap-color);
             }
         }
     }
@@ -100,16 +99,16 @@
         left: 5px;
         font-size: 8px;
         padding: 0 2px 0px 2px;
-        background-color: var(--background-wrap);
+        background-color: var(--wrap-back);
         border-radius: 3px 3px 0 0;
-        color: var(--color-bg-wrap);
+        color: var(--wrap-color);
         font-family: Roboto, Helvetica, Arial, sans-serif;
         font-weight: 400;
         font-size: 0.8rem;
     }
 
     option :hover {
-        background-color: var(--color-fill);
+        background-color: var(--background-second);
     }
 
 
@@ -146,7 +145,7 @@
 }
 
 .firstSelect {
-    background-color: var(--color-nav);
+    background-color: var(--wrap-color);
     color: white;
 }
 
@@ -164,8 +163,8 @@
         margin-left: 5px;
         width: fit-content;
         transition: all 0.2s ease-in-out;
-        background-color: var(--background-wrap);
-        color: var(--color-bg-wrap);
+        background-color: var(--wrap-back);
+        color: var(--wrap-color);
         // ms-3 fs-2 mt-2 fst-italic
         margin-left: 1.5rem;
         font-size: 11px;
@@ -174,8 +173,8 @@
     }
 
     .cat-row {
-        background-color: var(--background-wrap);
-        color: var(--color-bg-wrap);
+        background-color: var(--wrap-back);
+        color: var(--wrap-color);
         // margin: 20px;
         width: 100%;
         min-width: 260px;
@@ -199,7 +198,7 @@
         //     border-radius: 10px;
         //     transition: all 0.4s ease-in-out;
         //     background-color: var(--background-first);
-        //     color: var(--color-bg-wrap);
+        //     color: var(--wrap-color);
         //     cursor: pointer;
         //     font-size: 12px;
         //     width: 2rem;
@@ -228,7 +227,7 @@
             font-weight: 500;
             border-bottom: 0.5px solid var(--border-fill);
             BACKGROUND: var(--background-first);
-            COLOR: var(--color-bg-wrap);
+            COLOR: var(--wrap-color);
             opacity: 0.8;
             margin-bottom: 5px;
             padding: 5px 5px;
@@ -248,7 +247,6 @@
                 margin-right: 5px;
             }
 
-            // color: var(--color-text);
         }
 
         input {
@@ -256,22 +254,20 @@
             outline: none;
             width: 100%;
             color: var(--color-checked);
-            background-color: var(--color-fill);
+            background-color: var(--background-second);
 
             &:focus {
                 border: none;
                 outline: none;
                 border-radius: 5px;
-                color: (--background-intense);
+                color: (--wrap-color-int);
             }
         }
 
         &:hover {
-
-            // background-color: var(--color-fill);
             .cat-header {
 
-                background-color: var(--color-fill);
+                background-color: var(--background-second);
             }
 
             .hidenBtn {
@@ -281,158 +277,12 @@
 
         .listBody {
 
-            // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-            // width: 100%;
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: flex-start;
-            // align-items: flex-start;
-            // height: 80%;
-            // overflow-x: hidden;
-            // scrollbar-color: var(--color-bg-wrap) var(--background-header);
+
             display: none;
 
-            // .listItem {
-            //     width: 100%;
-            //     position: relative;
-            //     // background-color: var(--background-first);
-            //     color: var(--color-bg-wrap);
-            //     padding: 1px;
-            //     padding-left: 5px;
-            //     text-align: start;
-            //     display: flex;
-            //     justify-content: flex-start;
-            //     transition: all 0.4s ease-in-out;
 
-            //     span {
-            //         color: var(--color-bg-wrap);
-            //         text-align: start;
-            //         margin: unset;
-            //         white-space: nowrap;
-            //         overflow: hidden;
-            //         text-overflow: ellipsis;
-            //         max-width: 85%;
-            //         width: fit-content;
-            //     }
-
-            //     .item-btns {
-            //         display: none;
-            //         border: none;
-            //         transition: all 0.4s ease-in-out;
-            //         width: 10rem;
-            //         text-align: end;
-            //         background: var(--background-header);
-            //         height: 2.5rem;
-
-            //         button {
-            //             border: none;
-            //         }
-            //     }
-
-            //     .item-btns-static {
-            //         display: flex;
-            //         font-size: 10px;
-            //         color: GREY;
-            //     }
-
-            //     .item-btns-pb {
-            //         @extend .item-btns-static;
-
-            //     }
-
-            //     // &::before {
-            //     //     content: "-";
-            //     //     position: absolute;
-            //     //     left: 0px;
-            //     // }
-
-            //     // &::after {
-            //     //     content: "";
-            //     //     height: 100%;
-            //     //     border-right: 0.8px solid;
-            //     //     position: absolute;
-            //     //     left: 0.5px;
-
-
-            //     // }
-
-            //     // &:last-child {
-            //     //     &:after {
-            //     //         height: 50%;
-            //     //     }
-            //     // }
-
-            //     &:hover {
-            //         background-color: var(--background-second);
-            //         justify-content: space-between;
-
-            //         span {
-            //             color: var(--color-checked);
-            //         }
-
-            //         .item-btns {
-            //             display: block;
-            //         }
-
-            //         span {
-            //             width: 50%;
-            //         }
-
-            //         .item-btns-static {
-            //             display: none;
-            //         }
-            //     }
-            // }
         }
 
-        .list-btns {
-            display: none;
-            transition: all 0.4s ease-in-out;
-            justify-content: space-between;
-            padding-right: 5px;
-
-
-
-            @media screen and (max-width:900px) {
-                display: flex;
-            }
-
-            button {
-                border: none;
-                box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-                width: 3rem;
-                height: 3rem;
-                font-size: 16px;
-                margin-top: 1px;
-                border-radius: 5px;
-                cursor: pointer;
-                background-color: var(--background-first);
-                color: var(--color-bg-wrap);
-
-                &:hover {
-                    background-color: var(--background-second);
-                    color: var(--color-bg-wrap);
-                }
-            }
-        }
-
-        .listFooter {
-            background-color: var(--background-header);
-            width: 100%;
-            font-size: 17px;
-            height: 3.2rem;
-            border-radius: 10px;
-            text-align: center;
-            color: black;
-
-            .fff {
-                position: relative;
-                width: 3rem;
-                z-index: 700;
-                top: -32rem;
-                left: 15px;
-            }
-        }
 
         &:hover {
             transform: translateX(-10px);

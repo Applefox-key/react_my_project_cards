@@ -31,10 +31,10 @@
         height: 35px;
         border-radius: 50%;
         font-size: 18px;
-        color: var(--color-bg-wrap);
+        color: var(--wrap-color);
         z-index: 900;
         transition: all 0.5s ease-in-out;
-        background: var(--color-fill);
+        background: var(--background-second);
         border: 1px solid var(--border-fill);
 
         .ico-wrap {
@@ -64,7 +64,7 @@
         &:hover {
             z-index: 1101;
             background-color: var(--border-fill);
-            border: 1px solid var(--color-fill);
+            border: 1px solid var(--background-second);
         }
     }
 
@@ -72,7 +72,7 @@
         @extend .spinning-menu-btn;
         width: 35px;
         border-radius: 0px 20px 0px 0px;
-        border: 1px solid var(--color-intense);
+        border: 1px solid var(--main-color-int);
         z-index: 1101;
         justify-content: flex-start;
         width: 170px;
@@ -90,7 +90,7 @@
 
         .ico {
             color: white;
-            background-color: var(--color-nav);
+            background-color: var(--wrap-color);
             rotate: 360deg;
             stroke: black;
             stroke-width: 0.4px;
@@ -100,8 +100,8 @@
 
         &:hover {
             z-index: 1101;
-            background-color: var(--color-fill);
-            border: 1px solid var(--color-intense);
+            background-color: var(--background-second);
+            border: 1px solid var(--main-color-int);
         }
     }
 
@@ -138,12 +138,12 @@
     margin: 3px 10px;
     padding: 0 5px;
     text-align: start;
-    border: 1px solid var(--color-intense);
+    border: 1px solid var(--main-color-int);
     transition: all 0.5s ease-in-out;
     z-index: 1200;
 
-    background-color: var(--color-fill);
-    color: var(--white-black);
+    background-color: var(--background-second);
+    color: var(--color-second);
     position: absolute;
     border-radius: 0 0 10px 10px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;

@@ -18,7 +18,7 @@
         padding-top: 0px;
         width: fit-content;
         transition: all 0.3s ease;
-        color: var(--color-nav);
+        color: var(--wrap-color);
 
         svg {
             box-sizing: border-box;
@@ -38,7 +38,7 @@
         padding-bottom: 4px;
         padding-left: 10px;
         font-size: 1em;
-        // color: var(--color-nav);
+        // color: var(--wrap-color);
         transition: all 0.3s ease;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
@@ -71,12 +71,12 @@
         padding-top: 0px;
         width: fit-content;
         transition: all 0.3s ease;
-        color: var(--color-nav);
+        color: var(--wrap-color);
         padding-right: 5px;
 
         svg {
             box-sizing: border-box;
-            fill: var(--color-fill);
+            fill: var(--background-second);
             font-size: 1.3em;
         }
     }
@@ -91,7 +91,7 @@
         padding-bottom: 4px;
         padding-left: 10px;
         font-size: 1em;
-        color: var(--color-nav);
+        color: var(--wrap-color);
         transition: all 0.3s ease;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }

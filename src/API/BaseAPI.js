@@ -5,6 +5,7 @@ import { contentRequestData } from "../utils/contentRequests";
 import { defaultSettings } from "../constants/defaultSettings";
 import { userRequestData } from "../utils/userRequest";
 import { sortByField } from "../utils/arraysFunc";
+import { getuserDef, setUserDef } from "../utils/userSettings";
 
 const BaseAPI = {
   async getAuthHeaders() {
@@ -439,6 +440,8 @@ const BaseAPI = {
     let token = result.token;
     localStorage.setItem("Auth", "true");
     localStorage.setItem("tokencards", JSON.stringify(token));
+    let usr = getuserDef().login;
+    if (usr !== login && login) setUserDef(login);
     return { status: true, role: result.role };
   },
   async logout() {

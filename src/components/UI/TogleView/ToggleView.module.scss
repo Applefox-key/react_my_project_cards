@@ -11,14 +11,14 @@
 
     // &:hover {
     //     // outline: 3px solid rgb(134, 181, 251);
-    //     color: var(--color-nav);
+    //     color: var(--wrap-color);
     // }
     &::after {
         content: "View";
     }
 
     &:hover {
-        background-color: var(--color-fill);
+        background-color: var(--background-second);
         border: 0.5px solid var(--border-fill);
 
         &::before {
@@ -28,7 +28,7 @@
             padding: 2px 5px;
             background-color: var(--background-second);
             opacity: 1;
-            color: var(--color-text);
+            color: var(--color-second);
             border-radius: 5px;
             font-size: 9px;
             position: absolute;

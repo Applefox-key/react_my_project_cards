@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     color: var(--contrast-text);
-    margin-top: 100px;
+    margin-top: 75px;
 
     h1 {
         max-width: 600px;
@@ -20,8 +20,8 @@
             content: "";
             width: 150px;
             height: 15px;
-            // background-color: var(--color-intense);
-            border: 1px solid var(--color-intense);
+            // background-color: var(--main-color-int);
+            border: 1px solid var(--main-color-int);
             position: relative;
             left: 28px;
             bottom: 8px;
@@ -29,7 +29,7 @@
             rotate: -2deg;
             border-radius: 39px;
             transform: matrix3d();
-            border: 3px solid var(--color-intense);
+            border: 3px solid var(--main-color-int);
             border-radius: 74% 3% 65% 9%;
             border-bottom: none;
             border-left: none;
@@ -54,8 +54,6 @@
     h3 {
         max-width: 300px;
         font-weight: 500;
-        // font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        // font-size: 52px;
         text-align: left;
         margin-bottom: 1rem;
         position: relative;
@@ -69,10 +67,12 @@
     .imghome {
         position: relative;
         padding-right: 2rem;
+        top: 35px;
+
 
         &::before {
             content: "";
-            border: 28px solid var(--color-intense);
+            border: 28px solid var(--main-color-int);
             // border-bottom: none;
             border-left: none;
             border-right: none;
@@ -105,7 +105,8 @@
             display: flex;
             justify-content: flex-start;
             position: relative;
-            top: -53px;
+            // top: -53px;
+            top: -25px;
         }
     }
 
@@ -122,7 +123,8 @@
 
     @media screen and (max-width:900px) {
         flex-direction: column-reverse;
-        margin-top: 125px;
+        // margin-top: 125px;
+        margin-top: 75px;
 
         .img {
             max-width: 50%;
@@ -140,6 +142,7 @@
         margin: auto;
         position: relative;
         top: -45px;
+        top: -20px;
     }
 
     ul {
@@ -172,7 +175,7 @@
         }
 
         span {
-            color: var(--color-intense);
+            color: var(--main-color-int);
             text-align: center;
             font-weight: 700;
             font-family: 'Inter';
@@ -194,7 +197,7 @@
             font-size: 14px;
             font-family: "Kurale", serif;
             font-family: cursive;
-            border-top: 0.3px solid var(--color-intense);
+            border-top: 0.3px solid var(--main-color-int);
             font-size: 21px;
 
             @media screen and (max-width:900px) {
@@ -222,7 +225,7 @@
         width: 240px;
         height: 70px;
         line-height: 1;
-        background-color: var(--color-intense);
+        background-color: var(--main-color-int);
         font-size: 6rem;
         font-family: cursive;
         rotate: -5deg;

@@ -1,5 +1,5 @@
 .scanner {
-    color: var(--contrast-text);
+    color: var(--main-color);
     font-size: 2rem;
 
     span {
@@ -17,7 +17,7 @@
             border-right: 4px solid #ffffff;
             overflow: hidden;
             color: #ffffff;
-            color: var(--contrast-text);
+            color: var(--main-color);
             animation: load91371 2s linear infinite;
             border-right-color: transparent;
 

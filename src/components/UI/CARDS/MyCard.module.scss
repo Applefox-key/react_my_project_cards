@@ -280,8 +280,8 @@
 
         transition: all 0.5s ease;
 
-        background: var(--color-fill);
-        color: var(--color-intense);
+        background: var(--background-second);
+        color: var(--main-color-int);
 
         .hide {
             opacity: 0;
@@ -405,8 +405,8 @@
     }
 
     &:hover {
-        // background-color: var(--background-third);
-        background-color: var(--color-nav);
+
+        background-color: var(--wrap-color);
         color: white;
         transform: scale(1.2);
         box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
@@ -436,7 +436,7 @@
     padding-right: 2vw;
     padding-left: 2vw;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-    scrollbar-color: var(--color-bg-wrap) var(--background-header);
+    scrollbar-color: var(--wrap-color) var(--background-second);
     color: var(--color--card);
     overflow: hidden;
 
@@ -460,7 +460,7 @@
         text-wrap: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        color: var(--color-intense);
+        color: var(--main-color-int);
         width: 100%;
         text-align: left;
         width: 100%;
@@ -504,7 +504,7 @@
 
 .card-front {
     background: var(--background-first);
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
     position: absolute;
     top: 0;
     left: 0;

@@ -4,6 +4,7 @@ export const useOutsideClick = (ref, callback, isAddListener = true) => {
   useEffect(() => {
     if (!ref || !callback || !isAddListener) return;
     const handleOutsideClick = (event) => {
+      event.stopPropagation();
       if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }

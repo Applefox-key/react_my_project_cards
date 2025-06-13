@@ -6,8 +6,8 @@
     box-sizing: border-box;
     width: 100px;
     height: 35px;
-    background-color: var(--background-wrap);
-    color: var(--color-bg-wrap);
+    background-color: var(--wrap-back);
+    color: var(--wrap-color);
     font-size: 1.3rem;
     display: flex;
     position: relative;
@@ -37,7 +37,7 @@
         width: 100%;
 
         background-color: var(--background-nav);
-        color: white;
+        color: var(--color-nav);
         border-radius: 10px 0 0 10px;
 
         @media screen and (max-width:900px) {
@@ -62,13 +62,13 @@
         top: 5%;
         left: 1%;
 
-        background-color: var(--background-header);
+        background-color: var(--background-second);
         border-radius: 10px 0 0 10px;
         transition: all 0.4s ease-in-out;
         color: rgb(77, 77, 99);
         font-weight: 600;
         border: outset white;
-        color: var(--color-nav);
+        color: var(--wrap-color);
     }
 
     .l {
@@ -115,10 +115,10 @@
     border: none;
     font-size: 18px;
 
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
     z-index: 900;
     transition: all 0.2s ease-in-out;
-    background: var(--color-fill);
+    background: var(--background-second);
     border: 1px solid var(--border-fill);
 
     @media screen and (max-width:900px) {
@@ -127,8 +127,8 @@
 
     &:hover {
         background-color: var(--border-fill);
-        color: var(--color-nav);
-        border: 1px solid var(--color-fill);
+        color: var(--wrap-color);
+        border: 1px solid var(--background-second);
     }
 
 }
@@ -137,7 +137,7 @@
     position: relative;
     margin-right: 10px;
     transition: all 0.4s ease-in-out;
-    color: var(--white-black);
+    color: var(--color-second);
     z-index: inherit;
 
     svg {
@@ -154,7 +154,7 @@
             padding: 2px 5px;
             background-color: var(--background-second);
             opacity: 1;
-            color: var(--color-text);
+            color: var(--color-second);
             border-radius: 5px;
             font-size: 9px;
             position: absolute;
@@ -186,8 +186,8 @@
     .buttonBox {
         border: 1px solid;
         border-radius: 25px;
-        background-color: var(--background-wrap);
-        color: var(--color-bg-wrap);
+        background-color: var(--wrap-back);
+        color: var(--wrap-color);
         // display: none;
         visibility: hidden;
         opacity: 0;
@@ -302,7 +302,7 @@
         top: 2%;
         left: 1.5%;
 
-        background-color: var(--background-header);
+        background-color: var(--background-second);
         border-radius: 10px 0 0 10px;
         transition: all 0.4s ease-in-out;
         color: rgb(77, 77, 99);
@@ -339,12 +339,17 @@
     z-index: 1000;
     bottom: unset;
     scale: 0.8;
+    top: 5px;
 
     /* Hide default HTML checkbox */
     .switch input {
         opacity: 0;
         width: 0;
         height: 0;
+    }
+
+    div {
+        position: absolute;
     }
 
     /* The slider */

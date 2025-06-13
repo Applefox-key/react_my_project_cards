@@ -20,7 +20,7 @@
 
   button {
     background-color: transparent;
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
     margin-right: 0;
     display: flex;
     align-items: center;
@@ -124,10 +124,10 @@
     width: 10rem;
     font-size: 1.1rem;
     margin-right: 1rem;
-    border-color: var(--background-header);
+    border-color: var(--background-second);
     margin-bottom: 2rem;
-    background-color: var(--background-wrap);
-    color: var(--color-bg-wrap);
+    background-color: var(--wrap-back);
+    color: var(--wrap-color);
 
     @media screen and (max-width:900px) {
       font-size: 1rem;
@@ -138,12 +138,12 @@
 
 
     &:hover {
-      background-color: var(--color-bg-wrap);
-      color: var(--background-wrap);
+      background-color: var(--wrap-color);
+      color: var(--wrap-back);
     }
 
     &:disabled {
-      border-color: var(--background-header);
+      border-color: var(--background-second);
       color: #ddd1c2;
 
     }
@@ -165,11 +165,11 @@
     font-size: 1.2rem;
     margin-right: 1rem;
     background-color: var(--background-second);
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
 
     &:hover {
       color: var(--background-second);
-      background-color: var(--color-bg-wrap);
+      background-color: var(--wrap-color);
     }
 
     @media screen and (max-width:600px) {
@@ -194,17 +194,17 @@
   }
 
   input {
-    border-color: var(--background-header);
+    border-color: var(--background-second);
     width: 80%;
     border: none;
-    border-bottom: 1px solid var(--background-header);
+    border-bottom: 1px solid var(--background-second);
     background-color: var(--background-second);
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
     text-align: center;
 
     &:focus {
-      outline-color: var(--color-intense);
-      border-bottom: 2px solid var(--background-header);
+      outline-color: var(--main-color-int);
+      border-bottom: 2px solid var(--background-second);
       text-align: start;
     }
 
@@ -246,7 +246,7 @@
   // position: sticky;
   // top: 55px;
   background-color: var(--background-first);
-  color: var(--color-bg-wrap);
+  color: var(--wrap-color);
   z-index: 700;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
@@ -290,8 +290,8 @@
 
 .box_menu {
   width: 222px;
-  background-color: var(--background-wrap);
-  color: var(--color-bg-wrap);
+  background-color: var(--wrap-back);
+  color: var(--wrap-color);
   border-radius: 10px;
   min-height: 3rem;
   padding: 10px;
@@ -369,7 +369,7 @@
 }
 
 .menu-title {
-  background-color: var(--background-header);
+  background-color: var(--background-second);
   top: 4px;
   border-radius: 0 5px 5px 0;
   text-align: end;
@@ -409,7 +409,7 @@
 
   .colname {
     margin-left: 5px;
-    color: var(--color-intense);
+    color: var(--main-color-int);
     cursor: pointer;
   }
 
@@ -422,7 +422,7 @@
         padding: 2px 5px;
         background-color: var(--background-second);
         opacity: 1;
-        color: var(--color-text);
+        color: var(--color-second);
         border-radius: 5px;
         font-size: 9px;
         position: absolute;
@@ -445,10 +445,10 @@
   background-color: var(--background-first);
 
   h1 {
-    // background: var(--background-header);
+    // background: var(--background-second);
     padding: 2px 5px;
     border-radius: 9px;
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
     font-size: 1.2rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
@@ -464,7 +464,7 @@
 
     input {
       background-color: var(--background-second);
-      color: var(--color-nav);
+      color: var(--wrap-color);
 
     }
 
@@ -488,11 +488,11 @@
 
 
   button {
-    background-color: var(--background-wrap);
-    color: var(--color-bg-wrap);
+    background-color: var(--wrap-back);
+    color: var(--wrap-color);
 
     &:hover {
-      background-color: var(--background-intense);
+      background-color: var(--wrap-color-int);
       color: white;
     }
   }
@@ -506,7 +506,7 @@
   span {
     border: none;
     background-color: var(--background-second);
-    color: var(--color-bg-wrap);
+    color: var(--wrap-color);
 
     &:focus {
       color: var(--color-checked);
@@ -622,11 +622,11 @@
 .menuBtn {
   width: 100%;
   min-width: 150px;
-  background-color: var(--background-wrap);
-  color: var(--color-bg-wrap);
+  background-color: var(--wrap-back);
+  color: var(--wrap-color);
 
   &:hover {
-    background-color: var(--background-header);
+    background-color: var(--background-second);
   }
 }
 
@@ -726,7 +726,7 @@
 }
 
 .organiser-wrap {
-  border: 3px solid var(--color-intense);
+  border: 3px solid var(--main-color-int);
   padding: 5px 10px;
 
   svg {
@@ -734,7 +734,7 @@
     height: 3rem;
 
     &:hover {
-      color: var(--color-nav);
+      color: var(--wrap-color);
     }
   }
 
@@ -762,7 +762,7 @@
     }
 
     &:hover {
-      color: var(--color-nav);
+      color: var(--wrap-color);
     }
   }
 }

@@ -1,62 +1,31 @@
-import {
-  defaultSettings,
-  defaultStyleValue,
-  nightTheme,
-  dayTheme,
-} from "../constants/defaultSettings";
-import { restoreSettings, saveSet } from "./pageSettings";
+import { themeArr } from "../constants/defaultSettings";
+import { restoreSettings, saveOneSetting, saveSet } from "./pageSettings";
 
-const getContrastColor = (color) => {
-  // to RGB
-  const red = parseInt(color.substring(1, 3), 16);
-  const green = parseInt(color.substring(3, 5), 16);
-  const blue = parseInt(color.substring(5, 7), 16);
-  // brightness by YIQ
-  const brightness = (red * 299 + green * 587 + blue * 114) / 1000;
-  // if< 128, black, else white
-  if (brightness < 128) {
-    return "#fff";
-  } else {
-    return "#000";
-  }
-};
-export const applyUserSettings = (set, prop = "") => {
+export const getCurrentTheme = () => {
+  // const theme = getSettings("themec", "sky");
   const { theme } = restoreSettings();
-  const propName = theme !== "day" ? "colorBackN" : "colorBack";
-  if (set.hasOwnProperty(propName) && (prop === "colorBack" || !prop)) {
-    document.body.style.backgroundColor = set[propName];
-    document.documentElement.style.setProperty("--color-back", set.colorBack);
-    document.documentElement.style.setProperty(
-      "--contrast-text",
-      getContrastColor(set.colorBack)
-    );
-  }
-  if (set.hasOwnProperty("wrapOpacity") && (prop === "wrapOpacity" || !prop)) {
-    document.documentElement.style.setProperty(
-      "--wrap-opacity",
-      set.wrapOpacity / 100
-    );
+  return theme;
+};
+
+export const setTheme = (theme = "", usersTheme = "") => {
+  //if user choose the theme - save his choise to the local storage
+  if (theme) saveOneSetting("theme", theme);
+  //if user doesn't choose the theme try get it from the local storage or set default value
+  let localTheme = theme ? theme : getCurrentTheme();
+  if (localTheme === "day" && !theme) return;
+  if (localTheme) {
+    const colors = themeArr.hasOwnProperty(localTheme)
+      ? themeArr[localTheme]
+      : usersTheme[localTheme];
+    for (let key in colors) {
+      if (key !== "isday")
+        document.documentElement.style.setProperty(key, colors[key]);
+    }
   }
 };
 
-export const updateStyles = (e, userData, setUserData) => {
-  let nameS = e.target.id;
-  if (nameS === "toDefault") {
-    if (!window.confirm("turn back to the default settings?")) return;
-    setUserData({ ...userData, settings: defaultSettings });
-    applyUserSettings(defaultStyleValue);
-    return;
-  }
-  let val = e.target.value;
-  const newSet =
-    typeof userData.settings === "object"
-      ? {
-          ...userData.settings,
-          [nameS]: val,
-        }
-      : { [nameS]: val };
-  setUserData({ ...userData, settings: newSet });
-  applyUserSettings(newSet, nameS);
+export const applyUserSettings = (set, prop = "") => {
+  setTheme();
 };
 
 export const setVerticalCardFonrSize = (prop = "") => {
@@ -66,15 +35,33 @@ export const setVerticalCardFonrSize = (prop = "") => {
 };
 export const setCardColor = (prop = "") => {
   if (prop) {
-    document.documentElement.style.setProperty("--card-color", prop);
+    document.documentElement.style.setProperty("--card-color-print", prop);
   }
 };
 
 export const changeTheme = (isCheckedDay) => {
   saveSet({ "theme": isCheckedDay ? "day" : "night" });
-  let colors = isCheckedDay ? { ...dayTheme } : { ...nightTheme };
-  document.body.style.backgroundColor = colors["--color-back"];
+  let colors = isCheckedDay ? { ...themeArr["day"] } : { ...themeArr["night"] };
+  document.body.style.backgroundColor = colors["--main-back"];
   for (let key in colors) {
     document.documentElement.style.setProperty(key, colors[key]);
   }
+};
+
+export const getuserDef = (pageParam = null) => {
+  let hisUser;
+  if (
+    pageParam !== null &&
+    Object.keys(pageParam).length !== 0 &&
+    pageParam.email
+  )
+    hisUser = pageParam.email;
+  else hisUser = JSON.parse(localStorage.getItem("usercards"));
+  return hisUser ? hisUser : { login: "JohnDoe@test.test", pass: "JohnDoe" };
+};
+
+export const setUserDef = (userEmail) => {
+  if (userEmail) localStorage.removeItem("usercards");
+  let newUser = JSON.stringify({ login: userEmail, pass: "" });
+  localStorage.setItem("usercards", newUser);
 };

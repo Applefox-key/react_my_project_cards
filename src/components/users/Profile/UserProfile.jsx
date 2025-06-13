@@ -9,14 +9,14 @@ import ProfileImg from "./ProfileImg";
 import ProfileText from "./ProfileText";
 
 import { DEFAUL_USER_DATA } from "../../../constants/defaultSettings";
-import { updateStyles } from "../../../utils/userSettings";
+// import { updateStyles } from "../../../utils/userSettings";
 
 const UserProfile = ({ userData, onClick, btnName }) => {
   const [visible, setVisible] = useState(false);
   const [userDataForm, setUserDataForm] = useState(DEFAUL_USER_DATA);
-  const updateSettings = (e) => {
-    updateStyles(e, userDataForm, setUserDataForm);
-  };
+  // const updateSettings = (e) => {
+  //   updateStyles(e, userDataForm, setUserDataForm);
+  // };
 
   useEffect(() => {
     if (!userData) return;
@@ -74,7 +74,7 @@ const UserProfile = ({ userData, onClick, btnName }) => {
                 />
               </InputGroup>
             </div>
-            <div className={cl.backColorBox}>
+            {/* <div className={cl.backColorBox}>
               <input
                 type="color"
                 id="colorBack"
@@ -88,8 +88,8 @@ const UserProfile = ({ userData, onClick, btnName }) => {
                 title="turn back to the default style">
                 ↻
               </button>
-            </div>
-            <Form.Range
+            </div> */}
+            {/* <Form.Range
               onChange={updateSettings}
               title="Choose main wrap opacity"
               id="wrapOpacity"
@@ -98,7 +98,7 @@ const UserProfile = ({ userData, onClick, btnName }) => {
                   ? userDataForm.settings.wrapOpacity
                   : 100
               }
-            />
+            /> */}
           </div>
         </div>
         <div className={cl.textDiv}>

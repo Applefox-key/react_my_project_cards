@@ -1,8 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import cl from "./mainNavbar.module.scss";
-
 import ThemeSwitch from "../UI/tgb/ThemeSwitch";
 import FilterLS from "../UI/MyFilter/FilterLS";
 import MyNavUserImg from "./MyNavUserImg";
@@ -11,6 +9,7 @@ import NavMenu from "./NavMenu";
 
 import { useAuth } from "../../hooks/useAuth";
 import BaseAPI from "../../API/BaseAPI";
+import { AiOutlineLogin } from "react-icons/ai";
 
 const MyNavbar = () => {
   const router = useNavigate();
@@ -30,6 +29,7 @@ const MyNavbar = () => {
 
   return (
     <div className={[cl.topNav]}>
+      <ThemeSwitch isPlay={isHideNav} />
       {!isHideNav && (
         <>
           <div className={cl.line1}>
@@ -42,14 +42,13 @@ const MyNavbar = () => {
             ) : (
               <Link
                 to={"./login"}
-                id={"path./login"}
+                id={"iconlogin"}
                 className={
                   window.location.pathname.includes("login") ? cl.active : ""
                 }>
-                LOGIN
+                LOGIN <AiOutlineLogin />
               </Link>
             )}
-            {<ThemeSwitch isPlay={isHideNav} />}
           </div>
 
           <div className={[cl.navWrap].join(" ")}>
@@ -71,7 +70,7 @@ const MyNavbar = () => {
           </div>
         </>
       )}
-      {isHideNav && <ThemeSwitch isPlay={isHideNav} />}
+      {/* {isHideNav && <ThemeSwitch isPlay={isHideNav} />} */}
     </div>
   );
 };

@@ -30,6 +30,7 @@ const Profile = () => {
       setPopup.error(error);
       return;
     }
+
     updateSettings(data.settings);
     setPopup.success("The changes have been saved");
     setUserData({ ...userData, ...data });

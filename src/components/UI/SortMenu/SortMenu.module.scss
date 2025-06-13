@@ -13,7 +13,7 @@
 
     &:hover {
 
-        background-color: var(--color-fill);
+        background-color: var(--background-second);
         border: 0.5px solid var(--border-fill);
         // color: var(--border-fill)
     }
@@ -33,13 +33,13 @@
 
     text-transform: uppercase;
     border: 0.5px solid var(--border-fill);
-    background-color: var(--color-fill);
-    color: var(--color-menuG);
+    background-color: var(--background-second);
+    color: var(--color-second);
     font-weight: 700;
 
     &:hover {
         background: var(--background-nav);
-        color: white;
+        color: var(--color-nav);
 
         border: 0.5px solid var(--border-fill);
     }
@@ -50,7 +50,7 @@
     list-style: none;
     text-align: left;
     cursor: pointer;
-    background-color: var(--color-fill);
+    background-color: var(--background-second);
     width: 10rem;
     z-index: 1100;
     margin-top: 1rem;
@@ -59,6 +59,10 @@
 
     li {
         margin: 3px 0;
+
+        &:hover {
+            color: var(--color-rate);
+        }
     }
 
     @media screen and (max-width:900px) {

@@ -68,8 +68,8 @@
 
 .login-box {
 	width: 15%;
-	background-color: var(--background-wrap);
-	color: var(--color-bg-wrap);
+	background-color: var(--wrap-back);
+	color: var(--wrap-color);
 	width: 430px;
 	max-width: 430px;
 	margin: 0 auto;
@@ -112,23 +112,7 @@
 		}
 	}
 
-	// .box-header {
-	// 	background-color: var(--background-intense);
-	// 	margin-top: 0;
-	// 	border-radius: 35px 0 0 0;
-	// }
 
-	// label {
-	// 	font-family: "Open Sans", sans-serif;
-	// 	font-weight: 700;
-	// 	font-size: 1.5rem;
-	// 	color: #888;
-	// 	letter-spacing: 1px;
-	// 	text-transform: uppercase;
-	// 	line-height: 2em;
-	// 	margin-left: 24px;
-	// 	display: flex;
-	// }
 
 	input {
 		margin-bottom: 10px;
@@ -142,9 +126,9 @@
 
 		&:focus {
 			outline: none;
-			border-color: var(--background-intense);
+			border-color: var(--wrap-color-int);
 			transition: 0.5s;
-			color: var(--background-intense);
+			color: var(--wrap-color-int);
 		}
 
 		@media screen and (max-width: 900px) {
@@ -165,7 +149,7 @@
 		font-weight: 400;
 		font-size: 18px;
 		letter-spacing: 1px;
-		background-color: var(--color-intense);
+		background-color: var(--main-color-int);
 
 		cursor: pointer;
 		outline: none;
@@ -176,7 +160,7 @@
 		&:hover {
 			opacity: 0.7;
 			transition: 0.5s;
-			background-color: var(--color-nav);
+			background-color: var(--wrap-color);
 			color: white;
 		}
 
@@ -192,7 +176,7 @@
 		margin-bottom: 1rem;
 		font-size: 1.6rem;
 		display: block;
-		color: var(--color-intense)
+		color: var(--main-color-int)
 	}
 }
 
@@ -211,7 +195,7 @@
 }
 
 .selected {
-	color: var(--background-intense) !important;
+	color: var(--wrap-color-int) !important;
 	transition: 0.5s;
 }
 

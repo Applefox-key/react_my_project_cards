@@ -39,10 +39,10 @@ export const GO_TO = {
 
 export const publicRoutes = [
   { path: "/home", element: <Home />, nameNav: "Home" },
-  { path: "/about", element: <MainPage />, nameNav: "About" },
+  { path: "/about", element: <MainPage />, nameNav: "" },
   { path: "/login/:email", element: <Login />, nameNav: "" },
   { path: "/login", element: <Login />, nameNav: "" },
-  { path: "/*", element: <Login />, nameNav: "" },
+  { path: "/*", element: <Home />, nameNav: "" },
   {
     path: "/resetpassword/:resetToken",
     element: <ForgotPassword />,

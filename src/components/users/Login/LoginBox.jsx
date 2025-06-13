@@ -7,17 +7,17 @@ import { usePopup } from "../../../hooks/usePopup";
 import { isEmailValid } from "../../../utils/validation";
 import { AuthContext } from "../../../context";
 import BaseAPI from "../../../API/BaseAPI";
+import { getuserDef } from "../../../utils/userSettings";
 
 const LoginBox = ({ setLoginMode }) => {
   const router = useNavigate();
   const pageParam = useParams();
+  const defU = getuserDef(pageParam);
   const [err, setErr] = useState("");
   // eslint-disable-next-line no-unused-vars
   const { userAuth, setUserAuth } = useContext(AuthContext);
-  const [email, setEmail] = useState(
-    pageParam.email ? pageParam.email : "JohnDoe@test.test"
-  );
-  const [password, setPassword] = useState("JohnDoe");
+  const [email, setEmail] = useState(defU.login);
+  const [password, setPassword] = useState(defU.pass);
   const setPopup = usePopup();
   const login = async (event) => {
     if (!isEmailValid(email)) {

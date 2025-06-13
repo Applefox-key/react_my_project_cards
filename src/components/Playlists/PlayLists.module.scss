@@ -24,8 +24,8 @@
     }
 
     .onePlaylist-wrap {
-        background-color: var(--background-wrap);
-        color: var(--color-bg-wrap);
+        background-color: var(--wrap-back);
+        color: var(--wrap-color);
         margin: 20px;
         width: 260px;
         min-width: 260px;
@@ -72,15 +72,15 @@
             position: absolute;
 
             &:hover {
-                background-color: #e8eaed;
+
                 background-color: var(--background-nav);
+                color: var(--color-nav);
 
                 &::before {
                     content: attr(data-title);
                     width: fit-content;
                     white-space: nowrap;
                     padding: 2px 5px;
-                    background-color: var(--background-header);
                     background-color: var(--background-second);
                     opacity: 1;
                     color: black;
@@ -101,10 +101,8 @@
             border-radius: 5px 15px 15px 5px;
             height: 21px;
             z-index: 500;
-            background-color: var(--background-header);
-            border-color: var(--color-fill);
-            color: var(--color-bg-wrap);
-            background-color: var(--color-intense);
+            border-color: var(--background-second);
+            background-color: var(--main-color-int);
             color: white;
             transition: all 0.4s ease-in-out;
             line-height: 1;
@@ -112,6 +110,7 @@
 
             &:hover {
                 background-color: var(--background-nav);
+                color: var(--color-nav);
             }
         }
 
@@ -145,6 +144,7 @@
                         display: none;
                         position: absolute;
                         background-color: var(--background-nav);
+                        color: var(--color-nav);
 
                         div {
                             font-size: 16px;
@@ -165,7 +165,7 @@
 
         .btnShow {
             @extend .btnP;
-            background-color: var(--color-nav);
+            background-color: var(--wrap-color);
             opacity: 0.9;
         }
 
@@ -181,8 +181,9 @@
             text-overflow: ellipsis;
             font-weight: 500;
             border-bottom: 0.5px solid var(--border-fill);
-            BACKGROUND: var(--color-nav);
-            COLOR: WHITE;
+            background: var(--background-nav);
+            // color: var(--wrap-color);
+            color: var(--color-nav);
             opacity: 0.8;
             padding-left: 25px;
             text-transform: uppercase;
@@ -211,12 +212,12 @@
             align-items: flex-start;
             height: 65%;
             overflow-x: hidden;
-            scrollbar-color: var(--color-bg-wrap) var(--background-header);
+            scrollbar-color: var(--wrap-color) var(--background-second);
 
             .listItem {
                 width: 100%;
                 position: relative;
-                color: var(--color-bg-wrap);
+                color: var(--wrap-color);
                 padding: 1px;
                 padding-left: 5px;
                 text-align: start;
@@ -238,7 +239,7 @@
 
                     button {
                         border: none;
-                        background-color: var(--color-bg-wrap);
+                        background-color: var(--wrap-color);
                         color: var(--background-first);
                     }
                 }
@@ -262,57 +263,57 @@
             }
         }
 
-        .list-btns {
-            margin: auto;
-            display: none;
-            transition: all 0.4s ease-in-out;
-            justify-content: space-between;
-            padding: 0 5px;
+        // .list-btns {
+        //     margin: auto;
+        //     display: none;
+        //     transition: all 0.4s ease-in-out;
+        //     justify-content: space-between;
+        //     padding: 0 5px;
 
 
 
-            @media screen and (max-width:900px) {
-                display: flex;
-            }
+        //     @media screen and (max-width:900px) {
+        //         display: flex;
+        //     }
 
-            button {
-                border: none;
-                box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-                width: 2.8rem;
-                height: 2.8rem;
-                font-size: 16px;
-                margin-top: 1px;
-                border-radius: 5px;
-                cursor: pointer;
-                background-color: var(--background-first);
-                box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-                border-radius: 50%;
+        //     button {
+        //         border: none;
+        //         box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+        //         width: 2.8rem;
+        //         height: 2.8rem;
+        //         font-size: 16px;
+        //         margin-top: 1px;
+        //         border-radius: 5px;
+        //         cursor: pointer;
+        //         background-color: var(--background-first);
+        //         box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        //         border-radius: 50%;
 
 
-                left: 0;
+        //         left: 0;
 
-                &:hover {
-                    background-color: var(--background-second);
-                }
-            }
-        }
+        //         &:hover {
+        //             background-color: var(--background-second);
+        //         }
+        //     }
+        // }
 
-        .listFooter {
-            background-color: var(--background-header);
-            width: 100%;
-            font-size: 17px;
-            height: 3.2rem;
-            border-radius: 10px;
-            text-align: center;
+        // .listFooter {
+        //     background-color: var(--background-second);
+        //     width: 100%;
+        //     font-size: 17px;
+        //     height: 3.2rem;
+        //     border-radius: 10px;
+        //     text-align: center;
 
-            .fff {
-                position: relative;
-                width: 3rem;
-                z-index: 700;
-                top: -32rem;
-                left: 15px;
-            }
-        }
+        //     .fff {
+        //         position: relative;
+        //         width: 3rem;
+        //         z-index: 700;
+        //         top: -32rem;
+        //         left: 15px;
+        //     }
+        // }
 
         &:hover {
             transform: translateY(-5px);
@@ -335,9 +336,9 @@
                 display: block;
             }
 
-            .list-btns {
-                display: block;
-            }
+            // .list-btns {
+            //     display: block;
+            // }
         }
 
 
@@ -349,7 +350,7 @@
     width: max-content;
     margin: auto;
     width: 90%;
-    background-color: var(--background-wrap);
+    background-color: var(--wrap-back);
 
     .onePlaylist-wrap {
         display: flex;
@@ -363,8 +364,8 @@
         text-overflow: ellipsis;
         font-weight: 500;
         border-bottom: 0.5px solid var(--border-fill);
-        BACKGROUND: var(--background-first);
-        COLOR: var(--color-bg-wrap);
+        background: var(--background-first);
+        color: var(--wrap-color);
         opacity: 0.8;
         margin: auto;
         margin-bottom: 5px;
@@ -430,7 +431,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 600;
-            color: var(--color-bg-wrap);
+            color: var(--wrap-color);
             text-transform: uppercase;
 
             span {
@@ -484,84 +485,84 @@
             }
         }
 
-        .tbl {
-            display: flex;
-            width: 20%;
-            flex-direction: column;
+        // .tbl {
+        //     display: flex;
+        //     width: 20%;
+        //     flex-direction: column;
 
-            @media screen and (max-width:900px) {
-                width: 100%;
-            }
-        }
+        //     @media screen and (max-width:900px) {
+        //         width: 100%;
+        //     }
+        // }
 
-        .list-btns {
-            width: 100%;
-            display: none;
-            transition: all 0.4s ease-in-out;
-            justify-content: space-between;
-            padding-right: 5px;
-            align-items: flex-end;
+        // .list-btns {
+        //     width: 100%;
+        //     display: none;
+        //     transition: all 0.4s ease-in-out;
+        //     justify-content: space-between;
+        //     padding-right: 5px;
+        //     align-items: flex-end;
 
-            @media screen and (max-width:900px) {
-                width: 100%;
-            }
+        //     @media screen and (max-width:900px) {
+        //         width: 100%;
+        //     }
 
-            button {
-                width: 3rem;
-                height: 3rem;
-                font-size: 16px;
-                border-radius: 5px;
-                cursor: pointer;
-                border: none;
-                box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+        //     button {
+        //         width: 3rem;
+        //         height: 3rem;
+        //         font-size: 16px;
+        //         border-radius: 5px;
+        //         cursor: pointer;
+        //         border: none;
+        //         box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 
-                @media screen and (max-width:900px) {
-                    width: 2rem;
-                    height: 2rem;
-                    font-size: 10px;
+        //         @media screen and (max-width:900px) {
+        //             width: 2rem;
+        //             height: 2rem;
+        //             font-size: 10px;
 
-                }
+        //         }
 
-                &:hover {
-                    background-color: var(--background-second);
-                }
-            }
-        }
+        //         &:hover {
+        //             background-color: var(--background-second);
+        //         }
+        //     }
+        // }
 
-        .listFooter {
-            background-color: var(--background-header);
-            width: 100%;
-            font-size: 17px;
-            min-height: 3.2rem;
-            border-radius: 0 0 10px 10px;
-            text-align: center;
-            display: flex;
-            height: -webkit-fill-available;
-            padding-bottom: 5px;
+        // .listFooter {
+        //     background-color: var(--background-second);
+        //     width: 100%;
+        //     font-size: 17px;
+        //     min-height: 3.2rem;
+        //     border-radius: 0 0 10px 10px;
+        //     text-align: center;
+        //     display: flex;
+        //     height: -webkit-fill-available;
+        //     padding-bottom: 5px;
 
-            .fff {
-                position: relative;
-                width: 3rem;
-                z-index: 700;
-                top: -10rem;
-                left: 40px;
+        //     .fff {
+        //         position: relative;
+        //         width: 3rem;
+        //         z-index: 700;
+        //         top: -10rem;
+        //         left: 40px;
 
-                @media screen and (max-width:900px) {
-                    width: 30%;
-                    left: -250%;
-                    top: -36%;
-                    position: absolute;
-                }
+        //         @media screen and (max-width:900px) {
+        //             width: 30%;
+        //             left: -250%;
+        //             top: -36%;
+        //             position: absolute;
+        //         }
 
-            }
-        }
+        //     }
+        // }
 
         &:hover {
             transform: translateX(-10px);
-            background-color: var(--color-fill);
+            background-color: var(--background-second);
 
             .listHeader {
-                color: var(--color-nav);
+                color: var(--background-nav);
             }
 
             .btn {
@@ -581,8 +582,8 @@
     display: flex;
     align-items: center;
     width: 99%;
-    border-bottom: 1px solid var(--color-fill);
-    background-color: var(--background-header);
+    border-bottom: 1px solid var(--background-second);
+    background-color: var(--background-second);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
     .titleP {
@@ -597,7 +598,7 @@
             max-width: 90%;
             width: fit-content;
             font-style: italic;
-            border-bottom: 1px solid var(--color-nav);
+            border-bottom: 1px solid var(--wrap-color);
         }
 
         label {
@@ -627,8 +628,8 @@
     .addBtn {
         height: 335px;
         border-radius: 10px 0 0 10px;
-        background-color: var(--background-header);
-        color: var(--color-nav);
+        background-color: var(--background-second);
+        color: var(--wrap-color);
         border: 1px solid;
         animation: bounce_513 1s 2;
         position: relative;
@@ -657,7 +658,7 @@
 
         &:hover {
             background-color: var(--background-nav);
-            color: white;
+            color: var(--color-nav);
         }
     }
 }
@@ -668,7 +669,7 @@
     padding: 5px;
     width: 50%;
     height: 100%;
-    background-color: var(--background-even);
+    background-color: var(--background-second);
     width: 0;
     opacity: 0;
     transition: all 0.4s ease-in-out;
@@ -688,7 +689,7 @@
     padding: 5px;
     width: 50%;
     height: 100%;
-    background-color: var(--background-even);
+    background-color: var(--background-second);
     width: 0;
     opacity: 0;
     transition: all 0.4s ease-in-out;
@@ -739,11 +740,11 @@
         border-radius: 5px;
         padding: 4px;
         background-color: var(--background-second);
-        color: var(--color-bg-wrap);
+        color: var(--wrap-color);
 
         &:hover {
             color: var(--background-second);
-            background-color: var(--color-bg-wrap);
+            background-color: var(--wrap-color);
         }
     }
 }
@@ -795,7 +796,7 @@
         border-right: 1px solid black;
         border-left: 1px solid black;
         border-radius: 0 10px 0 0;
-        background-color: var(--background-header);
+        background-color: var(--background-second);
     }
 
     .right {
@@ -805,7 +806,7 @@
         border-left: 1px solid black;
         border-right: 1px solid black;
         border-radius: 10px 0 0 0;
-        background-color: var(--background-header);
+        background-color: var(--background-second);
     }
 
     @media screen and (max-width:900px) {
@@ -891,8 +892,8 @@
 
         &:hover {
             // border: 0.5px solid grey;
-            background-color: var(--color-fill);
-            color: var(--color-nav);
+            background-color: var(--background-second);
+            color: var(--wrap-color);
         }
     }
 
@@ -907,8 +908,8 @@
 
         &:hover {
             // border: 0.5px solid grey;
-            background-color: var(--color-fill);
-            // color: var(--color-nav);
+            background-color: var(--background-second);
+            // color: var(--wrap-color);
         }
     }
 }
@@ -917,7 +918,7 @@
     @extend .tblCollections;
     // font-size: 10px;
     height: 60vh;
-    scrollbar-color: var(--color-bg-wrap) var(--background-header);
+    scrollbar-color: var(--wrap-color) var(--background-second);
 
     @media screen and (max-width:900px) {
         font-size: 14px;
@@ -929,7 +930,7 @@
 .selectedEl {
     @extend .isNotSelected;
     position: relative;
-    background-color: var(--background-wrap);
+    background-color: var(--wrap-back);
     margin: 5px;
     padding: 0;
     width: 100%;
@@ -946,15 +947,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    // background-color: var(--color-intense);
+    // background-color: var(--main-color-int);
     // color: white;
-    background: var(--background-even);
-    color: var(--back-menu);
+    background: var(--background-second);
+    color: var(--wrap-color);
 
     &:hover {
         // text-decoration: line-through;
         color: rgb(125, 118, 136);
-        background-color: var(--color-fill);
+        background-color: var(--background-second);
         box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px var(--shadow-size) 1px inset;
         opacity: 0.5;
 
@@ -980,7 +981,7 @@
 
 .empty {
     @extend .selectedEl;
-    background-color: var(--color-fill);
+    background-color: var(--background-second);
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px var(--shadow-size) 1px inset;
     transition: all 0.4s ease-in-out;
     opacity: 0.5;
