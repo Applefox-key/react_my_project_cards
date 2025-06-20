@@ -12,7 +12,7 @@ const TextBlock = ({ regBtn, isAuth = false, isLoginPage = false }) => {
           <div className={cl.text2}>about flash cards or</div>
           <div className={cl.text2}>
             <a
-              href={`http://phrases.learnapp.me/about`}
+              href={`http://phrases.learnapp.pro/about`}
               className={cl.text2 + " " + cl.btn}>
               Try 90 seconds method
             </a>
