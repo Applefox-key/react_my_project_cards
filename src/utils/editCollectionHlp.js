@@ -68,7 +68,7 @@ export const transferContent = async (contentsIds, collectionId = null) => {
     let userInput = prompt("please write the name of new collection", "");
     if (userInput) {
       const collectionData = {
-        name: userInput,
+        newName: userInput,
         isNew: true,
       };
       newID = await editCollectionHlp(collectionData);

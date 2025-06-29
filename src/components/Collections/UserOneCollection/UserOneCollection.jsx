@@ -27,6 +27,7 @@ const UserOneCollection = () => {
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useQuery(async () => {
     const result = await BaseAPI.getCollectionsAndContent(pageParam.id);
+
     const colContent = await addRates(result);
     setCollect(colContent[0].collection);
     setContent(colContent[0].content);
@@ -78,7 +79,7 @@ const UserOneCollection = () => {
                 </button>
               </div>
             )}
-            <div className="m-auto d-flex">
+            <div className="m-auto d-flex mt-4">
               {!isLoading && content ? (
                 mode === 0 ? (
                   <ContentCards

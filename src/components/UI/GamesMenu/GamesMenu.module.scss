@@ -20,30 +20,26 @@
     button {
         max-width: 145px;
         justify-content: flex-start;
-        // color: white;
     }
 
     .games-menu-btn {
-
-        background-color: transparent;
+        transition: all 0.4s ease-in-out;
         text-align: start;
         border: none;
+        border-radius: 5px;
         font-size: 14px;
         line-height: 0.7;
-        color: var(--color-second);
         z-index: 1101;
         position: absolute;
-        transition: all 0.4s ease-in-out;
         top: 0px;
         left: 0;
-        border-radius: 5px;
-        padding: 0;
         justify-content: flex-start;
         max-width: unset;
-        color: white;
+
         background-color: var(--color-rate);
-        padding: 0 2px;
+        color: var(--background-first);
         border: 1px solid var(--background-nav);
+        padding: 0 2px;
 
         .ico {
             font-size: 14px;
@@ -54,15 +50,12 @@
         }
 
         &:hover {
-
-            // background-color: var(--background-second);
             border: 0.5px solid var(--border-fill);
             z-index: 1101;
-            // color: white;
             border-radius: 5px;
 
             .ico {
-                color: yellow
+                color: yellow;
             }
         }
     }

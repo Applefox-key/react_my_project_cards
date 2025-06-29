@@ -126,7 +126,7 @@ export const themeArr = {
     "--background-parts-answ": "#ffebcd",
     "--border-fill": "#DADEE8",
 
-    "--color-nav": "ffffff",
+    "--color-nav": "#ffffff",
     "--color-checked": "#ed666d",
     "--color-rate": "#64b5f6",
     "--color-second": "#000000",
@@ -148,7 +148,7 @@ export const themeArr = {
     "--background-parts-answ": "#111728b3", // "#0f9393b3",
     "--border-fill": "#DADEE8",
 
-    "--color-nav": "ffffff",
+    "--color-nav": "#a6bdde",
     "--color-checked": "#cae5ffb3",
     "--color-rate": "#48556b",
     "--color-second": "#5f7098",
@@ -171,7 +171,7 @@ export const themeArr = {
     "--background-parts-answ": "#142525b3", // "#0f9393b3",
     "--border-fill": "#DADEE8",
 
-    "--color-nav": "ffffff",
+    "--color-nav": "#1db3b3",
     "--color-checked": "#0f9393b3",
     "--color-rate": "#1db3b3",
     "--color-second": "#b5a68a",
@@ -192,7 +192,7 @@ export const themeArr = {
     "--background-note": "#536389",
     "--background-parts-answ": "#c8e1ff",
     "--border-fill": "#aab0be",
-    "--color-nav": "ffffff",
+    "--color-nav": "white",
     "--color-checked": "#ed666d",
     "--color-rate": "#64b5f6",
     "--color-second": "#000000",

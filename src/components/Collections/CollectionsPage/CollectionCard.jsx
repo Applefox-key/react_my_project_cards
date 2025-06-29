@@ -19,7 +19,13 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
   };
   const toSet = (e) => {
     e.stopPropagation();
-    router(`${routeOne}/${oneSet.collection.id}/${oneSet.collection.name}`);
+    router(
+      `${routeOne}/${oneSet.collection.id}/${
+        oneSet.collection.name
+          ? encodeURIComponent(oneSet.collection.name)
+          : "noname"
+      }`
+    );
   };
 
   const handleLookHover = (e) => {
