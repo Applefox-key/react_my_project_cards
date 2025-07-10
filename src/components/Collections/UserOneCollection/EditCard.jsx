@@ -7,14 +7,14 @@ import "../../../styles/oneCollection.scss";
 
 import Rate from "../../games/Rate";
 import EditCardPart from "./EditCardPart";
-import VoiceBtns from "../../UI/VoiceBtns";
+import VoiceInputBtns from "../../UI/VoiceBtns/VoiceInputBtns";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 
 import { useQuery } from "../../../hooks/useQuery";
 import { usePopup } from "../../../hooks/usePopup";
 
-import { addRates, updRates } from "../../../utils/gamesResults";
+import { updRates } from "../../../utils/gamesResults";
 import BaseAPI from "../../../API/BaseAPI";
 
 const EditCard = () => {
@@ -40,8 +40,10 @@ const EditCard = () => {
       setItem(content);
       return;
     }
-    const rate = await addRates([content]);
-    setItem({ ...rate[0], note: content.note === null ? "" : content.note });
+    // const rate = await addRates([content]);
+
+    setItem({ ...content, note: content.note === null ? "" : content.note });
+    // setItem({ ...rate[0], note: content.note === null ? "" : content.note });
   });
 
   const route = useNavigate();
@@ -55,6 +57,10 @@ const EditCard = () => {
     setTextRef(ref);
   };
 
+  const updateRate = (newRate) => {
+    updRates(item, newRate);
+    setItem({ ...item, rate: newRate });
+  };
   const save = async () => {
     if (!item) return;
     const saveItem = { ...item };
@@ -84,30 +90,17 @@ const EditCard = () => {
       {item ? (
         <div className="editCard">
           <div className={`menuRow menu-border ${isItem ? "" : "flex-end"}`}>
-            {isItem && (
-              <Rate
-                initialValue={item.rate}
-                isEditable
-                action={(newRate) => updRates(item, newRate)}
-              />
-            )}
+            {isItem && <Rate initialValue={item.rate} action={updateRate} />}
             <div className="menuRow">
-              {!!textRef && (
-                <div
-                  className={
-                    textRef.current.id === "question"
-                      ? "voiceEdit qv"
-                      : "voiceEdit av"
-                  }>
-                  <VoiceBtns textRef={textRef} />
-                </div>
-              )}
               <Button size="lg" onClick={save} variant="light">
                 SAVE CHANGES
               </Button>{" "}
               <BackBtn variant="light" />
             </div>
           </div>
+          {!!textRef && (
+            <VoiceInputBtns textRef={textRef} className="voiceEdit" />
+          )}
           <div className="note">
             <input
               type="text"

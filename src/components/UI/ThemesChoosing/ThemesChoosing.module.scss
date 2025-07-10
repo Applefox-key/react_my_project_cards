@@ -11,36 +11,54 @@
 }
 
 .btn {
-    border: none;
+    // border: none;
+    // background: none;
+    // color: var(--main-color);
+    // border: none;
     background: none;
-    color: var(--main-color);
-    border: none;
-    background: none;
-    color: var(--main-color);
-    position: unset;
-    font-size: 20px;
+    color: var(--wrap-color);
+    // position: relative;
+    font-size: 35px;
     position: relative;
-    top: -10px;
-    font-weight: 800;
+    top: -18px;
+    left: 2px;
+    display: flex;
+
+    height: 1rem;
+
+    // padding-bottom: 0;
+    // align-content: flex-start;
+    // justify-content: flex-start;
+    // align-items: flex-end;
+    // padding-top: 24px;
 }
 
 .wrapBox {
     position: absolute;
     right: 0;
-    top: 22px;
+    top: 35px;
+    height: 0;
 }
 
 .settings_bar {
     position: absolute;
     background: var(--main-back);
     z-index: 3000;
-    right: 0;
-    top: 40px;
+    right: 2px;
+    top: 10px;
     border-radius: 10px;
     border: 1px solid var(--border-fill);
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 }
 
+.dotsA,
+.dots {
+    font-size: 10px;
+
+    svg {
+        width: 1rem;
+    }
+}
 
 .planet {
     font-size: 26px;

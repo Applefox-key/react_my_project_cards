@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import cl from "./Games.module.scss";
-import { FcIdea } from "react-icons/fc";
 import { Button } from "react-bootstrap";
 import Draggable from "react-draggable";
-
+import { FaGripLinesVertical } from "react-icons/fa6";
+import { TbBulb } from "react-icons/tb";
 const Hint = ({ text }) => {
   const [show, setShow] = useState(0);
   const switchShow = () => {
@@ -13,19 +13,20 @@ const Hint = ({ text }) => {
     <Draggable
       cancel="#cbtn"
       defaultPosition={{
-        x: window.visualViewport.width * 0,
-        y: -window.visualViewport.height * 0.05,
+        x: window.visualViewport.width * 0.01,
+        y: -window.visualViewport.height * 0.02,
       }}>
       <div className={cl.hint}>
-        <div>{<FcIdea />}</div>
+        {<FaGripLinesVertical className={cl.handle} />}
         <Button
           onClick={switchShow}
           size="lg"
           id="cbtn"
           variant={show ? "warning" : "dark"}
           className={cl.hintbtn}>
-          NOTE
-          {/* {show ? <FcIdea className={cl.hintOn} /> : <FcIdea />} */}
+          <span>NOTE</span>
+          {/* <FcIdea /> */}
+          <TbBulb />
         </Button>
         {!!show && <div className={cl.hintText}>{text}</div>}
       </div>

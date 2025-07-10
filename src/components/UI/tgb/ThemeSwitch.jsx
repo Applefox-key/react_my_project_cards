@@ -35,8 +35,8 @@ const ThemeSwitch = ({ isPlay }) => {
             handleChange(e);
           }}
         />
-        <span className="slider"></span>
-      </label>{" "}
+        <span className="slider"></span>{" "}
+      </label>
       <ThemesChoosing callback={themeChange} />
     </>
   );

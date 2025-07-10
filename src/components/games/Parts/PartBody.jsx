@@ -5,15 +5,20 @@ import cl from "../Games.module.scss";
 
 import Result from "../../UI/CARDS/Result";
 import PartAnswer from "./PartAnswer";
-import GameCount from "../GameCount";
 import OneCardG from "../OneCardG";
 import Hint from "../Hint";
 import Parts from "./Parts";
+import GameScore from "../GameScore";
 
 const PartBody = ({ items, setItems }) => {
   const [num, setNum] = useState(0);
   const [activeIDs, setActiveIDs] = useState([]);
-  const [count, setCount] = useState([0, 0]);
+  const [score, setScore] = useState({
+    r: 0,
+    w: 0,
+    t: items.length,
+    num: items?.length ? 1 : 0,
+  });
   const [activeVAL, setActiveVAL] = useState([]);
   const [mistakes, setMistackes] = useState([]);
 
@@ -22,7 +27,6 @@ const PartBody = ({ items, setItems }) => {
     let val = e.target.innerText ? e.target.innerText : " ";
     let nID = [...activeIDs];
     let nV = [...activeVAL];
-
     if (answ[nV.length - 1] !== nV[nV.length - 1]) {
       nID.pop();
       nV.pop();
@@ -33,7 +37,7 @@ const PartBody = ({ items, setItems }) => {
     setActiveIDs(nID);
 
     if (answ[nV.length - 1] !== val) {
-      setCount([count[0], count[1] + 1]);
+      setScore({ ...score, w: score.w + 1 });
       if (!mistakes.includes(items[num])) {
         let nm = [...mistakes];
         nm.push(items[num]);
@@ -41,7 +45,7 @@ const PartBody = ({ items, setItems }) => {
       }
     }
     if (answ.length === nV.length) {
-      setCount([count[0] + 1, count[1]]);
+      setScore({ ...score, r: score.r + 1, n: score.n + 1 });
       setTimeout(() => {
         setActiveVAL([]);
         setActiveIDs([]);
@@ -88,7 +92,7 @@ const PartBody = ({ items, setItems }) => {
       setActiveIDs(nID);
 
       if (ra.length === nV.length) {
-        setCount([count[0] + 1, count[1]]);
+        setScore({ ...score, r: score.r + 1, n: score.n + 1 });
         setTimeout(() => {
           setActiveVAL([]);
           setActiveIDs([]);
@@ -105,17 +109,19 @@ const PartBody = ({ items, setItems }) => {
   return (
     <div>
       {items.length === num ? (
-        <Result
-          text="Job is done!"
-          count={count}
-          mist={mistakes.length ? workWithErrors : null}
-        />
+        num ? (
+          <Result
+            text="Job is done!"
+            score={score}
+            mist={mistakes.length ? workWithErrors : null}
+          />
+        ) : (
+          <Result text="Oops! No cards match the selected options" noAgainBtn />
+        )
       ) : (
         <>
           {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
-          {items.length !== num && (
-            <GameCount count={count} all={items.length - num} />
-          )}
+          {items.length !== num && <GameScore score={score} />}
           <SwitchTransition mode="out-in">
             <CSSTransition
               // appear={false}

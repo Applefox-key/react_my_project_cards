@@ -5,17 +5,18 @@ import { useParams } from "react-router-dom";
 import cl from "../Games.module.scss";
 
 import Result from "../../UI/CARDS/Result";
-import GameCount from "../GameCount";
 import TestOptions from "./TestOptions";
 import Hint from "../Hint";
 import OneCardG from "../OneCardG";
 
 import { testAnswerCheck } from "../../../utils/games";
+import GameScore from "../GameScore";
 
 const TestBody = ({ items, setItems }) => {
   const [num, setNum] = useState(0);
   const [active, setActive] = useState([]);
-  const [count, setCount] = useState([0, 0]);
+
+  const [score, setScore] = useState({ r: 0, w: 0, t: items.length });
   const [right, setRight] = useState();
   const [mistakes, setMistackes] = useState([]);
   const mode = useParams().mode;
@@ -27,14 +28,14 @@ const TestBody = ({ items, setItems }) => {
     let res = testAnswerCheck(num, id, items);
     if (res) {
       setRight(id);
-      setCount([count[0] + 1, count[1]]);
+      setScore({ ...score, "r": score.r + 1 });
       setTimeout(() => {
         setRight("");
         setActive([]);
         setNum(num + 1);
       }, 300);
     } else {
-      setCount([count[0], count[1] + 1]);
+      setScore({ ...score, "w": score.r + 1 });
       let na = [...active];
       na.push(id);
       setActive(na);
@@ -48,17 +49,19 @@ const TestBody = ({ items, setItems }) => {
   return (
     <div className="mt-4">
       {items.length === num ? (
-        <Result
-          text="Job is done!"
-          count={count}
-          mist={mistakes.length ? workWithErrors : null}
-        />
+        num ? (
+          <Result
+            text="Job is done!"
+            score={score}
+            mist={mistakes.length ? workWithErrors : null}
+          />
+        ) : (
+          <Result text="Oops! No cards match the selected options" noAgainBtn />
+        )
       ) : (
         <>
           {items[num].item.note ? <Hint text={items[num].item.note} /> : <></>}
-          {items.length !== num && (
-            <GameCount count={count} all={items.length - num} />
-          )}
+          {items.length !== num && <GameScore score={score} />}
           <SwitchTransition mode="out-in">
             <CSSTransition
               // appear={false}

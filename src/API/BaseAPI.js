@@ -241,6 +241,13 @@ const BaseAPI = {
     if (!newParam || !id) return { message: "nothing has changed" };
     return await this.serverReq("patch", "/playlists/" + id, true, newParam);
   },
+  async editContentRate(id, rate) {
+    if (!id || !rate) throw new Error("please specify the rate");
+
+    let formData = contentRequestData({ id, rate });
+
+    return await this.serverReq("patch", "/content", true, "", "", formData);
+  },
   async editContent(newV) {
     if (
       !newV.id ||
@@ -372,7 +379,7 @@ const BaseAPI = {
   async getGameResults(listid, game = "") {
     let reqData = { listid: listid };
     if (game) reqData.game = game;
-    return await this.serverReq("POST", "/gamesresult/get", true, reqData, "");
+    return await this.serverReq("post", "/gamesresult/get", true, reqData, "");
   },
   //pbcollection's list/ or one by id
   async getPublicCollections(colId) {

@@ -109,7 +109,13 @@ export const DEFAUL_USER_DATA = {
   password: "",
   settings: defaultSettings,
 };
-
+export const defRatesSel = {
+  1: false,
+  2: false,
+  3: false,
+  4: false,
+  5: false,
+};
 export const themeArr = {
   day: {
     isday: true,
@@ -198,7 +204,7 @@ export const themeArr = {
     "--color-second": "#000000",
     "--shadow-size": "6px",
   },
-  neutral: {
+  grey: {
     isday: true,
     "--main-back": "#dad7d2",
     "--main-color": "#000000",

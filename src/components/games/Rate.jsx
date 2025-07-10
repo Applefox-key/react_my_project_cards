@@ -7,18 +7,19 @@ const Rate = ({
   notEditable = false,
   action = null,
   isSmall = false,
+  classN = "",
 }) => {
   const [value, setValue] = useState(initialValue);
   const labels = ["Very Bad", "Bad", "Ok", "Good", "Excellent"];
   const handleClick = (e, i) => {
-    e.stopPropagation();
     if (!notEditable) {
+      e.stopPropagation();
       setValue(i);
       if (action) action(i);
     }
   };
   return (
-    <div className={isSmall ? cl.rateS : cl.rateB}>
+    <div className={[isSmall ? cl.rateS : cl.rateB, classN].join(" ")}>
       {labels.map((el1, i) => (
         <div key={i} onClick={(e) => handleClick(e, i)}>
           {i <= value ? <FaStar /> : <FaRegStar />}

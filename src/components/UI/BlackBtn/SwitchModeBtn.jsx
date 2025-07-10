@@ -11,6 +11,11 @@ const SwitchModeBtn = ({ ...props }) => {
   const curPuth = useLocation().pathname;
   const mode = useParams().mode;
   const change = () => {
+    if (
+      window.document.getElementById("gameinfo") ||
+      window.document.getElementById("gameresult")
+    )
+      return;
     const newModeValue = 1 - parseInt(mode);
     const newPath = curPuth.replace(
       new RegExp(`/${parseInt(mode)}/`),
@@ -19,33 +24,32 @@ const SwitchModeBtn = ({ ...props }) => {
 
     router(newPath, { replace: true });
   };
-
+  // const isDis = window.document.getElementById("gameresult");
   return (
     <>
-      {!window.document.getElementById("gameresult") && (
+      {" "}
+      <span className={cl.dv} />{" "}
+      <Button
+        className={[cl.btnGame, "animSvg"].join(" ")}
+        size="lg"
+        // disabled={isDis}
+        variant="dark"
+        onClick={change}
+        title={`game mode: ${
+          props.modes[parseInt(mode)]
+        }. RESTART with change mode to the ${props.modes[1 - parseInt(mode)]}`}
+        {...props}>
         <SwitchTransition>
           <CSSTransition
             key={window.location.pathname}
             timeout={200}
             classNames={"endl"}>
-            <Button
-              className={[cl.btnGame, "animSvg"].join(" ")}
-              size="lg"
-              variant="dark"
-              onClick={change}
-              title={`game mode: ${
-                props.modes[parseInt(mode)]
-              }. RESTART with change mode to the ${
-                props.modes[1 - parseInt(mode)]
-              }`}
-              {...props}>
-              <BsPhoneFlip />
-              <span className={cl.endlesTitle}>FLIP SIDE</span>
-              <span className={cl.endlesName}> {parseInt(mode) + 1}</span>
-            </Button>
+            <BsPhoneFlip />
           </CSSTransition>
         </SwitchTransition>
-      )}
+        <span className={cl.endlesTitle}>FLIP SIDE</span>
+        <span className={cl.endlesName}> {parseInt(mode) + 1}</span>
+      </Button>{" "}
     </>
   );
 };

@@ -7,7 +7,7 @@ import { mainAndImg } from "../../../utils/cardFragment";
 import { useStretchingText } from "../../../hooks/useStretchingText";
 import BalancerLine from "../Balancer/BalancerLine";
 import CardBtn from "./CardBtn";
-import VoiceBtns from "../BlackBtn/VoiceBtns";
+import VoiceBtns from "../VoiceBtns/VoiceBtns";
 
 const MyCard = ({ mode = "0", ...props }) => {
   const [flipped, setFlipped] = useState(false);
@@ -31,6 +31,9 @@ const MyCard = ({ mode = "0", ...props }) => {
           {props.leftBtn && (
             <CardBtn btnSide="leftbtn" {...{ ...props.leftBtn, flipped }} />
           )}
+          {props.rightBtn && (
+            <CardBtn btnSide="rightBtn" {...{ ...props.rightBtn, flipped }} />
+          )}
           <div
             className={cl["card-button"]}
             onClick={() => {
@@ -38,6 +41,7 @@ const MyCard = ({ mode = "0", ...props }) => {
             }}>
             {!props.noSound && (
               <VoiceBtns
+                className={cl.voiceCard}
                 text={
                   flipped + mode === "false0" || flipped + mode === "true1"
                     ? props.item.question
@@ -54,10 +58,6 @@ const MyCard = ({ mode = "0", ...props }) => {
               </CSSTransition>
             )}
           </div>
-
-          {props.rightBtn && (
-            <CardBtn btnSide="rightBtn" {...{ ...props.rightBtn, flipped }} />
-          )}
         </div>
       )}
     </>

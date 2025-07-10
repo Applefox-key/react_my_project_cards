@@ -57,11 +57,7 @@ const TestBodyEndless = ({ items }) => {
     <>
       {!!allItems.length && (
         <>
-          {allItems[num].item.note ? (
-            <Hint text={items[num].item.note} />
-          ) : (
-            <></>
-          )}{" "}
+          {!!allItems[num].item.note && <Hint text={items[num].item.note} />}
           <ProbabilityList arr={allItems} />{" "}
           <SwitchTransition mode="out-in">
             <CSSTransition

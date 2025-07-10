@@ -7,17 +7,18 @@ import { useGame } from "../../../hooks/useGame";
 import { usePopup } from "../../../hooks/usePopup";
 
 import { shuffle } from "../../../utils/arraysFunc";
-import { addRates, updRates } from "../../../utils/gamesResults";
+import { updRates } from "../../../utils/gamesResults";
 
 import cl from "../../UI/CARDS/MyCard.module.scss";
 
 import BackBtn from "../../UI/BlackBtn/BackBtn";
 import GameBtn from "../../UI/BlackBtn/GameBtn";
-import GameCountBage from "../GameCountBage";
+
 import OneCardG from "../OneCardG";
 import Rate from "../Rate";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
+import GameScore from "../GameScore";
 
 const CardsGallery = () => {
   const [items, setItems] = useState(null);
@@ -26,13 +27,7 @@ const CardsGallery = () => {
   const [anim, setShowAnim] = useState(false);
   const setPopup = usePopup();
 
-  const changeContentAsync = async (initVal) => {
-    let res = await addRates(initVal);
-    // let res1 = shuffle(res);
-    setItems(res);
-  };
   const changeContent = async (initVal) => {
-    // let res = shuffle(initVal);
     setItems(initVal);
   };
   const shuffleCards = () => {
@@ -41,7 +36,8 @@ const CardsGallery = () => {
   };
   const param = useParams().mode;
   const [getContent, isLoading, error] = useGame(
-    useParams().tab === "my" ? changeContentAsync : changeContent,
+    // useParams().tab === "my" ? changeContentAsync : changeContent,
+    changeContent,
     useParams().tab === "my"
   );
   useEffect(() => {
@@ -60,6 +56,10 @@ const CardsGallery = () => {
     setShowAnim(!anim);
     setItemNum(Math.max(itemNum - 1, 0));
   };
+  const updateRate = (el, newRate) => {
+    updRates(el, newRate);
+    // setContent({ ...el, rate: newRate });
+  };
   const leftBtn = {
     onClick: prew,
     name: <TiArrowBackOutline />,
@@ -77,28 +77,28 @@ const CardsGallery = () => {
 
   return (
     <div className="mainField">
+      <div className="gameTitle">Cards gallery</div>
       <div className="menuField d-flex justify-content-between w-100">
         <div>
           <BackBtn />
           <SwitchModeBtn modes={["QUESTION-ANSWER", "ANSWER-QUESTION"]} />
           <GameBtn title="SHUFFLE" onClick={shuffleCards} />
         </div>
-
         {!!items &&
           !!items[itemNum] &&
           !!items[itemNum].hasOwnProperty("rate") && (
             <Rate
               key={itemNum}
               initialValue={items[itemNum].rate}
-              action={(newRate) => updRates(items[itemNum], newRate)}
+              action={(newRate) => updateRate(items[itemNum], newRate)}
             />
           )}
-
+      </div>
+      <div className={cl.scoreG}>
         {!isLoading && items && (
-          <GameCountBage
-            value={items && itemNum + 1 + "/" + items.length}
-            bg="warning"
-            text="dark"
+          <GameScore
+            styleB={cl.scoreG}
+            score={{ num: itemNum + 1, t: items.length }}
           />
         )}
       </div>

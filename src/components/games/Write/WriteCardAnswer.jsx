@@ -8,6 +8,7 @@ const WriteCardAnswer = ({ textRef, onEnter, clAnsw, children }) => {
         type={"text"}
         id="answerArea"
         ref={textRef}
+        autoFocus
         className={clAnsw}
         onKeyDown={(e) => {
           if (e.key === "Enter") {

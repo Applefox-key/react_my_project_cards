@@ -7,7 +7,7 @@ import cl from "../Games.module.scss";
 
 import WriteCardAnswer from "./WriteCardAnswer";
 import WriteCardErrors from "./WriteCardErrors";
-import VoiceBtns from "../../UI/VoiceBtns";
+import VoiceInputBtns from "../../UI/VoiceBtns/VoiceInputBtns";
 import OneCardG from "../OneCardG";
 import Hint from "../Hint";
 
@@ -162,7 +162,7 @@ const WriteCardBodyEndless = ({ items }) => {
                   cl.writeAnswer +
                   (flip ? (isError ? " wrongBack" : " rightBack") : "")
                 }>
-                <VoiceBtns textRef={textRef} disable={flip} />
+                <VoiceInputBtns textRef={textRef} disable={flip} />
               </WriteCardAnswer>
             </div>
           </CSSTransition>

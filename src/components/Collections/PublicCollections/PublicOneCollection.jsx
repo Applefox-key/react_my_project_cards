@@ -71,7 +71,7 @@ const PublicOneCollection = () => {
             timeout={1000}
             classNames="game"
             unmountOnExit>
-            <div className="m-auto d-flex align-items-start mt-4">
+            <div className="m-auto d-flex align-items-start mt-5">
               {content &&
                 (mode === 0 ? (
                   <ContentCards

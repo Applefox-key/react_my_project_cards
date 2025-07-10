@@ -534,10 +534,13 @@
 }
 
 .voiceInputWrap {
+
+
   @media screen and (max-width:900px) {
     position: absolute;
-    top: -40px;
-    right: 60px;
+    bottom: unset;
+    left: 8px;
+    top: -43px;
   }
 }
 
@@ -545,8 +548,14 @@
 
   display: flex;
 
+  span {
+    font-size: 19px;
+  }
+
   input {
     max-width: 6rem;
+    font-size: 19px;
+    padding: 0;
   }
 }
 
@@ -568,10 +577,10 @@
     font-size: 20vw;
   }
 
-  @media screen and (min-width:1200px) {
+  // @media screen and (min-width:1200px) {
 
-    width: 50%;
-  }
+  //   // width: 50%;
+  // }
 }
 
 
@@ -595,9 +604,27 @@
 
   @media screen and (max-height:600px) {}
 
+  .handle {
+    position: relative;
+    left: 7px;
+    bottom: 0px;
+    color: var(--color-second);
+  }
+
   .hintbtn {
     cursor: pointer;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    padding-right: 24px;
+
+    span {
+      // background: red;
+    }
+
+    svg {
+      font-size: 24px;
+      position: absolute;
+      top: 10px;
+    }
 
     div {
       background-color: #0d6af5;
@@ -671,7 +698,7 @@
 
 .probListWrap {
   position: absolute;
-  top: 0rem;
+  top: 26px;
   right: 10px;
   width: fit-content;
   font-size: 25px;
@@ -911,8 +938,23 @@
 }
 
 .startP {
-  border-radius: 50%;
+  // border-radius: 50%;
   z-index: 5000;
   width: 6rem;
   height: 4rem;
+}
+
+.oneStar {
+  position: absolute;
+  left: 5px;
+  font-size: 21px;
+  top: -4px;
+
+  // &::after {
+  //   content: attr(dataV);
+  //   position: relative;
+  //   font-size: 10px;
+  //   left: -11px;
+
+  // }
 }

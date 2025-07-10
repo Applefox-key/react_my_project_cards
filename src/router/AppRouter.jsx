@@ -9,7 +9,12 @@ const AppRouter = () => {
   return (
     <>
       <MyNavbar />
-      <div className="main_page">
+      <div
+        className={
+          window.location.pathname.includes("/play_")
+            ? "main_page mpGame"
+            : "main_page"
+        }>
         <Routes>
           {routesArr.map((item, i) => (
             <Route path={item.path} element={item.element} key={i} />

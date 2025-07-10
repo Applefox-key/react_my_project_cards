@@ -7,6 +7,7 @@ import { AiOutlineFontSize } from "react-icons/ai";
 
 import { getImgA, getImgQ } from "../../../utils/contentRequests";
 import { formatString } from "../../../utils/texts";
+import VoiceBtns from "../../UI/VoiceBtns/VoiceBtns";
 
 const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
   const isQuestion = fieldName === "imgQ";
@@ -109,7 +110,8 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
           onClick={format}
           title="remove spaces, add dots and capital letters">
           <AiOutlineFontSize />
-        </button>
+        </button>{" "}
+        {<VoiceBtns text={currentText} className="btnPlus soundEdit" />}
       </div>
     </div>
   );

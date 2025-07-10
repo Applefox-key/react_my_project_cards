@@ -258,30 +258,24 @@
     margin: auto;
     position: relative;
 
-    .leftbtn,
-    .rightBtn {
-        z-index: 3;
-        transition: 0.8s ease;
+    .base-card-btn {
+        z-index: 0;
         font-weight: bold;
         position: absolute;
-        bottom: 0;
-        height: 60px;
+        bottom: 10px;
+        height: 3rem;
         width: 60px;
-        z-index: 5;
         font-size: 4rem;
-        border-radius: 0 70% 0 0;
+        border-radius: 10px 0 0 10px;
         border: none;
         text-decoration: none;
         cursor: pointer;
         overflow: hidden;
         font-family: Arial;
         line-height: 2;
-
-
         transition: all 0.5s ease;
-
-        background: var(--background-second);
-        color: var(--main-color-int);
+        background: var(--color-second);
+        color: var(--background-second);
 
         .hide {
             opacity: 0;
@@ -293,7 +287,6 @@
         }
 
         &:hover {
-
             transform: translate(-5px, 5px);
             border-radius: 0 17% 0 17%;
         }
@@ -308,13 +301,66 @@
         }
     }
 
-    .rightBtn {
-        right: 0;
-        border-radius: 70% 0 0 0;
+    .leftbtn {
+        @extend .base-card-btn;
 
-        &:hover {
-            border-radius: 17% 0 0 17%;
-            transform: translate(5px, 5px);
+        @media screen and (min-width:900px) {
+            left: -53px;
+            bottom: 10px;
+
+            &:hover {
+                transform: translate(-13px, -4px);
+            }
+        }
+
+        @media screen and (max-width:900px) {
+
+            bottom: -24px;
+            left: 12px;
+            border-radius: 10px;
+
+
+            // z-index: 5;
+            // bottom: 10px;
+            // height: 60px;
+            // border-radius: 0 70% 0 0;
+            // left: 0;
+            // bottom: 0;
+
+            &:hover {
+                z-index: 5;
+                border-radius: 0 17% 0 17%;
+                transform: translate(-5px, 5px);
+                // background: var(--background-second);
+            }
+        }
+
+
+    }
+
+    .rightBtn {
+        @extend .base-card-btn;
+
+        @media screen and (min-width:900px) {
+            right: -53px;
+            border-radius: 0 10px 10px 0;
+
+            &:hover {
+                border-radius: 17% 0 17% 0;
+                transform: translate(13px, -4px);
+            }
+        }
+
+        @media screen and (max-width:900px) {
+            bottom: -24px;
+            right: 12px;
+            border-radius: 10px;
+
+            &:hover {
+                border-radius: 17% 0 17% 0;
+                transform: translate(5px, 5px);
+                // background: var(--background-second);
+            }
         }
     }
 }
@@ -365,6 +411,16 @@
     perspective: 5000px;
     border-radius: 15px;
 
+    .voiceCard {
+        position: absolute;
+        right: -60px;
+        top: 10px;
+
+        @media screen and (max-width: 600px) {
+            right: 120px;
+            top: -31px;
+        }
+    }
 
     @media screen and (max-width: 600px) {
         height: auto;
@@ -536,7 +592,16 @@
     top: -8px;
     z-index: 901;
     width: 100%;
+    // position: absolute;
+    // top: 171px;
+    // z-index: 901;
+    // width: 100%;
+    // transform: rotate(270deg);
+    // scale: 0.45;
+    // right: -373px;
 }
+
+
 
 @media screen and (min-width: 800px) and (max-height: 391px) {
 
@@ -608,4 +673,15 @@
     }
 
 
+}
+
+.scoreG {
+    position: absolute;
+    right: 43%;
+    width: 150px;
+    top: 0;
+
+    @media screen and (max-width: 900px) {
+        position: unset;
+    }
 }

@@ -351,6 +351,7 @@
     margin: auto;
     width: 90%;
     background-color: var(--wrap-back);
+    margin-top: 25px;
 
     .onePlaylist-wrap {
         display: flex;
@@ -835,7 +836,7 @@
         justify-content: center;
         padding-bottom: 5px;
         border-bottom: 1px solid var(--border-fill);
-
+        margin-top: 5px;
     }
 
     .filter {

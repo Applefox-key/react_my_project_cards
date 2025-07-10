@@ -3,7 +3,6 @@ import { CSSTransition } from "react-transition-group";
 
 import cl from "../Games.module.scss";
 
-import GameCount from "../GameCount";
 import Hint from "../Hint";
 import Result from "../../UI/CARDS/Result";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
@@ -14,23 +13,35 @@ import { useGame } from "../../../hooks/useGame";
 
 import { shuffle } from "../../../utils/arraysFunc";
 import { pairAnswerCheck } from "../../../utils/games";
+import SwitchRate from "../../UI/BlackBtn/SwitchRate";
+import GameScore from "../GameScore";
 
 const Pairs = () => {
   const [items, setItems] = useState(null);
   const [itemsV, setItemsV] = useState([]);
   const [active, setActive] = useState();
   const [note, setNote] = useState();
-  const [count, setCount] = useState([0, 0]);
-
+  const [filterRate, setFilterRate] = useState(null);
+  const [score, setScore] = useState({ r: 0, w: 0, t: 0 });
   const contentParts = (arr = null) => {
-    let newArr = arr !== null ? shuffle([...arr]) : [...items];
+    let newArr =
+      arr !== null
+        ? shuffle(
+            filterRate
+              ? arr.filter((el) => filterRate.includes(el.rate + 1))
+              : arr
+          )
+        : [...items];
     if (!newArr.length) {
       setItemsV([[], []]);
+      setScore({ ...score, t: 0 });
       return;
     }
     let leng = newArr.length === 7 ? 7 : Math.min(6, newArr.length);
     let part = newArr.splice(0, leng);
     setItems(newArr);
+
+    setScore({ ...score, t: leng });
     let a1 = shuffle([...part]);
     let a2 = shuffle([...part]);
     setItemsV([a1, a2]);
@@ -40,7 +51,7 @@ const Pairs = () => {
   useEffect(() => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.location.pathname, window.location.hash]);
+  }, [window.location.pathname, window.location.hash, filterRate]);
 
   const itemNote = (ids) => {
     let [id, set] = [...ids.split("&")];
@@ -73,19 +84,20 @@ const Pairs = () => {
     if (res) {
       if (arr1.length === 0) contentParts();
       else setItemsV([arr1, arr2]);
-      setCount([count[0] + 1, count[1]]);
+      setScore({ ...score, r: score.r + 1 });
       setActive("");
       setNote("");
     } else {
-      setCount([count[0], count[1] + 1]);
+      setScore({ ...score, w: score.w + 1 });
     }
   };
 
   return (
     <div className="mainField">
       {note ? <Hint text={note} /> : <></>}
+      <div className="gameTitle">Find pairs</div>
       <div className="menuField">
-        <BackBtn />
+        <BackBtn /> <SwitchRate {...{ filterRate, setFilterRate }} />
       </div>
       {isLoading || !items ? (
         <SpinnerLg className="span_wrap" />
@@ -93,10 +105,17 @@ const Pairs = () => {
         <CSSTransition in appear timeout={500} classNames="game">
           <div>
             {items.length + itemsV[0].length !== 0 && (
-              <GameCount count={count} all={items.length + itemsV[0].length} />
+              <GameScore score={score} />
             )}
-            {items.length + itemsV[0].length === 0 ? (
-              <Result text="Job is done!" count={count} />
+            {items?.length + itemsV[0].length === 0 ? (
+              score.t ? (
+                <Result text="Job is done!" score={score} />
+              ) : (
+                <Result
+                  text="Oops! No cards match the selected options"
+                  noAgainBtn
+                />
+              )
             ) : (
               <div className={cl.pairs_container}>
                 <PairPart

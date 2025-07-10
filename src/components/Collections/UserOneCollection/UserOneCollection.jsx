@@ -15,7 +15,7 @@ import { useLastMode } from "../../../hooks/useLastMode";
 import { usePopup } from "../../../hooks/usePopup";
 import { useQuery } from "../../../hooks/useQuery";
 import { useAuth } from "../../../hooks/useAuth";
-import { addRates } from "../../../utils/gamesResults";
+
 import BaseAPI from "../../../API/BaseAPI";
 
 const UserOneCollection = () => {
@@ -28,13 +28,15 @@ const UserOneCollection = () => {
   const [getContent, isLoading, error] = useQuery(async () => {
     const result = await BaseAPI.getCollectionsAndContent(pageParam.id);
 
-    const colContent = await addRates(result);
-    setCollect(colContent[0].collection);
-    setContent(colContent[0].content);
+    // const colContent = await addRates(result);
+
+    setCollect(result[0].collection);
+    setContent(result[0].content);
   });
 
   useEffect(() => {
     getContent();
+
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name]);
@@ -79,7 +81,7 @@ const UserOneCollection = () => {
                 </button>
               </div>
             )}
-            <div className="m-auto d-flex mt-4">
+            <div className="m-auto d-flex mt-5">
               {!isLoading && content ? (
                 mode === 0 ? (
                   <ContentCards

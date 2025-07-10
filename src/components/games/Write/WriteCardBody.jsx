@@ -1,23 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useParams } from "react-router-dom";
-
 import cl from "../Games.module.scss";
-
-import GameCount from "../GameCount";
+import GameScore from "../GameScore";
 import OneCardG from "../OneCardG";
 import WriteCardAnswer from "./WriteCardAnswer";
 import Result from "../../UI/CARDS/Result";
 import Hint from "../Hint";
 import WriteCardErrors from "./WriteCardErrors";
-import VoiceBtns from "../../UI/VoiceBtns";
+import VoiceInputBtns from "../../UI/VoiceBtns/VoiceInputBtns";
 
 import { onlyLetters } from "../../../utils/texts";
 
-const WriteCardBody = ({ items, setItems }) => {
+const WriteCardBody = ({ items, setItems, setIsResult, isResult }) => {
   const [mistakes, setMistackes] = useState([]);
-  const [count, setCount] = useState([0, 0]);
+  const [score, setScore] = useState({
+    r: 0,
+    w: 0,
+    t: items.length,
+  });
   const [num, setNum] = useState(0);
   const [showErr, setShowErr] = useState(false);
   const [flip, setFlip] = useState(false);
@@ -41,9 +43,20 @@ const WriteCardBody = ({ items, setItems }) => {
   const check = useCallback(() => {
     if (flip) {
       textRef.current.value = "";
+      if (isError && !mistakes.includes(items[num])) {
+        let nm = [...mistakes, items[num]];
+        setMistackes(nm);
+        setScore({ ...score, w: score.w + 1 });
+      } else {
+        setScore({ ...score, r: score.r + 1 });
+      }
+
       setIsError(false);
       setNum(Math.min(num + 1, items.length - 1));
+
       setShowAnim(!anim);
+
+      textRef.current?.focus();
     } else {
       const currentAnswer = textRef.current.value;
       let ra = onlyLetters(
@@ -52,18 +65,14 @@ const WriteCardBody = ({ items, setItems }) => {
       let a = onlyLetters(currentAnswer);
       const isCorrect = ra === a;
       setIsError(!isCorrect);
-      if (!isCorrect && !mistakes.includes(items[num])) {
-        let nm = [...mistakes];
-        nm.push(items[num]);
-        setMistackes(nm);
-        setCount([count[0], count[1] + 1]);
-      } else {
-        setCount([count[0] + 1, count[1]]);
-      }
     }
     setFlip(!flip);
   });
-  const isResult = items.length === count[0] + count[1] && !flip;
+
+  useEffect(() => {
+    if (score.t === score.r + score.w && !flip) setIsResult(true);
+  }, [score.t, score.r, score.w, flip]);
+  // const isResult = score.t === score.r + score.w && !flip;
   const errorsShow = () => {
     setShowErr(!showErr);
   };
@@ -91,25 +100,33 @@ const WriteCardBody = ({ items, setItems }) => {
       fontstyleb: "fs-14",
     },
   };
-
+  const voiceBtn = (
+    <>
+      <VoiceInputBtns
+        textRef={textRef}
+        disable={flip}
+        className={cl.voiceInputWrap}
+      />
+      {isError && (
+        <button onClick={tryAgain} className={"roundBtn"}>
+          Again
+        </button>
+      )}
+    </>
+  );
   return (
     <>
       {items[num].note && <Hint text={items[num].note} />}
       {isResult ? (
         <Result
           text="Job is done!"
-          count={count}
+          score={score}
           mist={mistakes.length ? workWithErrors : null}
         />
       ) : (
         <CSSTransition appear in timeout={500} classNames="game">
           <>
-            {!isResult && (
-              <GameCount
-                count={count}
-                all={items.length - count[0] - count[1]}
-              />
-            )}
+            {!isResult && <GameScore score={score} />}
             <div className={cl["game-field"]}>
               {showErr && (
                 <WriteCardErrors
@@ -132,22 +149,15 @@ const WriteCardBody = ({ items, setItems }) => {
                   rightBtn={buttons.rightBtn}
                 />
               </div>
+
               <WriteCardAnswer
                 textRef={textRef}
                 onEnter={check}
+                children={voiceBtn}
                 clAnsw={
                   cl.writeAnswer +
                   (flip ? (isError ? " wrongBack" : " rightBack") : "")
-                }>
-                <div className={cl.voiceInputWrap}>
-                  <VoiceBtns textRef={textRef} disable={flip} />
-                  {isError && (
-                    <button onClick={tryAgain} className={"roundBtn"}>
-                      Again
-                    </button>
-                  )}
-                </div>
-              </WriteCardAnswer>
+                }></WriteCardAnswer>
             </div>
           </>
         </CSSTransition>

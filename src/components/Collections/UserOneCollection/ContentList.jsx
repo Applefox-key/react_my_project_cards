@@ -8,6 +8,8 @@ import { saveModeAndScroll } from "../../../utils/scrollFn";
 import { onePartLittle } from "../../../utils/cardFragment";
 import { GO_TO } from "../../../router/routes";
 import BaseAPI from "../../../API/BaseAPI";
+import Rate from "../../games/Rate";
+import { updRates } from "../../../utils/gamesResults";
 
 const ContentList = ({ content, setContent, pageParam }) => {
   const setPopup = usePopup();
@@ -98,7 +100,6 @@ const ContentList = ({ content, setContent, pageParam }) => {
                 rowsActons.editCard(el, e);
               }}>
               <div className="btn-box">
-                {" "}
                 <button
                   title="Delete row"
                   onClick={(e) => {
@@ -107,8 +108,15 @@ const ContentList = ({ content, setContent, pageParam }) => {
                   }}>
                   ❌
                 </button>
-              </div>
+              </div>{" "}
+              <Rate
+                isSmall
+                initialValue={el.rate}
+                action={(newRate) => updRates(el, newRate)}
+                classN={"oneStar"}
+              />
               {onePartLittle(el, "question")}
+              {/* <RateBtn initialValue={el.rate} action /> */}
               {onePartLittle(el, "answer")}
             </div>
           ))}

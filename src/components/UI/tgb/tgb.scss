@@ -338,7 +338,7 @@
     height: 2em;
     z-index: 1000;
     bottom: unset;
-    scale: 0.8;
+    // scale: 0.8;
     top: 5px;
 
     /* Hide default HTML checkbox */
@@ -348,9 +348,9 @@
         height: 0;
     }
 
-    div {
-        position: absolute;
-    }
+    // div {
+    //     position: absolute;
+    // }
 
     /* The slider */
     .slider {
@@ -364,6 +364,11 @@
         background-color: var(--background);
         transition: .5s;
         border-radius: 30px;
+
+        &:hover {
+            background-color: #2196f3;
+            outline: 1px solid var(--wrap-color);
+        }
     }
 
     .slider:before {

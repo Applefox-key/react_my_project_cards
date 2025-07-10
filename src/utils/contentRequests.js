@@ -9,6 +9,7 @@ export const contentRequestData = (content) => {
       formData.append(key, content[key] ? content[key] : "");
     else formData.append(`data[${key}]`, content[key] ? content[key] : "");
   });
+
   return formData;
 };
 

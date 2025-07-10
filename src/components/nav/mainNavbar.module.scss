@@ -41,6 +41,7 @@
   h1 {
     font-family: 'Kurale';
     color: var(--main-color);
+    transition: all 0.2 ease-in-out;
 
     &::after {
       content: "";
@@ -51,6 +52,10 @@
       border-radius: 4px;
       position: relative;
       bottom: 3px;
+    }
+
+    &:hover {
+      color: var(--color-checked);
     }
   }
 }
@@ -102,6 +107,15 @@
 
   .dropdown {
     color: var(--color-nav);
+
+
+  }
+
+  .dropdown,
+  a {
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   @media print {
@@ -148,8 +162,14 @@
       background: #f37430;
       background: var(--color-checked);
       display: block;
+      position: relative;
+      bottom: -5px;
       border-radius: 4px;
+      background-image: linear-gradient(to right, var(--color-checked), var(--background-nav));
+    }
 
+    a .active::after {
+      bottom: -5px;
     }
   }
 }
@@ -195,6 +215,11 @@
     height: 25px;
     margin-left: -1rem;
     border-radius: 50%;
+
+    &:hover {
+      outline: 1px solid var(--wrap-color);
+    }
+
   }
 
   svg {

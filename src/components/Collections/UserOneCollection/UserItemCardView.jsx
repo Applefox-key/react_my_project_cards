@@ -8,7 +8,7 @@ import MyCard from "../../UI/CARDS/MyCard";
 import Rate from "../../games/Rate";
 
 import { useQuery } from "../../../hooks/useQuery";
-import { addRates, updRates } from "../../../utils/gamesResults";
+import { updRates } from "../../../utils/gamesResults";
 import BaseAPI from "../../../API/BaseAPI";
 
 const UserItemCardView = () => {
@@ -16,8 +16,8 @@ const UserItemCardView = () => {
   const pageParam = useParams();
   const [getContent, ,] = useQuery(async () => {
     const initVal = await BaseAPI.getContentItem(pageParam.item);
-    let content = await addRates(initVal);
-    setitem(content);
+    // let content = await addRates(initVal);
+    setitem(initVal);
   });
 
   useEffect(() => {

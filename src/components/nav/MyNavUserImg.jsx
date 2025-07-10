@@ -45,7 +45,8 @@ const MyNavUserImg = ({ logout, ...props }) => {
       ref={wrapRef}
       className={[cl.dropdown, "ms-4"].join(" ")}
       onClick={handleClick}>
-      <Image src={av} {...props} /> <IoMdArrowDropdown />
+      <Image src={av} {...props} />
+      {/* <IoMdArrowDropdown /> */}
       {show && (
         <div className={cl.subboxOnBtn}>
           <Link to={GO_TO.profile} id={"pathProfile"}>

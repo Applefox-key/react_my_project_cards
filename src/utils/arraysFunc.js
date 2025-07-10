@@ -1,4 +1,5 @@
 export const shuffle = (arr) => {
+  if (!arr.length) return arr;
   arr.sort((a, b) => Math.random() - 0.5);
   return arr;
 };

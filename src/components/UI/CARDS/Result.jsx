@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import cl from "./MyCard.module.scss";
 import "./MyCard.module.scss";
 import "animate.css";
+import GameScore from "../../games/GameScore";
 
-import GameCount from "../../games/GameCount";
-
-const Result = ({ text, count, mist }) => {
+const Result = ({ text, score, mist, noAgainBtn }) => {
   const router = useNavigate();
   const back = () => {
+    if (noAgainBtn) return;
     router(-1);
   };
   const againFn = function (e) {
@@ -26,18 +26,22 @@ const Result = ({ text, count, mist }) => {
       <div
         className={[
           cl.container_gallery_result,
-          count ? "mt-5" : "m-auto",
+          score ? "mt-5" : "m-auto",
         ].join(" ")}>
-        <div id="gameresult" className={cl["card-container"]}>
+        <div
+          id={noAgainBtn ? "gameinfo" : "gameresult"}
+          className={cl["card-container"]}>
           <div className={cl["card-button"]} onClick={back}>
             <div className={[cl["card-front"], cl["card-result"]].join(" ")}>
               <div>
                 <h1 className="display-1">{text}</h1>
-                {count && <GameCount count={count} result />}
+                {score && <GameScore score={score} result />}
                 <div>
-                  <h1 className={cl["result-again"]} onClick={againFn}>
-                    Play again
-                  </h1>
+                  {!noAgainBtn && (
+                    <h1 className={cl["result-again"]} onClick={againFn}>
+                      Play again
+                    </h1>
+                  )}
                   {mist && (
                     <h1 className={cl["result-againer"]} onClick={againMist}>
                       Play again with errors

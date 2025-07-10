@@ -1,5 +1,5 @@
 import React from "react";
-import GameCountBage from "./GameCountBage";
+import GameCountBage from "./GameScoreItem";
 
 const GameCount = ({ count, all, result = 0 }) => {
   return (

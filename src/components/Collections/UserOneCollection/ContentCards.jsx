@@ -14,6 +14,7 @@ import BaseAPI from "../../../API/BaseAPI";
 import { GO_TO } from "../../../router/routes";
 import { onePartLittle } from "../../../utils/cardFragment";
 import { saveModeAndScroll } from "../../../utils/scrollFn";
+import { updRates } from "../../../utils/gamesResults";
 
 const ContentCards = ({ content, setContent, pageParam }) => {
   const route = useNavigate();
@@ -23,6 +24,11 @@ const ContentCards = ({ content, setContent, pageParam }) => {
       ? GO_TO.pubCollect
       : GO_TO.myCollect;
     route(`${mainRoute}/card/${pageParam.id}/${pageParam.name}/${item.id}`);
+  };
+
+  const updateRate = (el, newRate) => {
+    updRates(el, newRate);
+    // setContent({ ...el, rate: newRate });
   };
   const btns = [
     {
@@ -92,7 +98,11 @@ const ContentCards = ({ content, setContent, pageParam }) => {
           {onePartLittle(el, "answer")}
           {el.hasOwnProperty("rate") && (
             <div className="rate">
-              <Rate initialValue={el.rate} isSmall />
+              <Rate
+                initialValue={el.rate}
+                isSmall
+                action={(newRate) => updateRate(el, newRate)}
+              />
             </div>
           )}
         </div>

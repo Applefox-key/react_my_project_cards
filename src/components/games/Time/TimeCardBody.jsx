@@ -6,10 +6,11 @@ import cl from "../Games.module.scss";
 import OneCardG from "../OneCardG";
 import MyInputGroup from "../../UI/MyInput/MyInputGroup";
 import BackBtn from "../../UI/BlackBtn/BackBtn";
-import GameCountBage from "../GameCountBage";
 import Result from "../../UI/CARDS/Result";
+import SwitchRate from "../../UI/BlackBtn/SwitchRate";
+import GameScoreItem from "../GameScoreItem";
 
-const TimeCardBody = ({ items }) => {
+const TimeCardBody = ({ items, filterRate, setFilterRate }) => {
   const [oneDelay, setOneDelay] = useState(1.5);
   const [num, setNum] = useState(0);
   const [flip, setFlip] = useState(false);
@@ -59,20 +60,31 @@ const TimeCardBody = ({ items }) => {
       clearAllTimeouts();
     };
   }, []);
+
   return (
     <>
       {items.length === num ? (
         <>
-          <div className="menuField d-flex w-100 justify-content-center">
-            <BackBtn />
+          <div className="menuField d-flex w-100 ">
+            <BackBtn /> <SwitchRate {...{ filterRate, setFilterRate }} />
           </div>
-          <Result text="HOPE YOU DID WELL!" />
+          {!num ? (
+            <Result
+              text="Oops! No cards match the selected options"
+              noAgainBtn
+            />
+          ) : (
+            <Result text="HOPE YOU DID WELL!" />
+          )}
         </>
       ) : (
         <>
+          <div className="gameTitle">Cards gallery with timer</div>
           <div className="menuField d-flex w-100 justify-content-between">
-            <BackBtn />
-            <div className={cl.timemenu}>
+            <div className="d-flex">
+              <BackBtn /> <SwitchRate {...{ filterRate, setFilterRate }} />
+            </div>
+            <div className={[cl.timemenu].join(" ")}>
               <MyInputGroup
                 size="lg"
                 label="DELAY IN SEC"
@@ -94,10 +106,10 @@ const TimeCardBody = ({ items }) => {
                 {num === 0 || isPaused ? "START" : "PAUSE"}
               </Button>
             </div>
-            <GameCountBage
+            <GameScoreItem
               value={items && num + 1 + "/" + items.length}
-              bg="warning"
-              text="dark"
+              lable="Cards"
+              bg="oneScoreItem"
             />
           </div>
           <div className="m-auto ">
