@@ -22,7 +22,11 @@ const Hint = ({ text }) => {
         y: -window.visualViewport.height * 0.02,
       }}>
       <div className={cl.hint}>
-        {<WiMoonThirdQuarter className={cl.handle} />}
+        {
+          <WiMoonThirdQuarter
+            className={cl.handle + " " + (show ? cl.opn : "")}
+          />
+        }
         {/* {<IoFlashSharp className={cl.handle} />} */}
         <Button
           onClick={switchShow}

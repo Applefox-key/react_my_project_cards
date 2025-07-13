@@ -610,13 +610,27 @@
     left: 11px;
     bottom: 0px;
     color: var(--color-second);
+    border-radius: 50%;
+    cursor: move;
+    // border-left: 2px solid orange;
   }
+
+  .opn {
+    border-left: 2px solid orange;
+
+  }
+
+  // .cls {
+  //   background: var(--color-second);
+  //   color: var(--background-second);
+  // }
 
   .hintbtn {
     cursor: pointer;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     padding-right: 24px;
-    background-color: var(--color-second);
+    // background: var(--color-second);
+    // color: var(--background-second);
 
     span {
       // background: red;
@@ -642,6 +656,7 @@
     }
   }
 
+
   .hintOn {
     border: 1px solid black;
     border-radius: 50%;
@@ -664,8 +679,10 @@
     font-size: 1.5rem;
     height: fit-content;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    border: 1px solid orange;
 
     @media screen and (max-width: 900px) {
+      max-width: 79vw;
       left: unset;
       right: 80px;
       top: -5px;
