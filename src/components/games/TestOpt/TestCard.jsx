@@ -16,6 +16,7 @@ import { shuffle } from "../../../utils/arraysFunc";
 import { saveResults } from "../../../utils/gamesResults";
 import SwitchRate from "../../UI/BlackBtn/SwitchRate";
 import Result from "../../UI/CARDS/Result";
+import GameMenuToggleField from "../GameMenuToggleField";
 
 const TestCard = () => {
   const setPopup = usePopup();
@@ -75,14 +76,12 @@ const TestCard = () => {
     <div className="mainField">
       <div className="gameTitle">Test by cards</div>
       <div className="menuField">
-        <BackBtn />
-        {!!items?.length && (
-          <>
-            <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
-            <SwitchModeBtn modes={["QUESTIONS PARTS", "ANSWERS PARTS"]} />{" "}
-          </>
-        )}
-        <SwitchRate {...{ filterRate, setFilterRate }} />
+        <GameMenuToggleField
+          endless={endless}
+          setEndless={setEndless}
+          hideBtns={!items?.length}>
+          <SwitchRate {...{ filterRate, setFilterRate }} />
+        </GameMenuToggleField>
       </div>
       {isLoading ? (
         <SpinnerLg className="span_wrap" />

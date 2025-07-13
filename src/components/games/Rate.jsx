@@ -22,7 +22,7 @@ const Rate = ({
     <div className={[isSmall ? cl.rateS : cl.rateB, classN].join(" ")}>
       {labels.map((el1, i) => (
         <div key={i} onClick={(e) => handleClick(e, i)}>
-          {i <= value ? <FaStar /> : <FaRegStar />}
+          {i <= value ? <FaStar /> : <FaRegStar className={cl.noactStar} />}
         </div>
       ))}
     </div>

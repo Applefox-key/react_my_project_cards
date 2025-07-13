@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import { MdOutlineModelTraining } from "react-icons/md";
+import { RiLightbulbFlashLine } from "react-icons/ri";
 
 import cl from "./GamesMenu.module.scss";
 
@@ -100,7 +100,8 @@ const GamesMenu = ({
               }
               data-title={"Games"}
               onClick={onClick}>
-              <MdOutlineModelTraining className={cl.ico} />
+              {/* <MdOutlineModelTraining className={cl.ico} /> */}
+              <RiLightbulbFlashLine className={cl.ico} />
               Learn
             </button>
           </>

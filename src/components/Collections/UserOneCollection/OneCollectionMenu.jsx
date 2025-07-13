@@ -15,9 +15,12 @@ import { sortByField } from "../../../utils/arraysFunc";
 import { saveSet } from "../../../utils/pageSettings";
 import GamesMenu from "../../UI/GamesMenu/GamesMenu";
 import { GO_TO } from "../../../router/routes";
+import { useIsMobileMenu } from "../../../hooks/useIsMobileMenu";
+import { TbMenuOrder } from "react-icons/tb";
 
 const OneCollectionMenu = ({ modes, collectionData }) => {
   const { setMode, setReorgMode } = modes;
+  const [isMobile, menuOpen, toggleMenu] = useIsMobileMenu();
   const { collection, content, setContent, setCollect } = collectionData;
   const [renameMode, setRenameMode] = useState(false);
 
@@ -80,14 +83,15 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
     <div className="sticky-top">
       <div className="string_menu string-bread">
         <div className="name-collect">
-          <CollectionPagePath list={arrPath} />
-        </div>{" "}
-        <div>
-          {collection.note && (
-            <div className="note">{"About collection: " + collection.note}</div>
-          )}
+          <CollectionPagePath
+            list={menuOpen ? arrPath : [arrPath[arrPath.length - 1]]}
+          />
         </div>
+        {menuOpen && collection.note && (
+          <div className="note">{"About collection: " + collection.note}</div>
+        )}
       </div>
+
       <div className="string_menu">
         {renameMode && (
           <CollectionEditModal
@@ -96,21 +100,28 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
           />
         )}
         <div className="menufind">
-          <div className="one-collect-btn-box">
-            <button
-              data-title="Collections settings"
-              className="viewBtn"
-              onClick={() => setRenameMode(true)}>
-              <span>
-                <FiSettings />
-              </span>
-            </button>
-            <OneCollectionBtns
-              colObj={{ collection: collection, content: content }}
-              setContent={setContent}
-            />
-          </div>{" "}
+          {menuOpen && (
+            <div className="one-collect-btn-box">
+              <button
+                data-title="Collections settings"
+                className="viewBtn"
+                onClick={() => setRenameMode(true)}>
+                <span>
+                  <FiSettings />
+                </span>
+              </button>
+              <OneCollectionBtns
+                colObj={{ collection: collection, content: content }}
+                setContent={setContent}
+              />
+            </div>
+          )}
           <div className="view-settings width150">
+            {isMobile && (
+              <button className="mobile-menu" onClick={toggleMenu}>
+                <TbMenuOrder />
+              </button>
+            )}
             <div className="playmenu">
               <GamesMenu cardSet={collection} isBtnForm isVertical />
             </div>

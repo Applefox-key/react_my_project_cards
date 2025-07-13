@@ -24,7 +24,12 @@
             box-sizing: border-box;
             fill: white;
             font-size: 1.3em;
+
+            @media screen and (max-width:900px) {
+                font-size: 2.3em;
+            }
         }
+
     }
 
     input {
@@ -44,7 +49,8 @@
     }
 
     @media screen and (max-width:900px) {
-        width: 170px
+        width: 170px;
+        border: none;
     }
 }
 
@@ -105,11 +111,15 @@
     position: relative;
 
 
-    @media screen and (max-width:600px) {
+    @media screen and (max-width:900px) {
+        position: absolute;
+        top: -37px;
+        right: 95px;
 
         .mainbox,
         .secondarybox {
-            width: 25px;
+            width: 35px;
+            height: 35px;
             justify-content: space-around;
             border-radius: 160px;
 

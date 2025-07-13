@@ -28,8 +28,8 @@ const UserLibrary = () => {
     <>
       <CSSTransition appear in timeout={1000} classNames="game" unmountOnExit>
         <div>
-          <div className="string_menu">
-            <div className="menufind">My library</div>
+          <div className="string_menu sticky-top">
+            <div className="menufind ">My library</div>
           </div>
           <div className="card-view ">
             <div className="ulb-box" onClick={toCollections}>

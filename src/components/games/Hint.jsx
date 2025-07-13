@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import cl from "./Games.module.scss";
 import { Button } from "react-bootstrap";
 import Draggable from "react-draggable";
-import { FaGripLinesVertical } from "react-icons/fa6";
+import { WiMoonThirdQuarter } from "react-icons/wi";
 import { TbBulb } from "react-icons/tb";
+
+import { useHintPosition } from "../../hooks/useHintPosition";
+
 const Hint = ({ text }) => {
   const [show, setShow] = useState(0);
   const switchShow = () => {
     setShow(1 - show);
   };
+  useHintPosition();
+
   return (
     <Draggable
       cancel="#cbtn"
@@ -17,7 +22,8 @@ const Hint = ({ text }) => {
         y: -window.visualViewport.height * 0.02,
       }}>
       <div className={cl.hint}>
-        {<FaGripLinesVertical className={cl.handle} />}
+        {<WiMoonThirdQuarter className={cl.handle} />}
+        {/* {<IoFlashSharp className={cl.handle} />} */}
         <Button
           onClick={switchShow}
           size="lg"

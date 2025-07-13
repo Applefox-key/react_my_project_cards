@@ -1,12 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import BackBtn from "../../UI/BlackBtn/BackBtn";
 import WriteCardBody from "./WriteCardBody";
 import WriteCardBodyEndless from "./WriteCardBodyEndless";
-import SwitchEndlessBtn from "../../UI/BlackBtn/SwitchEndlessBtn";
-import SwitchModeBtn from "../../UI/BlackBtn/SwitchModeBtn";
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 
 import { useGame } from "../../../hooks/useGame";
@@ -15,6 +11,7 @@ import { shuffle } from "../../../utils/arraysFunc";
 import { saveResults } from "../../../utils/gamesResults";
 import SwitchRate from "../../UI/BlackBtn/SwitchRate";
 import Result from "../../UI/CARDS/Result";
+import GameMenuToggleField from "../GameMenuToggleField";
 
 const WriteCard = () => {
   const [items, setItems] = useState();
@@ -56,22 +53,30 @@ const WriteCard = () => {
     if (error) setPopup.error(error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname, window.location.hash, filterRate]);
-
+  const hideBtns = !items?.length || isResult || !items;
   return (
     <div className="mainField">
       <div className="gameTitle">Write an answer</div>
       <div className="menuField">
+        <GameMenuToggleField
+          endless={endless}
+          setEndless={setEndless}
+          hideBtns={hideBtns}>
+          <SwitchRate {...{ filterRate, setFilterRate }} />
+        </GameMenuToggleField>
+
+        {/* 
         <BackBtn />
         {!!items?.length && !isResult && items && (
           <>
             <SwitchEndlessBtn endless={endless} setEndless={setEndless} />
             <SwitchModeBtn
               modes={["WRITE ANSWER", " WRITE QUESTION"]}
-              isShowMenuBtn
+              // isShowMenuBtn
             />
           </>
-        )}
-        <SwitchRate {...{ filterRate, setFilterRate }} />
+        )} */}
+        {/* <SwitchRate {...{ filterRate, setFilterRate }} /> */}
       </div>
       {!isLoading && items && items.length ? (
         endless ? (

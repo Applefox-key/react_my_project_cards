@@ -6,6 +6,7 @@ import cl from "./GamesMenu.module.scss";
 
 import { useOutsideClick } from "../../../hooks/useOutSideClick";
 import { gameMenuArr } from "../../../utils/games";
+import { IoBulbOutline } from "react-icons/io5";
 
 const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,9 @@ const GamesMenuDrop = ({ cardSet, isPlaylist = false }) => {
         className={cl["dropdown-toggle"]}
         onClick={toggleMenu}
         ref={wrapRef}>
-        <MdOutlineModelTraining /> Learn
+        {/* <MdOutlineModelTraining />  */}
+        <IoBulbOutline />
+        Learn
       </button>
       {isOpen && gameMenu && (
         <ul className={cl["dropdown-menu"]}>

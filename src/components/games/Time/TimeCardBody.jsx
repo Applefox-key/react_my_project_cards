@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 
 import cl from "../Games.module.scss";
@@ -9,6 +9,7 @@ import BackBtn from "../../UI/BlackBtn/BackBtn";
 import Result from "../../UI/CARDS/Result";
 import SwitchRate from "../../UI/BlackBtn/SwitchRate";
 import GameScoreItem from "../GameScoreItem";
+import { useCardTimer } from "../../../hooks/useCardTimer";
 
 const TimeCardBody = ({ items, filterRate, setFilterRate }) => {
   const [oneDelay, setOneDelay] = useState(1.5);
@@ -16,36 +17,14 @@ const TimeCardBody = ({ items, filterRate, setFilterRate }) => {
   const [flip, setFlip] = useState(false);
   const [anim, setShowAnim] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-
-  const timeouts = useRef([]);
-  const clearAllTimeouts = () => {
-    timeouts.current.forEach(clearTimeout);
-    timeouts.current = [];
-  };
-  const start = () => {
-    clearAllTimeouts();
-    for (let i = num; i < items.length; i++) {
-      const flipTimeout = setTimeout(() => {
-        setFlip(true);
-      }, 1100 * oneDelay * ((i - num) * 2 + 1));
-
-      const animTimeout =
-        i + 1 < items.length
-          ? setTimeout(() => {
-              setShowAnim(i % 2 === 0);
-              setFlip(false);
-              setNum(i + 1);
-            }, 1100 * oneDelay * ((i - num) * 2 + 2))
-          : "";
-      timeouts.current.push(flipTimeout, animTimeout);
-      if (i + 1 === items.length) {
-        const finishTimeout = setTimeout(() => {
-          setNum(i + 1);
-        }, 1100 * oneDelay * ((i - num) * 2 + 2));
-        timeouts.current.push(finishTimeout);
-      }
-    }
-  };
+  const { start, clearAllTimeouts } = useCardTimer(
+    items,
+    oneDelay,
+    num,
+    setNum,
+    setFlip,
+    setShowAnim
+  );
   const pause = () => {
     clearAllTimeouts();
     setIsPaused(true);
@@ -55,35 +34,25 @@ const TimeCardBody = ({ items, filterRate, setFilterRate }) => {
     setIsPaused(false);
     start();
   };
-  useEffect(() => {
-    return () => {
-      clearAllTimeouts();
-    };
-  }, []);
-
+  const handleStartPauseClick = () => {
+    if (num === 0) start();
+    else isPaused ? resume() : pause();
+  };
+  const isCards = !!items?.length;
+  const isFinished = num === items.length && isCards;
   return (
     <>
-      {items.length === num ? (
-        <>
-          <div className="menuField d-flex w-100 ">
-            <BackBtn /> <SwitchRate {...{ filterRate, setFilterRate }} />
-          </div>
-          {!num ? (
-            <Result
-              text="Oops! No cards match the selected options"
-              noAgainBtn
-            />
-          ) : (
-            <Result text="HOPE YOU DID WELL!" />
-          )}
-        </>
-      ) : (
-        <>
-          <div className="gameTitle">Cards gallery with timer</div>
-          <div className="menuField d-flex w-100 justify-content-between">
-            <div className="d-flex">
-              <BackBtn /> <SwitchRate {...{ filterRate, setFilterRate }} />
-            </div>
+      <div className="gameTitle">Cards gallery with timer</div>
+      <div
+        className={
+          "menuField " +
+          (!isFinished && isCards ? "d-flex w-100 justify-content-between" : "")
+        }>
+        <div className="d-flex">
+          <BackBtn /> <SwitchRate {...{ filterRate, setFilterRate }} />
+        </div>
+        {!isFinished && isCards && (
+          <>
             <div className={[cl.timemenu].join(" ")}>
               <MyInputGroup
                 size="lg"
@@ -100,8 +69,8 @@ const TimeCardBody = ({ items, filterRate, setFilterRate }) => {
               <Button
                 size="lg"
                 className={cl.startP}
-                onClick={num === 0 ? start : isPaused ? resume : pause}
-                disabled={num === items.length || flip}
+                onClick={handleStartPauseClick}
+                disabled={isFinished || flip}
                 variant={num === 0 || isPaused ? "success" : "warning"}>
                 {num === 0 || isPaused ? "START" : "PAUSE"}
               </Button>
@@ -111,11 +80,17 @@ const TimeCardBody = ({ items, filterRate, setFilterRate }) => {
               lable="Cards"
               bg="oneScoreItem"
             />
-          </div>
-          <div className="m-auto ">
-            <OneCardG noSound anim={anim} item={items[num]} flip={flip} />
-          </div>
-        </>
+          </>
+        )}
+      </div>
+      {!isFinished && isCards ? (
+        <div className="m-auto ">
+          <OneCardG noSound anim={anim} item={items[num]} flip={flip} />
+        </div>
+      ) : !isCards ? (
+        <Result text="Oops! No cards match the selected options" noAgainBtn />
+      ) : (
+        <Result text="HOPE YOU DID WELL!" />
       )}
     </>
   );

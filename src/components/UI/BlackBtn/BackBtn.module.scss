@@ -165,9 +165,13 @@
   /* box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset; */
   background: var(--wrap-color);
   opacity: 0.1;
+
   /* box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px; */
   /* box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset; */
   /* background: (var(--background-parts-answ));*/
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 }
 
 .row {

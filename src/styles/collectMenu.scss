@@ -11,10 +11,18 @@
 
   @media screen and (max-width:900px) {
     justify-content: center;
+    // justify-content: space-between;
     align-items: center;
     font-size: 14px;
     margin: 1rem 0;
     margin-bottom: 0;
+
+
+    .viewSort {
+      display: flex;
+    }
+
+    // width: fit-content;
     // margin-bottom: 0;
   }
 
@@ -67,10 +75,7 @@
     // max-width: 230px;
   }
 
-  @media screen and (max-width:600px) {
 
-    max-width: 230px;
-  }
 }
 
 .collect-btn-box {
@@ -219,7 +224,7 @@
 .sticky-top {
   position: sticky;
   top: 75px;
-
+  top: var(--navbar-height);
   // @media screen and (max-width:900px) {
   //       height: fit-content;
   // }
@@ -252,6 +257,10 @@
 
   @media screen and (max-width:900px) {
     justify-content: center;
+
+    .note {
+      display: none;
+    }
   }
 
   h5 {
@@ -270,7 +279,7 @@
   position: relative;
   top: unset;
   position: sticky;
-  top: 75px;
+  top: var(--navbar-height);
 }
 
 .string-bread {
@@ -288,7 +297,7 @@
   }
 
   @media screen and (max-width:900px) {
-    font-size: 10px;
+    font-size: 17px;
     height: fit-content;
     display: flex;
     justify-content: space-between;

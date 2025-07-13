@@ -10,6 +10,7 @@ import NavMenu from "./NavMenu";
 import { useAuth } from "../../hooks/useAuth";
 import BaseAPI from "../../API/BaseAPI";
 import { AiOutlineLogin } from "react-icons/ai";
+import { useStickyTop } from "../../hooks/useStickyTop";
 
 const MyNavbar = () => {
   const router = useNavigate();
@@ -26,7 +27,7 @@ const MyNavbar = () => {
     window.location.pathname.includes("/card/") ||
     window.location.pathname.includes("/edit/");
   const isPlaylist = window.location.pathname.includes("/playlist");
-
+  useStickyTop();
   return (
     <div className={[cl.topNav]}>
       <ThemeSwitch isPlay={isHideNav} />

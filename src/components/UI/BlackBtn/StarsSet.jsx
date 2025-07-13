@@ -13,7 +13,6 @@ const StarsSet = ({ choosen, callback }) => {
     <>
       {arr.map((el, i) => (
         <div
-          dataV={el}
           key={i}
           onClick={(e) => changeRate(e, el)}
           className={

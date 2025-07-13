@@ -78,6 +78,9 @@ const CardsGallery = () => {
   return (
     <div className="mainField">
       <div className="gameTitle">Cards gallery</div>
+      {/* <GameMenuField className="justify-content-between">
+        <GameBtn title="SHUFFLE" onClick={shuffleCards} />{" "}
+      </GameMenuField> */}
       <div className="menuField d-flex justify-content-between w-100">
         <div>
           <BackBtn />
@@ -94,6 +97,15 @@ const CardsGallery = () => {
             />
           )}
       </div>
+      {!!items &&
+        !!items[itemNum] &&
+        !!items[itemNum].hasOwnProperty("rate") && (
+          <Rate
+            key={itemNum}
+            initialValue={items[itemNum].rate}
+            action={(newRate) => updateRate(items[itemNum], newRate)}
+          />
+        )}
       <div className={cl.scoreG}>
         {!isLoading && items && (
           <GameScore

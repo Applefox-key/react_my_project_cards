@@ -37,6 +37,12 @@
         background: var(--background-second);
         border: 1px solid var(--border-fill);
 
+        @media screen and (max-width:900px) {
+            margin-bottom: 0px;
+            width: 40px;
+            height: 40px;
+        }
+
         .ico-wrap {
             transition: all 0.5s ease-in-out;
             width: 35px;
@@ -48,6 +54,14 @@
             width: 33px;
             height: 33px;
             transition: all 0.5s ease-in-out;
+
+            @media screen and (max-width:900px) {
+                text-align: center;
+                padding-top: 5px;
+                width: 40px;
+                height: 40px;
+            }
+
         }
 
         span {

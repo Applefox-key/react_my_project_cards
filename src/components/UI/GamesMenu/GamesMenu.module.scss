@@ -17,6 +17,11 @@
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: 900px) {
+        height: 30px;
+        width: 90px;
+    }
+
     button {
         max-width: 145px;
         justify-content: flex-start;
@@ -36,10 +41,15 @@
         justify-content: flex-start;
         max-width: unset;
 
-        background-color: var(--color-rate);
-        color: var(--background-first);
+        // background-color: var(--color-rate);
+        // color: var(--background-first);
         border: 1px solid var(--background-nav);
         padding: 0 2px;
+        border-image: linear-gradient(to right, var(--color-checked), var(--background-nav)) 1;
+
+        @media screen and (max-width: 900px) {
+            font-size: 18px;
+        }
 
         .ico {
             font-size: 14px;
@@ -47,7 +57,13 @@
             width: 24px;
             height: 24px;
             transition: all 0.4s ease-in-out;
+
+            @media screen and (max-width: 900px) {
+                height: 30px;
+                width: 30px;
+            }
         }
+
 
         &:hover {
             border: 0.5px solid var(--border-fill);
@@ -56,8 +72,14 @@
 
             .ico {
                 color: yellow;
+                stroke-width: 0px;
+                color: #ffb200;
+                stroke-width: 0.5px;
+                stroke: var(--wrap-color);
             }
         }
+
+
     }
 
     .games-menu-btn-show {
@@ -153,13 +175,21 @@
     height: 30px;
     border-radius: 5px;
     width: 70px;
-    transition: all 0.4s ease-in-out
+
+    transition: all 0.4s ease-in-out;
+
+    @media screen and (max-width: 900px) {
+        height: 35px;
+        width: 90px;
+    }
 }
 
 .overflow-vert-show {
     @extend .overflow-vert;
     width: 145px;
     height: 230px;
+
+
 }
 
 .body-after-btn {

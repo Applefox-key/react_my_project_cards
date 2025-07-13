@@ -12,12 +12,14 @@ import BackMenuBtn from "../../UI/tgb/BackMenuBtn";
 import SortMenu from "../../UI/SortMenu/SortMenu";
 
 import { fragment_SearchingTips } from "../../../utils/pagesFragments";
+import { useIsMobileMenu } from "../../../hooks/useIsMobileMenu";
+import { TbMenuOrder } from "react-icons/tb";
 
 const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
   const { commonSettings, setSettingsCommon } = common;
   const { privateSettings, setSettingsPrivat } = privat;
   const isPublic = window.location.pathname.includes("pub");
-
+  const [isMobile, menuOpen, toggleMenu] = useIsMobileMenu();
   const sortContent = (field, isDec) => {
     setSettingsCommon("sorting", { field, isDec });
   };
@@ -67,39 +69,46 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
 
   return (
     <div className="sticky-top">
-      {" "}
-      <div className="string_menu string-bread">
-        {" "}
-        <div className="collect-path-box">
-          <CollectionPagePath list={arrPath} />
+      {menuOpen && (
+        <div className="string_menu string-bread">
+          <div className="collect-path-box">
+            <CollectionPagePath list={arrPath} />
+          </div>
+
+          <div>
+            {fragment_SearchingTips(
+              commonSettings,
+              privateSettings,
+              setSettingsCommon,
+              setSettingsPrivat
+            )}
+          </div>
         </div>
-        <div>
-          {" "}
-          {fragment_SearchingTips(
-            commonSettings,
-            privateSettings,
-            setSettingsCommon,
-            setSettingsPrivat
-          )}
-        </div>
-      </div>
+      )}
       <div className="string_menu">
-        <div className="collect-btn-box">
-          {!isPublic && (
-            <UsersCollectionsBtn
-              commonSettings={commonSettings}
-              privateSettings={privateSettings}
-              setSettingsPrivat={setSettingsPrivat}
-            />
-          )}
-          <BackMenuBtn />
-        </div>
+        {menuOpen && (
+          <div className="collect-btn-box">
+            {!isPublic && (
+              <UsersCollectionsBtn
+                commonSettings={commonSettings}
+                privateSettings={privateSettings}
+                setSettingsPrivat={setSettingsPrivat}
+              />
+            )}
+
+            <BackMenuBtn />
+          </div>
+        )}
         <div className="view-settings">
+          {isMobile && (
+            <button className="mobile-menu" onClick={toggleMenu}>
+              <TbMenuOrder />
+            </button>
+          )}
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}
             onChange={viewmodeChange}
           />
-
           <SortMenu
             fields={[
               { value: "name", label: "Name" },
@@ -114,7 +123,6 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
               setSettingsCommon={setSettingsCommon}
             />
           </div>
-
           <FilterByCategory
             onSelect={(val) =>
               setSettingsCommon(
@@ -127,62 +135,6 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
           />
         </div>
       </div>{" "}
-      {/* <div className="string_menu">
-        <div className="menufind">
-          <div className="collect-path-box">
-            <CollectionPagePath list={arrPath} />
-          </div>
-          <div className="view-settings">
-            <ToggleView
-              checked={window.location.hash === "#1" ? 1 : 0}
-              onChange={viewmodeChange}
-            />
-
-            <SortMenu
-              fields={[
-                { value: "name", label: "Name" },
-                { value: "category", label: "Category" },
-              ]}
-              onSelect={sortContent}
-            />
-            <div className="buttonBox">
-              <ByCategoryBtn
-                className="viewBtn"
-                commonSettings={commonSettings}
-                setSettingsCommon={setSettingsCommon}
-              />
-            </div>
-
-            <FilterByCategory
-              onSelect={(val) =>
-                setSettingsCommon(
-                  isPublic ? "selectedCategorypub" : "selectedCategorymy",
-                  val
-                )
-              }
-              colCatPub={commonSettings.selectedCategorypub}
-              colCat={commonSettings.selectedCategorymy}
-            />
-          </div>
-
-          <div className="collect-btn-box">
-            {!isPublic && (
-              <UsersCollectionsBtn
-                commonSettings={commonSettings}
-                privateSettings={privateSettings}
-                setSettingsPrivat={setSettingsPrivat}
-              />
-            )}
-            <BackMenuBtn />
-          </div>
-        </div>
-      </div> */}
-      {/* {fragment_SearchingTips(
-        commonSettings,
-        privateSettings,
-        setSettingsCommon,
-        setSettingsPrivat
-      )} */}
     </div>
   );
 };
