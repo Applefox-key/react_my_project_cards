@@ -1332,10 +1332,18 @@ input {
   border: 0.5px solid var(--border-fill);
 }
 
-#i_name {
+#i_name,
+#ip_name {
   background-color: transparent;
   color: var(--wrap-color);
   font-weight: 700;
+}
+
+#ip_name {
+  border: none;
+  margin-left: 5px;
+  color: var(--main-color-int);
+  cursor: text;
 }
 
 .arrhide {

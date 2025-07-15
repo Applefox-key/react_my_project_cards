@@ -14,6 +14,7 @@ import SortMenu from "../../UI/SortMenu/SortMenu";
 import { fragment_SearchingTips } from "../../../utils/pagesFragments";
 import { useIsMobileMenu } from "../../../hooks/useIsMobileMenu";
 import { TbMenuOrder } from "react-icons/tb";
+import BackBtn from "../../UI/BlackBtn/BackBtn";
 
 const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
   const { commonSettings, setSettingsCommon } = common;
@@ -101,9 +102,12 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
         )}
         <div className="view-settings">
           {isMobile && (
-            <button className="mobile-menu" onClick={toggleMenu}>
-              <TbMenuOrder />
-            </button>
+            <>
+              <button className="mobile-menu" onClick={toggleMenu}>
+                <TbMenuOrder />
+              </button>
+              {!menuOpen && <BackBtn sm />}
+            </>
           )}
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}

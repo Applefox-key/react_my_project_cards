@@ -17,6 +17,7 @@ import GamesMenu from "../../UI/GamesMenu/GamesMenu";
 import { GO_TO } from "../../../router/routes";
 import { useIsMobileMenu } from "../../../hooks/useIsMobileMenu";
 import { TbMenuOrder } from "react-icons/tb";
+import BackBtn from "../../UI/BlackBtn/BackBtn";
 
 const OneCollectionMenu = ({ modes, collectionData }) => {
   const { setMode, setReorgMode } = modes;
@@ -118,9 +119,12 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
           )}
           <div className="view-settings width150">
             {isMobile && (
-              <button className="mobile-menu" onClick={toggleMenu}>
-                <TbMenuOrder />
-              </button>
+              <>
+                <button className="mobile-menu" onClick={toggleMenu}>
+                  <TbMenuOrder />
+                </button>
+                {!menuOpen && <BackBtn sm />}
+              </>
             )}
             <div className="playmenu">
               <GamesMenu cardSet={collection} isBtnForm isVertical />

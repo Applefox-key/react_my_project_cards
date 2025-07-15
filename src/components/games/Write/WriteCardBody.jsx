@@ -102,11 +102,10 @@ const WriteCardBody = ({ items, setItems, setIsResult, isResult }) => {
   };
   const voiceBtn = (
     <>
-      <VoiceInputBtns
-        textRef={textRef}
-        disable={flip}
-        className={cl.voiceInputWrap}
-      />
+      <div className={cl.voiceInputWrap}>
+        <VoiceInputBtns textRef={textRef} disable={flip} />
+      </div>
+
       {isError && (
         <button onClick={tryAgain} className={"roundBtn"}>
           Again

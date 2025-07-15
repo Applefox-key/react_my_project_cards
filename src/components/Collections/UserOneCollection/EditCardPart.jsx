@@ -3,11 +3,8 @@ import React, { useCallback, useRef } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { TfiZoomIn } from "react-icons/tfi";
-import { AiOutlineFontSize } from "react-icons/ai";
 
 import { getImgA, getImgQ } from "../../../utils/contentRequests";
-import { formatString } from "../../../utils/texts";
-import VoiceBtns from "../../UI/VoiceBtns/VoiceBtns";
 
 const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
   const isQuestion = fieldName === "imgQ";
@@ -63,13 +60,6 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
   const ref = useRef(null);
   const refSpan = useRef(null);
 
-  const format = () => {
-    if (ref && ref.current?.value) {
-      let formattedStr = formatString(ref.current.value);
-      if (formattedStr) ref.current.value = formattedStr;
-    }
-  };
-
   return (
     <div className={isQuestion ? "questDiv" : "answtDiv"}>
       <div className="img_choice">
@@ -100,18 +90,11 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
       />
       <span ref={refSpan} onClick={() => changeClass(false)}>
         {spanText}
-      </span>{" "}
+      </span>
       <div className="txteditBtns">
         <button className="btnPlus" onClick={changeClass}>
           <TfiZoomIn />
         </button>{" "}
-        <button
-          className="btnPlus"
-          onClick={format}
-          title="remove spaces, add dots and capital letters">
-          <AiOutlineFontSize />
-        </button>{" "}
-        {<VoiceBtns text={currentText} className="btnPlus soundEdit" />}
       </div>
     </div>
   );

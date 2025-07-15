@@ -21,6 +21,7 @@ import PlaylistsPage from "../components/Playlists/PlaylistsPage";
 import PartCard from "../components/games/Parts/PartCard";
 import Home from "../components/HomePage/Home";
 import UserLibrary from "../components/users/UserLibrary";
+import PlayListEdit from "../components/Playlists/Edit/PlayListEdit";
 
 export const GO_TO = {
   about: "/about",
@@ -33,6 +34,7 @@ export const GO_TO = {
   profile: "/profile",
   print: "/print",
   playlists: "/playlist",
+  editPlaylist: "/playlist/my/edit",
   categoriesManager: "/categories",
   library: "/myLibrary",
 };
@@ -73,6 +75,10 @@ export const privateRoutes = [
     nameNav: "Playlists",
     group: "My library",
     groupPath: "/MyLibrary",
+  },
+  {
+    path: "/playlist/my/edit/:id/:name",
+    element: <PlayListEdit />,
   },
   {
     path: "/categories",

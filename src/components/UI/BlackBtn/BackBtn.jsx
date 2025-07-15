@@ -2,8 +2,9 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import cl from "./BackBtn.module.scss";
+import { TbArrowBackUp } from "react-icons/tb";
 
-const BackBtn = ({ path, onClick, ...props }) => {
+const BackBtn = ({ path, onClick, sm = false, ...props }) => {
   const router = useNavigate();
   const back = () => {
     if (path) {
@@ -19,7 +20,7 @@ const BackBtn = ({ path, onClick, ...props }) => {
       onClick={back}
       {...props}
       className={cl.btnGame}>
-      ❰ BACK
+      {sm ? <TbArrowBackUp /> : "❰ BACK"}
     </Button>
   );
 };

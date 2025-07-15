@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { GoTriangleRight } from "react-icons/go";
 import "../../styles/collectMenu.scss";
 
-const CollectionPagePath = ({ list }) => {
+const CollectionPagePath = ({ list, addEndSepar = false }) => {
   return (
     <div>
       {list.map((el, i) => (
@@ -15,6 +15,7 @@ const CollectionPagePath = ({ list }) => {
           {i < list.length - 1 && <GoTriangleRight />}
         </Fragment>
       ))}
+      {addEndSepar && <GoTriangleRight />}
     </div>
   );
 };

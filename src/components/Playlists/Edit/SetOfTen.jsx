@@ -13,13 +13,6 @@ const SetOfTen = ({ selectedItems, show, onClickFns }) => {
     <p className="text-danger">{selectedIds.length}/10</p>{" "}
   </div> */}
         <div className={show ? cl.choosedItems : cl.choosedItemsShow}>
-          {selectedItems.length < 10 &&
-            Array.from(
-              { length: 10 - selectedItems.length },
-              (_, i) => i++
-            ).map((el) => (
-              <div key={el.id} className={cl.empty} onClick={handleClick} />
-            ))}
           {selectedItems.map((el) => (
             <div
               key={el.id}
@@ -28,7 +21,14 @@ const SetOfTen = ({ selectedItems, show, onClickFns }) => {
               {el.name}
               {/* {!!el.isMy && <span></span>} */}
             </div>
-          ))}
+          ))}{" "}
+          {selectedItems.length < 10 &&
+            Array.from(
+              { length: 10 - selectedItems.length },
+              (_, i) => i++
+            ).map((el) => (
+              <div key={el.id} className={cl.empty} onClick={handleClick} />
+            ))}
         </div>
       </div>{" "}
     </>

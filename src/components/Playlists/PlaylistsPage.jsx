@@ -9,7 +9,7 @@ import {
 import PlaylistsMenu from "./PlaylistsMenu";
 import { useAuth } from "../../hooks/useAuth";
 import Playlists from "./Playlists";
-import PlayListEditModal from "./Edit/PlayListEditModal";
+
 import { useLastMode } from "../../hooks/useLastMode";
 
 const PlaylistsPage = () => {
@@ -20,7 +20,6 @@ const PlaylistsPage = () => {
   const [viewmode, viewmodeChange] = useLastMode(userAuth);
   const [commonSettings, setCommonSettings] = useState({
     filter: pageSet.filter,
-    editEl: "",
   });
 
   const updateRef = () => {
@@ -46,16 +45,6 @@ const PlaylistsPage = () => {
   }, [commonSettings.filter]);
   return (
     <div className="wrap_box">
-      {commonSettings.editEl && (
-        <PlayListEditModal
-          isEdit={commonSettings.editEl}
-          setIsEdit={(val) => setSettingsCommon("editEl", val)}
-          list={commonSettings.editEl}
-          onHide={() => {
-            setSettingsCommon("editEl", "");
-          }}
-        />
-      )}
       <PlaylistsMenu
         viewmodeChange={viewmodeChange}
         commonSettings={commonSettings}

@@ -55,6 +55,7 @@ const Playlists = ({ commonSettings, setSettingsCommon }) => {
       setSettingsCommon("editEl", el);
     },
   };
+
   useEffect(() => {
     if (commonSettings.editEl) return;
     getCollections();

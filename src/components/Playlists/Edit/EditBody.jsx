@@ -48,6 +48,12 @@ const EditBody = ({ items, ids }) => {
 
   return (
     <>
+      <div className={cl.titleWrap}>
+        Choose up to 10 cards sets ({10 - selectedIds?.length})
+      </div>
+      <div className={cl.titleWrap}>
+        Click on collection to delete it from this laylist
+      </div>
       <div className={cl["body-edit-wrap"] + (!show ? " m-auto" : "")}>
         <SetOfTen
           onClickFns={{ handleItemClick, handleClick }}

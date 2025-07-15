@@ -5,14 +5,16 @@ import { BsCollectionPlay } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { CgSearchLoading } from "react-icons/cg";
+import { GO_TO } from "../../router/routes";
 
 const OnePlaylist = ({ playlist, listFn }) => {
   const route = useNavigate();
+
+  const toEdit = () => {
+    route(`${GO_TO.editPlaylist}/${playlist.id}/${playlist.name}`);
+  };
   return (
-    <div
-      key={playlist.id}
-      className={cl["onePlaylist-wrap"]}
-      onClick={() => listFn.editMode(playlist)}>
+    <div key={playlist.id} className={cl["onePlaylist-wrap"]} onClick={toEdit}>
       <div className={cl.firstRow}>
         {window.location.hash !== "#1" && (
           <div className={cl.playmenu}>
@@ -20,10 +22,7 @@ const OnePlaylist = ({ playlist, listFn }) => {
           </div>
         )}
 
-        <div
-          className={cl.listHeader}
-          onClick={() => listFn.editMode(playlist)}>
-          {" "}
+        <div className={cl.listHeader} onClick={toEdit}>
           {window.location.hash !== "#1" && (
             <button className={cl.editBtn}>Edit</button>
           )}
@@ -52,7 +51,7 @@ const OnePlaylist = ({ playlist, listFn }) => {
                 );
               }}
             />
-            {col.name}
+            <span>{col.name}</span>
           </div>
         ))}
       </div>

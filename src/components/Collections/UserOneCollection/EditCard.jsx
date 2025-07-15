@@ -17,6 +17,10 @@ import { usePopup } from "../../../hooks/usePopup";
 import { updRates } from "../../../utils/gamesResults";
 import BaseAPI from "../../../API/BaseAPI";
 
+import { AiOutlineFontSize } from "react-icons/ai";
+import VoiceBtns from "../../UI/VoiceBtns/VoiceBtns";
+import { formatString } from "../../../utils/texts";
+
 const EditCard = () => {
   const [item, setItem] = useState();
   let isItem = !!item && !!item.hasOwnProperty("rate");
@@ -48,6 +52,12 @@ const EditCard = () => {
 
   const route = useNavigate();
 
+  const format = () => {
+    if (textRef && textRef.current?.value) {
+      let formattedStr = formatString(textRef.current.value);
+      if (formattedStr) textRef.current.value = formattedStr;
+    }
+  };
   const setNewRef = (ref) => {
     if (textRef) {
       const field = textRef.current.id;
@@ -84,48 +94,75 @@ const EditCard = () => {
     getContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageParam.id, pageParam.name, pageParam.item]);
+  console.log(textRef);
 
   return (
-    <div className="edit_card_wrap">
-      {item ? (
-        <div className="editCard">
-          <div className={`menuRow menu-border ${isItem ? "" : "flex-end"}`}>
-            {isItem && <Rate initialValue={item.rate} action={updateRate} />}
-            <div className="menuRow">
-              <Button size="lg" onClick={save} variant="light">
-                SAVE CHANGES
-              </Button>{" "}
-              <BackBtn variant="light" />
+    <>
+      <div className="sticky-top ">
+        <div className="string_menu justify-content-start">
+          <BackBtn />
+          <Button size="lg" onClick={save} className="btn-save">
+            SAVE CHANGES
+          </Button>{" "}
+        </div>
+      </div>
+
+      <div className="edit_card_wrap">
+        {item ? (
+          <div className="editCard">
+            <div className={`menuRow menu-border ${isItem ? "" : "flex-end"}`}>
+              {isItem && <Rate initialValue={item.rate} action={updateRate} />}
+              <div className="menuRow">
+                {!!textRef && (
+                  <>
+                    <div className="edit-hint">EDIT {textRef.current.id}</div>
+                    <VoiceInputBtns textRef={textRef} />
+                    <VoiceBtns
+                      text={textRef.current.value}
+                      className="btnPlus soundEdit"
+                    />
+                    <button
+                      className="btnPlus"
+                      onClick={format}
+                      title="remove spaces, add dots and capital letters">
+                      <AiOutlineFontSize />
+                    </button>{" "}
+                  </>
+                )}
+
+                {/* <Button size="lg" onClick={save} variant="light">
+                  SAVE CHANGES
+                </Button>{" "}
+                <BackBtn variant="light" /> */}
+              </div>
             </div>
-          </div>
-          {!!textRef && (
-            <VoiceInputBtns textRef={textRef} className="voiceEdit" />
-          )}
-          <div className="note">
-            <input
-              type="text"
-              placeholder="write a note..."
-              value={item ? item.note : ""}
-              onChange={(e) => setItem({ ...item, note: e.target.value })}
+
+            <div className="note">
+              <input
+                type="text"
+                placeholder="write a note..."
+                value={item ? item.note : ""}
+                onChange={(e) => setItem({ ...item, note: e.target.value })}
+              />
+            </div>
+            <EditCardPart
+              fieldName={"imgQ"}
+              item={item}
+              setItem={setItem}
+              setTextRef={setNewRef}
+            />
+            <EditCardPart
+              fieldName={"imgA"}
+              item={item}
+              setItem={setItem}
+              setTextRef={setNewRef}
             />
           </div>
-          <EditCardPart
-            fieldName={"imgQ"}
-            item={item}
-            setItem={setItem}
-            setTextRef={setNewRef}
-          />
-          <EditCardPart
-            fieldName={"imgA"}
-            item={item}
-            setItem={setItem}
-            setTextRef={setNewRef}
-          />
-        </div>
-      ) : (
-        <SpinnerLg className="span_wrap" />
-      )}
-    </div>
+        ) : (
+          <SpinnerLg className="span_wrap" />
+        )}
+      </div>
+    </>
   );
 };
 

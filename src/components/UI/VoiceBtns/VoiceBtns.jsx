@@ -20,7 +20,7 @@ const VoiceBtns = ({ text, className }) => {
     const [language, region = ""] = locale.split("-");
     return (
       <>
-        <span className={cl.lan}>{language}</span>{" "}
+        <span className={cl.lan}>{language}</span>
         <span className={cl.loc}>{region}</span>
       </>
     );
