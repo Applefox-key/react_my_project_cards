@@ -733,6 +733,7 @@ input {
   border-radius: 10px;
   text-align: left;
 
+
   svg {
     position: absolute;
     right: 0px;
@@ -970,7 +971,7 @@ input {
     color: var(--color-second);
     font-size: 28px;
     font-style: italic;
-    font-family: cursive;
+    font-family: 'Inter';
 
     @media screen and (max-width: 500px) {
       position: absolute;
@@ -1339,6 +1340,10 @@ input {
   font-weight: 700;
 }
 
+#answerArea {
+  z-index: 1;
+}
+
 #ip_name {
   border: none;
   margin-left: 5px;
@@ -1437,7 +1442,7 @@ input {
     }
 
     div {
-      font-size: 12px;
+      font-size: 18px;
     }
   }
 }
@@ -1487,6 +1492,19 @@ input {
   flex-wrap: nowrap;
   text-decoration: none;
   color: var(--main-color);
+  font-weight: 700;
+  font-size: 2.4rem;
+  position: relative;
+  left: 30px;
+  border: 1px solid;
+  border-image: linear-gradient(to right, var(--color-checked), var(--background-nav)) 1;
+  border-radius: 5px;
+  padding: 0 5px;
+
+  svg {
+    font-weight: 700;
+    font-size: 2.4rem;
+  }
 
   &:hover {
     color: var(--main-color-int);
@@ -1500,15 +1518,20 @@ input {
 .mobile-menu {
   position: absolute;
   left: 5px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--background-second);
-  color: var(--color-second);
+  display: flex;
 
-  svg {
-    width: 25px;
-    height: 25px;
+  button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--background-second);
+    color: var(--color-second);
+    border: none;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 

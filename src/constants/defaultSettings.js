@@ -150,7 +150,7 @@ export const themeArr = {
     "--background-first": "#0d121d",
     "--background-second": "#212837",
     "--background-nav": "#343f59",
-    "--background-note": "#1f4f5c",
+    "--background-note": "#1c3854",
     "--background-parts-answ": "#111728b3", // "#0f9393b3",
     "--border-fill": "#DADEE8",
 

@@ -119,12 +119,12 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
           )}
           <div className="view-settings width150">
             {isMobile && (
-              <>
-                <button className="mobile-menu" onClick={toggleMenu}>
+              <div className="mobile-menu">
+                <button onClick={toggleMenu}>
                   <TbMenuOrder />
                 </button>
                 {!menuOpen && <BackBtn sm />}
-              </>
+              </div>
             )}
             <div className="playmenu">
               <GamesMenu cardSet={collection} isBtnForm isVertical />

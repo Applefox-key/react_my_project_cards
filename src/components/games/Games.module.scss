@@ -15,7 +15,7 @@
     align-items: flex-start;
   }
 
-  @media screen and (min-height: 600px) and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
@@ -402,17 +402,18 @@
   max-width: 400px;
   max-height: 200px;
 
-  @media screen and (min-height: 600px) and (max-width: 900px) {
+  @media screen and (max-width: 900px) {
     max-width: 100%;
     min-width: 150px;
     padding: 5px;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 18px;
     margin: 5px;
     min-height: 44px;
   }
 
-  @media screen and (min-width:900px) and (max-height: 600px) {
+  @media screen and (min-width:900px) {
+    // and (max-height: 600px) {
     max-width: 320px;
     min-width: 300px;
     font-size: 14px;
@@ -517,17 +518,23 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   border-radius: 15px;
 
-  @media screen and (min-width: 600px) and (max-height: 600px) {
+  @media screen and (max-width: 900px) {
     font-size: 2rem;
     min-height: 6rem;
     width: 100%;
   }
 
-  @media screen and (min-height: 600px) and (max-width: 600px) {
-    font-size: 2rem;
-    // height: 35px;
-    width: 100%;
-  }
+  // @media screen and (min-width: 600px) and (max-height: 600px) {
+  //   font-size: 2rem;
+  //   min-height: 6rem;
+  //   width: 100%;
+  // }
+
+  // @media screen and (min-height: 600px) and (max-width: 600px) {
+  //   font-size: 2rem;
+  //   // height: 35px;
+  //   width: 100%;
+  // }
 
   &:focus {
     outline: none;
@@ -540,8 +547,16 @@
   @media screen and (max-width:900px) {
     position: absolute;
     bottom: unset;
-    left: 8px;
-    top: -22px;
+
+    z-index: 0;
+    left: -20px;
+    top: -23px;
+
+
+    &:hover {
+      z-index: 2;
+      scale: 1;
+    }
   }
 }
 
@@ -590,7 +605,7 @@
   position: absolute;
   width: fit-content;
   font-size: 25px;
-  z-index: 600;
+  z-index: 902;
 
   div {
     bottom: -12px;
@@ -621,21 +636,14 @@
 
   }
 
-  // .cls {
-  //   background: var(--color-second);
-  //   color: var(--background-second);
-  // }
 
   .hintbtn {
     cursor: pointer;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     padding-right: 24px;
-    // background: var(--color-second);
-    // color: var(--background-second);
 
-    span {
-      // background: red;
-    }
+
+
 
     svg {
       font-size: 24px;

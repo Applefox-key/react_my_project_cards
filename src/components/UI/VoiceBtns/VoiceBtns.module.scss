@@ -1,8 +1,6 @@
 .base-voice-card-btn {
     z-index: 0;
     font-weight: bold;
-    // position: absolute;
-    // bottom: 10px;
     height: 3rem;
     width: 60px;
     font-size: 12px;
@@ -10,15 +8,12 @@
     border: none;
     text-decoration: none;
     cursor: pointer;
-    // overflow: hidden;
     font-family: Arial;
     line-height: 1;
     transition: all 0.5s ease;
     background: var(--color-second);
     color: var(--background-second);
     position: absolute;
-    // right: -58px;
-    // top: 12px;
 
     .hide {
         opacity: 0;
@@ -31,14 +26,12 @@
 
     &:hover {
         transform: translate(5px, 0px);
-        // border-radius: 0 17% 0 17%;
     }
 
-    @media screen and (max-width:600px) {
+    @media screen and (max-width:900px) {
         border-radius: 10px;
-        // top: unset;
-        // bottom: -25px;
-        // right: 36%;
+        height: 4rem;
+        width: 7rem;
     }
 
     div {
@@ -52,16 +45,10 @@
     overflow: visible;
     border: none;
 
-
-    // .voice-wrap {
-    // position: absolute;
-    // padding-right: 25px;
-
     .langs {
         position: absolute;
         right: 0px;
         top: 0px;
-        // display: none;
         align-items: center;
         justify-content: center;
         flex-direction: column;
@@ -70,28 +57,37 @@
         height: 30px;
 
 
-
         .lang,
         .langElfalse,
         .langEltrue {
-            // position: absolute;
-            // right: -15px;
-            // top: -15px;
-            // border-radius: 50%;
-            // border: 2px solid var(--main-color-int);
+
             height: 30px;
             width: 30px;
 
             color: var(--wrap-color);
             transition: all 0.2s ease-in-out;
-            // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
             display: none;
             align-items: center;
             justify-content: center;
 
+
+            @media screen and (max-width:900px) {
+                height: 4rem;
+                width: 3.5rem;
+                min-height: 4rem;
+                // height: 4rem;
+                font-size: 1.8rem;
+                // min-height: 4rem;
+                // width: 3.5rem;   
+                // overflow-x: hidden;
+                // width: 4rem;
+                // overflow-y: auto;
+            }
         }
 
-        p {
+        p,
+        div {
             display: inline;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -101,12 +97,19 @@
             font-size: 10px;
             padding-right: 1px;
             position: relative;
+            overflow: visible;
+
 
             .lan {
                 all: unset;
                 position: absolute;
                 font-size: 11px;
                 top: 4px;
+
+                @media screen and (max-width:900px) {
+                    font-size: 1.8rem;
+                    top: 5px;
+                }
             }
 
             .loc {
@@ -114,22 +117,62 @@
                 position: absolute;
                 font-size: 11px;
                 top: 14px;
+
+                @media screen and (max-width:900px) {
+                    top: 22px;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                    right: 5px;
+                }
+
             }
         }
 
-        .langElfalse {
+        .voices {
+            background: red;
             // display: none;
-            visibility: hidden;
-            display: flex;
-            height: 0;
-            scale: 0;
-            transition: all 0.2s ease-in-out;
-            background: var(--background-first);
+            position: absolute;
 
+            &::after {
+                content: ".";
+                color: var(--color-checked);
+                top: -20px;
+                position: absolute;
+                left: -17px;
+                font-size: 27px;
+            }
+
+            span {
+                display: none;
+            }
+        }
+
+
+        .langEltrue,
+        .langElfalse {
             &:hover {
-                background: var(--color-second);
-                color: var(--background-second);
-                opacity: 0.9;
+                .voices {
+                    background: green;
+                    display: flex;
+                    flex-direction: column;
+
+                    font-size: 14px;
+                    left: -3rem;
+                    top: 0px;
+                    font-size: 12px;
+                    z-index: 2001;
+
+                    &::after {
+                        content: none;
+                    }
+
+                    span {
+                        display: block;
+                        height: 3rem;
+                        width: 3rem;
+                        text-wrap: wrap;
+                    }
+                }
             }
         }
 
@@ -140,7 +183,36 @@
             color: var(--background-second);
         }
 
+        .langElfalse {
+            // display: none;
+            visibility: hidden;
+            display: flex;
+            height: 0;
+            scale: 0;
+            transition: all 0.2s ease-in-out;
+            background: var(--background-first);
+            z-index: 2000;
 
+            &:hover {
+                background: var(--color-second);
+                color: var(--background-second);
+                opacity: 0.9;
+
+
+            }
+
+
+
+            @media screen and (max-width:900px) {
+                height: 0;
+                // font-size: 1.8rem;
+                min-height: 0rem;
+                // width: 3.5rem;
+            }
+        }
+
+
+        z-index: 2000;
 
         &:hover {
             color: var(--wrap-color);
@@ -148,24 +220,47 @@
             border: 1px solid;
             height: fit-content;
 
+
+
             .langEltrue {
                 border-radius: 0;
+
+                @media screen and (max-width:900px) {
+
+                    width: 7rem;
+                    // width: 3.5rem;
+                }
             }
 
-            p:first-of-type {
+            p:first-of-type,
+            div:first-of-type {
                 border-radius: 10px 10px 0 0;
             }
 
-            p:last-of-type {
+            p:last-of-type,
+            div:last-of-type {
                 border-radius: 0 0 10px 10px;
             }
 
             .langElfalse {
                 scale: 1;
-                // display: flex;
                 visibility: visible;
                 height: 30px;
+
+                @media screen and (max-width:900px) {
+                    min-height: 4rem;
+                    width: 7rem;
+                }
             }
+
+            @media screen and (max-width:900px) {
+                max-height: 20rem;
+                overflow-y: scroll;
+            }
+        }
+
+        @media screen and (max-width:900px) {
+            height: 4rem;
         }
 
 
@@ -207,11 +302,16 @@
         top: 0;
         left: 0;
 
+
         svg {
             position: absolute;
             top: 7px;
             left: 4px;
             font-size: 17px;
+
+            @media screen and (max-width:900px) {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -219,15 +319,12 @@
         z-index: 3000;
 
         .langs {
-            display: flex;
             height: fit-content;
-
         }
 
     }
 }
 
 .voice-hide {
-    visibility: hidden;
-    width: 0;
+    display: none;
 }

@@ -99,12 +99,12 @@
         color: var(--color-second);
 
         .ico {
-            color: yellow;
+            color: #ffe200;
             rotate: 360deg;
             stroke: black;
             stroke-width: 0.4px;
             margin: 5px;
-            border: 1px solid black;
+            // border: 1px solid black;
         }
 
         &:hover {
@@ -197,7 +197,7 @@
 .overflow-vert-show {
     @extend .overflow-vert;
     width: 145px;
-    height: 230px;
+    height: 231px;
 
     @media screen and (max-width: 900px) {
         width: 180px;

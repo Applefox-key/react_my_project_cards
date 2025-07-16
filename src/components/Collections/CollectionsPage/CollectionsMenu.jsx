@@ -102,12 +102,12 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
         )}
         <div className="view-settings">
           {isMobile && (
-            <>
-              <button className="mobile-menu" onClick={toggleMenu}>
+            <div className="mobile-menu">
+              <button onClick={toggleMenu}>
                 <TbMenuOrder />
               </button>
               {!menuOpen && <BackBtn sm />}
-            </>
+            </div>
           )}
           <ToggleView
             checked={window.location.hash === "#1" ? 1 : 0}

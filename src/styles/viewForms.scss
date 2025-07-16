@@ -357,16 +357,17 @@
                     .header {
 
                         white-space: nowrap;
-                        BACKGROUND: var(--main-color-int);
-                        COLOR: WHITE;
+                        background: var(--main-color-int);
+                        color: var(--main-back);
                         border-bottom: 0.5px solid var(--border-fill);
                         font-size: 14px;
                         justify-content: space-between;
                         height: auto;
                         border-radius: 5px;
 
-                        @media screen and (max-width: 600px) {
+                        @media screen and (max-width: 900px) {
                             padding-left: 25px;
+                            font-size: 1.8rem;
                         }
                     }
 

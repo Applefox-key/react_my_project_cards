@@ -81,7 +81,7 @@ const UserOneCollection = () => {
                 </button>
               </div>
             )}
-            <div className="m-auto d-flex mt-5">
+            <div className="m-auto d-flex mt-5 w-100">
               {!isLoading && content ? (
                 mode === 0 ? (
                   <ContentCards

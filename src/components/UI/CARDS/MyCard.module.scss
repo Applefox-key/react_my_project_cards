@@ -144,42 +144,48 @@
     margin-left: auto;
     margin-bottom: 1rem;
 
-    @media screen and (max-width: 1600px) and (max-height: 700px) {
-        margin-bottom: 1rem;
-
-    }
-
-    @media screen and (min-width: 800px) and (max-height: 391px) {
-        width: 75rem;
-        height: 35rem;
-
-    }
-
-
-    @media screen and (min-width: 800px) and (max-height: 391px) {
-        width: 40rem;
-        max-height: 20rem;
-
-    }
-
-    @media screen and (max-width: 600px) and (min-height: 600px) {
-        width: 30rem;
-        max-height: 45rem;
-        width: 95%;
-    }
-
-    @media screen and (min-width: 600px) and (max-height: 600px) {
-        max-width: 80vw;
-        max-height: 70vh;
-        margin-bottom: 3rem;
-
-    }
-
-    @media screen and (max-width: 300px) and (min-height: 600px) {
-        width: 20rem;
+    @media screen and (max-width: 900px) {
+        width: 90vw;
         max-height: 35rem;
 
     }
+
+    // @media screen and (max-width: 1600px) and (max-height: 700px) {
+    //     margin-bottom: 1rem;
+
+    // }
+
+    // @media screen and (min-width: 800px) and (max-height: 391px) {
+    //     width: 68rem;
+    //     height: 35rem;
+
+    // }
+
+
+    // @media screen and (min-width: 800px) and (max-height: 391px) {
+    //     width: 40rem;
+    //     max-height: 20rem;
+
+    // }
+
+    // @media screen and (max-width: 600px) and (min-height: 600px) {
+    //     width: 30rem;
+    //     max-height: 45rem;
+    //     width: 90vw;
+    // }
+
+    // @media screen and (min-width: 600px) and (max-height: 600px) {
+    //     max-width: 80vw;
+    //     max-height: 70vh;
+    //     margin-bottom: 3rem;
+
+    // }
+
+    // @media screen and (max-width: 300px) and (min-height: 600px) {
+    //     width: 20rem;
+    //     max-height: 35rem;
+
+    // }
 }
 
 
@@ -276,6 +282,7 @@
         transition: all 0.5s ease;
         background: var(--color-second);
         color: var(--background-second);
+        padding: 0;
 
         .hide {
             opacity: 0;
@@ -294,10 +301,16 @@
         @media screen and (min-width:1700px) and (max-height: 600px) {
             height: 45px;
             width: 45px;
+
+            svg {
+                font-size: 35px;
+            }
         }
 
         div {
             margin: auto;
+            width: fit-content;
+            display: flex
         }
     }
 
@@ -318,7 +331,9 @@
             bottom: -24px;
             left: 12px;
             border-radius: 10px;
-
+            height: 4rem;
+            width: 7rem;
+            bottom: -3.5rem;
 
             // z-index: 5;
             // bottom: 10px;
@@ -355,6 +370,9 @@
             bottom: -24px;
             right: 12px;
             border-radius: 10px;
+            height: 4rem;
+            width: 7rem;
+            bottom: -3.5rem;
 
             &:hover {
                 border-radius: 17% 0 17% 0;
@@ -416,10 +434,10 @@
         right: -60px;
         top: 10px;
 
-        @media screen and (max-width: 600px) {
-            right: 120px;
-            bottom: -27px;
+        @media screen and (max-width: 900px) {
+            right: 40%;
             top: unset;
+            bottom: -3.5rem;
         }
     }
 

@@ -29,13 +29,16 @@
   button {
     background-color: transparent;
     color: var(--wrap-color);
-    margin-right: 0;
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
+    text-align: center;
+    vertical-align: middle;
     max-width: fit-content;
     border-radius: 5px;
+    padding: 0;
 
 
   }
@@ -48,6 +51,8 @@
     border: none;
     height: 25px;
     margin: 0;
+    width: fit-content;
+    font-size: 25px;
 
     svg {
 

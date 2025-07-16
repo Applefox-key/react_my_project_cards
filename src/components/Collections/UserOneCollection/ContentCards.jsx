@@ -72,8 +72,9 @@ const ContentCards = ({ content, setContent, pageParam }) => {
           }}>
           <div className="menuPart">
             <div className={el.note ? "note-wrap" : ""}>
-              <span className="note">{el.note}</span>
+              {el.note && <span className="note">{el.note}</span>}
             </div>
+
             <div>
               {btns.map(
                 (btn, i) =>

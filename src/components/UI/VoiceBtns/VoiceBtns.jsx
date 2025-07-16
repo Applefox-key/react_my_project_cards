@@ -1,23 +1,57 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import cl from "./VoiceBtns.module.scss";
 // import cl from "./BackBtn.module.scss";
 
 const VoiceBtns = ({ text, className }) => {
   const [lang, setLang] = useState("en-US");
-  const langArr = useMemo(() => {
-    const synth = window.speechSynthesis;
-    const arrV = ["en-US", "ru-RU"];
-    const voices = synth.getVoices();
-    voices.forEach((voice) => {
-      if (!arrV.includes(voice.lang)) arrV.push(voice.lang);
-    });
+  const [langArr, setLangArr] = useState({ langs: [], voices: {} });
+  // const langArr = useMemo(() => {
+  //   const synth = window.speechSynthesis;
+  //   const arrV = ["en-US", "ru-RU"];
+  //   const voices = synth.getVoices();
+  //   // console.log(voices);
+  //   const voicesByLang = voices.reduce((acc, voice) => {
+  //     const { lang } = voice;
+  //     if (!acc[lang]) {
+  //       acc[lang] = [];
+  //     }
+  //     acc[lang].push(voice);
+  //     return acc;
+  //   }, {});
 
-    return arrV;
-  }, []);
+  //   return { langs: Object.keys(voicesByLang), voices: voicesByLang };
+  // }, []);
   const btnRef = useRef(null);
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+
+    const loadVoices = () => {
+      const voices = synth.getVoices();
+      if (!voices.length) return;
+
+      const voicesByLang = voices.reduce((acc, voice) => {
+        const { lang } = voice;
+        if (!acc[lang]) acc[lang] = [];
+        acc[lang].push(voice);
+        return acc;
+      }, {});
+
+      setLangArr({
+        langs: Object.keys(voicesByLang),
+        voices: voicesByLang,
+      });
+    };
+
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = loadVoices;
+    }
+
+    loadVoices();
+  }, []);
+
   const oneEl = (locale) => {
-    const [language, region = ""] = locale.split("-");
+    const [language, region = ""] = locale.split(/[-_]/);
     return (
       <>
         <span className={cl.lan}>{language}</span>
@@ -40,8 +74,8 @@ const VoiceBtns = ({ text, className }) => {
         <HiOutlineSpeakerWave />
       </button>
       <div className={cl.langs}>
-        {langArr.map((el, i) => (
-          <p
+        {langArr.langs.map((el, i) => (
+          <div
             key={i}
             onClick={(e) => {
               e.stopPropagation();
@@ -49,7 +83,14 @@ const VoiceBtns = ({ text, className }) => {
             }}
             className={cl["langEl" + (lang === el)]}>
             {oneEl(el)}
-          </p>
+            {/* {langArr.voices[el].length > 1 && (
+              <div className={cl.voices}>
+                {langArr.voices[el].map((v, j) => (
+                  <span>voice {j}</span>
+                ))}
+              </div>
+            )} */}
+          </div>
         ))}
       </div>
     </div>

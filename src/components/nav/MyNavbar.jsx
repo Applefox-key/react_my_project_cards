@@ -30,7 +30,7 @@ const MyNavbar = () => {
   useStickyTop();
   return (
     <div className={[cl.topNav]}>
-      <ThemeSwitch isPlay={isHideNav} />
+      {userAuth.isAuth && <ThemeSwitch isPlay={isHideNav} />}
       {!isHideNav && (
         <>
           <div className={cl.line1}>
@@ -47,7 +47,8 @@ const MyNavbar = () => {
                 className={
                   window.location.pathname.includes("login") ? cl.active : ""
                 }>
-                LOGIN <AiOutlineLogin />
+                LOGIN
+                <AiOutlineLogin />
               </Link>
             )}
           </div>
