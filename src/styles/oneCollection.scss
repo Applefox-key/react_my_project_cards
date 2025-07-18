@@ -226,6 +226,9 @@
                 font-size: 1.8rem;
             }
 
+            @media screen and (max-width: 400px) {
+                font-size: 1.5rem;
+            }
 
         }
 
@@ -238,6 +241,10 @@
 
             @media screen and (max-width: 900px) {
                 font-size: 1.8rem;
+            }
+
+            @media screen and (max-width: 400px) {
+                font-size: 1.5rem;
             }
         }
 
