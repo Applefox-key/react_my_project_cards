@@ -41,6 +41,10 @@
     right: 0;
     top: 35px;
     height: 0;
+
+    @media print {
+        display: none;
+    }
 }
 
 .settings_bar {

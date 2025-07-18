@@ -10,11 +10,13 @@ import { GO_TO } from "../../../router/routes";
 import BaseAPI from "../../../API/BaseAPI";
 import Rate from "../../games/Rate";
 import { updRates } from "../../../utils/gamesResults";
+import { Form } from "react-bootstrap";
 
 const ContentList = ({ content, setContent, pageParam }) => {
   const setPopup = usePopup();
   const route = useNavigate();
   const [editMode, setEditMode] = useState(null);
+  const [check, setCheck] = useState(false);
 
   const editOn = (content) => {
     setEditMode({
@@ -88,12 +90,22 @@ const ContentList = ({ content, setContent, pageParam }) => {
 
   return (
     <div className="listContent-wrap">
+      <Form.Check
+        type="checkbox"
+        checked={check}
+        id="showMoreInfo"
+        label="show more info"
+        onChange={(e) => {
+          setCheck(!check);
+        }}
+      />
+
       {content && (
-        <div className="listContent">
+        <div className={"listContent" + (check ? " wrapB" : "")}>
           {content.map((el, i) => (
             <div
               key={el.id}
-              className="one-row"
+              className={check ? "one-row-more" : "one-row"}
               onClick={(e) => {
                 saveModeAndScroll();
                 e.stopPropagation();
@@ -108,16 +120,20 @@ const ContentList = ({ content, setContent, pageParam }) => {
                   }}>
                   ❌
                 </button>
-              </div>{" "}
+              </div>
               <Rate
                 isSmall
                 initialValue={el.rate}
                 action={(newRate) => updRates(el, newRate)}
                 classN={"oneStar"}
               />
-              {onePartLittle(el, "question")}
-              {/* <RateBtn initialValue={el.rate} action /> */}
-              {onePartLittle(el, "answer")}
+              {onePartLittle(el, "question", check ? "wrap" : "")}
+              {onePartLittle(el, "answer", check ? "wrap" : "")}{" "}
+              {check && (
+                <div className="tbl_note">
+                  <mark>{el.note}</mark>
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -211,7 +211,7 @@ export const themeArr = {
     "--main-color-int": "#8592ae",
     "--wrap-back": "#e9e6df",
     "--wrap-color": "#343f59",
-    "--wrap-color-int": "#bbcada",
+    "--wrap-color-int": "#5b5955",
     "--background-first": "#e2e1dd",
     "--background-second": "#d4d0c9",
     "--background-nav": "#9ca4ac",

@@ -27,7 +27,6 @@ const SwitchModeBtn = ({ ...props }) => {
   // const isDis = window.document.getElementById("gameresult");
   return (
     <>
-      {" "}
       <span className={cl.dv} />{" "}
       <Button
         className={[cl.btnGame, "animSvg"].join(" ")}

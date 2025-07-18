@@ -19,7 +19,7 @@ const BackBtn = ({ path, onClick, sm = false, ...props }) => {
       variant="dark"
       onClick={back}
       {...props}
-      className={cl.btnGame}>
+      className={sm ? cl.btnGame : "btn-dialog"}>
       {sm ? <TbArrowBackUp /> : "❰ BACK"}
     </Button>
   );

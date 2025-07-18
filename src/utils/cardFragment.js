@@ -70,23 +70,29 @@ export const mainAndImg = (side, mode, item, cl) => {
 
 //____________________________________________PRINTING CARD
 //printing card little fragment
-export const oneElemVertical = (el, part) => {
+export const oneElemVertical = (el, part, children = null) => {
   let im = part === "question" ? el.imgQ : el.imgA;
   let tx = part === "question" ? el.question : el.answer;
+
   let classMinHeight = im ? " minHeightImg" : "";
   let classJustify = tx ? "" : " justify-content-center";
+  const image = im && (
+    <img
+      src={part === "question" ? getImgQ(el) : getImgA(el)}
+      alt=""
+      className={tx ? "imgT" : "imgOmly"}
+    />
+  );
+
   return (
     <div className={"print_part " + part + classMinHeight + classJustify}>
-      <div className="printContent">
-        {im && (
-          <img
-            src={part === "question" ? getImgQ(el) : getImgA(el)}
-            alt=""
-            className={tx ? "imgT" : "imgOmly"}
-          />
+      <div className={"printContent "}>
+        {children}
+        {im && (tx ? image : <div className="w100">{image}</div>)}
+        {tx && (
+          <div className={im ? "print_text" : "print_text w100"}>{tx}</div>
         )}
-        {tx && <div className="print_text">{tx}</div>}
-      </div>
+      </div>{" "}
     </div>
   );
 };
@@ -94,28 +100,34 @@ export const oneElemVertical = (el, part) => {
 export const oneElemHorizontal = (el, part) => {
   let im = part === "question" ? el.imgQ : el.imgA;
   let tx = part === "question" ? el.question : el.answer;
+  let note = part === "question" ? "" : el.note;
+  const image = im && (
+    <img
+      src={part === "question" ? getImgQ(el) : getImgA(el)}
+      alt=""
+      className={tx ? "imgT" : "imgOmly"}
+    />
+  );
   return (
     // <div className={"print_part " + part + " " + fontPrint([tx, im])}>
     <div className={"print_part " + part}>
-      <div className="printContent">
-        {im && (
-          <img
-            src={part === "question" ? getImgQ(el) : getImgA(el)}
-            alt=""
-            className={tx ? "imgT" : "imgOmly"}
-          />
+      <div className={"printContent"}>
+        {im && image}
+        {tx && (
+          <div className={note ? "print_text " : "print_text"}>
+            {tx} {note && <span>{note}</span>}
+          </div>
         )}
-        {tx && <div className="print_text">{tx}</div>}
       </div>
     </div>
   );
 };
 
-export const onePartLittle = (el, part) => {
+export const onePartLittle = (el, part, cl = "") => {
   let im = part === "question" ? el.imgQ : el.imgA;
   let tx = part === "question" ? el.question : el.answer;
   let classImg = im && tx.length === 0 ? "imgOnly" : "";
-  let classDiv = "onePart " + (part === "question" ? "quest" : "answ");
+  let classDiv = "onePart " + (part === "question" ? " quest " : " answ ") + cl;
   // classDiv += tx.length < 15 ? " text-center" : "";
 
   return (

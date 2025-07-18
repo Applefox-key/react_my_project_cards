@@ -14,6 +14,7 @@ const VoiceInputBtns = ({ textRef, disable, className }) => {
     if (stopBtn.current.style.display === "none") {
       stopBtn.current.style.display = "inline";
       startBtn.current.style.display = "none";
+
       startV(textRef, lang || "");
     } else if (startBtn.current.style.display === "none") {
       startBtn.current.style.display = "inline";

@@ -6,7 +6,8 @@ import { IoMdClose } from "react-icons/io";
 
 const CardVertical = ({ el, i, drugDrop, del, mode }) => {
   const params = useParams();
-  useStretchingText("print_text");
+  // useStretchingText("print_text");
+
   return (
     <div
       key={el.id}
@@ -17,10 +18,20 @@ const CardVertical = ({ el, i, drugDrop, del, mode }) => {
         <IoMdClose />
       </button>
       <>{oneElemVertical(el, "question")}</>
-      <>{oneElemVertical(el, "answer")}</>
-      <div className="print-name">
-        {params.name} <span>{i + 1}</span>
-      </div>
+      <>
+        {oneElemVertical(
+          el,
+          "answer",
+          <div className="print-name">
+            <span className="card_name">
+              {params.name}-{i + 1}{" "}
+            </span>
+            <span className="card_num">{i + 1}</span>
+          </div>
+        )}
+      </>
+
+      <div className="print_note">{el.note}</div>
     </div>
   );
 };

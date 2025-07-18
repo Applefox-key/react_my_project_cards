@@ -291,12 +291,13 @@
 
 .modal {
   padding-left: 0 !important;
+  z-index: 2600;
 }
 
-.modal-dialog {
-  margin-top: 3rem;
+// .modal-dialog {
+//   margin-top: 3rem;
 
-}
+// }
 
 .modal-header {
   background: var(--background-nav);
@@ -305,11 +306,20 @@
 
 }
 
+.modal-body {
+
+  textarea,
+  input {
+    background-color: var(--background-first);
+    color: var(--wrap-color);
+  }
+}
+
 .modalBack,
 .modal-content {
   background-color: var(--wrap-back);
   color: var(--wrap-color);
-  margin-top: 75px;
+  // margin-top: 75px;
 
   @media screen and (max-width:900px) {
     width: 100vw;
@@ -1267,14 +1277,30 @@ input {
 
 
 .btn-close {
-  background-color: var(--wrap-back);
-  color: var(--wrap-color);
+  // background-color: var(--wrap-back);
+
   background: none;
+  opacity: 0.8;
+  height: fit-content;
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 700;
+  background: var(--background-nav);
+  color: var(--color-nav);
+
+  &:hover {
+    opacity: 1;
+    color: var(--wrap-back);
+    background: initial;
+  }
 
   &::after {
-    content: "✖️";
-    background-color: var(--wrap-back);
-    color: var(--wrap-color);
+    content: "Close X";
+    width: fit-content;
+    text-wrap: nowrap;
+    // background-color: var(--wrap-back);
+    // color: var(--wrap-color);
+
   }
 }
 
@@ -1324,6 +1350,11 @@ input {
   }
 }
 
+.form-select {
+  background-color: var(--background-first);
+  color: var(--wrap-color);
+}
+
 .form-select:focus {
   box-shadow: none;
 }
@@ -1332,6 +1363,13 @@ input {
   background-color: var(--background-second);
   border: 0.5px solid var(--border-fill);
 }
+
+.form-check-input:checked {
+  border-color: var(--border-fill);
+  background: var(--color-checked);
+}
+
+
 
 #i_name,
 #ip_name {

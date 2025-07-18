@@ -22,8 +22,8 @@ export const startV = (textarea, lang = "") => {
   let interimTranscript = "";
   let finalTranscript = "";
   // textarea.current.value = "";
-  recognition.lang = lang ? lang : "en-US";
-
+  // recognition.lang = lang ? lang : "en-US";
+  recognition.lang = "en-US";
   recognition.onresult = (event) => {
     interimTranscript = "";
     finalTranscript = "";

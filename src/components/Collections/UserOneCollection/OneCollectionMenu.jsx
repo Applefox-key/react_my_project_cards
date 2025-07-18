@@ -137,6 +137,7 @@ const OneCollectionMenu = ({ modes, collectionData }) => {
               fields={[
                 { value: "question", label: "Questions" },
                 { value: "answer", label: "Answers" },
+                { value: "note", label: "Note" },
               ]}
               onSelect={sortContent}
             />

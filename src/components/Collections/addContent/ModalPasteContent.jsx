@@ -54,7 +54,7 @@ const ModalPasteContent = ({ setVisible, setContent, pageParam }) => {
       fullscreen
       size="md"
       dialogClassName="h100"
-      title={"Adding"}>
+      title={"Adding collection content"}>
       <div className="addcontent-wrap">
         <PasteBtns
           dataArray={dataArray}

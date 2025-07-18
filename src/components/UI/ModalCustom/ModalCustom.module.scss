@@ -96,6 +96,10 @@
         flex-shrink: 0;
         align-items: center;
         justify-content: space-between;
+
+        .btn-close {
+            background-color: red;
+        }
     }
 
 }

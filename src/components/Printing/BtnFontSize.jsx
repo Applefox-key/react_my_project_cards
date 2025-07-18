@@ -6,6 +6,7 @@ const BtnFontSize = () => {
   const setSize = (val) => {
     const newValue = Math.min(Math.max(font + val, 1.2), 2.8);
     setFont(newValue);
+    // debugger;
     setVerticalCardFonrSize(newValue);
   };
   return (

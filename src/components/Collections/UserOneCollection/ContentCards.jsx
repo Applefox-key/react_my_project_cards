@@ -58,7 +58,7 @@ const ContentCards = ({ content, setContent, pageParam }) => {
 
   return (
     <div className=" little_card_wrap mt-5">
-      {content.map((el) => (
+      {content.map((el, i) => (
         <div
           key={el.id}
           className="little_card"
@@ -97,6 +97,7 @@ const ContentCards = ({ content, setContent, pageParam }) => {
           </div>
           {onePartLittle(el, "question")}
           {onePartLittle(el, "answer")}
+          <span className="num">{i + 1}</span>
           {el.hasOwnProperty("rate") && (
             <div className="rate">
               <Rate

@@ -101,7 +101,7 @@ const EditCard = () => {
       <div className="sticky-top ">
         <div className="string_menu justify-content-start">
           <BackBtn />
-          <Button size="lg" onClick={save} className="btn-save">
+          <Button size="lg" onClick={save} className="btn-dialog">
             SAVE CHANGES
           </Button>{" "}
         </div>

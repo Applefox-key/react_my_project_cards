@@ -349,6 +349,10 @@
     // scale: 0.8;
     top: 5px;
 
+    @media print {
+        display: none;
+    }
+
     /* Hide default HTML checkbox */
     .switch input {
         opacity: 0;

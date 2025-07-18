@@ -50,6 +50,7 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
           </button>
           {viewOptions && (
             <div className="options-wrap">
+              <BtnColor />
               <button
                 className="printBtnMode"
                 title={"print mode two-sides card or one-side card"}
@@ -60,19 +61,20 @@ const PrintingMenu = ({ refresh, mode, setMode }) => {
                   <BsCardHeading />
                 )}
               </button>{" "}
-              <BtnColor />
-              <div
-                className="input-wrap"
-                title={mode > 1 ? "side position" : "column count"}
-                onClick={
-                  mode > 1
-                    ? () => setMode(mode === 2 ? 3 : 2)
-                    : () => setMode(mode ? 0 : 1)
-                }>
-                <button>{actionBtnName()}</button>
-                <span>{mode > 1 ? "variant" : "column"}</span>
+              <div className="print-submenu">
+                <div
+                  className="input-wrap"
+                  title={mode > 1 ? "side position" : "column count"}
+                  onClick={
+                    mode > 1
+                      ? () => setMode(mode === 2 ? 3 : 2)
+                      : () => setMode(mode ? 0 : 1)
+                  }>
+                  <button>{actionBtnName()}</button>
+                  <span>{mode > 1 ? "variant" : "column"}</span>
+                </div>
+                {mode < 2 && <BtnFontSize />}
               </div>
-              {mode < 2 && <BtnFontSize />}
             </div>
           )}
         </div>
