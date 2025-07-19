@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { BiLabel } from "react-icons/bi";
-
 import "../../../styles/viewForms.scss";
 
 import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
@@ -10,6 +8,7 @@ import SpinnerLg from "../../UI/SpinnerLg/SpinnerLg";
 import { useQuery } from "../../../hooks/useQuery";
 import { sortByFieldCat } from "../../../utils/arraysFunc";
 import BaseAPI from "../../../API/BaseAPI";
+import { AiOutlineFolder } from "react-icons/ai";
 
 const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
   const [categories, setCategories] = useState([]);
@@ -55,7 +54,7 @@ const CategoriesFoldersView = ({ setSettingsCommon, filterTxt, viewmode }) => {
           {filtredList().map((el) => (
             <div key={el.id} className="list-wrap">
               <div className="listHeader" onClick={() => categoryFilter(el)}>
-                <BiLabel className="mt-2" />
+                <AiOutlineFolder className="mt-2" />
                 <div>
                   {el.name.toUpperCase()} <span>{el.collections.length}</span>
                 </div>

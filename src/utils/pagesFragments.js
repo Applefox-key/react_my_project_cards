@@ -27,7 +27,9 @@ export const fragment_SearchingTips = (
         isFav ||
         commonSet.byCategory) && (
         <div className="search_result_box">
-          <span className="searchResult">results for... </span>
+          <span className="searchResult">
+            <mark>results for...</mark>{" "}
+          </span>
 
           {commonSet.byCategory && (
             <button

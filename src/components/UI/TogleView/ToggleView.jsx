@@ -6,7 +6,6 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 const ToggleView = ({ checked, onChange, ...props }) => {
   return (
-    // <div onClick={onChange} {...props} className="me-2">
     <button
       data-title=" list or card view"
       className={cl.toggleBtn}

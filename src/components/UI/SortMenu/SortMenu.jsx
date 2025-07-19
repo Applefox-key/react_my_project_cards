@@ -5,10 +5,10 @@ import cl from "./SortMenu.module.scss";
 
 import { useOutsideClick } from "../../../hooks/useOutSideClick";
 
-const SortMenu = ({ fields, onSelect }) => {
+const SortMenu = ({ fields, onSelect, defVal = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [descending, setDescending] = useState(false);
-  const [selectedField, setSelectedField] = useState(null);
+  const [selectedField, setSelectedField] = useState(defVal);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

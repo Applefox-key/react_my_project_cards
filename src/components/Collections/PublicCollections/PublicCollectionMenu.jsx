@@ -65,6 +65,7 @@ const PublicCollectionMenu = (props) => {
                 { value: "question", label: "Questions" },
                 { value: "answer", label: "Answers" },
               ]}
+              defVal={{ value: "question", label: "Questions" }}
               onSelect={props.sortContent}
             />
           </div>

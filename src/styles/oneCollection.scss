@@ -745,6 +745,8 @@
                 font-style: italic;
                 color: var(--color-second);
                 background: var(--background-second);
+                display: flex;
+                justify-content: space-between;
             }
 
             .oneStar {

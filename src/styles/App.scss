@@ -5,7 +5,8 @@
   --main-color-int: #597db4;
 
   --wrap-back: #fcfcfc;
-  --wrap-color: #343f59;
+  // --wrap-color: #343f59;
+  --wrap-color: #284a81;
   --wrap-color-int: #0A58CA; //wrap
 
 
@@ -740,7 +741,7 @@ input {
   text-overflow: ellipsis;
   overflow: hidden;
   border: 1px solid var(--background-second);
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
   text-align: left;
 
 
@@ -1199,10 +1200,11 @@ input {
   transition: all 0.2s ease-in-out;
   background-color: var(--wrap-back);
   color: var(--wrap-color);
-  margin-left: 1.5rem;
+  // margin-left: 1.5rem;
   font-size: 11px;
   position: relative;
-  padding: 0 25px;
+  padding: 0 5px;
+  padding-right: 15px;
 
   &::after {
     content: " x";

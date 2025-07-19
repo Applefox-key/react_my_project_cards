@@ -24,7 +24,7 @@ export const setTheme = (theme = "", usersTheme = "") => {
   }
 };
 
-export const applyUserSettings = (set, prop = "") => {
+export const applyUserSettings = () => {
   setTheme();
 };
 

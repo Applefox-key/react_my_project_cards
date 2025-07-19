@@ -24,7 +24,7 @@ const CollectionCard = ({ oneSet, routeOne, listFn = "" }) => {
         oneSet.collection.name
           ? encodeURIComponent(oneSet.collection.name)
           : "noname"
-      }`
+      }${window.location.hash}`
     );
   };
 

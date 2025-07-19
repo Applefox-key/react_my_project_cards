@@ -22,15 +22,17 @@ export const collectionPageSettings = (
 export const saveSet = (obj) => {
   let settingsSet = JSON.parse(localStorage.getItem("cards_settings"));
 
-  if (settingsSet)
+  if (settingsSet) {
     localStorage.setItem(
       "cards_settings",
       JSON.stringify({ ...settingsSet, ...obj })
     );
-  else localStorage.setItem("cards_settings", JSON.stringify(obj));
+  } else {
+    localStorage.setItem("cards_settings", JSON.stringify(obj));
+  }
 };
 
-export const restoreSettings = (isPublic = false) => {
+export const restoreSettings = () => {
   const defaultValue = {
     selectedCategorymy: "",
     selectedCategorypub: "",
@@ -43,7 +45,12 @@ export const restoreSettings = (isPublic = false) => {
   };
 
   let settingsSet = JSON.parse(localStorage.getItem("cards_settings"));
-  if (!settingsSet) return defaultValue;
+  if (!settingsSet) {
+    console.log("restored def");
+    return defaultValue;
+  }
+  console.log("restored");
+
   return settingsSet;
 };
 export const getIsDaySettings = () => {
@@ -55,5 +62,6 @@ export const getIsDaySettings = () => {
 export const saveOneSetting = (field, value) => {
   const oldValue = restoreSettings();
   const newValue = { ...oldValue, [field]: value };
-  saveSet(newValue);
+
+  localStorage.setItem("cards_settings", JSON.stringify(newValue));
 };

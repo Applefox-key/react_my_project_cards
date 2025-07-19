@@ -131,7 +131,8 @@ const ContentList = ({ content, setContent, pageParam }) => {
               {onePartLittle(el, "answer", check ? "wrap" : "")}{" "}
               {check && (
                 <div className="tbl_note">
-                  <mark>{el.note}</mark>
+                  {i + 1}
+                  {el.note && <mark>{el.note}</mark>}
                 </div>
               )}
             </div>

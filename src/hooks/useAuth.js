@@ -13,8 +13,9 @@ export const useAuth = (returnAuthContext = false) => {
   let userRoutes = getRoutes(userAuth);
   const updateSettings = (set) => {
     setUserAuth({ ...userAuth, settings: set });
-    applyUserSettings(set);
+    applyUserSettings();
   };
+
   const updateFilterG = (value) => {
     setUserAuth({ ...userAuth, filterG: value });
   };

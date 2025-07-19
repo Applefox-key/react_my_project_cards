@@ -109,17 +109,6 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
               {!menuOpen && <BackBtn sm />}
             </div>
           )}
-          <ToggleView
-            checked={window.location.hash === "#1" ? 1 : 0}
-            onChange={viewmodeChange}
-          />
-          <SortMenu
-            fields={[
-              { value: "name", label: "Name" },
-              { value: "category", label: "Category" },
-            ]}
-            onSelect={sortContent}
-          />
           <div className="buttonBox">
             <ByCategoryBtn
               className="viewBtn"
@@ -136,6 +125,18 @@ const CollectionsMenu = ({ common, privat, viewmodeChange }) => {
             }
             colCatPub={commonSettings.selectedCategorypub}
             colCat={commonSettings.selectedCategorymy}
+          />
+          <ToggleView
+            checked={window.location.hash === "#1" ? 1 : 0}
+            onChange={viewmodeChange}
+          />
+          <SortMenu
+            fields={[
+              { value: "name", label: "Name" },
+              { value: "category", label: "Category" },
+            ]}
+            defVal={{ value: "category", label: "Category" }}
+            onSelect={sortContent}
           />
         </div>
       </div>{" "}

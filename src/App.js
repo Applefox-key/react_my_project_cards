@@ -31,6 +31,7 @@ function App({ props }) {
           token: token,
           settings: user.settings,
           filterG: "",
+          // viewmode: user.listView,
         });
         applyUserSettings(user.settings);
       }

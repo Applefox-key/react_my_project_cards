@@ -7,7 +7,6 @@ import {
   saveSet,
 } from "../../utils/pageSettings";
 import PlaylistsMenu from "./PlaylistsMenu";
-import { useAuth } from "../../hooks/useAuth";
 import Playlists from "./Playlists";
 
 import { useLastMode } from "../../hooks/useLastMode";
@@ -16,8 +15,8 @@ const PlaylistsPage = () => {
   const isPublic = window.location.pathname.includes("pub");
   const latestStateRef = useRef();
   const pageSet = restoreSettings(isPublic);
-  const { userAuth } = useAuth(true);
-  const [viewmode, viewmodeChange] = useLastMode(userAuth);
+
+  const [viewmode, viewmodeChange] = useLastMode();
   const [commonSettings, setCommonSettings] = useState({
     filter: pageSet.filter,
   });

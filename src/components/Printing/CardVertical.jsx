@@ -1,12 +1,10 @@
 import React from "react";
 import { oneElemVertical } from "../../utils/cardFragment";
 import { useParams } from "react-router-dom";
-import { useStretchingText } from "../../hooks/useStretchingText";
 import { IoMdClose } from "react-icons/io";
 
 const CardVertical = ({ el, i, drugDrop, del, mode }) => {
   const params = useParams();
-  // useStretchingText("print_text");
 
   return (
     <div

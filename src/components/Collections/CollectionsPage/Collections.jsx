@@ -10,7 +10,6 @@ import PublicCollectionsList from "../PublicCollections/PublicCollectionsList";
 import UsersCollections from "../UserCollectionsList/UsersCollections";
 import CategoriesFoldersView from "./CategoriesFoldersView";
 import CollectionsMenu from "./CollectionsMenu";
-
 import { GO_TO } from "../../../router/routes";
 import { useAuth } from "../../../hooks/useAuth";
 import { useLastMode } from "../../../hooks/useLastMode";
@@ -32,7 +31,7 @@ const Collections = () => {
     filter: userAuth.filterG,
     byCategory: pageSet.byCategory,
     sideBar: false,
-    sorting: 0,
+    sorting: { field: "category", isDec: false },
   });
 
   const [privateSettings, setPrivateSettings] = useState({
@@ -40,12 +39,12 @@ const Collections = () => {
     shared: pageSet.shared,
     favorite: pageSet.favorite,
   });
-  const [viewmode, viewmodeChange] = useLastMode(useAuth);
+  const [viewmode, viewmodeChange] = useLastMode();
   const updateRef = () => {
     latestStateRef.current = {
       ...commonSettings,
       ...privateSettings,
-      viewmode,
+      // viewmode,
     };
   };
   const setSettingsPrivat = (field) => {
@@ -105,7 +104,6 @@ const Collections = () => {
           />
         )}
         <div className="w-100">
-          {/* <div className="d-flex align-items-center position-relative"> */}
           <CollectionsMenu
             common={{ commonSettings, setSettingsCommon }}
             privat={{ privateSettings, setSettingsPrivat }}
@@ -136,7 +134,7 @@ const Collections = () => {
               )}
             </div>
           </div>
-        </div>{" "}
+        </div>
       </div>
     </CSSTransition>
   );

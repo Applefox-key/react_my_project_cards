@@ -12,8 +12,6 @@ import { useLastScroll } from "../../../hooks/useLastScroll";
 import { useLastMode } from "../../../hooks/useLastMode";
 import { useQuery } from "../../../hooks/useQuery";
 import { usePopup } from "../../../hooks/usePopup";
-import { useAuth } from "../../../hooks/useAuth";
-
 import { saveModeAndScroll } from "../../../utils/scrollFn";
 import { onePartLittle } from "../../../utils/cardFragment";
 import { sortByField } from "../../../utils/arraysFunc";
@@ -22,8 +20,7 @@ import BaseAPI from "../../../API/BaseAPI";
 const PublicOneCollection = () => {
   const PageParam = useParams();
   const [content, setContent] = useState();
-  const { userAuth } = useAuth(true);
-  const [mode, modeChange] = useLastMode(userAuth);
+  const [mode, modeChange] = useLastMode();
   const [collection, setCollection] = useState(PageParam);
   const setPopup = usePopup();
   const [getContent, isLoading] = useQuery(async () => {

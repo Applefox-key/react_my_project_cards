@@ -1,5 +1,4 @@
 import React from "react";
-import { BiLabel } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
@@ -9,6 +8,7 @@ import CategoryNameInput from "./CategoryNameInput";
 
 import { GO_TO } from "../../router/routes";
 import { saveOneSetting } from "../../utils/pageSettings";
+import { AiOutlineFolder } from "react-icons/ai";
 
 const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
   const router = useNavigate();
@@ -30,7 +30,7 @@ const CategoryManagerContent = ({ rowsActons, categoriesTbl, editMode }) => {
                   router(GO_TO.myCollect);
                 }}>
                 <div className={cl["cat-header"]}>
-                  <BiLabel />
+                  <AiOutlineFolder />
                   <div className={cl["cat-name"]}>
                     <CategoryNameInput
                       el={el}

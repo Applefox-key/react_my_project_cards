@@ -20,7 +20,7 @@ const GameMenuToggleField = (props) => {
         <button className="mobile-game-menu" onClick={toggleMenu}>
           <TbMenuOrder />
         </button>
-      )}{" "}
+      )}
       <BackBtn />
       {menuOpen && (
         <>

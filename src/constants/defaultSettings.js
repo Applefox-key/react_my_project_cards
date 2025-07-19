@@ -123,7 +123,7 @@ export const themeArr = {
     "--main-color": "#000000",
     "--main-color-int": "#597db4",
     "--wrap-back": "#ffffff",
-    "--wrap-color": "#343f59",
+    "--wrap-color": "#284a81",
     "--wrap-color-int": "#0A58CA",
     "--background-first": "#fcfbf7",
     "--background-second": "#EDEFF4",

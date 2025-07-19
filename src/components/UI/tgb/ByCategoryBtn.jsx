@@ -1,7 +1,7 @@
 import React from "react";
-import { MdLabel } from "react-icons/md";
 
 import "./tgb.scss";
+import { AiOutlineFolder } from "react-icons/ai";
 
 const ByCategoryBtn = ({ ...props }) => {
   return (
@@ -15,7 +15,7 @@ const ByCategoryBtn = ({ ...props }) => {
       onClick={() =>
         props.setSettingsCommon("byCategory", !props.commonSettings.byCategory)
       }>
-      <MdLabel />
+      <AiOutlineFolder />
     </button>
   );
 };

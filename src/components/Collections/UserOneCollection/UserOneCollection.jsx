@@ -27,9 +27,6 @@ const UserOneCollection = () => {
   const setPopup = usePopup();
   const [getContent, isLoading, error] = useQuery(async () => {
     const result = await BaseAPI.getCollectionsAndContent(pageParam.id);
-
-    // const colContent = await addRates(result);
-
     setCollect(result[0].collection);
     setContent(result[0].content);
   });
@@ -42,7 +39,7 @@ const UserOneCollection = () => {
   }, [pageParam.id, pageParam.name]);
 
   useLastScroll(content);
-  const [mode, modeChange] = useLastMode(userAuth);
+  const [mode, modeChange] = useLastMode();
   const filtredList = useTextContentFilter(content, userAuth.filterG);
 
   return (
@@ -74,7 +71,7 @@ const UserOneCollection = () => {
             />
             {!!userAuth.filterG && (
               <div className="search_result_box">
-                <span className="searchResult">results for... </span>{" "}
+                1<span className="searchResult">results for... </span>{" "}
                 <button className="btn-x" onClick={() => updateFilterG("")}>
                   text....
                   <span> {userAuth.filterG.toString()}</span>

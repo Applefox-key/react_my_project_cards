@@ -4,7 +4,6 @@ import { CSSTransition } from "react-transition-group";
 
 import { BsCollectionPlay } from "react-icons/bs";
 import { HiOutlineRectangleStack } from "react-icons/hi2";
-import { BiLabel } from "react-icons/bi";
 
 import { GO_TO } from "../../router/routes";
 import { Image } from "react-bootstrap";
@@ -12,6 +11,7 @@ import { Image } from "react-bootstrap";
 import p11 from "../../img/c1.png";
 import p2 from "../../img/c2.png";
 import p3 from "../../img/c3.png";
+import { AiOutlineFolder } from "react-icons/ai";
 
 const UserLibrary = () => {
   const router = useNavigate();
@@ -55,7 +55,7 @@ const UserLibrary = () => {
               </div>
             </div>
             <div className="ulb-box" onClick={toCat}>
-              <BiLabel />
+              <AiOutlineFolder />
               <Image src={p3} className="img1" /> <span>CATEGORIES</span>
               <div>
                 {" "}
