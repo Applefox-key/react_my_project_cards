@@ -7,7 +7,7 @@ export const userRequestData = (userData) => {
   Object.keys(userData).forEach((key) => {
     if (key === "file")
       formData.append(key, userData[key] ? userData[key] : "");
-    if (key === "settings")
+    else if (key === "settings")
       formData.append(`data[${key}]`, JSON.stringify(userData[key]));
     else formData.append(`data[${key}]`, userData[key]);
   });

@@ -39,9 +39,11 @@ const CollectionDownload = ({ colObj, setVisible }) => {
     <MyModal
       title="Download the collection"
       setshowmodal={setVisible}
-      size="lg"
+      // size="lg"
       showmodal
-      dialogClassName="width100wv">
+      fullscreen
+      size="md"
+      dialogClassName="width100wv h100">
       <div className="w-100">
         <div className="d-flex w-100">
           <div className="width90">
@@ -50,7 +52,7 @@ const CollectionDownload = ({ colObj, setVisible }) => {
                 title:
               </label>
               <input
-                autoFocus
+                // autoFocus
                 id="i_name"
                 placeholder="name: my collection"
                 value={name ? name : ""}
