@@ -162,6 +162,48 @@ export const themeArr = {
     "--shadow-size": "-1px",
   },
 
+  // --navbar-height: 77px;
+  // --main-back: #fcfcfc;
+  // --main-color: #666666;
+  // --main-color-int: #fff3cd;
+  // --wrap-back: #fcfcfc;
+  // --wrap-color: #888c94;
+  // --wrap-color-int: #fef2cc;
+  // --background-first: #fcfcfc;
+  // --background-second: #EDEFF4;
+  // --background-nav: #c8ccd4;
+  // --background-note: #536389;
+  // --background-parts-answ: #c8e1ff;
+  // --border-fill: #aab0be;
+  // --color-nav: #515152;
+  // --color-checked: #ed666d;
+  // --color-rate: #64b5f6;
+  // --color-second: #000000;
+  // --wrap-opacity: 0;
+  // --shadow-size: 6px;
+
+  simple: {
+    isday: true,
+    "--main-back": "#ffffff",
+    "--main-color": "#666666",
+    "--main-color-int": "#97aea0",
+    "--wrap-back": "#fcfcfc",
+    "--wrap-color": "#888c94",
+    "--wrap-color-int": "#97aea0",
+    "--background-first": "#fcfcfc",
+    "--background-second": "#ededed",
+    "--background-nav": "#c8ccd4",
+    "--background-note": "#666a6d",
+    "--background-parts-answ": "#c4baa9",
+    "--border-fill": "#aab0be",
+
+    "--color-nav": "#515152",
+    // "--color-checked": "#ed666d",
+    "--color-checked": "#f39e82",
+    "--color-rate": "#979797",
+    "--color-second": "#666a6d",
+    "--shadow-size": "6px",
+  },
   jade: {
     isday: false,
     "--main-back": "#000000",
