@@ -52,6 +52,7 @@ const BaseAPI = {
     }
   },
   async getImg(imgS, token = "") {
+    // if (imgS="null")
     let axiosConfig = {
       method: "get",
       url: SERVER_URL + "/" + imgS.replace(/\\/g, "/"),

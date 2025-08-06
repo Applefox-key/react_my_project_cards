@@ -9,6 +9,7 @@ import { getImgA, getImgQ } from "../../../utils/contentRequests";
 const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
   const isQuestion = fieldName === "imgQ";
   const currentText = isQuestion ? item.question : item.answer;
+
   const currentImage = isQuestion ? getImgQ(item) : getImgA(item);
   const placeholderText = isQuestion
     ? "write a question....."
@@ -63,7 +64,7 @@ const EditCardPart = ({ item, setItem, fieldName, setTextRef }) => {
   return (
     <div className={isQuestion ? "questDiv" : "answtDiv"}>
       <div className="img_choice">
-        {item[fieldName] ? (
+        {item[fieldName] && item[fieldName] !== "null" ? (
           <div className="img">
             <button variant="outline-secondary" onClick={onHandleClick}>
               <IoMdClose />

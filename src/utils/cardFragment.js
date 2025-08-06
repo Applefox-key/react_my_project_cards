@@ -6,7 +6,7 @@ import { getImgA, getImgQ } from "./contentRequests";
 const cardContent = (item, part, cl) => {
   let tx = part === "answer" ? item.answer.trim() : item.question.trim();
   let im = part === "answer" ? item.imgA : item.imgQ;
-
+  if (im === "null") im = "";
   return (
     <>
       {im ? (
@@ -73,7 +73,7 @@ export const mainAndImg = (side, mode, item, cl) => {
 export const oneElemVertical = (el, part, children = null) => {
   let im = part === "question" ? el.imgQ : el.imgA;
   let tx = part === "question" ? el.question : el.answer;
-
+  if (im === "null") im = "";
   let classMinHeight = im ? " minHeightImg" : "";
   let classJustify = tx ? "" : " justify-content-center";
   const image = im && (
@@ -99,6 +99,7 @@ export const oneElemVertical = (el, part, children = null) => {
 
 export const oneElemHorizontal = (el, part) => {
   let im = part === "question" ? el.imgQ : el.imgA;
+  if (im === "null") im = "";
   let tx = part === "question" ? el.question : el.answer;
   let note = part === "question" ? "" : el.note;
   const image = im && (
@@ -125,6 +126,7 @@ export const oneElemHorizontal = (el, part) => {
 
 export const onePartLittle = (el, part, cl = "") => {
   let im = part === "question" ? el.imgQ : el.imgA;
+  if (im === "null") im = "";
   let tx = part === "question" ? el.question : el.answer;
   let classImg = im && tx.length === 0 ? "imgOnly" : "";
   let classDiv = "onePart " + (part === "question" ? " quest " : " answ ") + cl;

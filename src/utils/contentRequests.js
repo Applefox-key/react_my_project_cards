@@ -26,11 +26,11 @@ const generateLink = (imgName, collectionID) => {
         BaseAPI.getToken();
 };
 export const getImgA = (contentItem) => {
-  if (!contentItem.imgA) return "";
+  if (!contentItem.imgA || contentItem.imgA === "null") return "";
   return generateLink(contentItem.imgA, contentItem.collectionid);
 };
 export const getImgQ = (contentItem) => {
-  if (!contentItem.imgQ) return "";
+  if (!contentItem.imgQ || contentItem.imgQ === "null") return "";
   return generateLink(contentItem.imgQ, contentItem.collectionid);
 };
 export const share = async (collection, setPopup) => {
